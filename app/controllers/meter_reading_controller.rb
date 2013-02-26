@@ -11,7 +11,7 @@ class MeterReadingController < ApplicationController
 		if @meter_reading.save
 			render json: {meter_reading: @meter_reading.as_json(only: [:id, :reading])}
 		else
-			render {error: "something went wrong"}
+			render json: {error: "something went wrong"}
 		end
 	end
 
@@ -25,7 +25,7 @@ class MeterReadingController < ApplicationController
 	def destroy
 		@meter_reading = MeterReading.find(params[:meter_reading_id])
 		if @meter_reading.destroy
-			render {status: "deleted"}
+			render json: {status: "deleted"}
 		end
 	end
 

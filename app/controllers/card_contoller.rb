@@ -18,7 +18,7 @@ class CardController < ApplicationController
 		if @card.update_attributes(params[:card])
 			render json: {card: @card.as_json(only: [:id, :card_number])}
 		else
-			render {error: "something went wrong"}
+			render json: {error: "something went wrong"}
 		end
 	end
 
