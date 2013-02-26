@@ -25,7 +25,7 @@ class CardController < ApplicationController
 	def destroy
 		@card = Card.find(params[:card_id])
 		if @card.destroy
-			render {status: "deleted"}
+			render json: {status: "deleted"}
 		end
 	end
 end
