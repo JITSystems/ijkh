@@ -2,7 +2,7 @@ Ijkh::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions"}
   
 
-  root :to => 'home#index'
+  root :to => 'predefined_data#index'
 
   get 'api/1.0/predefined_data' => 'predefined_data#index'
   get 'api/1.0/places' => 'place#index'
