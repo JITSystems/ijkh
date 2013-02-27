@@ -17,4 +17,5 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/place/:place_id/user_service' => 'service#create_user_service'
   post 'api/1.0/place' => 'place#create'
   post 'api/1.0/place/:place_id/service' => 'service#create'
+  post 'api/1.0/servicetype' => 'service_type#create'
 end
