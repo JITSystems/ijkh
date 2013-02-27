@@ -9,7 +9,7 @@ class ServiceTypeController < ApplicationController
 		@services = Service.where(place_id: params[:place_id])
 		if @excluded_service_type_ids.blank?
 			if @services.blank?
-				@service_types = ServiceType.all.select("id, title")
+				@service_types = ServiceType.select("id, title").all
 				render json: { service_types: @service_types }
 			else
 				render json: { service_types: []}
