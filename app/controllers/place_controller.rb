@@ -1,13 +1,8 @@
 class PlaceController < ApplicationController
 	def index
 		@user = User.where(authentication_token: params[:auth_token]).first
-		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true).includes(:services)
-		render json: { places: @places.as_json( include: 
-									{ services: 
-										{ except: [:created_at, :updated_at, :user_id] }
-									}
-								)
-							}
+		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true)
+		render json: @places
 	end
 
 	def create
