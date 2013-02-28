@@ -8,4 +8,8 @@ class Tariff < ActiveRecord::Base
   
   has_many :values
   has_many :field_templates, through: :values
+
+   def active_model_serializer
+    TariffSerializer
+  end
 end

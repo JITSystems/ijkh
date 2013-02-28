@@ -2,8 +2,12 @@ class ServiceController < ApplicationController
 	def index
 		@place = Place.find(params[:place_id])
 		@services = Service.select("id, title, tariff_id, place_id, service_type_id").where(place_id: @place.id)
+		
+		render json: @services
+	end
 
-		render json: {services: @services}
+	def show
+
 	end
 
 	def create
@@ -17,8 +21,13 @@ class ServiceController < ApplicationController
 		end
 	end
 
-	def update
-		# TO-DO: Find out the process.
+	def update_user_service
+		values_array = params[:values]
+		values_array.each do |value| 
+		render json: { error: "something went wrong" } unless @value.save
+		end
+
+		render json: {status: "updated"}
 	end
 
 	def destroy

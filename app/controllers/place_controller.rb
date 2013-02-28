@@ -23,7 +23,7 @@ class PlaceController < ApplicationController
 
 	def update
 		@user = User.where(authentication_token: params[:auth_token]).first
-		@place = Place.find(params[:id])
+		@place = Place.find(params[:place_id])
       	if @place.update_attributes(params[:place])
 			render json: {place: @place.as_json( except: [:created_at, :updated_at] )}
       	else

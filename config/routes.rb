@@ -1,5 +1,5 @@
 Ijkh::Application.routes.draw do
-  devise_for :users, :controllers => {:sessions => "sessions"}
+  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   
 
   root :to => 'predefined_data#index'
@@ -14,8 +14,14 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   get 'api/1.0/place/:place_id/exservicetypes' => 'service_type#index_non_existant'
 
+  get 'api/1.0/fieldtemplate' => 'field_template#index'
+
   post 'api/1.0/place/:place_id/user_service' => 'service#create_user_service'
   post 'api/1.0/place' => 'place#create'
   post 'api/1.0/place/:place_id/service' => 'service#create'
   post 'api/1.0/servicetype' => 'service_type#create'
+
+  put 'api/1.0/place/:place_id' => 'place#update'
+
+  delete 'api/1.0/service/:service_id' => 'service#destroy'
 end

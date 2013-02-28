@@ -7,6 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'pg'
 gem 'devise'
+gem "active_model_serializers", :github => "rails-api/active_model_serializers"
 
 
 # Gems used only for assets and not required
