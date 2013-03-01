@@ -1,7 +1,7 @@
 class ServiceTypeController < ApplicationController
 	def index
 		@service_types = ServiceType.select("id, title").all
-		render json: @service_types
+		render json: {service_type: @service_types}
 	end
 
 	def index_non_existant
@@ -10,9 +10,9 @@ class ServiceTypeController < ApplicationController
 		if @excluded_service_type_ids.blank?
 			if @services.blank?
 				@service_types = ServiceType.select("id, title").all
-				render json: { service_types: @service_types }
+				render json: { service_type: @service_types }
 			else
-				render json: { service_types: []}
+				render json: { service_type: []}
 			end
 		else
 			@service_types = ServiceType.where("id NOT IN (?)", @excluded_service_type_ids.map(&:service_type_id).first).select("id, title")

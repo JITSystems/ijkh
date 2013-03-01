@@ -1,7 +1,7 @@
 class ServiceController < ApplicationController
 	def index
 		@place = Place.find(params[:place_id])
-		@services = Service.select("id, title, tariff_id, place_id, service_type_id").where(place_id: @place.id)
+		@services = Service.select("id, title, tariff_id, place_id, service_type_id, vendor_id").where(place_id: @place.id)
 		
 		render json: @services
 	end
