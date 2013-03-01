@@ -10,7 +10,7 @@ class PlaceController < ApplicationController
 		@place = Place.new(params[:place].merge user_id: @user.id, is_active: true)
 
 		if @place.save
-			render json: {place: @place.as_json( except: [:created_at, :updated_at] )}
+			render json: @place
 		else
 			render json: {error: "something went wrong"}
 		end
@@ -20,7 +20,7 @@ class PlaceController < ApplicationController
 		@user = User.where(authentication_token: params[:auth_token]).first
 		@place = Place.find(params[:place_id])
       	if @place.update_attributes(params[:place])
-			render json: {place: @place.as_json( except: [:created_at, :updated_at] )}
+			render json: @place
       	else
       		render json: {error: "something went wrong"}
       	end

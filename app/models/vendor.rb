@@ -5,5 +5,6 @@ class Vendor < ActiveRecord::Base
 
   belongs_to :service_type, foreign_key: :service_type_id
 
+  has_many :services
   has_many :tariffs, as: :owner
 end

@@ -12,10 +12,14 @@ class ServiceController < ApplicationController
 
 	def create
 		@user = User.where(authentication_token: params[:auth_token]).first
-		@service = Service.new(params[:service].merge user_id: @user.id)
+		tariff_id = params[:service][:tariff][:id]
+		vendor_id = params[:service][:vendor][:id]
+		params[:service].delete(:tariff)
+		params[:service].delete(:vendor)
+		@service = Service.new(params[:service].merge user_id: @user.id, tariff_id: tariff_id, vendor_id: vendor_id)
 
 		if @service.save
-			render json: {service: @service.as_json( except: [:created_at, :updated_at])}
+			render json: @service
 		else
 			render json: {error: "something went wrong"}
 		end
@@ -55,6 +59,6 @@ class ServiceController < ApplicationController
 			@service.update_attributes(tariff_id: @tariff.id)
 		end
 
-		render json: {user_service: @service}
+		render json: @service
 	end
 end

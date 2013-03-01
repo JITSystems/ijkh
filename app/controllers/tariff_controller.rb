@@ -28,7 +28,7 @@
 			@tariff.merge!(vendor: {id: @vendor.id, title: @vendor.title})
 		end
 		
-		render json: { tariff: @tariff }
+		render json: @tariff
 	end
 
 end

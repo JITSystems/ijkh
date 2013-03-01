@@ -16,7 +16,7 @@ class ServiceTypeController < ApplicationController
 			end
 		else
 			@service_types = ServiceType.where("id NOT IN (?)", @excluded_service_type_ids.map(&:service_type_id).first).select("id, title")
-			render json: { service_types: @service_types }
+			render json: { service_type: @service_types }
 		end
 	end
 
