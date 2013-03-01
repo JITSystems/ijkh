@@ -1,4 +1,4 @@
-class CustomVendorSerializer < ActiveModel::Serializer
+class VendorUnpackedSerializer < ActiveModel::Serializer
   attributes :id, :title
 
 end
