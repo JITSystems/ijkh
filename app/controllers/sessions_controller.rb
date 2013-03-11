@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-		 prepend_before_filter :require_no_authentication, :only => [:create]
+	prepend_before_filter :require_no_authentication, :only => [:create]
   before_filter :ensure_params_exist
   
   def create
@@ -9,11 +9,13 @@ class SessionsController < Devise::SessionsController
  
     if resource.valid_password?(params[:user][:password])
       sign_in("user", resource)
-      render json: {user: {auth_token: resource.authentication_token, 
-                  email: resource.email,
-                  first_name: resource.first_name,
-                  last_name: resource.last_name
-                  }}
+      render json: {user: 
+                      {auth_token: resource.authentication_token, 
+                       email: resource.email,
+                       first_name: resource.first_name,
+                       last_name: resource.last_name
+                      } 
+                    }
       return
     end
     invalid_login_attempt
