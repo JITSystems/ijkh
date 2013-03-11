@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301061245) do
+ActiveRecord::Schema.define(:version => 20130306083948) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +44,24 @@ ActiveRecord::Schema.define(:version => 20130301061245) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "freelance_categories", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "freelancers", :force => true do |t|
+    t.string   "title"
+    t.string   "phone"
+    t.string   "work_time"
+    t.string   "description"
+    t.string   "picture_url"
+    t.integer  "freelance_category_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
   create_table "meter_readings", :force => true do |t|
     t.integer  "tariff_id"
     t.integer  "value_id"
@@ -51,6 +69,42 @@ ActiveRecord::Schema.define(:version => 20130301061245) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "non_utility_service_types", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "non_utility_tariffs", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "non_utility_vendor_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "non_utility_vendor_map_positions", :force => true do |t|
+    t.string   "title"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.integer  "non_utility_vendor_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  create_table "non_utility_vendors", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "phone"
+    t.string   "work_time"
+    t.string   "address"
+    t.integer  "non_utility_service_type_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "picture_url"
   end
 
   create_table "payment_histories", :force => true do |t|

@@ -1,9 +1,53 @@
 class PlaceController < ApplicationController
 	def index
 		@user = User.where(authentication_token: params[:auth_token]).first
-		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true)
+		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true).includes(services: {tariff: {tariff_template: {field_templates: [:values, :field_template_list_values]}}})
+		@places =  @places.as_json(
+				include: 
+					{ services: 
+	                    { include: 
+	                    	{ tariff: 
+								{ include: 
+									{ tariff_template: 
+										{ include: 
+											{ field_templates: 
+												{include: 
+													[{values: {only: [:value, :tariff_id]}
+													}, field_template_list_values: {only: [:id, :value]}], only: [:id, :title]
+												}
+											}, only: [:id, :current_value, :title]
+										}
+									}, only: [:title, :id, :owner_type]
+								} 
+							}, only: [:title, :id]
+						}
+					}, only: [:title, :id] )
+		
+		@places.each do |place|
+			@services = place[:services]
+			place.delete(:services)
+
+			@services.each do |service|
+				@field_templates = service[:tariff][:tariff_template][:field_templates]
+				service[:tariff][:tariff_template].delete(:field_templates)
+
+				@field_templates.each do |ft|
+					@values = ft[:values]
+					ft.delete(:values)
+					
+					@values.delete_if do |value|
+					value["tariff_id"] != service[:tariff]["id"]
+					end
+	
+					ft[:value] = @values
+				end
+				service[:tariff][:tariff_template][:field_templates] = @field_templates
+			end
+			place[:service] = @services
+		end
+
 		render json: @places
-	end
+		end
 
 	def create
 		@user = User.where(authentication_token: params[:auth_token]).first

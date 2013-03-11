@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  phone: MyString
+  work_time: MyString
+  address: MyString
+  non_utility_service_type_id: 1
+
+two:
+  title: MyString
+  description: MyString
+  phone: MyString
+  work_time: MyString
+  address: MyString
+  non_utility_service_type_id: 1
