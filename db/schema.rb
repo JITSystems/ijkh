@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306083948) do
+ActiveRecord::Schema.define(:version => 20130312070441) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130306083948) do
     t.string   "field_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "is_for_calc"
   end
 
   create_table "freelance_categories", :force => true do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20130306083948) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "is_init"
   end
 
   create_table "non_utility_service_types", :force => true do |t|
@@ -148,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20130306083948) do
     t.integer  "place_id"
     t.integer  "service_type_id"
     t.integer  "vendor_id"
+    t.string   "user_account"
   end
 
   create_table "tariff_templates", :force => true do |t|
