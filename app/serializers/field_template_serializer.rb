@@ -3,5 +3,5 @@ class FieldTemplateSerializer < ActiveModel::Serializer
 
 	has_many :values, serializer: ValueSerializer, key: :value
 	has_many :field_template_list_values
-
+	has_one :reading_field_template
 end

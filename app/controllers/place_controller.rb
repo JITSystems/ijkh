@@ -1,7 +1,7 @@
 class PlaceController < ApplicationController
 	def index
 		@user = User.where(authentication_token: params[:auth_token]).first
-		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true).includes(services: {tariff: {tariff_template: {field_templates: [:values, :field_template_list_values]}}})
+		@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true).includes(services: {tariff: {tariff_template: {field_templates: [:values, :field_template_list_values, :reading_field_template]}}})
 		@places =  @places.as_json(
 				include: 
 					{ services: 
@@ -12,8 +12,9 @@ class PlaceController < ApplicationController
 										{ include: 
 											{ field_templates: 
 												{include: 
-													[{values: {only: [:value, :tariff_id]}
-													}, field_template_list_values: {only: [:id, :value]}], only: [:id, :title]
+													[{values: {only: [:value, :tariff_id]}},
+													 {field_template_list_values: {only: [:id, :value]}},
+													 {reading_field_template: {only: [:id, :title]}}], only: [:id, :title]
 												}
 											}, only: [:id, :current_value, :title]
 										}

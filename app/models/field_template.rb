@@ -4,6 +4,7 @@ class FieldTemplate < ActiveRecord::Base
 
   belongs_to :tariff_template, foreign_key: :tariff_template_id
 
+  has_one :reading_field_template
   has_many :field_template_list_values
 
   has_many :values
