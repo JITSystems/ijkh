@@ -1,7 +1,7 @@
 class PlaceController < ApplicationController
 	def index
 		@user = User.where(authentication_token: params[:auth_token]).first
-		if @user do 
+		if @user then
 			@places = @user.places.select("id, title, city, street, building, apartment").where(is_active: true).includes(services: {tariff: {tariff_template: {field_templates: [:values, :field_template_list_values, :reading_field_template]}}})
 			@places =  @places.as_json(
 					include: 
@@ -51,6 +51,7 @@ class PlaceController < ApplicationController
 			render json: @places
 		else
 			render json: {error: "user not found"}
+		end
 		end
 
 	def create
