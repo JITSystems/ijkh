@@ -8,6 +8,7 @@ class Tariff < ActiveRecord::Base
   
   has_many :values
   has_many :field_templates, through: :values
+  has_many :meter_readings
 
    def active_model_serializer
     TariffSerializer

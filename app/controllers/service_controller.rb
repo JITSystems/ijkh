@@ -12,12 +12,19 @@ class ServiceController < ApplicationController
 
 	def create
 		if params[:service][:vendor]
-		@user = User.where(authentication_token: params[:auth_token]).first
-		tariff_id = params[:service][:tariff][:id]
-		vendor_id = params[:service][:vendor][:id]
-		params[:service].delete(:tariff)
-		params[:service].delete(:vendor)
-		@service = Service.new(params[:service].merge user_id: @user.id, tariff_id: tariff_id, vendor_id: vendor_id)
+			@user = User.where(authentication_token: params[:auth_token]).first
+			tariff_id = params[:service][:tariff][:id]
+			vendor_id = params[:service][:vendor][:id]
+			@field_templates = params[:service][:tariff][:tariff_template][:field_templates]
+			params[:service].delete(:tariff)
+			params[:service].delete(:vendor)
+			@service = Service.new(params[:service].merge user_id: @user.id, tariff_id: tariff_id, vendor_id: vendor_id)
+			@field_templates.each do |ft|
+				if ft[:meter_reading]
+					@meter_reading = MeterReading.new(ft[:meter_reading].merge tariff_id: tariff_id, user_id: @user.id, is_init: true)
+				end
+				render json: {error: "failed saving meter reading"} unless @meter_reading.save
+			end
 		else
 
 		end
@@ -63,6 +70,10 @@ class ServiceController < ApplicationController
 				field_templates.each do |ft| 
 					@value = Value.new(ft[:value].first.merge tariff_id: @tariff.id, field_template_id: ft[:id])
 					@value.save
+					if ft[:meter_reading]
+					@meter_reading = MeterReading.new(ft[:meter_reading].merge tariff_id: tariff_id, user_id: @user.id, is_init: true)
+					end
+				
 				end
 			end
 			@service.update_attributes(tariff_id: @tariff.id)

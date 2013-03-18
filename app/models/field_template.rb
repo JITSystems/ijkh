@@ -9,4 +9,5 @@ class FieldTemplate < ActiveRecord::Base
 
   has_many :values
   has_many :tariffs, through: :values
+  has_many :meter_readings
 end
