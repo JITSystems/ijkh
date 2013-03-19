@@ -5,7 +5,6 @@ class MeterReadingController < ApplicationController
 	end
 
 	def create
-		#TO-DO: When does the bill instance is to be created?
 		@user = User.select(:id).where(authentication_auth: params[:auth_token]).first
 		@meter_reading = MeterReading.new(params[:meter_reading].merge user_id: @user.id)
 		if @meter_reading.save
