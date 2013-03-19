@@ -24,7 +24,7 @@ class PlaceController < ApplicationController
 									} 
 								}, only: [:title, :id]
 							}
-						}, only: [:title, :id] )
+						}, only: [:title, :id, :city, :street, :building, :apartment] )
 			
 			@places.each do |place|
 				@services = place[:services]
