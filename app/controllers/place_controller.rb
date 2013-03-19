@@ -18,7 +18,7 @@ class PlaceController < ApplicationController
 														 {reading_field_template: {only: [:id, :title]}},
 														 {meter_readings: {only: [:id, :reading, :created_at, :tariff_id]}}], only: [:id, :title, :is_for_calc]
 													}
-												}, only: [:id, :current_value, :title]
+												}, only: [:id, :has_readings, :title]
 											}
 										}, only: [:title, :id, :owner_type]
 									} 

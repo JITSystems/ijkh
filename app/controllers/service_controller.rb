@@ -22,9 +22,8 @@ class ServiceController < ApplicationController
 			@field_templates.each do |ft|
 				if ft[:meter_reading]
 					@meter_reading = MeterReading.new(ft[:meter_reading].merge tariff_id: tariff_id, user_id: @user.id, is_init: true)
+					render json: {error: "failed saving meter reading"} unless @meter_reading.save
 				end
-				render json: {error: "failed saving meter reading"} unless @meter_reading.save
-			end
 		else
 
 		end
