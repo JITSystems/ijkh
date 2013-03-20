@@ -21,7 +21,7 @@ class ServiceController < ApplicationController
 			@service = Service.new(params[:service].merge user_id: @user.id, tariff_id: tariff_id, vendor_id: vendor_id)
 			@field_templates.each do |ft|
 				if ft[:meter_reading]
-					@meter_reading = MeterReading.new(ft[:meter_reading].merge tariff_id: tariff_id, user_id: @user.id, is_init: true)
+					@meter_reading = MeterReading.new(ft[:meter_reading].merge tariff_id: tariff_id, user_id: @user.id, is_init: true, field_template_id: ft[:id])
 					render json: {error: "failed saving meter reading"} unless @meter_reading.save
 				end
 			end
