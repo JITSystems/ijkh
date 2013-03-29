@@ -1,29 +1,37 @@
 class MeterReadingController < ApplicationController
 	def index
-		@meter_readings = MeterReading.select("id, reading").where(tariff_id: params[:tariff_id])
-		render json: @meter_readings
+		meter_readings = MeterReading.by_tariff(params[:tariff_id])
+		render json: meter_readings
 	end
 
 	def create
-		@user = User.select(:id).where(authentication_auth: params[:auth_token]).first
-		@meter_reading = MeterReading.new(params[:meter_reading].merge user_id: @user.id)
-		if @meter_reading.save
-			render json: {meter_reading: @meter_reading.as_json(only: [:id, :reading])}
+		if params[:snapshot]
+			name = params[:snapshot].original_filename
+			directory = File.join('public','images','snapshot')
+			path = File.join(directory, name)
+			File.open(path, "wb") { |f| f.write(params[:snapshot].read) }
+			params[:meter_reading].merge(snapshot_url: path)
+		end
+
+		meter_reading = MeterReading.new(params[:meter_reading].merge user_id: current_user.id)
+		
+		if meter_reading.save
+			render json: meter_reading
 		else
 			render json: {error: "something went wrong"}
 		end
 	end
 
 	def update
-		@meter_reading = MeterReading.find(params[:meter_reading_id])
-		if @meter_reading.update_attributes
-			render json: {meter_reading: @meter_reading}
+		meter_reading = MeterReading.find(params[:meter_reading_id])
+		if meter_reading.update_attributes
+			render json: meter_reading
 		end
 	end
 
 	def destroy
-		@meter_reading = MeterReading.find(params[:meter_reading_id])
-		if @meter_reading.destroy
+		meter_reading = MeterReading.find(params[:meter_reading_id])
+		if meter_reading.destroy
 			render json: {status: "deleted"}
 		end
 	end

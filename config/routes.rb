@@ -16,11 +16,15 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/freelancecategory' => 'freelance_category#index'
   get 'api/1.0/fieldtemplate' => 'field_template#index'
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
+  get 'api/1.0/bills' => 'bill#index'
+
+  post 'api/1.0/place' => 'place#create'
 
   post 'api/1.0/place/:place_id/userservice' => 'service#create_user_service'
-  post 'api/1.0/place' => 'place#create'
   post 'api/1.0/place/:place_id/service' => 'service#create'
+
   post 'api/1.0/servicetype' => 'service_type#create'
+  post 'api/1.0/meterreading' => 'meter_reading#create'
 
   put 'api/1.0/place/:place_id' => 'place#update'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'

@@ -1,6 +1,6 @@
 class FieldTemplateController < ApplicationController
 	def index
-		@field_templates = FieldTemplate.includes(:values).all
-		render json: @field_templates
+		field_templates = FieldTemplate.all
+		render json: field_templates
 	end
 end

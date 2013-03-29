@@ -1,8 +1,9 @@
 class ServiceType < ActiveRecord::Base
-	scope :not_included, lambda { |excluded_service_type_ids| { :conditions => ['id NOT IN (?)', excluded_service_type_ids.select(&:service_type_id).join(',')] }}
+	extend ServiceTypesRepository
 
   attr_accessible :title
 
-  has_many :vendors
-  has_many :tariff_templates
+  has_many :vendors, select: 'id, title, service_type_id'
+  has_many :tariff_templates, select: 'id, title, service_type_id'
+
 end

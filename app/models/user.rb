@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ActiveRecord::Base  
   # Include default devise modules. Others available are:
   # :confirmable, :recoverable,
   # :lockable, and :omniauthable
@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   has_many :cards
   has_many :bills
   has_many :payment_histories
-  has_many :places
-  has_many :services
+  has_many :places, select: 'id, title, city, street, building, apartment, user_id'
+  has_many :services, select: 'id, title, user_id'
   has_many :meter_readings
   has_many :tariffs, as: :owner
 end

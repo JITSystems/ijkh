@@ -1,4 +1,6 @@
 class MeterReading < ActiveRecord::Base
+	extend MeterReadingsRepository
+
   attr_accessible :reading, :tariff_id, :user_id, :value_id, :field_template_id, :is_init
 
   belongs_to :field_template, foreign_key: :field_template_id

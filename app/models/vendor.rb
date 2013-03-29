@@ -1,10 +1,11 @@
 class Vendor < ActiveRecord::Base
-	scope :with_tariffs, includes(:tariffs)
+	extend VendorsRepository
 
   attr_accessible :service_type_id, :title
 
-  belongs_to :service_type, foreign_key: :service_type_id
+  belongs_to :service_type, foreign_key: :service_type_id, select: 'id, title'
 
-  has_many :services
-  has_many :tariffs, as: :owner
+  has_many :services, select: 'id, title, vendor_id'
+  has_many :tariffs, as: :owner, select: 'id, title, owner_id, owner_type, tariff_template_id'
+
 end
