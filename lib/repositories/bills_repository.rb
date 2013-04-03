@@ -1,5 +1,5 @@
 module BillsRepository
-
+	#Bills
 	def index_month_bill user, status
 		month_bill = []
 		months = 1..Date.today.month
