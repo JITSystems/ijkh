@@ -5,21 +5,8 @@ class MeterReadingController < ApplicationController
 	end
 
 	def create
-		if params[:snapshot]
-			name = params[:snapshot].original_filename
-			directory = File.join('public','images','snapshot')
-			path = File.join(directory, name)
-			File.open(path, "wb") { |f| f.write(params[:snapshot].read) }
-			params[:meter_reading].merge(snapshot_url: path)
-		end
-
-		meter_reading = MeterReading.new(params[:meter_reading].merge user_id: current_user.id)
-		
-		if meter_reading.save
-			render json: meter_reading
-		else
-			render json: {error: "something went wrong"}
-		end
+		meter_reading = MeterReading.new_meter_reading current_user, params
+		render json: meter_reading
 	end
 
 	def update

@@ -43,7 +43,6 @@ module PlacesRepository
 								[
 									:values, 
 									:field_template_list_values, 
-									:reading_field_template, 
 									:meter_readings
 								]
 							}
@@ -65,9 +64,8 @@ module PlacesRepository
 											{ include: 
 												{ field_templates: 
 													{include: 
-														[{values: {only: [:value, :tariff_id]}},
+														[{values: {only: [:id, :value, :tariff_id]}},
 														 {field_template_list_values: {only: [:id, :value]}},
-														 {reading_field_template: {only: [:id, :title]}},
 														 {meter_readings: {only: [:id, :reading, :created_at, :tariff_id, :value_id, :field_template_id]}}
 														], only: [:id, :title, :is_for_calc]
 													}

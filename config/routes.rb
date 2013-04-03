@@ -16,6 +16,8 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/freelancecategory' => 'freelance_category#index'
   get 'api/1.0/fieldtemplate' => 'field_template#index'
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
+  get 'api/1.0/unpaid_bills' => 'bill#unpaid_index'
+  get 'api/1.0/paid_bills' => 'bill#paid_index'
   get 'api/1.0/bills' => 'bill#index'
 
   post 'api/1.0/place' => 'place#create'

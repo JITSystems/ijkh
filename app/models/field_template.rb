@@ -7,5 +7,5 @@ class FieldTemplate < ActiveRecord::Base
   has_one :reading_field_template, select: 'id, field_template_id, title'
   has_many :field_template_list_values, select: 'id, field_template_id, value'
   has_many :values, select: 'id, field_template_id, value, tariff_id'
-  has_many :meter_readings, select: 'id, field_template_id, reading, is_init'
+  has_many :meter_readings, select: 'id, field_template_id, reading, is_init, tariff_id, value_id, created_at'
 end
