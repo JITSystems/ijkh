@@ -19,6 +19,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/unpaid_bills' => 'bill#unpaid_index'
   get 'api/1.0/paid_bills' => 'bill#paid_index'
   get 'api/1.0/bills' => 'bill#index'
+  get 'api/1.0/pay' => 'bill#pay_bill'
 
   post 'api/1.0/place' => 'place#create'
 

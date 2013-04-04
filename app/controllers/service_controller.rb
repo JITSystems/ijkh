@@ -31,7 +31,7 @@ class ServiceController < ApplicationController
 					}
 
 					meter_reading = MeterReading.new(meter_reading)
-					error = {error: "failed to save meter reading"} unless meter_reading.save
+					render json: {error: "failed to save meter reading"} unless meter_reading.save
 				end
 			end
 		end
@@ -89,7 +89,7 @@ def create_user_service
 						}
 
 						meter_reading = MeterReading.new(meter_reading)
-						error = {error: "failed to save meter reading"} unless meter_reading.save
+						render json: {error: "failed to save meter reading"} unless meter_reading.save
 					end
 				end
 			end

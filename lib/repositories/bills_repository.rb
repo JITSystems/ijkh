@@ -1,5 +1,14 @@
+# encoding: utf-8 
 module BillsRepository
-	#Bills
+
+	def pay_bill user, amount
+		#test = 'MerchantId=12345&OrderId=56789&Amount=9.99&Currency=USD&ValidUntil=2010-01-29 16:10:00&OrderDescription=Покупка телефона&PrivateSecurityKey=3844908d-4c2a-42e1-9be0-91bb5d068d22'
+		#testkey = Digest::MD5.hexdigest(test)
+		sk_str ='MerchantId=39859&OrderId=1&Amount='+amount.to_s+'&Currency=RUB&PrivateSecurityKey=7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+		sk = Digest::MD5.hexdigest(sk_str)
+		url = "https://secure.payonlinesystem.com/ru/payment/select?MerchantId=39859&OrderId=1&Amount=#{amount}&Currency=RUB&SecurityKey=#{sk}"
+	end
+
 	def index_month_bill user, status
 		month_bill = []
 		months = 1..Date.today.month

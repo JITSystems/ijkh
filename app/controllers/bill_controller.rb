@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class BillController < ApplicationController
 	def index
 		#bills = Bill.load_last_3_months(current_month, current_user)
@@ -14,6 +16,12 @@ class BillController < ApplicationController
 	def unpaid_index
 		billys = Bill.index_month_bill current_user, "!= 1"
 		render json: billys
+	end
+
+	def pay_bill
+		url = Bill.pay_bill current_user, 300.01
+	
+		redirect_to url
 	end
 
 	def create
