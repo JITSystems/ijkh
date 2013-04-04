@@ -20,7 +20,7 @@ class ServiceController < ApplicationController
 			service = Service.create_service service
 			
 			field_templates.each do |field_template|
-				if field_template["is_for_calc"]
+				if field_template["is_for_calc"] == true
 
 					meter_reading = {
 						tariff_id: 			params[:service][:tariff][:id],
@@ -32,8 +32,6 @@ class ServiceController < ApplicationController
 
 					meter_reading = MeterReading.new(meter_reading)
 					meter_reading.save
-				else
-					render json: {error: 1123}
 				end
 			end
 		end
@@ -80,7 +78,7 @@ def create_user_service
 					value = Value.new(value)
 					value.save
 
-					if field_template[:is_for_calc]
+					if field_template["is_for_calc"] == true
 
 						meter_reading = {
 							tariff_id: 			params[:service][:tariff][:id],
