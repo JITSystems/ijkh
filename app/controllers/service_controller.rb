@@ -31,7 +31,7 @@ class ServiceController < ApplicationController
 					}
 
 					meter_reading = MeterReading.new(meter_reading)
-					render json: {error: "failed to save meter reading"} unless meter_reading.save
+					meter_reading.save
 				end
 			end
 		end
