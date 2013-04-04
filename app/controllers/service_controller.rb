@@ -20,11 +20,12 @@ class ServiceController < ApplicationController
 			service = Service.create_service service
 			
 			field_templates.each do |field_template|
-				if field_template["is_for_calc"] == true
-
+			logger.info field_template.inspect
+				if field_template[:is_for_calc] == "1"
 					meter_reading = {
+						user_id: 			current_user.id,
 						tariff_id: 			params[:service][:tariff][:id],
-						value_id: 			field_template[:value][:id],
+						value_id: 			field_template[:value].first[:id],
 						reading: 			field_template[:meter_reading][:reading],
 						is_init: 			true,
 						field_template_id: 	field_template[:id]
@@ -37,6 +38,7 @@ class ServiceController < ApplicationController
 		end
 
 		if service
+
 			render json: service
 		else
 			render json: {error: "something went wrong"}
@@ -67,29 +69,31 @@ def create_user_service
 			tariff = Tariff.new(tariff)
 			
 			if tariff.save
-				field_templates = tariff_template["field_templates"]
-				
-				field_templates.each do |field_template|
-					value = {
-						tariff_id: 			tariff.id,
-						field_template_id: 	field_template[:id],
-						value: 				field_template[:value].first[:value]
-					}
-					value = Value.new(value)
-					value.save
-
-					if field_template["is_for_calc"] == true
-
-						meter_reading = {
-							tariff_id: 			params[:service][:tariff][:id],
-							value_id: 			field_template[:value][:id],
-							reading: 			field_template[:meter_reading][:reading],
-							is_init: 			true,
-							field_template_id: 	field_template[:id]
+				if tariff_template["field_templates"]
+					field_templates = tariff_template["field_templates"]
+					field_templates.each do |field_template|
+						value = {
+							tariff_id: 			tariff.id,
+							field_template_id: 	field_template[:id],
+							value: 				field_template[:value].first[:value]
 						}
+						value = Value.new(value)
+						value.save
 
-						meter_reading = MeterReading.new(meter_reading)
-						render json: {error: "failed to save meter reading"} unless meter_reading.save
+						if field_template[:is_for_calc] == "1"
+							
+							meter_reading = {
+								user_id: 			current_user.id,
+								tariff_id: 			params[:service][:tariff][:id],
+								value_id: 			field_template[:value].first[:id],
+								reading: 			field_template[:meter_reading][:reading],
+								is_init: 			true,
+								field_template_id: 	field_template[:id]
+							}
+
+							meter_reading = MeterReading.new(meter_reading)
+							meter_reading.save
+						end
 					end
 				end
 			end

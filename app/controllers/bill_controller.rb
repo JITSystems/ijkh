@@ -19,9 +19,9 @@ class BillController < ApplicationController
 	end
 
 	def pay_bill
-		url = Bill.pay_bill current_user, 300.01
+		url = Bill.pay_bill current_user, params[:amount], params[:order_id]
 	
-		redirect_to url
+		render json: {url: url}
 	end
 
 	def create

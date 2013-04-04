@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130401140433) do
+ActiveRecord::Schema.define(:version => 20130404155930) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
     t.integer  "service_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "place_id"
     t.integer  "status"
     t.string   "amount"
+    t.string   "place_title"
+    t.string   "service_title"
   end
 
   create_table "cards", :force => true do |t|
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130401140433) do
     t.boolean  "is_init"
     t.integer  "field_template_id"
     t.string   "reading",           :default => "0.0"
+    t.string   "snapshot_url"
   end
 
   create_table "non_utility_service_types", :force => true do |t|
