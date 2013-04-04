@@ -32,6 +32,8 @@ class ServiceController < ApplicationController
 
 					meter_reading = MeterReading.new(meter_reading)
 					meter_reading.save
+				else
+					render json: {error: 1123}
 				end
 			end
 		end
