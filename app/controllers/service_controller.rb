@@ -20,7 +20,7 @@ class ServiceController < ApplicationController
 			service = Service.create_service service
 			
 			field_templates.each do |field_template|
-				if field_template[:is_for_calc]
+				if field_template["is_for_calc"]
 
 					meter_reading = {
 						tariff_id: 			params[:service][:tariff][:id],
@@ -67,7 +67,7 @@ def create_user_service
 			tariff = Tariff.new(tariff)
 			
 			if tariff.save
-				field_templates = tariff_template[:field_templates]
+				field_templates = tariff_template["field_templates"]
 				
 				field_templates.each do |field_template|
 					value = {
