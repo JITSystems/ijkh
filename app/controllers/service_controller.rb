@@ -17,10 +17,9 @@ class ServiceController < ApplicationController
 			}
 
 			field_templates = params[:service][:tariff][:tariff_template][:field_templates]
-			service = Service.create_service service
 			
 			field_templates.each do |field_template|
-			logger.info field_template.inspect
+			#logger.info field_template.inspect
 				if field_template[:is_for_calc] == "1"
 					meter_reading = {
 						user_id: 			current_user.id,
@@ -33,9 +32,13 @@ class ServiceController < ApplicationController
 
 					meter_reading = MeterReading.new(meter_reading)
 					meter_reading.save
+					field_template[:meter_reading] = meter_reading
 				end
 			end
+			service = Service.create_service service, current_user, field_templates
 		end
+
+
 
 		if service
 

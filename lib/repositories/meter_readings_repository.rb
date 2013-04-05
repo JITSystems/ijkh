@@ -29,12 +29,13 @@ module MeterReadingsRepository
 			{
 				bill: {
 					user_id: user.id,
-					service_id: params[:service_id],
+					service_type_id: params[:service_type_id],
 					place_id: params[:place_id]
 				},
 				value_id: params[:meter_reading][:value_id],
 				reading: params[:meter_reading][:reading],
-				prev_reading: params[:prev_reading]
+				prev_reading: params[:prev_reading],
+				service_id: params[:service_id]
 			}
 			bill = Bill.new_bill bill_params
 			meter_reading
