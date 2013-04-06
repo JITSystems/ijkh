@@ -10,12 +10,28 @@ module PlacesRepository
 		end
 	end
 
+	def deactivate place
+		place_to_deactivate = self.find(place)
+		if place_to_deactivate.update_attributes(is_active: false)
+			services_to_destroy = Service.where(place_id: place)
+			services_to_destroy.each do |service|
+				Service.destroy_with_dependencies(service.id)
+			end
+			place_to_deactivate
+		end
+	end
+
 	def update_place place, update
-		place_to_update = self.find(place)
-		if place_to_update.update_attributes(update)
-			place_to_update
+		logger.info update.inspect
+		if update[:is_active] == "FALSE"
+			place_to_update = deactivate place
 		else
-			place_to_update = {error: "something went wrong"}
+			place_to_update = self.find(place)
+			if place_to_update.update_attributes(update)
+				place_to_update
+			else
+				place_to_update = {error: "something went wrong"}
+			end
 		end
 	end
 
@@ -66,7 +82,7 @@ module PlacesRepository
 													{include: 
 														[{values: {only: [:id, :value, :tariff_id]}},
 														 {field_template_list_values: {only: [:id, :value]}},
-														 {meter_readings: {only: [:id, :reading, :created_at, :tariff_id, :value_id, :field_template_id]}}
+														 {meter_readings: {only: [:id, :reading, :created_at, :tariff_id, :value_id, :field_template_id, :snapshot_url]}}
 														], only: [:id, :title, :is_for_calc]
 													}
 												}, only: [:id, :has_readings, :title]

@@ -1,5 +1,23 @@
 module ServicesRepository
 
+	def destroy_with_dependencies service_id
+		service = self.find(service_id)
+		meter_readings = MeterReading.where(service_id: service_id)
+		bills = Bill.where("place_id = ? and service_type_id = ?", service.place_id, service.service_type_id)
+		if service.destroy
+			meter_readings.each do |meter_reading|
+				meter_reading.destroy
+			end
+
+			bills.each do |bill|
+				bill.destroy
+			end
+			{status: "deleted"}
+		else
+			{error: "something went wrong"}
+		end
+	end
+
 	def create_service service, user, field_templates
 		if new_service = Service.create!(service)
 			new_service = jsonify new_service

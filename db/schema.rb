@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405131534) do
+ActiveRecord::Schema.define(:version => 20130406073508) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130405131534) do
     t.integer  "field_template_id"
     t.string   "reading",           :default => "0.0"
     t.string   "snapshot_url"
+    t.integer  "service_id"
   end
 
   create_table "non_utility_service_types", :force => true do |t|

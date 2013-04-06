@@ -20,6 +20,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/paid_bills' => 'bill#paid_index'
   get 'api/1.0/bills' => 'bill#index'
   get 'api/1.0/pay' => 'bill#pay_bill'
+  get 'api/1.0/detailed_bills' => 'bill#detailed_bill_index'
 
   post 'api/1.0/place' => 'place#create'
 
@@ -29,8 +30,12 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/servicetype' => 'service_type#create'
   post 'api/1.0/meterreading' => 'meter_reading#create'
 
+  post 'api/1.0/payment-success' => 'payment_history#success'
+  post 'api/1.0/payment-success' => 'payment_history#fail'
+
   put 'api/1.0/place/:place_id' => 'place#update'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
+  put 'api/1.0/bill/:bill_id' => 'bill#switch_bill_status'
 
   delete 'api/1.0/service/:service_id' => 'service#destroy'
   delete 'api/1.0/bill/:bill_id' => 'bill#destroy'

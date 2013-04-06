@@ -4,17 +4,11 @@ class PaymentHistoryController < ApplicationController
 		render json: payment_histories
 	end
 
-	def create
-		
+	def success
+		logger.info params.inspect
 	end
 
-	def update
-	end
-
-	def destroy
-		payment_history = PaymentHistory.find(params[:payment_history_id])
-		if payment_history.destroy
-			render json: {status: "deleted"}
-		end
+	def fail
+		logger.info params.inspect
 	end
 end

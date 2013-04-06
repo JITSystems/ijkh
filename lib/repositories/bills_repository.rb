@@ -1,10 +1,22 @@
 # encoding: utf-8 
 module BillsRepository
 
-	def pay_bill user, amount, order_id
-		sk_str ='MerchantId=39859&OrderId='+order_id.to_s+'&Amount='+amount.to_s+'&Currency=RUB&PrivateSecurityKey=7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
-		sk = Digest::MD5.hexdigest(sk_str)
-		url = "https://secure.payonlinesystem.com/ru/payment/select?MerchantId=39859&OrderId=#{order_id}&Amount=#{amount}&Currency=RUB&SecurityKey=#{sk}"
+	def pay_bill user, params
+		bill = Bill.find(params[:id])
+		bill.update_atributes(status: "0")
+
+		po_root_url = "https://secure.payonlinesystem.com/ru/payment/select"
+		merchant_id = "39859"
+		order_id = params[:id]
+		amount = params[:amount]
+		currency = "RUB"
+		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
+
+		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+
+		security_key = Digest::MD5.hexdigest(security_key_string)
+
+		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}"
 	end
 
 	def index_month_bill user, status
@@ -33,6 +45,15 @@ module BillsRepository
 		bill.save
 	end
 
+	def switch_status params
+		bill = self.find(params[:id])
+		if bill.update_atributes(params[:status])
+			bill
+		else
+			{error: "something went wrong"}
+		end
+	end
+
 	def index_detailed_bills user, params
 		bills = Bill.where("extract(month from created_at) = ? and user_id = ? and service_type_id = ? and place_id = ?", params[:month], user.id, params[:service_type_id], params[:place_id]).select("amount, vendor_title, tariff_title, created_at")
 	end
@@ -40,7 +61,7 @@ module BillsRepository
 private
 	def sum_up_month user, month, status
 		place_bill = []
-		month_bill = where("extract(month from created_at) = ? and user_id = ? and status #{status}", month, user.id).select("extract(month from created_at) as month, sum(cast(amount as float)) as amount").group("created_at").first
+		month_bill = where("extract(month from created_at) = ? and user_id = ? and status #{status}", month, user.id).select("extract(month from created_at) as month, sum(cast(amount as float)) as amount").group("month").first
 		if month_bill
 			places = Bill.where("extract(month from created_at) = ? and user_id = ? and  status #{status}", month, user.id).uniq.select(:place_id).map(&:place_id)
 			places.each do |place|

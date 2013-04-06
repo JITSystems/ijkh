@@ -13,23 +13,23 @@ class BillController < ApplicationController
 		render json: billys
 	end
 
+	def unpaid_index
+		billys = Bill.index_month_bill current_user, "!= 1"
+		render json: billys
+	end
+
 	def detailed_bill_index
 		billys = Bill.index_detailed_bills current_user, params
 		render json: billys
 	end
 
 	def switch_bill_status
-		billys = Bill.switch_status current_user, params
-		render json: billys
-	end
-
-	def unpaid_index
-		billys = Bill.index_month_bill current_user, "!= 1"
+		billys = Bill.switch_status params[:bill]
 		render json: billys
 	end
 
 	def pay_bill
-		url = Bill.pay_bill current_user, params[:amount], params[:order_id]
+		url = Bill.pay_bill current_user, params[:bill]
 	
 		render json: {url: url}
 	end

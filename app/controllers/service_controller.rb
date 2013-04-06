@@ -37,8 +37,14 @@ class ServiceController < ApplicationController
 			end
 			service = Service.create_service service, current_user, field_templates
 		end
-
-
+	#	logger.info service.inspect
+			field_templates.each do |field_template|
+				if field_template[:is_for_calc] == "1"
+					meter_reading_id = field_template[:meter_reading][:id]
+					meter_reading = MeterReading.find(meter_reading_id)
+					meter_reading.update_attributes(service_id: service[:service]["id"])
+				end
+			end
 
 		if service
 
@@ -91,7 +97,8 @@ def create_user_service
 								value_id: 			field_template[:value].first[:id],
 								reading: 			field_template[:meter_reading][:reading],
 								is_init: 			true,
-								field_template_id: 	field_template[:id]
+								field_template_id: 	field_template[:id],
+								service_id: 		service.id
 							}
 
 							meter_reading = MeterReading.new(meter_reading)
@@ -121,12 +128,8 @@ def create_user_service
 	end
 
 	def destroy
-		service = Service.find(params[:service_id])
-		if service.destroy
-			render json: {status: "deleted"}
-		else
-			render json: {error: "something went wrong"}
-		end
+		service = Service.destroy_with_dependencies params[:service_id]
+		render json: service
 	end
 
 end
