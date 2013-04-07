@@ -33,7 +33,7 @@ module BillsRepository
 		place_title = Place.find(params[:bill][:place_id])
 		service_type = ServiceType.find(params[:bill][:service_type_id])
 		service = Service.find(params[:service_id])
-		if service.id
+		if service.vendor_id
 			vendor = Vendor.find(service.vendor_id)
 		else
 			vendor = {title: "Пользовательский"}
