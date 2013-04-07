@@ -24,12 +24,12 @@ class BillController < ApplicationController
 	end
 
 	def switch_bill_status
-		billys = Bill.switch_status params[:bill]
+		billys = Bill.switch_status params
 		render json: billys
 	end
 
 	def pay_bill
-		url = Bill.pay_bill current_user, params[:bill]
+		url = Bill.pay_bill current_user, params
 	
 		render json: {url: url}
 	end

@@ -2,12 +2,12 @@
 module BillsRepository
 
 	def pay_bill user, params
-		bill = Bill.find(params[:id])
-		bill.update_atributes(status: "0")
+		#bill = Bill.find(params[:bill_id])
+		#bill.update_atributes(status: "0")
 
 		po_root_url = "https://secure.payonlinesystem.com/ru/payment/select"
 		merchant_id = "39859"
-		order_id = params[:id]
+		order_id = params[:bill_id]
 		amount = params[:amount]
 		currency = "RUB"
 		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
@@ -40,13 +40,21 @@ module BillsRepository
 		value = value.value
 		reading = params[:reading]
 		prev_reading = params[:prev_reading]
-		amount = (reading.to_f-prev_reading.to_f)*value.to_f
-		bill = Bill.new(params[:bill].merge(amount: amount, status: '-1', place_title: place_title.title, service_type_title: service_type.title, tariff_title: tariff.title, vendor_title: vendor.title))
+		amount = ((reading.to_f-prev_reading.to_f)*value.to_f).round(2).to_s
+		amount = amount.split(".")
+		if amount.last =~ /\d\d/
+			amount_str = amount.first + "." + (amount.last + "0") 
+		else
+			amount_str = amount.first + "." + amount.last + "0"
+		end
+
+		logger.info amount.inspect
+		bill = Bill.new(params[:bill].merge(amount: amount_str, status: '-1', place_title: place_title.title, service_type_title: service_type.title, tariff_title: tariff.title, vendor_title: vendor.title))
 		bill.save
 	end
 
 	def switch_status params
-		bill = self.find(params[:id])
+		bill = self.find(params[:bill_id])
 		if bill.update_atributes(params[:status])
 			bill
 		else
@@ -55,7 +63,7 @@ module BillsRepository
 	end
 
 	def index_detailed_bills user, params
-		bills = Bill.where("extract(month from created_at) = ? and user_id = ? and service_type_id = ? and place_id = ?", params[:month], user.id, params[:service_type_id], params[:place_id]).select("amount, vendor_title, tariff_title, created_at")
+		bills = Bill.where("extract(month from created_at) = ? and user_id = ? and service_type_id = ? and place_id = ?", params[:month], user.id, params[:service_type_id], params[:place_id]).select("id, amount, vendor_title, tariff_title, created_at")
 	end
 
 private
