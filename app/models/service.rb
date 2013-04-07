@@ -7,7 +7,4 @@ class Service < ActiveRecord::Base
   belongs_to :tariff, foreign_key: :tariff_id
   belongs_to :place, foreign_key: :place_id, select: 'id, title, city, street, building, apartment'
   belongs_to :vendor, foreign_key: :vendor_id, select: 'id, title'
-
-  has_many :bills
-
 end
