@@ -16,7 +16,7 @@ module BillsRepository
 
 		security_key = Digest::MD5.hexdigest(security_key_string)
 
-		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}"
+		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&returnUrl=http://izkh.ru"
 	end
 
 	def index_month_bill user, status

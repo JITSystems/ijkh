@@ -13,4 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/images/meter_reading_snapshots
 .elasticbeanstalk/
