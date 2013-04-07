@@ -43,7 +43,7 @@ module BillsRepository
 		amount = ((reading.to_f-prev_reading.to_f)*value.to_f).round(2).to_s
 		amount = amount.split(".")
 		if amount.last =~ /\d\d/
-			amount_str = amount.first + "." + (amount.last + "0") 
+			amount_str = amount.first + "." + amount.last 
 		else
 			amount_str = amount.first + "." + amount.last + "0"
 		end
