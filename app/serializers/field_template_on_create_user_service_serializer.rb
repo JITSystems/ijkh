@@ -4,7 +4,5 @@ class FieldTemplateOnCreateUserServiceSerializer < ActiveModel::Serializer
   has_many :field_template_list_values
   has_one :reading_field_template
 
-  def value
-  	{"value" => 0}
-  end
+ 
 end
