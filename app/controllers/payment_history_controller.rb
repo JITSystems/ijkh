@@ -6,11 +6,11 @@ class PaymentHistoryController < ApplicationController
 
 	def success
 		logger.info params.inspect
-		render :nothing
+		render json: {}
 	end
 
 	def fail
 		logger.info params.inspect
-		render :nothing
+		render json: {}
 	end
 end
