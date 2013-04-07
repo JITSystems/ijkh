@@ -1,5 +1,5 @@
 module ServicesRepository
-#sda
+
 	def destroy_with_dependencies service_id
 		service = self.find(service_id)
 		meter_readings = MeterReading.where(service_id: service_id)
