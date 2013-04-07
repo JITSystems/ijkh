@@ -93,8 +93,8 @@ def create_user_service
 							
 							meter_reading = {
 								user_id: 			current_user.id,
-								tariff_id: 			params[:service][:tariff][:id],
-								value_id: 			field_template[:value].first[:id],
+								tariff_id: 			tariff.id,
+								value_id: 			value.id,
 								reading: 			field_template[:meter_reading][:reading],
 								is_init: 			true,
 								field_template_id: 	field_template[:id],
@@ -109,7 +109,7 @@ def create_user_service
 			end
 			service.update_attributes(tariff_id: tariff.id)
 		end
-
+		service = 
 		render json: service
 	end
 
