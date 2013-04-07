@@ -20,6 +20,7 @@ class BillController < ApplicationController
 
 	def detailed_bill_index
 		billys = Bill.index_detailed_bills current_user, params
+		logger.info billys.inspect
 		render json: billys
 	end
 

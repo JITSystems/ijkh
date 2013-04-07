@@ -69,7 +69,8 @@ module BillsRepository
 			status = "!= 1"
 		end
 
-		bills = Bill.where("extract(month from created_at) = ? and user_id = ? and service_type_id = ? and place_id = ? and status #{status}", params[:month], user.id, params[:service_type_id], params[:place_id]).select("id, amount, vendor_title, tariff_title, created_at, place_id")
+		bills = Bill.where("extract(month from created_at) = ? and user_id = ? and service_type_id = ? and place_id = ? and status #{status}", params[:month], user.id, params[:service_type_id], params[:place_id])
+		bills = bills.as_json(only: [:id, :amount, :vendor_title, :tariff_title, :created_at, :place_id])
 		bills
 	end
 
