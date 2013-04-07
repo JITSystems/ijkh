@@ -86,6 +86,7 @@ def create_user_service
 							field_template_id: 	field_template[:id],
 							value: 				field_template[:value].first[:value]
 						}
+						logger.info value.inspect
 						value = Value.new(value)
 						value.save
 
