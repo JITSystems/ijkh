@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406073508) do
+ActiveRecord::Schema.define(:version => 20130407133829) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -121,8 +121,17 @@ ActiveRecord::Schema.define(:version => 20130406073508) do
     t.integer  "user_id"
     t.integer  "card_id"
     t.string   "amount"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.datetime "po_date_time"
+    t.integer  "po_transaction_id"
+    t.integer  "bill_id"
+    t.string   "currency"
+    t.string   "card_holder"
+    t.string   "card_namber"
+    t.string   "country"
+    t.string   "city"
+    t.string   "eci"
   end
 
   create_table "places", :force => true do |t|
