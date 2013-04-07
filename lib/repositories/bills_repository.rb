@@ -35,6 +35,7 @@ module BillsRepository
 		service = Service.find(params[:service_id])
 		if service.vendor_id
 			vendor = Vendor.find(service.vendor_id)
+			vendor = {title: vendor.title}
 		else
 			vendor = {title: "Пользовательский"}
 		end
@@ -52,8 +53,8 @@ module BillsRepository
 			amount_str = amount.first + "." + amount.last + "0"
 		end
 
-		logger.info amount.inspect
-		bill = Bill.new(params[:bill].merge(amount: amount_str, status: '-1', place_title: place_title.title, service_type_title: service_type.title, tariff_title: tariff.title, vendor_title: vendor.title))
+		#logger.info amount.inspect
+		bill = Bill.new(params[:bill].merge(amount: amount_str, status: '-1', place_title: place_title.title, service_type_title: service_type.title, tariff_title: tariff.title, vendor_title: vendor[:title]))
 		bill.save
 	end
 
