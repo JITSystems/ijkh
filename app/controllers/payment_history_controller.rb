@@ -6,9 +6,11 @@ class PaymentHistoryController < ApplicationController
 
 	def success
 		logger.info params.inspect
+		render :nothing
 	end
 
 	def fail
 		logger.info params.inspect
+		render :nothing
 	end
 end
