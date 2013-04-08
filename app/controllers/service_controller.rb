@@ -110,7 +110,7 @@ def create_user_service
 			end
 			service.update_attributes(tariff_id: tariff.id)
 		end
-		service = 
+		 
 		render json: service
 	end
 
