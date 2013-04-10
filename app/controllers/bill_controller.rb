@@ -25,8 +25,8 @@ class BillController < ApplicationController
 	end
 
 	def switch_bill_status
-		billys = Bill.switch_status params
-		render json: billys
+		billy = Bill.switch_status params
+		render json: billy
 	end
 
 	def pay_bill

@@ -61,7 +61,7 @@ module BillsRepository
 	def switch_status params
 		bill = self.find(params[:bill_id])
 		if bill.update_attributes(status: params[:status])
-			bill
+			{status: "updated"}
 		else
 			{error: "something went wrong"}
 		end
