@@ -86,10 +86,10 @@ def create_user_service
 							field_template_id: 	field_template[:id],
 							value: 				field_template[:value].first[:value]
 						}
-						logger.info value.inspect
+						#logger.info value.inspect
 						value = Value.new(value)
 						value.save
-
+						field_template[:value] = value.as_json(only: [:id, :value, :tariff_id])
 						if field_template[:is_for_calc] == "1"
 							
 							meter_reading = {
@@ -104,13 +104,16 @@ def create_user_service
 
 							meter_reading = MeterReading.new(meter_reading)
 							meter_reading.save
+							field_template[:meter_reading] = meter_reading.as_json(only: [:id, :reading, :tariff_id, :value_id, :created_at, :field_template_id])
 						end
 					end
 				end
 			end
 			service.update_attributes(tariff_id: tariff.id)
 		end
-		 
+		service = Service.jsonify service
+		service = Service.pack_data service, current_user, field_templates
+		logger.info service.inspect
 		render json: service
 	end
 
