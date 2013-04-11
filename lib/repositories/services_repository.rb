@@ -3,7 +3,7 @@ module ServicesRepository
 	def destroy_with_dependencies service_id
 		service = self.find(service_id)
 		meter_readings = MeterReading.where(service_id: service_id)
-		bills = Bill.where("place_id = ? and service_type_id = ?", service.place_id, service.service_type_id)
+		bills = Bill.where("place_id = ? and service_type_id = ?, status != 1", service.place_id, service.service_type_id)
 		if service.destroy
 			meter_readings.each do |meter_reading|
 				meter_reading.destroy

@@ -15,7 +15,7 @@ class ServiceController < ApplicationController
 				user_account: 		params[:service][:user_account],
 				user_id: 			current_user.id
 			}
-			logger.info params[:service][:tariff][:tariff_template]
+			logger.info params[:service][:tariff][:tariff_template][:field_templates]
 			field_templates = params[:service][:tariff][:tariff_template][:field_templates]
 			
 			field_templates.each do |field_template|
