@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407133829) do
+ActiveRecord::Schema.define(:version => 20130412104338) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20130407133829) do
     t.integer  "bill_id"
     t.string   "currency"
     t.string   "card_holder"
-    t.string   "card_namber"
+    t.string   "card_number"
     t.string   "country"
     t.string   "city"
     t.string   "eci"
