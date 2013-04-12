@@ -7,15 +7,15 @@ class PaymentHistoryController < ApplicationController
 
 	def success
 		logger.info params.inspect
-		payment_history = PaymentHistory.new(po_date_time: params[:DateTime], po_transaction_id: params[:TransactionID], bill_id: params[:OrderId], amount: params[:Amount], currency: params[:Currency], card_holder: params[:CardHolder], card_number: params[:CardNumber], country: params[:Country], city: params[:City], eci: params[:ECI])
-		bill.switch_status { bill_id params[:OrderId], status: "1"}
+		#payment_history = PaymentHistory.new(po_date_time: params[:DateTime], po_transaction_id: params[:TransactionID], bill_id: params[:OrderId], amount: params[:Amount], currency: params[:Currency], card_holder: params[:CardHolder], card_number: params[:CardNumber], country: params[:Country], city: params[:City], eci: params[:ECI])
+		#bill.switch_status { bill_id params[:OrderId], status: "1"}
 		render json: {}
 	end
 
 	def fail
 		logger.info params.inspect
-		payment_history = PaymentHistory.new(po_date_time: params[:DateTime], po_transaction_id: params[:TransactionID], bill_id: params[:OrderId], amount: params[:Amount], currency: params[:Currency], card_holder: params[:CardHolder], card_number: params[:CardNumber], country: params[:Country], city: params[:City], eci: params[:ECI])
-		bill.switch_status { bill_id params[:OrderId], status: "-1"}
+		#payment_history = PaymentHistory.new(po_date_time: params[:DateTime], po_transaction_id: params[:TransactionID], bill_id: params[:OrderId], amount: params[:Amount], currency: params[:Currency], card_holder: params[:CardHolder], card_number: params[:CardNumber], country: params[:Country], city: params[:City], eci: params[:ECI])
+		#bill.switch_status { bill_id params[:OrderId], status: "-1"}
 		render json: {}
 	end
 end
