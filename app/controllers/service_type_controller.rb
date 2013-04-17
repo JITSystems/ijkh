@@ -1,6 +1,6 @@
 class ServiceTypeController < ApplicationController
 	def index
-		service_types = ServiceType.select.all
+		service_types = ServiceType.select("id, title").all
 		render json: service_types
 	end
 
