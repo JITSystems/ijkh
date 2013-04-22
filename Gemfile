@@ -7,6 +7,10 @@ gem 'rails', '3.2.11'
 
 gem 'pg'
 gem 'devise'
+
+gem 'rabl'
+gem 'oj'
+
 gem "active_model_serializers", :github => "rails-api/active_model_serializers"
 
 

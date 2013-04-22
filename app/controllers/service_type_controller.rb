@@ -1,7 +1,7 @@
 class ServiceTypeController < ApplicationController
 	def index
-		service_types = ServiceType.select("id, title").all
-		render json: service_types
+		@service_types = ServiceType.select("id, title").all
+		render 'service_type/index'
 	end
 
 	def index_non_existant

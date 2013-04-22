@@ -3,7 +3,6 @@ module VendorsRepository
 	def vendors_index service_type_id
 		vendors = by_service_type(service_type_id).includes_child_data
 		vendors = jsonify vendors
-		vendors = filter_values vendors
 	end
 
 	def by_service_type service_type_id
@@ -12,56 +11,23 @@ module VendorsRepository
 
 	def includes_child_data
 		includes(
-			tariffs: 
-				{ tariff_template: 
-					{ field_templates: 
-						[
-						:values, 
-						:field_template_list_values, 
-						:reading_field_template, 
-						:meter_readings
-						]
-					}
-				})
+			tariff_templates:  
+					{field_templates: :field_template_list_values}
+				)
 	end
 
 	def jsonify vendors
 		vendors.as_json(
 			include: 
-				{ tariffs:
+				{ tariff_template:
 					{ include:
-						{ tariff_template:
+						{ field_templates:
 							{ include:
-								{ field_templates:
-									{ include:
-										[
-											{values: {only: [:id, :value, :tariff_id]}},
-											{field_template_list_values: {only: [:id, :value]}}, 
-											{reading_field_template: {only: [:id, :title]}}
-										]
-									}
-								}
+								{field_template_list_values: {only: [:id, :value]}}
 							}
 						}
 					}
 				}						
 			)
-	end
-
-	def filter_values vendors
-		vendors.each do |vendor|
-			tariffs = vendor[:tariffs]
-			tariffs.each do |tariff|
-				field_templates = tariff[:tariff_template][:field_templates]
-				field_templates.each do |field_template|
-					values = field_template[:values]
-					values.delete_if do |value| 
-						value["tariff_id"] != tariff["id"]
-					end
-					field_template.delete(:values)
-					field_template[:value] = values
-				end
-			end
-		end
-	end
+	end	
 end

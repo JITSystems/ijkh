@@ -3,7 +3,7 @@ module ServicesRepository
 	def destroy_with_dependencies service_id
 		service = self.find(service_id)
 		meter_readings = MeterReading.where(service_id: service_id)
-		bills = Bill.where("place_id = ? and service_type_id = ? and status != 1", service.place_id, service.service_type_id)
+		bills = Bill.where("place_id = ? and service_type_id = ? and status != 1", service.place_id, service.service_type_id) 
 		if service.destroy
 			meter_readings.each do |meter_reading|
 				meter_reading.destroy
@@ -18,45 +18,15 @@ module ServicesRepository
 		end
 	end
 
-	def create_service service, user, field_templates
-		if new_service = Service.create!(service)
-			new_service = jsonify new_service
-			new_service = pack_data new_service, user, field_templates
+	def create_service user, params
+		unless params[:service][:vendor].nil?
+			create_predefined_service user, params
 		else
-			{error: "something went wrong"}
+			create_user_service user, params
 		end
-	end
-	
-	def jsonify service
-		{ service: service.as_json(include: 
-			                    	[{tariff: 
-			                    		{ include: 
-											{ tariff_template: 
-												{ include: 
-													{ field_templates: 
-														{include: 
-															[{values: {only: [:id, :value, :tariff_id]}},
-															 {field_template_list_values: {only: [:id, :value]}}
-															], only: [:id, :title, :is_for_calc]
-														}
-													}, only: [:id, :has_readings, :title]
-												}
-											}, only: [:title, :id, :owner_type]
-										}
-									}, vendor: {only: [:id, :title]} ]
-								)
-		}
 	end
 
-	def pack_data service, user, field_templates
-		field_templates.each do |field_template|	
-			if field_template[:meter_reading]
-				meter_readings = field_template[:meter_reading]
-			end
-		end
-		service[:service][:tariff][:tariff_template][:field_templates] = field_templates
-		service
-	end
+
 
 	def existant_service_type_ids place_id
   		where(place_id: place_id).uniq.select("service_type_id as id").map(&:id)
@@ -66,5 +36,30 @@ module ServicesRepository
   		where('place_id = ? and user_id = ?',place_id , current_user.id) 
   	end
 
+  	private
+
+  	def create_predefined_service user, params
+  		service_params = {
+				title: 				params[:service][:title],
+				place_id: 			params[:place_id],
+				service_type_id: 	params[:service][:service_type_id],
+				vendor_id: 			params[:service][:vendor][:id],
+				user_account: 		params[:service][:user_account],
+				user_id: 			current_user.id
+			}
+
+		service = Service.new(service_params)
+
+		if service.save
+			
+		else
+			
+		end
+
+
+  	end
+
+  	def create_user_service user, params
+  	end
   	
 end

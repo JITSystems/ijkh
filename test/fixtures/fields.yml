@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  field_type: MyString
+  is_for_calc: false
+  value: MyString
+  reading_fild_title: MyString
+  tariff_id: 1
+  field_template_id: 1
+
+two:
+  title: MyString
+  field_type: MyString
+  is_for_calc: false
+  value: MyString
+  reading_fild_title: MyString
+  tariff_id: 1
+  field_template_id: 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412104338) do
+ActiveRecord::Schema.define(:version => 20130422132421) do
 
   create_table "bills", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "field_list_values", :force => true do |t|
+    t.integer  "field_id"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "field_template_list_values", :force => true do |t|
     t.integer  "field_template_id"
     t.string   "value"
@@ -45,9 +52,23 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
     t.string   "title"
     t.integer  "tariff_template_id"
     t.string   "field_type"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.boolean  "is_for_calc"
+    t.string   "value"
+    t.string   "reading_field_title"
+  end
+
+  create_table "fields", :force => true do |t|
+    t.string   "title"
+    t.string   "field_type"
+    t.boolean  "is_for_calc"
+    t.string   "value"
+    t.string   "reading_field_title"
+    t.integer  "tariff_id"
+    t.integer  "field_template_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "freelance_categories", :force => true do |t|
@@ -69,16 +90,14 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
   end
 
   create_table "meter_readings", :force => true do |t|
-    t.integer  "tariff_id"
-    t.integer  "value_id"
     t.integer  "user_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.boolean  "is_init"
-    t.integer  "field_template_id"
-    t.string   "reading",           :default => "0.0"
+    t.string   "reading",      :default => "0.0"
     t.string   "snapshot_url"
     t.integer  "service_id"
+    t.integer  "field_id"
   end
 
   create_table "non_utility_service_types", :force => true do |t|
@@ -183,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.boolean  "has_readings"
+    t.integer  "vendor_id"
   end
 
   create_table "tariffs", :force => true do |t|
@@ -192,6 +212,9 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
     t.string   "owner_type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "has_readings"
+    t.integer  "service_type_id"
+    t.integer  "service_id"
   end
 
   create_table "users", :force => true do |t|
@@ -221,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20130412104338) do
     t.string   "value"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "field_id"
   end
 
   create_table "vendors", :force => true do |t|

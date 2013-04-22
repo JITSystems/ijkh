@@ -23,5 +23,10 @@ class MeterReadingController < ApplicationController
 		end
 	end
 
+	def show_last
+		@meter_reading = MeterReading.where(field_id: params[:field_id]).order("created_at DESC").limit(1)
+		render 'meter_reading/show_last'
+	end
+
 
 end

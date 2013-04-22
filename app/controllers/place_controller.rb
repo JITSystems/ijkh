@@ -1,7 +1,8 @@
 class PlaceController < ApplicationController
 	def index
-		places = Place.places_index current_user
-		render json: places
+		#@places = Place.places_index current_user
+		@places = Place.where(user_id: current_user.id)
+		render 'place/index'
 	end
 	
 	def create

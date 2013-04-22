@@ -1,6 +1,10 @@
 class VendorController < ApplicationController
 	def index_with_tariffs
-		vendors_index = Vendor.vendors_index params[:service_type_id]
-		render json: vendors_index
+		@vendors = Vendor.where(service_type_id: params[:service_type_id])
+		render 'vendor/index'
+	end
+
+	def create
+		@vendor = Vendor.new params[:vendor]
 	end
 end
