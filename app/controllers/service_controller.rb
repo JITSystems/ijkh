@@ -6,7 +6,49 @@
 	end
 
 	def create
-		
+		if params[:service][:vendor]
+			
+			
+			#logger.info params[:service][:tariff][:tariff_template][:field_templates]
+			
+			field_templates = params[:service][:tariff][:tariff_template][:field_templates]
+			
+			field_templates.each do |field_template|
+			
+			#logger.info field_template.inspect
+			
+				if field_template[:is_for_calc] == "1"
+					meter_reading = {
+						user_id: 			current_user.id,
+						tariff_id: 			params[:service][:tariff][:id],
+						value_id: 			field_template[:value].first[:id],
+						reading: 			field_template[:meter_reading][:reading],
+						is_init: 			true,
+						field_template_id: 	field_template[:id]
+					}
+
+					meter_reading = MeterReading.new(meter_reading)
+					meter_reading.save
+					field_template[:meter_reading] = meter_reading
+				end
+			end
+			service = Service.create_service service, current_user, field_templates
+		end
+	#	logger.info service.inspect
+			field_templates.each do |field_template|
+				if field_template[:is_for_calc] == "1"
+					meter_reading_id = field_template[:meter_reading][:id]
+					meter_reading = MeterReading.find(meter_reading_id)
+					meter_reading.update_attributes(service_id: service[:service]["id"])
+				end
+			end
+
+		if service
+
+			render json: service
+		else
+			render json: {error: "something went wrong"}
+		end
 	end
 
 def create_user_service
