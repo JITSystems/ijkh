@@ -1,7 +1,7 @@
  class ServiceController < ApplicationController
 	def index
 		#@services = Service.by_user_and_place(current_user, params[:place_id])
-		@services = Service.where(user_id: current_user.id && place_id: params[:place_id])
+		@services = Service.where("user_id=? and place_id=?", current_user.id, params[:place_id])
 		render 'service/index'
 	end
 
