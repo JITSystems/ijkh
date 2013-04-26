@@ -16,6 +16,7 @@ Ijkh::Application.routes.draw do
 
 # Service
   get 'api/1.0/place/:place_id/services' => 'service#index'
+  get 'api/1.0/service/:service_id' => 'service#show'
   post 'api/1.0/place/:place_id/service' => 'service#create'
   post 'api/1.0/place/:place_id/userservice' => 'service#create_user_service'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
@@ -37,14 +38,22 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   post 'api/1.0/meterreading' => 'meter_reading#create'
 
-# Bill
-  get 'api/1.0/unpaid_bills' => 'bill#unpaid_index'
-  get 'api/1.0/paid_bills' => 'bill#paid_index'
-  get 'api/1.0/bills' => 'bill#index'
-  get 'api/1.0/bill/:bill_id/pay' => 'bill#pay_bill'
-  get 'api/1.0/detailed_bills' => 'bill#detailed_bill_index'
-  put 'api/1.0/bill/:bill_id/switch_status' => 'bill#switch_bill_status' 
-  delete 'api/1.0/bill/:bill_id' => 'bill#destroy'
+# Account
+  get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
+  get 'api/1.0/paid_accounts' => 'account#paid_index'
+  get 'api/1.0/accounts' => 'account#index'
+  get 'api/1.0/account/:account_id/pay' => 'account#pay_bill'
+  get 'api/1.0/detailed_accounts' => 'account#detailed_account_index'
+  post 'api/1.0/service/:service_id/recurrent_account' => 'account#new_recurrent'
+  put 'api/1.0/account/:account_id/switch_status' => 'account#switch_account_status' 
+  delete 'api/1.0/account/:account_id' => 'account#destroy'
+
+# Service Account
+  get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'
+
+# Recipe
+  get 'api/1.0/service/:service_id/lastrecipe' => 'recipe#show_last'
+  post 'api/1.0/service/:service_id/recipe' => 'recipe#create'
 
 # Freelance Category
   get 'api/1.0/freelancecategory' => 'freelance_category#index'

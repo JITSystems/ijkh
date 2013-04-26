@@ -5,6 +5,7 @@ class MeterReading < ActiveRecord::Base
 
   belongs_to :user, foreign_key: :user_id
   belongs_to :field, foreign_key: :field_id
+  belongs_to :service
 
   def last
   	order('created_at DESC').limit(1)

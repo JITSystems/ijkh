@@ -17,10 +17,11 @@ class User < ActiveRecord::Base
   end
 
   has_many :cards
-  has_many :bills
+  has_many :accounts
   has_many :payment_histories
   has_many :places, select: 'id, title, city, street, building, apartment, user_id'
   has_many :services, select: 'id, title, user_id'
   has_many :meter_readings
   has_many :tariffs, as: :owner
+  has_many :recipes
 end

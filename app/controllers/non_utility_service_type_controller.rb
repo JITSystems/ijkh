@@ -1,7 +1,7 @@
 class NonUtilityServiceTypeController < ApplicationController
 	def index
-		non_utility_service_types = NonUtilityServiceType.all
+		@non_utility_service_types = NonUtilityServiceType.all
 
-		render json: non_utility_service_types
+		render 'non_utility_service_type/index'
 	end
 end

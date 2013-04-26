@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: MyString
+  total: MyString
+  po_tax: MyString
+  service_tax: MyString
+  currency: MyString
+
+two:
+  amount: MyString
+  total: MyString
+  po_tax: MyString
+  service_tax: MyString
+  currency: MyString

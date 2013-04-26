@@ -28,19 +28,19 @@ module MeterReadingsRepository
 				meter_reading.update_attributes(snapshot_url: snapshot_url)
 			end
 			
-			bill_params = 
+			account_params = 
 			{
-				bill: {
+				account: {
 					user_id: user.id,
-					service_type_id: params[:service_type_id],
+					service_id: params[:service_id],
 					place_id: params[:place_id]
 				},
-				value_id: params[:meter_reading][:value_id],
 				reading: params[:meter_reading][:reading],
 				prev_reading: params[:prev_reading],
-				service_id: params[:service_id]
+				service_id: params[:service_id],
+				field_id: params[:meter_reading][:field_id]
 			}
-			bill = Bill.new_bill bill_params
+			account = Account.new_account account_params
 			meter_reading
 			
 		else

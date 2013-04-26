@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422132421) do
+ActiveRecord::Schema.define(:version => 20130425122312) do
 
-  create_table "bills", :force => true do |t|
+  create_table "accounts", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "service_type_id"
+    t.integer  "service_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "place_id"
@@ -170,6 +170,19 @@ ActiveRecord::Schema.define(:version => 20130422132421) do
     t.integer  "field_template_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "recipes", :force => true do |t|
+    t.string   "amount"
+    t.string   "total"
+    t.string   "po_tax"
+    t.string   "service_tax"
+    t.string   "currency"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "service_id"
+    t.integer  "user_id"
+    t.integer  "account_id"
   end
 
   create_table "revisions", :force => true do |t|

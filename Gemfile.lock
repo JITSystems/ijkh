@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/rails-api/active_model_serializers.git
-  revision: 0114e492388ff84defcd1afbbb315e547849cb96
-  specs:
-    active_model_serializers (0.5.2)
-      activemodel (>= 3.0)
-
-GIT
   remote: git://github.com/wr0ngway/graylog2_exceptions.git
   revision: 797924acd1aa89852605230812d8cfd27da90969
   specs:
@@ -196,7 +189,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers!
   coffee-rails (~> 3.2.1)
   devise
   gelf

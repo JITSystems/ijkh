@@ -1,4 +1,4 @@
 object @meter_reading
 
-attributes :id, :reading, :created_at
+attributes :id, :reading, :field_id, :created_at
 

@@ -1,7 +1,5 @@
 module PlacesRepository
 
-
-
 	def new_place place
 		if place = self.create!(place)
 			place
