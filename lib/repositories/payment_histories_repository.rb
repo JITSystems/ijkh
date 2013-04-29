@@ -1,4 +1,4 @@
-class PaymentHistoriesRepository
+module PaymentHistoriesRepository
 	def create_payment_history user, params
 		if params[:action] == "fail"
 			payment_history = create_failed user, params

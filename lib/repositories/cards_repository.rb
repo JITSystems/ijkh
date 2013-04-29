@@ -1,4 +1,4 @@
-class CardsRepository < ApplicationController
+module CardsRepository
 
 	def create_card user, params
 		card_params = {
