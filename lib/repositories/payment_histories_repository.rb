@@ -49,7 +49,9 @@ module PaymentHistoriesRepository
 
 		service_id = Recipe.get_service_id payment_history_params[:recipe_id]
 
-		account = Account.update_account_amount service_id, payment_history_params[:amount]
+		recipe = Recipe.find(payment_history_params[:recipe_id])
+
+		account = Account.update_account_amount service_id, payment_history_params[:amount], recipe.amount
 
 		if account[:amount] <= 0
 			
