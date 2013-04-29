@@ -3,7 +3,7 @@ module PaymentHistoriesRepository
 		if params[:action] == "fail"
 			payment_history = create_failed user, params
 		else
-			payment_history = create_succesful user, params
+			payment_history = create_successful user, params
 		end
 		return payment_history
 	end
