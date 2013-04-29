@@ -2,7 +2,7 @@ module CardsRepository
 
 	def create_card params
 		card_params = {
-			user_id: 		params[:user_id]
+			user_id: 		params[:user_id],
 			card_title: 	params[:card_title],
 			rebill_anchor: 	params[:rebill_anchor]
 		}
