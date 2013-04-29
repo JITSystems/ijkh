@@ -5,7 +5,7 @@ module RecipesRepository
 		if amount < 500.00
 			po_tax = 3
 			service_tax = po_tax + (0.015*amount).round(2)
-			total = po_tax + service_tax + amount
+			total = service_tax + amount
 		else
 			service_tax = (0.03*amount).round(2)
 			po_tax = 0
