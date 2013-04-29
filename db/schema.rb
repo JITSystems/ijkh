@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425122312) do
+ActiveRecord::Schema.define(:version => 20130429112609) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -29,9 +29,10 @@ ActiveRecord::Schema.define(:version => 20130425122312) do
 
   create_table "cards", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "card_number"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "card_title"
+    t.string   "rebill_anchor"
   end
 
   create_table "field_list_values", :force => true do |t|
@@ -144,13 +145,15 @@ ActiveRecord::Schema.define(:version => 20130425122312) do
     t.datetime "updated_at",        :null => false
     t.datetime "po_date_time"
     t.integer  "po_transaction_id"
-    t.integer  "bill_id"
+    t.integer  "recipe_id"
     t.string   "currency"
     t.string   "card_holder"
     t.string   "card_number"
     t.string   "country"
     t.string   "city"
     t.string   "eci"
+    t.string   "type"
+    t.integer  "status"
   end
 
   create_table "places", :force => true do |t|

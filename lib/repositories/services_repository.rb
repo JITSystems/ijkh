@@ -1,5 +1,10 @@
 module ServicesRepository
 
+	def get_title service_id
+		service = Service.find(service_id)
+		return service.title
+	end
+
 	def destroy_with_dependencies service_id
 		service = find(service_id)
 		

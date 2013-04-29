@@ -20,6 +20,14 @@ module AccountsRepository
 		place_accounts = PlaceAccount.get_by_user_id user.id, status
 	end
 
+	def update_account_amount service_id, amount_subtrahend
+		account = fetch_account_by_service service_id
+		amount = account.amount.to_f - amount_subtrahend.to_f
+		account.update_attributes(amount: amount)
+		return {amount: amount, account_id: account.id}
+	end
+
+
 	def new_account params
 		account = fetch_account_by_service params[:service_id]
 

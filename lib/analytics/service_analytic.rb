@@ -5,4 +5,6 @@ class ServiceAnalytic
 		
 	end
 
+	
+
 end

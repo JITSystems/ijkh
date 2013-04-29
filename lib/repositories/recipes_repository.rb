@@ -30,4 +30,9 @@ module RecipesRepository
 	def show_last user, service_id
 		where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1)
 	end
+
+	def get_service_id recipe_id
+		recipe = Recipe.find(recipe_id)
+		return recipe.service_id
+	end
 end

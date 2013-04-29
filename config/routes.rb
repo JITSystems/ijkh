@@ -22,6 +22,10 @@ Ijkh::Application.routes.draw do
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
   delete 'api/1.0/service/:service_id' => 'service#destroy'
 
+# Card
+  get 'api/1.0/cards' => 'card#index'
+  delete 'api/1.0/card/:card_id' => 'card#destroy'
+  
 # Tariff  
   get 'api/1.0/service/:service_id/tariff' => 'tariff#index'
 
