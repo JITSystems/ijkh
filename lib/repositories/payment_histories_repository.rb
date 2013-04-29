@@ -33,6 +33,7 @@ module PaymentHistoriesRepository
 		payment_history_params = pack_params params
 		payment_history_params.merge status: 1
 		payment_history = PaymentHistory.new(payment_history_params)
+		payment_history.save
 
 		if params[:RebillAnchor]
 			# user_id is passed in params hash because 
@@ -74,6 +75,7 @@ module PaymentHistoriesRepository
 		payment_history_params = pack_params params
 		payment_history_params.merge status: -1
 		payment_history = PaymentHistory.new(payment_history_params)
+		payment_history.save
 
 		return payment_history
 	end
