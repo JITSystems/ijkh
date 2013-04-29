@@ -248,7 +248,7 @@ module ServicesRepository
 end
 
 class PredefinedService < Service
-	
+	#comment here
 end
 
 class UserService < Service
