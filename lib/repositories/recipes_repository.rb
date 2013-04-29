@@ -27,6 +27,8 @@ module RecipesRepository
 		}
 
 		recipe = Recipe.new(recipe_params)
+		recipe.save
+		return recipe
 	end
 
 	def show_last user, service_id
