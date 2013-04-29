@@ -13,7 +13,7 @@ module RecipesRepository
 		end
 		currency = "RUB"
 
-		amount = format_amount amount
+		total = format_amount total
 
 		recipe_params = {
 			amount: amount,
