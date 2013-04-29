@@ -59,6 +59,11 @@ module AccountsRepository
 	def switch_status params
 		account = self.find(params[:account_id])
 		
+		if params[:status] == 1
+			#create payment history and update amount
+		end
+
+
 		if account.update_attributes(status: params[:status])
 			{status: "updated"}
 		else

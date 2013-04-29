@@ -8,9 +8,11 @@ module CardsRepository
 		}
 
 		card = Card.where(rebill_anchor: params[:rebill_anchor])
+		logger.info "1111" + card.inspect
 		unless card
 			card = Card.new(card_params)
 			card.save
+		logger.info card.inspect
 		end
 	end
 

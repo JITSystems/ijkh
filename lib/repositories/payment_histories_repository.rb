@@ -34,7 +34,9 @@ module PaymentHistoriesRepository
 		payment_history_params.merge status: 1
 		payment_history = PaymentHistory.new(payment_history_params)
 		payment_history.save
+
 		logger.info params[:RebillAnchor].inspect
+		
 		if params[:RebillAnchor]
 			# user_id is passed in params hash because 
 			# current_user object is not availible 
