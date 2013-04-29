@@ -6,13 +6,13 @@ class PaymentHistoryController < ApplicationController
 	end
 
 	def success
-		payment_history = PaymentHistory.create_payment_history current_user, params
+		payment_history = PaymentHistory.create_payment_history params
 		
 		render json: {}
 	end
 
 	def fail
-		payment_history = PaymentHistory.create_payment_history current_user, params
+		payment_history = PaymentHistory.create_payment_history params
 
 		render json: {}
 	end

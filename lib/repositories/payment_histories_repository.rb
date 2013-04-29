@@ -1,16 +1,16 @@
 module PaymentHistoriesRepository
-	def create_payment_history user, params
+	def create_payment_history params
 		if params[:action] == "fail"
-			payment_history = create_failed user, params
+			payment_history = create_failed params
 		else
-			payment_history = create_successful user, params
+			payment_history = create_successful params
 		end
 		return payment_history
 	end
 	
 	private
 
-	def pack_params user, params
+	def pack_params params
 		payment_history_params = {
 			po_date_time: 			params[:DateTime], 
 			po_transaction_id: 		params[:TransactionID], 
@@ -22,24 +22,28 @@ module PaymentHistoriesRepository
 			country: 				params[:Country], 
 			city: 					params[:City], 
 			eci: 					params[:ECI],
-			user_id: 				user.id,
+			user_id: 				params[:user_id],
 			type: 					1
 		}
 
 		return payment_history_params
 	end
 
-	def create_successful user, params
-		payment_history_params = pack_params user, params
+	def create_successful params
+		payment_history_params = pack_params params
 		payment_history_params.merge status: 1
 		payment_history = PaymentHistory.new(payment_history_params)
 
 		if params[:RebillAnchor]
+			# user_id is passed in params hash because 
+			# current_user object is not availible 
+			# for PayOnline callback operation
 			card_params = {
 				rebill_anchor: 		params[:RebillAnchor],
-				card_title: 		params[:CardNumber]
+				card_title: 		params[:CardNumber],
+				user_id: 			params[:user_id]
 			}
-			card = Card.create_card current_user, card_params
+			card = Card.create_card card_params
 		end
 
 		service_id = Recipe.get_service_id payment_history_params[:recipe_id]
@@ -66,8 +70,8 @@ module PaymentHistoriesRepository
 		return payment_history
 	end
 
-	def create_failed user, params
-		payment_history_params = pack_params user, params
+	def create_failed params
+		payment_history_params = pack_params params
 		payment_history_params.merge status: -1
 		payment_history = PaymentHistory.new(payment_history_params)
 
