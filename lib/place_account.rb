@@ -31,7 +31,7 @@ class PlaceAccount
 	end
 
 	def generate_service_account place_id, status
-		service_account = ServiceAccount.get_by_place_id place_id, status
+		service_account = ServiceAccount.get_by_place_id place_id
 		service_account
 	end
 
