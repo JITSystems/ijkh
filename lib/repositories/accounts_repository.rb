@@ -61,6 +61,19 @@ module AccountsRepository
 		
 		if params[:status] == 1
 			#create payment history and update amount
+			account = Account.find(params[:account_id])
+			
+			currency = "RUB"
+			amount = account.amount
+			payment_history_params = {
+			amount: 				amount, 
+			currency: 				currency, 
+			user_id: 				user.id,
+			type: 					"0",
+			status: 				1
+		}
+			account.update_attributes(amount: 0.00)
+			payment_history = PaymentHistory.new(payment_history_params)
 		end
 
 

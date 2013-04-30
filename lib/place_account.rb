@@ -38,7 +38,8 @@ class PlaceAccount
 	def calculate_amount service_account
 		amount = 0.0
 		service_account.each do |account|
-			amount += account.amount.to_f
+				amount += account.amount.to_f
+			end
 		end
 		amount
 	end
