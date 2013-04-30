@@ -14,7 +14,7 @@ module PaymentHistoriesRepository
 		payment_history_params = {
 			po_date_time: 			params[:DateTime], 
 			po_transaction_id: 		params[:TransactionID], 
-			recipe_id: 				params[:OrderId], 
+			recipe_id: 				params[:OrderId].to_i, 
 			amount: 				params[:Amount], 
 			currency: 				params[:Currency], 
 			card_holder: 			params[:CardHolder], 
@@ -22,8 +22,8 @@ module PaymentHistoriesRepository
 			country: 				params[:Country], 
 			city: 					params[:City], 
 			eci: 					params[:ECI],
-			user_id: 				params[:user_id],
-			type: 					1
+			user_id: 				params[:user_id].to_i,
+			type: 					"1"
 		}
 
 		return payment_history_params
@@ -31,7 +31,7 @@ module PaymentHistoriesRepository
 
 	def create_successful params
 		payment_history_params = pack_params params
-		payment_history_params.merge status: 1
+		payment_history_params.merge!(status: 1)
 		payment_history = PaymentHistory.new(payment_history_params)
 		payment_history.save
 
@@ -77,7 +77,7 @@ module PaymentHistoriesRepository
 
 	def create_failed params
 		payment_history_params = pack_params params
-		payment_history_params.merge status: -1
+		payment_history_params.merge!(status: -1)
 		payment_history = PaymentHistory.new(payment_history_params)
 		payment_history.save
 
