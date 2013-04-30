@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429112609) do
+ActiveRecord::Schema.define(:version => 20130430133837) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -268,6 +268,8 @@ ActiveRecord::Schema.define(:version => 20130429112609) do
     t.integer  "service_type_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "merchant_id"
+    t.boolean  "is_active"
   end
 
 end
