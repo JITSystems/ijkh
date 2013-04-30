@@ -22,7 +22,7 @@ module AccountsRepository
 
 	def update_account_amount service_id, amount_subtrahend, amount
 		account = fetch_account_by_service service_id
-		amount = amount.to_f - amount_subtrahend.to_f
+		amount = account.amount.to_f - amount_subtrahend.to_f
 		
 		if amount < 0.0
 			amount = 0.0
