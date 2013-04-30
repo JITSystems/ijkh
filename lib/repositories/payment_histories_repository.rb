@@ -81,6 +81,16 @@ module PaymentHistoriesRepository
 		payment_history_params.merge!(status: -1)
 		payment_history = PaymentHistory.new(payment_history_params)
 		payment_history.save
+		
+		recipe = Recipe.find(payment_history_params[:recipe_id])
+		account_id = recipe.account.id
+
+		switch_status_params = {
+			account_id: account_id,
+			status: -1
+			}
+
+			Account.switch_status switch_status_params
 
 		return payment_history
 	end
