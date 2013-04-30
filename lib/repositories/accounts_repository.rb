@@ -45,10 +45,14 @@ module AccountsRepository
 
 	def new_recurrent_account params
 		account = fetch_account_by_service params[:service_id]
+		
+		service = Service.find(params[:service_id])
+		
+		field = service.tariff.fields.first
 
 		if account
 			amount_params = {
-				field_id: params[:field_id],
+				field_id: field.id,
 				reading: 2,
 				prev_reading: 1
 			}

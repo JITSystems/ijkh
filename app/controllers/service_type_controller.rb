@@ -1,6 +1,7 @@
 class ServiceTypeController < ApplicationController
 	def index
-		@service_types = ServiceType.select("id, title").all
+		@service_types = ServiceType.includes(:vendors).where( :vendors => { :service_type_id => nil } )
+		
 		render 'service_type/index'
 	end
 
