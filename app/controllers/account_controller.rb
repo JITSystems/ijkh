@@ -8,6 +8,11 @@ class AccountController < ApplicationController
 		@account = Account.new_recurrent_account params
 		render 'account/show'
 	end
+
+	def hand_switch
+		account = Account.hand_switch params
+		render json: {status: "updated"}
+	end
 	
 	def paid_index
 		@place_accounts = Account.index_place_account current_user, "= 1"
