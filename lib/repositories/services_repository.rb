@@ -123,22 +123,23 @@ module ServicesRepository
 
 					field = Field.new(field_params)
 					if field.save
-						meter_reading_hash = field_hash[:meter_readings]
-						meter_reading_params = {
-							reading: meter_reading_hash[:reading],
-							is_init: true,
-							field_id: field.id,
-							user_id: user.id,
-							service_id: service.id
-						}
+						if field.is_for_calc == true
+							meter_reading_hash = field_hash[:meter_readings]
+							meter_reading_params = {
+								reading: meter_reading_hash[:reading],
+								is_init: true,
+								field_id: field.id,
+								user_id: user.id,
+								service_id: service.id
+							}
 
-						meter_reading = MeterReading.new(meter_reading_params)
-						if meter_reading.save
+							meter_reading = MeterReading.new(meter_reading_params)
+							if meter_reading.save
 
-						else
-							return {error: "Failed to create meter reading"}
+							else
+								return {error: "Failed to create meter reading"}
+							end
 						end
-
 					else
 						return {error: "Failed to create field"}
 					end
@@ -213,22 +214,23 @@ module ServicesRepository
 
 					field = Field.new(field_params)
 					if field.save
-						meter_reading_hash = field_hash[:meter_readings]
-						meter_reading_params = {
-							reading: meter_reading_hash[:reading],
-							is_init: true,
-							field_id: field.id,
-							user_id: user.id,
-							service_id: service.id
-						}
+						if field.is_for_calc == true
+							meter_reading_hash = field_hash[:meter_readings]
+							meter_reading_params = {
+								reading: meter_reading_hash[:reading],
+								is_init: true,
+								field_id: field.id,
+								user_id: user.id,
+								service_id: service.id
+							}
 
-						meter_reading = MeterReading.new(meter_reading_params)
-						if meter_reading.save
+							meter_reading = MeterReading.new(meter_reading_params)
+							if meter_reading.save
 
-						else
-							return {error: "Failed to create meter reading"}
+							else
+								return {error: "Failed to create meter reading"}
+							end
 						end
-
 					else
 						return {error: "Failed to create field"}
 					end
