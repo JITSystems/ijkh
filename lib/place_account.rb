@@ -17,6 +17,7 @@ class PlaceAccount
 				place_id: place_id,
 				status: status
 			}
+			
 			place_account = PlaceAccount.new(place_account_params)
 			place_accounts << place_account
 		end
@@ -38,8 +39,7 @@ class PlaceAccount
 	def calculate_amount service_account
 		amount = 0.0
 		service_account.each do |account|
-				amount += account.amount.to_f
-			end
+			amount += account.amount.to_f
 		end
 		amount
 	end
