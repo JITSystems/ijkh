@@ -64,14 +64,11 @@ module AccountsRepository
 			update_amount account, amount_params
 		end
 	end
-
-	def switch_status params
+	
+	def hand_switch params
 		account = self.find(params[:account_id])
-		
-		if params[:status] == 1
-			#create payment history and update amount
-			account = Account.find(params[:account_id])
-			
+
+		if account.update_attributes(status: 1, amount: "0.00")
 			currency = "RUB"
 			amount = account.amount
 			payment_history_params = {
@@ -81,12 +78,13 @@ module AccountsRepository
 			type: 					"0",
 			status: 				1
 		}
-			account.update_attributes(amount: 0.00)
 			payment_history = PaymentHistory.new(payment_history_params)
 			payment_history.save
 		end
+	end
 
-
+	def switch_status params
+		account = self.find(params[:account_id])
 		if account.update_attributes(status: params[:status])
 			{status: "updated"}
 		else

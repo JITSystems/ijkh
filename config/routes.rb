@@ -50,6 +50,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/detailed_accounts' => 'account#detailed_account_index'
   put 'api/1.0/service/:service_id/recurrent_account' => 'account#new_recurrent'
   put 'api/1.0/account/:account_id/switch_status' => 'account#switch_account_status' 
+  put 'api/1.0/account/:account_id/holand_shturval' => 'account#hand_switch'
   delete 'api/1.0/account/:account_id' => 'account#destroy'
 
 # Service Account
