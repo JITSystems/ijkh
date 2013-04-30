@@ -1,6 +1,6 @@
 class VendorController < ApplicationController
 	def index_with_tariffs
-		@vendors = Vendor.where(service_type_id: params[:service_type_id])
+		@vendors = Vendor.where("service_type_id = ? and is_active = true",params[:service_type_id])
 		render 'vendor/index'
 	end
 
