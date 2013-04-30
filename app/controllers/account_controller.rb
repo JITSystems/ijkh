@@ -20,6 +20,7 @@ class AccountController < ApplicationController
 	end
 
 	def switch_account_status
+		params.merge!(user_id: current_user.id)
 		@account = Account.switch_status params
 		render 'account/show'
 	end

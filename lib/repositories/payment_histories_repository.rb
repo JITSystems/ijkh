@@ -59,7 +59,8 @@ module PaymentHistoriesRepository
 			
 			switch_status_params = {
 				account_id: account[:account_id],
-				status: 1
+				status: 1,
+				user_id: params[:user_id]
 			}
 
 			Account.switch_status switch_status_params

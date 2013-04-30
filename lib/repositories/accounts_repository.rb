@@ -72,12 +72,13 @@ module AccountsRepository
 			payment_history_params = {
 			amount: 				amount, 
 			currency: 				currency, 
-			user_id: 				user.id,
+			user_id: 				params[:user_id],
 			type: 					"0",
 			status: 				1
 		}
 			account.update_attributes(amount: 0.00)
 			payment_history = PaymentHistory.new(payment_history_params)
+			payment_history.save
 		end
 
 
