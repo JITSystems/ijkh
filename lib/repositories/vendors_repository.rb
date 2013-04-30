@@ -6,7 +6,7 @@ module VendorsRepository
 	end
 
 	def by_service_type service_type_id
-		where(service_type_id: service_type_id)
+		where("service_type_id = ? and is_active = true", service_type_id)
 	end
 
 	def includes_child_data

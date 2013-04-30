@@ -1,3 +1,3 @@
 object @vendor
 
-attributes :id, :title
+attributes :id, :title, :merchant_id, :is_active
