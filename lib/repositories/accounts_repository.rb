@@ -23,6 +23,11 @@ module AccountsRepository
 	def update_account_amount service_id, amount_subtrahend, amount
 		account = fetch_account_by_service service_id
 		amount = amount.to_f - amount_subtrahend.to_f
+		
+		if amount < 0.0
+			amount = 0.0
+		end
+
 		account.update_attributes(amount: amount)
 		return {amount: amount, account_id: account.id}
 	end
@@ -113,7 +118,6 @@ private
 		prev_reading = amount_params[:prev_reading]
 
 		amount = calculate_amount value, reading, prev_reading
-
 		account.update_attributes(amount: amount, status: '-1')
 		account
 	end
