@@ -11,6 +11,13 @@ module PaymentHistoriesRepository
 	private
 
 	def pack_params params
+		recipe = Recipe.find(params[:OrderId])
+		if recipe
+			service_id = recipe.service_id
+		else
+			service_id = 0
+		end
+
 		payment_history_params = {
 			po_date_time: 			params[:DateTime], 
 			po_transaction_id: 		params[:TransactionID], 
@@ -24,7 +31,7 @@ module PaymentHistoriesRepository
 			eci: 					params[:ECI],
 			user_id: 				params[:user_id].to_i,
 			payment_type: 					"1",
-			service_id: 			params[:service_id].to_i
+			service_id: 			service_id
 		}
 
 		return payment_history_params
