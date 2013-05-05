@@ -8,6 +8,11 @@ module PaymentHistoriesRepository
 		return payment_history
 	end
 
+	def get_by_service_id user, service_id
+		payment_histories = PaymentHistory.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).select("id, amount, updated_at")
+		return payment_histories
+	end
+
 	private
 
 	def pack_params params

@@ -71,6 +71,7 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#create'
 
 # Payment History
+  get 'api/1.0/service/:service_id/paymenthistories' => 'analytic#get_detailed_payments'
   post 'api/1.0/payment_success' => 'payment_history#success'
   post 'api/1.0/payment_fail' => 'payment_history#fail'
 end
