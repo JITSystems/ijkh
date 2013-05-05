@@ -1,5 +1,5 @@
 class DetailedPayment
-	attr_accessor :id, :title, :amount, :last_update_date, :tariff_title, :service_id
+	attr_accessor :id, :title, :amount, :updated_at, :tariff_title, :service_id
 
 	def initialize params
 		@id = params[:id]
