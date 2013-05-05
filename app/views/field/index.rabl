@@ -1,6 +1,6 @@
 collection @fields
 
-attributes :id, :title, :field_type, :value, :reading_field_title, :is_for_calc
+attributes :id, :title, :field_type, :value, :reading_field_title, :is_for_calc, :field_units
 
 child :last_reading => :meter_readings do
 	extends 'meter_reading/show'

@@ -75,8 +75,9 @@ module AccountsRepository
 			amount: 				amount, 
 			currency: 				currency, 
 			user_id: 				params[:user_id],
-			type: 					"0",
-			status: 				1
+			payment_type: 					"0",
+			status: 				1,
+			service_id: 			account.service_id
 		}
 			payment_history = PaymentHistory.new(payment_history_params)
 			payment_history.save

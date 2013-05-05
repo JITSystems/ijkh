@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
                       {auth_token: resource.authentication_token, 
                        email: resource.email,
                        first_name: resource.first_name,
-                       last_name: resource.last_name
+                       phone_number: resource.phone_number
                       } 
                     }
       return

@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
                       {auth_token: user.authentication_token, 
       								email: user.email, 
       								first_name: user.first_name, 
-      								last_name: user.last_name}}, status: 201
+      								phone_number: user.phone_number}}, status: 201
       		return
     	else
       		warden.custom_failure!

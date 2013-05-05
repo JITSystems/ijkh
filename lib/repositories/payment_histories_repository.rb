@@ -7,7 +7,7 @@ module PaymentHistoriesRepository
 		end
 		return payment_history
 	end
-	
+
 	private
 
 	def pack_params params
@@ -23,7 +23,8 @@ module PaymentHistoriesRepository
 			city: 					params[:City], 
 			eci: 					params[:ECI],
 			user_id: 				params[:user_id].to_i,
-			type: 					"1"
+			payment_type: 					"1",
+			service_id: 			params[:service_id].to_i
 		}
 
 		return payment_history_params

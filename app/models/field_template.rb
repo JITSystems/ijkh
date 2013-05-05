@@ -1,6 +1,6 @@
 class FieldTemplate < ActiveRecord::Base
 
-  attr_accessible :field_type, :tariff_template_id, :title, :is_for_calc, :value, :reading_field_title
+  attr_accessible :field_type, :tariff_template_id, :title, :is_for_calc, :value, :reading_field_title, :field_units
 
   belongs_to :tariff_template, foreign_key: :tariff_template_id
 

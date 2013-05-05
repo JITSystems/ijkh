@@ -4,6 +4,9 @@ Ijkh::Application.routes.draw do
 
   root :to => 'predefined_data#index'
 
+# Analytic
+  get 'api/1.0/annualanalytic' => 'analytic#index'
+
 # Place  
   get 'api/1.0/places' => 'place#index'
   post 'api/1.0/place' => 'place#create'
@@ -65,6 +68,7 @@ Ijkh::Application.routes.draw do
 
 # Non Utility Service Type
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
+  post 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#create'
 
 # Payment History
   post 'api/1.0/payment_success' => 'payment_history#success'

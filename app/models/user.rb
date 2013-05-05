@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :timeoutable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :last_name
+  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :phone_number
   # attr_accessible :title, :body
 
   before_create :set_authentication_token

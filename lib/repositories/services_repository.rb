@@ -118,7 +118,8 @@ module ServicesRepository
 						value: 					field_hash[:value],
 						reading_field_title: 	field_hash[:reading_field_title],
 						field_template_id: 		field_hash[:id],
-						tariff_id: 				tariff.id
+						tariff_id: 				tariff.id,
+						field_units: 			field_hash[:field_units]
 					}
 
 					field = Field.new(field_params)
@@ -209,7 +210,8 @@ module ServicesRepository
 						value: 					field_hash[:value],
 						reading_field_title: 	field_hash[:reading_field_title],
 						field_template_id: 		field_hash[:id],
-						tariff_id: 				tariff.id
+						tariff_id: 				tariff.id,
+						field_units: 			field_hash[:field_units]
 					}
 
 					field = Field.new(field_params)
