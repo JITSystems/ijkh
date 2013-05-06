@@ -2,7 +2,7 @@ class ServiceAnalytic
 	attr_accessor :title, :amount, :last_update_date, :tariff_title, :service_id
 	def initialize params
 		@service_id = params[:service_id]
-		@title = params[:service_title]
+		@title = params[:title]
 		@last_update_date = params[:last_update_date]
 		@tariff_title = params[:tariff_title]
 		@amount = calculate_amount @service_id, params[:month]
