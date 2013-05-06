@@ -84,8 +84,6 @@ module AccountsRepository
 			recipe = Recipe.new(recipe_params)
 			recipe.save
 
-			logger.info recipe.inspect
-
 			payment_history_params = {
 				amount: 				amount, 
 				currency: 				currency, 
@@ -99,7 +97,7 @@ module AccountsRepository
 			payment_history = PaymentHistory.new(payment_history_params)
 			payment_history.save
 
-			logger.info payment_history.inspect
+			payment_history.update_attributes(po_date_time: payment_history.updated_at)
 		end
 	end
 
