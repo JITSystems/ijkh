@@ -67,11 +67,12 @@ module AccountsRepository
 	
 	def hand_switch user, params
 		account = self.find(params[:account_id])
+		amount = account.amount
 
 		if account.update_attributes(status: 1, amount: "0.00")
+			
 			currency = "RUB"
-			amount = account.amount
-
+			
 			recipe_params = {
 				amount: 				amount, 
 				currency: 				currency, 
