@@ -65,7 +65,7 @@ module AccountsRepository
 		end
 	end
 	
-	def hand_switch params
+	def hand_switch user, params
 		account = self.find(params[:account_id])
 
 		if account.update_attributes(status: 1, amount: "0.00")
@@ -75,7 +75,7 @@ module AccountsRepository
 			recipe_params = {
 				amount: 				amount, 
 				currency: 				currency, 
-				user_id: 				params[:user_id],
+				user_id: 				user.id,
 				service_id: 			account.service_id,
 				account_id: 			account.id
 			}
@@ -88,7 +88,7 @@ module AccountsRepository
 			payment_history_params = {
 				amount: 				amount, 
 				currency: 				currency, 
-				user_id: 				params[:user_id],
+				user_id: 				user.id,
 				payment_type: 			"0",
 				status: 				1,
 				service_id: 			account.service_id,
