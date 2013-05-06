@@ -10,7 +10,7 @@ class AccountController < ApplicationController
 	end
 
 	def hand_switch
-		account = Account.hand_switch params
+		@account = Account.hand_switch params
 		render json: {status: "updated"}
 	end
 	
