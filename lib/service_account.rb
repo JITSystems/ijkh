@@ -1,7 +1,7 @@
 class ServiceAccount
 
 		attr_accessor 	:title, :tariff_title, :amount, :last_update_date, :account_id,
-						:status, :is_user, :has_readings, :service_id
+						:status, :is_user, :has_readings, :service_id, :merchant_id
 
 	def initialize params
 		@title = params[:title]
@@ -31,8 +31,10 @@ class ServiceAccount
 
 		if service.tariff.owner_type == "User"
 				is_user = true
+				merchant_id = nil
 			else
 				is_user = false
+				merchant_id = service.vendor.merchant_id
 		end
 
 			service_account_params = {
@@ -44,7 +46,8 @@ class ServiceAccount
 				account_id: 		service.account.id,
 				status: 			service.account.status,
 				has_readings: 		service.tariff.has_readings,
-				is_user: 			is_user
+				is_user: 			is_user,
+				merchant_id: 		merchant_id
 			}
 
 			service_account = ServiceAccount.new(service_account_params)
