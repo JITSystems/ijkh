@@ -68,29 +68,31 @@ module AccountsRepository
 	def hand_switch params
 		account = self.find(params[:account_id])
 
-		recipe_params = {
-			amount: 				amount, 
-			currency: 				currency, 
-			user_id: 				params[:user_id],
-			service_id: 			account.service_id,
-			account_id: 			account.id
-		}
-
-		recipe = Recipe.new(recipe_params)
-		recipe.save
-
 		if account.update_attributes(status: 1, amount: "0.00")
 			currency = "RUB"
 			amount = account.amount
+
+			recipe_params = {
+				amount: 				amount, 
+				currency: 				currency, 
+				user_id: 				params[:user_id],
+				service_id: 			account.service_id,
+				account_id: 			account.id
+			}
+
+			recipe = Recipe.new(recipe_params)
+			recipe.save
+
 			payment_history_params = {
-			amount: 				amount, 
-			currency: 				currency, 
-			user_id: 				params[:user_id],
-			payment_type: 					"0",
-			status: 				1,
-			service_id: 			account.service_id,
-			recipe_id: 				recipe.id
-		}
+				amount: 				amount, 
+				currency: 				currency, 
+				user_id: 				params[:user_id],
+				payment_type: 			"0",
+				status: 				1,
+				service_id: 			account.service_id,
+				recipe_id: 				recipe.id
+			}
+			
 			payment_history = PaymentHistory.new(payment_history_params)
 			payment_history.save
 		end
