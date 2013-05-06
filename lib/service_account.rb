@@ -13,6 +13,7 @@ class ServiceAccount
 		@is_user = params[:is_user]
 		@has_readings = params[:has_readings]
 		@service_id = params[:service_id]
+		@merchant_id = params[:merchant_id]
 	end
 
 	def self.get_by_place_id place_id, status
