@@ -49,7 +49,7 @@ class ServiceAnalytic
 
 
 	def calculate_amount service_id, month
-		analytics = Analytic.where("service_id = ? and extract(month from updated_at) = ?", service_id, month).select("amount, service_id").uniq
+		analytics = Analytic.where("service_id = ? and extract(month from updated_at) = ?", service_id, month).select("amount, service_id")
 		amount = 0.0
 		analytics.each do |analytic|
 			amount += analytic.amount.to_f
