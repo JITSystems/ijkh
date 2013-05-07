@@ -4,7 +4,7 @@ module AnalyticsRepository
 		recipe = Recipe.find(params[:OrderId])
 		if recipe
 			service_id = recipe.service_id
-			service_title = service.title
+			service_title = recipe.service.title
 			place_id = service.place.id
 			place_title = service.place.title
 			tariff_title = service.tariff.title
