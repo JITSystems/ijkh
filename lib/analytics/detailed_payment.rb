@@ -11,7 +11,7 @@ class DetailedPayment
 	end
 
 	def self.get_by_service_id user, service_id
-		analytics = Analytic.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).select("id, amount, updated_at, service_id, service_title, tariff_title")
+		analytics = Analytic.where("user_id = ? and service_id = ?", user.id, service_id).select("id, amount, updated_at, service_id, service_title, tariff_title")
 		detailed_payments = []
 
 		analytics.each do |analytic|
