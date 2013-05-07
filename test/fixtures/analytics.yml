@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 
+  place_id: 
+  service_id: 
+  place_title: 
+  service_title: 
+  tariff_title: MyString
+
+two:
+  amount: 
+  place_id: 
+  service_id: 
+  place_title: 
+  service_title: 
+  tariff_title: MyString

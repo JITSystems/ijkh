@@ -38,7 +38,6 @@ class ServiceAnalytic
 		
 	def self.get_last_payment service_id, month
 		payment = PaymentHistory.where("service_id = ? and  extract(month from updated_at) = ?", service_id, month).select("service_id, updated_at").uniq.order('updated_at DESC').limit(1).first
-		# absolute last payment or for current month?
 		if payment
 			return payment.updated_at
 		else
