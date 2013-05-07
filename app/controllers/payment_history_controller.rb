@@ -5,7 +5,7 @@ class PaymentHistoryController < ApplicationController
 
 	def success
 		payment_history = PaymentHistory.create_payment_history params
-		
+		analytic = Analytic.create_analytic params
 		render json: {}
 	end
 

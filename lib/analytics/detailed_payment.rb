@@ -11,20 +11,18 @@ class DetailedPayment
 	end
 
 	def self.get_by_service_id user, service_id
-		payment_histories = PaymentHistory.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).select("id, amount, po_date_time, service_id")
+		analytics = Analytic.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).select("id, amount, updated_at, service_id, service_title, tariff_title")
 		detailed_payments = []
 
-		service = Service.find(service_id)
-
-		payment_histories.each do |payment_history|
+		analytics.each do |analytic|
 
 			detailed_payment_params = {
-				id: 			payment_history.id,
-				title: 			service.title,
-				amount: 		payment_history.amount,
-				tariff_title: 	service.tariff.title,
-				updated_at: 	payment_history.po_date_time,
-				service_id: 	service.id
+				id: 			analytic.id,
+				title: 			analytic.service_title,
+				amount: 		analytic.amount,
+				tariff_title: 	analytic.tariff_title,
+				updated_at: 	analytic.updated_at,
+				service_id: 	analytic.service_id
 			}
 
 			detailed_payment = DetailedPayment.new(detailed_payment_params)

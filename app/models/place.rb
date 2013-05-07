@@ -6,4 +6,5 @@ class Place < ActiveRecord::Base
   belongs_to :user, foreign_key: :user_id
 
   has_many :services, select: 'id, title, place_id, tariff_id, vendor_id, service_type_id, user_account'
+  has_many :analytics
 end

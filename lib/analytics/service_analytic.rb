@@ -9,7 +9,7 @@ class ServiceAnalytic
 	end
 
 	def self.get_by_place_id place_id, month
-		services = Service.where(place_id: place_id).select(:id).map(&:id)
+		services = Analytic.where(place_id: place_id).select(:service_id).map(&:service_id)
 		service_analytics = []
 		services.each do |service_id|
 			service_analytic = get_by_service service_id, month
@@ -22,12 +22,12 @@ class ServiceAnalytic
 
 	def self.get_by_service service_id, month
 		
-		service = Service.find(service_id)
+		analytic = Analytic.where(service_id: service_id).limit(1).first
 
 			service_analytic_params = {
-				service_id: 		service_id,
-				title: 		 		service.title,
-				tariff_title: 		service.tariff.title,
+				service_id: 		analytic.service_id,
+				title: 		 		analytic.service_title,
+				tariff_title: 		analytic.tariff_title,
 				last_update_date: 	get_last_payment(service_id, month),
 				month: 				month
 			}
@@ -37,7 +37,7 @@ class ServiceAnalytic
 	end
 		
 	def self.get_last_payment service_id, month
-		payment = PaymentHistory.where("service_id = ? and  extract(month from updated_at) = ?", service_id, month).select("service_id, updated_at").uniq.order('updated_at DESC').limit(1).first
+		payment = Analytic.where("service_id = ? and  extract(month from updated_at) = ?", service_id, month).select("service_id, updated_at").uniq.order('updated_at DESC').limit(1).first
 		if payment
 			return payment.updated_at
 		else
@@ -49,11 +49,10 @@ class ServiceAnalytic
 
 
 	def calculate_amount service_id, month
-		service = Service.find(service_id)
-		payment_histories = service.payment_histories.select("amount, service_id, recipe_id, status").where("status = 1 and extract(month from updated_at) = ?", month).uniq
-		amount = 0.0 
-		payment_histories.each do |payment_history|
-			amount += payment_history.amount.to_f
+		analytics = Analytic.where("service_id = ? and status = 1 and extract(month from updated_at) = ?", service_id, month).select("amount, service_id, recipe_id, status").uniq
+		amount = 0.0
+		analytics.each do |analytic|
+			amount += analytic.amount.to_f
 		end
 		return amount
 	end

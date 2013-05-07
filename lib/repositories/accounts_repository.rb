@@ -93,7 +93,29 @@ module AccountsRepository
 				service_id: 			account.service_id,
 				recipe_id: 				recipe.id
 			}
+
+			service = account.service
+
+			service_id = service.id
+			service_title = service.title
+			place_id = service.place.id
+			place_title = service.place.title
+			tariff_title = service.tariff.id
+
+
+			analytic_params = {
+				amount: 			amount,
+				user_id: 			user.id,
+				service_id: 		service_id,
+				place_id: 			place_id,
+				service_title: 		service_title,
+				place_title: 		place_title,
+				tariff_title: 		tariff_title
+			}
 			
+			analytic = Analytic.new(analytic_params)
+			analytic.save
+
 			payment_history = PaymentHistory.new(payment_history_params)
 			payment_history.save
 
