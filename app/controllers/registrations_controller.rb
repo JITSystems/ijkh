@@ -1,3 +1,5 @@
+# encoding: utf-8 
+
 class RegistrationsController < Devise::RegistrationsController
 	def create
     	user = User.new(params[:user])
@@ -10,7 +12,12 @@ class RegistrationsController < Devise::RegistrationsController
       		return
     	else
       		warden.custom_failure!
-      		render :json=> user.errors, status: 422
+          user_errors = ""
+          user.errors.each do |error|
+            user_errors += " " +error.to_s
+          end
+          
+      		render json:  {error: {message: user_errors}}, status: 422
     	end
 	end	
 end

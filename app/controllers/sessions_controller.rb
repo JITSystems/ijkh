@@ -1,3 +1,5 @@
+# encoding: utf-8 
+
 class SessionsController < Devise::SessionsController
 	prepend_before_filter :require_no_authentication, :only => [:create]
   before_filter :ensure_params_exist, :except => [:destroy]
@@ -28,11 +30,11 @@ class SessionsController < Devise::SessionsController
   protected
   def ensure_params_exist
     return unless params[:user][:email].blank?
-    render :json=>{:success=>false, :message=>"missing email parameter"}, :status=>422
+    render json: { error: {message: "Отсутствует email"}}, status: 422
   end
  
   def invalid_login_attempt
     warden.custom_failure!
-    render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
+    render json: { error: {message: "Неверный адрес эл. почты или пароль."}}, status: 401
   end
 end
