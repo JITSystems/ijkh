@@ -5,9 +5,9 @@ module AnalyticsRepository
 		if recipe
 			service_id = recipe.service_id
 			service_title = recipe.service.title
-			place_id = service.place.id
-			place_title = service.place.title
-			tariff_title = service.tariff.title
+			place_id = recipe.service.place.id
+			place_title = recipe.service.place.title
+			tariff_title = recipe.service.tariff.title
 		else
 			service_id = 0
 			place_id = 0

@@ -94,7 +94,7 @@ module AccountsRepository
 				recipe_id: 				recipe.id
 			}
 
-			service = account.service
+			service = recipe.service
 
 			service_id = service.id
 			service_title = service.title
