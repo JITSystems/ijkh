@@ -11,7 +11,7 @@ class DetailedPayment
 	end
 
 	def self.get_by_service_id user, service_id
-		payment_histories = PaymentHistory.where("user_id = ? and service_id = ?", user.id, service_id).select("id, amount, po_date_time, service_id")
+		payment_histories = PaymentHistory.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).select("id, amount, po_date_time, service_id")
 		detailed_payments = []
 
 		service = Service.find(service_id)
