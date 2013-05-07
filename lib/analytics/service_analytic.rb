@@ -9,7 +9,7 @@ class ServiceAnalytic
 	end
 
 	def self.get_by_place_id place_id, month
-		services = Analytic.where(place_id: place_id).select(:service_id).map(&:service_id)
+		services = Analytic.where(place_id: place_id).select(:service_id).uniq.map(&:service_id)
 		service_analytics = []
 		services.each do |service_id|
 			service_analytic = get_by_service service_id, month
