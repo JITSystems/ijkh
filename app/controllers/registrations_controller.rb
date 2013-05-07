@@ -14,9 +14,13 @@ class RegistrationsController < Devise::RegistrationsController
       		warden.custom_failure!
           user_errors = ""
           user.errors.each do |error|
-            user_errors += " " +error.to_s
+            if error.to_s == "emails"
+              user_errors = "Данный адрес эл. почты уже зарегистрирован."
+            else
+              user_errors = "Неверно введены данные регистрации."
+            end
           end
-          
+
       		render json:  {error: {message: user_errors}}, status: 422
     	end
 	end	
