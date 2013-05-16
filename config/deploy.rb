@@ -1,5 +1,3 @@
-require "bundler/capistrano"
-
 set :application, "localhost"
 role :app, application
 role :web, application
