@@ -1,0 +1,97 @@
+[ 2013-05-14 09:53:01.7650 2720/b7470700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.2716/generation-0/request.socket
+[ 2013-05-14 09:53:01.7721 2725/b6b85980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.2716/generation-0/logging.socket
+[ 2013-05-14 09:53:58.2584 1249/b74a0700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.1245/generation-0/request.socket
+[ 2013-05-14 09:53:58.2654 1254/b6b1e980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.1245/generation-0/logging.socket
+2013/05/14 09:57:28 [emerg] 1294#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/14 09:57:28 [emerg] 1294#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/14 09:57:28 [emerg] 1294#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/14 09:57:28 [emerg] 1294#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/14 09:57:28 [emerg] 1294#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/14 09:57:28 [emerg] 1294#0: still could not bind()
+[ 2013-05-14 11:03:32.0657 1473/b7484700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.1469/generation-0/request.socket
+[ 2013-05-14 11:03:32.0736 1478/b6b87980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.1469/generation-0/logging.socket
+[ 2013-05-14 11:07:52.7473 1215/b74d5700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.1211/generation-0/request.socket
+[ 2013-05-14 11:07:52.7544 1220/b6b39980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.1211/generation-0/logging.socket
+2013/05/15 09:02:00 [emerg] 2113#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:00 [notice] 2113#0: try again to bind() after 500ms
+2013/05/15 09:02:00 [emerg] 2113#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:00 [notice] 2113#0: try again to bind() after 500ms
+2013/05/15 09:02:00 [emerg] 2113#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:00 [notice] 2113#0: try again to bind() after 500ms
+2013/05/15 09:02:00 [emerg] 2113#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:00 [notice] 2113#0: try again to bind() after 500ms
+2013/05/15 09:02:00 [emerg] 2113#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:00 [notice] 2113#0: try again to bind() after 500ms
+2013/05/15 09:02:00 [emerg] 2113#0: still could not bind()
+2013/05/15 09:02:31 [emerg] 2134#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:31 [notice] 2134#0: try again to bind() after 500ms
+2013/05/15 09:02:31 [emerg] 2134#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:31 [notice] 2134#0: try again to bind() after 500ms
+2013/05/15 09:02:31 [emerg] 2134#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:31 [notice] 2134#0: try again to bind() after 500ms
+2013/05/15 09:02:31 [emerg] 2134#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:31 [notice] 2134#0: try again to bind() after 500ms
+2013/05/15 09:02:31 [emerg] 2134#0: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2013/05/15 09:02:31 [notice] 2134#0: try again to bind() after 500ms
+2013/05/15 09:02:31 [emerg] 2134#0: still could not bind()
+2013/05/15 09:03:08 [notice] 2149#0: using the "epoll" event method
+[ 2013-05-15 09:03:08.0010 2153/b7426700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.2149/generation-0/request.socket
+2013/05/15 09:03:08 [notice] 2149#0: nginx/1.4.1
+2013/05/15 09:03:08 [notice] 2149#0: built by gcc 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
+2013/05/15 09:03:08 [notice] 2149#0: OS: Linux 3.2.0-23-generic-pae
+2013/05/15 09:03:08 [notice] 2149#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+[ 2013-05-15 09:03:09.0089 2158/b6b6c980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.2149/generation-0/logging.socket
+2013/05/15 09:03:08 [notice] 2167#0: start worker processes
+2013/05/15 09:03:08 [notice] 2167#0: start worker process 2168
+2013/05/15 09:03:54 [notice] 2167#0: signal 17 (SIGCHLD) received
+2013/05/15 09:03:54 [notice] 2167#0: signal 15 (SIGTERM) received, exiting
+2013/05/15 09:03:54 [notice] 2168#0: signal 15 (SIGTERM) received, exiting
+2013/05/15 09:03:54 [notice] 2167#0: signal 17 (SIGCHLD) received
+2013/05/15 09:03:54 [info] 2168#0: epoll_wait() failed (4: Interrupted system call)
+2013/05/15 09:03:54 [notice] 2168#0: exiting
+2013/05/15 09:03:54 [notice] 2168#0: exit
+2013/05/15 09:03:54 [notice] 2167#0: signal 17 (SIGCHLD) received
+2013/05/15 09:03:54 [notice] 2167#0: worker process 2168 exited with code 0
+2013/05/15 09:03:54 [alert] 2167#0: unlink() "/vagrant/logs/nginx.pid" failed (2: No such file or directory)
+2013/05/15 09:03:54 [notice] 2167#0: exit
+2013/05/15 09:04:38 [notice] 1237#0: using the "epoll" event method
+[ 2013-05-15 09:04:38.7845 1241/b74d0700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.1237/generation-0/request.socket
+2013/05/15 09:04:38 [notice] 1237#0: nginx/1.4.1
+2013/05/15 09:04:38 [notice] 1237#0: built by gcc 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
+2013/05/15 09:04:38 [notice] 1237#0: OS: Linux 3.2.0-23-generic-pae
+[ 2013-05-15 09:04:38.7905 1246/b6b8f980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.1237/generation-0/logging.socket
+2013/05/15 09:04:38 [notice] 1237#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+2013/05/15 09:04:38 [notice] 1255#0: start worker processes
+2013/05/15 09:04:38 [notice] 1255#0: start worker process 1256
+2013/05/15 09:05:49 [emerg] 1273#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2013/05/15 09:05:49 [notice] 1273#0: try again to bind() after 500ms
+2013/05/15 09:05:49 [emerg] 1273#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2013/05/15 09:05:49 [notice] 1273#0: try again to bind() after 500ms
+2013/05/15 09:05:49 [emerg] 1273#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2013/05/15 09:05:49 [notice] 1273#0: try again to bind() after 500ms
+2013/05/15 09:05:49 [emerg] 1273#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2013/05/15 09:05:49 [notice] 1273#0: try again to bind() after 500ms
+2013/05/15 09:05:49 [emerg] 1273#0: bind() to 0.0.0.0:8080 failed (98: Address already in use)
+2013/05/15 09:05:49 [notice] 1273#0: try again to bind() after 500ms
+2013/05/15 09:05:49 [emerg] 1273#0: still could not bind()
+2013/05/15 09:07:01 [notice] 1255#0: signal 15 (SIGTERM) received, exiting
+2013/05/15 09:07:01 [notice] 1256#0: exiting
+2013/05/15 09:07:01 [notice] 1256#0: exit
+2013/05/15 09:07:01 [notice] 1255#0: signal 17 (SIGCHLD) received
+2013/05/15 09:07:01 [notice] 1255#0: worker process 1256 exited with code 0
+2013/05/15 09:07:01 [notice] 1255#0: exit
+2013/05/15 09:07:07 [notice] 1321#0: using the "epoll" event method
+[ 2013-05-15 09:07:07.5312 1325/b7470700 agents/HelperAgent/Main.cpp:554 ]: PassengerHelperAgent online, listening at unix:/tmp/passenger.1.0.1321/generation-0/request.socket
+2013/05/15 09:07:07 [notice] 1321#0: nginx/1.4.1
+2013/05/15 09:07:07 [notice] 1321#0: built by gcc 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) 
+2013/05/15 09:07:07 [notice] 1321#0: OS: Linux 3.2.0-23-generic-pae
+2013/05/15 09:07:07 [notice] 1321#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+[ 2013-05-15 09:07:07.5391 1330/b6b9d980 agents/LoggingAgent/Main.cpp:272 ]: PassengerLoggingAgent online, listening at unix:/tmp/passenger.1.0.1321/generation-0/logging.socket
+2013/05/15 09:07:07 [notice] 1339#0: start worker processes
+2013/05/15 09:07:07 [notice] 1339#0: start worker process 1340
+2013/05/15 09:07:27 [notice] 1339#0: signal 15 (SIGTERM) received, exiting
+2013/05/15 09:07:27 [notice] 1340#0: exiting
+2013/05/15 09:07:27 [notice] 1340#0: exit
+2013/05/15 09:07:27 [notice] 1339#0: signal 17 (SIGCHLD) received
+2013/05/15 09:07:27 [notice] 1339#0: worker process 1340 exited with code 0
+2013/05/15 09:07:27 [notice] 1339#0: exit

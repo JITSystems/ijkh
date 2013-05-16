@@ -3,21 +3,21 @@ development:
   encoding: unicode
   database: ijkh_development
   pool: 5
-  username: ijkh
-  password:
+  username: postgres
+  password: postgres
 
 test:
   adapter: postgresql
   encoding: unicode
   database: ijkh_test
   pool: 5
-  username: ijkh
-  password:
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgresql
   encoding: unicode
   database: ijkh_production
   pool: 5
-  username: ijkh
-  password:
+  username: postgres
+  password: postgres
