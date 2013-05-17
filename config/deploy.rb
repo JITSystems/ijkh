@@ -1,15 +1,8 @@
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-ssh_options[:verbose] = :debug
-set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["/home/deploy/app_temp/ijkh/aws.pem"]}
-
 set :application, "izkh.ru"
 role :app, application
 role :web, application
 role :db, application
 
-set :domain, "54.214.48.185"
 set :user, "deploy"
 set :password, "deploy"
 set :deploy_to, "/home/deploy/apps/"
