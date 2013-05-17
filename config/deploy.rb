@@ -10,8 +10,8 @@ role :web, application
 role :db, application
 
 set :domain, "54.214.48.185"
-set :user, "deploy"
-set :deploy_to, "/home/deploy/apps/"
+set :user, "ubuntu"
+set :deploy_to, "/home/ubuntu/apps/"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :rails_env, "production"
