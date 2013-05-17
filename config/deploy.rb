@@ -10,6 +10,7 @@ set :deploy_to, "/home/deploy/apps/"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :rails_env, "production"
+set :ssh_options[:keys], "/home/deploy/app_temp/ijkh/aws.pem" 
 
 set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
