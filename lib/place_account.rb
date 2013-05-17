@@ -10,7 +10,7 @@ class PlaceAccount
 	end
 
 	def self.get_by_user_id user_id, status
-		place_ids = Place.where(user_id: user_id).select(:id).map(&:id)
+		place_ids = Place.where("user_id = ? and is_active = true ",user_id).select(:id).map(&:id)
 		place_accounts = []
 		place_ids.each do |place_id|
 			place_account_params = {
