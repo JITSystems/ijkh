@@ -1,3 +1,9 @@
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+ssh_options[:verbose] = :debug
+ssh_options[:auth_methods] = "publickey"
+ssh_options[:keys] = ["/home/deploy/app_temp/ijkh/aws.pem"]
+
 set :application, "izkh.ru"
 role :app, application
 role :web, application
@@ -10,7 +16,6 @@ set :deploy_to, "/home/deploy/apps/"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :rails_env, "production"
-ssh_options[:keys] = ["/home/deploy/app_temp/ijkh/aws.pem"]
 
 set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
