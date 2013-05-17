@@ -1,4 +1,4 @@
-set :application, "ijkh"
+set :application, "izkh.ru"
 role :app, application
 role :web, application
 role :db, application
