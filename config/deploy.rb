@@ -1,4 +1,4 @@
-set :application, "localhost"
+set :application, "ijkh"
 role :app, application
 role :web, application
 role :db, application
