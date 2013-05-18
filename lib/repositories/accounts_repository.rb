@@ -12,7 +12,7 @@ module AccountsRepository
 		amount_subtrahend = check_comma amount_subtrahend
 
 		amount = account.amount.to_f - amount_subtrahend.to_f
-		amount = amount.round(2)
+		amount = round_up(amount)
 		if amount < 0.0
 			amount = 0.0
 		end
@@ -145,7 +145,7 @@ private
 		
 		amount = reading_delta*value.to_f
 		
-		format_amount amount.round(2)
+		format_amount round_up(amount)
 	end
 
 	def format_amount amount
@@ -184,6 +184,11 @@ private
 			account.update_attributes(amount: amount, status: '-1')
 		end
 			account
+	end
+
+	def round_up amount
+		amount = (amount*100).ceil/100.0
+		return amount
 	end
 
 	def fetch_account_by_service service_id
