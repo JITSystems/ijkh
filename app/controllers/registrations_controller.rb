@@ -1,6 +1,8 @@
 # encoding: utf-8 
 
 class RegistrationsController < Devise::RegistrationsController
+  skip_before_filter :require_auth_token
+  
 	def create
     	user = User.new(params[:user])
     	if user.save
