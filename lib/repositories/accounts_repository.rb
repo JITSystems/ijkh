@@ -1,21 +1,6 @@
 # encoding: utf-8 
 module AccountsRepository
 
-	def pay_bill user, params
-		po_root_url = "https://secure.payonlinesystem.com/ru/payment/select"
-		merchant_id = "39859"
-		order_id = params[:bill_id]
-		amount = params[:amount]
-		currency = "RUB"
-		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
-
-		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
-
-		security_key = Digest::MD5.hexdigest(security_key_string)
-
-		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&returnUrl=http://izkh.ru"
-	end
-
 	def index_place_account user, status
 		place_accounts = PlaceAccount.get_by_user_id user.id, status
 	end
@@ -152,11 +137,19 @@ private
 
 	def update_amount account, amount_params
 		value = Field.get_value amount_params[:field_id]
+		has_readings = Field.find(amount_params[:feild_id]).tariff.has_readings
+
 		reading = amount_params[:reading]
 		prev_reading = amount_params[:prev_reading]
 
 		amount = calculate_amount value, reading, prev_reading
+		if has_readings
+		old_amount = account.amount.to_f
+		amount = amount.to_f + old_reading
+		account.update_attributes(amount: amount.to_s, status: '-1')
+		else
 		account.update_attributes(amount: amount, status: '-1')
+		end
 		account
 	end
 

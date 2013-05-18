@@ -29,12 +29,7 @@ class AccountController < ApplicationController
 		@account = Account.switch_status params
 		render 'account/show'
 	end
-
-	def pay_bill
-		url = Account.pay_bill current_user, params
-		render json: {url: url}
-	end
-
+	
 	def destroy
 		account = Account.find(params[:account_id])
 		if account.destroy

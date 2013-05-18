@@ -49,7 +49,6 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
   get 'api/1.0/paid_accounts' => 'account#paid_index'
   get 'api/1.0/accounts' => 'account#index'
-  get 'api/1.0/account/:account_id/pay' => 'account#pay_bill'
   get 'api/1.0/detailed_accounts' => 'account#detailed_account_index'
   put 'api/1.0/service/:service_id/recurrent_account' => 'account#new_recurrent'
   put 'api/1.0/account/:account_id/switch_status' => 'account#switch_account_status' 
