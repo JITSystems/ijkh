@@ -7,6 +7,10 @@ module AccountsRepository
 
 	def update_account_amount service_id, amount_subtrahend, amount
 		account = fetch_account_by_service service_id
+
+		amount = check_comma ammount
+		amount_subtrahend = check_comma amount_subtrahend
+
 		amount = account.amount.to_f - amount_subtrahend.to_f
 		amount = amount.round(2)
 		if amount < 0.0
@@ -53,6 +57,7 @@ module AccountsRepository
 	def hand_switch user, params
 		account = self.find(params[:account_id])
 		amount = account.amount
+		amount = check_comma amount
 
 		if account.update_attributes(status: 1, amount: "0.00")
 			
@@ -119,13 +124,32 @@ module AccountsRepository
 
 private
 
+	def check_comma amount
+		amount = amount.to_s
+		if amount.index(',')
+			amount = amount.split(',')
+			amount_str = amount.first + '.' + amount.last
+		else 
+			amount_str = amount
+		end
+		return amount_str
+	end
+
 	def calculate_amount value, reading, prev_reading
+		
+		reading = check_comma reading
+		prev_reading = check_comma prev_reading
+		value = check_comma value
+
 		reading_delta = reading.to_f - prev_reading.to_f
+		
 		amount = reading_delta*value.to_f
+		
 		format_amount amount.round(2)
 	end
 
 	def format_amount amount
+
 		amount = amount.to_s.split(".")
 		if amount.last =~ /\d\d/
 			amount_str = amount.first + "." + amount.last 
@@ -136,16 +160,25 @@ private
 	end
 
 	def update_amount account, amount_params
+		
 		value = Field.get_value amount_params[:field_id]
+		value = check_comma value
+
 		has_readings = Field.find(amount_params[:field_id]).tariff.has_readings
 
 		reading = amount_params[:reading]
 		prev_reading = amount_params[:prev_reading]
 
+		reading = check_comma reading
+		prev_reading = check_comma prev_reading
+
 		amount = calculate_amount value, reading, prev_reading
+
 		if has_readings
-			old_amount = account.amount.to_f
-			amount = amount.to_f + old_amount
+			old_amount = account.amount
+			old_amount = check_comma old_amount
+
+			amount = amount.to_f + old_amount.to_f
 			account.update_attributes(amount: amount.to_s, status: '-1')
 		else
 			account.update_attributes(amount: amount, status: '-1')
