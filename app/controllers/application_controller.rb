@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
 	def require_auth_token
 
-		if !params[:auth_token] || params[:auth_token] = ""
+		if !params[:auth_token] || params[:auth_token] == ""
 			render json: {error: {message: "No auth token"}}, status: 401
 		end
 
