@@ -144,13 +144,13 @@ private
 
 		amount = calculate_amount value, reading, prev_reading
 		if has_readings
-		old_amount = account.amount.to_f
-		amount = amount.to_f + old_reading
-		account.update_attributes(amount: amount.to_s, status: '-1')
+			old_amount = account.amount.to_f
+			amount = amount.to_f + old_reading
+			account.update_attributes(amount: amount.to_s, status: '-1')
 		else
-		account.update_attributes(amount: amount, status: '-1')
+			account.update_attributes(amount: amount, status: '-1')
 		end
-		account
+			account
 	end
 
 	def fetch_account_by_service service_id
