@@ -19,7 +19,9 @@ class PlaceAccount
 			}
 			
 			place_account = PlaceAccount.new(place_account_params)
-			place_accounts << place_account
+			if place_account.service_account != []
+				place_accounts << place_account
+			end
 		end
 		place_accounts
 	end
