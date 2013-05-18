@@ -137,7 +137,7 @@ private
 
 	def update_amount account, amount_params
 		value = Field.get_value amount_params[:field_id]
-		has_readings = Field.find(amount_params[:feild_id]).tariff.has_readings
+		has_readings = Field.find(amount_params[:field_id]).tariff.has_readings
 
 		reading = amount_params[:reading]
 		prev_reading = amount_params[:prev_reading]
