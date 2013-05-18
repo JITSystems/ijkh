@@ -1,7 +1,7 @@
 module RecipesRepository
 
 	def create_recipe user, params
-		amount = params[:amount].to_f
+		amount = (check_comma params[:amount]).to_f
 		if amount < 500.00
 			po_tax = 3
 			service_tax = po_tax + (0.015*amount).round(2)
@@ -41,6 +41,17 @@ module RecipesRepository
 	end
 	
 	private
+
+	def check_comma amount
+		amount = amount.to_s
+		if amount.index(',')
+			amount = amount.split(',')
+			amount_str = amount.first + '.' + amount.last
+		else 
+			amount_str = amount
+		end
+		return amount_str
+	end
 
 	def format_amount amount
 		amount = amount.to_s.split(".")
