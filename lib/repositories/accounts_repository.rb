@@ -145,7 +145,7 @@ private
 		amount = calculate_amount value, reading, prev_reading
 		if has_readings
 			old_amount = account.amount.to_f
-			amount = amount.to_f + old_reading
+			amount = amount.to_f + old_amount
 			account.update_attributes(amount: amount.to_s, status: '-1')
 		else
 			account.update_attributes(amount: amount, status: '-1')
