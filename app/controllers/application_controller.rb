@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 			render json: {error: "No auth token"}, status: 401
 		end
 
-		unless params[:auth_token] = ""
+		if params[:auth_token] = ""
 			render json: {error: "No auth token"}, status: 401
 		end
 	end
