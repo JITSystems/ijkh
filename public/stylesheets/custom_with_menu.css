@@ -1,0 +1,776 @@
+html,body{
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-image: url(../images/background.jpg);
+	background-position: 50% 0%;
+	overflow-y: scroll; 
+}
+.container{
+	position: relative;
+	width: 960px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+/*----------------------------	MENU   ----------------------------*/
+
+
+
+.prof_name{
+	position: relative;
+	width: 100%;
+	height: 42px;
+}
+.menu{
+	position: relative;
+	width: 100%;
+	height: 54px;
+	background-color: #d1dde4;
+	border-bottom: 1px solid #0071bc;
+}
+.menu_logo_top{
+	position: absolute;
+	left: 15px;
+	width: 128px;
+	height: 128px;
+	background-image: url(../images/logo-1.png);
+	z-index: 10;
+}
+.menu .menulist{
+	position: relative;
+	left:165px;
+}
+.menu .menulist .menulistLi{
+	position: relative;
+	float: left;
+	height: 53px;
+	padding: 0px 22px 0px 22px;
+	line-height: 3.2;
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	text-shadow: 0 -1px 0 #F0F0FA;
+	cursor: pointer;
+}
+.menu .menulist .menulistLi:hover{
+	height: 50px;
+	border-bottom: 4px solid #6a7f8d;
+}
+.menu .menulist .menulistLi a,p{
+	position: relative;
+	display: block;
+	color:#00558d;
+	text-decoration: none;
+}
+.dropdownMenu{
+	position: absolute;
+	width: 100%;
+	top: 55px;
+	float: left;
+	z-index: 10;
+	left: 0px;
+	display: none;
+}
+.dropdownMenuLi{
+	position: relative;
+	height: 35px;
+	background-color: #d5e6f2;
+	margin-top: 1px;
+	font-size: 16px;
+	line-height: 2.0;
+	text-indent: 20px;
+	color:#00558d;
+	text-shadow: none;
+	cursor: pointer;
+}
+.secondcolorLi{background-color: rgb(189, 212, 228);}
+.top_plate{
+	position: relative;
+	margin: 0 auto;
+	width: 930px;
+	height: 120px;
+	background-color: #e8eef2;
+}
+.text_plate_gray{
+	position: relative;
+	font-size: 15px;
+	display: block;
+	left:165px;
+	color:#6a7f8d;
+	top: 18px;
+}
+.text_plate_blue{
+	position: relative;
+	font-size: 24px;
+	display: block;
+	left: 165px;
+	color: #00558d;
+	top: 50px;
+	font-weight: 600;
+}
+.container_boxes{
+	position: relative;
+	margin: 0 auto;
+	width: 930px;
+	margin-top: 25px;
+}
+.horizontal_div{
+	position: relative;
+	width: 930px;
+	float: left;
+	margin-bottom: 30px;
+}
+.box_left{float: left;}
+.box_right{float: right;}
+
+.box{
+	position: relative;
+	width: 450px;
+	background-color: #e8eef2;
+}
+.data_box_top{
+	position: relative;
+	width: 100%;
+	height: 45px;
+	background-color: #d5e6f2;
+	border-bottom: 1px solid #8da9bc;
+}
+.box_top_right{
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 45px;
+	background-color: #d5e6f2;
+	border-bottom: 1px solid #8da9bc;
+}
+.box_top_right p{
+	position: relative;
+	display: block;
+	top:15px;
+	color: #00558d;
+	font-size: 15px;
+	font-weight: 600;
+}
+.data_box_top p{
+	position: relative;
+	display: block;
+	left:34px;
+	top:15px;
+	color: #00558d;
+	font-size: 15px;
+	font-weight: 600;
+}
+.name_email{
+	position: relative;
+	width: 450px;
+	height: 172px;
+	border-bottom: 1px dotted #8da9bc;
+}
+.two_pass{
+	position: relative;
+	width: 450px;
+	height: 122px;
+	border-bottom: 1px dotted #8da9bc;
+}
+.reg_input{
+	position: relative;
+	display: block;
+	width: 378px;
+	height: 40px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	margin: 10px auto 10px;
+	text-indent: 26px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+.reg_input_first{margin: 25px auto 10px;}
+	.accept_oferta input{
+		position: relative;
+		display: block;
+		width: 378px;
+		height: 40px;
+		background-color: #e8eef2;
+		border: 1px solid #8da9bc;
+		margin: 0px auto 10px;
+		text-indent: 26px;
+		color:#8da9bc;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 15px;
+	}
+	.accept_oferta{
+		height: 60px;
+		border-bottom: 1px solid #0071bc;
+	}
+	.accept_oferta label{
+		position: relative;
+		display: block;
+		margin: 15px 12px 0px 10px;
+		width: 13px;
+		height: 13px;
+		float: left;
+	}
+	.accept_oferta label input{
+		position: absolute;
+		left: -1px; top: -2px;
+		width: 100%;
+		height: 100%;
+		float: left;
+		opacity: 0;	
+	}
+	.accept_oferta label span{
+		position: absolute;
+		left: 0; top: 0;
+		width: 100%;
+		height: 100%;
+		background: url(../images/checkbox_off.png) no-repeat;
+		background-color: #e8eef2;
+		float: left;
+		cursor: pointer;
+		opacity: 1;
+	}
+	.accept_oferta label input span{
+		position: relative;
+		border: 1px solid #8da9bc;
+		
+	}
+	.accept_oferta p{
+		display: block;
+		color: #47555e;
+		font-size: 15px;
+		margin-top: 14px;
+		float: left;
+	}
+	.accept_oferta a{
+		position: relative;
+		text-align: center;
+		display: block;
+		float: left;
+		width: 350px;
+		height: 34px;
+		background-color: #8da9bc;
+		border: none;
+		text-shadow: 1px 1px 0px #FFF;
+		color:#6a7f8d;
+		font-size: 18px;
+		font-weight: 600;
+		padding-top: 9px;
+		cursor: pointer;
+		text-decoration: none;
+		
+	}
+	.reg_disable{
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+	}
+.accept_data{
+	position: relative;
+	width: 450px;
+	height: 50px;
+}
+.accept_data_pay{
+	position: relative;
+	width: 450px;
+	height: 50px;
+}
+.accept_data_button_pay{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 220px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color:#FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.accept_data_button{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 220px;
+	height: 40px;
+	background-color: #8da9bc;
+	text-align: center;
+	text-shadow: 1px 1px 0px #FFF;
+	color: #6a7f8d;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.box_blue{
+	position: relative;
+	width: 450px;
+	background-color: #d5e6f2;
+}
+.info_text p{
+	position: relative;
+	display: block;
+	left:15px;
+	color: #47555e;
+	font-size: 14px;
+}
+.info_text_begin{
+	margin-top: 20px;
+}
+.text_bold_info{
+	margin-top: 27px;
+	font-weight: 600;
+}
+.step{
+	margin-top: 5px;
+}
+.object_box{
+	position: relative;
+	width: 450px;
+	height: 360px;
+	background-color: #d5e6f2;
+}
+.object_name{
+	position: relative;
+	width: 450px;
+	height: 75px;
+	background-color: #e8eef2;
+	border-bottom: 1px dotted #8da9bc;
+}
+.object_name p{
+	position: relative;
+	display: block;
+	color:#47555e;
+	left:34px;
+	top:25px;
+	font-size: 21px;
+	font-weight: 600;
+}
+.service_name{
+	position: relative;
+	width: 450px;
+	height: 120px;
+	background-color: #e8eef2;
+	border-bottom: 1px dotted #8da9bc;
+}
+.service_name p{
+	position: relative;
+	color:#47555e;
+	left:34px;
+	top:20px;
+	font-size: 15px;
+	display: block;
+	margin-bottom: 12px;
+}
+.service_li{font-weight: 600;}
+.object_adress{
+	position: relative;
+	width: 450px;
+	height: 60px;
+	border-bottom: 1px solid #0071bc;
+}
+.object_adress p{
+	position: relative;
+	display: block;
+	color:#47555e;
+	left:34px;
+	top:20px;
+	margin-right: 12px;
+	float: left;
+}
+.object_adress p.adress_blue{color:#0071bc; font-size: 21px; top:17px;}
+.edit_object{
+	position: relative;
+	width: 450px;
+	height: 50px;
+}
+.edit_object_button{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 220px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color:#FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.add_service{
+	position: relative;
+	width: 450px;
+	height: 270px;
+	background-color: #d5e6f2;
+}
+.reg_place{
+	position: relative;
+	display: block;
+	width: 378px;
+	height: 34px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	margin: 10px auto 10px;
+	text-indent: 26px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+.choise_place{
+	position: relative;
+	border-bottom: 1px solid #0071bc;
+}
+.accept_place{
+	position: relative;
+	height: 50px;
+}
+.choise_service{
+	position: relative;
+	width: 450px;
+	height: 170px;
+	border-bottom: 1px solid #0071bc;
+}
+.accept_service{
+	position: relative;
+	width: 450px;
+	height: 50px;
+}
+.accept_service_button{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 220px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color:#FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+.accept_service_button_a{
+	position: absolute;
+	width: 260px;
+	height: 40px;
+	z-index: 10;
+	top: 10px;
+	right: 15px;
+}
+.service{
+	position: relative;
+	width: 380px;
+	margin:24px 0px 24px 0px;
+	left:34px;
+}
+.type{
+	position: relative;
+	width: 380px;
+	height: 35px;
+	background-color: #e8eef2;
+	border-color: #0071bc;
+	
+	display: block;
+	margin-bottom: 10px;
+}
+.typesmall{
+	width: 215px;
+}
+.tzSelect{
+	height:35px;
+	display:inline-block;
+	position:relative;
+}
+.tzSelect .selectBox{
+	position:absolute;
+	height:100%;
+	width:100%;
+	background-color: #e8eef2;
+	border:1px solid #8da9bc;
+	background-image: url(../images/arrow_select.png);
+	background-repeat: no-repeat;
+	background-position: 99% 50%;
+	font-size: 14px;
+	color: #00558d;
+	text-indent: 10px;
+	line-height: 34px;
+}
+.tzSelect .dropDown{
+	position:absolute;
+	top:40px;
+	left:0;
+	width:100%;
+	border:1px solid #8da9bc;
+	border-width:0 1px 1px;
+	list-style:none;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	z-index: 15;
+}
+.tzSelect li{
+	height:30px;
+	cursor:pointer;
+	position:relative;
+	background-color: #d5e6f2;
+	color:black;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+.tzSelect li.secondcolor{background-color: #e8eef2;}
+.tzSelect li p{
+	color: #6a7f8d;
+	line-height: 1.8;
+	text-indent: 10px;
+	font-size: 15px;
+}
+.tzSelect li p:hover{color:#00558d;}
+.type_man_who_have_service{
+	position: relative;
+	width: 380px;
+	margin:24px 0px 24px 0px;
+	left:34px;
+}
+.choise_tarif{
+	position: relative;
+	width: 215px;
+	height: 35px;
+	background-color: #e8eef2;
+	border-color: #0071bc;
+	left:34px;
+	display: block;
+	margin-bottom: 10px;
+	float: left;
+}
+.dog_number{
+	position: relative;
+	display: block;
+	width: 150px;
+	height: 32px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	color:#8da9bc;
+	text-indent: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	float: left;
+	left:45px;
+}
+.reg_end{
+	position: relative;
+	width: 930px;
+	height: 60px;
+	background-color: #e8eef2;
+}
+.reg_end p{
+	position: relative;
+	display: block;
+	top:25px;
+	left: 30px;
+	color:#6a7f8d;
+	float: left;
+}
+.reg_end input{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 260px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color:#FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	float: right;
+	top:10px;
+	right: 15px;
+}
+.horizontal_div_main{
+	width: 930px;
+	margin: 25px auto 0px;
+
+}
+.welcome{
+	position: relative;
+	width: 450px;
+	height: 270px;
+	background-color: #d5e6f2;
+}
+.welcome_2{
+	position: relative;
+	width: 450px;
+	height: 310px;
+	background-color: #d5e6f2;
+}
+.test_text{
+	position: relative;
+	width: 450px;
+	height: 180px;
+	border-bottom: 1px solid #0071bc;
+	color:#6a7f8d;
+}
+.welcome_top{
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 45px;
+	background-color: #d5e6f2;
+	border-bottom: 2px solid #8da9bc;
+}
+.welcome_top p{
+	position: relative;
+	display: block;
+	top:15px;
+	color: #00558d;
+	font-size: 15px;
+	font-weight: 600;
+}
+.test_text p{
+	display: block;
+	position: relative;
+	top: 55px;
+	font-size: 18px;
+	width: 337px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 1.5;
+}
+.test_button{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 320px;
+	height: 35px;
+	background-color: #0071bc;
+	text-align: center;
+	color:#FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.test_button_a{
+	position: absolute;
+	width: 320px;
+	height: 35px;
+	display: block;
+	left: 64px;
+	z-index: 10;
+	bottom: 9px;
+}
+.white_cubs{
+	position: relative;
+	width: 420px;
+	height: 180px;
+	margin: 25px auto 0px;
+}
+.white_cub{
+	position: relative;
+	float: left;
+	width: 205px;
+	height: 85px;
+	margin-right: 5px;
+	margin-top: 5px;
+	background-color: #FFF;
+}
+.horizontal_div_pay_one{
+	width: 930px;
+	margin: 25px auto 0px;
+	height: 300px;
+}
+.horizontal_div_pay_two{
+	width: 930px;
+	height: 500px;
+	margin: 25px auto 0px;
+}
+.pay_text p{
+	display: block;
+	position: relative;
+	top: 15px;
+	color: #6a7f8d;
+	font-size: 15px;
+	width: 337px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.pay_text p:hover{color: red;}
+.pay{
+	position: relative;
+	width: 450px;
+	height: 460px;
+	background-color: #d5e6f2;
+}
+.pay_text{
+	position: relative;
+	width: 450px;
+	height: 80px;
+	border-bottom: 2px solid #8da9bc;
+}
+.scetchiki{
+	width: 450px;
+	height: 270px;
+	border-bottom: 1px solid #0071bc;
+}
+.razraz_1{
+	position: absolute;
+	display: block;
+	width: 78px;
+	height: 40px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	margin: 10px auto 10px;
+	text-indent: 26px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	top: 185px;
+	right: 30px;
+}
+.razraz_2{
+	position: absolute;
+	display: block;
+	width: 78px;
+	height: 40px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	margin: 10px auto 10px;
+	text-indent: 26px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	top: 230px;
+	right: 30px;
+}
+.paypay p{
+	position: relative;
+	float: right;
+	display: block;
+	color:#47555e;
+	top:15px;
+	right: 30px;
+}
+.aaaa{
+	position: relative;
+	display: block;
+	color:#47555e;
+	top:15px;
+	left: 30px;
+}
+.prof_name p{
+	position: relative;
+	display: block;
+	color:#FFF;
+	top:15px;
+	right: 30px;
+	float: right;
+}

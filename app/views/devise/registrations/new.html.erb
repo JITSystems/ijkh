@@ -1,0 +1,156 @@
+<div class="container">
+		
+		<%= render "web_interface/shared/menu" %>
+		<div class="top_plate">
+			<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+			<p class="text_plate_blue">Регистрация нового Пользователя</p>
+		</div>
+					
+	<div class="container_boxes">
+<%= form_for(resource, remote: true, as: resource_name, url: registration_path, method: :post) do |f| %>
+		
+	<div class="horizontal_div">
+		<div class="box_left box">
+			<div class="data_box_top">
+				<p>Введите данные пользователя</p>
+			</div>
+			
+			<div class="name_email">
+				<%= f.text_field :first_name, autofocus: true, placeholder: "Ваше имя" ,class: "reg_input_first reg_input reg_freeze" %>
+					
+				<%= f.email_field :email, placeholder: "Адрес электронной почты", class: "reg_input reg_freeze" %>
+					
+				<%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
+	
+			</div>
+			<div class="two_pass">
+				<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze" %>
+				<!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
+			</div>
+			
+				<div class="accept_oferta">
+					<label><%= check_box_tag(:some_input, class: "reg_freeze") %>
+						<span id="reg_oferta_second_check" class="login_input_check"></span>
+					</label><p>Я согласен с условиями оферты</p>
+				</div>
+			
+				<div class="accept_data">
+		<!--<input  type="buttocn" class="accept_data_button" value="Подтвердить данные"> -->
+				<!--<%= f.submit("Подтвердить данные", class: "accept_service_button") %> -->
+
+						<%= f.submit("Подтвердить данные", class: "accept_data_button reg_freeze") %>
+					<div class="reg_disable"></div>
+				</div>
+			
+		</div>
+		<div class="box_right box_blue">
+			<div class="box_top_right ">
+				<p>Информация</p>
+			</div>
+			<div class="info_text">
+				<p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
+				<p class="text_bold_info">Шаг 1</p>
+				<p class="step">Для начала работы вам нужно добавить объект...</p>
+				<p class="text_bold_info">Шаг 2</p>
+				<p class="step">...</p>
+			</div>
+		</div>
+	</div>
+
+<% end %>
+	
+							<div id="div_place" class="horizontal_div">
+								<div class="box_left box_blue">
+		<%= form_for(Place.new, remote: true, url: "/place", method: :post) do |f| %>
+									<div class="box_top_right ">
+										<p>Добавление места</p>
+									</div>
+									<div class="choise_place">
+										<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
+										<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
+										<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
+										<%= f.text_field(:building, :placeholder=>"Введите нормер дома", :class=>:reg_place,  disabled: true) %>
+										<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
+									</div>
+									<div class="accept_place">
+										<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
+									<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
+									</div>
+		<% end %>
+								</div>
+								<div class="box_right box_blue">
+									<div class="box_top_right ">
+										<p>Добавление услуг</p>
+									</div>
+									<div class="choise_service">
+
+										<div class="service">
+
+
+											<!--select id="select_1" class="type">
+												<option value="1" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+												<option value="2">Электроэнергия</option>
+												<option value="3">Вода</option>
+											</select-->
+
+											<select>
+												<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+												<% @service_types.each do |service_type| %>
+													<option value="<%= service_type.id %>" id="<%= service_type.id %>">
+														<%= service_type.title %>
+													</option>
+												<% end %>
+											</select>
+										</div>
+
+										<div class="type_man_who_have_service">
+
+
+											<!--select id="select_2" class="type">
+												<option value="1" data-skip="1" selected="selected">Поставщик</option>
+												<option value="2">ТестЭнерго</option>
+												<option value="3">ТестГидро</option>
+											</select-->
+											<select>
+												<option value="0" data-skip="1" selected="selected">Поставщик</option>
+												<% @vendors.each do |vendor| %>
+													<option value="<%= vendor.id %>" id="<%= vendor.id %>" class="<%= vendor.service_type_id %>">
+														<%= vendor.title %>
+													</option>
+												<% end %>
+											</select>
+										</div>
+
+										<div class="choise_tarif">
+
+											<select>
+												<option value="0" data-skip="1" selected="selected">Тарифы</option>
+												<% @tariff_templates.each do |tariff_template| %>
+													<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" class="<%= tariff_template.vendor_id %>">
+														<%= tariff_template.title %>
+													</option>
+												<% end %>
+											</select>
+
+											<!--select id="select_3" class="typesmall type">
+												<option value="1" selected="selected">Тарифы</option>
+												<option value="2">Тариф 1</option>
+												<option value="3">Тариф 2</option>
+											</select-->
+										</div>
+										<input type="text" class="dog_number" placeholder="Номер договора" value="63000756156" disabled>
+									</div>
+									<div class="accept_service">
+										<input type="button" class="accept_service_button" disabled value="Добавить услугу">
+									</div>
+								</div>
+
+							</div>
+
+							<div id="end_reg_div" class="horizontal_div">
+								<div class="reg_end">
+									<p>Для регистрации нужно добавить как минимум один объект и услугу</p>
+								</div>
+						</div>
+	</div>
+</div>

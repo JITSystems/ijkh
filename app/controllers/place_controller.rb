@@ -8,7 +8,7 @@ class PlaceController < ApplicationController
 	def create
 		params[:place].merge!(user_id: current_user.id, is_active: true)
 		@place = Place.new_place params[:place]
-			render 'place/show'
+		render 'place/show'
 	end
 
 	def update

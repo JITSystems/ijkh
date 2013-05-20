@@ -1,8 +1,14 @@
 Ijkh::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
-  
+  as :user do
+    get 'login' => 'sessions#new'
+    post 'login' => 'sessions#create'
+    get 'logout' => 'sessions#destroy'
 
-  root :to => 'predefined_data#index'
+    get 'registration' => 'registrations#new'
+    post 'registration' => 'registrations#create'
+  end
+  root :to => 'web_interface/main#index'
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
@@ -73,4 +79,13 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/service/:service_id/paymenthistories' => 'analytic#get_detailed_payments'
   post 'api/1.0/payment_success' => 'payment_history#success'
   post 'api/1.0/payment_fail' => 'payment_history#fail'
+
+# Web Interface
+  scope '/' do
+      get 'offer' => 'web_interface/offer#show'
+      get 'main' => 'web_interface/main#index'
+      post 'place' => 'web_interface/place#create'
+  end
+
+
 end

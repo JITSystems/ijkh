@@ -1,9 +1,14 @@
 # encoding: utf-8 
 class SessionsController < Devise::SessionsController
+
   skip_before_filter :require_auth_token
 
 	prepend_before_filter :require_no_authentication, :only => [:create]
-  before_filter :ensure_params_exist, :except => [:destroy]
+  before_filter :ensure_params_exist, :except => [:destroy, :new]
+
+  def new
+    
+  end
   
   def create
     build_resource
@@ -12,13 +17,23 @@ class SessionsController < Devise::SessionsController
  
     if resource.valid_password?(params[:user][:password])
       sign_in("user", resource)
-      render json: {user: 
-                      {auth_token: resource.authentication_token, 
-                       email: resource.email,
-                       first_name: resource.first_name,
-                       phone_number: resource.phone_number
-                      } 
+      respond_to do |format|
+
+        format.json {
+          render json: {user: 
+                        {
+                          auth_token: resource.authentication_token, 
+                          email: resource.email,
+                          first_name: resource.first_name,
+                          phone_number: resource.phone_number
+                        } 
+                      }
                     }
+        format.html {
+          redirect_to "/main"
+        }
+      end
+
       return
     end
     invalid_login_attempt
@@ -36,6 +51,11 @@ class SessionsController < Devise::SessionsController
  
   def invalid_login_attempt
     warden.custom_failure!
+    respond_to do |format|
+      format.json {
     render json: { error: {message: "Неверный адрес эл. почты или пароль."}}, status: 401
+  }
+    format.html { flash[:errors] = "Неверный адрес эл. почты или пароль." }
+  end
   end
 end

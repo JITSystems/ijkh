@@ -1,0 +1,117 @@
+<div class="container">
+	
+		<%= render "shared/menu" %>
+		<div class="top_plate">
+			<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+			<p class="text_plate_blue">Регистрация нового Пользователя</p>
+		</div>
+					
+	<div class="container_boxes">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		
+	<div class="horizontal_div">
+		<div class="box_left box">
+			<div class="data_box_top">
+				<p>Введите данные пользователя</p>
+			</div>
+			
+			<div class="name_email">
+				<%= f.text_field :first_name, autofocus: true, placeholder: "Ваше имя" ,class: "reg_input_first reg_input" %>
+					
+				<%= f.email_field :email, placeholder: "Адрес электронной почты", class: "reg_input" %>
+					
+				<%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input" %>
+	
+			</div>
+			<div class="two_pass">
+				<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input" %>
+				<!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
+			</div>
+			
+				<div class="accept_oferta">
+					<label><%= check_box_tag(:some_input) %>
+						<span id="reg_oferta_second_check" class="login_input_check"></span>
+					</label><p>Я согласен с условиями оферты</p>
+				</div>
+			
+				<div class="accept_data">
+					<input type="button" class="accept_data_button" value="Подтвердить данные">
+					<div class="reg_disable"></div>
+				</div>
+			
+		</div>
+		<div class="box_right box_blue">
+			<div class="box_top_right ">
+				<p>Информация</p>
+			</div>
+			<div class="info_text">
+				<p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
+				<p class="text_bold_info">Шаг 1</p>
+				<p class="step">Для начала работы вам нужно добавить объект...</p>
+				<p class="text_bold_info">Шаг 2</p>
+				<p class="step">...</p>
+			</div>
+		</div>
+	</div>
+	
+							<div id="div_place" class="horizontal_div">
+								<div class="box_left box_blue">
+									<div class="box_top_right ">
+										<p>Добавление места</p>
+									</div>
+									<div class="choise_place">
+										<%= text_field_tag(:reg_place_name, "", :placeholder=>"Введите название объекта", :class=>:reg_place) %>
+										<%= text_field_tag(:reg_place_city, "", :placeholder=>"Введите город", :class=>:reg_place) %>
+										<%= text_field_tag(:reg_place_street, "", :placeholder=>"Введите улицу", :class=>:reg_place) %>
+										<%= text_field_tag(:reg_place_building, "", :placeholder=>"Введите нормер дома", :class=>:reg_place) %>
+										<%= text_field_tag(:reg_place_apartment, "", :placeholder=>"Введите номер квартиры", :class=>:reg_place) %>
+									</div>
+									<div class="accept_place">
+										<input type="button" class="accept_service_button" value="Добавить услугу">
+									</div>
+								</div>
+							</div>
+							<div class="horizontal_div" style="display:none">
+								<div class="box_left box_blue">
+									<div class="box_top_right ">
+										<p>Добавление услуг</p>
+									</div>
+									<div class="choise_service">
+										<div class="service">
+											<select id="select_1" class="type">
+												<option value="1" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+												<option value="2">Электроэнергия</option>
+												<option value="3">Вода</option>
+											</select>
+										</div>
+										<div class="type_man_who_have_service">
+											<select id="select_2" class="type">
+												<option value="1" data-skip="1" selected="selected">Поставщик</option>
+												<option value="2">ТестЭнерго</option>
+												<option value="3">ТестГидро</option>
+											</select>
+										</div>
+										<div class="choise_tarif">
+											<select id="select_3" class="typesmall type">
+												<option value="1" selected="selected">Тарифы</option>
+												<option value="2">Тариф 1</option>
+												<option value="3">Тариф 2</option>
+											</select>
+										</div>
+										<input type="text" class="dog_number" placeholder="Номер договора" value="63000756156" disabled>
+									</div>
+									<div class="accept_service">
+										<input type="button" class="accept_service_button" value="Добавить услугу">
+									</div>
+								</div>
+							</div>
+							<div id="end_reg_div" class="horizontal_div">
+								<div class="reg_end">
+									<p>Для регистрации нужно добавить как минимум один объект и услугу</p>
+									<%= f.submit("Завершить регистрацию", class: "accept_service_button") %>
+								</div>
+							</div>
+							
+		<% end %>
+	</div>
+</div>

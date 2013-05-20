@@ -1,0 +1,3 @@
+class WebInterfaceController < ApplicationController
+	skip_before_filter :require_auth_token
+end
