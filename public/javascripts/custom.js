@@ -10,6 +10,8 @@ $(document).ready(function($) {
 
 //      проверки импутов
 
+
+
 	$('.login_input_check_oferta').click(function(){
 		if ($('#some_input_oferta').is(':checked')){
 			$('.login_input_check_oferta').css('background-image','url(images/checkbox_off.png)')
@@ -80,6 +82,7 @@ $('select').each(function(){
                    html:   '<p>'+option.text()+'</p>'
 
                 });
+
 
             li.attr('rel',option.val());
                 if (li.attr('rel') % 2 == 0){

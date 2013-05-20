@@ -6,18 +6,18 @@
 </div>
 <div class="menu">
 	<ul class="menulist">
-		<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "index" %></li>
+		<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "menu" %></li>
 		<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "#" %></li>
 		<li class="menulistLi"><%= link_to "ПРОФИЛЬ", "profile" %></li>
 		<li class="menulistLi menulistLiDrop">
 			<!--%= link_to "Пользователям", "user" %-->
 			<p>ПОЛЬЗОВАТЕЛЯМ</p>
 			<ul class="dropdownMenu">
-				<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "oferta_in_site" %></li>
+				<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "site_offer" %></li>
 				<li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", "profile" %></li>
 			</ul>
 		</li>
-		<li class="menulistLi"><%= link_to "О КОМПАНИИ", "company" %></li>
+		<li class="menulistLi"><%= link_to "О КОМПАНИИ", "about" %></li>
 		<% unless current_user %><li class="menulistLi"> <%= link_to "ВОЙТИ", "login" %></li><% end %>
 	</ul>
 </div>

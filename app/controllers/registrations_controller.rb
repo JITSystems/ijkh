@@ -8,7 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
     @service_types = ServiceType.select("id, title").all
     @vendors = Vendor.select("id, title, service_type_id").all
     @tariff_templates = TariffTemplate.select("id, title, vendor_id").where("vendor_id != 0")
-    
   end
 
 	def create
