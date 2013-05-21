@@ -17,7 +17,7 @@ class WebInterface::ServiceController < WebInterfaceController
 		if @service.save
 			@tariff_template = TariffTemplate.find(params[:service][:tariff_template_id])
 			tariff_params = {
-				title: 		tariff_template.title,
+				title: 					@tariff_template.title,
 				tariff_template_id: 	params[:service][:tariff_template_id],
 				owner_id: 				params[:service][:vendor_id],
 				owner_type: 			"Vendor",
@@ -29,7 +29,7 @@ class WebInterface::ServiceController < WebInterfaceController
 			@tariff = Tariff.new(tariff_params)
 
 			if @tariff.save
-				@field_templates = tariff_template.field_templates
+				@field_templates = @tariff_template.field_templates
 				@field_templates.each do |field_template|
 					field_params = {
 						title: 					field_template.title,

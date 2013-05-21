@@ -2,4 +2,5 @@ $('div#select_service_tariff_template_id').html("Тарифы");
 $('div#service_vendor_id').html("Поставщик");
 $('div#service_service_type_id').html("Выберите тип услуги ЖКХ");
 $("select :nth-child(1)").attr("selected", "selected");
-$('div.service_name').append("<p class='service_li'><%= @service.title% ></p>")
+$('div.service_name').append("<p class='service_li'><%= @service.title% ></p>");
+$('#objectFreeze').css('display','none');

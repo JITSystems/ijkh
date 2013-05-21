@@ -40,9 +40,9 @@
 			</select>
 		</div>
 
-		<input id="service_user_account" name="service[user_account]" type="text" onchange="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" disabled>
+		<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" disabled>
 	</div>
 	<div class="accept_service">
-		<%= f.submit("Добавить услугу", class: "accept_service_button") %>
+		<%= f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block');") %>
 	</div>
 <% end %>
