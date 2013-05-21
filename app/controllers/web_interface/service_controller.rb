@@ -4,12 +4,14 @@ class WebInterface::ServiceController < WebInterfaceController
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title
 
 		service_params = {
+			user_id: 			current_user.id
 			place_id: 			params[:service][:place_id],
 			service_type_id: 	params[:service][:service_type_id],
 			vendor_id: 			params[:service][:vendor_id],
 			user_account: 		params[:service][:user_account],
 			title: 				vendor_title
 		}
+
 		service = Service.new(service_params)
 		
 		if service.save
@@ -44,6 +46,7 @@ class WebInterface::ServiceController < WebInterfaceController
 				end
 			end
 		end
+		
 		respond_to do |format|
 			format.js {
 				render 'web_interface/service/create'
