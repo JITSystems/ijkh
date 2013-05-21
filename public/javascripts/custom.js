@@ -51,16 +51,6 @@ $(document).ready(function($) {
         //$(HeightScreen).scrollBottom('slow')
     })
     
-//  меню
-
-    $('.menulistLiDrop').mouseenter(function(){
-        $('.menulistLiDrop').find('.dropdownMenu').slideDown('fast').show();
-        $('.menulistLiDrop').hover(function() {
-        }, function(){ 
-        $('.menulistLiDrop').find(".dropdownMenu").slideUp('fast'); 
-        });
-    })
-
 //      отрисовка селектов
 
 $('select').each(function(){
@@ -68,7 +58,7 @@ $('select').each(function(){
     var selectBoxContainer = $('<div>',{
         width       : '100%',
         class   	: 'tzSelect',
-        html        : '<div class="selectBox"></div>'
+        html        : '<div class="selectBox" class=' + this.id + '></div>'
     });
  
     var dropDown = $('<ul>',{class:'dropDown'});
@@ -86,14 +76,24 @@ $('select').each(function(){
                 return true;
             }
 
-            var li = $('<li>',{
+ //' + 'id=' + option.attr('id') + '" class="' + option.attr('class') + '" 
+
+            var li = $('<li>' ,{
                    html:   '<p>'+option.text()+'</p>'
 
                 });
 
+           li.attr("class", option.attr('class'));
+           li.attr("id", option.attr('id'));
+           li.attr("listType", option.attr('listType'));
+           li.attr("serviceTypeId", option.attr('serviceTypeId'));
+           li.attr("vendorId", option.attr('vendorId'));
+           li.attr('onclick','myFun(this);');
+
             li.attr('rel',option.val());
                 if (li.attr('rel') % 2 == 0){
-                    li.attr('class','secondcolor')
+                   li.addClass('secondcolor')
+                 // li.attr("class", option.attr('class'))
             }  
 
             li.click(function(){
@@ -151,5 +151,43 @@ $('select').each(function(){
 });
 
  $(this).remove();
+ //$(".vendors_option").hide();
 });
 
+
+
+function myFun(thisEl){
+   // var myClass="'" + bla.attr("id")+ "'"; $(myClass).hide();
+     //console.log(thisEl.getAttribute("listType"));
+    listType=thisEl.getAttribute("listType");
+    //serviceTypeId=thisEl.getAttribute("serviceTypeId");
+     
+
+     //$(".vendors_option").show();
+     //$("."+listId).hide();
+     // var listType = thisEl.getAttribute("class");
+
+     switch (listType)
+     {
+        case 'serviceType':
+        console.log('Услуга');
+        var serviceTypeId=thisEl.getAttribute("id");
+        $("[listtype=vendor]").hide();
+        $("[servicetypeid="+serviceTypeId+"]").show();
+        break
+        
+        case 'vendor':
+        console.log('Вендор');
+        var vendorId=thisEl.getAttribute("id");
+        $("[listtype=tariff]").hide();
+        $("[vendorid="+vendorId+"]").show();
+        break
+
+        case 'tariff':
+        console.log('Тариф');
+        break
+
+        default:
+        break
+     }
+}
