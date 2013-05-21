@@ -1,70 +1,69 @@
-		<div class="top_plate">
-			<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-			<p class="text_plate_blue">Регистрация нового Пользователя</p>
-		</div>
-					
-	<div class="container_boxes">
-<%= form_for(resource, remote: true, as: resource_name, url: registration_path, method: :post) do |f| %>
-		
-	<div class="horizontal_div">
-		<div class="box_left box">
-			<div class="data_box_top">
-				<p>Введите данные пользователя</p>
-			</div>
-			
-			<div class="name_email">
-				<%= f.text_field :first_name, autofocus: true, placeholder: "Ваше имя" ,class: "reg_input_first reg_input reg_freeze" %>
-				<%= f.email_field :email, placeholder: "Адрес электронной почты", class: "reg_input reg_freeze" %>
-				<%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
-			</div>
-			<div class="two_pass">
-				<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze" %>
-				<!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
-			</div>
-			
-				<div class="accept_oferta">
-					<label><%= check_box_tag(:some_input, class: "reg_freeze") %>
-						<span id="reg_oferta_second_check" class="login_input_check"></span>
-					</label><p>Я согласен с условиями оферты</p>
-				</div>
-			
-				<div class="accept_data">
-		<!--<input  type="buttocn" class="accept_data_button" value="Подтвердить данные"> -->
-				<!--<%= f.submit("Подтвердить данные", class: "accept_service_button") %> -->
+<div class="top_plate">
+<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+<p class="text_plate_blue">Регистрация нового Пользователя</p>
+</div>
 
-						<%= f.submit("Подтвердить данные", class: "accept_data_button reg_freeze") %>
-					<div class="reg_disable"></div>
-				</div>
-			
-		</div>
-		<div class="box_right box_blue">
-			<div class="box_top_right ">
-				<p>Информация</p>
-			</div>
-			<div class="info_text">
-				<p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
-				<p class="text_bold_info">Шаг 1</p>
-				<p class="step">Для начала работы вам нужно добавить объект...</p>
-				<p class="text_bold_info">Шаг 2</p>
-				<p class="step">...</p>
-			</div>
-		</div>
-	</div>
+<div class="container_boxes">
+<%= form_for(resource, remote: true, as: resource_name, url: registration_path, method: :post) do |f| %>
+
+<div class="horizontal_div">
+<div class="box_left box">
+<div class="data_box_top">
+<p>Введите данные пользователя</p>
+</div>
+
+<div class="name_email">
+<%= f.text_field :first_name, autofocus: true, placeholder: "Ваше имя" ,class: "reg_input_first reg_input reg_freeze" %>
+<%= f.email_field :email, placeholder: "Адрес электронной почты", class: "reg_input reg_freeze" %>
+<%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
+</div>
+<div class="two_pass">
+<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze" %>
+<!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
+</div>
+
+<div class="accept_oferta">
+<label><%= check_box_tag(:some_input, class: "reg_freeze") %>
+<span id="reg_oferta_second_check" class="login_input_check"></span>
+</label><p>Я согласен с условиями оферты</p>
+</div>
+
+<div class="accept_data">
+<!--<input  type="buttocn" class="accept_data_button" value="Подтвердить данные"> -->
+<!--<%= f.submit("Подтвердить данные", class: "accept_service_button") %> -->
+
+<%= f.submit("Подтвердить данные", class: "accept_data_button reg_freeze") %>
+<div class="reg_disable"></div>
+</div>
+
+</div>
+<div class="box_right box_blue">
+<div class="box_top_right ">
+<p>Информация</p>
+</div>
+<div class="info_text">
+<p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
+<p class="text_bold_info">Шаг 1</p>
+<p class="step">Для начала работы вам нужно добавить объект...</p>
+<p class="text_bold_info">Шаг 2</p>
+<p class="step">...</p>
+</div>
+</div>
+</div>
 
 <% end %>
-						<div id="div_place" class="horizontal_div">
-								<div class="box_left box_blue">
-						<%= render 'web_interface/shared/place_form' %>
-								</div>
-								<div class="box_right box_blue">
+<div id="div_place" class="horizontal_div">
+<div class="box_left box_blue">
+<%= render 'web_interface/shared/place_form' %>
+</div>
+<div class="box_right box_blue">
 
-					<%= render 'web_interface/shared/service_form' %>
-							</div>
-
-							<div id="end_reg_div" class="horizontal_div">
-								<div class="reg_end">
-									<p>Для регистрации нужно добавить как минимум один объект и услугу</p>
-								</div>
-						</div>
-	</div>
+<%= render 'web_interface/shared/service_form' %>
+</div>
+</div>
+<div id="end_reg_div" class="horizontal_div">
+<div class="reg_end">
+<p>Для регистрации нужно добавить как минимум один объект и услугу</p>
+</div>
+</div>
 </div>

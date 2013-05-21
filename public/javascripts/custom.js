@@ -242,18 +242,18 @@ function sortFun(thisEl){
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
         $('#serviceFreeze').css('height','40%');
-        $("div#select_2").css("background-color", "#e8eef2");
-        $("div#select_2").css("color", "#00558d");
+        $("div#service_vendor_id").css("background-color", "#e8eef2");
+        $("div#service_vendor_id").css("color", "#00558d");
         break
-        
+
         case 'vendor':
         console.log('Вендор');
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
         $('#serviceFreeze').css('height','20%');
-        $("div#select_3").css("background-color", "#e8eef2");
-        $("div#select_3").css("color", "#00558d");
+        $("div#service_tariff_template_id").css("background-color", "#e8eef2");
+        $("div#service_tariff_template_id").css("color", "#00558d");
         break
 
         case 'tariff':
