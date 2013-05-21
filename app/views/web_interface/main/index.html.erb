@@ -1,34 +1,34 @@
-<div class="container">
-	<%= render "web_interface/shared/menu" %>
-	<div class="top_plate">
-		<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-		<p class="text_plate_blue">Главная страница</p>
-	</div>
+				<div class="top_plate">
+					<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+					<p class="text_plate_blue">Главная страница</p>
+				</div>
 
-	<div class="horizontal_div_main">
-		<div class="box_left welcome">
-			<div class="welcome_top">
-				<p>Тестовая версия</p>
-			</div>
-			<div class="test_text">
-				<p>Приветствуем Вас на тестовой версии проекта АйЖКХ</p>
-			</div>
-			<div class="test">
-				<input type="button" class="test_button" value="Продолжить использование сервиса">
-				<%= link_to "", "registration", class: "test_button_a" %>
-			</div>
-		</div>
-		<div class="box_right welcome">
-			<div class="welcome_top ">
-				<p>Партнеры</p>
-			</div>
-			<div class="white_cubs">
-				<div class="white_cub"></div>
-				<div class="white_cub"></div>
-				<div class="white_cub"></div>
-				<div class="white_cub"></div>
-			</div>
-		</div>
-	</div>
-	
-</div>
+				<div class="horizontal_div_main">
+					<div class="box_left box_blue">
+						<div class="data_box_top">
+							<p>Тестовая версия</p>
+						</div>
+						<div class="test_text">
+							<p>Приветствуем Вас на тестовой версии проекта АйЖКХ</p>
+						</div>
+						<div class="test">
+							<input type="button" class="test_button" value="Продолжить использование сервиса">
+							<% unless current_user%>
+								<%= link_to "", "offer", class: "test_button_a" %>
+							<% else%>
+								<%= link_to "", "profile", class: "test_button_a" %>
+							<% end %>
+						</div>
+					</div>
+					<div class="box_right box blue">
+						<div class="data_box_top ">
+							<p>Партнеры</p>
+						</div>
+						<div class="white_cubs">
+							<div class="white_cub"></div>
+							<div class="white_cub"></div>
+							<div class="white_cub"></div>
+							<div class="white_cub"></div>
+						</div>
+					</div>
+				</div>

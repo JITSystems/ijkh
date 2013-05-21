@@ -27,7 +27,7 @@ $(document).ready(function($) {
 		}
 	})
     $('#reg_oferta_second_check').click(function(){
-        if ($('.accept_oferta').find('#some_input_oferta').is(':checked')){
+        if ($('.accept_oferta').find('#some_input').is(':checked')){
             $('.reg_oferta_second_check').css('background-image','url(images/checkbox_off.png)')
             $('.reg_disable').css('display','block');
             $('.accept_data_button').css('background-color','#8da9bc');
@@ -50,7 +50,34 @@ $(document).ready(function($) {
         //var HeightScreen = $(window).height();
         //$(HeightScreen).scrollBottom('slow')
     })
+
+//  наполнение карточки объекта
+    $('#accept_place_button').click(function(){
+        var name = $('#reg_place_name').attr('value')
+        var city = $('#reg_place_city').attr('value')
+        var street = $('#reg_place_street').attr('value')
+        var building = $('#reg_place_building').attr('value')
+        var apartment = $('#reg_place_apartment').attr('value')
+        $('.object_name').find('input').attr('value', name).show('slow');
+        $('.object_adress').find('p').show('slow');
+        $('.object_adress').find('.adress_blue').attr('value', city + ', ' + street + ', ' + building + ', ' + apartment).show('slow');
+        $('#place_box').fadeOut('slow',function(){
+            $('#service_box').fadeIn('fast');
+        });
+    })
+     
     
+
+//  меню
+
+    $('.menulistLiDrop').mouseenter(function(){
+        $('.menulistLiDrop').find('.dropdownMenu').slideDown('fast').show();
+        $('.menulistLiDrop').hover(function() {
+        }, function(){ 
+        $('.menulistLiDrop').find(".dropdownMenu").slideUp('fast'); 
+        });
+    })
+
 //      отрисовка селектов
 
 $('select').each(function(){
@@ -58,7 +85,7 @@ $('select').each(function(){
     var selectBoxContainer = $('<div>',{
         width       : '100%',
         class   	: 'tzSelect',
-        html        : '<div class="selectBox" class=' + this.id + '></div>'
+        html        : '<div class="selectBox" id=' + this.getAttribute("id") + '></div>'
     });
  
     var dropDown = $('<ul>',{class:'dropDown'});
@@ -76,9 +103,7 @@ $('select').each(function(){
                 return true;
             }
 
- //' + 'id=' + option.attr('id') + '" class="' + option.attr('class') + '" 
-
-            var li = $('<li>' ,{
+            var li = $('<li>',{
                    html:   '<p>'+option.text()+'</p>'
 
                 });
@@ -88,7 +113,7 @@ $('select').each(function(){
            li.attr("listType", option.attr('listType'));
            li.attr("serviceTypeId", option.attr('serviceTypeId'));
            li.attr("vendorId", option.attr('vendorId'));
-           li.attr('onclick','myFun(this);');
+           li.attr('onclick','sortFun(this);');
 
             li.attr('rel',option.val());
                 if (li.attr('rel') % 2 == 0){
@@ -100,8 +125,6 @@ $('select').each(function(){
                  
                 selectBox.html(option.text());
                 dropDown.trigger('hide');
-                 
-                // Когда происходит событие click, мы также отражаем
                 // изменения в оригинальном элементе select:
                 select.val(option.val());
                  
@@ -113,7 +136,7 @@ $('select').each(function(){
     selectBoxContainer.append(dropDown.hide());
     select.hide().after(selectBoxContainer);
      
-    // Привязываем пользовательские события show и hide к элементу dropDown:
+    // Привязываем show и hide к элементу dropDown:
      
     dropDown.bind('show',function(){
        if(dropDown.is(':animated')){
@@ -142,30 +165,74 @@ $('select').each(function(){
     selectBox.click(function(){
         dropDown.trigger('toggle');
         return false;
-    }); 
-    // Если нажать кнопку мыши где-нибудь на странице при открытом элементе dropDown,
-    // он будет спрятан:
+    });
     $(document).click(function(){
         dropDown.trigger('hide');
     });
 });
 
  $(this).remove();
- //$(".vendors_option").hide();
+
+//     всплытие окон в профиле
+
+    $('#profile_edit_button').click(function(){
+        var ValueCheck = $('#profile_edit_button').attr('value')
+        if (ValueCheck == 'Редактировать'){
+            $('#profile_container').fadeOut('fast',function(){
+                $('#profile_edit_container').fadeIn('slow')
+                $('#profile_edit_button').attr('value','Сохранить')
+            })
+        }
+        else {
+            $('#profile_edit_container').fadeOut('fast',function(){
+                $('#profile_container').fadeIn('slow')
+                $('#profile_edit_button').attr('value','Редактировать')
+            })
+        }
+        
+    })
+
+//  при наведении на объекты при платеже
+
+    $('.object').mouseenter(function(){
+        $(this).css('background-color','#e8eef2');
+        $('.object').click(function(){
+            $('.pay_text').find('.object_selected').attr('class','object')
+            $(this).attr('class','object_selected');
+        })
+        var TrueClass = $(this).attr('class')
+        $(this).mouseleave(function(){
+            $('.object').css('background-color','#d5e6f2');
+            
+        })
+    })
+    $('.service_pay').mouseenter(function(){
+        $(this).css('background-color','#d5e6f2');
+        $('.service_pay').click(function(){
+            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
+            $(this).attr('class','service_pay_selected');
+        })
+        var TrueClass = $(this).attr('class')
+        $(this).mouseleave(function(){
+            $('.service_pay').css('background-color','#e8eef2');
+            
+        })
+    })
+    
+
 });
 
+// Функция сортировки услуг.
 
-
-function myFun(thisEl){
+function sortFun(thisEl){
    // var myClass="'" + bla.attr("id")+ "'"; $(myClass).hide();
      //console.log(thisEl.getAttribute("listType"));
-    listType=thisEl.getAttribute("listType");
     //serviceTypeId=thisEl.getAttribute("serviceTypeId");
-     
-
      //$(".vendors_option").show();
      //$("."+listId).hide();
      // var listType = thisEl.getAttribute("class");
+
+    listType=thisEl.getAttribute("listType");
 
      switch (listType)
      {
@@ -174,6 +241,9 @@ function myFun(thisEl){
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
+        $('#serviceFreeze').css('height','40%');
+        $("div#select_2").css("background-color", "#e8eef2");
+        $("div#select_2").css("color", "#00558d");
         break
         
         case 'vendor':
@@ -181,13 +251,20 @@ function myFun(thisEl){
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
+        $('#serviceFreeze').css('height','20%');
+        $("div#select_3").css("background-color", "#e8eef2");
+        $("div#select_3").css("color", "#00558d");
         break
 
         case 'tariff':
         console.log('Тариф');
+        $('.dog_number').removeAttr("disabled");
         break
 
         default:
         break
      }
 }
+
+
+

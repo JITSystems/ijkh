@@ -1,23 +1,24 @@
 <div class="menu_logo_top"></div>
 <div class="prof_name">
-	<% if current_user%>
-	<%= link_to "Выйти", "logout" , :style=>"width:50px; height:50px; display:block; position:absolute; right:0px"%>
-	<% end %>
 </div>
 <div class="menu">
 	<ul class="menulist">
-		<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "menu" %></li>
-		<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "#" %></li>
+		<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "main" %></li>
+		<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "payment" %></li>
 		<li class="menulistLi"><%= link_to "ПРОФИЛЬ", "profile" %></li>
 		<li class="menulistLi menulistLiDrop">
 			<!--%= link_to "Пользователям", "user" %-->
 			<p>ПОЛЬЗОВАТЕЛЯМ</p>
 			<ul class="dropdownMenu">
-				<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "site_offer" %></li>
+				<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "inner_offer" %></li>
 				<li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", "profile" %></li>
 			</ul>
 		</li>
 		<li class="menulistLi"><%= link_to "О КОМПАНИИ", "about" %></li>
-		<% unless current_user %><li class="menulistLi"> <%= link_to "ВОЙТИ", "login" %></li><% end %>
+		<% unless current_user %>
+			<li class="menulistLi last"> <%= link_to "ВОЙТИ", "login" %></li>
+		<% else %>
+			<li class="menulistLi last"> <%= link_to "ВЫЙТИ", "logout" %></li>
+		<% end %>
 	</ul>
 </div>

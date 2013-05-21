@@ -1,6 +1,3 @@
-<div class="container">
-		
-		<%= render "web_interface/shared/menu" %>
 		<div class="top_plate">
 			<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 			<p class="text_plate_blue">Регистрация нового Пользователя</p>
@@ -57,91 +54,11 @@
 <% end %>
 						<div id="div_place" class="horizontal_div">
 								<div class="box_left box_blue">
-						<%= form_for(Place.new, remote: true, url: "/place", method: :post) do |f| %>
-							<div class="box_top_right ">
-								<p>Добавление места</p>
-							</div>
-							<div class="choise_place">
-								<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
-								<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
-								<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
-								<%= f.text_field(:building, :placeholder=>"Введите нормер дома", :class=>:reg_place,  disabled: true) %>
-								<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
-							</div>
-							<div class="accept_place">
-								<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
-							<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
-							</div>
-						<% end %>
+						<%= render 'web_interface/shared/place_form' %>
 								</div>
 								<div class="box_right box_blue">
-									<div class="box_top_right ">
-										<p>Добавление услуг</p>
-									</div>
-									<div class="choise_service">
 
-										<div class="service">
-
-
-											<!--select id="select_1" class="type">
-												<option value="1" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
-												<option value="2">Электроэнергия</option>
-												<option value="3">Вода</option>
-											</select-->
-
-					<select>
-						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
-						<% @service_types.each do |service_type| %>
-							<option value="<%= service_type.id %>" id="<%= service_type.id %>" listType="serviceType">
-								<%= service_type.title %>
-							</option>
-						<% end %>
-					</select>
-										</div>
-
-										<div class="type_man_who_have_service">
-
-
-											<!--select id="select_2" class="type">
-												<option value="1" data-skip="1" selected="selected">Поставщик</option>
-												<option value="2">ТестЭнерго</option>
-												<option value="3">ТестГидро</option>
-											</select-->
-
-					<select>
-						<option value="0" data-skip="1" selected="selected">Поставщик</option>
-						<% @vendors.each do |vendor| %>
-							<option value="<%= vendor.id %>" id="<%= vendor.id %>"  listType="vendor" serviceTypeId="<%= vendor.service_type_id %>">
-								<%= vendor.title %>
-							</option>
-						<% end %>
-					</select>
-										</div>
-
-										<div class="choise_tarif">
-
-					<select>
-						<option value="0" data-skip="1" selected="selected">Тарифы</option>
-						<% @tariff_templates.each do |tariff_template| %>
-							<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>">
-								<%= tariff_template.title %>
-							</option>
-						<% end %>
-					</select>
-
-											<!--select id="select_3" class="typesmall type">
-												<option value="1" selected="selected">Тарифы</option>
-												<option value="2">Тариф 1</option>
-												<option value="3">Тариф 2</option>
-											</select-->
-										</div>
-										<input type="text" class="dog_number" placeholder="Номер договора" value="63000756156" disabled>
-									</div>
-									<div class="accept_service">
-										<input type="button" class="accept_service_button" disabled value="Добавить услугу">
-									</div>
-								</div>
-
+					<%= render 'web_interface/shared/service_form' %>
 							</div>
 
 							<div id="end_reg_div" class="horizontal_div">

@@ -7,6 +7,9 @@ html,body{
 	background-position: 50% 0%;
 	overflow-y: scroll; 
 }
+#wrap {height: 100%}
+body > #wrap {height: auto; min-height: 100%;}
+#main { padding-bottom: 97px; }
 .container{
 	position: relative;
 	width: 960px;
@@ -34,9 +37,11 @@ html,body{
 	position: absolute;
 	left: 15px;
 	width: 128px;
-	height: 128px;
-	background-image: url(../images/logo-1.png);
+	height: 132px;
+	background-image: url(../images/logo-round.png);
 	z-index: 10;
+	background-position: 0px 3px;
+	background-repeat: no-repeat;
 }
 .menu .menulist{
 	position: relative;
@@ -110,11 +115,108 @@ html,body{
 	top: 50px;
 	font-weight: 600;
 }
+.profile_plate{
+	position: relative;
+	margin: 0 auto;
+	width: 930px;
+	background-color: #e8eef2;
+	border-top: 1px solid #8da9bc;
+}
+.profile_name_container{
+	position: relative;
+	width: 100%;
+	border-bottom: 1px dotted #8da9bc;
+}
+.profile_name{
+	position: relative;
+	color: #47555e;
+	left: 165px;
+	font-size: 19px;
+	display: block;
+	border: none;
+	background-color: #e8eef2;
+	line-height: 3.9;
+	width: 700px;
+}
+.profile_email_container{
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #0071bc;
+}
+.profile_email_phone{
+	position: relative;
+	color: #47555e;
+	left: 165px;
+	font-size: 14px;
+	display: block;
+	border: none;
+	background-color: #e8eef2;
+	line-height: 1.9;
+	width: 700px;
+}
+#profile_name_edit{
+	margin: 20px 0px 20px 0px;
+}
+
+.profile_edit{
+	position: relative;
+	display: block;
+	width: 378px;
+	height: 34px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	text-indent: 26px;
+	left: 165px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	margin: 6px 0px 6px 0px;
+}
+.profile_button_container{
+	position: relative;
+	width: 100%;
+	height: 45px;
+	background-color: #d5e6f2;
+}
+.profile_edit_button{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 220px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+.add_object{
+	width: 200px;
+	height: 45px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	margin: 5px;
+}
 .container_boxes{
 	position: relative;
 	margin: 0 auto;
 	width: 930px;
 	margin-top: 25px;
+}
+.container_boxes_app{
+	position: relative;
+	margin: 0 auto;
+	width: 930px;
+	margin-top: 25px;
+	min-height: 500px;
 }
 .horizontal_div{
 	position: relative;
@@ -308,10 +410,174 @@ html,body{
 	font-weight: 600;
 	cursor: pointer;
 }
+.tarif_selected_pay{
+	position: relative;
+	width: 450px;
+	background-color: #e8eef2;
+	border-bottom: 1px dotted #6a7f8d;
+	overflow: hidden;
+}
+.tarif_selected_pay p{
+	position: relative;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top:5px;
+	margin-bottom: 10px;
+	left:30px;
+}
+.price_pay{
+	position: relative;
+	width: 450px;
+	height: 100px;
+	background-color: #e8eef2;
+	border-bottom: 1px dotted #6a7f8d;
+}
+.price_pay p{
+	position: relative;
+	width: 300px;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top:25px;
+	margin-bottom: 10px;
+	left:30px;
+	float: left;
+}
+.price{
+	position: absolute;
+	display: inline-block;
+	background-color: #e8eef2;
+	border: none;
+	color: #00558d;
+	font-weight: 600;
+	font-size: 27px;
+	top: 24px;
+	right: 10px;
+	width: 70px;
+}
+.tarif_input_pay{
+	position: relative;
+	width: 450px;
+	height: 60px;
+	background-color: #e8eef2;
+	border-bottom: 1px solid #0071bc;
+}
+.tarif_input_pay p{
+	position: absolute;
+	width: 300px;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top:20px;
+	margin-bottom: 10px;
+	left:30px;
+	float: left;
+}
+.pay_selected{
+	position: relative;
+	display: inline-block;
+	background-color: #e8eef2;
+	border: none;
+	color: #47555e;
+	font-weight: 600;
+	font-size: 14px;
+}
+.money_input{
+	position: absolute;
+	display: block;
+	top: 18px;
+	right: 12px;
+	width: 200px;
+	height: 20px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	text-indent: 10px;
+	color:#8da9bc;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+.pay_ended{
+	position: relative;
+	height: 50px;
+	background-color: #d5e6f2;
+}
+.pay_ended p{
+	position: absolute;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top:15px;
+	right:100px;
+}
+.price_for_pay{
+	position: absolute;
+	display: inline-block;
+	background-color: #d5e6f2;
+	border: none;
+	color: #00558d;
+	font-weight: 600;
+	font-size: 15px;
+	top: 13px;
+	right: 10px;
+	width: 60px;
+}
+.visa_mc{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px dotted #6a7f8d;
+	background-color: #e8eef2;
+}
+.visa_mc p{
+	position: absolute;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top:15px;
+	left:30px;
+}
+.visa{
+	position: absolute;
+	width: 50px;
+	height: 31px;
+	background-image: url(../images/Visa-1.png);
+	top: 10px;
+	right: 80px;
+}
+.mc{
+	position: absolute;
+	width: 50px;
+	height: 31px;
+	background-image: url(../images/Mastercard-1.png);
+	top: 10px;
+	right: 25px;
+}
+.end{
+	position: relative;
+	height: 50px;
+	border-top: 1px solid #0071bc;
+}
+.end_button{
+	position: absolute;
+	width: 260px;
+	height: 40px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	left: 15px;
+}
 .box_blue{
 	position: relative;
 	width: 450px;
 	background-color: #d5e6f2;
+}
+.info_text{
+	min-height: 435px;
 }
 .info_text p{
 	position: relative;
@@ -339,52 +605,62 @@ html,body{
 .object_name{
 	position: relative;
 	width: 450px;
-	height: 75px;
 	background-color: #e8eef2;
 	border-bottom: 1px dotted #8da9bc;
 }
-.object_name p{
+.object_name input{
 	position: relative;
 	display: block;
+	background-color: #e8eef2;
 	color:#47555e;
-	left:34px;
-	top:25px;
-	font-size: 21px;
+	border: none;
+	font-size: 20px;
 	font-weight: 600;
+	margin-left: 34px;
+	line-height: 3.5;
+	display: none;
 }
 .service_name{
 	position: relative;
 	width: 450px;
-	height: 120px;
 	background-color: #e8eef2;
 	border-bottom: 1px dotted #8da9bc;
 }
-.service_name p{
+.service_name p, .service_name input{
 	position: relative;
-	color:#47555e;
-	left:34px;
-	top:20px;
+	color: #47555e;
+	left: 34px;
 	font-size: 15px;
 	display: block;
-	margin-bottom: 12px;
+	border: none;
+	background-color: #e8eef2;
+	line-height: 2.5;
+	width: 400px;
 }
-.service_li{font-weight: 600;}
+.service_name input{font-weight: 600;line-height: 1.5;}
 .object_adress{
 	position: relative;
 	width: 450px;
-	height: 60px;
 	border-bottom: 1px solid #0071bc;
 }
-.object_adress p{
+.object_adress p, .object_adress input{
 	position: relative;
 	display: block;
 	color:#47555e;
 	left:34px;
-	top:20px;
 	margin-right: 12px;
-	float: left;
+	border: none;
+	background-color: #d5e6f2;
+	line-height: 0.5;
+	display: none;
 }
-.object_adress p.adress_blue{color:#0071bc; font-size: 21px; top:17px;}
+.object_adress p{width: 30px;line-height: 2.5;}
+.object_adress input{
+	color:#0071bc;
+	font-size: 21px;
+	width: 400px;
+	height: 40px;
+}
 .edit_object{
 	position: relative;
 	width: 450px;
@@ -434,7 +710,7 @@ html,body{
 .choise_service{
 	position: relative;
 	width: 450px;
-	height: 170px;
+	height: 100%;
 	border-bottom: 1px solid #0071bc;
 }
 .accept_service{
@@ -557,12 +833,45 @@ html,body{
 	height: 32px;
 	background-color: #e8eef2;
 	border: 1px solid #8da9bc;
-	color:#8da9bc;
+	color: #8da9bc;
 	text-indent: 5px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
-	float: left;
-	left:45px;
+	left: 48px;
+	margin: 24px 0px 24px 0px;
+}
+.custom_tarif{
+	position: relative;
+	margin: 0px 0px 24px 0px;
+	width: 215px;
+	height: 35px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	left: 34px;
+	cursor: pointer;
+}
+.custom_tarif_container{
+	position: relative;
+	width: 380px;
+	margin:0px 0px 24px 0px;
+	left:34px;
+}
+.strong_string{
+	position: relative;
+	display: block;
+	width: 378px;
+	height: 40px;
+	background-color: #d5e6f2;
+	border: none;
+	margin: 10px auto 10px;
+	color: #0071bc;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
 }
 .reg_end{
 	position: relative;
@@ -600,50 +909,75 @@ html,body{
 	margin: 25px auto 0px;
 
 }
-.welcome{
+.object{
 	position: relative;
-	width: 450px;
-	height: 270px;
+	color: #47555e;
+	font-size: 15px;
+	text-indent: 31px;
+	display: block;
+	border: none;
 	background-color: #d5e6f2;
+	width: 446px;
+	line-height: 1.3;
+	cursor: pointer;
 }
-.welcome_2{
+.service_pay{
 	position: relative;
-	width: 450px;
-	height: 310px;
+	color: #47555e;
+	font-size: 15px;
+	text-indent: 31px;
+	display: block;
+	border: none;
+	background-color: #e8eef2;
+	width: 446px;
+	line-height: 1.3;
+	cursor: pointer;
+}
+.service_pay_selected{
+	position: relative;
+	color: #47555e;
+	font-size: 15px;
+	text-indent: 31px;
+	display: block;
+	border: none;
 	background-color: #d5e6f2;
+	width: 446px;
+	line-height: 1.3;
+	cursor: pointer;
+	font-weight: bold;
+}
+.object_selected{
+	position: relative;
+	color: #47555e;
+	font-size: 15px;
+	text-indent: 31px;
+	display: block;
+	border: none;
+	background-color: #e8eef2;
+	width: 446px;
+	line-height: 1.3;
+	cursor: pointer;
+	font-weight: bold;
 }
 .test_text{
 	position: relative;
-	width: 450px;
-	height: 180px;
+	height: 189px;
 	border-bottom: 1px solid #0071bc;
-	color:#6a7f8d;
-}
-.welcome_top{
-	text-align: center;
-	position: relative;
-	width: 100%;
-	height: 45px;
-	background-color: #d5e6f2;
-	border-bottom: 2px solid #8da9bc;
-}
-.welcome_top p{
-	position: relative;
-	display: block;
-	top:15px;
-	color: #00558d;
-	font-size: 15px;
-	font-weight: 600;
 }
 .test_text p{
 	display: block;
+	height: 100px;
 	position: relative;
-	top: 55px;
+	top:55px;
 	font-size: 18px;
 	width: 337px;
 	margin: 0 auto;
 	text-align: center;
 	line-height: 1.5;
+	color:#6a7f8d;
+}
+.test{
+	height: 40px;
 }
 .test_button{
 	position: relative;
@@ -672,7 +1006,7 @@ html,body{
 	position: relative;
 	width: 420px;
 	height: 180px;
-	margin: 25px auto 0px;
+	margin: 25px auto 25px;
 }
 .white_cub{
 	position: relative;
@@ -693,17 +1027,6 @@ html,body{
 	height: 500px;
 	margin: 25px auto 0px;
 }
-.pay_text p{
-	display: block;
-	position: relative;
-	top: 15px;
-	color: #6a7f8d;
-	font-size: 15px;
-	width: 337px;
-	margin: 0 auto;
-	cursor: pointer;
-}
-.pay_text p:hover{color: red;}
 .pay{
 	position: relative;
 	width: 450px;
@@ -713,7 +1036,13 @@ html,body{
 .pay_text{
 	position: relative;
 	width: 450px;
-	height: 80px;
+	min-height: 100px;
+	border-bottom: 2px solid #8da9bc;
+}
+.service_pay_block{
+	position: relative;
+	width: 450px;
+	min-height: 100px;
 	border-bottom: 2px solid #8da9bc;
 }
 .scetchiki{
@@ -773,4 +1102,148 @@ html,body{
 	top:15px;
 	right: 30px;
 	float: right;
+}
+.ofertaindasite_container{
+	position: relative;
+	width: 930px;
+	height: 500px;
+	margin: 0 auto;
+	background-color: #d5e6f2;
+	border-top: 1px solid #8da9bc;
+}
+.oferta_some_text{
+	position: relative;
+	margin: 15px auto 0px;
+	width: 890px;
+	height: 470px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	overflow-y: scroll;
+}
+.oferta_some_text p{
+	padding: 5px 20px 0px 20px;
+	line-height: 1.3;
+	font-size: 12px;
+	color: #47555e;
+	margin-top: 5px;
+}
+
+/*	app	*/
+
+.download_text{
+	position: relative;
+	width: 100%;
+	height: 95px;
+	background-color: #e8eef2;
+	border-bottom: 1px dotted #6a7f8d;
+}
+.download_text p{
+	position: relative;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top: 25px;
+	left: 15px;
+}
+.icon_iphone_container{
+	position: relative;
+	width: 100%;
+	height: 150px;
+}
+.download{
+	display: block;
+	position: absolute;
+	top: 45px;
+	right:22px;
+	color:#00558d;
+	font-size: 19px;
+}
+.download b{font-weight: 600;}
+.appstore{
+	display: block;
+	position: absolute;
+	top: 70px;
+	right: 22px;
+	color: #00558d;
+	font-size: 42px;
+	font-weight: 600;
+}
+.iphone_logo{
+	 position: absolute;
+	 width: 136px;
+	 height: 136px;
+	 background-image: url(../images/app_logo.png);
+	 top:15px;
+	 left:12px;
+}
+.Android{
+	position: relative;
+	width: 100%;
+	height: 85px;
+}
+.Android p{
+	position: relative;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #47555e;
+	top: 25px;
+	left: 15px;
+	width: 430px
+}
+
+/*	footer	*/
+
+.footer{
+	position: relative;
+	width: 100%;
+	height: 97px;
+	background-color: #e8eef2;
+	clear:both;
+}
+.clearfix:after {content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.mini_logo{
+	position: absolute;
+	width: 63px;
+	height: 63px;
+	background: url(../images/logo-round_mini.png) no-repeat;
+	background-position: 0px 1px;
+	left: 14px;
+	z-index: 10;
+}
+.footer_text{
+	position: absolute;
+	width: 170px;
+	top: 9px;
+	left: 84px;
+}
+.footer_text p{
+	position: relative;
+	font-size: 12px;
+	line-height: 1.2;
+	color: #47555e;
+}
+.white_line{
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background-color: #FFF;
+	top:47px;
+}
+.app_download{
+	position: absolute;
+	display: block;
+	width: 236px;
+	height: 73px;
+	background-image: url(../images/appstore_button-1.png);
+	top:15px;
+	right: 16px;
 }

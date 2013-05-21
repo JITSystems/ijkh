@@ -1,0 +1,54 @@
+<% if params[:controller] == "registrations" %>
+	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 100%; bottom: 0px; z-index: 10;">
+	</div>
+	<% else %>
+	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 60%; bottom: 0px; z-index: 10;">
+	</div>
+	<% end %>
+							<div class="box_top_right ">
+										<p>Добавление услуг</p>
+									</div>
+									<div class="choise_service">
+
+										<div class="service">
+
+					<select style="background-color: #ccc;color: grey;" id="select_1">
+						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+						<% @service_types.each do |service_type| %>
+							<option value="<%= service_type.id %>" id="<%= service_type.id %>" listType="serviceType">
+								<%= service_type.title %>
+							</option>
+						<% end %>
+					</select>
+										</div>
+
+										<div class="type_man_who_have_service">
+
+
+					<select style="background-color: #ccc;color: grey;" id="select_2">
+						<option value="0" data-skip="1" selected="selected">Поставщик</option>
+						<% @vendors.each do |vendor| %>
+							<option value="<%= vendor.id %>" id="<%= vendor.id %>"  listType="vendor" serviceTypeId="<%= vendor.service_type_id %>">
+								<%= vendor.title %>
+							</option>
+						<% end %>
+					</select>
+										</div>
+
+										<div class="choise_tarif">
+
+					<select style="background-color: #ccc;color: grey;" id="select_3">
+						<option value="0" data-skip="1" selected="selected">Тарифы</option>
+						<% @tariff_templates.each do |tariff_template| %>
+							<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>">
+								<%= tariff_template.title %>
+							</option>
+						<% end %>
+					</select>
+										</div>
+										<input type="text" onchange="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" value="63000756156" disabled>
+									</div>
+									<div class="accept_service">
+										<input type="button" class="accept_service_button" disabled value="Добавить услугу">
+									</div>
+								</div>
