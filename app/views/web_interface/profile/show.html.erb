@@ -39,10 +39,15 @@
 
 					</div>
 
-					<div class="horizontal_div">
-						<div class="box_left box" style="left: 15px;">
-							<input type="button" class="add_object" value="Добавить объект">
+					<div class="horizontal_div" style="left: 15px;">
+						
+						<div id="slideUpBox" class="box_left box" >
+							<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn();"  type="button" class="add_object" value="Добавить объект">
 						</div>
+
+<div style="display:none;" class="box_left box_blue" id="slideDownBox">
+		<%= render 'web_interface/shared/place_form'%>
+</div>
 					</div>
 					</div>
 					
