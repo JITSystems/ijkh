@@ -31,14 +31,32 @@
 </div>
 <div class="container_boxes">
 	<div class="horizontal_div">
-		<%= render 'web_interface/shared/place_card'%>
+		<div class="box_left box_blue">
+		
+
+				<div class="data_box_top">
+					<p>Выберите объект</p>
+				</div>
+	<div class="pay_text">
+		<% @places.each do |place| %>
+			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object" %>
+		<% end %>
+	</div>
+
+		</div>
+
+		<div class="box_right box_blue" id="place_card_box">
+			<%= render 'web_interface/shared/place_card'%>
+		</div>
+
+	</div>
+	<div class="horizontal_div">
 		<div id="service_box" class="box_right box_blue">
 			<%= render 'web_interface/shared/service_form'%>
 		</div>
-	</div>
-	<div class="horizontal_div">
+
 		<div id="slideUpBox" class="box_left box" >
-			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn();"  type="button" class="add_object" value="Добавить объект">
+			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
 		</div>
 		<div style="display:none;" class="box_left box_blue" id="slideDownBox">
 			<%= render 'web_interface/shared/place_form'%>

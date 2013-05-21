@@ -1039,6 +1039,15 @@ body > #wrap {height: auto; min-height: 100%;}
 	min-height: 100px;
 	border-bottom: 2px solid #8da9bc;
 }
+
+.pay_text a{
+	text-decoration: none;
+}
+
+.pay_text a:nth-child(odd) {
+    background: #f0f0f0; /* Цвет фона */
+   } 
+
 .service_pay_block{
 	position: relative;
 	width: 450px;
