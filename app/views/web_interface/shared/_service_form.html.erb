@@ -7,7 +7,11 @@
 	<p>Добавление услуг</p>
 </div>
 <%= form_for(Service.new, remote: true, url: "/service", method: :post) do |f| %>
-	<input id="service_place_id" name="service[place_id]" style="display:none;">
+	<% if params[:controller] != "registrations" %>
+		<input id="service_place_id" name="service[place_id]" style="display:none;" value="<%= @place.id %>">
+	<% else %>
+		<input id="service_place_id" name="service[place_id]" style="display:none;">
+	<% end %>
 	<div class="choise_service">
 		<div class="service">	
 			<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">

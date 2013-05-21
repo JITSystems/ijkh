@@ -10,7 +10,7 @@
 							</div>
 							<div class="pay_text">
 								<% @places.each do |place| %>
-								<%= text_field_tag(place.id, place.title, :class=>:object, :readonly=>:readonly) %>
+									<%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %>
 								<% end %>
 							</div>
 							
@@ -20,10 +20,9 @@
 								<p>Услуга(Поставщик)</p>
 							</div>
 							<div class="service_pay_block">
-							<%= text_field_tag(:service_1, "Тест", :class=>:service_pay, :readonly=>:readonly) %>
-							<%= text_field_tag(:service_2, "Тест", :class=>:service_pay, :readonly=>:readonly) %>
-							<%= text_field_tag(:service_3, "Тест", :class=>:service_pay, :readonly=>:readonly) %>
-							<%= text_field_tag(:service_4, "Тест", :class=>:service_pay, :readonly=>:readonly) %>
+								<% @services.each do |service|%>
+									<%= link_to service.title, "#", remote: true, method: :post, class: "object" %>
+								<% end %>
 							</div>
 						</div>
 					</div>

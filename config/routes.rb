@@ -90,6 +90,7 @@ Ijkh::Application.routes.draw do
       get 'profile' => 'web_interface/profile#show'
       get 'app_download' => 'web_interface/app_download#show'
       post 'get_place/:place_id' => 'web_interface/place#get_place'
+      post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'place' => 'web_interface/place#create'
       post 'service' => 'web_interface/service#create'
 

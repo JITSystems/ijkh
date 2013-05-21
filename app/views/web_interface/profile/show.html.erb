@@ -32,19 +32,20 @@
 <div class="container_boxes">
 	<div class="horizontal_div">
 		<div class="box_left box_blue">
-		
+			
+		<div id="objectFreeze" style="
+	    position: absolute;
+	    height: 100%;
+	    width: 100%;
+	    z-index: 10;
+	    display: none;
+		"></div>		
 
-				<div class="data_box_top">
-					<p>Выберите объект</p>
-				</div>
+		<div class="data_box_top">
+			<p>Выберите объект</p>
+		</div>
 	<div class="pay_text">
-	<div id="objectFreeze" style="
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    display: none;
-	"></div>
+
 		<% @places.each do |place| %>
 			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object" %>
 		<% end %>
@@ -70,3 +71,4 @@
 		</div>
 	</div>
 </div>
+

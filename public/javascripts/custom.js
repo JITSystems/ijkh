@@ -171,7 +171,9 @@ $('select').each(function(){
     });
 });
 
- $(this).remove();
+
+$(".pay_text a:first-child").attr("class","object_selected"); //выделение первого элемента списка объектов/"счетов"
+$(this).remove();
 
 //     всплытие окон в профиле
 

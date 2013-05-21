@@ -1,5 +1,10 @@
 class WebInterface::ServiceController < WebInterfaceController
 	
+	def get_service
+		@place = Place.find(params[:place_id])
+		@services = @place.services
+	end
+
 	def create
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title
 
