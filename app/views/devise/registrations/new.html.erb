@@ -17,11 +17,8 @@
 			
 			<div class="name_email">
 				<%= f.text_field :first_name, autofocus: true, placeholder: "Ваше имя" ,class: "reg_input_first reg_input reg_freeze" %>
-					
 				<%= f.email_field :email, placeholder: "Адрес электронной почты", class: "reg_input reg_freeze" %>
-					
 				<%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
-	
 			</div>
 			<div class="two_pass">
 				<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze" %>
@@ -58,25 +55,24 @@
 	</div>
 
 <% end %>
-	
-							<div id="div_place" class="horizontal_div">
+						<div id="div_place" class="horizontal_div">
 								<div class="box_left box_blue">
-		<%= form_for(Place.new, remote: true, url: "/place", method: :post) do |f| %>
-									<div class="box_top_right ">
-										<p>Добавление места</p>
-									</div>
-									<div class="choise_place">
-										<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
-										<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
-										<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
-										<%= f.text_field(:building, :placeholder=>"Введите нормер дома", :class=>:reg_place,  disabled: true) %>
-										<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
-									</div>
-									<div class="accept_place">
-										<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
-									<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
-									</div>
-		<% end %>
+						<%= form_for(Place.new, remote: true, url: "/place", method: :post) do |f| %>
+							<div class="box_top_right ">
+								<p>Добавление места</p>
+							</div>
+							<div class="choise_place">
+								<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
+								<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
+								<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
+								<%= f.text_field(:building, :placeholder=>"Введите нормер дома", :class=>:reg_place,  disabled: true) %>
+								<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
+							</div>
+							<div class="accept_place">
+								<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
+							<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
+							</div>
+						<% end %>
 								</div>
 								<div class="box_right box_blue">
 									<div class="box_top_right ">
@@ -93,44 +89,45 @@
 												<option value="3">Вода</option>
 											</select-->
 
-											<select>
-												<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
-												<% @service_types.each do |service_type| %>
-													<option value="<%= service_type.id %>" id="<%= service_type.id %>">
-														<%= service_type.title %>
-													</option>
-												<% end %>
-											</select>
+					<select>
+						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+						<% @service_types.each do |service_type| %>
+							<option value="<%= service_type.id %>" id="<%= service_type.id %>" listType="serviceType">
+								<%= service_type.title %>
+							</option>
+						<% end %>
+					</select>
 										</div>
 
 										<div class="type_man_who_have_service">
 
 
-											<select id="select_2" class="type">
+											<!--select id="select_2" class="type">
 												<option value="1" data-skip="1" selected="selected">Поставщик</option>
 												<option value="2">ТестЭнерго</option>
 												<option value="3">ТестГидро</option>
-											</select>
-											<select>
-												<option value="0" data-skip="1" selected="selected">Поставщик</option>
-												<% @vendors.each do |vendor| %>
-													<option value="<%= vendor.id %>" id="<%= vendor.id %>" class="<%= vendor.service_type_id %>">
-														<%= vendor.title %>
-													</option>
-												<% end %>
-											</select>
+											</select-->
+
+					<select>
+						<option value="0" data-skip="1" selected="selected">Поставщик</option>
+						<% @vendors.each do |vendor| %>
+							<option value="<%= vendor.id %>" id="<%= vendor.id %>"  listType="vendor" serviceTypeId="<%= vendor.service_type_id %>">
+								<%= vendor.title %>
+							</option>
+						<% end %>
+					</select>
 										</div>
 
 										<div class="choise_tarif">
 
-											<select>
-												<option value="0" data-skip="1" selected="selected">Тарифы</option>
-												<% @tariff_templates.each do |tariff_template| %>
-													<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" class="<%= tariff_template.vendor_id %>">
-														<%= tariff_template.title %>
-													</option>
-												<% end %>
-											</select>
+					<select>
+						<option value="0" data-skip="1" selected="selected">Тарифы</option>
+						<% @tariff_templates.each do |tariff_template| %>
+							<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>">
+								<%= tariff_template.title %>
+							</option>
+						<% end %>
+					</select>
 
 											<!--select id="select_3" class="typesmall type">
 												<option value="1" selected="selected">Тарифы</option>
