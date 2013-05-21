@@ -1266,8 +1266,8 @@ body > #wrap {height: auto; min-height: 100%;}
 {
 
 background: #666 no-repeat;
-width: 32px;
-height: 32px;
+width: 222px;
+height: 62px;
 color: #fff;
 font-family: verdana;
 border-radius: 5px;
@@ -1279,7 +1279,7 @@ padding: 15px;
 margin: 20px;
 opacity: 0.8;
 position: fixed;
-right: 20px;
-top: 0px;
-
+left: 0px;
+bottom: 0px;
+z-index: 999;
 }
