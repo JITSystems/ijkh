@@ -1264,7 +1264,6 @@ body > #wrap {height: auto; min-height: 100%;}
 
 .pop_up_div
 {
-
 background: #666 no-repeat;
 width: 222px;
 height: 62px;
@@ -1282,4 +1281,6 @@ position: fixed;
 left: 0px;
 bottom: 0px;
 z-index: 999;
+text-align: center;
+display: none;
 }
