@@ -1,4 +1,6 @@
 class PaymentHistoryController < ApplicationController
+	skip_before_filter :require_auth_token
+	
 	def index
 		
 	end

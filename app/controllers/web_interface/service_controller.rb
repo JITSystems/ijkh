@@ -1,6 +1,6 @@
 class WebInterface::ServiceController < WebInterfaceController
+	
 	def create
-
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title
 
 		service_params = {
@@ -27,10 +27,27 @@ class WebInterface::ServiceController < WebInterfaceController
 			tariff = Tariff.new(tariff_params)
 
 			if tariff.save
-				feild_templates = tariff_template.field_templates
+				field_templates = tariff_template.field_templates
+				field_templates.each do |field_template|
+					field_params = {
+						title: 					field_template.title,
+						field_type: 			field_template.field_type,
+						is_for_calc: 			field_template.is_for_calc,
+						value: 					field_template.value,
+						reading_field_title: 	field_template.reading_field_title,
+						tariff_id: 				tariff.id,
+						field_template_id: 		field_template.id,
+						field_units: 			field_template.field_units
+					}
+					field = Field.new(field_params)
+					field.save
+				end
 			end
-		else
-
+		end
+		respond_to do |format|
+			format.js {
+				render 'web_interface/service/create'
+			}
 		end
 	end
 end

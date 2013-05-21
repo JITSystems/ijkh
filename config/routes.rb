@@ -84,7 +84,10 @@ Ijkh::Application.routes.draw do
   scope '/' do
       get 'offer' => 'web_interface/offer#show'
       get 'main' => 'web_interface/main#index'
+      get 'inner_offer' => 'web_interface/inner_offer#show'
       post 'place' => 'web_interface/place#create'
+      post 'service' => 'web_interface/service#create'
+
   end
 
 
