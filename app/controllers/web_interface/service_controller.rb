@@ -4,7 +4,7 @@ class WebInterface::ServiceController < WebInterfaceController
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title
 
 		service_params = {
-			user_id: 			current_user.id
+			user_id: 			current_user.id,
 			place_id: 			params[:service][:place_id],
 			service_type_id: 	params[:service][:service_type_id],
 			vendor_id: 			params[:service][:vendor_id],
