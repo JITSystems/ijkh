@@ -32,9 +32,9 @@
 							</p>
 							</div>
 							<div class="tarif_selected_pay">
-								<p>Вы выбрали <%= text_field_tag(:tarif_selected, "Тариф такой то", :class=>:pay_selected, :readonly=>:readonly) %>для услуги 
-									<%= text_field_tag(:service_selected, "Услуга такая то", :class=>:pay_selected, :readonly=>:readonly)%>для объекта 
-								<%= text_field_tag(:place_selected, "Объект такой то", :class=>:pay_selected, :readonly=>:readonly)%></p>
+								<p>Вы выбрали <%= text_field_tag(:tarif_selected, @tariff.title, :class=>:pay_selected, :readonly=>:readonly) %>для услуги 
+									<%= text_field_tag(:service_selected, @service.title, :class=>:pay_selected, :readonly=>:readonly)%>для объекта 
+								<%= text_field_tag(:place_selected, @place.title, :class=>:pay_selected, :readonly=>:readonly)%></p>
 							</div>
 							<div class="price_pay">
 								<p>Текст тут такой да, если нужен оставишь, мб это цена: за киловаты там и тд</p>

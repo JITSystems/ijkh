@@ -38,6 +38,18 @@ class WebInterface::ServiceController < WebInterfaceController
 
 			@tariff = Tariff.new(tariff_params)
 
+			account_params = {
+				user_id: 			current_user.id,
+				service_id: 		@service.id,
+				place_id:  			params[:service][:place_id],
+				status: 			1,
+				amount: 			"0"
+			}
+
+			@account = Account.new(account_params)
+
+			@account.save
+			
 			if @tariff.save
 				@field_templates = @tariff_template.field_templates
 				@field_templates.each do |field_template|
