@@ -3,6 +3,11 @@ class WebInterface::ServiceController < WebInterfaceController
 	def get_service
 		@place = Place.find(params[:place_id])
 		@services = @place.services
+		respond_to do |format|
+			format.js {
+				render 'web_interface/service/payment_services'
+			}
+		end
 	end
 
 	def create

@@ -1256,3 +1256,8 @@ body > #wrap {height: auto; min-height: 100%;}
 	top:15px;
 	right: 16px;
 }
+
+.service_pay_block a
+{
+	text-decoration: none;
+}
