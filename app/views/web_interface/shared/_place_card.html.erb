@@ -1,56 +1,82 @@
 <div class="box_left box_blue">
-<button id="buttonLeft" style="
-    position: absolute;
-    left: 2px;
-    z-index: 10;
-    height: 41px;
-    top: 2px;
-    width: 41px;
-    font-size: 25px;
-color: rgb(105, 105, 105);
-padding-bottom: 6px;
-">&#8592;</button>
+			<button id="buttonLeft" style="
+			position: absolute;
+			left: 2px;
+			z-index: 10;
+			height: 41px;
+			top: 2px;
+			width: 41px;
+			font-size: 25px;
+			color: rgb(105, 105, 105);
+			padding-bottom: 6px;
+			">&#8592;</button>
 
-<button id="buttonRight" style="position: absolute; left: 407px; z-index: 1; height: 41px; top: 2px; width: 41px; font-size: 25px; color: rgb(105, 105, 105); padding-bottom: 6px;
-">&#8594;</button>
-<div class="data_box_top">
+			<button id="buttonRight" style="
+			position: absolute; 
+			left: 407px; 
+			z-index: 1; 
+			height: 41px; 
+			top: 2px; 
+			width: 41px; 
+			font-size: 25px; 
+			color: rgb(105, 105, 105); 
+			padding-bottom: 6px;
+			">&#8594;</button>
+
+			<div class="data_box_top">
 				<p style="left: 0px;
 			text-align: center; ">Карточка объекта</p>
 			</div>
-<div id="gallery">
-	<ul>
-		<% unless @places == [] %>
-<% @places.each do |place| %>
-		<li>
-			<div class="object_name">
-				<p style="font-size: 20px;
-			padding: 30px 35px;
-			font-weight: bold;
-			color: #47555e;"><%= place.title %></p>
-			</div>
-			<div class="service_name" style="min-height: 100px;">
-				<p>Подключенные услуги:</p>
-				<% place.services.each do |service| %>	
-				<p class="service_li"><%= service.title %></p>
-				<% end %>
-			</div>
-			<div style="height: 95px;" class="object_adress">
-				<p style="width: 68px;
-			display: inline-block; min-height: 43px;">Адрес:</p>
-				<p style="display: inline-block; width:210px; color: rgb(19,99,178); width: 320px;" class="adress_blue"><%= place.city %>, <%= place.street %>, <%= place.building %>, кв.<%= place.apartment%></p>
-			</div>
-		</li>
-<% end %>
 
-<% else %>
-		<p style="text-align: center; width: 451px; height: 66px;">
-			Созданные объекты отсутствуют.
-		</p>
-<% end %>
-	</ul>
+			<div id="gallery">
+				<ul>
+					<% unless @places == [] %>
+			<% @places.each do |place| %>
+					<li>
+						<div class="object_name">
+							<p style="font-size: 20px;
+							padding: 30px 35px;
+							font-weight: bold;
+							color: #47555e;"><%= place.title %></p>
+						</div>
+
+						<div class="service_name" style="min-height: 100px;">
+							<p>Подключенные услуги:</p>
+
+							<% place.services.each do |service| %>	
+							<p class="service_li"><%= service.title %></p>
+							<% end %>
+						</div>
+
+						<div style="height: 45px;" class="object_adress">
+							<p style="width: 68px;
+						display: inline-block; min-height: 43px;">Адрес:</p>
+							<p style="display: inline-block; width:210px; color: rgb(19,99,178); width: 320px;" class="adress_blue"><%= place.city %>, <%= place.street %>, <%= place.building %>, кв.<%= place.apartment%></p>
+						</div>
+
+						<div id="hidden_button" style="height: 50px;">
+							<button onclick="alert('click');" 
+									style="
+									cursor:pointer; 
+									margin: 4px 0px 0px 115px;
+									width: 220px;
+									height: 40px;
+									background: none;
+									border: none;}">
+							</button>
+						</div>
+					</li>
+			<% end %>
+
+			<% else %>
+					<p style="text-align: center; width: 451px; height: 66px;">
+						Созданные объекты отсутствуют.
+					</p>
+			<% end %>
+				</ul>
+			</div>
+
+		<div class="edit_object" style="padding-top: 5px;bottom: -4px;position: absolute; border-top: 1px solid #0071bc;">
+			<input type="button" class="edit_object_button" value="Редактировать">
+		</div>
 </div>
-
-						<div class="edit_object" style="bottom: 0px;position: absolute;">
-						<input type="button" class="edit_object_button" value="Редактировать">
-								</div>
-							</div>

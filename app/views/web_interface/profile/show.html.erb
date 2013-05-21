@@ -1,54 +1,47 @@
-				<div class="top_plate">
-					<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-					<p class="text_plate_blue">Ваш профиль</p>
-				</div>
-				<div class="profile_plate">
-					<div id="profile_container">
-						<div class="profile_name_container">
-							<%= text_field_tag(:profile_name, current_user.first_name, :class=>:profile_name, :disabled=>:disabled) %>
-						</div>
-						<div class="profile_email_container">
-							<%= text_field_tag(:profile_email, current_user.email, :class=>:profile_email_phone, :disabled=>:disabled) %>
-							<%= text_field_tag(:profile_phone, current_user.phone_number, :class=>:profile_email_phone, :disabled=>:disabled) %>
-						</div>
-					</div>
-					<div id="profile_edit_container" style="display:none">
-						<div class="profile_name_container">
-							<%= text_field_tag(:profile_name_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
-						</div>
-						<div class="profile_name_container">
-							<%= text_field_tag(:profile_email_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
-							<%= text_field_tag(:profile_phone_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
-						</div>
-						<div class="profile_email_container">
-							<%= text_field_tag(:profile_pass, "", :placeholder=>"Введите пароль", :class=>:profile_edit) %>
-							<%= text_field_tag(:profile_pass_again, "", :placeholder=>"Подтвердите пароль", :class=>:profile_edit) %>
-						</div>
-					</div>
-					<div class="profile_button_container">
-						<!--input id="profile_edit_button" type="button" class="profile_edit_button" value="Редактировать"-->
-					</div>
-					
-				</div>
-				<div class="container_boxes">
-					<div class="horizontal_div">
-						<%= render 'web_interface/shared/place_card'%>
-					<div id="service_box" class="box_right box_blue">
-						<%= render 'web_interface/shared/service_form'%>
-					</div>
-
-					</div>
-
-					<div class="horizontal_div" style="left: 15px;">
-						
-						<div id="slideUpBox" class="box_left box" >
-							<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn();"  type="button" class="add_object" value="Добавить объект">
-						</div>
-
-<div style="display:none;" class="box_left box_blue" id="slideDownBox">
-		<%= render 'web_interface/shared/place_form'%>
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Ваш профиль</p>
 </div>
-					</div>
-					</div>
-					
-				</div>
+<div class="profile_plate">
+	<div id="profile_container">
+		<div class="profile_name_container">
+			<%= text_field_tag(:profile_name, current_user.first_name, :class=>:profile_name, :disabled=>:disabled) %>
+		</div>
+		<div class="profile_email_container">
+			<%= text_field_tag(:profile_email, current_user.email, :class=>:profile_email_phone, :disabled=>:disabled) %>
+			<%= text_field_tag(:profile_phone, current_user.phone_number, :class=>:profile_email_phone, :disabled=>:disabled) %>
+		</div>
+	</div>
+	<div id="profile_edit_container" style="display:none">
+		<div class="profile_name_container">
+			<%= text_field_tag(:profile_name_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
+		</div>
+		<div class="profile_name_container">
+			<%= text_field_tag(:profile_email_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
+			<%= text_field_tag(:profile_phone_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
+		</div>
+		<div class="profile_email_container">
+			<%= text_field_tag(:profile_pass, "", :placeholder=>"Введите пароль", :class=>:profile_edit) %>
+			<%= text_field_tag(:profile_pass_again, "", :placeholder=>"Подтвердите пароль", :class=>:profile_edit) %>
+		</div>
+	</div>
+	<div class="profile_button_container">
+		<!--input id="profile_edit_button" type="button" class="profile_edit_button" value="Редактировать"-->
+	</div>
+</div>
+<div class="container_boxes">
+	<div class="horizontal_div">
+		<%= render 'web_interface/shared/place_card'%>
+		<div id="service_box" class="box_right box_blue">
+			<%= render 'web_interface/shared/service_form'%>
+		</div>
+	</div>
+	<div class="horizontal_div">
+		<div id="slideUpBox" class="box_left box" >
+			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn();"  type="button" class="add_object" value="Добавить объект">
+		</div>
+		<div style="display:none;" class="box_left box_blue" id="slideDownBox">
+			<%= render 'web_interface/shared/place_form'%>
+		</div>
+	</div>
+</div>

@@ -27,9 +27,9 @@
 			<%end%>
 			<%= yield %>
 			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
-					<%= render "web_interface/shared/footer"%>
+				<%= render "web_interface/shared/footer"%>
 			<% end%>
-			<% if params[:controller] != "web_interface/offer" %> </div> <% end %>
+			<% if params[:controller] != "web_interface/offer" %></div><% end %>
 	</div>
 </body>
 </html>
