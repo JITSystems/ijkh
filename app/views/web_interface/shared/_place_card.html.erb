@@ -19,7 +19,7 @@
 		</div>
 <div class="edit_object" style="padding-top: 5px;bottom: 0px;position: absolute;">
 <%= form_tag("/place", remote: true, method: :delete) do |f| %>
-	<input type="text" id="place_id" name="place_id" style="display:hidden" value="<%= @place.id %>">
+	<input type="text" id="place_id" name="place_id" style="display:none" value="<%= @place.id %>">
 	<input type="submit" class="edit_object_button" value="Удалить">
 <% end %>
 </div>

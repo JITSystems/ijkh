@@ -1394,7 +1394,7 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	clear: both;
 }
 
-.slideUpBox
+#slideUpBox
 {
 	clear: both;
 }
