@@ -36,7 +36,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		merchant_id = @vendor.merchant_id
 		order_id = @recipe.id
-		amount = params[:amount_total]
+		amount = @recipe.total
 		currency = "RUB"
 		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
 
