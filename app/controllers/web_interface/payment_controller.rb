@@ -31,5 +31,11 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_recurrent_account
+		@account = Account.new_recurrent_account params
+		
+		respond_to do |format|
+			format.js {
+				render 'web_interface/payment/get_recurrent_account_data'
+			}
 	end
 end

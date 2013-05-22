@@ -196,33 +196,29 @@ $(this).remove();
 
 //  при наведении на объекты при платеже
 
-    // $('.object').mouseenter(function(){
-    //    // $(this).css('background-color','#e8eef2');
+            $('.object').mouseenter(function(){
+               // $(this).css('background-color','#e8eef2');
+                    $('.object').click(function(){
+                    $('.pay_text').find('.object_selected').attr('class','object')
+                    $(this).attr('class','object_selected');
+                })
 
 
+                var TrueClass = $(this).attr('class')
+                $(this).mouseleave(function(){
+                 //   $('.object').css('background-color','#d5e6f2');
+                    
+                })
+            })
 
-    //     var TrueClass = $(this).attr('class')
-    //     $(this).mouseleave(function(){
-    //      //   $('.object').css('background-color','#d5e6f2');
-            
-    //     })
-    // })
 
-        $('.object').click(function(){
-            $('.pay_text').find('.object_selected').attr('class','object')
-            $(this).attr('class','object_selected');
-        })
 
         $('.service_pay').click(function(){
             $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
             $(this).attr('class','service_pay_selected');
         })
 
-        function servicePayClick(thisElem)
-        {
-            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
-            $(thisElem).attr('class','service_pay_selected');
-        }
+
 
     // $('.service_pay').mouseenter(function(){
     //     //$(this).css('background-color','#d5e6f2');
@@ -233,9 +229,14 @@ $(this).remove();
             
     //     })
     // })
-    
 
 });
+
+function servicePayClick(thisElem)
+{
+    $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
+    $(thisElem).attr('class','service_pay_selected');
+}
 
 // Функция сортировки услуг.
 
