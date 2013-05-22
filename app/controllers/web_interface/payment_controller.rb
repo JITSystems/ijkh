@@ -44,7 +44,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		logger.info security_key_string
 		security_key = Digest::MD5.hexdigest(security_key_string)
 
-		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&returnUrl=http://izkh.ru"
+		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}"
 
 		respond_to do |format|
 			format.js {

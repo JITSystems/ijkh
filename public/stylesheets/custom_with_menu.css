@@ -1348,19 +1348,18 @@ body > #wrap {height: auto; min-height: 100%;}
 }
 
 input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabled"]{
-position: relative;
-display: block;
-margin: 0 auto;
-width: 220px;
-height: 40px;
-background-color: #8da9bc;
-text-align: center;
-text-shadow: 1px 1px 0px #FFF;
-color: #6a7f8d;
-border: 0px;
-font-size: 15px;
-font-weight: 600;
-cursor: pointer;
+	position: relative;
+	display: block;
+	width: 220px;
+	height: 40px;
+	background-color: #8da9bc;
+	text-align: center;
+	text-shadow: 1px 1px 0px #FFF;
+	color: #6a7f8d;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
 }
 
 .initial_readings
