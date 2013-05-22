@@ -1399,10 +1399,15 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	clear: both;
 }
 
-.place_card_box
+.pay_text
 {
-	height:200px;
+	height:150px;
 	overflow-y: scroll;
+}
+
+#place_card_box .edit_object_button
+{
+	background-color: rgb(188, 0, 0);
 }
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;

@@ -5,6 +5,16 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	end
 
+	def destroy
+		@place = Place.find(params[:place_id])
+		@place_to_destroy = Place.deactivate @place
+		respond_to do |format|
+			format.js {
+				render 'web_interface/place/delete'
+			}
+		end
+	end
+
 	def get_place
 		@place = Place.find(params[:place_id])
 		respond_to do |format|
