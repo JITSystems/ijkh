@@ -8,7 +8,7 @@
 </div>
 <%= form_for(Service.new, remote: true, url: "/service", method: :post) do |f| %>
 	<% if params[:controller] != "registrations" %>
-		<input id="service_place_id" name="service[place_id]" style="display:none;" value="<% if @place != [] %><%= @place.id %><% end %>">
+		<input id="service_place_id" name="service[place_id]" style="display:none;" value="<%= @place_id %>">
 	<% else %>
 		<input id="service_place_id" name="service[place_id]" style="display:none;">
 	<% end %>

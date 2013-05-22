@@ -47,7 +47,7 @@
 	<div class="pay_text">
 		<% if @places != [] %>
 		<% @places.each do |place| %>
-			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear': 'none');" %>
+			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear', 'none');" %>
 		<% end %>
 		<% end %>
 	</div>
