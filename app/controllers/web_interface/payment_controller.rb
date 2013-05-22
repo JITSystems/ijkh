@@ -21,7 +21,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 	def get_meter_reading
 
-		@fields = Field.where(tariff_if: params[:tariff_id])
+		@fields = Field.where(tariff_id: params[:tariff_id])
 
 		respond_to do |format|
 			format.js {
