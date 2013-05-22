@@ -1,3 +1,3 @@
 <% @services.each do |service|%>
-	<%= link_to service.title, "/get_payment_data/#{service.id}", remote: true, method: :post, class: "service_pay" %>
+	<%= link_to service.title, "/get_payment_data/#{service.id}", remote: true, onclick: "servicePayClick(this);", method: :post, class: "service_pay" %>
 <% end %>

@@ -1362,6 +1362,11 @@ font-size: 15px;
 font-weight: 600;
 cursor: pointer;
 }
+
+.initial_readings
+{
+	display: none;
+}
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;

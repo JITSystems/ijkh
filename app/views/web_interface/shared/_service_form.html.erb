@@ -37,7 +37,7 @@
 			<select style="background-color: #ccc;color: grey;" id="service_tariff_template_id" name="service[tariff_template_id]">
 				<option value="0" data-skip="1" selected="selected">Тарифы</option>
 				<% @tariff_templates.each do |tariff_template| %>
-					<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>">
+					<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>" hasReadings="<%= tariff_template.has_readings %>">
 					<%= tariff_template.title %>
 					</option>
 				<% end %>
@@ -45,6 +45,7 @@
 		</div>
 
 		<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" disabled>
+		
 	</div>
 	<div class="accept_service">
 		<%= f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block');") %>

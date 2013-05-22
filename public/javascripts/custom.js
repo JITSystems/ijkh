@@ -218,6 +218,12 @@ $(this).remove();
             $(this).attr('class','service_pay_selected');
         })
 
+        function servicePayClick(thisElem)
+        {
+            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
+            $(thisElem).attr('class','service_pay_selected');
+        }
+
     // $('.service_pay').mouseenter(function(){
     //     //$(this).css('background-color','#d5e6f2');
 
@@ -267,6 +273,7 @@ function sortFun(thisEl){
 
         case 'tariff':
         console.log('Тариф');
+        var hasReadings=thisEl.getAttribute("hasReadings");
         $('.dog_number').removeAttr("disabled");
         break
 
