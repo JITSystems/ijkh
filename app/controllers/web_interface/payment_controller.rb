@@ -41,11 +41,8 @@ class WebInterface::PaymentController < WebInterfaceController
 		private_security_key = "e45a8c7b-b0bd-4bdd-93d3-859b463daf81"
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
-		logger.info security_key_string
 		security_key = Digest::MD5.hexdigest(security_key_string)
-
 		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}"
-
 		respond_to do |format|
 			format.js {
 				render js: "window.location.replace('#{url}');"

@@ -57,15 +57,17 @@
 			<%= render 'web_interface/shared/place_card'%>
 		</div>
 
+		<div id="slideUpBox" class="box_left box" >
+			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
+		</div>
+
 	</div>
 	<div class="horizontal_div">
 		<div id="service_box" class="box_right box_blue">
 			<%= render 'web_interface/shared/service_form'%>
 		</div>
 
-		<div id="slideUpBox" class="box_left box" >
-			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
-		</div>
+
 		<div style="display:none;" class="box_left box_blue" id="slideDownBox">
 			<%= render 'web_interface/shared/place_form'%>
 		</div>

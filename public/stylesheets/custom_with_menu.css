@@ -1393,6 +1393,17 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 {
 	clear: both;
 }
+
+.slideUpBox
+{
+	clear: both;
+}
+
+.place_card_box
+{
+	height:200px;
+	overflow-y: scroll;
+}
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;
