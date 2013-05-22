@@ -4,3 +4,4 @@ $('div#service_service_type_id').html("Выберите тип услуги ЖК
 $("select :nth-child(1)").attr("selected", "selected");
 $('div.service_name').append("<p class='service_li'><%= @service.title %></p>");
 $('#objectFreeze').css('display','none');
+$("#reg_end_button").removeAttr("disabled");
