@@ -38,7 +38,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		order_id = @recipe.id
 		amount = @recipe.total
 		currency = "RUB"
-		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
+		private_security_key = "e45a8c7b-b0bd-4bdd-93d3-859b463daf81"
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 
