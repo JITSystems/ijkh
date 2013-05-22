@@ -47,7 +47,7 @@
 	<div class="pay_text">
 		<% if @places != [] %>
 		<% @places.each do |place| %>
-			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear', 'none');" %>
+			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
 		<% end %>
 		<% end %>
 	</div>
@@ -63,7 +63,7 @@
 			<% end %>
 		</div>
 		
-		<div id="slideUpBox" class="box_left box" >
+		<div id="slideUpBox" class="box_left box" style="clear: none">
 			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
 		</div>
 
