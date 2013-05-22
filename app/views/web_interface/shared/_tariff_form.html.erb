@@ -1,0 +1,22 @@
+			
+			<div class="data_box_top">
+			<p>
+				Выбранный тариф
+			</p>
+			</div>
+			<div class="tarif_selected_pay">
+				<p>Вы выбрали тариф @tariff.title</p>
+			</div>
+			<div class="price_pay">
+				<% @fields.each do |field|%>
+					<p><%= field.title %></p><p><%= field.value %></p>
+				<% end %>
+			</div>
+			<div class="pay_ended">
+				<% if @tariff.has_readings %>
+					<input class="tariff_button" name="" type="submit" value="Ввести показания" style="width: 200px;">
+				<% else %>
+					<input class="tariff_button" name="" type="submit" value="Создать счет" style="width: 200px;">
+				<% end %>
+				<p>Сумма к оплате:</p><p><%= @account.value %></p>
+			</div>

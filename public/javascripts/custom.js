@@ -197,14 +197,16 @@ $(this).remove();
 //  при наведении на объекты при платеже
 
     $('.object').mouseenter(function(){
-        $(this).css('background-color','#e8eef2');
+       // $(this).css('background-color','#e8eef2');
+
         $('.object').click(function(){
             $('.pay_text').find('.object_selected').attr('class','object')
             $(this).attr('class','object_selected');
         })
+
         var TrueClass = $(this).attr('class')
         $(this).mouseleave(function(){
-            $('.object').css('background-color','#d5e6f2');
+         //   $('.object').css('background-color','#d5e6f2');
             
         })
     })

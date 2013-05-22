@@ -4,7 +4,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		@place = @places.first
 		@services = @place.services.order("id DESC")
 		@service = @services.first
-		@tariff = @service.tariff
+		#@tariff = @service.tariff
 	end
 
 	def get_payment_data
