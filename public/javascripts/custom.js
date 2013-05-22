@@ -232,11 +232,22 @@ $(this).remove();
 
 });
 
+//  при наведении на объекты при платеже
 function servicePayClick(thisElem)
 {
     $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
     $(thisElem).attr('class','service_pay_selected');
 }
+
+// рендер плашек
+function popUpRender(message)
+{
+    $('.for_pop_up').prepend('<div class="pop_up_div">' + message + '</div>'); 
+    $('.pop_up_div').fadeIn(1000);
+
+    $(".for_pop_up div:last-child").delay(5000).fadeOut(1000);
+}
+
 
 // Функция сортировки услуг.
 

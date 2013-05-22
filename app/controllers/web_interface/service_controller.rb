@@ -11,6 +11,7 @@ class WebInterface::ServiceController < WebInterfaceController
 	end
 
 	def create
+		@message = "Услуга успешно создана."
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title
 
 		service_params = {

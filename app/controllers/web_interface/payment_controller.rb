@@ -48,7 +48,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		respond_to do |format|
 			format.js {
-				redirect_to url
+				render "window.location.replace('<%= url %>');"
 			}
 		end
 	end

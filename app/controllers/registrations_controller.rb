@@ -11,6 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
 	def create
+    @message = "Вы зарегистрировались!"
     logger.info "Createeeeee!!!"
     	user = User.new(params[:user])
     	if user.save
