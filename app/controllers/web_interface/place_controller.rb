@@ -28,6 +28,7 @@ class WebInterface::PlaceController < WebInterfaceController
 		@message = "Объект успешно создан."
 		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
 		if @place.save
+			logger.info params[:controller]
 			if params[:controller] == "registrations"
 				respond_to do |format|
 					format.js {
