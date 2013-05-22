@@ -47,21 +47,22 @@
 	<div class="pay_text">
 
 		<% @places.each do |place| %>
-			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}" %>
+			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear': 'none');" %>
 		<% end %>
 	</div>
 
 		</div>
 
-		<div id="slideUpBox" class="box_left box" >
-			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
-		</div>
+
 
 
 		<div class="box_right box_blue" id="place_card_box">
 			<%= render 'web_interface/shared/place_card'%>
 		</div>
-
+		
+		<div id="slideUpBox" class="box_left box" >
+			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
+		</div>
 
 	</div>
 	<div class="horizontal_div">
