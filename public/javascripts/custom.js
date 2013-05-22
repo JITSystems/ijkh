@@ -200,7 +200,7 @@ $(this).remove();
        // $(this).css('background-color','#e8eef2');
 
         $('.object').click(function(){
-            $('.pay_text').find('.object_selected').attr('class','object')
+            $('.pay_text').find('.object_selected').attr('class','object');
             $(this).attr('class','object_selected');
         })
 
@@ -214,7 +214,7 @@ $(this).remove();
     $('.service_pay').mouseenter(function(){
         //$(this).css('background-color','#d5e6f2');
         $('.service_pay').click(function(){
-            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
+            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay');
             $(this).attr('class','service_pay_selected');
         })
         var TrueClass = $(this).attr('class')

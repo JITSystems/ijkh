@@ -10,7 +10,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	def get_payment_data
 		@tariff = Tariff.where(service_id: params[:service_id]).first
 		@fields = @tariff.fields
-		@account = Account.where(service_id: params[:service_id])
+		@account = Account.where(service_id: params[:service_id]).first
 
 		respond_to do |format|
 			format.js {
