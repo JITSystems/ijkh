@@ -9,9 +9,11 @@
 								<p>Выберите объект</p>
 							</div>
 							<div class="pay_text">
+							<% if @places != [] %>
 								<% @places.each do |place| %>
 									<%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %>
 								<% end %>
+							<% end %>
 							</div>
 							
 						</div>
