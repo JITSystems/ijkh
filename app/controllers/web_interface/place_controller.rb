@@ -24,23 +24,27 @@ class WebInterface::PlaceController < WebInterfaceController
 		end
 	end
 
+	def profile_create
+		@message = "Объект успешно создан."
+		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
+		
+		if @place.save
+			respond_to do |format|
+				format.js {
+					render 'web_interface/place/create_profile'
+				}
+			end
+		end
+	end
+
 	def create
 		@message = "Объект успешно создан."
 		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
-		if @place.save
-			logger.info params[:controller]
-			if params[:controller] == "registrations"
-				respond_to do |format|
-					format.js {
-						render 'web_interface/place/create'
-					}
-				end
-			else
-				respond_to do |format|
-					format.js {
-						render 'web_interface/place/create_profile'
-					}
-				end
+		if @place.save		
+			respond_to do |format|
+				format.js {
+					render 'web_interface/place/create'
+				}
 			end
 		end
 	end
