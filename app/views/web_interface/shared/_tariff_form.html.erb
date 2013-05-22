@@ -10,7 +10,7 @@
 			<div class="price_pay">
 				<% @fields.each do |field|%>
 				<div class="tariff_field">
-					<p><%= field.title %></p><p><%= field.value %></p>
+					<p><%= field.title %></p>:<p><%= field.value %></p><p><%= field.field_units%></p>
 				</div>
 				<% end %>
 			</div>
@@ -22,5 +22,5 @@
 					<%= button_to "Создать счет", "/get_recurrent_account/#{@tariff.id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
 					<!--input class="tariff_button" name="" type="submit" value="Создать счет" style="width: 200px;"-->
 				<% end %>
-				<p>Сумма к оплате:</p><p><%= @account.amount %></p>
+				<p>Сумма к оплате:</p><p><%= @account.amount %>р.</p>
 			</div>
