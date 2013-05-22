@@ -1338,7 +1338,7 @@ body > #wrap {height: auto; min-height: 100%;}
 
 .price_pay .tariff_field p
 {
-	width: none;
+	width: auto;
 	padding-right: 5px;
 }
 
