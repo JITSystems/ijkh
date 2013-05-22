@@ -8,7 +8,7 @@
 		<div class="mc"></div>
 	</div>
 
-<%= form_tag("/pay", remote: true, method: :post) do %>
+<%= form_tag("/pay", remote: true, method: :get) do %>
 	<div class="amount_box">
 		<p>Cумма к оплате, руб:</p>
 		<input disabled="disabled" class="reg_input" id="amount_total" name="amount_total" type="text" value="">
