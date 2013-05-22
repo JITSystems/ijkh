@@ -22,5 +22,5 @@
 					<%= button_to "Создать счет", "/get_recurrent_account/#{@tariff.service_id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
 					<!--input class="tariff_button" name="" type="submit" value="Создать счет" style="width: 200px;"-->
 				<% end %>
-				<p>Сумма к оплате:</p><p><%= @account.amount %>р.</p>
+				<p>Сумма к оплате:</p><p class="account_amount" ><%= @account.amount %>р.</p>
 			</div>

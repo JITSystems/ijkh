@@ -19,6 +19,40 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 	end
 
+	def pay
+		logger.info params.inspect
+		@account= Account.find(params[:account_id])
+		@vendor = @account.service.vendor
+
+		recipe_params = {
+			account_id: 	params[:account_id],
+			service_id: 	@account.service.id,
+			amount: 		params[:amount_total]
+		}
+
+		@recipe = Recipe.create_recipe current_user, recipe_params
+
+		po_root_url = "https://secure.payonlinesystem.com/ru/payment/select"
+
+		merchant_id = @vendor.merchant_id
+		order_id = @recipe.id
+		amount = params[:amount_total]
+		currency = "RUB"
+		private_security_key = "7ab9d14e-fb6b-4c78-88c2-002174a8cd88"
+
+		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+
+		security_key = Digest::MD5.hexdigest(security_key_string)
+
+		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&returnUrl=http://izkh.ru"
+
+		respond_to do |format|
+			format.js {
+				redirect_to url
+			}
+		end
+	end
+
 	def get_meter_reading
 
 		@fields = Field.where(tariff_id: params[:tariff_id])

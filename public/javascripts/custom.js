@@ -213,10 +213,10 @@ $(this).remove();
 
 
 
-        $('.service_pay').click(function(){
-            $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
-            $(this).attr('class','service_pay_selected');
-        })
+        // $('.service_pay').click(function(){
+        //     $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
+        //     $(this).attr('class','service_pay_selected');
+        // })
 
 
 

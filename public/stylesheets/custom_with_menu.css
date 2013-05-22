@@ -1367,6 +1367,30 @@ cursor: pointer;
 {
 	display: none;
 }
+
+.amount_box p {
+	position: relative;
+	color: #47555e;
+	left: 34px;
+	font-size: 15px;
+	display: block;
+	border: none;
+	line-height: 4;
+	width: auto;
+	display: inline-block;
+}
+
+.amount_box .reg_input 
+{
+	margin-right: 15px;
+	width: 230px;
+	float: right;
+}
+
+.end
+{
+	clear: both;
+}
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;

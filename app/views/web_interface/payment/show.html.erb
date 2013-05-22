@@ -27,20 +27,7 @@
 					<div class="horizontal_div">
 							<div class="box_left box_blue" id="tariff_selected_box" style="display:none;">
 							</div>
-
-						<div class="box_right box_blue">
-							<div class="box_top_right ">
-								<p>Оплата</p>
-							</div>
-							<div class="visa_mc">
-								<p>Оплата банковской картой</p>
-								<div class="visa"></div>
-								<div class="mc"></div>
-							</div>
-							<div class="end">
-								<%= submit_tag("Оплатить", :class=>:end_button, disabled: true) %>
-							</div>
-						</div>
+							<%= render 'web_interface/shared/payment_form'%>
 					</div>
 
 					<div class="horizontal_div">

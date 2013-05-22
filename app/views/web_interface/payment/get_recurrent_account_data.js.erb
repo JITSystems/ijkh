@@ -1,1 +1,4 @@
-alert("<%= @account.amount %>");
+$('p.account_amount').html('<%= @account.amount %>');
+$('input#account_id').attr('value', '<%= @account.id %>');
+$('input#amount_total').attr('value', '<%= @account.amount %>');
+$(".end_button").removeAttr("disabled");
