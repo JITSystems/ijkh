@@ -1320,7 +1320,7 @@ body > #wrap {height: auto; min-height: 100%;}
 	text-decoration: none;
 }
 
-.pay_text a:nth-child(odd) {
+.pay_text a:nth-child(odd), .service_pay_block a:nth-child(odd) {
     background: #f0f0f0; /* Цвет фона */
    } 
 
