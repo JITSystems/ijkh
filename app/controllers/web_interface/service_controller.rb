@@ -1,3 +1,5 @@
+# encoding: utf-8 
+
 class WebInterface::ServiceController < WebInterfaceController
 	
 	def get_service
