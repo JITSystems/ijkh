@@ -503,12 +503,14 @@ body > #wrap {height: auto; min-height: 100%;}
 	background-color: #d5e6f2;
 }
 .pay_ended p{
-	position: absolute;
 	font-size: 14px;
 	line-height: 1.4;
 	color: #47555e;
-	top:15px;
-	right:100px;
+	top: 11px;
+	right: -233px;
+	margin: 0px 0px 0px 0px;
+	float: left;
+	padding-right: 10px;
 }
 .price_for_pay{
 	position: absolute;
@@ -1332,6 +1334,16 @@ body > #wrap {height: auto; min-height: 100%;}
 .pay_text a.object_selected, .service_pay_block a.service_pay_selected
 {
 	background-color: #a0a0a0;
+}
+
+.price_pay .tariff_field p
+{
+	width: none;
+}
+
+.pay_ended p
+{
+	margin: 0px 0px 0px 0px;
 }
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;

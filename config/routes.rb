@@ -92,6 +92,8 @@ Ijkh::Application.routes.draw do
       post 'get_place/:place_id' => 'web_interface/place#get_place'
       post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
+      post 'get_meter_reading/:tariff_id' => 'web_interface/payment/get_meter_reading'
+      post 'get_recurrent_account/:tariff_id' => 'web_interface/payment/get_recurrent_account'
       post 'place' => 'web_interface/place#create'
       post 'service' => 'web_interface/service#create'
 

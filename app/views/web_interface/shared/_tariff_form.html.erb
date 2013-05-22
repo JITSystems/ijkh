@@ -5,18 +5,22 @@
 			</p>
 			</div>
 			<div class="tarif_selected_pay">
-				<p>Вы выбрали тариф @tariff.title</p>
+				<p>Вы выбрали тариф <%= @tariff.title %></p>
 			</div>
 			<div class="price_pay">
 				<% @fields.each do |field|%>
+				<div class="tariff_field">
 					<p><%= field.title %></p><p><%= field.value %></p>
+				</div>
 				<% end %>
 			</div>
 			<div class="pay_ended">
 				<% if @tariff.has_readings %>
-					<input class="tariff_button" name="" type="submit" value="Ввести показания" style="width: 200px;">
+					<%= button_to "Ввести показания", "/get_meter_reading/#{@tariff.id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
+					<!--input class="tariff_button" name="" type="submit" value="Ввести показания" style="width: 200px;"-->
 				<% else %>
-					<input class="tariff_button" name="" type="submit" value="Создать счет" style="width: 200px;">
+					<%= button_to "Создать счет", "/get_recurrent_account/#{@tariff.id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
+					<!--input class="tariff_button" name="" type="submit" value="Создать счет" style="width: 200px;"-->
 				<% end %>
 				<p>Сумма к оплате:</p><p><%= @account.amount %></p>
 			</div>

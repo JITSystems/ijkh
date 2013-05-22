@@ -18,4 +18,10 @@ class WebInterface::PaymentController < WebInterfaceController
 			}
 		end
 	end
+
+	def get_meter_reading
+	end
+	
+	def get_recurrent_account
+	end
 end
