@@ -196,33 +196,37 @@ $(this).remove();
 
 //  при наведении на объекты при платеже
 
-    $('.object').mouseenter(function(){
-       // $(this).css('background-color','#e8eef2');
+    // $('.object').mouseenter(function(){
+    //    // $(this).css('background-color','#e8eef2');
+
+
+
+    //     var TrueClass = $(this).attr('class')
+    //     $(this).mouseleave(function(){
+    //      //   $('.object').css('background-color','#d5e6f2');
+            
+    //     })
+    // })
 
         $('.object').click(function(){
             $('.pay_text').find('.object_selected').attr('class','object')
             $(this).attr('class','object_selected');
         })
 
-        var TrueClass = $(this).attr('class')
-        $(this).mouseleave(function(){
-         //   $('.object').css('background-color','#d5e6f2');
-            
-        })
-    })
-
-    $('.service_pay').mouseenter(function(){
-        //$(this).css('background-color','#d5e6f2');
         $('.service_pay').click(function(){
             $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
             $(this).attr('class','service_pay_selected');
         })
-        var TrueClass = $(this).attr('class')
-        $(this).mouseleave(function(){
-        //    $('.service_pay').css('background-color','#e8eef2');
+
+    // $('.service_pay').mouseenter(function(){
+    //     //$(this).css('background-color','#d5e6f2');
+
+    //     var TrueClass = $(this).attr('class')
+    //     $(this).mouseleave(function(){
+    //     //    $('.service_pay').css('background-color','#e8eef2');
             
-        })
-    })
+    //     })
+    // })
     
 
 });

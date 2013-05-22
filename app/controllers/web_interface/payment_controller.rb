@@ -20,8 +20,16 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_meter_reading
+
+		@fields = Field.where(tariff_if: params[:tariff_id])
+
+		respond_to do |format|
+			format.js {
+				render 'web_interface/payment/get_meter_reading_data'
+			}
+		end
 	end
-	
+
 	def get_recurrent_account
 	end
 end

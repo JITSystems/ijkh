@@ -1346,6 +1346,22 @@ body > #wrap {height: auto; min-height: 100%;}
 {
 	margin: 0px 0px 0px 0px;
 }
+
+input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabled"]{
+position: relative;
+display: block;
+margin: 0 auto;
+width: 220px;
+height: 40px;
+background-color: #8da9bc;
+text-align: center;
+text-shadow: 1px 1px 0px #FFF;
+color: #6a7f8d;
+border: 0px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+}
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;

@@ -4,18 +4,14 @@
 				Ввод показаний счётчика
 			</p>
 			</div>
-			<div class="tarif_selected_pay">
+			<!--div class="tarif_selected_pay">
 				<p>Прошлые показания</p> 
-			</div>
+			</div-->
 			<div class="price_pay" style="height: 160px;">
-
-	<label for=""><p style="top: 38px;">Холодная вода</p><input type="text" class="tariff_input_reading"></label>
-	<label for=""><p style="top: 38px;">Горячая вода</p><input type="text" class="tariff_input_reading"></label>
-
-			</div>
-			<div class="tarif_input_pay">
-				<p>Параметр тарифа если есть</p>
+				<% @fields.each do |field|%>
+					<label for=""><p style="top: 38px;"><%= field.title %></p><input type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading"></label>
+				<% end %>
 			</div>
 			<div class="pay_ended">
-					<input class="tariff_button" name="" type="submit" value="Сохранить показания" style="width: 200px;">
+				<%= button_to "Сохранить показания", "/save_meter_readings", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
 			</div>

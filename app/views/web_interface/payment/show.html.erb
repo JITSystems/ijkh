@@ -27,6 +27,7 @@
 					<div class="horizontal_div">
 							<div class="box_left box_blue" id="tariff_selected_box" style="display:none;">
 							</div>
+
 						<div class="box_right box_blue">
 							<div class="box_top_right ">
 								<p>Оплата</p>
@@ -37,8 +38,18 @@
 								<div class="mc"></div>
 							</div>
 							<div class="end">
-								<%= submit_tag("Оплатить", :class=>:end_button) %>
+								<%= submit_tag("Оплатить", :class=>:end_button, disabled: true) %>
 							</div>
 						</div>
 					</div>
+
+					<div class="horizontal_div">
+
+							<div class="box_left box_blue" id="meter_reading_box" style="display:none;">
+							</div>
+
+					</div>
+
+
+
 				</div>
