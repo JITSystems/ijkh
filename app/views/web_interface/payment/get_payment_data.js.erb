@@ -3,7 +3,7 @@ $('#tariff_selected_box').html('<%= escape_javascript render("web_interface/shar
 $('#tariff_selected_box').fadeIn(300);
 <% if @account.amount.to_f != 0.0 %>
 	$(".end_button").removeAttr("disabled");
-	$(".amount_total").removeAttr("disabled");
+	$("#amount_total").removeAttr("disabled");
 	$('input#account_id').attr('value', '<%= @account.id %>');
 	$('input#amount_total').attr('value', '<%= @account.amount %>');
 <% end %>

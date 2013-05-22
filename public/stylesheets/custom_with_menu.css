@@ -1383,8 +1383,11 @@ cursor: pointer;
 .amount_box .reg_input 
 {
 	margin-right: 15px;
-	width: 230px;
+	text-align: right;
+	padding-right: 20px;
+	width: 200px;
 	float: right;
+	color: rgb(33, 83, 117);
 }
 
 .end
