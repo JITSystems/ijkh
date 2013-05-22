@@ -58,7 +58,9 @@
 
 
 		<div class="box_right box_blue" id="place_card_box">
+			<% if @places != [] %>
 			<%= render 'web_interface/shared/place_card'%>
+			<% end %>
 		</div>
 		
 		<div id="slideUpBox" class="box_left box" >
