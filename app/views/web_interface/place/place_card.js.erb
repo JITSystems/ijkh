@@ -1,5 +1,5 @@
 $("div#place_card_box").fadeOut();
-$("div#place_card_box").delay(500).html('<%= escape_javascript render("web_interface/shared/place_card") %>');
+$("div#place_card_box").html('<%= escape_javascript render("web_interface/shared/place_card") %>');
 $("div#place_card_box").fadeIn();
 $("input#service_place_id").attr('value', '<%= @place.id %>');
 $("input#place_id").attr('value', '<%= @place.id %>');

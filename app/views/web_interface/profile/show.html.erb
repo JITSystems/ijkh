@@ -53,13 +53,15 @@
 
 		</div>
 
+		<div id="slideUpBox" class="box_left box" >
+			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
+		</div>
+
+
 		<div class="box_right box_blue" id="place_card_box">
 			<%= render 'web_interface/shared/place_card'%>
 		</div>
 
-		<div id="slideUpBox" style="clear: both;" class="box_left box" >
-			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
-		</div>
 
 	</div>
 	<div class="horizontal_div">

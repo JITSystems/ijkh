@@ -1396,13 +1396,15 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 
 #slideUpBox
 {
-	clear: both;
+	/*clear: both;*/
 }
+
 
 .pay_text
 {
 	height:150px;
 	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 #place_card_box .edit_object_button
