@@ -8,7 +8,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_payment_data
-		@tariff = Tariff.where(service_id: params[:service_id])
+		@tariff = Tariff.where(service_id: params[:service_id]).first
 		@fields = @tariff.fields
 		@account = Account.where(service_id: params[:service_id])
 

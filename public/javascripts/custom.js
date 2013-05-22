@@ -210,15 +210,16 @@ $(this).remove();
             
         })
     })
+
     $('.service_pay').mouseenter(function(){
-        $(this).css('background-color','#d5e6f2');
+        //$(this).css('background-color','#d5e6f2');
         $('.service_pay').click(function(){
             $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
             $(this).attr('class','service_pay_selected');
         })
         var TrueClass = $(this).attr('class')
         $(this).mouseleave(function(){
-            $('.service_pay').css('background-color','#e8eef2');
+        //    $('.service_pay').css('background-color','#e8eef2');
             
         })
     })
