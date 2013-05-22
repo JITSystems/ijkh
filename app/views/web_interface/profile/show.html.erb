@@ -47,7 +47,7 @@
 	<div class="pay_text">
 
 		<% @places.each do |place| %>
-			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "<%= place.id %>" %>
+			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}" %>
 		<% end %>
 	</div>
 
@@ -73,8 +73,3 @@
 		</div>
 	</div>
 </div>
-
-
-<script>
-	
-</script>
