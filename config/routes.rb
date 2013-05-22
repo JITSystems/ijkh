@@ -98,6 +98,7 @@ Ijkh::Application.routes.draw do
       post 'save_meter_readings' => 'web_interface/meter_reading#create'
       post 'place' => 'web_interface/place#create'
       post 'service' => 'web_interface/service#create'
+      delete 'place' => 'web_interface/place#destroy'
 
   end
 
