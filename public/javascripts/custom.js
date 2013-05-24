@@ -1,4 +1,27 @@
 $(document).ready(function($) {
+//      растягиваем на весь экран контейнер
+/*$(window).load(function() {
+    var Window = $(window),
+        $container = $('.nexus'),
+        aspectRatio = $container.height();
+        alert(aspectRatio)
+    function Resize(){
+        if ( Window.height() > aspectRatio) {
+            $container
+                        .removeClass();
+             $container           .addClass('containerheight');
+        }   
+        else {}
+    }
+    Window.resize(function(){
+        Resize();
+    }).trigger('resize');
+});*/
+$(".container").height($(document).height() - 97);    
+
+
+//      синий квадрат в чекбоксе off/on
+
 	$('.login_input_check').click(function(){
 		if ($('#some_input').is(':checked')){
 			$('.login_input_check').css('background-image','url(images/checkbox_off.png)')

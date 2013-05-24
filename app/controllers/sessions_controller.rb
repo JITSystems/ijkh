@@ -55,7 +55,7 @@ class SessionsController < Devise::SessionsController
       format.json {
     render json: { error: {message: "Неверный адрес эл. почты или пароль."}}, status: 401
   }
-    format.html { flash[:errors] = "Неверный адрес эл. почты или пароль." }
+    format.html { redirect_to "/login" }
   end
   end
 end

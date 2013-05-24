@@ -7,9 +7,14 @@ html,body{
 	background-position: 50% 0%;
 	/*overflow-y: scroll; */
 }
-#wrap {height: 100%}
-body > #wrap {height: auto; min-height: 100%;}
-#main { padding-bottom: 97px; }
+.nexus{
+	position: relative;
+	width: 960px;
+	margin: 0 auto;
+}
+#wrap {height: 0%}
+body > #wrap {height: auto; min-height: 0%;}
+#main { padding-bottom: 0px; }
 .container{
 	position: relative;
 	width: 960px;
@@ -115,6 +120,10 @@ body > #wrap {height: auto; min-height: 100%;}
 	top: 50px;
 	font-weight: 600;
 }
+
+
+/*----------------------------	FREE FOR ALL   ----------------------------*/
+
 .profile_plate{
 	position: relative;
 	margin: 0 auto;
@@ -216,7 +225,6 @@ body > #wrap {height: auto; min-height: 100%;}
 	margin: 0 auto;
 	width: 930px;
 	margin-top: 25px;
-	min-height: 500px;
 }
 .horizontal_div{
 	position: relative;

@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div class="nexus">
-			<% if params[:controller] != "web_interface/offer"%> <div class="container"> <% end %>
+			<% if params[:controller] != "web_interface/offer"%> <!--div class="container"--> <% end %>
 			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
 				<%= render "web_interface/shared/menu"%>
 			<%end%>
@@ -29,7 +29,7 @@
 			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
 				<%= render "web_interface/shared/footer"%>
 			<% end%>
-			<% if params[:controller] != "web_interface/offer" %></div><% end %>
+			<% if params[:controller] != "web_interface/offer" %><!--/div--><% end %>
 			<div class="for_pop_up"> </div>
 	</div>
 </body>

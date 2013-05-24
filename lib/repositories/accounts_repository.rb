@@ -8,7 +8,7 @@ module AccountsRepository
 	def update_account_amount service_id, amount_subtrahend, amount
 		account = fetch_account_by_service service_id
 
-		amount = check_comma ammount
+		amount = check_comma amount
 		amount_subtrahend = check_comma amount_subtrahend
 
 		amount = account.amount.to_f - amount_subtrahend.to_f
