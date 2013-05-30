@@ -1,24 +1,26 @@
-<div class="menu_logo_top"></div>
 <div class="prof_name">
 </div>
 <div class="menu">
-	<ul class="menulist">
-		<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "main" %></li>
-		<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "payment" %></li>
-		<li class="menulistLi"><%= link_to "ПРОФИЛЬ", "profile" %></li>
-		<li class="menulistLi menulistLiDrop">
-			<!--%= link_to "Пользователям", "user" %-->
-			<p>ПОЛЬЗОВАТЕЛЯМ</p>
-			<ul class="dropdownMenu">
-				<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "inner_offer" %></li>
-				<li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", "profile" %></li>
-			</ul>
-		</li>
-		<li class="menulistLi"><%= link_to "О КОМПАНИИ", "http://айжкх.рф/company.html" %></li>
-		<% unless current_user %>
-			<li class="menulistLi last"> <%= link_to "ВОЙТИ", "login" %></li>
-		<% else %>
-			<li class="menulistLi last"> <%= link_to "ВЫЙТИ", "logout" %></li>
-		<% end %>
-	</ul>
+	<div class="menu_container">
+		<div class="menu_logo_top"></div>
+		<ul class="menulist">
+			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "main" %></li>
+			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "payment" %></li>
+			<li class="menulistLi"><%= link_to "ПРОФИЛЬ", "profile" %></li>
+			<li class="menulistLi menulistLiDrop">
+				<!--%= link_to "Пользователям", "user" %-->
+				<p>ПОЛЬЗОВАТЕЛЯМ</p>
+				<ul class="dropdownMenu">
+					<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "inner_offer" %></li>
+					<li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", "profile" %></li>
+				</ul>
+			</li>
+			<li class="menulistLi"><%= link_to "О КОМПАНИИ", "about" %></li>
+			<% unless current_user %>
+				<li class="menulistLi last"> <%= link_to "ВОЙТИ", "login" %></li>
+			<% else %>
+				<li class="menulistLi last"> <%= link_to "ВЫЙТИ", "logout" %></li>
+			<% end %>
+		</ul>
+	</div>
 </div>

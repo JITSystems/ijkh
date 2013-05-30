@@ -17,7 +17,13 @@ $(document).ready(function($) {
         Resize();
     }).trigger('resize');
 });*/
-$(".container").height($(document).height() - 97);    
+
+
+
+// Непонятно зачем нужная функция установки высоты контейнеров по высоте окна
+
+// $('body').height($(window).height());
+// $(".nexus").height($(window).height());    
 
 
 //      синий квадрат в чекбоксе off/on
@@ -269,6 +275,9 @@ function popUpRender(message)
     $('.pop_up_div').fadeIn(1000);
 
     $(".for_pop_up div:last-child").delay(5000).fadeOut(1000);
+
+    //$(".for_pop_up").delay(5000).html("");
+
 }
 
 

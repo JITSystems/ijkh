@@ -5,14 +5,18 @@ html,body{
 	overflow-x: hidden;
 	background-image: url(../images/background.jpg);
 	background-position: 50% 0%;
-	/*overflow-y: scroll; */
 }
 .nexus{
 	position: relative;
-	width: 960px;
 	margin: 0 auto;
+	min-height: 100%;
 }
-#wrap {height: 0%}
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -97px;
+}
 body > #wrap {height: auto; min-height: 0%;}
 #main { padding-bottom: 0px; }
 .container{
@@ -20,6 +24,11 @@ body > #wrap {height: auto; min-height: 0%;}
 	width: 960px;
 	height: 100%;
 	margin: 0 auto;
+}
+
+.content
+{
+	padding-bottom: 107px;
 }
 
 /*----------------------------	MENU   ----------------------------*/
@@ -38,9 +47,15 @@ body > #wrap {height: auto; min-height: 0%;}
 	background-color: #d1dde4;
 	border-bottom: 1px solid #0071bc;
 }
+.menu_container{
+	margin: 0 auto;
+	position: relative;
+	max-width: 1065px;
+}
 .menu_logo_top{
 	position: absolute;
-	left: 15px;
+	/* left: 129px; */
+	top:-41px;
 	width: 128px;
 	height: 132px;
 	background-image: url(../images/logo-round.png);
@@ -283,6 +298,11 @@ body > #wrap {height: auto; min-height: 0%;}
 	width: 450px;
 	height: 122px;
 	border-bottom: 1px dotted #8da9bc;
+}
+.pass_req
+{
+	padding: 0px 70px 0px 35px;
+	color: red;
 }
 .reg_input{
 	position: relative;
@@ -595,12 +615,13 @@ body > #wrap {height: auto; min-height: 0%;}
 	left:15px;
 	color: #47555e;
 	font-size: 14px;
+	padding: 0px 30px 0px 0px;
 }
 .info_text_begin{
 	margin-top: 20px;
 }
 .text_bold_info{
-	margin-top: 27px;
+	margin-top: 20px;
 	font-weight: 600;
 }
 .step{
@@ -838,6 +859,19 @@ body > #wrap {height: auto; min-height: 0%;}
 }
 .dog_number{
 	position: relative;
+	display: inline-block;
+	width: 150px;
+	height: 32px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	color: #8da9bc;
+	text-indent: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	left: 48px;
+	margin: 0px 0px 25px 0px;
+
+	/*position: relative;
 	display: block;
 	width: 150px;
 	height: 32px;
@@ -848,7 +882,7 @@ body > #wrap {height: auto; min-height: 0%;}
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	left: 48px;
-	margin: 24px 0px 24px 0px;
+	margin: 24px 0px 24px 0px;*/
 }
 .custom_tarif{
 	position: relative;
@@ -1027,6 +1061,39 @@ body > #wrap {height: auto; min-height: 0%;}
 	margin-top: 5px;
 	background-color: #FFF;
 }
+
+.white_cub_1 img 
+{
+	width: 100%;
+	padding: 15% 0px;
+}
+
+.white_cub_2 img 
+{
+	width: 95%;
+	padding: 15px 5px;
+}
+
+.white_cub_3 img 
+{
+	height: 100%;
+	padding: 0px 42px;
+}
+
+.white_cub_4 img
+{
+	height: 97%;
+	padding: 2px 39px;
+}
+
+
+.white_cub a 
+{
+	width: 100%;
+	height: 100%;
+}
+
+
 .horizontal_div_pay_one{
 	width: 930px;
 	margin: 25px auto 0px;
@@ -1129,6 +1196,7 @@ body > #wrap {height: auto; min-height: 0%;}
 	margin: 0 auto;
 	background-color: #d5e6f2;
 	border-top: 1px solid #8da9bc;
+
 }
 .oferta_some_text{
 	position: relative;
@@ -1218,6 +1286,12 @@ body > #wrap {height: auto; min-height: 0%;}
 	height: 97px;
 	background-color: #e8eef2;
 	clear:both;
+	margin-top: -97px;
+}
+.footer_container{
+	position: relative;
+	width: 920px;
+	margin: 0 auto;
 }
 .clearfix:after {content: ".";
     display: block;
@@ -1232,16 +1306,17 @@ body > #wrap {height: auto; min-height: 0%;}
 .mini_logo{
 	position: absolute;
 	width: 63px;
-	height: 63px;
+	height: 64px;
 	background: url(../images/logo-round_mini.png) no-repeat;
 	background-position: 0px 1px;
 	left: 14px;
 	z-index: 10;
+	top: 10px;
 }
 .footer_text{
 	position: absolute;
 	width: 170px;
-	top: 9px;
+	top: 19px;
 	left: 84px;
 }
 .footer_text p{
@@ -1255,7 +1330,7 @@ body > #wrap {height: auto; min-height: 0%;}
 	width: 100%;
 	height: 1px;
 	background-color: #FFF;
-	top:47px;
+	top:57px;
 }
 .app_download{
 	position: absolute;
@@ -1275,8 +1350,8 @@ body > #wrap {height: auto; min-height: 0%;}
 .for_pop_up
 {
 	position: fixed;
-	bottom: 0px;
-	left: 0px;
+	bottom: 50%;
+	left: 50%;
 	z-index: 999;
 	
 
@@ -1295,11 +1370,11 @@ body > #wrap {height: auto; min-height: 0%;}
 	-o-border-radius: 5px;
 	cursor: pointer;
 	padding: 15px;
-	margin: 20px;
-	opacity: 0.8;
+	opacity: 0.9;
 	position: relative;
 	text-align: center;
 	display: none;
+	margin: -50% -50%;
 
 }
 
@@ -1372,7 +1447,7 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 
 .reg_end input[type="button"][disabled="disabled"]
 {
-		position: relative;
+	position: relative;
 	display: block;
 	width: 220px;
 	height: 40px;

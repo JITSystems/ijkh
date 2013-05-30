@@ -21,16 +21,20 @@
 	</head>
 	<body>
 		<div class="nexus">
-			<% if params[:controller] != "web_interface/offer"%> <!--div class="container"--> <% end %>
-			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
-				<%= render "web_interface/shared/menu"%>
-			<%end%>
-			<%= yield %>
+			<div class="content">
+				<h1 style="color: white; font-size: 100px;"></h1>
+				<% if params[:controller] != "web_interface/offer"%> <!--div class="container"--> <% end %>
+				<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
+					<%= render "web_interface/shared/menu"%>
+				<%end%>
+				<%= yield %>
+				
+				<div class="for_pop_up"> </div>
+			</div>
+		</div>
 			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
 				<%= render "web_interface/shared/footer"%>
 			<% end%>
 			<% if params[:controller] != "web_interface/offer" %><!--/div--><% end %>
-			<div class="for_pop_up"> </div>
-	</div>
-</body>
+	</body>
 </html>

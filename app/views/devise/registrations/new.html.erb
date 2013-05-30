@@ -1,4 +1,3 @@
-<%= params[:controller] %>
 <div class="top_plate">
 <p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 <p class="text_plate_blue">Регистрация нового Пользователя</p>
@@ -19,7 +18,9 @@
 <%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
 </div>
 <div class="two_pass">
-<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze" %>
+<%= f.password_field :password, placeholder:  "Пароль*", class: "reg_input reg_freeze" %>
+<p class="pass_req"> *Пароль должен содержать
+не менее восьми символов </p>
 <!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
 </div>
 
@@ -45,9 +46,15 @@
 <div class="info_text">
 <p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
 <p class="text_bold_info">Шаг 1</p>
-<p class="step">Для начала работы вам нужно добавить объект...</p>
+<p class="step">Для начала работы вам нужно ввести свои регистрационные данные и согласиться с условиями оферты</p>
 <p class="text_bold_info">Шаг 2</p>
-<p class="step">...</p>
+<p class="step">Внести данные вашего жилья, в форме «Добавление места», обратите внимание на правильность введенных данных.</p>
+<p class="text_bold_info">Шаг 3</p>
+<p class="step">Для добавления к объекту услуг, выберите тип услуги и конкретного поставщика из списка, а так же его тариф. Далее следует ввести номер лицевого счета или договора на оказание услуг и нажать «Добавить услугу». Вы можете добавить любое количество услуг на этом экране или продолжить прикрепление услуг в разделе «Профиль».</p>
+<p class="text_bold_info">Шаг 4</p>
+<p class="step">Переходите в раздел "оплатить услуги" для оплаты новых счетов</p>
+
+
 </div>
 </div>
 </div>
