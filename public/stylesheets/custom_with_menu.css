@@ -1510,6 +1510,11 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 {
 	background-color: rgb(188, 0, 0);
 }
+
+#table_info
+{
+	padding: 5px 0px;
+}
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;
