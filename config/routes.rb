@@ -46,6 +46,7 @@ Ijkh::Application.routes.draw do
 
 # Vendor
   get 'api/1.0/servicetype/:service_type_id/vendors' => 'vendor#index_with_tariffs'
+  get 'api/1.0/vendors' => 'vendor#index'
 
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
