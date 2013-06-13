@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="stylesheets/resetor.css">
+		<% if params[:controller] != "login" and  params[:controller] != "oferta"  %><link rel="stylesheet" type="text/css" href="stylesheets/custom_with_menu.css">
+		<% else %> <link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+		<% end %>
+		<script type="text/javascript" src="javascripts/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="javascripts/custom.js"></script>
+	</head>
+	<body>
+		<div class="nexus">
+			<%= yield %>
+	</div>
+</body>
+</html>

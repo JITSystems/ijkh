@@ -271,11 +271,11 @@ function servicePayClick(thisElem)
 // рендер плашек
 function popUpRender(message)
 {
-    $('.for_pop_up').prepend('<div class="pop_up_div">' + message + '</div>'); 
+    $('.for_pop_up').prepend('<div onclick="this.remove();" class="pop_up_div">' + message + '</div>'); 
     $('.pop_up_div').fadeIn(1000);
 
-    $(".for_pop_up div:last-child").delay(5000).fadeOut(1000);
-
+    $(".for_pop_up div:last-child").delay(2000).fadeOut(1000);
+    setTimeout('$(".for_pop_up").delay(5000).html("")', 5000);
     //$(".for_pop_up").delay(5000).html("");
 
 }

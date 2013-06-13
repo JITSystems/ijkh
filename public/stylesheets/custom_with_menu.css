@@ -3,9 +3,13 @@ html,body{
 	width: 100%;
 	height: 100%;
 	overflow-x: hidden;
-	background-image: url(../images/background.jpg);
 	background-position: 50% 0%;
 }
+
+body{
+	background-image: url(../images/background.jpg);
+}
+
 .nexus{
 	position: relative;
 	margin: 0 auto;
@@ -951,7 +955,6 @@ body > #wrap {height: auto; min-height: 0%;}
 .horizontal_div_main{
 	width: 930px;
 	margin: 25px auto 0px;
-
 }
 .object{
 	position: relative;
@@ -1374,7 +1377,7 @@ body > #wrap {height: auto; min-height: 0%;}
 	position: relative;
 	text-align: center;
 	display: none;
-	margin: -50% -50%;
+	margin: 10px -50%;
 
 }
 
