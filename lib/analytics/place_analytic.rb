@@ -43,7 +43,7 @@ class PlaceAnalytic
 		service_analytic.each do |analytic|
 			amount += analytic.amount.to_f
 		end
-		amount
+		amount.round(2)
 	end
 
 end
