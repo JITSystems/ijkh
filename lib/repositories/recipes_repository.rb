@@ -1,6 +1,7 @@
 module RecipesRepository
 
 	def create_recipe user, params
+		total = 0.0
 		amount = (check_comma params[:amount]).to_f
 		if amount < 500.00
 			po_tax = 3
@@ -12,7 +13,7 @@ module RecipesRepository
 			total = service_tax + amount
 		end
 
-		if total.to_i.even?
+		if total.to_i.odd?
 			total = total.to_i + 1
 		end
 		
