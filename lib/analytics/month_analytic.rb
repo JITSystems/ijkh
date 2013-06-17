@@ -33,7 +33,7 @@ class MonthAnalytic
 				amount += analytic.amount 
 			end
 		end
-		return amount.round(2)
+		return amount
 	end
 
 	def generate_place_analytic user, month

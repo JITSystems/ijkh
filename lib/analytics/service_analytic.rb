@@ -54,7 +54,7 @@ class ServiceAnalytic
 		analytics.each do |analytic|
 			amount += analytic.amount.to_f
 		end
-		return amount
+		return amount.round(2)
 	end
 
 end
