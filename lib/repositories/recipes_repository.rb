@@ -14,7 +14,7 @@ module RecipesRepository
 		end
 
 		if total.to_i.odd?
-			total = total.to_i + 1
+			total = total + 1
 		end
 		
 		currency = "RUB"
