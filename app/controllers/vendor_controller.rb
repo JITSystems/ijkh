@@ -9,7 +9,6 @@ class VendorController < ApplicationController
 
 	def create
 		@vendor = Vendor.new params[:vendor]
-
 		render 'vendor/show'
 	end
 

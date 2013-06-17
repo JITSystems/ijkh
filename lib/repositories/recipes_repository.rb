@@ -11,6 +11,11 @@ module RecipesRepository
 			po_tax = 0
 			total = service_tax + amount
 		end
+
+		if total.to_i.even?
+			total = total.to_i + 1
+		end
+		
 		currency = "RUB"
 
 		total = format_amount total
