@@ -34,7 +34,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		@recipe = Recipe.create_recipe current_user, recipe_params
 
-		po_root_url = "https://secure.payonlinesystem.com/ru/payment/select"
+		po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
 
 		merchant_id = @vendor.merchant_id
 		order_id = @recipe.id
