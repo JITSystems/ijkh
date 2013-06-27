@@ -1244,19 +1244,20 @@ body > #wrap {height: auto; min-height: 0%;}
 	display: block;
 	position: absolute;
 	top: 45px;
-	right:22px;
-	color:#00558d;
+	right: 48px;
+	color: #00558d;
 	font-size: 19px;
 }
 .download b{font-weight: 600;}
 .appstore{
 	display: block;
 	position: absolute;
-	top: 70px;
-	right: 22px;
+	top: 86px;
+	right: 40px;
 	color: #00558d;
 	font-size: 42px;
 	font-weight: 600;
+	text-decoration: underline;
 }
 .iphone_logo{
 	 position: absolute;
