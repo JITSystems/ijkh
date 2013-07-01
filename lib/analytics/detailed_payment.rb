@@ -10,8 +10,12 @@ class DetailedPayment
 		@service_id = params[:service_id]
 	end
 
-	def self.get_by_service_id user, service_id, month
-		analytics = Analytic.where("user_id = ? and service_id = ? and extract(month from updated_at) = ?", user.id, service_id, month).select("id, amount, updated_at, service_id, service_title, tariff_title")
+	def self.get_by_service_id user, service_id, month=nil
+		if month
+			analytics = Analytic.where("user_id = ? and service_id = ? and extract(month from updated_at) = ?", user.id, service_id, month).select("id, amount, updated_at, service_id, service_title, tariff_title")
+		else
+			analytics = Analytic.where("user_id = ? and service_id = ?", user.id, service_id).select("id, amount, updated_at, service_id, service_title, tariff_title")
+		end
 		detailed_payments = []
 
 		analytics.each do |analytic|
