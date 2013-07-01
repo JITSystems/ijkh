@@ -52,7 +52,7 @@ module RecipesRepository
 		else 
 			amount_str = amount
 		end
-		return amount_str
+		return round_up(amount_str.to_f).to_s
 	end
 
 	def format_amount amount
