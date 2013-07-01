@@ -6,7 +6,7 @@ class AnalyticController < ApplicationController
 	end
 
 	def get_detailed_payments
-		@detailed_payments = DetailedPayment.get_by_service_id current_user, params[:service_id]
+		@detailed_payments = DetailedPayment.get_by_service_id current_user, params[:service_id], params[:month]
 
 		render 'analytic/detailed'
 	end
