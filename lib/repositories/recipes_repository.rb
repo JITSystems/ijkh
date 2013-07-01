@@ -12,10 +12,6 @@ module RecipesRepository
 			po_tax = 0
 			total = service_tax + amount
 		end
-
-		if total.to_i.odd?
-			total = total + 1
-		end
 		
 		currency = "RUB"
 
