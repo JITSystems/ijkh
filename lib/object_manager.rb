@@ -10,6 +10,7 @@ class ObjectManager
 
 	def self.create(params, user = nil)
 		object.create!(params)
+		object
 	end
 
 	def self.update(params, object)
