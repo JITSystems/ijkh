@@ -7,10 +7,10 @@ class FieldParams < ParamsManager
 private
 
 	def self.field_params(params, tariff)
-		field_template = FieldTemplateManager.get(params[:field_template_id])
+		field_template = FieldTemplateManager.get(params[:id])
 
 		f_p = {
-				field_template_id: 		params[:field_template_id],
+				field_template_id: 		params[:id],
 				tariff_id: 		   		tariff.id,
 				is_for_calc: 	   		field_template.is_for_calc,
 				title: 			   		field_template.title,

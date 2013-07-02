@@ -11,15 +11,14 @@ private
 		s_p = {
 						  place_id: 		params[:place_id],
 						  service_type_id: 	params[:service_type_id],
-						  vendor_id: 		params[:vendor_id],
+						  vendor_id: 		params[:vendor][:id],
 						  user_id: 			user.id
 						 }
-		puts params.inspect
-		unless params[:vendor_id] != 0 || params[:vendor_id]
+		unless params[:vendor][:id] != 0 || params[:vendor][:id]
 			service_type = ServiceTypeManager.get(params[:service_type_id])
 			s_p.merge!(title: service_type.title + " (Пользовательский)")
 		else
-			vendor = VendorManager.get(params[:vendor_id])
+			vendor = VendorManager.get(params[:vendor][:id])
 			s_p.merge!(title: vendor.title)
 		end
 		s_p.merge!(user_account: params[:user_account]) if params[:user_account]
