@@ -149,7 +149,7 @@ private
 		
 		amount = reading_delta*value.to_f
 		
-		format_amount round_up(amount)
+		format_amount amount
 	end
 
 	def format_amount amount

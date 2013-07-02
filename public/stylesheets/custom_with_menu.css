@@ -1008,20 +1008,24 @@ body > #wrap {height: auto; min-height: 0%;}
 }
 .test_text{
 	position: relative;
-	height: 189px;
+	padding: 10px;
+	/*height: 189px;*/
 	border-bottom: 1px solid #0071bc;
+}
+.test_text h6{
+	font-weight: bold;
+	color:#6a7f8d;
+	text-align: center;
+	margin: 0px 0px 10px 0px;
 }
 .test_text p{
 	display: block;
-	height: 100px;
 	position: relative;
-	top:55px;
-	font-size: 18px;
-	width: 337px;
-	margin: 0 auto;
-	text-align: center;
-	line-height: 1.5;
 	color:#6a7f8d;
+	line-height: 1.2em;
+	font-size: 0.9em;
+	text-indent: 20px;
+	padding-bottom: 5px;
 }
 .test{
 	height: 40px;
@@ -1519,6 +1523,19 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 {
 	padding: 5px 0px;
 	font-size: 14px;
+}
+
+#company_info_link
+{
+	line-height: 1.8;
+	text-indent: 50px;
+	width: 391px;
+	cursor: pointer;
+	position: relative;
+	display: block;
+	color: rgb(4, 91, 202);
+	text-decoration: underline;
+	margin: 5px 0px;
 }
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
