@@ -11,4 +11,8 @@ class ServiceManager < ObjectManager
 		end
 		service
 	end
+
+	def self.index_by_place(place)
+		place.services
+	end
 end

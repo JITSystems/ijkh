@@ -1,11 +1,11 @@
 class ServiceTypeController < ApplicationController
 	def index
-		#@service_types = ServiceType.includes(:vendors).where( :vendors => { :is_active => true } )
-		@service_types = ServiceType.select("id, title").all
+		@service_types = ServiceTypeManager.index
 		render 'service_type/index'
 	end
 
 	def index_non_existant
+		# This one's abandoned, dead and gone code. We're never gonna use it. ='(
 		existant_service_type_ids = Service.existant_service_type_ids(params[:place_id])
 		service_type_ids = ServiceType.ids
 		non_existant_service_type_ids = service_type_ids - existant_service_type_ids
@@ -14,9 +14,7 @@ class ServiceTypeController < ApplicationController
 	end
 
 	def create
-		service_type = ServiceType.new(params[:service_type])
-		if service_type.save
-			render json: service_type
-		end
+		@service_type = ServiceTypeManager.create(params[:service_type])
+		render json: @service_type
 	end
 end

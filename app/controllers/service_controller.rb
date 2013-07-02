@@ -1,12 +1,12 @@
  class ServiceController < ApplicationController
 	def index
-		#@services = Service.by_user_and_place(current_user, params[:place_id])
-		@services = Service.where("user_id=? and place_id=?", current_user.id, params[:place_id])
+		@services = ServiceManager.index_by_place(PlaceManager.get(params[:place_id]))
 		render 'service/index'
 	end
 
 	def create
-		@service = Service.create_service current_user, params
+		#@service = Service.create_service current_user, params
+		@service = ServiceManager.create(params, current_user)
 		render 'service/show'
 	end
 
@@ -17,7 +17,7 @@
 	end
 
 	def show
-		@service = Service.find(params[:service_id])
+		@service = ServiceManager.get(params[:service_id])
 		render 'service/show'
 	end
 
