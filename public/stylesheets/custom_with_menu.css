@@ -1537,6 +1537,8 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	text-decoration: underline;
 	margin: 5px 0px;
 }
+
+
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
     -moz-transition: all 0.7s ease;
@@ -1544,3 +1546,4 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
     -ms-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }*/
+

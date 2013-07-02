@@ -1,0 +1,2 @@
+class NonUtilityVendorManager < ObjectManager
+end

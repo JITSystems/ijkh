@@ -1,0 +1,2 @@
+class TariffTemplateManager < ObjectManager	
+end

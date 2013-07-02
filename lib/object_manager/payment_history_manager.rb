@@ -1,0 +1,2 @@
+class PaymentHistoryManager < ObjectManager
+end

@@ -1,0 +1,3 @@
+class NonUtilityServiceTypeManager < ObjectManager
+	
+end

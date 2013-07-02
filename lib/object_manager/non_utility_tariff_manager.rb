@@ -1,0 +1,2 @@
+class NonUtilityTariffManager < ObjectManager
+end

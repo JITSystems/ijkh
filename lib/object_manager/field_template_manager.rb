@@ -1,0 +1,3 @@
+class FieldTemplateManager < ObjectManager
+	
+end

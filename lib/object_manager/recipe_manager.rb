@@ -1,0 +1,2 @@
+class RecipeManager < ObjectManager
+end

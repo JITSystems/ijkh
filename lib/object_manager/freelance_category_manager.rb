@@ -1,0 +1,3 @@
+class FreelanceCategoryManager < ObjectManager
+
+end
