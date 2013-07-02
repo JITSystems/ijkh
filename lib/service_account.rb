@@ -1,7 +1,7 @@
 class ServiceAccount
 
 		attr_accessor 	:title, :tariff_title, :amount, :last_update_date, :account_id,
-						:status, :is_user, :has_readings, :service_id, :merchant_id
+						:status, :is_user, :has_readings, :service_id, :merchant_id, :psk
 
 	def initialize params
 		@title = params[:title]
@@ -14,6 +14,7 @@ class ServiceAccount
 		@has_readings = params[:has_readings]
 		@service_id = params[:service_id]
 		@merchant_id = params[:merchant_id]
+		@psk = params[:psk]
 	end
 
 	def self.get_by_place_id place_id, status
@@ -33,9 +34,11 @@ class ServiceAccount
 		if service.tariff.owner_type == "User"
 				is_user = true
 				merchant_id = nil
+				psk = nil
 			else
 				is_user = false
 				merchant_id = service.vendor.merchant_id
+				psk = service.vendor.psk
 		end
 
 			service_account_params = {
@@ -48,7 +51,8 @@ class ServiceAccount
 				status: 			service.account.status,
 				has_readings: 		service.tariff.has_readings,
 				is_user: 			is_user,
-				merchant_id: 		merchant_id
+				merchant_id: 		merchant_id,
+				psk: 				psk
 			}
 
 			service_account = ServiceAccount.new(service_account_params)
