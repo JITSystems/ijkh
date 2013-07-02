@@ -14,6 +14,7 @@ private
 						  vendor_id: 		params[:vendor_id],
 						  user_id: 			user.id
 						 }
+		puts params[:vendor_id]
 		unless params[:vendor_id] != 0 || params[:vendor_id]
 			service_type = ServiceTypeManager.get(params[:service_type_id])
 			s_p.merge!(title: service_type.title + " (Пользовательский)")

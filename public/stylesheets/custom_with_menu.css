@@ -1538,6 +1538,11 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	margin: 5px 0px;
 }
 
+p.p3
+{
+	font-weight: bold;
+}
+
 
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;
