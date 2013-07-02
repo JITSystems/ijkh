@@ -14,6 +14,7 @@ class ObjectManager
 
 	def self.update(params, object)
 		object.update_attributes(params)
+		object
 	end
 
 	def self.delete(id)
