@@ -5,8 +5,8 @@
 	end
 
 	def create
-		#@service = Service.create_service current_user, params
-		@service = ServiceManager.create(params, current_user)
+		@service = Service.create_service current_user, params
+		#@service = ServiceManager.create(params, current_user)
 		render 'service/show'
 	end
 
