@@ -2,6 +2,7 @@ class PlaceManager < ObjectManager
 
 	def create(params, user)
 		place = Place.create!(params.merge!(user_id: user.id, is_active: true))
+		place
 	end
 
 	def self.deactivate(place)
