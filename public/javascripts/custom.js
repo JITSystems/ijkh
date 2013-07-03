@@ -398,7 +398,7 @@ function sortFun(thisEl){
         break
 
         case 'userTariff':
-        $('#serviceFreeze').css('height','20%');
+        $('#serviceFreeze').css('height','33%');
         $("[vendorid="+0+"]").show();
         break
 
@@ -407,7 +407,7 @@ function sortFun(thisEl){
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
-        $('#serviceFreeze').css('height','16%');
+        $('#serviceFreeze').css('height','17%');
         $("div#service_tariff_template_id").css("background-color", "#e8eef2");
         $("div#service_tariff_template_id").css("color", "#00558d");
         break
