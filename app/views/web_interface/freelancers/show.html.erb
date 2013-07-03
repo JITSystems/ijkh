@@ -1,0 +1,73 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Справочник</p>
+</div>
+
+<div class="container_boxes">
+	<div class="horizontal_div" style="width: 100%; float: none;">
+		<div class="box_blue" id="" style="min-height:245px;width:100%">
+			<div class="non_utility_catalog">
+
+				<div class="non_utility_service">
+					<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
+						<option value="0" data-skip="1" selected="selected">Выберите категорию</option>
+						<option value="0" listType="showAllCategories">Показать всё</option>
+						<% @freelance_category.each do |freelance_category| %>
+							<option value="<%= freelance_category.id %>" id="<%= freelance_category.id %>" listType="catalog">
+								<%= freelance_category.title %>
+							</option>
+						<% end %>
+					</select>
+				</div>
+
+
+<div class="nu_vendors">
+				<% @freelance_category.each do |freelance_category| %>
+					<div id="freelance_category_<%= freelance_category.id %>" class="catalog_category">
+
+						<p class="nu_service_type_title"><%= freelance_category.title %></p>
+							<% freelance_category.freelancers.each do |freelancer| %>
+									<p>
+									<span class="nu_subtitle"><%= link_to freelancer.title, freelancers_path(freelancer.id), id: "freelancer_#{freelancer.id}", remote: true, 
+										method: :get, onclick: "$('div#nu_vendor_#{freelancer.id}').slideToggle('');" %> </span>
+	
+									<div id="nu_vendor_<%= freelancer.id %>" class="nu_vendor_info">
+										<img src="<%= freelancer.picture_url %>" />
+
+										<% if freelancer.description %>
+											<p class="nu_vendor_description"><%= freelancer.description %></p>
+										<% end %>		
+
+										<div class="clear"></div>								
+										
+										<% if freelancer.phone_number %>
+											<p><span>Контактный телефон:</span> <%= freelancer.phone_number %></p>
+										<% end %>
+
+										<% if freelancer.work_time %>
+											<p><span>Время работы:</span> <%= freelancer.work_time %> </p>
+										<% end %>	
+											
+									</div>
+									</p>
+							<% end %>
+					</div>
+				<% end %>
+</div>
+
+
+<!-- 				<div class="freelancer">
+					<select style="background-color: #ccc;color: grey;" id="freelance_category_id" name="service[vendor_id]">
+						<option value="0" data-skip="1" selected="selected">Поставщик</option>
+						<% @freelancer.each do |freelancer| %>
+							<option value="<%= freelancer.id %>" id="<%= freelancer.id %>"  listType="freelancer" serviceTypeId="<%= freelancer.id %>">
+								<%= freelancer.title %>
+							</option>
+						<% end %>
+					</select>
+				</div> -->
+
+			</div>
+	 	</div>
+	</div>
+</div>

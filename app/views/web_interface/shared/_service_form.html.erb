@@ -1,53 +1,38 @@
 <% if params[:controller] == "registrations" %>
 	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 100%; bottom: 0px; z-index: 10;"></div>
 <% else %>
-	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 60%; bottom: 0px; z-index: 10;"></div>
+	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 0%; bottom: 0px; z-index: 10;"></div>
 <% end %>
 <div class="box_top_right ">
 	<p>Добавление услуг</p>
 </div>
-<%= form_for(Service.new, remote: true, url: "/service", method: :post) do |f| %>
-	<% if params[:controller] != "registrations" %>
-		<input id="service_place_id" name="service[place_id]" style="display:none;" value="<%= @place_id %>">
-	<% else %>
-		<input id="service_place_id" name="service[place_id]" style="display:none;">
-	<% end %>
+<%= form_for Service.new, remote: true, url: "/service", method: :post do |s_f|%>
+	<%= s_f.hidden_field :place_id, value: @place_id %>
 	<div class="choise_service">
-		<div class="service">	
-			<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
-				<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
-				<% @service_types.each do |service_type| %>
-					<option value="<%= service_type.id %>" id="<%= service_type.id %>" listType="serviceType">
-						<%= service_type.title %>
-					</option>
-				<% end %>
-			</select>
-		</div>
-		<div class="type_man_who_have_service">
-			<select style="background-color: #ccc;color: grey;" id="service_vendor_id" name="service[vendor_id]">
-				<option value="0" data-skip="1" selected="selected">Поставщик</option>
-				<% @vendors.each do |vendor| %>
-					<option value="<%= vendor.id %>" id="<%= vendor.id %>"  listType="vendor" serviceTypeId="<%= vendor.service_type_id %>">
-						<%= vendor.title %>
-					</option>
-				<% end %>
-			</select>
-		</div>
-		<div class="choise_tarif">
-			<select style="background-color: #ccc;color: grey;" id="service_tariff_template_id" name="service[tariff_template_id]">
-				<option value="0" data-skip="1" selected="selected">Тарифы</option>
-				<% @tariff_templates.each do |tariff_template| %>
-					<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>" hasReadings="<%= tariff_template.has_readings %>">
-					<%= tariff_template.title %>
-					</option>
-				<% end %>
-			</select>
+		<div class="service">
+		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]}),prompt: "Выберите тип услуги ЖКХ"%>
 		</div>
 
-		<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" disabled>
-		
+		<div class="type_man_who_have_service">
+		<%= s_f.select :vendor_id, options_for_select(@vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>		
+		</div>
+
+<div class="choise_tarif">
+	<%= s_f.fields_for :tariff do |t|%>
+		<%= t.select :tariff_template_id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
+
+
+
+	<% end %>
+</div>
+
+		<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора">
+
 	</div>
 	<div class="accept_service">
-		<%= f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>
+		<%= s_f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>
 	</div>
 <% end %>
+<script>
+	//$('#field_templates_box').remove();
+</script>

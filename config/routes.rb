@@ -7,7 +7,10 @@ Ijkh::Application.routes.draw do
 
     get 'registration' => 'registrations#new'
     post 'registration' => 'registrations#create'
+
+    put '/users/:id' => 'registrations#update', as: :update_user_registration 
   end
+  
   root :to => 'web_interface/main#index'
 
 # Analytic
@@ -102,7 +105,16 @@ Ijkh::Application.routes.draw do
       post 'profile_place' => 'web_interface/place#profile_create'
       post 'service' => 'web_interface/service#create'
       delete 'place' => 'web_interface/place#destroy'
+      
+      get "catalog" => "web_interface/catalog#show"
+      get "freelancers" => "web_interface/freelancers#show"
 
+  end
+  
+  namespace :web_interface do
+    resources :place, only: [:index, :create, :update] do
+        put :deactivate, on: :member
+    end
   end
 
 

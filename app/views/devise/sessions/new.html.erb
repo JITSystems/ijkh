@@ -9,18 +9,23 @@
 			<div class="login_inputs">
 				<%= f.email_field :email, :autofocus => true, :placeholder=>"Логин" %>
 				<%= f.password_field :password, :placeholder=>"Пароль" %>
+					  <p id="sign_in_messages"><%= flash[:alert] %></p>
 			</div>
 			<div class="login_buttons">
 				<% if devise_mapping.rememberable? -%>
 					<label>
-						<%= f.check_box :remember_me %> 
-						<span class="login_input_check"></span></label><p>Запомнить меня</p>
+						<%= f.check_box :remember_me, id: 'some_input' %> 
+						<span class="login_input_check"><p>Запомнить меня</p></span></label>
 			  	<% end -%>
 				<%= f.submit "Войти", :class=>:submit_button_login %>
 			</div>
 		<% end %>
 
-		<div class="login_reg"><p><%= link_to "Зарегистрируйтесь", "offer" %> и начните использование</p></div>
+		<div class="login_reg">
+
+			<p><%= link_to "Зарегистрируйтесь", offer_path %> и начните использование</p>
+			<%= link_to "Забыли пароль?", "new_password_path(resource_name)" %><br />
+		</div>
 	</div>
 	<p class="little_white_text">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-	<%= link_to "", "app_download", class: "app_download" %>
+	<%= link_to "", app_download_path, class: "app_download" %>

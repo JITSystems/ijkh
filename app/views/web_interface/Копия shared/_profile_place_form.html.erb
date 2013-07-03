@@ -1,0 +1,16 @@
+<%= form_for(Place.new, remote: true, url: "/profile_place", method: :post) do |f| %>
+	<div class="box_top_right ">
+		<p>Добавление места</p>
+	</div>
+	<div class="choise_place">
+		<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
+		<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
+		<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
+		<%= f.text_field(:building, :placeholder=>"Введите номер дома", :class=>:reg_place,  disabled: true) %>
+		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
+	</div>
+	<div class="accept_place">
+		<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
+		<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
+	</div>
+<% end %>

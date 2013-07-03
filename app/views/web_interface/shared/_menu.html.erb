@@ -4,23 +4,26 @@
 	<div class="menu_container">
 		<div class="menu_logo_top"></div>
 		<ul class="menulist">
-			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", "main" %></li>
-			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", "payment" %></li>
-			<li class="menulistLi"><%= link_to "ПРОФИЛЬ", "profile" %></li>
+			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", main_path %></li>
+			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
+			<li class="menulistLi"><%= link_to "ПРОФИЛЬ", profile_path %></li>
 			<li class="menulistLi menulistLiDrop">
 				<!--%= link_to "Пользователям", "user" %-->
 				<p>ИНФОРМАЦИЯ</p>
 				<ul class="dropdownMenu">
-					<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", "inner_offer" %></li>
+					<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", inner_offer_path %></li>
 					<li class="dropdownMenuLi"><%= link_to "ЧАСТЫЕ ВОПРОСЫ", faq_path %></li>
-					<!--li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", "profile" %></li-->
+					<li class="dropdownMenuLi"><%= link_to "ПОСТАВЩИКИ", catalog_path %></li>
+					<li class="dropdownMenuLi"><%= link_to "ФРИЛАНСЕРЫ", freelancers_path %></li>
+
+					<!--li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", profile_path %></li-->
 				</ul>
 			</li>
-			<li class="menulistLi"><%= link_to "О КОМПАНИИ", "about" %></li>
+			<li class="menulistLi"><%= link_to "О КОМПАНИИ", about_path %></li>
 			<% unless current_user %>
-				<li class="menulistLi last"> <%= link_to "ВОЙТИ", "login" %></li>
+				<li class="menulistLi last"> <%= link_to "ВОЙТИ", login_path %></li>
 			<% else %>
-				<li class="menulistLi last"> <%= link_to "ВЫЙТИ", "logout" %></li>
+				<li class="menulistLi last"> <%= link_to "ВЫЙТИ", logout_path %></li>
 			<% end %>
 		</ul>
 	</div>

@@ -1,0 +1,84 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Справочник</p>
+</div>
+
+<div class="container_boxes">
+	<div class="horizontal_div" style="width: 100%; float: none;">
+		<div class="box_blue" id="" style="min-height:245px;width:100%">
+			<div class="non_utility_catalog">
+
+				<div class="non_utility_service">
+					<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
+						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+						<option value="0" listType="showAllCategories">Показать всё</option>
+						<% @non_utility_service_type.each do |non_utility_service_type| %>
+							<option value="<%= non_utility_service_type.id %>" id="<%= non_utility_service_type.id %>" listType="catalog">
+								<%= non_utility_service_type.title %>
+							</option>
+						<% end %>
+					</select>
+				</div>
+
+
+<div class="nu_vendors">
+				<% @non_utility_service_type.each do |non_utility_service_type| %>
+					<div id="non_utility_service_type_<%= non_utility_service_type.id %>"  class="catalog_category">
+
+						<p class="nu_service_type_title"><%= non_utility_service_type.title %></p>
+							<% non_utility_service_type.non_utility_vendors.each do |non_utility_vendor| %>
+									<p>
+									<%= link_to non_utility_vendor.title, non_utility_vendor_path(non_utility_vendor.id), id: "non_utility_vendor_#{non_utility_vendor.id}", remote: true, 
+									method: :get, onclick: "$('div#nu_vendor_#{non_utility_vendor.id}').slideToggle('');" %> 
+	
+									<div id="nu_vendor_<%= non_utility_vendor.id %>" class="nu_vendor_info">
+										<img src="<%= non_utility_vendor.picture_url %>" />
+
+										<% if non_utility_vendor.description %>
+											<p class="nu_vendor_description"><%= non_utility_vendor.description %></p>
+										<% end %>	
+
+										<div class="clear"></div>
+										<% if non_utility_vendor.address %>
+										<p class="nu_vendor_address">
+											<span>Адрес:</span> <%= non_utility_vendor.address %>
+										</p>
+										<% end %>
+
+										<% if non_utility_vendor.phone_number %>
+											<p><span>Контактный телефон:</span> <%= non_utility_vendor.phone_number %></p>
+										<% end %>
+
+										<% if non_utility_vendor.work_time %>
+											<p><span>Время работы:</span> <%= non_utility_vendor.work_time %> </p>
+										<% end %>	
+											
+										<% non_utility_vendor.non_utility_tariffs.each do |non_utility_tariff| %>
+										<div class="nu_tariff_container">
+											<h3><%= non_utility_tariff.title %></h3>
+											<p><%= non_utility_tariff.description %></p>
+										</div>
+										<% end %>
+									</div>
+									</p>
+							<% end %>
+					</div>
+				<% end %>
+</div>
+
+
+<!-- 				<div class="non_utility_vendor">
+					<select style="background-color: #ccc;color: grey;" id="non_utility_service_type_id" name="service[vendor_id]">
+						<option value="0" data-skip="1" selected="selected">Поставщик</option>
+						<% @non_utility_vendor.each do |non_utility_vendor| %>
+							<option value="<%= non_utility_vendor.id %>" id="<%= non_utility_vendor.id %>"  listType="non_utility_vendor" serviceTypeId="<%= non_utility_vendor.id %>">
+								<%= non_utility_vendor.title %>
+							</option>
+						<% end %>
+					</select>
+				</div> -->
+
+			</div>
+	 	</div>
+	</div>
+</div>

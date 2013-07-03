@@ -43,6 +43,6 @@ class PlaceAccount
 		service_account.each do |account|
 			amount += account.amount.to_f
 		end
-		amount
+		amount.round(2)
 	end
 end

@@ -13,3 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+        var placeEdit = function(){
+        var ValueCheck = $('#place_edit_button').val();
+        if (ValueCheck == 'Редактировать'){
+            $('#place_info_container').fadeOut('fast',function(){
+                $('#place_edit_container').fadeIn('slow');
+                $('#place_edit_button').val('Сохранить');
+                $('#place_edit_button').html('Сохранить');
+                $('#place_edit_button').prop('type','submit');
+                return false;
+            })
+        }
+        else {
+            $('#place_edit_container').fadeOut('fast',function(){
+                $('#place_info_container').fadeIn('slow');
+                $('#place_edit_button').val('Редактировать');
+                $('#place_edit_button').html('Редактировать');
+                $('#place_edit_button').prop('type','button');
+            })
+        }
+        
+    }

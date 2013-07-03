@@ -2,7 +2,9 @@
 	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 	<p class="text_plate_blue">Ваш профиль</p>
 </div>
+
 <div class="profile_plate">
+
 	<div id="profile_container">
 		<div class="profile_name_container">
 			<%= text_field_tag(:profile_name, current_user.first_name, :class=>:profile_name, :disabled=>:disabled) %>
@@ -12,25 +14,30 @@
 			<%= text_field_tag(:profile_phone, current_user.phone_number, :class=>:profile_email_phone, :disabled=>:disabled) %>
 		</div>
 	</div>
-	<div id="profile_edit_container" style="display:none">
+
+	<%= form_for(current_user, as: 'user', :url => update_user_registration_path(current_user.id), remote: true,  :html => { :method => :put }) do |f| %>
+		
+		<div id="profile_edit_container" style="display:none">
+
 		<div class="profile_name_container">
-			<%= text_field_tag(:profile_name_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
+			<%= f.text_field(:first_name, class: 'profile_edit', placeholder: 'Введите Ваше имя') %>
+			</div>
+			<div class="profile_email_container">
+				<%= f.email_field(:email, class: 'profile_edit', placeholder: 'Введите Ваш адрес электронной почты') %>
+				<%= f.text_field(:phone_number, class: 'profile_edit', placeholder: 'Введите номер Вашего телефона') %>
+			</div>
 		</div>
-		<div class="profile_name_container">
-			<%= text_field_tag(:profile_email_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
-			<%= text_field_tag(:profile_phone_edit, "", :placeholder=>"Введите название объекта", :class=>:profile_edit) %>
+
+		<div class="profile_button_container">
+			<input id="profile_edit_button" type="button" class="profile_edit_button" value="Редактировать">
 		</div>
-		<div class="profile_email_container">
-			<%= text_field_tag(:profile_pass, "", :placeholder=>"Введите пароль", :class=>:profile_edit) %>
-			<%= text_field_tag(:profile_pass_again, "", :placeholder=>"Подтвердите пароль", :class=>:profile_edit) %>
-		</div>
-	</div>
-	<div class="profile_button_container">
-		<!--input id="profile_edit_button" type="button" class="profile_edit_button" value="Редактировать"-->
-	</div>
+
+	<% end %>
+
 </div>
+
 <div class="container_boxes">
-	<div class="horizontal_div">
+	<div class="vertical_div vertical_div_left">
 		<div class="box_left box_blue">
 
 		<div id="objectFreeze" style="
@@ -46,36 +53,45 @@
 		</div>
 	<div class="pay_text">
 		<% if @places != [] %>
-		<% @places.each do |place| %>
-			<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
-		<% end %>
+			<% @places.each do |place| %>
+				<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
+			<% end %>
 		<% end %>
 	</div>
 
-		</div>
+	</div>
 
-
-
-
-		<div class="box_right box_blue" id="place_card_box">
-			<% if @places != [] %>
-			<%= render 'web_interface/shared/place_card'%>
-			<% end %>
-		</div>
-		
-		<div id="slideUpBox" class="box_left box" style="clear: none">
+		<div id="slideUpBox" class="box_left box" style="clear: both">
 			<input onclick="$('#slideUpBox').hide(); $('#slideDownBox').fadeIn(); $('.reg_place').removeAttr('disabled'); $('.accept_place_button').removeAttr('disabled');"  type="button" class="add_object" value="Добавить объект">
 		</div>
 
+		<div style="display:none;" class="box_left box_blue" id="slideDownBox">
+				<%= render 'web_interface/shared/place_form'%>
+		</div>
+		
+
 	</div>
-	<div class="horizontal_div">
+
+	<div class="vertical_div vertical_div_right">
+
+
+	<div class="place_card_container">
+
+		<div class="box_right box_blue" id="place_card_box">
+			<% if @places != [] %>
+					<%= render 'web_interface/shared/place_card' %>
+			<% end %>
+		</div>
+
+	</div>
+
+
 		<div id="service_box" class="box_right box_blue">
 			<%= render 'web_interface/shared/service_form'%>
 		</div>
 
 
-		<div style="display:none;" class="box_left box_blue" id="slideDownBox">
-			<%= render 'web_interface/shared/profile_place_form'%>
-		</div>
 	</div>
+	<div class="clear"></div>
 </div>
+

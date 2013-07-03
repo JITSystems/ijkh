@@ -1,25 +1,86 @@
-		<div class="object_name">
-			<p style="font-size: 20px;padding: 30px 35px;font-weight: bold;color: #47555e;">
-				<%= @place.title %></p>
+<%= form_for(@place, remote: true, url: web_interface_place_path(@place.id), :method => :put ) do |f| %>
+<div id="place_edit_container">
+		<div class="box_top_right ">
+			<p>Редактирование места</p>
+		</div>
+		<div class="choise_place">
+			<%= f.text_field(:title, :value => @place.title, :placeholder=>"Введите название объекта", :class=>:reg_place) %>
+			<%= f.text_field(:city, :value => @place.city, :placeholder=>"Введите город", :class=>:reg_place) %>
+			<%= f.text_field(:street, :value => @place.street, :placeholder=>"Введите улицу", :class=>:reg_place) %>
+			<%= f.text_field(:building, :value => @place.building, :placeholder=>"Введите номер дома", :class=>:reg_place) %>
+			<%= f.text_field(:apartment, :value => @place.apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place) %>
+		</div>
+</div>
+
+<div id="place_info_container">
+	<div class="object_name">
+		<p id="place_card_title" style="font-size: 20px;padding: 30px 35px;font-weight: bold;color: #47555e;">
+			<%= @place.title %> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); return false;">Добавить услугу</button>
+		</p>
+	</div>
+	
+	<div class="service_name" style="min-height: 100px;">
+		<p>Подключенные услуги:</p>
+		<% @place.services.each do |service| %>	
+			<p class="service_li" id="service_li_p_<%= service.id %>" onclick= "$('div#service_li_<%= service.id %>').slideToggle('');">
+				<%= service.title %> 
+
+	
+
+				<!-- <span class="delete_service"></span> -->
+			</p>
+
+			<%= link_to '', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class: "delete_service" %>
+				<div id="service_li_<%= service.id %>" class="service_info">			
+					<% @service_types.each do |service_type| %>	
+						<% if service_type.id == service.service_type_id %>
+							<p><span class="service_info_header">Тип услуги:</span> <%= service_type.title %></p>
+						<% end %>
+					<% end %>
+
+					<% @vendors.each do |vendor| %>	
+						<% if vendor.id == service.vendor_id %>
+							<p><span class="service_info_header">Поставщик:</span> <%= vendor.title %></p>
+						<% end %>
+					<% end %>
+
+					<p><span class="service_info_header">Лицевой счёт:</span> <%= service.user_account %> </p>
+				</div>
+		<% end %>
+	</div>
+	
+	<div style="height: 45px;" class="object_adress">
+		<p style="width: 68px;display: inline-block; min-height: 43px;">Адрес:</p>
+		<p style="display: inline-block; width:210px; color: rgb(19,99,178); width: 320px;" class="adress_blue">
+			<%= @place.city %>, 
+			<%= @place.street %>, 
+			<%= @place.building %>,
+			 кв.<%= @place.apartment%>
+		</p>
+	</div>	
+	
+</div>
+
+<div class="edit_object" style="padding-top: 5px;bottom: 0px;position: relative;">
+
+		<div class="accept_place">
+			<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
+	<%= f.button('Редактировать', class: 'accept_service_button place_edit_button', id: "place_edit_button", onclick: "placeEdit();", value:"Редактировать", type: "button" ) %>
+			<!-- <input id="place_edit_button" type="button" onclick="placeEdit(this);" class="accept_service_button accept_place_button place_edit_button" value="Редактировать">
+ -->
+ 
 		</div>
 
-		<div class="service_name" style="min-height: 100px;">
-			<p>Подключенные услуги:</p>
-			<% @place.services.each do |service| %>	
-				<p class="service_li"><%= service.title %></p>
-			<% end %>
-		</div>
-		<div style="height: 45px;" class="object_adress">
-			<p style="width: 68px;display: inline-block; min-height: 43px;">Адрес:</p>
-			<p style="display: inline-block; width:210px; color: rgb(19,99,178); width: 320px;" class="adress_blue"><%= @place.city %>, <%= @place.street %>, <%= @place.building %>, кв.<%= @place.apartment%></p>
-		</div>	
-		<div id="hidden_button" style="height: 50px;">
-			<button onclick="alert('click');" style="cursor:pointer; margin: 0px 0px 0px 115px;width: 220px;height: 40px;background: none;border: none;}">
-			</button>
-		</div>
-<div class="edit_object" style="padding-top: 5px;bottom: 0px;position: absolute;">
-<%= form_tag("/place", remote: true, method: :delete) do |f| %>
-	<input type="text" id="place_id" name="place_id" style="display:none" value="<%= @place.id %>">
-	<input type="submit" class="edit_object_button" value="Удалить">
-<% end %>
+<!-- 
+	<%= form_tag(place_path(@place.id), remote: true, method: :put) do |f| %>
+		<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
+		<input type="button" class="edit_object_button" value="Редактировать">
+	<% end %>
+
+ -->
 </div>
+<% end %>
+		<%= form_tag(deactivate_web_interface_place_path(@place.id), remote: true, method: :put, style: "float: right;height: 0px;") do |f| %>
+			<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
+			<input type="submit" class="delete_object_button" value="Удалить">
+		<% end %>

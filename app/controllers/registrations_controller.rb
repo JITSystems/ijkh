@@ -4,6 +4,23 @@ class RegistrationsController < Devise::RegistrationsController
 
   skip_before_filter :require_auth_token
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      respond_to do |f|
+        @first_name = params[:user][:first_name]
+        @email = params[:user][:email]
+        @phone_number = params[:user][:phone_number]
+        @message = 'Данные успешно изменены'
+        f.js { render 'devise/registrations/update' }
+    end
+    else
+      respond_to do |f|
+        f.js { render 'devise/registrations/error'}
+      end
+    end
+  end
+
   def new
     @service_types = ServiceType.select("id, title").all
     @vendors = Vendor.select("id, title, service_type_id").all
