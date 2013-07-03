@@ -32,7 +32,10 @@
 									method: :get, onclick: "$('div#nu_vendor_#{non_utility_vendor.id}').slideToggle('');" %> 
 	
 									<div id="nu_vendor_<%= non_utility_vendor.id %>" class="nu_vendor_info">
+
+										<% if non_utility_vendor.picture_url %>
 										<img src="<%= non_utility_vendor.picture_url %>" />
+										<% end %>	
 
 										<% if non_utility_vendor.description %>
 											<p class="nu_vendor_description"><%= non_utility_vendor.description %></p>

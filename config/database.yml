@@ -1,7 +1,9 @@
 development:
+  host: www.izkh.ru
+  port: 5432
   adapter: postgresql
   encoding: utf8
-  database: ijkh_development
+  database: ijkh_production
   pool: 5
   username: postgres
   password: postgres
