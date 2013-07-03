@@ -1214,7 +1214,7 @@ input.delete_object_button{
 }
 .test_text{
 	position: relative;
-	padding: 10px;
+	padding: 20px;
 	/*height: 189px;*/
 	border-bottom: 1px solid #0071bc;
 }
