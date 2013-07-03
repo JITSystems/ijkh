@@ -16,6 +16,7 @@ class WebInterface::PlaceController < WebInterfaceController
 	end
 
 	def get_place
+		@service_types = ServiceType.select("id, title").all
 		@place = Place.find(params[:place_id])
 		respond_to do |format|
 			format.js {
