@@ -3,6 +3,7 @@ class FloatModifier
   	float = substitute_comma(float)
   	float = round_up(float)
   	float = format(float)
+  	float.to_s
   end
 
   def self.substitute_comma(float)
@@ -10,12 +11,13 @@ class FloatModifier
   	  float = float.to_s.split(',')
   	  float = float.first << '.' << float.last
   	end
-  	float.to_f
+  	float
   end
 
 protected
 
   def self.round_up(float)
+  	float = float.to_f
   	(float*100).ceil/100.0
   end
 
