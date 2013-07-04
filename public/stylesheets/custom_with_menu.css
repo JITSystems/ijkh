@@ -81,6 +81,12 @@ body{
 	color:#00558d;
 	text-decoration: none;
 }
+
+div.service_pay_block > p
+{
+padding: 15px;	
+}
+
 .dropdownMenu{
 	position: absolute;
 	width: 100%;
