@@ -13,6 +13,8 @@ Ijkh::Application.routes.draw do
   
   root :to => 'web_interface/main#index'
 
+  get 'apns_test' => 'predefined_data#apns'
+
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
 

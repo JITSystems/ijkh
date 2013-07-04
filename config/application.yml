@@ -1,0 +1,18 @@
+defaults: &defaults
+  apns:
+    pem_file: /Users/jwsilent/Development/apns.pem
+    host: gateway.sandbox.push.apple.com
+    port: 2195
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  apns:
+    pem_file: /opt/ijkh/apns.pem
+    host: gateway.push.apple.com
+    port: 2195
