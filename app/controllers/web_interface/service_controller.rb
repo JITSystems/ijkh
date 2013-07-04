@@ -12,6 +12,20 @@ class WebInterface::ServiceController < WebInterfaceController
 		end
 	end
 
+	def delete
+		@message = "Услуга успешно удалена"
+
+		@service = Service.find(params[:service_id])
+		@service.destroy		
+		
+		respond_to do |format|
+			format.js {
+				render 'web_interface/service/delete'
+			}
+		end
+
+	end
+
 	def create
 		@message = "Услуга успешно создана."
 		vendor_title = Vendor.find(params[:service][:vendor_id]).title

@@ -24,7 +24,7 @@
 			</select>
 		</div>
 		<div class="type_man_who_have_service">
-			<select style="background-color: #ccc;color: grey;" id="service_vendor_id" name="service[vendor_id]">
+			<select style="background-color: #ccc;color: grey;" id="service_vendor_id" name="service[vendor_id]" disabled>
 				<option value="0" data-skip="1" selected="selected">Поставщик</option>
 				<% @vendors.each do |vendor| %>
 					<option value="<%= vendor.id %>" id="<%= vendor.id %>"  listType="vendor" serviceTypeId="<%= vendor.service_type_id %>">
@@ -34,7 +34,7 @@
 			</select>
 		</div>
 		<div class="choise_tarif">
-			<select style="background-color: #ccc;color: grey;" id="service_tariff_template_id" name="service[tariff_template_id]">
+			<select style="background-color: #ccc;color: grey;" id="service_tariff_template_id" name="service[tariff_template_id]" disabled>
 				<option value="0" data-skip="1" selected="selected">Тарифы</option>
 				<% @tariff_templates.each do |tariff_template| %>
 					<option value="<%= tariff_template.id %>" id="<%= tariff_template.id %>" listType="tariff" vendorId="<%= tariff_template.vendor_id %>" hasReadings="<%= tariff_template.has_readings %>">
@@ -51,3 +51,20 @@
 		<%= f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>
 	</div>
 <% end %>
+
+<script>
+(function($) {
+$(function() {
+
+  $('input, select').styler();
+
+})
+})(jQuery)
+
+$.fn.toggleDisabled = function() {
+	return this.each(function() {
+		//this.disabled = !this.disabled;
+		this.removeAttr('disabled');
+	});
+};
+</script>

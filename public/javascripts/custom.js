@@ -146,7 +146,7 @@ $(document).ready(function($) {
     })
 
 //      отрисовка селектов
-
+ /*
 $('select').each(function(){
     var select = $(this)
     var selectBoxContainer = $('<div>',{
@@ -240,7 +240,7 @@ $('select').each(function(){
         dropDown.trigger('hide');
     });
 });
-
+*/
 
 $(".pay_text a:first-child").attr("class","object_selected"); //выделение первого элемента списка объектов/"счетов"
 $(this).remove();
@@ -389,12 +389,14 @@ function sortFun(thisEl){
      {
         case 'serviceType':
         // console.log('Услуга');
+        $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
         $('#serviceFreeze').css('height','50%');
         $("div#service_vendor_id").css("background-color", "#e8eef2");
         $("div#service_vendor_id").css("color", "#00558d");
+        
         break
 
         case 'userTariff':
@@ -404,12 +406,14 @@ function sortFun(thisEl){
 
         case 'vendor':
         // console.log('Вендор');
+        $('#service_tariff_template_id').removeAttr('disabled').trigger('refresh');
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
         $('#serviceFreeze').css('height','17%');
         $("div#service_tariff_template_id").css("background-color", "#e8eef2");
         $("div#service_tariff_template_id").css("color", "#00558d");
+        
         break
 
         case 'tariff':

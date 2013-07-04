@@ -1,0 +1,5 @@
+$('#service_li_p_<%= @service.id %>').remove();
+$('#service_li_a_<%= @service.id %>').remove();
+$('#service_li_<%= @service.id %>').remove();
+
+popUpRender('<%= @message %>');

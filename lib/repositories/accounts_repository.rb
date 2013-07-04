@@ -12,7 +12,7 @@ module AccountsRepository
 		amount_subtrahend = check_comma amount_subtrahend
 
 		amount = account.amount.to_f - amount_subtrahend.to_f
-		amount = round_up(amount)
+		amount = FloatModifier.modify(amount)
 		if amount < 0.0
 			amount = 0.0
 		end
@@ -61,7 +61,7 @@ module AccountsRepository
 		else
 			amount = account.amount
 		end
-		amount = check_comma amount
+		amount = FloatModifier.modify(amount)
 
 		if account.update_attributes(status: 1, amount: "0.00")
 			
@@ -128,53 +128,31 @@ module AccountsRepository
 
 private
 
-	def check_comma amount
-		amount = amount.to_s
-		if amount.index(',')
-			amount = amount.split(',')
-			amount_str = amount.first + '.' + amount.last
-		else 
-			amount_str = amount
-		end
-		return amount_str
-	end
-
 	def calculate_amount value, reading, prev_reading
 		
-		reading = check_comma reading
-		prev_reading = check_comma prev_reading
-		value = check_comma value
+		reading = FloatModifier.substitute_comma(reading)
+		prev_reading = FloatModifier.substitute_comma(prev_reading)
+		value = FloatModifier.substitute_comma(value)
 
 		reading_delta = reading.to_f - prev_reading.to_f
 		
 		amount = reading_delta*value.to_f
 		
-		format_amount amount
-	end
-
-	def format_amount amount
-
-		amount = amount.to_s.split(".")
-		if amount.last =~ /\d\d/
-			amount_str = amount.first + "." + amount.last 
-		else
-			amount_str = amount.first + "." + amount.last + "0"
-		end
-		amount_str
+		FloatModifier.modify(amount)
 	end
 
 	def update_amount account, amount_params
 		
 		value = Field.get_value amount_params[:field_id]
-		value = check_comma value
+		value = FloatModifier.substitute_comma(value)
 
 		has_readings = Field.find(amount_params[:field_id]).tariff.has_readings
 
 		reading = amount_params[:reading]
 		prev_reading = amount_params[:prev_reading]
 
-		reading = check_comma reading
-		prev_reading = check_comma prev_reading
+		reading = FloatModifier.substitute_comma(reading)
+		prev_reading = FloatModifier.substitute_comma(prev_reading)
 
 		amount = calculate_amount value, reading, prev_reading
 
@@ -188,11 +166,6 @@ private
 			account.update_attributes(amount: amount, status: '-1')
 		end
 			account
-	end
-
-	def round_up amount
-		amount = (amount*100).ceil/100.0
-		return amount
 	end
 
 	def fetch_account_by_service service_id
