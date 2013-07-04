@@ -30,10 +30,10 @@ class MonthAnalytic
 		amount = 0.0
 		place_analytic.each do |analytic|
 			if analytic.amount
-				amount += analytic.amount 
+				amount += analytic.amount.to_f
 			end
 		end
-		return amount.round(2)
+		return FloatModifier.modify(amount)
 	end
 
 	def generate_place_analytic user, month
