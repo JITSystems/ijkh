@@ -14,5 +14,5 @@ production:
   <<: *defaults
   apns:
     pem_file: /opt/ijkh/apns.pem
-    host: gateway.push.apple.com
+    host: gateway.sandbox.push.apple.com
     port: 2195
