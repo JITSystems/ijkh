@@ -17,6 +17,7 @@ class PredefinedDataController < ApplicationController
 
   def register_ios_device
     current_user.register_ios_device(params[:device_token])
+    render json: {}
   end
  
 
