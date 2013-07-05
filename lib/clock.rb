@@ -4,4 +4,4 @@ require 'clockwork'
 
 include Clockwork
 
-every(30.seconds, 'zatrahat_dimu.job') { PaymentReminder.test }
+every(2.days, 'payment_reminder.job', at: '19:00') { PaymentReminder.test }
