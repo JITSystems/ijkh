@@ -15,6 +15,11 @@ class PredefinedDataController < ApplicationController
 		end
 	end
 
+  def register_ios_device
+    current_user.register_ios_device(params[:device_token])
+  end
+ 
+
 	def apns
 	  APNS.host = Settings.apns.host
       APNS.pem  = Settings.apns.pem_file

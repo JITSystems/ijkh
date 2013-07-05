@@ -14,7 +14,7 @@ Ijkh::Application.routes.draw do
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
-  post 'api/1.0/register_ios_device' => 'sessions#register_ios_device'
+  post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
