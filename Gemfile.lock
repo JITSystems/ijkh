@@ -41,9 +41,6 @@ GEM
     celluloid (0.14.1)
       timers (>= 1.0.0)
     clamp (0.5.1)
-    clockwork (0.5.2)
-      activesupport
-      tzinfo (~> 0.3.35)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -181,7 +178,6 @@ PLATFORMS
 
 DEPENDENCIES
   apns
-  clockwork
   coffee-rails (~> 3.2.1)
   devise
   gelf
