@@ -4,4 +4,4 @@ require 'clockwork'
 
 include Clockwork
 
-every(30.seconds, 'zatrahat_dimu.job') { PushNotificationsWorker.test }
+every(30.seconds, 'zatrahat_dimu.job') { PaymentReminder.test }
