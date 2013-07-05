@@ -6,4 +6,6 @@ class Recipe < ActiveRecord::Base
   belongs_to :service
   belongs_to :account
 
+  has_many :payment_histories
+
 end

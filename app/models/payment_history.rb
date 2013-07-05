@@ -6,4 +6,5 @@ class PaymentHistory < ActiveRecord::Base
   belongs_to :user, foreign_key: :user_id
   belongs_to :card, foreign_key: :card_id
   belongs_to :service, foreign_key: :service_id
+  belongs_to :recipe, foreign_key: :recipe_id
 end

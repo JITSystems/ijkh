@@ -9,6 +9,10 @@ class SessionsController < Devise::SessionsController
   def new
     
   end
+
+  def register_ios_device
+    current_user.register_ios_device(params[:device_token])
+  end
   
   def create
     build_resource

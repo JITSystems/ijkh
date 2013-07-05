@@ -6,13 +6,22 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :phone_number
+  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :phone_number, :ios_device_token, :ios_device_status
   # attr_accessible :title, :body
+
+  symbolize :ios_device_status, in: [:active, :inactive], allow_nil: true
 
   before_create :set_authentication_token
 
   def set_authentication_token
     ensure_authentication_token
+  end
+
+  def register_ios_device(device_token)
+    update_attributes!(
+      ios_device_token: device_token,
+      ios_device_status: :active
+    )
   end
 
   has_many :cards

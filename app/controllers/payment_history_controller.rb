@@ -16,4 +16,7 @@ class PaymentHistoryController < ApplicationController
 
 		render json: {}
 	end
+
+	def index_by_vendor
+	end
 end
