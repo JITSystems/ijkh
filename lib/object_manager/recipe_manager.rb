@@ -14,7 +14,7 @@ class RecipeManager < ObjectManager
   end
 
   def show_last(user, service_id)
-	Recipe.where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1).first
+  	Recipe.where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1).first
   end
 
 

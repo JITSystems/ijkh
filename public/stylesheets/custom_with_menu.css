@@ -2144,6 +2144,25 @@ p.p4
 }
 
 
+#redirect_box 
+{
+	padding-top: 0px;
+	background-color: #e8eef2;
+	color: #6a7f8d;
+	margin: auto;
+	
+	background-color: #e8eef2;
+	color: #6a7f8d;
+}
+
+#redirect_box p
+{
+	padding: 0 30px;
+	line-height: 20px;
+
+}
+
+
 
 /*.pop_up_div {
 	-webkit-transition: all 0.7s ease;

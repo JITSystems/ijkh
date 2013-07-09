@@ -3,5 +3,6 @@ class WebInterface::RedirectPageController < WebInterfaceController
 
 	def show
 		@url = params[:url]
+		@local_url = params[:local_url]
 	end
 end
