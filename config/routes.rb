@@ -112,7 +112,9 @@ Ijkh::Application.routes.draw do
       
       get "catalog" => "web_interface/catalog#show"
       get "freelancers" => "web_interface/freelancers#show"
-       put 'delete_service/:service_id' => 'web_interface/service#delete'
+      put 'delete_service/:service_id' => 'web_interface/service#delete'
+
+      get "redirect" => 'web_interface/redirect_page#show'
 
   end
   
