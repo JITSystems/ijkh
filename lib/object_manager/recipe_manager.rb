@@ -21,7 +21,7 @@ class RecipeManager < ObjectManager
 
 protected
 
-  def calculate_commission(params)
+  def self.calculate_commission(params)
   	@commission_type.calculate(params[:amount])
   end
     
