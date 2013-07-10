@@ -21,6 +21,10 @@ class MeterReadingManager < ObjectManager
       meter_reading.update_attributes(snapshot_url: snapshot_url)
     end
 
+    unless is_init
+      amount = calculate_amount()
+    end
+
   end
 
 	def self.get_by_tariff(tariff)
@@ -29,7 +33,12 @@ class MeterReadingManager < ObjectManager
 
   protected
 
-  def self.update_account(account)
+  def self.calculate_amount(current_value, old_value, field_value)
+  	amount = (current_value - old_value)*field_value
+  end
+
+  def self.increase_account_amount(account, amount)
+  	AccountManager.increase_amount(account, amount)
   end
 
   def self.save_snapshot(user, snapshot, snapshot_name, service_id)

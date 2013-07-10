@@ -11,13 +11,13 @@ class AccountManager < ObjectManager
 
 	def self.increase_amount(account, increase)
 		current_value = account.amount
-		account.update_attributes(amount: current_value - increase)
+		account.update_attributes(amount: current_value + increase)
 		update_status(account)
 	end
 
 	def self.decrease_amount(account, decrease)
 		current_value = account.amount
-		account.update_attributes(amount: current_value + decrease)
+		account.update_attributes(amount: current_value - decrease)
 		update_status(account)
 	end
 
