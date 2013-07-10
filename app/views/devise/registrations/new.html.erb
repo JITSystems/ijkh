@@ -18,9 +18,9 @@
 <%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
 </div>
 <div class="two_pass">
-<%= f.password_field :password, placeholder:  "Пароль*", class: "reg_input reg_freeze" %>
-<p class="pass_req"> *Пароль должен содержать
-не менее восьми символов </p>
+<%= f.password_field :password, placeholder:  "Пароль*", class: "reg_input reg_freeze showpassword" %>
+<!-- <p class="pass_req"> *Пароль должен содержать
+не менее восьми символов </p> -->
 <!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
 </div>
 
@@ -43,6 +43,20 @@
 <div class="box_top_right ">
 <p>Информация</p>
 </div>
+
+<div class="info_text">
+
+<div id="registrations_requirements">
+	<ul>
+		<li><p class="step">Все поля обязательны для заполнения.</p></li>
+		<li><p class="step">Пароль должен содержать не менее 8 символов.</p></li>
+		<!-- <li><p class="step">После подтверждения данных на Ваш адрес электронной почты придёт письмо с ссылкой для активации аккаунта.</p></li> -->
+	</ul>
+</div>
+
+</div>
+
+<!-- 
 <div class="info_text">
 <p class="info_text_begin">Регистрация выполняется в несколько шагов</p>
 <p class="text_bold_info">Шаг 1</p>
@@ -53,9 +67,9 @@
 <p class="step">Для добавления к объекту услуг, выберите тип услуги и конкретного поставщика из списка, а так же его тариф. Далее следует ввести номер лицевого счета или договора на оказание услуг и нажать «Добавить услугу». Вы можете добавить любое количество услуг на этом экране или продолжить прикрепление услуг в разделе «Профиль».</p>
 <p class="text_bold_info">Шаг 4</p>
 <p class="step">Переходите в раздел "оплатить услуги" для оплаты новых счетов</p>
-
-
 </div>
+
+ -->
 </div>
 </div>
 

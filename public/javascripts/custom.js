@@ -348,14 +348,15 @@ function popUpRender(message)
     $('.for_pop_up').prepend('<div onclick="this.remove();" class="pop_up_div">' + '<h3>Информация</h3><p>' +  message + '</p></div>'); 
     $('.pop_up_div').fadeIn(1000);
 
+    setTimeout('$(".for_pop_up").html("")', 10000);
     //var intervalID = setInterval(function() { $(".for_pop_up div:last-child").remove(); }, 3000);
     //setInterval(function() { if ($(".for_pop_up").html()==' ') {clearInterval(intervalID);} }, 1000);
     // $(".for_pop_up div:last-child").delay(2000).fadeOut(1000);
-    // setTimeout('$(".for_pop_up").delay(5000).html("")', 5000);
+    
     //$(".for_pop_up").delay(5000).html("");
 }
 
-//Отслеживание скроллинга для нормального отображения всплывающих сообщений
+//Отслеживание скроллинга для отображения всплывающих сообщений
 
 window.onscroll = function() { 
 
@@ -390,6 +391,8 @@ function sortFun(thisEl){
         case 'serviceType':
         // console.log('Услуга');
         $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
+        $('#service_vendor_id').val('0').trigger('refresh');
+         $('#service_tariff_template_id').val('0').trigger('refresh');
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
@@ -407,6 +410,7 @@ function sortFun(thisEl){
         case 'vendor':
         // console.log('Вендор');
         $('#service_tariff_template_id').removeAttr('disabled').trigger('refresh');
+        $('#service_tariff_template_id').val('0').trigger('refresh');
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
