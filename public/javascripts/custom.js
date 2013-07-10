@@ -392,7 +392,7 @@ function sortFun(thisEl){
         // console.log('Услуга');
         $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
         $('#service_vendor_id').val('0').trigger('refresh');
-         $('#service_tariff_template_id').val('0').trigger('refresh');
+        $('#service_tariff_template_id').val('0').trigger('refresh');
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
