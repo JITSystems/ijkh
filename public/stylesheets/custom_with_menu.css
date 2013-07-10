@@ -455,14 +455,17 @@ padding: 15px;
 	margin: 0 auto;
 	width: 220px;
 	height: 40px;
-	background-color: #8da9bc;
+
 	text-align: center;
-	text-shadow: 1px 1px 0px #FFF;
-	color: #6a7f8d;
+	
 	border: 0px;
 	font-size: 15px;
 	font-weight: 600;
 	cursor: pointer;
+
+	background-color: rgb(0, 113, 188);
+	color: rgb(255, 255, 255);
+	text-shadow: none;
 }
 .tarif_selected_pay{
 	position: relative;

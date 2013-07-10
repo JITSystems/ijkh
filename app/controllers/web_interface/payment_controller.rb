@@ -40,7 +40,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		order_id = @recipe.id
 		amount = @recipe.total
 		currency = "RUB"
-		private_security_key = "e45a8c7b-b0bd-4bdd-93d3-859b463daf81"
+		private_security_key = @vendor.psk
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 		security_key = Digest::MD5.hexdigest(security_key_string)

@@ -5,6 +5,15 @@ class MeterReadingController < ApplicationController
 	end
 
 	def create
+		# params :
+		# => service_id
+		# => place_id
+		# => prev_reading
+		# => meter_reading :
+		# 	=> id
+		# 	=> field_id
+		# 	=> reading
+		# 	=> snapshot_url
 		@meter_reading = MeterReading.new_meter_reading current_user, params
 		render 'meter_reading/show'
 	end

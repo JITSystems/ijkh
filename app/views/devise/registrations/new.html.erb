@@ -24,11 +24,11 @@
 <!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
 </div>
 
-<div class="accept_oferta">
+<!-- <div class="accept_oferta">
 <label><%= check_box_tag(:some_input, class: "reg_freeze") %>
 <span id="reg_oferta_second_check" class="login_input_check"></span>
 </label><p>Я согласен с условиями оферты</p>
-</div>
+</div> -->
 
 <div class="accept_data">
 <!--<input  type="buttocn" class="accept_data_button" value="Подтвердить данные"> -->
@@ -60,19 +60,7 @@
 </div>
 
 <% end %>
-<div id="div_place" class="horizontal_div">
-<div class="box_left box_blue">
-<%= render 'web_interface/shared/place_form' %>
-</div>
-<div class="box_right box_blue">
 
-<%= render 'web_interface/shared/service_form' %>
-</div>
-</div>
-<div id="end_reg_div" class="horizontal_div">
-<div class="reg_end">
-<p>Для регистрации нужно добавить как минимум один объект и услугу</p>
-<a  href="/profile"><input class="accept_service_button reg_end_button" disabled id="reg_end_button"  name="commit" type="button" value="Завершить регистрацию"></a>
-</div>
-</div>
+
+
 </div>
