@@ -24,6 +24,8 @@ $(function(){
 
 
 $(document).ready(function($) {
+
+    f_t_box_content = $("#field_templates_box").html();
 //      растягиваем на весь экран контейнер
 /*$(window).load(function() {
     var Window = $(window),
@@ -427,6 +429,13 @@ function sortFun(thisEl){
         $(".filed_template_section").hide();
         $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
         $('.dog_number').removeAttr("disabled");
+
+        $('.filed_template_section').each(
+                function(){
+                    if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}
+                }
+            );
+
         break
 
         case 'catalog':
