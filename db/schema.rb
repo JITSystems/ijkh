@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710081826) do
+ActiveRecord::Schema.define(:version => 20130711071144) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
   end
 
   create_table "analytics", :force => true do |t|
-    t.string   "amount"
+    t.float    "amount"
     t.integer  "place_id"
     t.integer  "service_id"
     t.string   "place_title"
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
 
   create_table "field_list_values", :force => true do |t|
     t.integer  "field_id"
-    t.string   "value"
+    t.float    "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "field_template_list_values", :force => true do |t|
     t.integer  "field_template_id"
-    t.string   "value"
+    t.float    "value"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.boolean  "is_for_calc"
-    t.string   "value"
+    t.float    "value"
     t.string   "reading_field_title"
     t.string   "field_units"
   end
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
     t.string   "title"
     t.string   "field_type"
     t.boolean  "is_for_calc"
-    t.string   "value"
+    t.float    "value"
     t.string   "reading_field_title"
     t.integer  "tariff_id"
     t.integer  "field_template_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
   end
 
   create_table "meter_readings", :force => true do |t|
-    t.string   "reading"
+    t.float    "reading"
     t.integer  "user_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
   create_table "payment_histories", :force => true do |t|
     t.integer  "user_id"
     t.integer  "card_id"
-    t.string   "amount"
+    t.float    "amount"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.datetime "po_date_time"
@@ -191,10 +191,10 @@ ActiveRecord::Schema.define(:version => 20130710081826) do
   end
 
   create_table "recipes", :force => true do |t|
-    t.string   "amount"
-    t.string   "total"
-    t.string   "po_tax"
-    t.string   "service_tax"
+    t.float    "amount"
+    t.float    "total"
+    t.float    "po_tax"
+    t.float    "service_tax"
     t.string   "currency"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
