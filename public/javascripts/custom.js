@@ -26,6 +26,8 @@ $(function(){
 $(document).ready(function($) {
 
     f_t_box_content = $("#field_templates_box").html();
+    $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
+    $('#service_vendor_id').attr('disabled','disabled').trigger('refresh');
 //      растягиваем на весь экран контейнер
 /*$(window).load(function() {
     var Window = $(window),

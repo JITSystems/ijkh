@@ -38,7 +38,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		merchant_id = @vendor.merchant_id
 		order_id = @recipe.id
-		amount = @recipe.total
+		amount = FloatModifier.modify(@recipe.total)
 		currency = "RUB"
 		private_security_key = @vendor.psk
 
