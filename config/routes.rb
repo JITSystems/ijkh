@@ -84,6 +84,7 @@ Ijkh::Application.routes.draw do
 
 # Payment History
   get 'api/1.0/vendor/:vendor_title/paymenthistories' => 'payment_history#index_by_vendor'
+  get 'api/1.0/paymenthistories' => 'payment_history#index_by_month'
   get 'api/1.0/service/:service_id/paymenthistories' => 'analytic#get_detailed_payments'
   post 'api/1.0/payment_success' => 'payment_history#success'
   post 'api/1.0/payment_fail' => 'payment_history#fail'

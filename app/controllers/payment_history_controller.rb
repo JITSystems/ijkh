@@ -5,6 +5,12 @@ class PaymentHistoryController < ApplicationController
 		
 	end
 
+	def index_by_month
+		@month = params[:payment_history][:month]
+		@payment_histories = PaymentHistory.where("extract(month from updated_at) = ?", @month).first
+		render json: @payment_histories
+	end
+
 	def success
 		payment_history = PaymentHistory.create_payment_history params
 		analytic = Analytic.create_analytic params

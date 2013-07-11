@@ -19,7 +19,7 @@
 
 <div class="choise_tarif">
 	<%= s_f.fields_for :tariff do |t|%>
-		<%= t.select :tariff_template_id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
+		<%= t.select :tariff_template_id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
 
 		<div id="field_templates_box">
 			<% @field_templates.each do |field_template| %>
