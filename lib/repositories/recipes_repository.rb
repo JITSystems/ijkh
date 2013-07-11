@@ -18,7 +18,7 @@ module RecipesRepository
 		total = format_amount total
 
 		recipe_params = {
-			amount: amount,
+			amount: amount.to_f,
 			service_id: params[:service_id],
 			account_id: params[:account_id],
 			user_id: user.id,
