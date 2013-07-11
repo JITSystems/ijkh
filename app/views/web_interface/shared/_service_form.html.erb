@@ -29,7 +29,7 @@
 				<div class="filed_template_section" style="display:none;" tariffTemplateId="<%= field_template.tariff_template_id %>">				
 					<%= field_template.title %>
 					<%= t.text_field :value, disabled: true, value: field_template.value%>
-					<%= t.hidden_field :id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][field_template_id]" %>
+					<%= t.hidden_field :id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][id]" %>
 					<%= field_template.field_units %>
 					<% if field_template.is_for_calc %>
 						<%= t.fields_for "fields[][#{field_template.id}]][meter_reading]" do |m_r|%>
