@@ -44,7 +44,7 @@ class WebInterface::ServiceController < WebInterfaceController
 
 		respond_to do |format|
 			format.js {
-				render 'service/create'
+				render 'web_interface/service/create'
 			}
 		end
 
