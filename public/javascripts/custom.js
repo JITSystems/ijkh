@@ -1,4 +1,3 @@
-
 //Функция показа пароля
 $(function(){
     $(".showpassword").each(function(index,input) {
@@ -402,8 +401,7 @@ function sortFun(thisEl){
         $("[servicetypeid="+serviceTypeId+"]").show();
         $('#serviceFreeze').css('height','50%');
         $("div#service_vendor_id").css("background-color", "#e8eef2");
-        $("div#service_vendor_id").css("color", "#00558d");
-        
+        $("div#service_vendor_id").css("color", "#00558d");        
         break
 
         case 'userTariff':
@@ -421,7 +419,6 @@ function sortFun(thisEl){
         $('#serviceFreeze').css('height','17%');
         $("div#service_tariff_template_id").css("background-color", "#e8eef2");
         $("div#service_tariff_template_id").css("color", "#00558d");
-        
         break
 
         case 'tariff':
@@ -437,7 +434,6 @@ function sortFun(thisEl){
                     if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}
                 }
             );
-
         break
 
         case 'catalog':
