@@ -14,12 +14,14 @@
 		</div>
 
 		<div class="type_man_who_have_service">
-		<%= s_f.select :vendor_id, options_for_select(@vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>		
+			<%= s_f.fields_for :vendor do |v|%>
+		<%= v.select :id, options_for_select(@vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>	
+		<% end %>	
 		</div>
 
 <div class="choise_tarif">
 	<%= s_f.fields_for :tariff do |t|%>
-		<%= t.select :tariff_template_id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
+		<%= t.select :id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
 
 		<div id="field_templates_box">
 			<% @field_templates.each do |field_template| %>
@@ -27,7 +29,7 @@
 				<div class="filed_template_section" style="display:none;" tariffTemplateId="<%= field_template.tariff_template_id %>">				
 					<%= field_template.title %>
 					<%= t.text_field :value, disabled: true, value: field_template.value%>
-					<%= t.hidden_field :field_template_id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][field_template_id]" %>
+					<%= t.hidden_field :id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][field_template_id]" %>
 					<%= field_template.field_units %>
 					<% if field_template.is_for_calc %>
 						<%= t.fields_for "fields[][#{field_template.id}]][meter_reading]" do |m_r|%>
