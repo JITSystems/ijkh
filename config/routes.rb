@@ -91,6 +91,7 @@ Ijkh::Application.routes.draw do
 
 # Web Interface
   scope '/' do
+      get 'analytics' => 'web_interface/analytics#show'
       get 'faq' => 'web_interface/faq#show'
       get 'about' => 'web_interface/about#show'
       get 'offer' => 'web_interface/offer#show'
