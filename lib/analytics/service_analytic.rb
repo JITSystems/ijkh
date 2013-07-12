@@ -54,6 +54,7 @@ class ServiceAnalytic
 		analytics.each do |analytic|
 			amount += analytic.amount.to_f
 		end
+		p FloatModifier.modify(amount)
 		return FloatModifier.modify(amount)
 	end
 
