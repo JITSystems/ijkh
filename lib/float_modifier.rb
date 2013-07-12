@@ -2,11 +2,9 @@ class FloatModifier
   # Modifies float values to be used in application
   def self.modify(float)
   	# All-in-one method. Gets float or float in string format, checks if it has a comma in notation,
-  	# substitutes comma with dot, rounds float value up, formats value to 'xxx.xx'
+  	# substitutes comma with dot, rounds float value up
   	float = substitute_comma(float)
   	float = round_up(float)
-  	float = format(float)
-  	float.to_s
   end
 
   def self.substitute_comma(float)

@@ -21,37 +21,12 @@ $(function(){
 });
 
 
-
 $(document).ready(function($) {
 
     f_t_box_content = $("#field_templates_box").html();
+    $("#field_templates_box").html() = '';
     $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
     $('#service_vendor_id').attr('disabled','disabled').trigger('refresh');
-//      растягиваем на весь экран контейнер
-/*$(window).load(function() {
-    var Window = $(window),
-        $container = $('.nexus'),
-        aspectRatio = $container.height();
-        alert(aspectRatio)
-    function Resize(){
-        if ( Window.height() > aspectRatio) {
-            $container
-                        .removeClass();
-             $container           .addClass('containerheight');
-        }   
-        else {}
-    }
-    Window.resize(function(){
-        Resize();
-    }).trigger('resize');
-});*/
-
-
-
-// Непонятно зачем нужная функция установки высоты контейнеров по высоте окна
-
-// $('body').height($(window).height());
-// $(".nexus").height($(window).height());    
 
 
 //      синий квадрат в чекбоксе off/on
@@ -135,8 +110,7 @@ $(document).ready(function($) {
             $('#service_box').fadeIn('fast');
         });
     })
-     
-    
+         
 
 //  меню
 
@@ -148,102 +122,6 @@ $(document).ready(function($) {
         });
     })
 
-//      отрисовка селектов
- /*
-$('select').each(function(){
-    var select = $(this)
-    var selectBoxContainer = $('<div>',{
-        width       : '100%',
-        class       : 'tzSelect',
-        html        : '<div class="selectBox" id=' + this.getAttribute("id") + '></div>'
-    });
- 
-    var dropDown = $('<ul>',{class:'dropDown'});
-    var selectBox = selectBoxContainer.find('.selectBox');
-    
-    // Цикл по оригинальному элементу select
-    
-        select.find('option').each(function(i){
-            var option = $(this);
-            
-            if(i==select.is('selected')){
-                selectBox.html(option.text());
-            }
-            if(option.data('skip')){
-                return true;
-            }
-
-            var li = $('<li>',{
-                   html:   '<p>'+option.text()+'</p>'
-
-                });
-
-           li.attr("class", option.attr('class'));
-           li.attr("id", option.attr('id'));
-           li.attr("listType", option.attr('listType'));
-           li.attr("serviceTypeId", option.attr('serviceTypeId'));
-           li.attr("vendorId", option.attr('vendorId'));
-           li.attr('onclick','sortFun(this);');
-
-            li.attr('rel',option.val());
-                if (li.attr('rel') % 2 == 0){
-                   li.addClass('secondcolor')
-                 // li.attr("class", option.attr('class'))
-            }  
-
-            li.click(function(){
-                 
-                selectBox.html(option.text());
-                dropDown.trigger('hide');
-                // изменения в оригинальном элементе select:
-                select.val(option.val());
-                 
-                return false;
-            });
-             
-            dropDown.append(li);
-    });     
-    selectBoxContainer.append(dropDown.hide());
-    select.hide().after(selectBoxContainer);
-     
-    // Привязываем show и hide к элементу dropDown:
-     
-    dropDown.bind('show',function(){
-       if(dropDown.is(':animated')){
-            return false;
-        }
-         
-        selectBox.addClass('expanded');
-        dropDown.slideDown();
-
-    }).bind('hide',function(){
-         
-        if(dropDown.is(':animated')){
-            return false;
-        }         
-
-        selectBox.removeClass('expanded');
-        dropDown.slideUp();        
-
-    }).bind('toggle',function(){
-        if(selectBox.hasClass('expanded')){
-            dropDown.trigger('hide');
-        }
-        else dropDown.trigger('show');
-    });
-     
-    selectBox.click(function(){
-        
-        dropDown.trigger('toggle');
-        return false;
-        
-    });
-
-    $(document).click(function(){
-        dropDown.trigger('hide');
-    });
-});
-*/
 
 $(".pay_text a:first-child").attr("class","object_selected"); //выделение первого элемента списка объектов/"счетов"
 $(this).remove();
@@ -269,26 +147,6 @@ $(this).remove();
         
     })
 
-//  Редактироване мест  
-
-    // $('.place_edit_button').click(function(){
-    //     var ValueCheck = $('.place_edit_button').attr('value')
-    //     if (ValueCheck == 'Редактировать'){
-    //         $('#place_info_container').fadeOut('fast',function(){
-    //             $('#place_edit_container').fadeIn('slow')
-    //             $('.place_edit_button').attr('value','Сохранить')
-    //             $('.place_edit_button').attr('type','submit')
-    //         })
-    //     }
-    //     else {
-    //         $('#place_edit_container').fadeOut('fast',function(){
-    //             $('#place_info_container').fadeIn('slow')
-    //             $('.place_edit_button').attr('value','Редактировать')
-    //             $('.place_edit_button').attr('type','button')
-    //         })
-    //     }
-        
-    // })
 
 //  при наведении на объекты при платеже
 
@@ -306,25 +164,6 @@ $(this).remove();
                     
                 })
             })
-
-
-
-        // $('.service_pay').click(function(){
-        //     $('.service_pay_block').find('.service_pay_selected').attr('class','service_pay')
-        //     $(this).attr('class','service_pay_selected');
-        // })
-
-
-
-    // $('.service_pay').mouseenter(function(){
-    //     //$(this).css('background-color','#d5e6f2');
-
-    //     var TrueClass = $(this).attr('class')
-    //     $(this).mouseleave(function(){
-    //     //    $('.service_pay').css('background-color','#e8eef2');
-            
-    //     })
-    // })
 
 });
 
@@ -355,8 +194,6 @@ function popUpRender(message)
     //var intervalID = setInterval(function() { $(".for_pop_up div:last-child").remove(); }, 3000);
     //setInterval(function() { if ($(".for_pop_up").html()==' ') {clearInterval(intervalID);} }, 1000);
     // $(".for_pop_up div:last-child").delay(2000).fadeOut(1000);
-    
-    //$(".for_pop_up").delay(5000).html("");
 }
 
 //Отслеживание скроллинга для отображения всплывающих сообщений
@@ -380,12 +217,6 @@ window.onscroll = function() {
 // Функция сортировки услуг.
 
 function sortFun(thisEl){
-   // var myClass="'" + bla.attr("id")+ "'"; $(myClass).hide();
-     //console.log(thisEl.getAttribute("listType"));
-    //serviceTypeId=thisEl.getAttribute("serviceTypeId");
-     //$(".vendors_option").show();
-     //$("."+listId).hide();
-     // var listType = thisEl.getAttribute("class");
 
     listType=thisEl.getAttribute("listtype");
 
@@ -428,12 +259,14 @@ function sortFun(thisEl){
         $(".filed_template_section").hide();
         $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
         $('.dog_number').removeAttr("disabled");
+        $("#field_templates_box").html() = f_t_box_content;
 
         $('.filed_template_section').each(
                 function(){
                     if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}
                 }
             );
+
         break
 
         case 'catalog':
