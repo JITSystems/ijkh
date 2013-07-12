@@ -94,7 +94,7 @@ module AccountsRepository
 			service_title = service.title
 			place_id = service.place.id
 			place_title = service.place.title
-			tariff_title = service.tariff.id
+			tariff_title = service.tariff.title
 
 
 			analytic_params = {
