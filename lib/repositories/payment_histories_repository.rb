@@ -66,7 +66,7 @@ module PaymentHistoriesRepository
 
 		recipe = Recipe.find(payment_history_params[:recipe_id])
 
-		account = Account.update_account_amount service_id, payment_history_params[:amount], recipe.amount
+		account = Account.update_account_amount service_id, recipe.amount, recipe.amount # recipe.amount only once!!!
 
 		if account[:amount] <= 0
 			
