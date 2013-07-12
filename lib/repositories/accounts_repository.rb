@@ -158,7 +158,7 @@ private
 
 		if has_readings
 			old_amount = account.amount
-			old_amount = check_comma old_amount
+			old_amount = FloatModifier.substitute_comma(old_amount)
 
 			amount = amount.to_f + old_amount.to_f
 			account.update_attributes(amount: amount.to_s, status: '-1')
