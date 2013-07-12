@@ -1970,6 +1970,10 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	cursor: pointer;
 }
 
+li[listtype=""]{
+	display: none;
+}
+
 .reg_end input[type="button"][disabled="disabled"]
 {
 	position: relative;
@@ -2234,6 +2238,7 @@ p.p4
 	line-height: 20px;
 
 }
+
 
 
 

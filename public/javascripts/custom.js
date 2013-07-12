@@ -234,6 +234,8 @@ function sortFun(thisEl){
         $('#serviceFreeze').css('height','50%');
         $("div#service_vendor_id").css("background-color", "#e8eef2");
         $("div#service_vendor_id").css("color", "#00558d");        
+
+        $("#field_templates_box").html('');
         break
 
         case 'userTariff':
@@ -251,6 +253,8 @@ function sortFun(thisEl){
         $('#serviceFreeze').css('height','17%');
         $("div#service_tariff_template_id").css("background-color", "#e8eef2");
         $("div#service_tariff_template_id").css("color", "#00558d");
+
+        $("#field_templates_box").html('');
         break
 
         case 'tariff':
