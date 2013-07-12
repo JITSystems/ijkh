@@ -242,8 +242,8 @@ function sortFun(thisEl){
 
         case 'vendor':
         // console.log('Вендор');
-        $('#service_tariff_template_id').removeAttr('disabled').trigger('refresh');
-        $('#service_tariff_template_id').val('0').trigger('refresh');
+        $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
+        $('#service_tariff_id').val('0').trigger('refresh');
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
@@ -257,7 +257,7 @@ function sortFun(thisEl){
         var hasReadings=thisEl.getAttribute("hasReadings");
         var tariffTemplateId = thisEl.getAttribute("id");
         $(".filed_template_section").hide();
-        $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
+
         $('.dog_number').removeAttr("disabled");
         $("#field_templates_box").html(f_t_box_content);
 
@@ -266,6 +266,8 @@ function sortFun(thisEl){
                     if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}
                 }
             );
+
+        $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
 
         break
 

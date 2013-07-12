@@ -18,7 +18,7 @@
 <%= f.text_field :phone_number, placeholder: "Номер телефона", class: "reg_input reg_freeze" %>
 </div>
 <div class="two_pass">
-<%= f.password_field :password, placeholder:  "Пароль*", class: "reg_input reg_freeze showpassword" %>
+<%= f.password_field :password, placeholder:  "Пароль", class: "reg_input reg_freeze showpassword" %>
 <!-- <p class="pass_req"> *Пароль должен содержать
 не менее восьми символов </p> -->
 <!--%= password_field_tag(:reg_againpass, "", :placeholder=>"Повторите пароль", :class=>:reg_input) %-->
@@ -49,7 +49,7 @@
 <div id="registrations_requirements">
 	<ul>
 		<li><p class="step">Все поля обязательны для заполнения.</p></li>
-		<li><p class="step">Пароль должен содержать не менее 8 символов.</p></li>
+		<li><p class="step">Пароль должен содержать не менее 6 символов.</p></li>
 		<!-- <li><p class="step">После подтверждения данных на Ваш адрес электронной почты придёт письмо с ссылкой для активации аккаунта.</p></li> -->
 	</ul>
 </div>
