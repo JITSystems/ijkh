@@ -45,7 +45,7 @@ class ServiceAccount
 				service_id: 		service.id,
 				title: 				service.title,
 				tariff_title: 		service.tariff.title,
-				amount: 			service.account.amount,
+				amount: 			FloatModifier.modify(service.account.amount).to_s,
 				last_update_date: 	service.account.updated_at,
 				account_id: 		service.account.id,
 				status: 			service.account.status,
