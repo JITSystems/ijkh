@@ -33,7 +33,7 @@ class MonthAnalytic
 				amount += analytic.amount.to_f
 			end
 		end
-		return FloatModifier.modify(amount)
+		return FloatModifier.modify(amount).to_s
 	end
 
 	def generate_place_analytic user, month
