@@ -36,7 +36,7 @@ module RecipesRepository
 	def show_last user, service_id
 		recipe = where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1).first
 		if recipe.nil?
-			recipe = {recipe: {total: 0}}
+			recipe = {total: 0}
 		end
 	end
 
