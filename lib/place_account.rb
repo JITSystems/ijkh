@@ -43,6 +43,6 @@ class PlaceAccount
 		service_account.each do |account|
 			amount += account.amount.to_f
 		end
-		amount.round(2)
+		FloatModifier.modify(amount).to_s
 	end
 end
