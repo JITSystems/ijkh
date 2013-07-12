@@ -68,7 +68,8 @@ module AccountsRepository
 			currency = "RUB"
 			
 			recipe_params = {
-				amount: 				amount, 
+				amount: 				amount,
+				total:  				amount, 
 				currency: 				currency, 
 				user_id: 				user.id,
 				service_id: 			account.service_id,

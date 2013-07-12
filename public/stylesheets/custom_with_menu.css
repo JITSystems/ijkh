@@ -1851,7 +1851,7 @@ input.delete_object_button{
 .appstore{
 	display: block;
 	position: absolute;
-	top: 70px;
+	top: 86px;
 	right: 22px;
 	color: #00558d;
 	font-size: 42px;
@@ -1968,10 +1968,6 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	font-size: 15px;
 	font-weight: 600;
 	cursor: pointer;
-}
-
-li[listtype=""]{
-	display: none;
 }
 
 .reg_end input[type="button"][disabled="disabled"]
@@ -2237,6 +2233,11 @@ p.p4
 	padding: 0 30px;
 	line-height: 20px;
 
+}
+
+
+li[listtype=""]{
+	display: none;
 }
 
 
