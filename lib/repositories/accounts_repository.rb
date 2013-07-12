@@ -129,7 +129,6 @@ module AccountsRepository
 private
 
 	def calculate_amount value, reading, prev_reading
-		
 		reading = FloatModifier.substitute_comma(reading)
 		prev_reading = FloatModifier.substitute_comma(prev_reading)
 		value = FloatModifier.substitute_comma(value)

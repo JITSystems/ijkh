@@ -24,7 +24,7 @@ $(function(){
 $(document).ready(function($) {
 
     f_t_box_content = $("#field_templates_box").html();
-    $("#field_templates_box").html() = '';
+    $("#field_templates_box").html('');
     $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
     $('#service_vendor_id').attr('disabled','disabled').trigger('refresh');
 
@@ -259,7 +259,7 @@ function sortFun(thisEl){
         $(".filed_template_section").hide();
         $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
         $('.dog_number').removeAttr("disabled");
-        $("#field_templates_box").html() = f_t_box_content;
+        $("#field_templates_box").html(f_t_box_content);
 
         $('.filed_template_section').each(
                 function(){

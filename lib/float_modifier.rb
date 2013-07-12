@@ -16,21 +16,21 @@ class FloatModifier
   	float
   end
 
+  def self.format(float)
+    # Formats float value to 'xxx.xx', returns string
+    float.to_s =~ /\d+.(\d+)/
+    unless $1 =~ /\d\d/
+      float = float.to_s + '0'
+    end
+    float.to_s
+  end
+
 protected
 
   def self.round_up(float)
   	# Rounds up float value
   	float = float.to_f
   	(float*100).ceil/100.0
-  end
-
-  def self.format(float)
-  	# Formats float value to 'xxx.xx', returns string
-  	float.to_s =~ /\d+.(\d+)/
-  	unless $1 =~ /\d\d/
-  	  float = float.to_s + '0'
-  	end
-  	float
   end
 
 end
