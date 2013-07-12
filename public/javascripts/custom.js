@@ -27,6 +27,7 @@ $(document).ready(function($) {
     $("#field_templates_box").html('');
     $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
     $('#service_vendor_id').attr('disabled','disabled').trigger('refresh');
+    $('.jq-selectbox__dropdown > ul>li:first-child').hide();
 
 
 //      синий квадрат в чекбоксе off/on
