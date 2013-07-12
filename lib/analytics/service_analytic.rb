@@ -55,7 +55,7 @@ class ServiceAnalytic
 			amount += analytic.amount.to_f
 		end
 		p FloatModifier.modify(amount)
-		return FloatModifier.modify(amount)
+		return FloatModifier.modify(amount).to_s
 	end
 
 end

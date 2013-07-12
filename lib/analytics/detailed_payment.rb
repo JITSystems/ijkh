@@ -23,7 +23,7 @@ class DetailedPayment
 			detailed_payment_params = {
 				id: 			analytic.id,
 				title: 			analytic.service_title,
-				amount: 		analytic.amount,
+				amount: 		FloatModifier.modify(analytic.amount).to_s,
 				tariff_title: 	analytic.tariff_title,
 				updated_at: 	analytic.updated_at,
 				service_id: 	analytic.service_id

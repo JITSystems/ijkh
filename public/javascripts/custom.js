@@ -261,12 +261,12 @@ function sortFun(thisEl){
         // console.log('Тариф');
         var hasReadings=thisEl.getAttribute("hasReadings");
         var tariffTemplateId = thisEl.getAttribute("id");
-        $(".filed_template_section").hide();
+        $(".field_template_section").hide();
 
         $('.dog_number').removeAttr("disabled");
         $("#field_templates_box").html(f_t_box_content);
 
-        $('.filed_template_section').each(
+        $('.field_template_section').each(
                 function(){
                     if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}
                 }

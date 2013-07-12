@@ -26,7 +26,7 @@
 		<div id="field_templates_box">
 			<% @field_templates.each do |field_template| %>
 
-				<div class="filed_template_section" style="display:none;" tariffTemplateId="<%= field_template.tariff_template_id %>">				
+				<div class="field_template_section" style="display:none;" tariffTemplateId="<%= field_template.tariff_template_id %>">				
 					<%= field_template.title %>
 					<%= t.text_field :value, disabled: true, value: field_template.value%>
 					<%= t.hidden_field :id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][id]" %>

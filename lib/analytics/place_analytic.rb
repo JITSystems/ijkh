@@ -43,7 +43,7 @@ class PlaceAnalytic
 		service_analytic.each do |analytic|
 			amount += analytic.amount.to_f
 		end
-		FloatModifier.modify(amount)
+		FloatModifier.modify(amount).to_s
 	end
 
 end
