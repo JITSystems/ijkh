@@ -16,7 +16,7 @@
 
 		<div class="type_man_who_have_service">
 			<%= s_f.fields_for :vendor do |v|%>
-		<%= v.select :id, options_for_select(@vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>	
+		<%= v.select :id, options_for_select([["Настроить свой тариф", -1, listType: "vendor"]] + @vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>	
 		<% end %>	
 		</div>
 
