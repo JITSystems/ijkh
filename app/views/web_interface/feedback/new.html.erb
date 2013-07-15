@@ -1,0 +1,41 @@
+<div class="top_plate">
+  <p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+  <p class="text_plate_blue">Обратная связь</p>
+</div>
+
+<div class="container_boxes">
+  <div class="horizontal_div" style="width: 100%; float: none;">
+    <div class="box_blue" id="" style="min-height:245px; padding: 10px 0px 35px 0px; background-color: #e8eef2;color: #6a7f8d;">
+      
+      <p class="feedback_alert"><%= flash.alert %></p>
+
+      <%= form_for @message, :url => feedback_path do |form| %>
+        <fieldset class="feedback_fields">
+          <div class="feedback_field">
+            <%= form.label :name, 'Имя:' %>
+            <%= form.text_field :name, value: current_user.first_name %>
+          </div>
+          
+          <div class="feedback_field">
+            <%= form.label :email, 'Адрес электронной почты:' %>
+            <%= form.text_field :email, value: current_user.email %>
+          </div>
+          <div class="feedback_field">
+            <%= form.label :subject, 'Тема:' %>
+            <%= form.text_field :subject %>
+          </div>
+          
+          <div class="feedback_field">
+            <%= form.label :body, 'Сообщение:' %>
+            <%= form.text_area :body %>
+          </div>
+        </fieldset>
+        
+        <fieldset class="feedback_actions">
+          <%= form.submit "Отправить" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -20,6 +20,7 @@
 				</ul>
 			</li>
 			<li class="menulistLi"><%= link_to "О КОМПАНИИ", about_path %></li>
+			<li class="menulistLi"><%= link_to "ОБРАТНАЯ СВЯЗЬ", feedback_path %></li>
 			<% unless current_user %>
 				<li class="menulistLi last"> <%= link_to "ВОЙТИ", login_path %></li>
 			<% else %>

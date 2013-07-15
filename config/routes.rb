@@ -118,6 +118,9 @@ Ijkh::Application.routes.draw do
 
       get "redirect" => 'web_interface/redirect_page#show'
 
+      match 'feedback' => 'web_interface/feedback#new', :as => 'feedback', :via => :get
+      match 'feedback' => 'web_interface/feedback#create', :as => 'feedback', :via => :post
+
   end
   
   namespace :web_interface do
