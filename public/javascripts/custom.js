@@ -231,12 +231,7 @@ function sortFun(thisEl){
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
-        $('#serviceFreeze').css('height','50%');
-        $("div#service_vendor_id").css("background-color", "#e8eef2");
-        $("div#service_vendor_id").css("color", "#00558d");        
-
         $("#field_templates_box").html('');
-
         $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
         break
 
@@ -244,7 +239,6 @@ function sortFun(thisEl){
         var userTariffId=thisEl.getAttribute("servicetypeid");
         $("[listtype=tariff]").hide();
         $("[servicetypeid="+userTariffId+"]").show();
-
         $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
         $("[vendorid!="+0+"]").hide();
@@ -257,10 +251,6 @@ function sortFun(thisEl){
         var vendorId=thisEl.getAttribute("id");
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
-        $('#serviceFreeze').css('height','17%');
-        $("div#service_tariff_template_id").css("background-color", "#e8eef2");
-        $("div#service_tariff_template_id").css("color", "#00558d");
-
         $("#field_templates_box").html('');
         break
 
