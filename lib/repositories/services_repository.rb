@@ -207,7 +207,7 @@ module ServicesRepository
 						title: 					field_hash[:title],
 						field_type: 			field_hash[:field_type],
 						is_for_calc: 			field_hash[:is_for_calc],
-						value: 					FlaotModifier.substitute_comma(field_hash[:value]).to_f,
+						value: 					FloatModifier.substitute_comma(field_hash[:value]).to_f,
 						reading_field_title: 	field_hash[:reading_field_title],
 						field_template_id: 		field_hash[:id],
 						tariff_id: 				tariff.id,
