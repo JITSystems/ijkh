@@ -2187,7 +2187,19 @@ margin-left: 3px;
 
 
 /*----------------------------	FEEDBACK PAGE  ----------------------------*/
+#feedback_load
+{
+	background-image: url(../images/feedback_loader.gif);
+	background-color: rgba(0,0,10,0.4);
+	position: absolute;
+	z-index: 9999;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: -10px;
 
+	/*width: 100%;
+	height: 100%;*/
+}
 .feedback_alert
 {
 	padding: 10px 0px 15px 30px;
@@ -2198,6 +2210,10 @@ margin-left: 3px;
 {
 	margin-left: 30px;
 	width: 385px;
+}
+.feedback_fields label
+{
+	padding-bottom: 5px;
 }
 
 .feedback_fields label,.feedback_fields textarea, .feedback_fields input
