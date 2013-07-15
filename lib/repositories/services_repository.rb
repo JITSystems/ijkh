@@ -48,7 +48,7 @@ module ServicesRepository
 
 		fields_params.each do |field_params|
 			field = Field.find(field_params[:id])
-			field.update_attributes(value: field_params[:value])
+			field.update_attributes(value: FloatModifier.substitute_comma(field_params[:value]).to_f)
 		end
 		service = find(params[:service_id])
 	end
