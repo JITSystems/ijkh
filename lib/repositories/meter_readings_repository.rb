@@ -21,7 +21,14 @@ module MeterReadingsRepository
 	end
 
 	def new_meter_reading user, params
-		meter_reading = MeterReading.new(params[:meter_reading].merge user_id: user.id, is_init: false, service_id: params[:service_id])
+		meter_reading_params =  {
+								 reading: FloatModifier.substitute_comma(params[:meter_reading][:reading]),
+								 user_id: user.id,
+								 is_init: false,
+								 service_id: params[:service_id],
+								 field_id: params[:meter_reading][:field_id]			
+								}
+		meter_reading = MeterReading.new(meter_reading_params)
 		if meter_reading.save
 			if params[:snapshot]
 				snapshot_url = save_snapshot user, params[:snapshot], meter_reading.created_at.to_s, params[:service_id]

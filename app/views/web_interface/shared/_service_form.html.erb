@@ -10,8 +10,9 @@
 	<%= s_f.hidden_field :place_id, value: @place_id %>
 	<div class="choise_service">
 		<div class="service">
-		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]}),prompt: "Выберите тип услуги ЖКХ"%>
+		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]} ),prompt: "Выберите тип услуги ЖКХ"%>
 		</div>
+
 
 		<div class="type_man_who_have_service">
 			<%= s_f.fields_for :vendor do |v|%>
@@ -21,7 +22,7 @@
 
 <div class="choise_tarif">
 	<%= s_f.fields_for :tariff do |t|%>
-		<%= t.select :id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, listType: 'tariff', id: t_t.id}]}), prompt: "Выберите тариф"%>
+		<%= t.select :id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {listType: 'tariff', vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, id: t_t.id}]}), prompt: "Выберите тариф"%>
 
 		<div id="field_templates_box">
 			<% @field_templates.each do |field_template| %>

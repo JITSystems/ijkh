@@ -207,7 +207,7 @@ module ServicesRepository
 						title: 					field_hash[:title],
 						field_type: 			field_hash[:field_type],
 						is_for_calc: 			field_hash[:is_for_calc],
-						value: 					field_hash[:value],
+						value: 					FlaotModifier.substitute_comma(field_hash[:value]),
 						reading_field_title: 	field_hash[:reading_field_title],
 						field_template_id: 		field_hash[:id],
 						tariff_id: 				tariff.id,
@@ -219,7 +219,7 @@ module ServicesRepository
 						if field.is_for_calc == true
 							meter_reading_hash = field_hash[:meter_readings]
 							meter_reading_params = {
-								reading: meter_reading_hash[:reading],
+								reading: FloatModifier.substitute_comma(meter_reading_hash[:reading]),
 								is_init: true,
 								field_id: field.id,
 								user_id: user.id,
