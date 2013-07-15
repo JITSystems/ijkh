@@ -63,7 +63,7 @@ body{
 	position: relative;
 	float: left;
 	height: 53px;
-	padding: 0px 15px 0px 15px;
+	padding: 0px 10px 0px 10px;
 	line-height: 3.2;
 	font-family: 'PT Sans Narrow', sans-serif;
 	font-size: 18px;
@@ -101,10 +101,10 @@ padding: 15px;
 	height: 35px;
 	background-color: #d5e6f2;
 	margin-top: 1px;
-	font-size: 16px;
-	line-height: 2.0;
-	text-indent: 20px;
-	color:#00558d;
+	font-size: 15px;
+	line-height: 2.3;
+	text-indent: 9px;
+	color: #00558d;
 	text-shadow: none;
 	cursor: pointer;
 }
