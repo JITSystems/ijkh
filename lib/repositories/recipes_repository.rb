@@ -4,7 +4,7 @@ module RecipesRepository
 		total = 0.0
 		amount = (check_comma params[:amount]).to_f
 		if amount < 500.00
-			po_tax = 3
+			po_tax = 0
 			service_tax = po_tax + round_up(0.03*amount).round(2)
 			total = service_tax + amount
 		else

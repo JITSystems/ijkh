@@ -11,7 +11,7 @@ class WebInterface::FeedbackController < WebInterfaceController
     
     if @message.valid?
       NotificationsMailer.new_message(@message).deliver
-      redirect_to(root_path, :notice => "Message was successfully sent.")
+      redirect_to(root_path, :notice => "Ваше сообщение успешно отправлено.")
     else
       flash.now.alert = "Пожалуйста, заполните все поля."
       render :new
