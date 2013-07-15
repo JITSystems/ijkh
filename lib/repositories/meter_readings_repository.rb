@@ -22,7 +22,7 @@ module MeterReadingsRepository
 
 	def new_meter_reading user, params
 		meter_reading_params =  {
-								 reading: FloatModifier.substitute_comma(params[:meter_reading][:reading]),
+								 reading: FloatModifier.substitute_comma(params[:meter_reading][:reading]).to_f,
 								 user_id: user.id,
 								 is_init: false,
 								 service_id: params[:service_id],

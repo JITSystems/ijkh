@@ -28,8 +28,8 @@ module AccountsRepository
 		if account
 			amount_params = {
 				field_id: params[:field_id],
-				reading: FloatModifier.substitute_comma(params[:reading]),
-				prev_reading: FloatModifier.substitute_comma(params[:prev_reading])
+				reading: FloatModifier.substitute_comma(params[:reading]).to_f,
+				prev_reading: FloatModifier.substitute_comma(params[:prev_reading]).to_f
 			}
 			update_amount account, amount_params
 		end

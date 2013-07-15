@@ -237,14 +237,17 @@ function sortFun(thisEl){
 
         $("#field_templates_box").html('');
 
-        $("[listtype=userTariff]").attr('servicetypeid',servicetypeid);
+        $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
         break
 
         case 'userTariff':
         var userTariffId=thisEl.getAttribute("servicetypeid");
         $("[listtype=tariff]").hide();
         $("[servicetypeid="+userTariffId+"]").show();
-        //$("[vendorid="+0+"]").show();
+
+        $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
+        $('#service_tariff_id').val('0').trigger('refresh');
+        $("[vendorid!="+0+"]").hide();
         break
 
         case 'vendor':
