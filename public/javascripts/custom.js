@@ -236,11 +236,15 @@ function sortFun(thisEl){
         $("div#service_vendor_id").css("color", "#00558d");        
 
         $("#field_templates_box").html('');
+
+        $("[listtype=userTariff]").attr('servicetypeid',servicetypeid);
         break
 
         case 'userTariff':
-        $('#serviceFreeze').css('height','33%');
-        $("[vendorid="+0+"]").show();
+        var userTariffId=thisEl.getAttribute("servicetypeid");
+        $("[listtype=tariff]").hide();
+        $("[servicetypeid="+userTariffId+"]").show();
+        //$("[vendorid="+0+"]").show();
         break
 
         case 'vendor':
