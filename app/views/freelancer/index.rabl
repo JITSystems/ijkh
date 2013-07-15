@@ -1,3 +1,3 @@
 collection @freelancers
 
- attributes :id, :title, :work_time, :description, :picture_url, :phone
+ attributes :id, :title, :work_time, :description, :picture_url, :phone, :name

@@ -5,11 +5,25 @@
 
 <div class="container_boxes">
   <div class="horizontal_div" style="width: 100%; float: none;">
-    <div class="box_blue" id="" style="min-height:245px; padding: 10px 0px 35px 0px; background-color: #e8eef2;color: #6a7f8d;">
+    <div class="box_blue box_left" id="" style="min-height:245px; padding: 10px 0px 35px 0px; color: #6a7f8d;">
 
       <div id="feedback_load">
+
+      <div class="loading bar">
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+      </div>
+
         
       </div>
+
+
       
       <p class="feedback_alert"><%= flash.alert %></p>
 
@@ -36,10 +50,27 @@
         </fieldset>
         
         <fieldset class="feedback_actions">
-          <%= form.submit "Отправить" %>
+          <%= form.submit "Отправить", onclick: '$("#feedback_load").show();' %>
         </fieldset>
       <% end %>
     </div>
+
+<div class="box_right box_blue">
+<div class="box_top_right ">
+<p>Информация</p>
+</div>
+
+<div class="info_text">
+
+<p class="feedback_p">Уважаемый Клиент!</p>
+<p class="feedback_p">Мы предлагаем Вам оценить работу нашего сайта, а также мобильного приложения, которое доступно в AppStore. </p>
+<p class="feedback_p">Уверены, что благодаря Вашим отзывам и пожеланиям, наш сервис станет еще лучше!</p>
+<p class="feedback_p">Ваше мнение очень важно для нас!</p>
+
+</div>
+
+</div>
+
   </div>
 </div>
 
