@@ -224,10 +224,10 @@ function sortFun(thisEl){
      switch (listType)
      {
         case 'serviceType':
-        // console.log('Услуга');
         $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
         $('#service_vendor_id').val('0').trigger('refresh');
-        $('#service_tariff_template_id').val('0').trigger('refresh');
+        $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
+        $('#service_tariff_id').val('0').trigger('refresh');
         var serviceTypeId=thisEl.getAttribute("id");
         $("[listtype=vendor]").hide();
         $("[servicetypeid="+serviceTypeId+"]").show();
@@ -237,19 +237,14 @@ function sortFun(thisEl){
 
         case 'userTariff':
         var userTariffId=thisEl.getAttribute("servicetypeid");
-        $("[listtype=tariff]").hide();
         $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
-        //$("'li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + "]'" ).show();
-        //$("[servicetypeid="+userTariffId+"]").show();
+        $("[listtype=tariff]").hide();
         $("li[listType='tariff'][vendorid=0]").show();
-        $("li[servicetypeid=" + userTariffId + "]").hide();
-        
-
+        $("li[listType='tariff'][servicetypeid!=" + userTariffId + "]").hide();
         break
 
         case 'vendor':
-        // console.log('Вендор');
         $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
         var vendorId=thisEl.getAttribute("id");
@@ -259,11 +254,9 @@ function sortFun(thisEl){
         break
 
         case 'tariff':
-        // console.log('Тариф');
         var hasReadings=thisEl.getAttribute("hasReadings");
         var tariffTemplateId = thisEl.getAttribute("id");
         $(".field_template_section").hide();
-
         $('.dog_number').removeAttr("disabled");
         $("#field_templates_box").html(f_t_box_content);
 
@@ -273,8 +266,12 @@ function sortFun(thisEl){
                 }
             );
 
-        $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
+        if(thisEl.getAttribute('vendorid') == 0) 
+        {
+            $('.service_tariff_value').removeAttr('disabled');
+        }
 
+        $("[tarifftemplateid="+tariffTemplateId+"]").slideDown();
         break
 
         case 'catalog':
@@ -282,7 +279,6 @@ function sortFun(thisEl){
         $('.catalog_category').hide();
         $("#freelance_category_"+catalogId).show();
         $("#non_utility_service_type_"+catalogId).show();
-        //alert("[freelance_category_"+catalogId+"]");
         break
 
         case 'showAllCategories':
