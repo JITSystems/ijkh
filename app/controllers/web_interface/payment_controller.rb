@@ -28,7 +28,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		recipe_params = {
 			account_id: 	params[:account_id],
 			service_id: 	@account.service.id,
-			amount: 		FloatModifier.format(params[:amount_total])
+			amount: 		params[:amount_total]
 		}
 
 		@recipe = Recipe.create_recipe current_user, recipe_params
@@ -37,7 +37,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		merchant_id = @vendor.merchant_id
 		order_id = @recipe.id
-		amount = FloatModifier.modify(@recipe.total)
+		amount = FloatModifier.format(FloatModifier.modify(@recipe.total))
 		currency = "RUB"
 		private_security_key = @vendor.psk
 
