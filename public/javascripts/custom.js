@@ -241,7 +241,8 @@ function sortFun(thisEl){
         //$("[servicetypeid="+userTariffId+"]").show();
         $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
-        $("'li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + "]'" ).show();
+        //$("'li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + "]'" ).show();
+        $("li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + ']').show();
         break
 
         case 'vendor':
