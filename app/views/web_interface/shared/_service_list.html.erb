@@ -1,5 +1,5 @@
-<% if @services != []%>
-	<% @services.each do |service|%>
+<% if @services != [] and  @places != [] %>
+	<% @services.each do |service| %>
 		<%= link_to service.title, "/get_payment_data/#{service.id}", remote: true, onclick: "servicePayClick(this);", method: :post, class: "service_pay" %>
 	<% end %>
 <% else %>
