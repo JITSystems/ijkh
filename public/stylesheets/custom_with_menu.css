@@ -1201,6 +1201,31 @@ input.delete_object_button{
 /*----------------------------	END REGISTRATION   ----------------------------*/
 
 /*----------------------------	MAIN CONTENT  ----------------------------*/
+
+.white_cubs_carousel
+{
+	/*width: 420px;
+	height: 85px;*/
+}
+
+.white_cubs_carousel ul
+{
+	/*width: 420px;
+	height: 85px;*/
+}
+
+
+.white_cubs_carousel li
+{
+	position: relative;
+	float: left;
+	width: 205px;
+	height: 85px;
+	margin-right: 5px;
+	margin-top: 5px;
+	background-color: #FFF;
+}
+
 .horizontal_div_main{
 	width: 930px;
 	margin: 25px auto 0px;
@@ -1216,8 +1241,6 @@ input.delete_object_button{
 	float: left;
 	width: 205px;
 	height: 85px;
-	margin-right: 5px;
-	margin-top: 5px;
 	background-color: #FFF;
 }
 .white_cub_1 img 
@@ -1240,6 +1263,18 @@ input.delete_object_button{
 	height: 97%;
 	padding: 2px 39px;
 }
+.white_cub_5 img
+{
+	height: 87%;
+	padding: 5px 5px;
+}
+.white_cub_6 img
+{
+	height: 97%;
+	padding: 2px 60px;
+}
+
+
 .white_cub a 
 {
 	width: 100%;

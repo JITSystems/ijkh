@@ -1,3 +1,14 @@
+// Карусель на главной
+$( document ).ready(function() {
+    $(".white_cubs_carousel").jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev",
+        auto: 5000,
+        speed: 1000,
+        visible: 2
+    });
+});
+
 //Функция показа пароля
 $(function(){
     $(".showpassword").each(function(index,input) {
