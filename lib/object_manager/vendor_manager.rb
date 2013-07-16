@@ -7,4 +7,8 @@ class VendorManager < ObjectManager
 	def self.index_with_tariffs(service_type)
 		service_type.vendors.where(is_active: true)
 	end
+
+	def index_active
+		Vendor.where(is_active: true).first
+	end
 end
