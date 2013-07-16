@@ -9,6 +9,6 @@ class VendorManager < ObjectManager
 	end
 
 	def self.index_active
-		Vendor.where(is_active: true).first
+		Vendor.where(is_active: true)
 	end
 end

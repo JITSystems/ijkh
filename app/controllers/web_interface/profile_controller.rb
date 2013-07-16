@@ -8,7 +8,7 @@ class WebInterface::ProfileController < WebInterfaceController
 		end 
 
 		@service_types = ServiceTypeManager.index
-    	@vendors = VendorManager.index_active
+    	@vendors = VendorManager.index
     	@tariff_templates = TariffTemplate.select("id, title, vendor_id, has_readings, service_type_id")
     	@field_templates = FieldTemplateManager.index
     	@service = Service.new
