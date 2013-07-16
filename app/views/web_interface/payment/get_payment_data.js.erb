@@ -3,9 +3,10 @@ $('#tariff_selected_box').fadeOut(300);
 $('.end_button').removeAttr('disabled');
 $('#amount_total').removeAttr('disabled');
 $('#tariff_selected_box').fadeIn(300);
-<% if @account.amount.to_f == 0.0 %>
+
 	$(".end_button").removeAttr("disabled");
 	$("#amount_total").removeAttr("disabled");
 	$('input#account_id').attr('value', '<%= @account.id %>');
 	$('input#amount_total').attr('value', '<%= @account.amount %>');
+<% if @account.amount.to_f == 0.0 %>
 <% end %>

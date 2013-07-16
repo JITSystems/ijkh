@@ -22,8 +22,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def pay
-		logger.info params.inspect
-		@account= Account.find(params[:account_id])
+		@account = Account.find(params[:account_id])
 		@vendor = @account.service.vendor
 
 		recipe_params = {
