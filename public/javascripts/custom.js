@@ -1,5 +1,3 @@
-
-
 //Функция показа пароля
 $(function(){
     $(".showpassword").each(function(index,input) {
