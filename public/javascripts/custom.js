@@ -238,11 +238,14 @@ function sortFun(thisEl){
         case 'userTariff':
         var userTariffId=thisEl.getAttribute("servicetypeid");
         $("[listtype=tariff]").hide();
-        //$("[servicetypeid="+userTariffId+"]").show();
         $('#service_tariff_id').removeAttr('disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
         //$("'li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + "]'" ).show();
-        $("li[listType='tariff'][vendorid=0][servicetypeid=" + userTariffId + ']').show();
+        //$("[servicetypeid="+userTariffId+"]").show();
+        $("li[listType='tariff'][vendorid=0]").show();
+        $("li[servicetypeid=" + userTariffId + "]").hide();
+        
+
         break
 
         case 'vendor':
