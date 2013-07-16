@@ -3,7 +3,7 @@ $( document ).ready(function() {
     $(".white_cubs_carousel").jCarouselLite({
         btnNext: ".next",
         btnPrev: ".prev",
-        auto: 5000,
+        auto: 10000,
         speed: 1000,
         visible: 2
     });
