@@ -14,7 +14,7 @@ private
 						  vendor_id: 		params[:vendor][:id],
 						  user_id: 			user.id
 						 }
-		unless params[:vendor][:id] != 0 || params[:vendor][:id]
+		unless s_p[:vendor_id].to_s != "0" || params[:vendor_id]
 			service_type = ServiceTypeManager.get(params[:service_type_id])
 			s_p.merge!(title: service_type.title + " (Пользовательский)")
 		else

@@ -1,4 +1,5 @@
 class NonUtilityServiceTypeController < ApplicationController
+	skip_before_filter :require_auth_token
 	def index
 		@non_utility_service_types = NonUtilityServiceType.all
 

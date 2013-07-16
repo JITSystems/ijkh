@@ -80,7 +80,19 @@
  -->
 </div>
 <% end %>
-		<%= form_tag(deactivate_web_interface_place_path(@place.id), remote: true, method: :put, style: "float: right;height: 0px;") do |f| %>
-			<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
-			<input type="submit" class="delete_object_button" value="Удалить">
-		<% end %>
+
+<div id="delete_place_confirm">
+	<p>Удалить объект?</p>
+
+	<%= form_tag(deactivate_web_interface_place_path(@place.id), remote: true, method: :put, style: "float: right;height: 0px;width: 100%;") do |f| %>
+		<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
+		<input type="submit" class="delete_object_button_yes" value="Да">
+	<% end %>
+	
+	<button class="delete_object_button_no" onclick="$('#delete_place_confirm').fadeOut();">Нет</button>		
+</div>
+
+<button class="delete_object_button" onclick="$('#delete_place_confirm').fadeIn();">Удалить</button>
+
+
+

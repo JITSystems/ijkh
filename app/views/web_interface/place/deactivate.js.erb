@@ -1,4 +1,5 @@
 $("div#place_card_box").html('');
 $('a#<%= @place.id %>').remove();
 $('#slideUpBox').css('clear','both');
+$('#service_box').fadeToggle();
 popUpRender('<%= @message %>');
