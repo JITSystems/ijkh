@@ -8,7 +8,7 @@ class VendorManager < ObjectManager
 		service_type.vendors.where(is_active: true)
 	end
 
-	def index_active
+	def self.index_active
 		Vendor.where(is_active: true).first
 	end
 end
