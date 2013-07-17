@@ -372,7 +372,7 @@ padding: 15px;
 	font-size: 15px;
 	font-weight: 600;
 }
-.data_box_top p{
+/*.data_box_top p{
 	position: relative;
 	display: block;
 	padding-left:34px;
@@ -380,7 +380,7 @@ padding: 15px;
 	color: #00558d;
 	font-size: 15px;
 	font-weight: 600;
-}
+}*/
 .name_email{
 	position: relative;
 	width: 450px;
@@ -1310,6 +1310,77 @@ left: -15px;
 	height: 100%;
 }
 
+/* Карусель инструкций */
+
+	.data_box_top button
+	{ 
+		position: relative;
+		width: 40px;
+		height: 40px;
+		margin: 3px;
+		z-index: 10;
+		font-size: 25px;
+		color: #00558d;
+	}
+
+	.guide_prev
+	{
+		float: left;
+	}
+	
+	.guide_next
+	{
+		float: right;
+	}
+
+	.data_box_top p {
+
+		/* 1271 строка в файле css */
+
+		position: relative;
+		display: block;
+		padding-left: 0;
+		top: 15px;
+		color: #00558d;
+		font-size: 15px;
+		font-weight: 600;
+		text-align: center;
+	}
+
+
+	
+	.guide_carousel
+	{
+		margin: 8px auto;
+		height: 320px;
+		overflow: hidden;
+		/*height: 100px;
+		width: 100px;*/
+	}
+
+	.guide_carousel > ul > li > img
+	{
+		height: 277px;
+		width: 434px;
+	}
+
+	.guide_carousel > ul > li > p
+	{
+		display: block;
+		position: relative;
+		font-size: 18px;
+		line-height: 1.5;
+		color: #6a7f8d;
+		line-height: 1.2em;
+		font-size: 0.9em;
+		padding-bottom: 5px;
+	}
+
+	.guide_carousel > ul > li > p.guide_step
+	{
+		font-weight: bold;
+	}
+
 .box_left{float: left;}
 .box_right{float: right;}
 
@@ -1344,7 +1415,7 @@ left: -15px;
 .data_box_top p{
 	position: relative;
 	display: block;
-	padding-left:34px;
+	/*padding-left:34px;*/
 	top:15px;
 	color: #00558d;
 	font-size: 15px;
@@ -2214,7 +2285,7 @@ margin-left: 3px;
 
 .nu_vendor_info img
 {
-	height: 64px;
+	/*height: 64px;*/
 	float: left;
 	padding: 5px 10px 0px 0px;
 }

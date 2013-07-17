@@ -27,7 +27,64 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="box_right box blue">
+
+	<div class="box_right box blue" style="margin-bottom: 30px; background-color: #d5e6f2;">
+	
+	<div class="data_box_top">
+		<button class="guide_prev"> &larr;  </button>
+		<button class="guide_next"> &rarr; </button>
+		<p class="guide_top">Информация</p>
+
+	</div> 
+
+	<div class="guide_box">
+
+		<div class="guide_carousel">
+			<ul>
+				<li>
+					<p class="guide_step">Шаг 1</p>
+					<img src="../images/1-1.png" alt="Шаг первый"/>
+					
+					<p class="guide_text">Регистрация на сервисе.</p>
+
+				</li>
+				<li>
+					<p class="guide_step">Шаг 2</p>
+					<img src="../images/2-1.png" alt="Шаг второй"/>
+					
+					<p class="guide_text">Прикрепление объекта.</p>
+
+				</li>
+				<li>
+					<p class="guide_step">Шаг 3</p>
+					<img src="../images/3-1.png" alt="Шаг третий"/>
+					
+					<p class="guide_text">Добавление услуг к сохранённому объеку недвижимости.</p>
+
+				</li>
+				<li>
+					<p class="guide_step">Шаг 4</p>
+					<img src="../images/4-1.png" alt="Шаг четвёртый"/>
+					
+					<p class="guide_text">Получение счетов по текущему объекту.</p>
+
+				</li>
+				<li>
+					<p class="guide_step">Шаг 5</p>
+					<img src="../images/5-1.png" alt="Шаг пятый"/>
+					
+					<p class="guide_text">Оплата счёта.</p>
+
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+</div>
+
+	<div class="box_right box blue" style="clear: both;">
+
 		<div class="data_box_top ">
 			<p>Партнеры</p>
 		</div>
@@ -53,6 +110,8 @@
 	</div>
 </div>
 
+<div class="clear"></div>
+
 <script>
 	// Карусель на главной
 $( document ).ready(function() {
@@ -63,7 +122,15 @@ $( document ).ready(function() {
         speed: 1000,
         visible: 2
     });
+
+        $(".guide_carousel").jCarouselLite({
+        btnNext: ".guide_next",
+        btnPrev: ".guide_prev",
+        speed: 500,
+        visible: 1, 
+    });
 });
+
 </script>
 
 <% if flash[:notice] %>
