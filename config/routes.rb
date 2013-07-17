@@ -82,6 +82,12 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
   post 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#create'
 
+# Non Utility Vendor
+  get 'api/1.0/nonutilityservicetype/:non_utility_service_type_id/nonutilityvendor' => 'non_utility_vendor#index_by_service_type'
+
+# Non Utility Tariff
+  get 'api/1.0/nonutilityvendor/:non_utility_vendor_id/nonutilitytariff' => 'non_utility_tariff#index_by_vendor'
+
 # Payment History
   get 'api/1.0/vendor/:vendor_title/paymenthistories' => 'payment_history#index_by_vendor'
   get 'api/1.0/paymenthistories' => 'payment_history#index_by_month'
