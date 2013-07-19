@@ -1,7 +1,14 @@
 class MeterReadingController < ApplicationController
+	skip_before_filter :require_auth_token
 	def index
 		@meter_readings = MeterReading.by_tariff(params[:tariff_id])
 		render 'meter_reading/index'
+	end
+
+	def index_by_vendor
+		@month = params[:meter_reading][:month]
+		@meter_readings = MeterReading.where("extract(month from created_at) = ?", @month)
+		render json: {meter_reading: @meter_readings}
 	end
 
 	def create

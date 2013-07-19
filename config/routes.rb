@@ -56,6 +56,7 @@ Ijkh::Application.routes.draw do
 
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
+  get 'api/1.0/meterreadings' => 'meter_reading#index_by_vendor'
   post 'api/1.0/meterreading' => 'meter_reading#create'
 
 # Account
@@ -80,7 +81,10 @@ Ijkh::Application.routes.draw do
 
 # Non Utility Service Type
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
+  get 'api/1.0/nonutilityservicetype/:id' => 'non_utility_service_type#show'
   post 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#create'
+  put 'api/1.0/nonutilityservicetype/:id' => 'non_utility_service_type#update'
+  delete 'api/1.0/nonutilityservicetype/:id' => 'non_utility_service_type#destroy'
 
 # Non Utility Vendor
   get 'api/1.0/nonutilityservicetype/:non_utility_service_type_id/nonutilityvendor' => 'non_utility_vendor#index_by_service_type'
