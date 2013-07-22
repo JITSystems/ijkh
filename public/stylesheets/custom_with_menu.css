@@ -87,6 +87,34 @@ div.service_pay_block > p
 padding: 15px;	
 }
 
+a#no_object_found
+{
+	padding: 10px;
+	background: none;
+	border: none;
+	color: rgb(63, 38, 243);
+	cursor: auto;
+	display: inline;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	height: auto;
+	line-height: 16px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	text-decoration: underline;
+	vertical-align: baseline;
+	width: auto;
+}
+
 .dropdownMenu{
 	position: absolute;
 	width: 100%;
@@ -552,6 +580,10 @@ padding: 15px;
 	top:5px;
 	margin-bottom: 10px;
 	left:30px;
+}
+#tariff_selected_box, #meter_reading_box
+{
+	margin-top: 30px;
 }
 .price_pay{
 	position: relative;

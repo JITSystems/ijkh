@@ -7,7 +7,7 @@ module MeterReadingsRepository
 	def save_snapshot user, snapshot, snapshot_name, service_id
 		snapshot_name = snapshot_name.to_datetime
 		name = snapshot_name.to_s(:number)+'.png'
-		directory = File.join('public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+		directory = File.join('public','uploads','meter_reading_snapshots', user.id.to_s, service_id.to_s)
 
 		unless File.directory?(directory)
 			FileUtils.mkdir_p(directory)
@@ -15,7 +15,7 @@ module MeterReadingsRepository
 
 		path = File.join(directory, name)
 		File.open(path, "wb") { |f| f.write(snapshot.read) }
-		directory = File.join('images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+		directory = File.join('uploads','meter_reading_snapshots', user.id.to_s, service_id.to_s)
 		path = File.join(directory, name)
 		path
 	end

@@ -20,9 +20,17 @@ set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
 set :branch, "master"
 
+
+after 'deploy:update_code', 'deploy:symlink_uploads'
+
 namespace :deploy do
+  task :symlink_uploads do
+    run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+  end
+  
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
     run "cd #{current_path} && bin/bundle exec clockwork lib/clock.rb"
-  end  
+  end
+
 end

@@ -1,79 +1,55 @@
-				<div class="top_plate">
-					<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-					<p class="text_plate_blue">Оплата счетов</p>
-				</div>
-				<div class="container_boxes">
-					<div class="horizontal_div">
-						<div class="box_left box_blue">
-							<div class="data_box_top">
-								<p>Выберите объект</p>
-							</div>
-							<div class="pay_text">
-							<% if @places != [] %>
-								<% @places.each do |place| %>
-									<%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %>
-								<% end %>
-							<% else %>
-								<p style="padding: 10px;">Не найдено ни одного объекта. Перейдите в <a 
-									style="
-											background: none;
-											border: none;
-											color: rgb(63, 38, 243);
-											cursor: auto;
-											display: inline;
-											font-family: 'Open Sans', sans-serif;
-											font-size: 16px;
-											font-style: normal;
-											font-variant: normal;
-											font-weight: normal;
-											height: auto;
-											line-height: 16px;
-											margin-bottom: 0px;
-											margin-left: 0px;
-											margin-right: 0px;
-											margin-top: 0px;
-											padding-bottom: 0px;
-											padding-left: 0px;
-											padding-right: 0px;
-											padding-top: 0px;
-											text-decoration: underline;
-											vertical-align: baseline;
-											width: auto;" 
-								href="<%= profile_path %>">профиль</a> для добавления объектов и услуг.</p>
-							<% end %>
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Оплата счетов</p>
+</div>
+<div class="container_boxes">
+	
+	<div class="vertical_div vertical_div_left">
+		<div class="box_left box_blue">
+			<div class="data_box_top">
+				<p>Выберите объект</p>
+			</div>
+			<div class="pay_text">
+			<% if @places != [] %>
+				<% @places.each do |place| %>
+					<%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %>
+				<% end %>
+			<% else %>
+				<p style="padding: 10px;">Не найдено ни одного объекта. Перейдите в <a id="no_object_found" href="<%= profile_path %>">профиль</a> для добавления объектов и услуг.</p>
+			<% end %>
 
-							</div>
-							
-						</div>
-
-					<% if @places != [] %>
-						<div class="box_right box">
-							<div class="data_box_top">
-								<p>Услуга(Поставщик)</p>
-							</div>
-							<div class="service_pay_block">
-								<%= render 'web_interface/shared/service_list'%>
-							</div>
-						</div>
-					<% end %>
-
-					</div>
-
-					<div class="horizontal_div">
-						<% if @places != [] %>
-							<div class="box_left box_blue" id="tariff_selected_box">
-								<%= render 'web_interface/shared/payment_form'%>
-							</div>
-						<% end %>
-					</div>
-
-					<div class="horizontal_div">
-
-							<div class="box_left box_blue" id="meter_reading_box" style="display:none;">
-							</div>
-
-					</div>
+			</div>
+			
+		</div>
+		
+		<% if @places != [] %>
+			<div class="box_left box_blue" id="tariff_selected_box">
+				<%= render 'web_interface/shared/payment_form'%>
+			</div>
+	<% end %>
 
 
+	</div>
 
-				</div>
+	<div class="vertical_div vertical_div_right">
+
+	<% if @places != [] %>
+		<div class="box_right box">
+			<div class="data_box_top">
+				<p>Услуга(Поставщик)</p>
+			</div>
+			<div class="service_pay_block">
+				<%= render 'web_interface/shared/service_list'%>
+			</div>
+		</div>
+	<% end %>
+	
+	<div class="box_right box_blue" id="meter_reading_box" style="display:none;">
+		<%= render 'web_interface/shared/meter_reading_form'%>
+	</div>
+
+	
+	</div>
+
+
+</div>

@@ -99,6 +99,9 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/payment_success' => 'payment_history#success'
   post 'api/1.0/payment_fail' => 'payment_history#fail'
 
+# Server-Side Payment
+  post 'api/1.0/payment' => 'payment#pay'
+
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'
