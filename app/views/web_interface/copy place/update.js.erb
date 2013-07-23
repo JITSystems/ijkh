@@ -1,0 +1,4 @@
+$('a#<%= @place.id %>').html('<%= @place.title %>');
+$('#place_card_title').html('<%= @place.title %>');
+$('p.adress_blue').html('<%= @place.city %> <%= @place.street %> <%= @place.building %>, кв.<%= @place.apartment%>');
+popUpRender('<%= @message %>');

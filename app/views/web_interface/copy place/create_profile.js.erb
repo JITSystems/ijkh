@@ -1,0 +1,4 @@
+$("div.pay_text").prepend('<%= link_to @place.title, "/get_place/#{@place.id}", remote: true, method: :post, class: "object", id: @place.id %>');
+$('#slideUpBox').fadeIn();  
+$('#slideDownBox').fadeOut();
+popUpRender('<%= @message %>');

@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>500 Internal Server Error</title>
+  <meta charset="utf-8">
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+
+    html { background: url(images/background.jpg) center center; }
+
+    body { text-align: center; font-family: "Open Sans", sans-serif !important;  }
+
     div.dialog {
       width: 25em;
-      padding: 0 4em;
+      padding: 2em 4em;
       margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
+      background-color: #d5e6f2;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+
+    h1 { font-size: 8em; color: #47555e; margin: 0;}
+
+    p { font-size: 1.5em; color: #47555e; line-height: 1.5em; }
+
+    a { color: rgb(0, 0, 221); }
+
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
   <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+    <!-- <h1>We're sorry, but something went wrong.</h1> -->
+    <h1>500</h1>
+    <p>Сожалеем, но что-то пошло не так.</p>
+    <p><a href="http://www.izkh.ru">Вернуться на сайт izkh.ru</a></p>
   </div>
 </body>
 </html>
