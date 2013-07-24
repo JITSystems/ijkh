@@ -5,5 +5,6 @@ class PaymentController < ApplicationController
     		puts message.inspect
   			client.publish("/#{params[:auth_token]}", 'text' => 'Yo nigga!')
   		end
+  		render json: {"ok, now wait for async mess"}
 	end
 end

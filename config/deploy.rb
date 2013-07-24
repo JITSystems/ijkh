@@ -3,7 +3,7 @@ ssh_options[:forward_agent] = true
 ssh_options[:verbose] = :debug
 set :ssh_options, {:user => "ubuntu"}
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["/Users/jwsilent/Development/keys/aws.pem"]}
+set :ssh_options, {:keys => ["aws.pem"]}
 
 set :application, "ec2-54-245-202-30.us-west-2.compute.amazonaws.com"
 role :app, application
@@ -31,7 +31,6 @@ namespace :deploy do
   
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
-    run "cd #{current_path} && bin/bundle exec clockwork lib/clock.rb"
   end
 
 end
