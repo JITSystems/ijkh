@@ -101,7 +101,8 @@ Ijkh::Application.routes.draw do
 
 # Server-Side Payment
   post 'api/1.0/payment' => 'payment#pay'
-
+  post 'api/1.0/payment/subscribe' => 'payment#subscribe'
+  
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'
