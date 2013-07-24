@@ -6,7 +6,17 @@
 <div class="container_boxes">
   <div class="horizontal_div" style="width: 100%; float: none;">
     <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
-      
+
+    	<% @quiz_q.each do |q_q| %>
+    		
+    		<h1><%= q_q.body %></h1>
+
+    		<% q_q.quiz_answers.each_with_index do |q_a, index| %>
+				<p><span><%= @h[index] %> </span><%= q_a.body %></p>
+			<% end %>
+
+    	<% end %>
+
     </div>
   </div>
 </div>
