@@ -15,4 +15,13 @@ class PaymentController < ApplicationController
   		end
   		render json: {}
 	end
+
+	def testing
+		client = Faye::Client.new('http://localhost:9292/faye')
+		client.subscribe("/#{params[:auth_token]}") do |message|
+			client.publish("/#{params[:auth_token]}", 'text' => 'Yo nigga!')
+		end 
+
+		render json: client.inspect
+	end
 end
