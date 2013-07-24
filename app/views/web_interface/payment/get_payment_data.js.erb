@@ -5,3 +5,9 @@ $('#amount_total').removeAttr('disabled');
 $('#tariff_selected_box').fadeIn(300);
 $('input#account_id').attr('value', '<%= @account.id %>');
 $('input#amount_total').attr('value', '<%= @account.amount %>');
+
+<% if @tariff.has_readings %>
+$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/meter_reading_form") %>');
+<% else %>
+$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_recipe_form") %>'); 
+<% end %>
