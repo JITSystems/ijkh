@@ -22,6 +22,7 @@ class PaymentController < ApplicationController
   			logger.info message.inspect
   		end
 		client.publish("/#{params[:auth_token]}", {text: 'Yo nigga!'})
-		render json: client.inspect
+		client.destroy
+		render json: {thats: "Good"}
 	end
 end
