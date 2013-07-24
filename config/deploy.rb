@@ -2,7 +2,7 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 ssh_options[:verbose] = :debug
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["/home/ubuntu/aws_key/aws.pem"]}
+set :ssh_options, {:keys => ["/home/jwsilent/Development/keys/aws.pem"]}
 
 set :application, "ec2-54-245-202-30.us-west-2.compute.amazonaws.com"
 role :app, application
