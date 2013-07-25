@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724081132) do
+ActiveRecord::Schema.define(:version => 20130725073404) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -190,7 +190,8 @@ ActiveRecord::Schema.define(:version => 20130724081132) do
   end
 
   create_table "quiz_questions", :force => true do |t|
-    t.string "body"
+    t.string  "body"
+    t.boolean "has_custom"
   end
 
   create_table "quiz_results", :force => true do |t|

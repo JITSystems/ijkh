@@ -734,7 +734,7 @@ a#no_object_found
 	font-size: 15px;
 	font-weight: 600;
 	cursor: pointer;
-	left: 15px;
+	/*left: 15px;*/
 }
 .box_blue{
 	position: relative;
@@ -2516,7 +2516,23 @@ li[listtype=""]{
 	display: none;
 }
 
+.quiz_box
+{
+	display: none;
+}
 
+#quiz_box_1
+{
+	display: block;
+}
+
+p#quiz_progress
+{
+	float: right;
+	clear: both;
+	top: 50px;
+	right: 23px;
+}
 
 
 /*.pop_up_div {

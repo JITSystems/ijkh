@@ -106,6 +106,7 @@ Ijkh::Application.routes.draw do
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'
       get 'quiz' => 'web_interface/quiz#show'
+      post 'quiz/:user_id' => 'web_interface/quiz#create'
       get 'faq' => 'web_interface/faq#show'
       get 'about' => 'web_interface/about#show'
       get 'offer' => 'web_interface/offer#show'
@@ -135,12 +136,17 @@ Ijkh::Application.routes.draw do
       match 'feedback' => 'web_interface/feedback#new', :as => 'feedback', :via => :get
       match 'feedback' => 'web_interface/feedback#create', :as => 'feedback', :via => :post
 
+
+      
+
   end
   
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do
         put :deactivate, on: :member
     end
+
+    resources :quiz_results
   end
 
 

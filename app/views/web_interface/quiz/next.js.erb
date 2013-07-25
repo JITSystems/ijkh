@@ -1,0 +1,6 @@
+console.log('Ушло, ништяк.');
+console.log('<%= @counter %>');
+
+$('#quiz_quiestion_num').html(<%= @counter.to_i+1 %>);
+$('#quiz_box_'+<%= @counter %>).hide();
+$('#quiz_box_'+<%= @counter.to_i+1 %>).fadeIn();
