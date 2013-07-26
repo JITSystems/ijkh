@@ -2521,11 +2521,6 @@ li[listtype=""]{
 	display: none;
 }
 
-#quiz_box_1
-{
-	display: block;
-}
-
 p#quiz_progress
 {
 	float: right;

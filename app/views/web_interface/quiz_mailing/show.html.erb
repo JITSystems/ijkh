@@ -1,0 +1,16 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Рассылка</p>
+</div>
+
+<div class="container_boxes">
+  <div class="horizontal_div" style="width: 100%; float: none;">
+    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+
+	<%= link_to "Отправить почту!", quiz_mailing_path, remote: true, method: :post %>
+
+	<p class="feedback_alert"><%= flash.alert %></p>
+    </div>
+  </div>
+</div>
+
