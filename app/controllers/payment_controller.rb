@@ -6,7 +6,7 @@ class PaymentController < ApplicationController
 	end
 
 	def pay
-		po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
+		po_root_url = ""
 		service_id = params[:payment][:service_id]
 		amount = params[:payment][:amount]
 		order_id = params[:payment][:recipe_id]
@@ -21,11 +21,13 @@ class PaymentController < ApplicationController
 		payload = ""
 
 		if params[:payment][:rebill_anchor]
+			po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 			rebill_anchor = params[:payment][:rebill_anchor]
 			security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 			security_key = Digest::MD5.hexdigest(security_key_string)
 			payload = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&ContentType=xml&user_id=#{user_id}"
 		else
+			po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
 			ip = params[:payment][:ip]
 			card_number = params[:payment][:card_number]
 			cardholder_name = params[:payment][:cardholder_name]
