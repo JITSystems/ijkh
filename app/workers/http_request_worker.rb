@@ -25,7 +25,8 @@ class HttpRequestWorker
 					publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Свяжитесь с вашим банком или воспользуйтесь другой картой и повторите запрос."}
 				when "4"
 					if response["transaction"]["code"] == "6001"
-						publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['ascurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", pd: "#{response['transaction']['threedSecure']['pd']}", termurl: "hz poka"}
+						md = "#{response['transaction']['id']};#{response['transaction']['threedSecure']['pd']}"
+						publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "hz poka"}
 					end
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
