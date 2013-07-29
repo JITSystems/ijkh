@@ -167,6 +167,8 @@ GEM
       open4
       thor
     ruby-hmac (0.4.0)
+    rvm-capistrano (1.4.1)
+      capistrano (>= 2.0.0)
     safe_yaml (0.9.4)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -227,6 +229,7 @@ DEPENDENCIES
   rabl
   rails (= 3.2.11)
   rubber
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   settingslogic
   sidekiq
