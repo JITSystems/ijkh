@@ -6,6 +6,13 @@
 <div class="container_boxes">
   <div class="horizontal_div" style="width: 100%; float: none;">
     <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+	
+    <% @user.each do |user| %>
+    	<p><%= user.id %></p>
+		<p><%= user.first_name %></p>
+		<p><%= user.email %></p>
+		<br>
+    <% end %>
 
 	<%= link_to "Отправить почту!", quiz_mailing_path, remote: true, method: :post %>
 

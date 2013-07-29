@@ -6,19 +6,20 @@ class WebInterface::QuizMailingController < WebInterfaceController
 
 		def show
 			@user = User.select("id, email, first_name")
+
 			@message = Message.new
 		end
 
 	 def create
 	    
-	  	@user = User.select("id, email, first_name").where("id = ?", 1)
+	  	@user = User.select("id, email, first_name").where("id = ?", 24)
 
 	  	@user.each do |user|
 
 	  		@quiz_token = SecureRandom.urlsafe_base64(nil, false)
 
 		  	message_params = {
-				subject: 		"testy",
+				subject: 		"Опрос клиентов АйЖКХ",
 				body: 			"Lorem ipsum dolor.",
 				email: 			user.email,
 				name: 			user.first_name,
