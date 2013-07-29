@@ -1,3 +1,5 @@
+require 'sidekiq/capistrano'
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 ssh_options[:verbose] = :debug

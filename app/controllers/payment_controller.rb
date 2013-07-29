@@ -29,14 +29,14 @@ class PaymentController < ApplicationController
 		security_key = Digest::MD5.hexdigest(security_key_string)
 		payload = "MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}"
 		
-		HttpRequestWorker.perform_async(po_root_url, payload)
+		HttpRequestWorker.perform_async(po_root_url, payload, params[:auth_token])
   		render json: {}
 	end
 
 	def test
 		po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
 		#po_root_url = 'https://izkh.ru/faq'
-		data = 'MerchantId=54703&OrderId=832&Amount=103.00&Currency=RUB&SecurityKey=90fe20e5ef6be9066b1b87318fbd4e1a&Ip=192.168.1.4&Email=alonnight@gmail.com&CardHolderName=TEST TEST&CardNumber=4111111111111111&CardExpDate=0315&CardCvv=111&ContentType=xml'
+		data = 'MerchantId=54703&OrderId=833&Amount=104.03&Currency=RUB&SecurityKey=d1a9f0b959f0342bcf409635717b989a&Ip=192.168.1.4&Email=alonnight@gmail.com&CardHolderName=TEST TEST&CardNumber=4111111111111111&CardExpDate=0315&CardCvv=111&ContentType=xml&user_id=1'
 		require 'net/http'
 		uri = URI.parse(po_root_url)
 		https = Net::HTTP.new(uri.host, uri.port)
