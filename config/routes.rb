@@ -126,6 +126,9 @@ Ijkh::Application.routes.draw do
       post 'profile_place' => 'web_interface/place#profile_create'
       post 'service' => 'web_interface/service#create'
       delete 'place' => 'web_interface/place#destroy'
+
+      get 'quiz/:quiz_token' => 'web_interface/quiz#show'
+      post 'quiz/:user_id' => 'web_interface/quiz#create'
       
       get "catalog" => "web_interface/catalog#show"
       get "freelancers" => "web_interface/freelancers#show"
@@ -136,12 +139,22 @@ Ijkh::Application.routes.draw do
       match 'feedback' => 'web_interface/feedback#new', :as => 'feedback', :via => :get
       match 'feedback' => 'web_interface/feedback#create', :as => 'feedback', :via => :post
 
+      match 'quiz_feedback' => 'web_interface/quiz#create', :as => 'quiz_feedback', :via => :post
+
+      match 'quiz_mailing' => 'web_interface/quiz_mailing#show', :as => 'quiz_mailing', :via => :get
+      match 'quiz_mailing' => 'web_interface/quiz_mailing#create', :as => 'quiz_mailing', :via => :post
+
+
+      
+
   end
   
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do
         put :deactivate, on: :member
     end
+
+    resources :quiz_results
   end
 
 

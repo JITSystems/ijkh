@@ -12,19 +12,23 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="stylesheets/resetor.css">
+		
+		<%= stylesheet_link_tag root_path+"stylesheets/resetor.css" %>
+
 		<% if params[:controller] != "sessions" and  params[:controller] != "web_interface/offer" %>
-			<link rel="stylesheet" type="text/css" href="stylesheets/custom_with_menu.css">
+			<%= stylesheet_link_tag root_path+"stylesheets/custom_with_menu.css" %>
 		<% else %> 
-			<link rel="stylesheet" type="text/css" href="stylesheets/custom.css">
+			<%= stylesheet_link_tag root_path+"stylesheets/custom.css" %>
 		<% end %>
-		<script type="text/javascript" src="javascripts/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="javascripts/custom.js"></script>
-		<script type="text/javascript" src="javascripts/jquery.formstyler.js"></script>
-		<link rel="stylesheet" type="text/css" href="stylesheets/jquery.formstyler.css">
+	
+		<%= javascript_include_tag root_path+"javascripts/jquery-1.8.3.min.js" %>
+		<%= javascript_include_tag root_path+"javascripts/custom.js" %>
+		
+		<%= javascript_include_tag root_path+"javascripts/jquery.formstyler.js" %>
+		<%= stylesheet_link_tag root_path+"stylesheets/jquery.formstyler.css" %>
 		
 		<% if params[:controller] == "web_interface/main" %>
-			<script type="text/javascript" src="javascripts/jcarousellite-1.0.1.min.js"></script>
+			<%= javascript_include_tag root_path+"javascripts/jcarousellite-1.0.1.min.js" %>
 		<% end %> 
 		
 		
