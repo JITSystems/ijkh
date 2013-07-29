@@ -11,20 +11,29 @@ class WebInterface::QuizMailingController < WebInterfaceController
 
 	 def create
 	    
-	  	@user = User.select("id, email, first_name")
+	  	@user = User.select("id, email, first_name").where("id = ?", 1)
 
 	  	@user.each do |user|
+
+	  		@quiz_token = SecureRandom.urlsafe_base64(nil, false)
 
 		  	message_params = {
 				subject: 		"testy",
 				body: 			"Lorem ipsum dolor.",
 				email: 			user.email,
-				name: 			user.first_name
+				name: 			user.first_name,
+				quiz_token: 	@quiz_token
+			}
+
+			quiz_session_params = 
+			{
+				user_id: 		user.id,
+				quiz_token: 	@quiz_token
 			}
 
 		   	@message = Message.new(message_params)
 
-		    #QuizMailer.new_message(@message, user).deliver
+		   	WebInterface::QuizSession.create(quiz_session_params)
 
 		    if @message.valid?
 		      QuizMailer.new_message(@message, user).deliver

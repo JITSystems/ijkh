@@ -137,6 +137,8 @@ Ijkh::Application.routes.draw do
       match 'feedback' => 'web_interface/feedback#new', :as => 'feedback', :via => :get
       match 'feedback' => 'web_interface/feedback#create', :as => 'feedback', :via => :post
 
+      match 'quiz_feedback' => 'web_interface/quiz#create', :as => 'quiz_feedback', :via => :post
+
       match 'quiz_mailing' => 'web_interface/quiz_mailing#show', :as => 'quiz_mailing', :via => :get
       match 'quiz_mailing' => 'web_interface/quiz_mailing#create', :as => 'quiz_mailing', :via => :post
 

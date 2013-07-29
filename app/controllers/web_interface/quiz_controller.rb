@@ -9,9 +9,9 @@ class WebInterface::QuizController < WebInterfaceController
 
 		@quiz_session = WebInterface::QuizSession.select("user_id, last_question_id").where("quiz_token = ?", params[:quiz_token]).first
 
-		@show_question = 0
+		@user = User.select("first_name, email").where("id = ?", @quiz_session.user_id).first
 
-		#2013-07-25 13:01:30.638286
+		@show_question = 0
 
 		unless @quiz_session 
 			redirect_to(root_path)
@@ -35,7 +35,31 @@ class WebInterface::QuizController < WebInterfaceController
 
 		@random_token = SecureRandom.urlsafe_base64(nil, false)
 
+		@message = Message.new
+
 	end
+
+	def create
+	    @message = Message.new(params[:message])
+	    
+	    if @message.valid?
+	      NotificationsMailer.new_message(@message).deliver
+	      @message_success = "Сообщение успешно отправлено"
+	      	respond_to do |format|
+				format.js {
+					render 'web_interface/quiz/feedback_success'
+				}
+			end
+
+	    else
+		    @message_error = "Пожалуйста, заполните все поля."
+			respond_to do |format|
+				format.js {
+					render 'web_interface/quiz/feedback_error'
+				}
+			end
+	    end
+  	end
 
 
 
