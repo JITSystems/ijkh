@@ -4,15 +4,15 @@ class WebInterface::QuizMailingController < WebInterfaceController
 
 	skip_before_filter :require_current_user
 
-		def show
-			@user = User.select("id, email, first_name")
+	def show
+		@user = User.select("id, email, first_name")
 
-			@message = Message.new
-		end
+		@message = Message.new
+	end
 
 	 def create
 	    
-	  	@user = User.select("id, email, first_name").where("id = ?", 24)
+	  	@user = User.select("id, email, first_name")
 
 	  	@user.each do |user|
 

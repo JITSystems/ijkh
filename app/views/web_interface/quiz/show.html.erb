@@ -57,21 +57,22 @@
 			        <fieldset class="feedback_fields">
 			          <div class="feedback_field">
 			            <%= form.label :name, 'Имя:' %>
-			            <%= form.text_field :name, value: @user.first_name %>
+			            <%= form.text_field :name, value: @user.first_name, placeholder: "Введите Ваше имя." %>
 			          </div>
 			          
 			          <div class="feedback_field">
 			            <%= form.label :email, 'Адрес электронной почты:' %>
-			            <%= form.text_field :email, value: @user.email %>
+			            <%= form.text_field :email, value: @user.email, placeholder: "Введите Ваш адрес электронной почты." %>
 			          </div>
-			          <div class="feedback_field">
+
+			          <div style = "display:none;" class="feedback_field">
 			            <%= form.label :subject, 'Тема:' %>
-			            <%= form.text_field :subject %>
+			            <%= form.text_field :subject, value: "Форма обратной связи опроса" %>
 			          </div>
 			          
 			          <div class="feedback_field">
 			            <%= form.label :body, 'Сообщение:' %>
-			            <%= form.text_area :body %>
+			            <%= form.text_area :body, placeholder: "Введите Ваше сообщение." %>
 			          </div>
 			        </fieldset>
 			        
