@@ -1,42 +1,112 @@
 <div class="top_plate">
 	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 	<p class="text_plate_blue">Опрос</p>
-	<p id="quiz_progress" >Вопрос <span id="quiz_quiestion_num">1</span> из 10</p>
+	<p id="quiz_progress" >Вопрос <span id="quiz_quiestion_num"><%= @show_question+1 %></span> из 10</p>
 </div>
 
 <div class="container_boxes">
   <div class="horizontal_div" style="width: 100%; float: none;">
-    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
-	
-    	
+    <div class="box_blue" id="" style="min-height:300px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+
     	<% @quiz_q.each do |q_q| %>
 	    	<div class="quiz_box" id="quiz_box_<%= q_q.id %>">	
 	    		<%= form_for WebInterface::QuizResult.new, url: web_interface_quiz_results_path, remote: true, method: :post do |f|  %>
-	    		    		<h1><%= q_q.body %></h1>
-
+	    		    		<h1 style="font-size: 20px;color: #00558d;font-weight: 400;padding: 0px 0px 10px 0px;">
+	    		    			<%= q_q.body %>
+	    		    		</h1>
+							
 	    		    		<%= f.hidden_field :quiz_question_id, value: q_q.id %>
-	    		
-	    		    		<% q_q.quiz_answers.each_with_index do |q_a, index| %>
+	    		    		<%= f.hidden_field :user_id, value: @quiz_session.user_id %>
+														
+	    					<% q_q.quiz_answers.each do |q_a| %>
 	    		    		
 	    		    			<p>
 	    		    				<%= f.radio_button :quiz_answer_id, q_a.id %>
 	    		    				<%= f.label(:quiz_answer_id.to_s + '_' + q_a.id.to_s, q_a.body) %>
 	    		    			</p>
-	    		
+	    					
 	    					<% end %>
-	    		
+	    					
 	    					<% if q_q.has_custom %>
 	    						<p>
 	    							<%= label q_q.id, "другой вариант:"  %>
-	    			    			<%= f.text_field :custom_answer, onfocus: "$(\'input[name=\' + this.name + \']\').removeAttr(\'checked\')" %>
+	    							<%= f.radio_button :quiz_answer_id, 0, class: "custom_answer_radio", style: "display: none;" %>
+	    			    			<%= f.text_field :custom_answer, class: "custom_answer_text" %>
 	    			    		</p>
 	    		    		<% end %>
-	    		    	<%= f.submit "Следующий вопрос", class: "end_button" %>
+	    		    	<%= f.submit "Следующий вопрос", class: "end_button", style:"bottom: 23px;" %>
 	    		<% end %>
 	    	</div>
-	    	<div class="quiz_box" id="quiz_box_11"><p>Конец</p></div>
+	    	
     	<% end %>
+
+    	<div class="quiz_box" id="quiz_box_11">
+    		<p style="font-size: 20px;color: #00558d;font-weight: 400;padding: 0px 0px 10px 0px;">Спасибо за Ваше участие!</p>
+			<p style="font-size: 20px;color: #00558d;font-weight: 400;padding: 0px 0px 10px 0px;">Если у Вас есть собственные замечания, которые не были отмечены в опросе, воспользуйтесь формой обратной связи:</p>
+
+			<div class="box_blue box_left" id="" style="min-height:245px; padding: 0px 0px 35px 0px; color: #6a7f8d;background:none;">
+
+			      <div id="feedback_load">
+			        
+			      </div>
+
+			      
+			      <p class="feedback_alert"><%= flash.alert %></p>
+
+			      <%= form_for @message, :url => quiz_feedback_path, remote: true do |form| %>
+			        <fieldset class="feedback_fields">
+			          <div class="feedback_field">
+			            <%= form.label :name, 'Имя:' %>
+			            <%= form.text_field :name, value: @user.first_name, placeholder: "Введите Ваше имя." %>
+			          </div>
+			          
+			          <div class="feedback_field">
+			            <%= form.label :email, 'Адрес электронной почты:' %>
+			            <%= form.text_field :email, value: @user.email, placeholder: "Введите Ваш адрес электронной почты." %>
+			          </div>
+
+			          <div style = "display:none;" class="feedback_field">
+			            <%= form.label :subject, 'Тема:' %>
+			            <%= form.text_field :subject, value: "Форма обратной связи опроса" %>
+			          </div>
+			          
+			          <div class="feedback_field">
+			            <%= form.label :body, 'Сообщение:' %>
+			            <%= form.text_area :body, placeholder: "Введите Ваше сообщение." %>
+			          </div>
+			        </fieldset>
+			        
+			        <fieldset class="feedback_actions">
+			          <%= form.submit "Отправить", onclick: '$("#feedback_load").show();' %>
+			        </fieldset>
+			      <% end %>
+			    </div>
+
+			    <div class="clear"></div>
+
+    	</div>
 
     </div>
   </div>
 </div>
+
+<style>
+	#quiz_box_<%= @show_question+1 %>
+	{
+		display: block
+	}
+</style>
+<script>
+	$("input.custom_answer_text").focus(function () {
+		$('input.custom_answer_radio').attr('checked','checked');
+	});
+
+	$("input.custom_answer_text").blur(
+		function(){
+			if(this.value == '')
+			{
+				$('input[type=radio]').removeAttr('checked');
+			}
+		}
+		);
+</script>

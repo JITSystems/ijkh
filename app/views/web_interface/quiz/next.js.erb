@@ -1,6 +1,10 @@
-console.log('Ушло, ништяк.');
 console.log('<%= @counter %>');
-
+$('input[type=radio]').removeAttr('checked');
+<% if @counter == "10" %>
+	$("#quiz_progress").html("Опрос завершён.")
+<% end %>
 $('#quiz_quiestion_num').html(<%= @counter.to_i+1 %>);
 $('#quiz_box_'+<%= @counter %>).hide();
 $('#quiz_box_'+<%= @counter.to_i+1 %>).fadeIn();
+
+
