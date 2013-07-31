@@ -15,8 +15,23 @@
 		<input style="display:none;" id="account_id" name="account_id" type="text" value="">
 	</div>
 
+		
+		<label  style="display:none;">
+			<input class="login_input_check_oferta" type="checkbox" name="recipe_is_paid">	
+			<p>Счёт оплачен</p>
+		</label>
+
 	<div class="end">
 		<%= submit_tag("Оплатить", :class=>:end_button, disabled: true) %>
 	</div>
-	<% end %>
+<% end %>
+
+	<div style="display:none;">
+		<%= form_for Analytic.new, url: "/save_amount", remote: true, method: :post do |f| %>
+			
+			<%= submit_tag("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true) %>
+		
+		<% end %>
+	</div>
+
 </div>
