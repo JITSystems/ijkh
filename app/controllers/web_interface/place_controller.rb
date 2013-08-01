@@ -41,12 +41,17 @@ class WebInterface::PlaceController < WebInterfaceController
 	def update 
 		@message = "Данные об объекте успешно изменены."
 		@place = Place.find(params[:id])
-		@place.update_attributes(params[:place])
-			respond_to do |format|
 
-		format.js {render "web_interface/place/update"}
+		if @place.update_attributes(params[:place])
+			respond_to do |format|
+				format.js {render "web_interface/place/update"}
+			end
+		else
+			@message = "Пожалуйста, заполните информацию об объекте."
+			respond_to do |format|
+				format.js {render "web_interface/place/error"}
+			end
 		end
-		
 	end 
 
 	def profile_create
@@ -69,6 +74,13 @@ class WebInterface::PlaceController < WebInterfaceController
 			respond_to do |format|
 				format.js {
 					render 'web_interface/place/create'
+				}
+			end
+		else
+			@message = "Пожалуйста, заполните информацию об объекте."
+			respond_to do |format|
+				format.js {
+					render 'web_interface/place/error'
 				}
 			end
 		end
