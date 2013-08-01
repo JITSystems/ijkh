@@ -8,7 +8,7 @@ class WebInterface::QuizMailingController < WebInterfaceController
 	end
 
 	 def create
-	    
+
 	  	@user = User.select("id, email, first_name").order("id ASC")
 
 	  	@user.each do |user|
@@ -57,6 +57,10 @@ class WebInterface::QuizMailingController < WebInterfaceController
 				# end
 
 			end
+
+
 		end
+
 	end
+
 end
