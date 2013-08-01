@@ -57,10 +57,6 @@ class WebInterface::QuizMailingController < WebInterfaceController
 				# end
 
 			end
-
-
 		end
-
 	end
-
 end

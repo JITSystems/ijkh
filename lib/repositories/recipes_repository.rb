@@ -1,6 +1,8 @@
 module RecipesRepository
 
 	def create_recipe user, params
+		po_tax = 0
+		service_tax = 0
 		total = 0.0
 		amount = (check_comma params[:amount]).to_f
 		if amount < 500.00
@@ -10,6 +12,14 @@ module RecipesRepository
 		else
 			service_tax = round_up(0.03*amount).round(2)
 			po_tax = 0
+			total = service_tax + amount
+		end
+
+		vendor = Service.find(params[:service_id]).vendor
+
+		if vendor.id == 5 || vendor.id == 40 || vendor.id == 43 || vendor.id == 44
+			po_tax = 0
+			service_tax = 0
 			total = service_tax + amount
 		end
 		

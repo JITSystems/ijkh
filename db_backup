@@ -1,0 +1,373 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.9
+-- Dumped by pg_dump version 9.2.2
+-- Started on 2013-07-25 18:08:35 MSK
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 217 (class 1259 OID 41453)
+-- Name: quiz_answers; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE quiz_answers (
+    id integer NOT NULL,
+    quiz_question_id integer,
+    body character varying(255)
+);
+
+
+ALTER TABLE public.quiz_answers OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 41451)
+-- Name: quiz_answers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE quiz_answers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.quiz_answers_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2064 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: quiz_answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE quiz_answers_id_seq OWNED BY quiz_answers.id;
+
+
+--
+-- TOC entry 215 (class 1259 OID 41445)
+-- Name: quiz_questions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE quiz_questions (
+    id integer NOT NULL,
+    body character varying(255),
+    has_custom boolean
+);
+
+
+ALTER TABLE public.quiz_questions OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 41443)
+-- Name: quiz_questions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE quiz_questions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.quiz_questions_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2065 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: quiz_questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE quiz_questions_id_seq OWNED BY quiz_questions.id;
+
+
+--
+-- TOC entry 219 (class 1259 OID 41461)
+-- Name: quiz_results; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE quiz_results (
+    id integer NOT NULL,
+    user_id integer,
+    quiz_question_id integer,
+    quiz_answer_id integer,
+    custom_answer character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.quiz_results OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 41459)
+-- Name: quiz_results_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE quiz_results_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.quiz_results_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2066 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: quiz_results_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE quiz_results_id_seq OWNED BY quiz_results.id;
+
+
+--
+-- TOC entry 2046 (class 2604 OID 41456)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY quiz_answers ALTER COLUMN id SET DEFAULT nextval('quiz_answers_id_seq'::regclass);
+
+
+--
+-- TOC entry 2045 (class 2604 OID 41448)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY quiz_questions ALTER COLUMN id SET DEFAULT nextval('quiz_questions_id_seq'::regclass);
+
+
+--
+-- TOC entry 2047 (class 2604 OID 41464)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY quiz_results ALTER COLUMN id SET DEFAULT nextval('quiz_results_id_seq'::regclass);
+
+
+--
+-- TOC entry 2057 (class 0 OID 41453)
+-- Dependencies: 217
+-- Data for Name: quiz_answers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY quiz_answers (id, quiz_question_id, body) FROM stdin;
+1	1	iPhone
+2	1	планшет
+3	1	ноутбук/стационарный компьютер
+4	1	со смартфона зашел на сайт
+5	2	из квитанции поставщика услуг
+6	2	из социальных сетей
+7	2	через AppStore
+8	2	от знакомых
+9	2	от руководства своего ТСЖ/УК
+10	2	другое
+11	3	не нашёл нужных поставщиков услуг
+12	3	не было времени сделать оплату
+14	3	не хочу платить комиссию
+13	3	не хочу разбираться, слишком сложно
+15	3	другое
+16	4	удобным
+17	4	не очень удобным
+18	4	совсем неудобным
+19	5	г.Самара, Самарский
+20	5	г.Самара, Ленинский
+21	5	г.Самара, Железнодорожный
+22	5	г.Самара, Октябрьский
+23	5	г.Самара, Кировский
+24	5	г.Самара, Промышленный
+25	5	г.Самара, Красноглинский
+26	5	г.Самара, Волжский
+27	5	г.Тольятти
+28	5	другое
+29	6	до 25 лет
+30	6	25-34
+31	6	35-44
+32	6	45-55
+33	6	старше 55
+34	7	до 10 тыс. рублей
+35	7	до 20 тыс. рублей
+36	7	до 30 тыс. рублей
+37	7	до 40 тыс. рублей
+38	7	до 50 тыс. рублей
+39	7	свыше 50 тыс. рублей
+41	8	партнер (муж, жена)
+40	8	я сам (-а)
+42	8	третье лицо (родственник, помощники и т.п.)
+43	8	кто может, тот и платит
+44	8	другое
+45	9	да, регулярно
+46	9	да, но нерегулярно
+47	9	нет, и не считаю нужным
+48	9	нет, потому что нет времени
+49	10	да
+50	10	нет
+51	10	зависит от сервиса
+52	10	другое
+\.
+
+
+--
+-- TOC entry 2067 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: quiz_answers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('quiz_answers_id_seq', 52, true);
+
+
+--
+-- TOC entry 2055 (class 0 OID 41445)
+-- Dependencies: 215
+-- Data for Name: quiz_questions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY quiz_questions (id, body, has_custom) FROM stdin;
+6	Укажите ваш возраст.	\N
+1	С какого устройства Вы зарегистрировались в сервисе АйЖКХ? 	\N
+4	Насколько удобным Вы находите сервис?	\N
+7	Укажите средний доход в вашей семье на человека в месяц.	\N
+9	Ведёте ли Вы анализ расходов на услуги ЖКХ и/или иные регулярные расходы, связанные с обслуживанием жилья?	\N
+2	Откуда Вы узнали о сервисе АйЖКХ? 	t
+3	Мы заметили, что после регистрации в сервисе Вы не делали перечислений. Уточните, пожалуйста, причину.	t
+5	Укажите ваш район проживания.	t
+8	Кто является основным плательщиком по коммунальным и иным услугам в Вашем доме?	t
+10	Считаете ли Вы приемлемым для себя оплату комиссии за электронный сервис, который аккумулирует и обрабатывает ваши обязательства перед поставщиками, позволяет вести учет ваших расходов, а также дает возможность мобильной оплаты счетов? 	t
+\.
+
+
+--
+-- TOC entry 2068 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: quiz_questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('quiz_questions_id_seq', 10, true);
+
+
+--
+-- TOC entry 2059 (class 0 OID 41461)
+-- Dependencies: 219
+-- Data for Name: quiz_results; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY quiz_results (id, user_id, quiz_question_id, quiz_answer_id, custom_answer, created_at, updated_at) FROM stdin;
+80	1	1	3	\N	2013-07-25 13:05:08.516451	2013-07-25 13:05:08.516451
+81	1	2	9		2013-07-25 13:05:32.074197	2013-07-25 13:05:32.074197
+82	1	3	15		2013-07-25 13:12:28.432465	2013-07-25 13:12:28.432465
+83	1	4	18	\N	2013-07-25 13:12:35.205599	2013-07-25 13:12:35.205599
+84	1	5	27		2013-07-25 13:12:46.263384	2013-07-25 13:12:46.263384
+85	1	6	31	\N	2013-07-25 13:12:51.88299	2013-07-25 13:12:51.88299
+86	1	7	34	\N	2013-07-25 13:13:00.594932	2013-07-25 13:13:00.594932
+87	1	8	42		2013-07-25 13:13:11.244501	2013-07-25 13:13:11.244501
+88	1	9	47	\N	2013-07-25 13:13:29.214211	2013-07-25 13:13:29.214211
+89	1	10	50		2013-07-25 13:13:39.382162	2013-07-25 13:13:39.382162
+90	1	1	1	\N	2013-07-25 13:14:46.600866	2013-07-25 13:14:46.600866
+91	1	2	8		2013-07-25 13:14:56.828031	2013-07-25 13:14:56.828031
+92	1	3	14		2013-07-25 13:15:00.803748	2013-07-25 13:15:00.803748
+93	1	4	16	\N	2013-07-25 13:15:04.585694	2013-07-25 13:15:04.585694
+94	1	5	22		2013-07-25 13:15:08.722369	2013-07-25 13:15:08.722369
+95	1	6	31	\N	2013-07-25 13:15:13.097912	2013-07-25 13:15:13.097912
+96	1	7	35	\N	2013-07-25 13:15:18.624125	2013-07-25 13:15:18.624125
+97	1	8	40		2013-07-25 13:15:26.099054	2013-07-25 13:15:26.099054
+98	1	9	46	\N	2013-07-25 13:15:29.987889	2013-07-25 13:15:29.987889
+99	1	10	51		2013-07-25 13:15:34.081866	2013-07-25 13:15:34.081866
+100	1	1	3	\N	2013-07-25 13:23:57.634279	2013-07-25 13:23:57.634279
+101	1	2	10	косяк, исправлю	2013-07-25 13:24:24.011738	2013-07-25 13:24:24.011738
+102	1	3	14	Буквы, кстати, не нужны =D	2013-07-25 13:24:41.223026	2013-07-25 13:24:41.223026
+103	1	4	17	\N	2013-07-25 13:24:44.192978	2013-07-25 13:24:44.192978
+104	1	5	24		2013-07-25 13:25:15.651132	2013-07-25 13:25:15.651132
+105	1	6	31	\N	2013-07-25 13:25:19.760019	2013-07-25 13:25:19.760019
+106	1	7	36	\N	2013-07-25 13:25:21.57635	2013-07-25 13:25:21.57635
+107	1	8	40		2013-07-25 13:25:23.420019	2013-07-25 13:25:23.420019
+108	1	9	45	\N	2013-07-25 13:25:25.337029	2013-07-25 13:25:25.337029
+109	1	10	51		2013-07-25 13:25:27.33463	2013-07-25 13:25:27.33463
+110	1	1	2	\N	2013-07-25 13:56:33.05044	2013-07-25 13:56:33.05044
+111	1	1	2	\N	2013-07-25 13:56:35.138527	2013-07-25 13:56:35.138527
+112	1	1	2	\N	2013-07-25 13:56:36.078806	2013-07-25 13:56:36.078806
+113	1	1	2	\N	2013-07-25 13:56:36.586739	2013-07-25 13:56:36.586739
+114	1	1	2	\N	2013-07-25 13:56:37.143714	2013-07-25 13:56:37.143714
+115	1	1	2	\N	2013-07-25 13:56:37.764473	2013-07-25 13:56:37.764473
+116	1	1	2	\N	2013-07-25 13:56:52.127776	2013-07-25 13:56:52.127776
+117	1	1	2	\N	2013-07-25 13:56:52.603646	2013-07-25 13:56:52.603646
+118	1	1	2	\N	2013-07-25 13:56:54.196547	2013-07-25 13:56:54.196547
+119	1	1	3	\N	2013-07-25 13:57:26.270125	2013-07-25 13:57:26.270125
+120	1	2	8		2013-07-25 13:57:28.517944	2013-07-25 13:57:28.517944
+121	1	3	12		2013-07-25 13:57:30.506647	2013-07-25 13:57:30.506647
+122	1	4	18	\N	2013-07-25 13:57:32.385998	2013-07-25 13:57:32.385998
+123	1	5	20		2013-07-25 13:57:34.036264	2013-07-25 13:57:34.036264
+124	1	6	31	\N	2013-07-25 13:57:35.601486	2013-07-25 13:57:35.601486
+125	1	7	37	\N	2013-07-25 13:57:37.730918	2013-07-25 13:57:37.730918
+126	1	8	43		2013-07-25 13:57:39.881909	2013-07-25 13:57:39.881909
+127	1	9	47	\N	2013-07-25 13:57:41.618274	2013-07-25 13:57:41.618274
+128	1	10	51		2013-07-25 13:57:43.789227	2013-07-25 13:57:43.789227
+70	1	1	3	\N	2013-07-25 13:01:30.638286	2013-07-25 13:01:30.638286
+71	1	2	9		2013-07-25 13:01:33.06346	2013-07-25 13:01:33.06346
+72	1	3	12		2013-07-25 13:01:35.65241	2013-07-25 13:01:35.65241
+73	1	4	16	\N	2013-07-25 13:01:37.333629	2013-07-25 13:01:37.333629
+74	1	5	22		2013-07-25 13:01:38.944798	2013-07-25 13:01:38.944798
+75	1	6	31	\N	2013-07-25 13:01:40.322032	2013-07-25 13:01:40.322032
+76	1	7	36	\N	2013-07-25 13:01:41.700288	2013-07-25 13:01:41.700288
+77	1	8	42		2013-07-25 13:01:43.00096	2013-07-25 13:01:43.00096
+78	1	9	47	\N	2013-07-25 13:01:44.291214	2013-07-25 13:01:44.291214
+79	1	10	51		2013-07-25 13:01:46.024362	2013-07-25 13:01:46.024362
+\.
+
+
+--
+-- TOC entry 2069 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: quiz_results_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('quiz_results_id_seq', 128, true);
+
+
+--
+-- TOC entry 2051 (class 2606 OID 41458)
+-- Name: quiz_answers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY quiz_answers
+    ADD CONSTRAINT quiz_answers_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2049 (class 2606 OID 41450)
+-- Name: quiz_questions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY quiz_questions
+    ADD CONSTRAINT quiz_questions_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2053 (class 2606 OID 41466)
+-- Name: quiz_results_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY quiz_results
+    ADD CONSTRAINT quiz_results_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2013-07-25 18:08:35 MSK
+
+--
+-- PostgreSQL database dump complete
+--
+
