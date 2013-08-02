@@ -1,10 +1,41 @@
 # encoding: utf-8 
 class WebInterface::QuizMailingController < WebInterfaceController
-	skip_before_filter :require_current_user
+	#skip_before_filter :require_current_user
 	def show
 		@user = User.select("id, email, first_name").order("id ASC")
 
 		@message = Message.new
+
+		gb = Gibbon::API.new
+		@campaigns = gb.campaigns.list({:start => 0, :limit => 100})
+	    @lists = gb.lists.list({:start => 0, :limit=> 100})
+	end
+
+	def mailchimp
+
+
+		#gibbon_export = Gibbon::Export.new("acbd1dbde1acd357dbee00def6a087cd-us7")
+
+		gb = Gibbon::API.new
+
+	    gb.campaigns.create({type: "regular", options: 
+		    	{
+	    		list_id: "5651d7d1b5", 
+	    		subject: "Gibbon is cool", 
+	    		from_email: "feedback@izkh.ru", 
+	    		from_name: "Darth Vader", 
+	    		generate_text: true
+	    		}, 
+		    	content: {html: "<html><head></head><body><h1>Foo</h1><p>Bar</p><p>Do it yourself!</p></body></html>"}
+	    	})
+
+
+	    respond_to do |format|
+		format.js {
+			render js: "console.log('Тест успешный.');"
+				}
+		end
+		
 	end
 
 	 def create

@@ -26,4 +26,4 @@ gem 'jquery-rails'
 gem 'rubber'
 gem 'open4'
 gem 'gelf'
-
+gem 'gibbon'
