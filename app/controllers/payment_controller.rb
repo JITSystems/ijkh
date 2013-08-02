@@ -46,17 +46,21 @@ class PaymentController < ApplicationController
 
 	def test
 		po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
-		#po_root_url = 'https://izkh.ru/faq'
-		security_key = Digest::MD5.hexdigest('MerchantId=54703&OrderId=840&Amount=103.03&Currency=RUB&PrivateSecurityKey=8b7ad961-bf5c-43bd-b0dd-17081af9595f')
-		data = "MerchantId=54703&OrderId=840&Amount=103.03&Currency=RUB&SecurityKey=#{security_key}&Ip=192.168.1.4&Email=alonnight@gmail.com&CardHolderName=TEST TEST&CardNumber=4111111111111111&CardExpDate=0315&CardCvv=111&ContentType=xml&user_id=1"
+		security_key = Digest::MD5.hexdigest('MerchantId=43222&OrderId=844&Amount=1.03&Currency=RUB&PrivateSecurityKey=e45a8c7b-b0bd-4bdd-93d3-859b463daf81')
+		data = "MerchantId=43222&OrderId=844&Amount=1.03&Currency=RUB&SecurityKey=#{security_key}&Ip=192.168.1.4&Email=alonnight@gmail.com&CardHolderName=SVYATOSLAV RADAEV&CardNumber=4779646367398246&CardExpDate=0815&CardCvv=856&ContentType=xml&user_id=1"
 		require 'net/http'
+		require 'net/https'
 		uri = URI.parse(po_root_url)
 		https = Net::HTTP.new(uri.host, uri.port)
 		https.use_ssl = true
 		post = Net::HTTP::Post.new(uri.path)
 		post.body = data
 		response = https.request(post)
-		response = Crack::XML.parse(response.body)
-		render json: response.to_s
+		response = Crack::XML.parse(response.body.to_s)
+		@pareq = response['transaction']['threedSecure']['pareq']
+		@acsurl = response['transaction']['threedSecure']['acsurl']
+		@md = "#{response['transaction']['id']};#{response['transaction']['threedSecure']['pd']}"
+
+		render 'payment/test'
 	end
 end
