@@ -102,6 +102,7 @@ Ijkh::Application.routes.draw do
 # Server-Side Payment
   post 'api/1.0/payment' => 'payment#pay'
   post 'api/1.0/payment/subscribe' => 'payment#subscribe'
+  post 'api/1.0/payment/secure_callback' => 'payment#secure_callback'
   get 'api/1.0/payment/test' => 'payment#test'
 
 # Web Interface

@@ -44,6 +44,10 @@ class PaymentController < ApplicationController
   		render json: {}
 	end
 
+	def secure_callback
+		logger.info params.inspect
+	end
+
 	def test
 		po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
 		security_key = Digest::MD5.hexdigest('MerchantId=43222&OrderId=844&Amount=1.03&Currency=RUB&PrivateSecurityKey=e45a8c7b-b0bd-4bdd-93d3-859b463daf81')
