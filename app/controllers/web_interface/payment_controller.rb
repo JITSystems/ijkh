@@ -3,7 +3,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
 		if @places != []
 			@place = @places.first
-			@services = @place.services.order("id DESC")
+			@services = @place.services.order("id DESC").where("is_active != false")
 			@service = @services.first
 			#@tariff = @service.tariff
 		end

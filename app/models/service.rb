@@ -1,7 +1,7 @@
 class Service < ActiveRecord::Base
 	extend ServicesRepository
 	
-  attr_accessible :tariff_id, :title, :user_id, :place_id, :service_type_id, :vendor_id, :user_account
+  attr_accessible :tariff_id, :title, :user_id, :place_id, :service_type_id, :vendor_id, :user_account, :is_active
 
   has_one :tariff
   has_one :account

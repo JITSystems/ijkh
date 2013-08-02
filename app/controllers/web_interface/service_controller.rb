@@ -4,7 +4,7 @@ class WebInterface::ServiceController < WebInterfaceController
 	
 	def get_service
 		@place = Place.find(params[:place_id])
-		@services = @place.services
+		@services = @place.services.where("is_active != false")
 		respond_to do |format|
 			format.js {
 				render 'web_interface/service/payment_services'
@@ -16,12 +16,13 @@ class WebInterface::ServiceController < WebInterfaceController
 		@message = "Услуга успешно удалена"
 
 		@service = Service.find(params[:service_id])
-		@service.destroy		
-		
-		respond_to do |format|
-			format.js {
-				render 'web_interface/service/delete'
-			}
+	
+		if @service.update_attributes(is_active: false)
+			respond_to do |format|
+				format.js {render 'web_interface/service/delete'}
+			end
+		else
+		#service delete error messeges here 
 		end
 
 	end
