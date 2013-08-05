@@ -1,5 +1,9 @@
 $('a#<%= @place.id %>').html('<%= @place.title %>');
 $('#place_title_in_card').html('<%= @place.title %>');
 $('p.adress_blue').html('<%= @place.city %> <%= @place.street %> <%= @place.building %>, кв.<%= @place.apartment%>');
-placeEdit();
+            $('#place_edit_container').fadeOut('fast',function(){
+                $('#place_info_container').fadeIn('slow');
+                $('#place_edit_button').val('Редактировать');
+                $('#place_edit_button').prop('type','button');
+            })
 popUpRender('<%= @message %>');

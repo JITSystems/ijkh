@@ -149,6 +149,36 @@ $(this).remove();
     })
 
 
+    $('#place_edit_button').click(function(){
+        var ValueCheck = $('#place_edit_button').attr('value')
+        if (ValueCheck == 'Редактировать'){
+            $('#place_info_container').fadeOut('fast',function(){
+                $('#place_edit_container').fadeIn('slow');
+                $('#place_edit_button').val('Сохранить');
+                $('#place_edit_button').prop('type','submit');
+            })
+        }
+        else {
+            // $('#place_edit_container').fadeOut('fast',function(){
+            //     $('#place_info_container').fadeIn('slow');
+            //     $('#place_edit_button').val('Редактировать');
+            //     $('#place_edit_button').prop('type','button');
+            // })
+    console.log("Place has been edited");
+        }
+        
+    })
+
+
+     $('span').click(function(){
+
+        console.log("кликнул на span")
+
+        
+    })
+
+
+
 //  при наведении на объекты при платеже
 
             $('.object').mouseenter(function(){
@@ -212,7 +242,6 @@ window.onscroll = function() {
    $('.for_pop_up').css('bottom',scrollBottomValue+'px');
 
 }
-
 
 
 // Функция сортировки услуг.
