@@ -16,22 +16,22 @@
 	</div>
 
 	<div class="recipe_is_paid">
-		<label style="display:none;">
-			<input class="" id="some_input" type="checkbox" name="recipe_is_paid">
-			<span class="login_input_check"><p>Счёт оплачен </p></span>	
+		<label>
+			<input class="recipe_check" id="some_input" type="checkbox" name="recipe_is_paid">
+			<span id="recipe_is_paid_span" class="login_input_check"><p>Счёт оплачен </p></span>	
 		</label>
 	</div>
 
 
 	<div class="end">
-		<%= submit_tag("Оплатить", :class=>:end_button, disabled: true) %>
+		<%= submit_tag("Оплатить", :class=>:end_button, disabled: true, id: "pay_submit")  %>
 	</div>
 <% end %>
 
-	<div style="display:none;">
+	<div id="save_amount_form" style="display:none;">
 		<%= form_for Analytic.new, url: "/save_amount", remote: true, method: :post do |f| %>
 			
-			<%= submit_tag("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true) %>
+			<%= f.submit("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true, style: "width: 320px;") %>
 		
 		<% end %>
 	</div>

@@ -170,11 +170,24 @@ $(this).remove();
     })
 
 
-     $('span').click(function(){
-
-        console.log("кликнул на span")
+     $('span#recipe_is_paid_span').click(function(){
 
         
+        if ($("input.recipe_check").attr("checked") != "checked")
+        {
+            console.log("Отмечено!");  
+            $("#pay_submit").hide(); 
+            $("#save_amount_form").fadeIn(); 
+        }
+        else
+        {
+            console.log("Потрачено!");
+            $("#save_amount_form").hide();
+            $("#pay_submit").fadeIn(); 
+
+        }
+        
+
     })
 
 
