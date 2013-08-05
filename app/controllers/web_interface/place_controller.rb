@@ -29,7 +29,7 @@ class WebInterface::PlaceController < WebInterfaceController
 	def deactivate
 		@message = "Объект успешно удалён."
 		@place = Place.find(params[:id])
-		if @place.update_attributes(is_active: false)
+		if @place.update_attribute('is_active', false)
 			respond_to do |format|
 				format.js {render "web_interface/place/deactivate"}
 			end
