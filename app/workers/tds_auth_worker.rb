@@ -12,11 +12,8 @@ class TdsAuthWorker
 		post = Net::HTTP::Post.new(uri.path)
 		post.body = data
 		response = https.request(post)
-		response = Crack::XML.parse(response.body)
-		puts response.to_s
-
 		client = Faye::Client.new('http://ec2-54-245-202-30.us-west-2.compute.amazonaws.com:9292/faye')
-		client.publish("/server/#{auth_token}", response.to_s)	
+		client.publish("/server/#{auth_token}", response.body.to_s)	
 	end
 
 end
