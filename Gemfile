@@ -27,9 +27,7 @@ gem 'jquery-rails'
 gem 'rubber'
 gem 'open4'
 gem 'gelf'
-<<<<<<< HEAD
 gem 'pg'
 gem 'crack'
-=======
 gem 'gibbon'
->>>>>>> cd7821c6ed29d8f37b0722dbb3ab347a0bfd60c0
+
