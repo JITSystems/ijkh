@@ -54,6 +54,8 @@ GEM
     coffee-script-source (1.4.0)
     connection_pool (1.1.0)
     cookiejar (0.3.0)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     daemons (1.1.9)
     devise (2.2.1)
       bcrypt-ruby (~> 3.0)
@@ -172,6 +174,9 @@ GEM
       open4
       thor
     ruby-hmac (0.4.0)
+    rvm-capistrano (1.4.1)
+      capistrano (>= 2.0.0)
+    safe_yaml (0.9.4)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -219,7 +224,9 @@ DEPENDENCIES
   apns
   clockwork
   coffee-rails (~> 3.2.1)
+  crack
   devise
+  eventmachine
   faye
   gelf
   gibbon
@@ -230,6 +237,7 @@ DEPENDENCIES
   rabl
   rails (= 3.2.11)
   rubber
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   settingslogic
   sidekiq

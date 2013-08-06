@@ -2,9 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-gem 'pg'
-gem 'devise'
 
+gem 'devise'
 gem 'rabl'
 gem 'oj'
 gem 'sidekiq'
@@ -14,6 +13,8 @@ gem 'symbolize'
 gem 'clockwork'
 gem	'thin'
 gem 'faye'
+gem 'eventmachine'
+gem 'rvm-capistrano'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,4 +27,7 @@ gem 'jquery-rails'
 gem 'rubber'
 gem 'open4'
 gem 'gelf'
+gem 'pg'
+gem 'crack'
 gem 'gibbon'
+
