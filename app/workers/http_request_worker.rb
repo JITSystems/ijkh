@@ -26,7 +26,7 @@ class HttpRequestWorker
 				when "4"
 					if response["transaction"]["code"] == "6001"
 						md = "#{response['transaction']['id']};#{response['transaction']['threedSecure']['pd']}"
-						publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "http://ec2-54-245-202-30.us-west-2.compute.amazonaws.com/api/1.0/payment/secure_callback"}
+						publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "https://izkh.ru/api/1.0/payment/secure_callback"}
 					end
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
@@ -53,7 +53,7 @@ class HttpRequestWorker
 				
 
 				
-		client = Faye::Client.new('http://ec2-54-245-202-30.us-west-2.compute.amazonaws.com:9292/faye')
+		client = Faye::Client.new('https://izkh.ru:9292/faye')
 		client.publish("/server/#{auth_token}", publish_message)
 	end
 end

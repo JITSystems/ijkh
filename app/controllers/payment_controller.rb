@@ -2,7 +2,7 @@
 class PaymentController < ApplicationController
 
 	def subscribe
-  		render json: {base_url: "http://ec2-54-245-202-30.us-west-2.compute.amazonaws.com:9292/faye", channel_title: "/server/#{params[:auth_token]}"}
+  		render json: {base_url: "https://izkh.ru:9292/faye", channel_title: "/server/#{params[:auth_token]}"}
 	end
 
 	def pay
