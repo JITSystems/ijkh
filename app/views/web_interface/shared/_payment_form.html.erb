@@ -29,9 +29,9 @@
 <% end %>
 
 	<div id="save_amount_form" style="display:none;">
-		<%= form_for Analytic.new, url: "/save_amount", remote: true, method: :post do |f| %>
+		<%= form_tag("/save_recipe", remote: true, method: :post) do %>
 			
-			<%= f.submit("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true, style: "width: 320px;") %>
+			<%= submit_tag("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true, style: "width: 320px;") %>
 		
 		<% end %>
 	</div>

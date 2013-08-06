@@ -1,4 +1,14 @@
-$('#tariff_selected_box').fadeOut(300);
+if ($("input.recipe_check").attr("checked") == "checked")
+        {
+           $('span#recipe_is_paid_span').click();
+        }
+        else
+        {
+        	console.log("nothing to do here")
+
+        }
+
+$('#tariff_selected_box').hide();
 //$('#tariff_selected_box').html('<%= escape_javascript render("web_interface/shared/tariff_form")%>');
 $('.end_button').removeAttr('disabled');
 $('#amount_total').removeAttr('disabled');

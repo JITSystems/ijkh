@@ -720,11 +720,11 @@ a#no_object_found
 }
 .end{
 	position: relative;
-	height: 50px;
+	/*height: 50px;*/
 	border-top: 1px solid #0071bc;
 }
 .end_button, .tariff_button{
-	position: absolute;
+	position: relative;
 	width: 260px;
 	height: 40px;
 	background-color: #0071bc;
@@ -2075,7 +2075,7 @@ left: -15px;
 {
 	position: relative;
 	display: block;
-	width: 271px;
+	width: 180px;
 	height: 32px;
 	background-color: #e8eef2;
 	border: 1px solid #8da9bc;

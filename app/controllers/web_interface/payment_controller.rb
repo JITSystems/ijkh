@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class WebInterface::PaymentController < WebInterfaceController
 	def show
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
@@ -80,4 +82,17 @@ class WebInterface::PaymentController < WebInterfaceController
 			}
 		end
 	end
+
+	def save_recipe
+		@message = "Ничего не произошло"
+
+		respond_to do |format|
+			format.js {
+				render 'web_interface/payment/save_recipe'
+			}
+		end
+		
+	end
+
 end
+
