@@ -13,13 +13,11 @@ class TdsAuthWorker
 		post.body = data
 		response = https.request(post)
 		response = Crack::XML.parse(response.body)
-		if response["transaction"]["result"]
+		if response["transaction"]["result"] == "Ok"
 			publish_message = {result: "success", message: "Платеж был успешно проведен. Данные поступили в обработку."}
 		else
 			publish_message = {result: "failure", message: "При проведении платежа произошла ошибка."}
 		end
-
-
 
 		client = Faye::Client.new('http://ec2-54-245-202-30.us-west-2.compute.amazonaws.com:9292/faye')
 		client.publish("/server/#{auth_token}", publish_message)

@@ -10,4 +10,10 @@ class TariffTemplateController < ApplicationController
 
 		render 'tariff_template/show'
 	end
+
+	def create
+		@tariff_template = TariffTemplate.new(params[:tariff_template])
+		@tariff_template.save
+		render json: @tariff_template
+	end
 end

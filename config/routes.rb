@@ -46,13 +46,16 @@ Ijkh::Application.routes.draw do
 
 # Tariff Template
   get 'api/1.0/servicetype/:service_type_id/tarifftemplates' => 'tariff_template#index'
+  post 'api/1.0/tariff_template' => 'tariff_template#create'
 
 # Field Template
   get 'api/1.0/fieldtemplate' => 'field_template#index'
+  post 'api/1.0/field_template' => 'field_template#create'
 
 # Vendor
   get 'api/1.0/servicetype/:service_type_id/vendors' => 'vendor#index_with_tariffs'
   get 'api/1.0/vendors' => 'vendor#index'
+  post 'api/1.0/vendor' => 'vendor#create'
 
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'

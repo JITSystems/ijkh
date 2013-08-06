@@ -1,6 +1,6 @@
 class TariffTemplate < ActiveRecord::Base
 
-  attr_accessible :service_type_id, :title
+  attr_accessible :service_type_id, :title, :has_readings, :vendor_id
 
   belongs_to :service_type, foreign_key: :service_type_id
   belongs_to :vendor
