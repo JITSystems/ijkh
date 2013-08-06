@@ -19,7 +19,7 @@ class TdsAuthWorker
 			publish_message = {result: "failure", message: "При проведении платежа произошла ошибка."}
 		end
 
-		client = Faye::Client.new('https://izkh.ru:9292/faye')
+		client = Faye::Client.new('http://izkh.ru:9292/faye')
 		client.publish("/server/#{auth_token}", publish_message)
 	end
 
