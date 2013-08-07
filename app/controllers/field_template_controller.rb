@@ -1,4 +1,7 @@
 class FieldTemplateController < ApplicationController
+	
+	skip_before_filter :require_auth_token
+
 	def index
 		@field_templates = FieldTemplate.all
 		render 'field_template/index'

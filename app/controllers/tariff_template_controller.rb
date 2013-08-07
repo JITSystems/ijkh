@@ -1,4 +1,7 @@
 class TariffTemplateController < ApplicationController
+	
+	skip_before_filter :require_auth_token
+
 	def index
 		@tariff_templates = TariffTemplate.where("service_type_id = ? and vendor_id = 0", params[:service_type_id])
 
