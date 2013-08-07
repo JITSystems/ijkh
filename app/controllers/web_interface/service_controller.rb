@@ -34,8 +34,8 @@ class WebInterface::ServiceController < WebInterfaceController
 		# Params fix
 		fields_new = []
 		temp = params[:service][:tariff][:fields]
-		temp.first.each do |key, value|
-			fields_new << value
+		temp.first.each do |k,v|
+			fields_new << v
 		end
 
 		params[:service][:tariff][:fields] = fields_new

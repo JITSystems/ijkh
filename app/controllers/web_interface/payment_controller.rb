@@ -13,6 +13,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 	def get_payment_data
 		@tariff = Tariff.where(service_id: params[:service_id]).first
+
 		if @tariff.has_readings
 			@fields = @tariff.fields
 			#@last_meter_reading = MeterReading.where(field_id: params[:field_id]).order("created_at DESC").limit(1).first

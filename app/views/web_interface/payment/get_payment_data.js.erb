@@ -1,3 +1,5 @@
+$("#meter_reading_box").hide();
+
 if ($("input.recipe_check").attr("checked") == "checked")
     {
        $('span#recipe_is_paid_span').click();
@@ -17,14 +19,14 @@ $('input#amount_total').attr('value', '<%= @account.amount %>');
 
 <% if @account.status == -1 %>
 $('.recipe_is_paid').show();
+<% else %>
+$('.recipe_is_paid').hide();
 <% end %>
 
-
+$("#meter_reading_box").fadeIn(300);
 
 <% if @tariff.has_readings %>
 $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/meter_reading_form") %>');
-$("#meter_reading_box").hide();
 <% else %>
 $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
-$("#meter_reading_box").fadeIn(300);
 <% end %>
