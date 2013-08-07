@@ -7,8 +7,8 @@
 <%= form_for Account.new, remote: true, url: "", method: :post do |a|%>
 	<div class="price_pay">
 		<% @fields.each do |field|%>
-			<label for=""><p><%= field.title %></p>
-				<input value="<%= field.value %>" type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading">
+			<label for=""  ><p style= "text-align: left;margin: 0px 0px 0px 15px;"><%= field.title %></p>
+				<input style="float: left;margin-left: 15px;" value="<%= field.value %>" type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading" >
 			</label>
 		<% end %>
 		<div class="clear"></div>
