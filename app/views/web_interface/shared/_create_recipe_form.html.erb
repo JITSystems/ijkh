@@ -15,6 +15,7 @@
 	</div>
 
 	<div class="pay_ended">
-		<%= button_to "Создать счёт", "/save_meter_readings", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %> 
+	<!-- 	<%= button_to "Создать счёт", "/save_meter_readings", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>  -->
+		<%= link_to "Создать счет", "/get_recurrent_account/#{@tariff.service_id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
 	</div>
 <% end %>
