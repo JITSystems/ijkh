@@ -734,6 +734,9 @@ a#no_object_found
 	font-size: 15px;
 	font-weight: 600;
 	cursor: pointer;
+	display: block;
+	text-align: center;
+	line-height: 40px;
 	/*left: 15px;*/
 }
 .box_blue{

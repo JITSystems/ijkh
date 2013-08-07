@@ -76,6 +76,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	def get_recurrent_account
 		@account = Account.new_recurrent_account params
 
+		@message = "Счёт успешно создан"
+
 		respond_to do |format|
 			format.js {
 				render 'web_interface/payment/get_recurrent_account_data'
