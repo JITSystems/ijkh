@@ -17,3 +17,4 @@
 /*.pem
 /public/images/meter_reading_snapshots
 .elasticbeanstalk/
+/.DS_Store

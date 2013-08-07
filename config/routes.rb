@@ -125,7 +125,7 @@ Ijkh::Application.routes.draw do
       post 'get_meter_reading/:tariff_id' => 'web_interface/payment#get_meter_reading'
       post 'get_recurrent_account/:service_id' => 'web_interface/payment#get_recurrent_account'
       get 'pay' => 'web_interface/payment#pay'
-      post 'save_recipe' => 'web_interface/payment#save_recipe'
+      post 'save_account_as_paid' => 'web_interface/payment#save_account_as_paid'
       post 'save_meter_readings' => 'web_interface/meter_reading#create'
       post 'place' => 'web_interface/place#create'
       post 'profile_place' => 'web_interface/place#profile_create'

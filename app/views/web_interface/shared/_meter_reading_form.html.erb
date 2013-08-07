@@ -4,20 +4,24 @@
 			</p>
 	</div>
 
-<%= form_for MeterReading.new, remote: true, url: "", method: :post do |m_r|%>
+<%= form_for MeterReading.new, remote: true, url: "/save_meter_readings", method: :post do |m_r|%>
 	<div class="price_pay">
 				<% @fields.each do |field|%>
+				<div class="clear"></div>
 
-					<label for=""><p style="top: 38px;"><%= field.title %></p>
-		<input disabled class="tariff_input_reading" value="<%= field.meter_readings.order("created_at DESC").limit(1).first.reading %> " > </input>
-		<input type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading">
+		<label for="" class="meter_reading_label"><p><%= field.title %></p>
+
+		<span>Предыдущие показания:</span><input disabled class="tariff_input_reading" value="<%= field.meter_readings.order("created_at DESC").limit(1).first.reading %> " > </input>
+		<span>Новые показания:</span><input type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading">
+	<div class="clear"></div>				
 					</label>
+
 				<% end %>
 
-	<div class="clear"></div>
+	
 	</div>
 
 	<div class="pay_ended">
-			<%= button_to "Сохранить показания", "/save_meter_readings", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %> 
+			<%= m_r.submit "Сохранить показания", class: "tariff_button", style: "width: 200px;" %> 
 	</div>
 <% end %>
