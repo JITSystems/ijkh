@@ -85,12 +85,14 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 	end
 
-	def save_recipe
-		@message = "Ничего не произошло"
+	def save_account_as_paid
+		@message = "Счёт сохранён как оплаченный"
+
+		@account = Account.hand_switch current_user, params
 
 		respond_to do |format|
 			format.js {
-				render 'web_interface/payment/save_recipe'
+				render 'web_interface/payment/save_account_as_paid'
 			}
 		end
 		

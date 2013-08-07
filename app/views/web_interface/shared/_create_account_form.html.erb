@@ -1,0 +1,21 @@
+<div class="data_box_top">
+	<p>
+		Создание счёта
+	</p>
+</div>
+
+<%= form_for Account.new, remote: true, url: "", method: :post do |a|%>
+	<div class="price_pay">
+		<% @fields.each do |field|%>
+			<label for=""  ><p style= "text-align: left;margin: 0px 0px 0px 15px;"><%= field.title %></p>
+				<input style="float: left;margin-left: 15px;" value="<%= field.value %>" type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading" >
+			</label>
+		<% end %>
+		<div class="clear"></div>
+	</div>
+
+	<div class="pay_ended">
+	<!-- 	<%= button_to "Создать счёт", "/save_meter_readings", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>  -->
+		<%= link_to "Создать счет", "/get_recurrent_account/#{@tariff.service_id}", remote: true, method: :post, class: "tariff_button", style: "width: 200px;" %>
+	</div>
+<% end %>
