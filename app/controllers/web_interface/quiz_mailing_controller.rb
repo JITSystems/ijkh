@@ -17,6 +17,8 @@ class WebInterface::QuizMailingController < WebInterfaceController
 		
 	  	@user = User.select("id, email, first_name").order("id ASC")
 
+	  	list_id = "69a381f052"
+
 	  	@user.each do |user|
 
 	  		unless WebInterface::QuizSession.where(user_id: user.id).first
@@ -35,7 +37,7 @@ class WebInterface::QuizMailingController < WebInterfaceController
 				# place some action here
 			end
 
-			gb.lists.subscribe({:id => "5651d7d1b5", 
+			gb.lists.subscribe({:id => list_id, 
 	    	:email => {
 	    		:email => user.email }, 
 	    		:merge_vars => {:FNAME => user.first_name, 
@@ -52,7 +54,7 @@ class WebInterface::QuizMailingController < WebInterfaceController
 
 	    gb.campaigns.create({type: "regular", options: 
 		    	{
-	    		list_id: "5651d7d1b5", 
+	    		list_id: list_id, 
 	    		subject: "Опрос клиентов АйЖКХ", 
 	    		from_email: "feedback@izkh.ru", 
 	    		from_name: "Сервис АйЖКХ", 
