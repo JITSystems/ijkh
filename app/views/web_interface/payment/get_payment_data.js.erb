@@ -1,12 +1,11 @@
 if ($("input.recipe_check").attr("checked") == "checked")
-        {
-           $('span#recipe_is_paid_span').click();
-        }
-        else
-        {
-        	console.log("nothing to do here")
-
-        }
+    {
+       $('span#recipe_is_paid_span').click();
+    }
+    else
+    {
+    	// console.log("not checked");
+    }
 
 $('#tariff_selected_box').hide();
 //$('#tariff_selected_box').html('<%= escape_javascript render("web_interface/shared/tariff_form")%>');
@@ -16,8 +15,14 @@ $('#tariff_selected_box').fadeIn(300);
 $('input#account_id').attr('value', '<%= @account.id %>');
 $('input#amount_total').attr('value', '<%= @account.amount %>');
 
+<% if @account.status == -1 %>
+$('.recipe_is_paid').show();
+<% end %>
+
+//$("#meter_reading_box").fadeIn(300);
+
 <% if @tariff.has_readings %>
 $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/meter_reading_form") %>');
 <% else %>
-$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_recipe_form") %>'); 
+$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
 <% end %>

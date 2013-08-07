@@ -3,4 +3,5 @@ $('input#account_id').attr('value', '<%= @account.id %>');
 $('input#amount_total').attr('value', '<%= @account.amount %>');
 $(".end_button").removeAttr("disabled");
 $("input#amount_total").removeAttr("disabled");
-popUpRender("<%= @message %>")
+$('.recipe_is_paid').slideDown();
+popUpRender("<%= @message %>");

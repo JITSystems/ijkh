@@ -595,14 +595,10 @@ a#no_object_found
 }
 .price_pay p{
 	position: relative;
-	width: 300px;
 	font-size: 14px;
-	line-height: 1.4;
+	line-height: 2;
 	color: #47555e;
-	top:25px;
-	margin-bottom: 10px;
-	left:30px;
-	float: left;
+	text-align: center;
 }
 .price{
 	position: absolute;
@@ -2078,16 +2074,23 @@ left: -15px;
 {
 	position: relative;
 	display: block;
-	width: 180px;
+	width: 211px;
 	height: 32px;
 	background-color: #e8eef2;
 	border: 1px solid #8da9bc;
-	color: #8da9bc;
+	color: rgb(33, 83, 117);
 	text-indent: 5px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
-	margin: 0px 20px 0px 0px;
+	margin: 0px 20px 5px 0px;
 	float: right;
+}
+
+.tariff_input_reading[disabled]
+{
+
+	color: #47555e;
+
 }
 
 .pay_text{
@@ -2099,6 +2102,22 @@ left: -15px;
 
 .pay_text a{
 	text-decoration: none;
+}
+
+.price_pay span
+{
+	float: left;
+	text-align: right;
+	width: 210px;
+	line-height: 2.7;
+	color: #47555e;
+	font-size: 0.9em;
+}
+
+.price_pay label.meter_reading_label
+{
+	display: block;
+	border-bottom: 1px dotted #6a7f8d;
 }
 
 .pay_text a:nth-child(odd), .service_pay_block a:nth-child(odd) {
