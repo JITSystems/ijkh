@@ -32,6 +32,7 @@ class HttpRequestWorker
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
 				end
+			end
 		elseif response["transaction"]["operation"].downcase == "rebill"
 			if response["transaction"]["result"].downcase == "error"
 				case response["transaction"]["errorCode"]
