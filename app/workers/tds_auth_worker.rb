@@ -13,7 +13,7 @@ class TdsAuthWorker
 		post.body = data
 		response = https.request(post)
 		response = Crack::XML.parse(response.body)
-		if response["transaction"]["result"] == "Ok"
+		if response["transaction"]["result"].downcase == "ok"
 			publish_message = {result: "success", message: "Платеж был успешно проведен. Данные поступили в обработку."}
 		else
 			publish_message = {result: "failure", message: "При проведении платежа произошла ошибка."}
