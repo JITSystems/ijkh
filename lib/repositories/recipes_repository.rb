@@ -22,6 +22,13 @@ module RecipesRepository
 			service_tax = 0
 			total = service_tax + amount
 		end
+
+		if user.id == 21
+			total = total.ceil
+			unless total%2 == 0
+				total = total + 1
+			end
+		end
 		
 		currency = "RUB"
 
