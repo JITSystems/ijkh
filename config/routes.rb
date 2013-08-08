@@ -108,6 +108,10 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/payment/secure_callback' => 'secure_callback#secure_callback'
   get 'api/1.0/payment/test' => 'payment#test'
 
+# Report
+  get 'api/1.0/report_daily' => 'report_data#index_daily'
+  get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
+
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'

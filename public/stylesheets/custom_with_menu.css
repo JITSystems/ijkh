@@ -591,7 +591,7 @@ a#no_object_found
 	min-height: 50px;
 	background-color: #e8eef2;
 	border-bottom: 1px dotted #6a7f8d;
-	padding-bottom: 30px;
+	/*padding-bottom: 30px;*/
 }
 .price_pay p{
 	position: relative;
