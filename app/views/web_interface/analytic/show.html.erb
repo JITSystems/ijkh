@@ -7,8 +7,33 @@
 	<div class="horizontal_div" style="width: 100%; float: none;">
 		<div class="box_blue" id="" style="min-height:245px;width:100%">
 			
-			<%= @payment_histories %>
+			<% @month_analytics.each do |m_a| %>
+<div class="month_wrap" style="display: inline-block; width: 49%; height: 49%;">
+	
+				<p><%= m_a.month %></p>
+				<p style="font-weight:bold; "><%= m_a.amount %></p>
+	
+				<div id="month_<%= m_a.month %>" style="height: 350px;"></div>
+	
+				<script>
+				Morris.Donut({
+				  element: 'month_<%= m_a.month %>',
+				  data: [
+	
+				  	<% m_a.place_analytic.each do |p_a| %>
+						<% p_a.service_analytic.each do |s_a| %>
+							{label: "<%= s_a.title %>", value: <%= s_a.amount %>},
+						<% end %>
+					<% end %>
+				    
+				  ]
+				});
+				</script>
+</div>
+			<% end %>
+
 
 	 	</div>
 	</div>
 </div>
+
