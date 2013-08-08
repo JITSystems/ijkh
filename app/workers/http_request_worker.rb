@@ -16,7 +16,7 @@ class HttpRequestWorker
 		# Format error check
 		if response["error"]
 			publish_message = {result: "failure", message: "При выполнении платежа возникла ошибка: Номер ошибки - #{response['error']['code']}, Сообщение - #{response['error']['message']}"}
-		elseif response["transaction"]["operation"].downcase == "auth"
+		elsif response["transaction"]["operation"].downcase == "auth"
 			if response["transaction"]["result"].downcase == "error"
 				case response["transaction"]["errorCode"]
 				when "1"
@@ -34,19 +34,19 @@ class HttpRequestWorker
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
 				end
 			end
-		elseif response["transaction"]["operation"].downcase == "rebill"
+		elsif response["transaction"]["operation"].downcase == "rebill"
 			if response["transaction"]["result"].downcase == "error"
 				case response["transaction"]["errorCode"]
 				when "1"
 					publish_message = {result: "failure", message: "При обработке вашего платежа сервисом Pay Online возникла техническая ошибка. Пожалуйста, повторите попытку через 10 минут."}
 				when "2"
-					publish_message = {result: "failure", message: "Транзакция отклонена фильтрами сервиса Pay Online, повторите попытку через сутки или попробуйте оплатить с помощью новой карты. Если вы произведете более 5 попыток неудачной оплаты до истечения суток, то вам потребуется удалить сохраненную карту и заново добавить ее, как новую."}
-					#publish_message = {result: "failure", message: response}
+					#publish_message = {result: "failure", message: "Транзакция отклонена фильтрами сервиса Pay Online, повторите попытку через сутки или попробуйте оплатить с помощью новой карты. Если вы произведете более 5 попыток неудачной оплаты до истечения суток, то вам потребуется удалить сохраненную карту и заново добавить ее, как новую."}
+					publish_message = {result: "failure", message: response}
 				when "3"
 					publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Свяжитесь с вашим банком или воспользуйтесь другой картой и повторите запрос. Возможен повтор попыток не более пяти раз в сутки в течение 3 дней."}
 				when "4"
-					publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Следует прекратить дальнейшие операции с данной сохраненной картой."}
-					#publish_message = {result: "failure", message: response}
+					#publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Следует прекратить дальнейшие операции с данной сохраненной картой."}
+					publish_message = {result: "failure", message: response}
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
 				end
