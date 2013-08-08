@@ -11,6 +11,7 @@ class HttpRequestWorker
 		post = Net::HTTP::Post.new(uri.path)
 		post.body = data
 		response = https.request(post)
+		logger.info response.body
 		response = Crack::XML.parse(response.body)
 		# Format error check
 		if response["error"]
