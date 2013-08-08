@@ -28,6 +28,7 @@ module RecipesRepository
 			unless total%2 == 0
 				total = total + 1
 			end
+			total = total.to_f
 		end
 		
 		currency = "RUB"
