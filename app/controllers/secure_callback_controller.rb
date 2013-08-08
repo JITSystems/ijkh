@@ -9,6 +9,7 @@ class SecureCallbackController < ApplicationController
 		merchant_id = vendor.merchant_id
 		psk = vendor.psk
 		user_id = Account.find(account_id).user_id
+		logger.info user_id
 		auth_token = User.find(user_id).authentication_token
 
 
