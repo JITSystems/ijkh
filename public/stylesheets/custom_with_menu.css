@@ -1111,12 +1111,60 @@ left: -15px;
 	margin:24px 0px 24px 0px;
 	left:34px;
 }
+
+div#field_templates_box 
+{
+	margin-top: 20px;
+}
+
+div.field_template_section
+{
+	/*border-bottom: 1px dotted #8da9bc;*/
+	margin-top: 15px;
+}
+
+span.field_template_sign, span.field_template_unit
+{
+	text-align: right;
+	color: #6a7f8d;
+	line-height: 1.8;
+	text-indent: 10px;
+	font-size: 15px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+span.field_template_sign
+{
+	width: 155px;
+	display: inline-block;
+}
+
+div#field_templates_box input
+{
+	display: inline-block;
+	background-color: #FFF;
+	border: 1px solid #8da9bc;
+	color: #00558d;
+	text-indent: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	position: relative;
+	width: 130px;
+	margin: 4px 0px 2px 0px;
+}
+
+div#field_templates_box input[disabled]
+{
+	color: #8da9bc;
+}
+
+
 .dog_number{
 	display: inline-block;
 	height: 32px;
 	background-color: #FFF;
 	border: 1px solid #8da9bc;
-	color: #8da9bc;
+	color: #00558d;
 	text-indent: 5px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;

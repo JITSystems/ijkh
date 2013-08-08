@@ -28,14 +28,14 @@
 			<% @field_templates.each do |field_template| %>
 
 				<div class="field_template_section" style="display:none;" tariffTemplateId="<%= field_template.tariff_template_id %>">				
-					<%= field_template.title %>
+					<span class="field_template_sign"><%= field_template.title %></span>
 					<%= t.text_field :value, disabled: true, value: field_template.value, name: "service[tariff][fields[][#{field_template.id}]][value]", class: 'service_tariff_value' %>
 					<%= t.hidden_field :id, value: field_template.id, name: "service[tariff][fields[][#{field_template.id}]][id]" %>
-					<%= field_template.field_units %>
+					<span class="field_template_unit"><%= field_template.field_units %></span>
 					<% if field_template.is_for_calc %>
 						<%= t.fields_for "fields[][#{field_template.id}]][meter_reading]" do |m_r|%>
 							<br />
-							<%= field_template.reading_field_title %> 
+							<span class="field_template_sign"><%= field_template.reading_field_title %> </span>
 							<%= m_r.text_field :reading, class: "meter_reading_field" %>
 						<% end %>
 					<% end %>
