@@ -40,12 +40,12 @@ class HttpRequestWorker
 					publish_message = {result: "failure", message: "При обработке вашего платежа сервисом Pay Online возникла техническая ошибка. Пожалуйста, повторите попытку через 10 минут."}
 				when "2"
 					#publish_message = {result: "failure", message: "Транзакция отклонена фильтрами сервиса Pay Online, повторите попытку через сутки или попробуйте оплатить с помощью новой карты. Если вы произведете более 5 попыток неудачной оплаты до истечения суток, то вам потребуется удалить сохраненную карту и заново добавить ее, как новую."}
-					publish_message = {result: "failure", message: "#{response.to_s}"}
+					publish_message = {result: "failure", message: response}
 				when "3"
 					publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Свяжитесь с вашим банком или воспользуйтесь другой картой и повторите запрос. Возможен повтор попыток не более пяти раз в сутки в течение 3 дней."}
 				when "4"
 					#publish_message = {result: "failure", message: "Платеж по вашей карте отклонен банком-эмитентом карты. Следует прекратить дальнейшие операции с данной сохраненной картой."}
-					publish_message = {result: "failure", message: "#{response.to_s}"}
+					publish_message = {result: "failure", message: response}
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
 				end
