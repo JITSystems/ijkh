@@ -150,9 +150,11 @@ Ijkh::Application.routes.draw do
 
       match 'quiz_feedback' => 'web_interface/quiz#create', :as => 'quiz_feedback', :via => :post
 
+      match 'quiz_results_view' => 'web_interface/quiz_results_view#show', :as => 'quiz_results_view', :via => :get
       match 'quiz_mailing' => 'web_interface/quiz_mailing#show', :as => 'quiz_mailing', :via => :get
       match 'quiz_mailing' => 'web_interface/quiz_mailing#create', :as => 'quiz_mailing', :via => :post
       match 'quiz_mailchimp' => 'web_interface/quiz_mailing#mailchimp', :as => 'quiz_mailchimp', :via => :post
+
 
 
       

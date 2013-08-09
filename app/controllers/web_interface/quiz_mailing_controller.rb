@@ -10,7 +10,6 @@ class WebInterface::QuizMailingController < WebInterfaceController
 		@campaigns = gb.campaigns.list({:start => 0, :limit => 100})
 	    @lists = gb.lists.list({:start => 0, :limit=> 100})
 
-	    @quiz_result = PollStatistics.fetch
 	end
 
 
