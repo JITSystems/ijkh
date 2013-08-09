@@ -27,6 +27,16 @@
 
 	
 		<p class="feedback_alert"><%= flash.alert %></p>
+
+		<% @quiz_result.each do |q_r| %>
+			
+			<%= q_r[:quiz_question]["body"] %>
+			
+<br>
+
+			
+
+		<% end %>
 	    </div>
 	  </div>
 	</div>
