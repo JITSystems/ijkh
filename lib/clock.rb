@@ -1,7 +1,11 @@
 require File.expand_path('../../config/boot',        __FILE__)
 require File.expand_path('../../config/environment', __FILE__)
+
 require 'clockwork'
-
-include Clockwork
-
-every(2.days, 'payment_reminder.job', at: '19:00') { PaymentReminder.test }
+require 'sidekiq'
+ 
+module Clockwork
+  every(30.seconds, 'payment.job'){
+    PushNotificationsWorker.perform_async 
+  }
+end

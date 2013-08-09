@@ -30,4 +30,3 @@ gem 'gelf'
 gem 'pg'
 gem 'crack'
 gem 'gibbon'
-

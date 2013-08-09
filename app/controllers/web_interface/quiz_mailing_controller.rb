@@ -9,6 +9,7 @@ class WebInterface::QuizMailingController < WebInterfaceController
 		gb = Gibbon::API.new
 		@campaigns = gb.campaigns.list({:start => 0, :limit => 100})
 	    @lists = gb.lists.list({:start => 0, :limit=> 100})
+
 	end
 
 

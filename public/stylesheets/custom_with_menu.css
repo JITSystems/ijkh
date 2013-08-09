@@ -120,11 +120,13 @@ a#no_object_found
 	width: 100%;
 	top: 55px;
 	float: left;
-	z-index: 10;
+	z-index: 100;
 	left: 0px;
 	display: none;
+	box-shadow: black 0px 3px 15px -3px;
 }
 .dropdownMenuLi{
+	border-bottom: 1px rgb(147, 190, 255) solid;
 	position: relative;
 	height: 35px;
 	background-color: #d5e6f2;
@@ -136,6 +138,11 @@ a#no_object_found
 	text-shadow: none;
 	cursor: pointer;
 }
+
+.dropdownMenuLi a:hover{
+	background-color: #e8eef2;
+}
+
 .secondcolorLi{background-color: rgb(189, 212, 228);}
 .top_plate{
 	position: relative;
@@ -1111,12 +1118,60 @@ left: -15px;
 	margin:24px 0px 24px 0px;
 	left:34px;
 }
+
+div#field_templates_box 
+{
+	margin-top: 20px;
+}
+
+div.field_template_section
+{
+	/*border-bottom: 1px dotted #8da9bc;*/
+	margin-top: 15px;
+}
+
+span.field_template_sign, span.field_template_unit
+{
+	text-align: right;
+	color: #6a7f8d;
+	line-height: 1.8;
+	text-indent: 10px;
+	font-size: 15px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+span.field_template_sign
+{
+	width: 155px;
+	display: inline-block;
+}
+
+div#field_templates_box input
+{
+	display: inline-block;
+	background-color: #FFF;
+	border: 1px solid #8da9bc;
+	color: #00558d;
+	text-indent: 5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	position: relative;
+	width: 130px;
+	margin: 4px 0px 2px 0px;
+}
+
+div#field_templates_box input[disabled]
+{
+	color: #8da9bc;
+}
+
+
 .dog_number{
 	display: inline-block;
 	height: 32px;
 	background-color: #FFF;
 	border: 1px solid #8da9bc;
-	color: #8da9bc;
+	color: #00558d;
 	text-indent: 5px;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
@@ -2594,3 +2649,17 @@ p#quiz_progress
     transition: all 0.7s ease;
 }*/
 
+/*  --------------------------- ANALYTIC BEGIN ----------------- */
+
+h1.analytic_title
+{
+position: relative;
+font-size: 20px;
+display: block;
+color: #00558d;
+font-weight: 600;
+margin: 10px auto;
+text-align: left;
+}
+
+/* --------------------------- ANALYTIC END ----------------- */
