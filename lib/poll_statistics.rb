@@ -11,7 +11,7 @@ class PollStatistics
 				answer = pa.as_json
 				answers_total = pa.quiz_results.count
 				answer[:quiz_result] = {count: answers_total}
-				custom_answers = pa.quiz_results.select("custom_answer").where("custom_answer != ''").as_json
+				custom_answers = pq.quiz_results.select("custom_answer").where("custom_answer != ''").as_json
 				if custom_answers.first
 					answer.merge!(custom_answers: custom_answers)
 				end
