@@ -6,22 +6,29 @@
 	<div class="container_boxes">
 	  <div class="horizontal_div" style="width: 100%; float: none;">
 	    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+
 	
 		<% @quiz_result.each do |q_r| %>
 			<p style="font-weight:bold;"><%= q_r[:quiz_question]["body"] %></p>
 				<% q_r[:quiz_question][:quiz_answer].each do |q_a| %>
 					<p><span><%= q_a[:quiz_result][:count] %> </span> - <%= q_a["body"] %></p>
-				<% end %>   
+				<% end %>
 
-				<% q_r[:quiz_question][:quiz_answer].each do |q_a| %>
-					<% if q_a[:custom_answers] %>
-							<br>
-							<p style="font-style:italic;">Другие ответы:</p>
-						<% q_a[:custom_answers].each do |c_a|%>
-							<p>- <%= c_a["custom_answer"] %></p>
-						<% end %>
-					<% end %>
-				<% end %>   <hr> <br>
+				
+					<% if q_r[:quiz_question][:custom_answers] %>
+						<br>
+						<p style="font-style:italic;">Другие ответы:</p>
+							<% q_r[:quiz_question][:custom_answers].each do |c_a|%>
+								<p>- <%= c_a["custom_answer"] %></p>
+							<% end %>
+		
+					<% end %> 
+				
+
+					
+
+				
+  <hr> <br>
 		<% end %>
 
 	    </div>
