@@ -10,15 +10,15 @@
 		<% @quiz_result.each do |q_r| %>
 			<p style="font-weight:bold;"><%= q_r[:quiz_question]["body"] %></p>
 				<% q_r[:quiz_question][:quiz_answer].each do |q_a| %>
-					<p><%= q_a["body"] %> - <span><%= q_a[:quiz_result][:count] %> </span></p>
+					<p><span><%= q_a[:quiz_result][:count] %> </span> - <%= q_a["body"] %></p>
 				<% end %>   
 
 				<% q_r[:quiz_question][:quiz_answer].each do |q_a| %>
 					<% if q_a[:custom_answers] %>
-						<% q_a[:custom_answers].each_with_index do |c_a,index|%>
+						<% q_a[:custom_answers].each do |c_a|%>
 							<br>
 							<p style="font-style:italic;">Другие ответы:</p>
-							<p><%= index+1 %> - <%= c_a["custom_answer"] %></p>
+							<p>- <%= c_a["custom_answer"] %></p>
 						<% end %>
 					<% end %>
 				<% end %>   <hr> <br>
