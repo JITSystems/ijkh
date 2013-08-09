@@ -5,6 +5,8 @@
 		<%= javascript_include_tag :application %>
 		<%= csrf_meta_tag %>
 		<meta charset="utf-8">
+
+
 		
 		<% if params[:controller] == "web_interface/redirect_page" %>
 			<meta HTTP-EQUIV="REFRESH" CONTENT="10; URL=<%= @url %>">	
@@ -26,10 +28,14 @@
 		
 		<%= javascript_include_tag root_path+"javascripts/jquery.formstyler.js" %>
 		<%= stylesheet_link_tag root_path+"stylesheets/jquery.formstyler.css" %>
+
+		<%= stylesheet_link_tag root_path+"stylesheets/morris.css" %>
 		
 		<% if params[:controller] == "web_interface/main" %>
 			<%= javascript_include_tag root_path+"javascripts/jcarousellite-1.0.1.min.js" %>
 		<% end %> 
+
+
 		
 		
 	</head>

@@ -7,8 +7,10 @@
 	<div class="horizontal_div" style="width: 100%; float: none;">
 		<div class="box_blue" id="" style="min-height: 245px;padding: 25px;width: 880px;">
 
+<% unless @month_analytics == [] %>
+
 	<h1 class="analytic_title">Суммарно по месяцам: </h1>
-		<div class="month_total_wrap" style="height: 300px;">
+		<div class="month_total_wrap" style="height: 250px;">
 				<div id="month_total" style="height: 250px;"></div>
 		</div>
 		<p>Итого за всё время: <%= @month_total %> руб.</p>
@@ -70,7 +72,11 @@
 				</script>
 </div>
 			<% end %>
+<% else %>
 
+<h1 class="analytic_title">Вы пока не совершили ни одного платежа.</h1>
+
+<% end%>
 
 
 	 	</div>

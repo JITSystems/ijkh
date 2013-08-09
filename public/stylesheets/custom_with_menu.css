@@ -120,7 +120,7 @@ a#no_object_found
 	width: 100%;
 	top: 55px;
 	float: left;
-	z-index: 10;
+	z-index: 100;
 	left: 0px;
 	display: none;
 	box-shadow: black 0px 3px 15px -3px;
@@ -2659,7 +2659,7 @@ display: block;
 color: #00558d;
 font-weight: 600;
 margin: 10px auto;
-text-align: center;
+text-align: left;
 }
 
 /* --------------------------- ANALYTIC END ----------------- */
