@@ -2642,3 +2642,17 @@ p#quiz_progress
     transition: all 0.7s ease;
 }*/
 
+/*  --------------------------- ANALYTIC BEGIN ----------------- */
+
+h1.analytic_title
+{
+position: relative;
+font-size: 20px;
+display: block;
+color: #00558d;
+font-weight: 600;
+margin: 10px auto;
+text-align: center;
+}
+
+/* --------------------------- ANALYTIC END ----------------- */
