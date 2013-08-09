@@ -15,9 +15,9 @@
 
 				<% q_r[:quiz_question][:quiz_answer].each do |q_a| %>
 					<% if q_a[:custom_answers] %>
-						<% q_a[:custom_answers].each do |c_a|%>
 							<br>
 							<p style="font-style:italic;">Другие ответы:</p>
+						<% q_a[:custom_answers].each do |c_a|%>
 							<p>- <%= c_a["custom_answer"] %></p>
 						<% end %>
 					<% end %>
