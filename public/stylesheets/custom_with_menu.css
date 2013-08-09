@@ -123,8 +123,10 @@ a#no_object_found
 	z-index: 10;
 	left: 0px;
 	display: none;
+	box-shadow: black 0px 3px 15px -3px;
 }
 .dropdownMenuLi{
+	border-bottom: 1px rgb(147, 190, 255) solid;
 	position: relative;
 	height: 35px;
 	background-color: #d5e6f2;
@@ -136,6 +138,11 @@ a#no_object_found
 	text-shadow: none;
 	cursor: pointer;
 }
+
+.dropdownMenuLi a:hover{
+	background-color: #e8eef2;
+}
+
 .secondcolorLi{background-color: rgb(189, 212, 228);}
 .top_plate{
 	position: relative;
@@ -2642,3 +2649,17 @@ p#quiz_progress
     transition: all 0.7s ease;
 }*/
 
+/*  --------------------------- ANALYTIC BEGIN ----------------- */
+
+h1.analytic_title
+{
+position: relative;
+font-size: 20px;
+display: block;
+color: #00558d;
+font-weight: 600;
+margin: 10px auto;
+text-align: center;
+}
+
+/* --------------------------- ANALYTIC END ----------------- */

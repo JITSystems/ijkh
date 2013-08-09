@@ -5,13 +5,50 @@
 
 <div class="container_boxes">
 	<div class="horizontal_div" style="width: 100%; float: none;">
-		<div class="box_blue" id="" style="min-height:245px;width:100%">
+		<div class="box_blue" id="" style="min-height: 245px;padding: 25px;width: 880px;">
+
+	<h1 class="analytic_title">Суммарно по месяцам: </h1>
+		<div class="month_total_wrap" style="height: 300px;">
+				<div id="month_total" style="height: 250px;"></div>
+		</div>
+		<p>Итого за всё время: <%= @month_total %> руб.</p>
+<script>
+	monthA = 'Январь,Февраль,Март,Апрель,Май,Июнь,Июль,Август,Сентябрь,Октябрь,Декабрь'.split(',');
+
+	new Morris.Line({
+	  // ID of the element in which to draw the chart.
+	  element: 'month_total',
+	  // Chart data records -- each entry in this array corresponds to a point on
+	  // the chart.
+	  data: [
+	  <% @month_analytics.each do |m_a| %>
+	  	{ month: "2013-<%= m_a.month %>", value: <%= m_a.amount %> },
+		<% end %>
+	  ],
+	  // The name of the data record attribute that contains x-values.
+	  xkey: 'month',
+	  xLabels: 'month',
+	  // A list of names of data record attributes that contain y-values.
+	  ykeys: ['value'],
+	  // Labels for the ykeys -- will be displayed when you hover over the
+	  // chart.
+	  labels: ['Сумма'],
+	  dateFormat: function (x) { return (monthA[new Date(x).getMonth()]).toString(); }
+	});
+
+	d = new Date();
+	
+
+</script>
+
+
+<h1  class="analytic_title" style="margin-top: 50px;">Детализация за каждый месяц:</h1>
 			
 			<% @month_analytics.each do |m_a| %>
 <div class="month_wrap" style="display: inline-block; width: 49%; height: 49%;">
 	
-				<p><%= m_a.month %></p>
-				<p style="font-weight:bold; "><%= m_a.amount %></p>
+				<p><%= @monthA[m_a.month-1] %></p>
+				<p style="font-weight:bold; "><%= m_a.amount %> руб.</p>
 	
 				<div id="month_<%= m_a.month %>" style="height: 350px;"></div>
 	
@@ -27,11 +64,13 @@
 					<% end %>
 				    
 				  ]
+				  //,formatter: function (y) { return y + " руб." }
 				});
-				
+
 				</script>
 </div>
 			<% end %>
+
 
 
 	 	</div>
