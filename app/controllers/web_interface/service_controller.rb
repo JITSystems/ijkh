@@ -30,6 +30,14 @@ class WebInterface::ServiceController < WebInterfaceController
 
 	def create
 		@message = "Услуга успешно создана."
+
+		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
+		@place = @places.first
+		@service_types = ServiceTypeManager.index
+    	@vendors = Vendor.select("id, title, service_type_id").where("is_active = true")
+    	@tariff_templates = TariffTemplate.select("id, title, vendor_id, has_readings, service_type_id")
+    	@field_templates = FieldTemplateManager.index
+    	
 		
 		# Params fix
 		fields_new = []

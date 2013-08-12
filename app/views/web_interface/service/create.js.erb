@@ -15,6 +15,7 @@ $('div.service_name').append("<p class='service_li'><%= @service.title %></p>");
 $('#objectFreeze').css('display','none');
 $("#reg_end_button").removeAttr("disabled");
 $("#field_templates_box").html('');
+$('#place_card_box').html('<%= escape_javascript render("web_interface/shared/place_card")%>');
 popUpRender('<%= @message %>');
 
 // $('div#select_service_tariff_template_id').html("Тарифы");
