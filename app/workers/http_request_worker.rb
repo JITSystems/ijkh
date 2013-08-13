@@ -28,8 +28,8 @@ class HttpRequestWorker
 				when "4"
 					if response["transaction"]["code"] == "6001"
 						md = "#{response['transaction']['id']};#{response['transaction']['threedSecure']['pd']}"
-						publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "https://izkh.ru/api/1.0/payment/secure_callback"}
-						#publish_message = {result: "failure", message: "#{response}"}
+						#publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "https://izkh.ru/api/1.0/payment/secure_callback"}
+						publish_message = {result: "failure", message: "#{response}"}
 					end
 				else
 					publish_message = {result: "failure", message: "При оплате счета произошла неизвестная ошибка."}
