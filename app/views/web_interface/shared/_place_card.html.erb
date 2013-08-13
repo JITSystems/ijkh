@@ -24,10 +24,6 @@
 		<% @place.services.where("is_active != false").each do |service| %>	
 			<p class="service_li" id="service_li_p_<%= service.id %>" onclick= "$('div#service_li_<%= service.id %>').slideToggle('');">
 				<%= service.title %> 
-
-	
-
-				<!-- <span class="delete_service"></span> -->
 			</p>
 
 			<%= link_to '', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class: "delete_service" %>
@@ -62,23 +58,10 @@
 </div>
 
 <div class="edit_object" style="padding-top: 5px;bottom: 0px;position: relative;">
-
 		<div class="accept_place">
 			<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
 			<input id="place_edit_button" type="button" class="accept_service_button place_edit_button" value="Редактировать">
-	
-			<!-- <input id="place_edit_button" type="button" onclick="placeEdit(this);" class="accept_service_button accept_place_button place_edit_button" value="Редактировать">
- -->
- 
 		</div>
-
-<!-- 
-	<%= form_tag(place_path(@place.id), remote: true, method: :put) do |f| %>
-		<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
-		<input type="button" class="edit_object_button" value="Редактировать">
-	<% end %>
-
- -->
 </div>
 <% end %>
 

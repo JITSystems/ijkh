@@ -2264,11 +2264,19 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	color: rgb(33, 83, 117);
 }
 
+p#tax_total
+{
+	margin: 3px 21px 14px 0px;
+	float: right;	
+	clear: both;
+	display: none;
+}
+
 .recipe_is_paid label{
 	position: relative;
 	display: block;
 	margin: 0px 16px 0px 34px;
-	width: 100%;
+	width: 101px;
 	height: 13px;
 	float: left;
 	padding: 0px 0px 20px 30px;

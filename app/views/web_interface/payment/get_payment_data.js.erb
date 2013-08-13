@@ -17,6 +17,8 @@ $('#tariff_selected_box').fadeIn(300);
 $('input#account_id').attr('value', '<%= @account.id %>');
 $('input#amount_total').attr('value', '<%= @account.amount %>');
 
+$('span#tax_total_value').html('<%= @service_tax %>')
+
 <% if @account.status == -1 %>
 $('.recipe_is_paid').show();
 <% else %>

@@ -43,10 +43,9 @@
 
 </script>
 
-
 <h1  class="analytic_title" style="margin-top: 50px;">Детализация за каждый месяц:</h1>
 			
-			<% @month_analytics.each do |m_a| %>
+			<% @month_analytics.reverse_each do |m_a| %>
 <div class="month_wrap" style="display: inline-block; width: 49%; height: 49%;">
 	
 				<p><%= @monthA[m_a.month-1] %></p>

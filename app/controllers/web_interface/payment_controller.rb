@@ -11,6 +11,11 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 	end
 
+	def round_up amount
+		amount = (amount*100).ceil/100.0
+		return amount
+	end
+
 	def get_payment_data
 		@tariff = Tariff.where(service_id: params[:service_id]).first
 
@@ -24,6 +29,25 @@ class WebInterface::PaymentController < WebInterfaceController
 		@fields = @tariff.fields
 
 		@account = Account.where(service_id: params[:service_id]).first
+
+		vendor_id = Service.find(params[:service_id]).vendor_id
+
+		po_tax = 0
+		service_tax = 0
+		total = 0.0
+		amount = @account.amount
+
+		if vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44
+			po_tax = 0
+			service_tax = 0
+			total = service_tax + amount
+		else 
+			service_tax = round_up(0.03*amount).round(2)
+			po_tax = 0
+			total = service_tax + amount
+		end
+
+		@service_tax = service_tax
 
 		respond_to do |format|
 			format.js {
