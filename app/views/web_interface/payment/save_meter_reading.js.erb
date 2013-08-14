@@ -5,4 +5,5 @@ $(".end_button").removeAttr("disabled");
 $("input#amount_total").removeAttr("disabled");
 $('.recipe_is_paid').slideDown();
 $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/meter_reading_form") %>');
+ $('#tax_total_value').text('<%= @account.amount*0.03 %>');
 popUpRender("<%= @message %>");

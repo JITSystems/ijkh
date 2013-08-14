@@ -51,6 +51,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 
 		@service_tax = service_tax
+		@vendor_id = vendor_id
 
 		respond_to do |format|
 			format.js {

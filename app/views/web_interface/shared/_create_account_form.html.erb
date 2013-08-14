@@ -11,7 +11,7 @@
 
 		<% @fields.each do |field|%>
 			<label for=""  ><p style= "text-align: left;margin: 0px 0px 0px 15px;"><%= field.title %></p>
-				<input style="float: left;margin-left: 15px;" value="<%= field.value %>" type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading" >
+				<input style="float: left;margin-left: 15px;" value="<%= field.value %>" type="text" id="meter_reading_reading" name="meter_reading[reading]" class="tariff_input_reading" disabled >
 			</label>
 		<% end %>
 		<div class="clear"></div>

@@ -1,6 +1,7 @@
 $('p.account_amount').html('<%= @account.amount %>');
 $('input#account_id').attr('value', '<%= @account.id %>');
 $('input#amount_total').attr('value', '<%= @account.amount %>');
+ $('#tax_total_value').text('<%= @account.amount*0.03 %>');
 $(".end_button").removeAttr("disabled");
 $("input#amount_total").removeAttr("disabled");
 $('.recipe_is_paid').slideDown();

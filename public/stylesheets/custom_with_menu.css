@@ -2298,12 +2298,17 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	color: rgb(33, 83, 117);
 }
 
-p#tax_total
+p#tax_total, p#tax_total_error
 {
 	margin: 3px 21px 14px 0px;
 	float: right;	
 	clear: both;
-	
+}
+
+p#tax_total_error
+{
+	color: red;
+	display: none;
 }
 
 .recipe_is_paid label{
