@@ -50,7 +50,7 @@ $(document).ready(function($) {
         }
     })
 
-//      проверки импутов
+//      проверки инпутов
 
     $('.login_input_check_oferta').click(function(){
         if ($('#some_input_oferta').is(':checked')){
@@ -124,7 +124,7 @@ $(document).ready(function($) {
     })
 
 
-$(".pay_text a:first-child").attr("class","object_selected"); //выделение первого элемента списка объектов/"счетов"
+$(".pay_text a:first-child").addClass("object_selected"); //выделение первого элемента списка объектов/"счетов"
 $(this).remove();
 
 //     всплытие окон в профиле
@@ -198,7 +198,7 @@ $(this).remove();
                // $(this).css('background-color','#e8eef2');
                     $('.object').click(function(){
                     $('.pay_text').find('.object_selected').attr('class','object')
-                    $(this).attr('class','object_selected');
+                    $(this).addClass('object_selected');
                 })
 
 
@@ -275,6 +275,9 @@ function sortFun(thisEl){
         $("[servicetypeid="+serviceTypeId+"]").show();
         $("#field_templates_box").html('');
         $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
+        $("div#user_account_box").slideUp();
+        $('.dog_number').attr("disabled","disabled");
+        $('.dog_number').val("");
         break
 
         case 'userTariff':
@@ -284,6 +287,10 @@ function sortFun(thisEl){
         $("[listtype=tariff]").hide();
         $("li[listType='tariff'][vendorid=0]").show();
         $("li[listType='tariff'][servicetypeid!=" + userTariffId + "]").hide();
+        $("div#user_account_box").slideUp();
+        $("#field_templates_box").html('');
+        $('.dog_number').attr("disabled","disabled");
+        $('.dog_number').val("");
         break
 
         case 'vendor':
@@ -293,6 +300,9 @@ function sortFun(thisEl){
         $("[listtype=tariff]").hide();
         $("[vendorid="+vendorId+"]").show();
         $("#field_templates_box").html('');
+        $('.dog_number').attr("disabled","disabled");
+        $('.dog_number').val("");
+        $("div#user_account_box").slideDown();
         break
 
         case 'tariff':

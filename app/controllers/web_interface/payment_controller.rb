@@ -17,7 +17,10 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_payment_data
+
 		@tariff = Tariff.where(service_id: params[:service_id]).first
+
+		@service = Service.find(params[:service_id])
 
 		if @tariff.has_readings
 			@fields = @tariff.fields

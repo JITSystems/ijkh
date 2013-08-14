@@ -1,5 +1,6 @@
 $('.end_button').attr('disabled','disabled');
 $('#amount_total').attr('disabled','disabled');
 $('div.service_pay_block').html('');
-$('div.service_pay_block').append('<%= escape_javascript render("web_interface/shared/service_list")%>')
+$('div#meter_reading_box').fadeOut(100);
 $('#tariff_selected_box').fadeOut(100);
+$('div.service_pay_block').append('<%= escape_javascript render("web_interface/shared/service_list")%>')

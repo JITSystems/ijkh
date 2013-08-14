@@ -10,17 +10,20 @@
 	<%= s_f.hidden_field :place_id, value: @place_id %>
 	<div class="choise_service">
 		<div class="service">
+		<span class="service_form_sign">Тип услуги:</span>
 		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]} ),prompt: "Выберите тип услуги ЖКХ"%>
 		</div>
 
 
 		<div class="type_man_who_have_service">
+			<span class="service_form_sign">Поставщик:</span>
 			<%= s_f.fields_for :vendor do |v|%>
 		<%= v.select :id, options_for_select([["Настроить свой тариф", 0, listType: "userTariff"]] + @vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>	
 		<% end %>	
 		</div>
 
 <div class="choise_tarif">
+	<span class="service_form_sign">Тариф:</span>
 	<%= s_f.fields_for :tariff do |t|%>
 		<%= t.select :id, options_for_select(@tariff_templates.map {|t_t| [t_t.title, t_t.id, {listType: 'tariff', vendorId: t_t.vendor_id, serviceTypeId: t_t.service_type_id, id: t_t.id}]}), prompt: "Выберите тариф"%>
 
@@ -46,9 +49,10 @@
 
 	<% end %>
 </div>
-
-		<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Номер договора" disabled>
-
+		<div id="user_account_box">
+					<span class="service_form_sign">Номер договора:</span>
+					<input id="service_user_account" name="service[user_account]" type="text" onfocus="$('#serviceFreeze').css('height','0%');" class="dog_number" placeholder="Введите номер договора" disabled>
+		</div>
 	</div>
 	<div class="accept_service">
 		<%= s_f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>

@@ -18,40 +18,20 @@
 			<span id="place_title_in_card"><%= @place.title %></span> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); return false;">Добавить услугу</button>
 		</p>
 	</div>
-	
+
+
 	<div class="service_name" style="min-height: 100px;">
-		<p>Подключенные услуги:</p>
-		<% @place.services.where("is_active != false").each do |service| %>	
-			<p class="service_li" id="service_li_p_<%= service.id %>" onclick= "$('div#service_li_<%= service.id %>').slideToggle('');">
-				<%= service.title %> 
-			</p>
-
-			<%= link_to '', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class: "delete_service" %>
-				<div id="service_li_<%= service.id %>" class="service_info">			
-					<% @service_types.each do |service_type| %>	
-						<% if service_type.id == service.service_type_id %>
-							<p><span class="service_info_header">Тип услуги:</span> <%= service_type.title %></p>
-						<% end %>
-					<% end %>
-
-					<% @vendors.each do |vendor| %>	
-						<% if vendor.id == service.vendor_id %>
-							<p><span class="service_info_header">Поставщик:</span> <%= vendor.title %></p>
-						<% end %>
-					<% end %>
-
-					<p><span class="service_info_header">Лицевой счёт:</span> <%= service.user_account %> </p>
-				</div>
-		<% end %>
+		<%= render 'web_interface/shared/place_service_list'%>
 	</div>
+	
 	
 	<div style="height: 45px;" class="object_adress">
 		<p style="width: 68px;display: inline-block; min-height: 43px;">Адрес:</p>
 		<p style="display: inline-block; width:210px; color: rgb(19,99,178); width: 320px;" class="adress_blue">
 			<%= @place.city %>, 
 			<%= @place.street %>, 
-			<%= @place.building %>,
-			 кв.<%= @place.apartment%>
+			<%= @place.building %>, 
+			 кв.<%= @place.apartment%> 
 		</p>
 	</div>	
 	
