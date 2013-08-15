@@ -4,7 +4,7 @@ class WebInterface::ServiceController < WebInterfaceController
 	
 	def get_service
 		@place = Place.find(params[:place_id])
-		@services = @place.services.where("is_active != false")
+		@services = @place.services.where("is_active IS NULL OR is_active != false")
 		respond_to do |format|
 			format.js {
 				render 'web_interface/service/payment_services'
