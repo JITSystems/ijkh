@@ -18,3 +18,4 @@
 /public/images/meter_reading_snapshots
 .elasticbeanstalk/
 /.DS_Store
+/*/.DS_Store

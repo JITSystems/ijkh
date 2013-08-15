@@ -21,20 +21,9 @@
 			</div>
 			
 		</div>
-		
-		<% if @places != [] %>
-			<div class="box_left box_blue" id="tariff_selected_box" style="padding-bottom: 5px; display:none;">
-				<%= render 'web_interface/shared/payment_form'%>
-			</div>
-	<% end %>
-
-
-	</div>
-
-	<div class="vertical_div vertical_div_right">
 
 	<% if @places != [] %>
-		<div class="box_right box">
+		<div class="box_left box" id="service_list_box">
 			<div class="data_box_top">
 				<p>Услуга(Поставщик)</p>
 			</div>
@@ -42,7 +31,14 @@
 				<%= render 'web_interface/shared/service_list'%>
 			</div>
 		</div>
-	<% end %>
+	<% end %>		
+
+
+
+	</div>
+
+	<div class="vertical_div vertical_div_right">
+
 	
 	<div class="box_right box_blue" id="meter_reading_box" style="display:none;">
 
@@ -58,8 +54,14 @@
 	
 	</div>
 
+		<% if @places != [] %>
+			<div class="box_right box_blue" id="tariff_selected_box" style="padding-bottom: 5px; display:none;">
+				<%= render 'web_interface/shared/payment_form'%>
+			</div>
+		<% end %>
+
 	
 	</div>
 
-
+<div class="clear"></div>
 </div>

@@ -3,8 +3,6 @@
 class WebInterface::MeterReadingController < WebInterfaceController
 
 	def create
-		
-		#
 
 		# params :
 		# => service_id
