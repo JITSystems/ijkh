@@ -13,6 +13,6 @@ class ServiceManager < ObjectManager
 	end
 
 	def self.index_by_place(place)
-		place.services.where(is_active: true)
+		place.services.where("is_active != FALSE")
 	end
 end
