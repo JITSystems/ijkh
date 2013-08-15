@@ -15,4 +15,8 @@ class ServiceManager < ObjectManager
 	def self.index_by_place(place)
 		place.services.where("is_active != FALSE")
 	end
+
+	def self.deactivate(service_id)
+		Service.find(service_id).update_attribute(:is_active, false)
+	end
 end

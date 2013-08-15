@@ -22,7 +22,7 @@
 	end
 
 	def destroy
-		@service = Service.destroy_with_dependencies params[:service_id]
+		@service = ServiceManager.deactivate(params[:service_id])
 		render json: @service
 	end
 
