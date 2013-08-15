@@ -71,7 +71,8 @@ module ServicesRepository
 				service_type_id: 	params[:service][:service_type_id],
 				vendor_id: 			params[:service][:vendor][:id],
 				user_account: 		params[:service][:user_account],
-				user_id: 			user.id
+				user_id: 			user.id,
+				is_active: 			true
 			}
 
 		service = Service.new(service_params)
@@ -163,7 +164,8 @@ module ServicesRepository
 				title: 				params[:service][:title],
 				place_id: 			params[:place_id],
 				service_type_id: 	params[:service][:service_type_id],
-				user_id: 			user.id
+				user_id: 			user.id,
+				is_active: 			true
 			}
 
 		service = Service.new(service_params)

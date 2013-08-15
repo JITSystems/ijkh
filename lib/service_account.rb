@@ -18,7 +18,7 @@ class ServiceAccount
 	end
 
 	def self.get_by_place_id place_id, status
-		services = Service.where("place_id = ? and is_active is null or is_active != ? ",place_id, false).select(:id).map(&:id)
+		services = Service.where("place_id = ? and is_active != ? ", place_id, false).select(:id).map(&:id)
 		service_accounts = []
 		services.each do |service_id|
 			service_account = get_by_service service_id
