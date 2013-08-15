@@ -19,7 +19,7 @@ class ServiceAccount
 
 	def self.get_by_place_id place_id, status
 		services = Service.where("place_id = ? and is_active = true", place_id).select(:id).map(&:id)
-		puts services.inspect
+		logger.info services.inspect
 		service_accounts = []
 		services.each do |service_id|
 			service_account = get_by_service service_id
@@ -38,7 +38,7 @@ class ServiceAccount
 				psk = nil
 			else
 				is_user = false
-				puts service.vendor.inspect
+				logger.info service.vendor.inspect
 				merchant_id = service.vendor.merchant_id
 				psk = service.vendor.psk
 		end
