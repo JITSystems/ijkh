@@ -22,7 +22,7 @@
 	end
 
 	def destroy
-		ServiceManager.deactivate(params[:service])
+		ServiceManager.deactivate(params[:service_id])
 		render json: {status: "deleted"}
 	end
 
