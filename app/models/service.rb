@@ -11,7 +11,7 @@ class Service < ActiveRecord::Base
   has_many :analytics
 
   belongs_to :user, foreign_key: :user_id
-  belongs_to :place, foreign_key: :place_id
+  belongs_to :place, foreign_key: :place_id, select: 'id, title, city, street, building, apartment'
   belongs_to :vendor, foreign_key: :vendor_id, select: 'id, title, merchant_id, is_active, psk'
 
 end
