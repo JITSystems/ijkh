@@ -7,6 +7,6 @@ class Place < ActiveRecord::Base
 
   belongs_to :user, foreign_key: :user_id
 
-  has_many :services, where: "is_active is null or is_active != false"
+  has_many :services, conditons: "is_active is null or is_active != false"
   has_many :analytics
 end
