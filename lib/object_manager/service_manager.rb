@@ -13,7 +13,7 @@ class ServiceManager < ObjectManager
 	end
 
 	def self.index_by_place(place)
-		place.services.where("is_active is null OR is_active != ?", false)
+		place.services.where("is_active = true")
 	end
 
 	def self.deactivate(service_id)
