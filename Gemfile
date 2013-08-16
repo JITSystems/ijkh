@@ -15,7 +15,7 @@ gem	'thin'
 gem 'faye'
 gem 'eventmachine'
 gem 'rvm-capistrano'
-gem 'exception_notification', :require => 'exception_notifier'
+gem 'exception_notification'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
