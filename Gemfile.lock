@@ -227,6 +227,7 @@ DEPENDENCIES
   crack
   devise
   eventmachine
+  exception_notification
   faye
   gelf
   gibbon
