@@ -859,20 +859,24 @@ p#account_service_title
 
 /*.service_li:hover */
 
-.delete_service{
-	float: right;
-	margin-top: -33px;
-	margin-right: 15px;
-	width: 15px;
-	height: 15px;
-	background-image: url(../images/delete_icon_unactive1.png);
-	background-position: center center;
-	z-index: 100;
+p.delete_service{
+	text-align: right;
+}
+
+
+.delete_service a{
+	background-color: rgb(196, 45, 45);
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 5px 15px;
 	position: relative;
 }
 
 .delete_service:hover {
-	background-image: url(../images/delete_icon_active1.png);	 
+	/*background-image: url(../images/delete_icon_active1.png);	 */
 }
 
 .delete_service:hover .service_li{

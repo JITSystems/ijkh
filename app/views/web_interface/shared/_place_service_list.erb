@@ -1,11 +1,11 @@
-<p>Подключенные услуги:</p>
+<p style="font-weight: bold;">Подключенные услуги:</p>
+
 <% @place.services.where('is_active IS NULL OR is_active != ?', false).each do |service| %>	
 	<p class="service_li" id="service_li_p_<%= service.id %>" onclick= "$('div#service_li_<%= service.id %>').slideToggle('');">
-		<%= service.title %> 
+		- <%= service.title %> 
 	</p>
 
-	<%= link_to '', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class: "delete_service" %>
-		<div id="service_li_<%= service.id %>" class="service_info">			
+	<div id="service_li_<%= service.id %>" class="service_info">			
 			<% @service_types.each do |service_type| %>	
 				<% if service_type.id == service.service_type_id %>
 					<p><span class="service_info_header">Тип услуги:</span> <%= service_type.title %></p>
@@ -21,5 +21,7 @@
 			<%if service.user_account !='' %>
 			<p><span class="service_info_header">Лицевой счёт:</span> <%= service.user_account %> </p>
 			<% end %>
+
+			<p class= "delete_service" ><%= link_to 'Удалить услугу', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class:"delete_object_button" %></p>
 		</div>
 <% end %>
