@@ -175,13 +175,11 @@ $(this).remove();
         
         if ($("input.recipe_check").attr("checked") != "checked")
         {
-            console.log("Отмечено!");  
             $("#pay_submit").hide(); 
             $("#save_amount_form").fadeIn(); 
         }
         else
         {
-            console.log("Потрачено!");
             $("#save_amount_form").hide();
             $("#pay_submit").fadeIn(); 
 

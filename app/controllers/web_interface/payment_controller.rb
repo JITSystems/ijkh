@@ -117,7 +117,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	def save_account_as_paid
 		@message = "Счёт сохранён как оплаченный"
 
-		@account = Account.hand_switch current_user, params
+		@account = Account.hand_switch current_user, params		
 
 		respond_to do |format|
 			format.js {

@@ -755,6 +755,12 @@ p#account_service_title
 	line-height: 40px;
 	/*left: 15px;*/
 }
+
+.end_button[disabled]
+{
+	background-color: #CCC;
+}
+
 .box_blue{
 	position: relative;
 	width: 450px;
@@ -2270,7 +2276,7 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	display: none;
 }
 
-.amount_box p, .recipe_is_paid p {
+.amount_box p, .recipe_is_paid p, .recipe_is_paid_freeze p  {
 	position: relative;
 	color: #47555e;
 	left: 34px;
@@ -2282,7 +2288,7 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
 	display: inline-block;
 }
 
-.recipe_is_paid p {
+.recipe_is_paid p, .recipe_is_paid_freeze p  {
 	top: -2px;
 	left: 18px;
 	line-height: 1;
@@ -2311,7 +2317,7 @@ p#tax_total_error
 	display: none;
 }
 
-.recipe_is_paid label{
+.recipe_is_paid label, .recipe_is_paid_freeze label{
 	position: relative;
 	display: block;
 	margin: 0px 16px 0px 34px;
@@ -2320,7 +2326,7 @@ p#tax_total_error
 	float: left;
 	padding: 0px 0px 20px 30px;
 }
-.recipe_is_paid label input{
+.recipe_is_paid label input, .recipe_is_paid_freeze label input{
 	position: absolute;
 	left: -1px; top: -2px;
 	width: 100%;
@@ -2329,13 +2335,23 @@ p#tax_total_error
 	opacity: 0;	
 }
 
-.recipe_is_paid label span{
+.recipe_is_paid label span, .recipe_is_paid_freeze label span{
 	position: absolute;
 	left: 0; top: 0;
 	height: 100%;
 	background: url(../images/checkbox_off.png) no-repeat;
 	float: left;
 	cursor: pointer;
+	opacity: 1;
+}
+
+.recipe_is_paid label span#recipe_is_paid_span_freeze, .recipe_is_paid_freeze label span#recipe_is_paid_span_freeze{
+	position: absolute;
+	left: 0; top: 0;
+	height: 100%;
+	background: url(../images/checkbox_on_freeze.png) no-repeat;
+	float: left;
+	cursor: auto;
 	opacity: 1;
 }
 
