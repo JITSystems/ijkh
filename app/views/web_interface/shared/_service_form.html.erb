@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div class="accept_service">
-		<%= s_f.submit("Добавить услугу", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>
+		<%= s_f.submit("Добавить услугу", disabled: true, id: "accept_service_submit", class: "accept_service_button", onclick:"$('#objectFreeze').css('display','block'); $('#objectFreeze').css('height','60%'); ") %>
 	</div>
 <% end %>
 <script>

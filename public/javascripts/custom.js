@@ -276,6 +276,7 @@ function sortFun(thisEl){
         $("div#user_account_box").slideUp();
         $('.dog_number').attr("disabled","disabled");
         $('.dog_number').val("");
+        $('#accept_service_submit').attr("disabled","disabled");
         break
 
         case 'userTariff':
@@ -289,6 +290,7 @@ function sortFun(thisEl){
         $("#field_templates_box").html('');
         $('.dog_number').attr("disabled","disabled");
         $('.dog_number').val("");
+        $('#accept_service_submit').attr("disabled","disabled");
         break
 
         case 'vendor':
@@ -301,6 +303,7 @@ function sortFun(thisEl){
         $('.dog_number').attr("disabled","disabled");
         $('.dog_number').val("");
         $("div#user_account_box").slideDown();
+        $('#accept_service_submit').attr("disabled","disabled");
         break
 
         case 'tariff':
@@ -309,7 +312,7 @@ function sortFun(thisEl){
         $(".field_template_section").hide();
         $('.dog_number').removeAttr("disabled");
         $("#field_templates_box").html(f_t_box_content);
-
+        $('#accept_service_submit').removeAttr("disabled");
         $('.field_template_section').each(
                 function(){
                     if ($(this).attr('tarifftemplateid') != tariffTemplateId ) {$(this).remove();}

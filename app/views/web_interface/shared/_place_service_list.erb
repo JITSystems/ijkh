@@ -11,7 +11,6 @@
 					<p><span class="service_info_header">Тип услуги:</span> <%= service_type.title %></p>
 				<% end %>
 			<% end %>
-
 			<% @vendors.each do |vendor| %>	
 				<% if vendor.id == service.vendor_id %>
 					<p><span class="service_info_header">Поставщик:</span> <%= vendor.title %></p>
@@ -24,4 +23,6 @@
 
 			<p class= "delete_service" ><%= link_to 'Удалить услугу', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class:"delete_object_button" %></p>
 		</div>
+
 <% end %>
+
