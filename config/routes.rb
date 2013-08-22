@@ -91,6 +91,7 @@ Ijkh::Application.routes.draw do
 
 # Non Utility Vendor
   get 'api/1.0/nonutilityservicetype/:non_utility_service_type_id/nonutilityvendor' => 'non_utility_vendor#index_by_service_type'
+  post 'api/1.0/non_utility_vendor' => 'non_utility_vendor#create'
 
 # Non Utility Tariff
   get 'api/1.0/nonutilityvendor/:non_utility_vendor_id/nonutilitytariff' => 'non_utility_tariff#index_by_vendor'

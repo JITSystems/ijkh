@@ -4,4 +4,9 @@ class NonUtilityVendorController < ApplicationController
 		@non_utility_vendors = NonUtilityVendor.where(non_utility_service_type_id: params[:non_utility_service_type_id])
 		render json: @non_utility_vendors
 	end
+
+	def create
+		@non_utility_vendor = NonUtilityVendorManager.create(params[:non_utility_vendor])
+		render json: @non_utility_vendor
+	end
 end
