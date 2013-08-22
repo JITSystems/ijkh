@@ -1,0 +1,23 @@
+ru:
+ activerecord:
+  attributes:
+   user:
+    email: "Адрес электронной почты"
+    first_name: "Имя"
+    phone_number: "Номер телефона"
+    password: ""
+  errors:
+   models:
+    user:
+     attributes:
+      email:
+       blank: "не может быть пустым."
+       taken: "уже зарегистрирован."
+      phone_number:
+       blank: "не может быть пустым."
+      first_name:
+       blank: "не может быть пустым."
+      password:
+       blank: "Пароль не может быть пустым."
+       too_short: "Пароль должен содержать не менее 6 символов."
+       confirmation: "Введённые пароли не совпадают."

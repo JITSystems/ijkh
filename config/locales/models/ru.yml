@@ -1,0 +1,7 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+    attributes:
+      name: "Отображаемое имя"
+      phone_number: "Телефон"

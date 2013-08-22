@@ -17,7 +17,7 @@
 		
 		<%= stylesheet_link_tag root_path+"stylesheets/resetor.css" %>
 
-		<% if params[:controller] != "sessions" and  params[:controller] != "web_interface/offer" %>
+		<% if params[:controller] != "sessions" and  params[:controller] != "web_interface/offer"  and params[:controller] != "passwords"  %>
 			<%= stylesheet_link_tag root_path+"stylesheets/custom_with_menu.css" %>
 		<% else %> 
 			<%= stylesheet_link_tag root_path+"stylesheets/custom.css" %>
@@ -44,7 +44,7 @@
 	<div class="wrapper">
 
 				<% if params[:controller] != "web_interface/offer"%> <!--div class="container"--> <% end %>
-				<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
+				<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" and params[:controller] != "passwords"  %>
 					<%= render "web_interface/shared/menu"%>
 				<%end%>
 
@@ -56,7 +56,7 @@
 		<div class="for_pop_up"> </div>
 	</div>
 
-			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" %>
+			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" and params[:controller] != "passwords"  %>
 				<%= render "web_interface/shared/footer"%>
 			<% end%>
 			<% if params[:controller] != "web_interface/offer" %><!--/div--><% end %>

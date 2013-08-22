@@ -1,5 +1,5 @@
 Ijkh::Application.routes.draw do
-  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
+  devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations", :passwords => "passwords"}
   as :user do
     get 'login' => 'sessions#new'
     post 'login' => 'sessions#create'

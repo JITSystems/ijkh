@@ -1,16 +1,22 @@
-<h2>Change your password</h2>
+	<div class="logo_top"></div>
+	<div class="form_box" id="reset_pass_box">
+		<div class="logo_btm"></div>
+		<div class="login_form_texts">
+			<div><p>Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p></div>
+			<div class="blue_text"><p>Изменение пароля</p></div>
+		</div>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+
   <%= f.hidden_field :reset_password_token %>
+			<div class="login_inputs">
+				  <%= f.password_field :password, autofocus: true, placeholder: "Введите новый пароль", class: 'showpassword' %>
+				  
+			</div>
+			<div class="login_buttons" style="padding: 0px 30px;">
+				<%= f.submit "Изменить пароль", class: 'submit_button_login', id: 'reset_pass_button' %>
+			</div>
+		<% end %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
-
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+	</div>
+	<p class="little_white_text">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
