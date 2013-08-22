@@ -7,6 +7,6 @@ class NonUtilityVendorController < ApplicationController
 
 	def create
 		@non_utility_vendor = NonUtilityVendorManager.create(params[:non_utility_vendor])
-		render json: @non_utility_vendor
+		render json: @non_utility_vendor.as_json
 	end
 end
