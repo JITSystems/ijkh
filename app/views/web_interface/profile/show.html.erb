@@ -51,13 +51,13 @@
 		<div class="data_box_top">
 			<p>Выберите объект</p>
 		</div>
-	<div class="pay_text">
-		<% if @places != [] %>
-			<% @places.each do |place| %>
-				<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
+		<div class="pay_text">
+			<% if @places != [] %>
+				<% @places.each do |place| %>
+					<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
+				<% end %>
 			<% end %>
-		<% end %>
-	</div>
+		</div>
 
 	</div>
 
