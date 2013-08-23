@@ -7,9 +7,9 @@ class NonUtilityVendorController < ApplicationController
 
 	def create
 		@non_utility_vendor = NonUtilityVendorManager.create(params[:non_utility_vendor])
-		p @non_utility_vendor
+		p @non_utility_vendor.inspect
 		if params[:picture]
-			map_name = @non_utility_vendor.id
+			map_name = @non_utility_vendor.title
 		  	name = map_name.to_s+'.png'
 		  	directory = File.join('public','images','non_utility_maps', @non_utility_vendor.non_utility_service_type_id.to_s)
 
