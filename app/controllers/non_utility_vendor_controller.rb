@@ -17,7 +17,7 @@ class NonUtilityVendorController < ApplicationController
 		  	end
 
 		  	path = File.join(directory, name)
-		  	File.open(path, "wb") { |f| f.write((params[:picture][:url]).read) }
+		  	File.open(path, "wb") { |f| f.write(open(params[:picture][:url]).read) }
 		  	directory = File.join('images','non_utility_maps', params[:non_utility_vendor][:non_utility_service_type_id].to_s)
 		  	path = File.join(directory, name)
 		  	path
