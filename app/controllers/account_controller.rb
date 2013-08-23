@@ -5,12 +5,12 @@ class AccountController < ApplicationController
 	end
 
 	def new_recurrent
-		@account = Account.new_recurrent_account params
+		@account = AccountManager.new_recurrent(ServiceManager.get(params[:service_id]))
 		render 'account/show'
 	end
 
 	def hand_switch
-		@account = Account.hand_switch current_user, params
+		@account = AccountManager.hand_switch(current_user, AccountManager.get(params[:account_id]), params[:amount])
 		render json: {status: "updated"}
 	end
 	
@@ -31,9 +31,7 @@ class AccountController < ApplicationController
 	end
 	
 	def destroy
-		account = Account.find(params[:account_id])
-		if account.destroy
-			render json: {status: "deleted"}
-		end
+		AccountManager.delete(params[:account_id])
+		render json: {status: "deleted"}
 	end
 end
