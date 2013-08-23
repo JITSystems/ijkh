@@ -7,7 +7,7 @@ class NonUtilityVendorController < ApplicationController
 
 	def create
 		@non_utility_vendor = NonUtilityVendorManager.create(params[:non_utility_vendor])
-
+		p @non_utility_vendor
 		if params[:picture]
 			map_name = @non_utility_vendor.id
 		  	name = map_name.to_s+'.png'
