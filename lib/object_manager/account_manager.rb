@@ -25,6 +25,7 @@ class AccountManager < ObjectManager
 			updater = AmountUpdater.new(account)
 			updater.set_to(amount)
 		end
+		account
 	end
 
 	def self.hand_switch(user, account, amount)
