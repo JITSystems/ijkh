@@ -24,7 +24,7 @@ class AccountManager < ObjectManager
 			amount = field.value
 			updater = AmountUpdater.new(account)
 			updater.set_to(amount)
-			account.update_attribute(:status, 0)
+			account.update_attribute(:status, -1)
 		end
 		account
 	end
