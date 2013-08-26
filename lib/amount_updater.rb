@@ -10,21 +10,21 @@ class AmountUpdater
 	end
 	
 	def nullify
-		@object.update_attributes(@amount => 0.0)
+		@object.update_attribute(@amount, 0.0)
 	end
 
 	def decrease_by(decrease)
 		decreased_value = @object.amount - decrease
-		@object.update_attributes(@amount => decreased_value)
+		@object.update_attribute(@amount, decreased_value)
 	end
 
 	def increase_by(increase)
 		increased_value = @object.amount + increase
-		@object.update_attributes(@amount => increased_value)
+		@object.update_attribute(@amount, increased_value)
 	end
 
 	def set_to(value)
-		@object.update_attributes(@amount => value)
+		@object.update_attribute(@amount, value)
 	end
 
 end

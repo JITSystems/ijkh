@@ -35,7 +35,7 @@ module PaymentHistoriesRepository
 			city: 					params[:City], 
 			eci: 					params[:ECI],
 			user_id: 				params[:user_id].to_i,
-			payment_type: 					"1",
+			payment_type: 			"1",
 			service_id: 			service_id
 		}
 
