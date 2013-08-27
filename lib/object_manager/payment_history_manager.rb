@@ -43,6 +43,7 @@ class PaymentHistoryManager < ObjectManager
 	def self.create_fake(recipe)
 		service_id = recipe.service_id ? recipe.service_id : 0
 		user_id = recipe.service_id ? recipe.service.user.id : 0
+		amount = recipe.total
 
 		payment_history_params = {
 			amount: 				amount, 
