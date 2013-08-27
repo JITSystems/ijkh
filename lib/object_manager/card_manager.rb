@@ -13,7 +13,7 @@ class CardManager < ObjectManager
 
 	protected
 
-	def exist?(card_title, user_id)
+	def self.exist?(card_title, user_id)
 		if Card.where('user_id = ? and card_title = ?', user.id, card_title).first
 	end
 end

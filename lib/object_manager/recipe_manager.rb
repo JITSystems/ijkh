@@ -7,7 +7,7 @@ class RecipeManager < ObjectManager
   def create(service, amount)
     account = service.account
     user = service.user
-    curency = "RUB"
+    currency = "RUB"
 
     recipe_params = {
                     amount:     amount,

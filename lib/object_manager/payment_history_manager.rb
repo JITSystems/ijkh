@@ -60,7 +60,7 @@ class PaymentHistoryManager < ObjectManager
 
 	protected
 
-	def payment_history_params(params)
+	def self.payment_history_params(params)
 		# params hash:
 		# 	DateTime
 		# 	TransactionID 
