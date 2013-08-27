@@ -41,8 +41,8 @@ class PaymentHistoryManager < ObjectManager
 	end
 
 	def self.create_fake(recipe)
-		service_id = recipe.service ? recipe.service_id : 0
-		user_id = recipe.service ? recipe.service.user.id : 0
+		service_id = recipe.service_id ? recipe.service_id : 0
+		user_id = recipe.service_id ? recipe.service.user.id : 0
 
 		payment_history_params = {
 			amount: 				amount, 
@@ -75,7 +75,7 @@ class PaymentHistoryManager < ObjectManager
 		# 	user_id
 
 		recipe = RecipeManager.get(params[:OrderId])
-		service_id = recipe.service ? recipe.service_id : 0
+		service_id = recipe.service_id ? recipe.service_id : 0
 
 		{
 			po_date_time: 			params[:DateTime], 
