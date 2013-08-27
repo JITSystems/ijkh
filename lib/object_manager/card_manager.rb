@@ -11,9 +11,9 @@ class CardManager < ObjectManager
 		user.cards
 	end
 
-	protected
+protected
 
 	def self.exist?(card_title, user_id)
-		if Card.where('user_id = ? and card_title = ?', user.id, card_title).first
+		Card.where('user_id = ? and card_title = ?', user.id, card_title).first ? true : false
 	end
 end

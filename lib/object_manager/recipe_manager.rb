@@ -17,7 +17,7 @@ class RecipeManager < ObjectManager
                     currency:   currency
                     }
 
-    commission = self.calculate_commission(amount)
+    commission = calculate_commission(amount)
     recipe_params.merge!(service_tax: commission[:service_tax], po_tax: commission[:po_tax], total: commission[:total])
     recipe = Recipe.create!(recipe_params)
     return recipe
@@ -26,6 +26,8 @@ class RecipeManager < ObjectManager
   def self.show_last(user, service_id)
   	Recipe.where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1).first
   end
+
+protected
 
   def calculate_commission(amount)
   	@commission_type.calculate(amount)
