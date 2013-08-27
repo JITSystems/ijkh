@@ -27,9 +27,7 @@ class RecipeManager < ObjectManager
   	Recipe.where("user_id = ? and service_id = ?", user.id, service_id).order('created_at DESC').limit(1).first
   end
 
-protected
-
-  def self.calculate_commission(amount)
+  def calculate_commission(amount)
   	@commission_type.calculate(amount)
   end
     
