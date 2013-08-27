@@ -92,4 +92,5 @@ class PaymentHistoryManager < ObjectManager
 			payment_type: 			"1",
 			service_id: 			service_id
 		}
+	end
 end
