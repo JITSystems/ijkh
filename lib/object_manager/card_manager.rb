@@ -4,7 +4,7 @@ class CardManager < ObjectManager
 	# 	card_title
 	# 	user_id
 	# 	user_id
-		Card.create!(card_params) unless exist?(card_params[:card_title], card_params[:user_id])
+		Card.create!(card_params) unless self.exist?(card_params[:card_title], card_params[:user_id])
 	end
 
 	def self.get_by_user(user)
