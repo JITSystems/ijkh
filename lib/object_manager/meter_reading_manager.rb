@@ -1,4 +1,5 @@
 class MeterReadingManager < ObjectManager	
+  
   def self.create(user, params)
     # params hash:
     #   service_id
@@ -10,7 +11,7 @@ class MeterReadingManager < ObjectManager
     #    reading
     #    snapshot_url
 
-    is_init = if params[:meter_reading][:field_id]
+    is_init = params[:meter_reading][:field_id] ? true : false
 
     meter_reading_params = {
     						            service_id:   params[:service_id],
@@ -34,6 +35,7 @@ class MeterReadingManager < ObjectManager
       updater = AmountUpdater.new(account)
       updater.set_to(amount)
     end
+
   end    
 
 	def self.get_by_tariff(tariff)
@@ -65,5 +67,4 @@ class MeterReadingManager < ObjectManager
   	path = File.join(directory, name)
   	path
   end
-
 end

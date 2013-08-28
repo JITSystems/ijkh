@@ -1,5 +1,5 @@
 class CommissionManager
-  def self.calculate(amount)
+  def calculate(amount)
   	commission = {}
   	amount = FloatModifier.modify(amount)
   	commission[:total] = amount

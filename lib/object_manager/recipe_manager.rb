@@ -7,7 +7,7 @@ class RecipeManager < ObjectManager
   def create(service, amount)
     account = service.account
     user = service.user
-    curency = "RUB"
+    currency = "RUB"
 
     recipe_params = {
                     amount:     amount,
@@ -29,7 +29,7 @@ class RecipeManager < ObjectManager
 
 protected
 
-  def self.calculate_commission(amount)
+  def calculate_commission(amount)
   	@commission_type.calculate(amount)
   end
     

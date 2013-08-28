@@ -1,4 +1,4 @@
-class AccountManager < ObjectManager
+class AnalyticManager < ObjectManager
 	def self.create(recipe, amount)
 		user_id = recipe.service ? recipe.service.user.id : 0
 

@@ -37,7 +37,7 @@ class AccountManager < ObjectManager
 		
 		# Creates fake recipe	
 		recipe = RecipeManager.new
-		recipe.create(account.service, amount)
+		recipe = recipe.create(account.service, amount)
 
 		# Creates fake payment history
 		PaymentHistoryManager.create_fake(recipe)
