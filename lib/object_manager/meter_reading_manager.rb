@@ -11,7 +11,7 @@ class MeterReadingManager < ObjectManager
     #    reading
     #    snapshot_url
 
-    is_init = params[:prev_reading] ? true : false
+    is_init = params[:prev_reading] ? false : true
 
     meter_reading_params = {
     						            service_id:   params[:service_id],
