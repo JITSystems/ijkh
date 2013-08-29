@@ -27,6 +27,7 @@ after 'deploy:update_code', 'deploy:symlink_uploads'
 namespace :deploy do
   task :symlink_uploads do
     run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+    run "ln -nfs #{shared_path}/images  #{release_path}/public/images"
   end
   
   task :restart do
