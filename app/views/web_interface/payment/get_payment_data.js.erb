@@ -40,9 +40,17 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 		$('.recipe_is_paid_freeze').hide();
 		$('#pay_submit').attr('disabled','disabled');
 	<% end %>
+	$('#tax_total').hide();
 <% else %>
-$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
+		$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
 		$('.recipe_is_paid_freeze').hide();
 		$('#pay_submit').removeAttr('disabled');
 		$('span#tax_total_value').html('<%= @service_tax %>');
+		$('#tax_total').show();
 <% end %>
+
+<% if @vendor_id == 0 %>
+		$('#pay_submit').attr('disabled','disabled');
+		$('#tax_total').hide();
+<% end %>
+
