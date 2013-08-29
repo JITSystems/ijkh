@@ -36,7 +36,7 @@ class MeterReadingManager < ObjectManager
       updater.set_to(amount)
       account.update_attribute(:status, -1) if account.amount > 0.0
     end
-
+    return meter_reading
   end    
 
 	def self.get_by_tariff(tariff)
