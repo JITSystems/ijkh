@@ -7,12 +7,11 @@ class MeterReadingController < ApplicationController
 
 	def index_by_vendor
 		@month = params[:meter_reading][:month]
-		@vendor = Vendor.find(params[:meter_reading][:vendor_id])
 		@meter_readings = MeterReading.where("extract(month from created_at) = ?", @month)
 		meter_readings_array = []
 		@meter_readings.each do |mr|
 			service = ServiceManager.get(mr.service_id)
-			meter_readings_array << mr if service.vendor.id == @vendor.id
+			meter_readings_array << mr if service.vendor_id == params[:meter_reading][:vendor_id].to_i
 		end
 		render json: {meter_reading: meter_readings_array}
 	end
