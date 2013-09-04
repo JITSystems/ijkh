@@ -8,7 +8,7 @@ class MeterReadingController < ApplicationController
 	def index_by_vendor
 		@month = params[:meter_reading][:month]
 		@vendor = params[:meter_reading][:vendor_id]
-		@meter_readings = MeterReading.where("vendor_id and extract(month from created_at) = ?", @vendor, @month)
+		@meter_readings = MeterReading.where("vendor_id = ? and extract(month from created_at) = ?", @vendor, @month)
 		render json: {meter_reading: @meter_readings}
 	end
 
