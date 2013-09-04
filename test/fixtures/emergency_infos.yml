@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  emergency_service_id: 1
+  phone: MyString
+
+two:
+  title: MyString
+  description: MyString
+  emergency_service_id: 1
+  phone: MyString
