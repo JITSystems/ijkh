@@ -1,7 +1,7 @@
 class EmergencyDirectoryController < ApplicationController
 	def index
-		@district = EmergencyDistrict.all
-		
+		@emergency_districts = EmergencyDistrict.all
+
 		render 'emergency_directory/index'
 	end
 end
