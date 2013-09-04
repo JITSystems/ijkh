@@ -89,6 +89,9 @@ Ijkh::Application.routes.draw do
   put 'api/1.0/nonutilityservicetype/:id' => 'non_utility_service_type#update'
   delete 'api/1.0/nonutilityservicetype/:id' => 'non_utility_service_type#destroy'
 
+# Emergency Directory
+  get 'api/1.0/emergency_directory' => 'emergency_directory#index'
+
 # Non Utility Vendor
   get 'api/1.0/nonutilityservicetype/:non_utility_service_type_id/nonutilityvendor' => 'non_utility_vendor#index_by_service_type'
   post 'api/1.0/non_utility_vendor' => 'non_utility_vendor#create'
