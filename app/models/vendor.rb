@@ -1,7 +1,7 @@
 class Vendor < ActiveRecord::Base
 	extend VendorsRepository
 
-  attr_accessible :service_type_id, :title, :merchant_id, :is_active, :psk
+  attr_accessible :service_type_id, :title, :merchant_id, :is_active, :psk, :commission
 
   belongs_to :service_type, foreign_key: :service_type_id, select: 'id, title'
 
