@@ -29,9 +29,9 @@ class PredefinedDataController < ApplicationController
     text = "В связи с техническими работами временно недоступна оплата через мобильное приложение 'АйЖКХ'. Оплату услуг Вы можете осуществить на сайте сервиса izkh.ru. Приносим извинения за неудобства."
     #users = User.all
     #users.each do |user|
-    user = User.find(2)
+    user = User.find(1)
     if user.ios_device_token
-      APNS.send_notification(user.ios_device_token, :alert => text, :sound => 'default')
+      APNS.send_notification(user.ios_device_token, :alert => 'test', :sound => 'default')
     end
     render json: {status: "success"}
 	end
