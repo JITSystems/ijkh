@@ -5,7 +5,7 @@ class AccountController < ApplicationController
 	end
 
 	def autoset
-		BalanceSetterWorker.perform_async(current_user)
+		BalanceSetterWorker.perform_async(current_user, params)
 		render json: {status: "success"}
 	end
 
