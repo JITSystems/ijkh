@@ -1,7 +1,7 @@
 class PushNotificationsWorker
   include Sidekiq::Worker
 
-  def perform(user, text)
+  def perform(text)
     APNS.host = Settings.apns.host
     APNS.pem  = Settings.apns.pem_file
     APNS.port = Settings.apns.port.to_i

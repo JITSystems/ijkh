@@ -24,5 +24,6 @@ class PredefinedDataController < ApplicationController
 
 	def apns
 	  PushNotificationsWorker.perform_async("В связи с техническими работами временно недоступна оплата через мобильное приложение 'АйЖКХ'. Оплату услуг Вы можете осуществить на сайте сервиса izkh.ru. Приносим извинения за неудобства.")
+    render json: {status: "success"}
 	end
 end
