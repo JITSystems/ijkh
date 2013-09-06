@@ -12,6 +12,6 @@ test:
 
 production:
   apns:
-    pem_file: apns_prod.pem
+    pem_file: apns-production.pem
     host: gateway.push.apple.com
     port: 2195
