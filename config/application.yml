@@ -13,6 +13,6 @@ test:
 production:
   <<: *defaults
   apns:
-    pem_file: apns.pem
-    host: gateway.sandbox.push.apple.com
+    pem_file: apns_prod.pem
+    host: gateway.push.apple.com
     port: 2195
