@@ -7,10 +7,12 @@ class AccountController < ApplicationController
 	def autoset
 		params["payload"].each do |el|
 	  	services = Service.where("vendor_id = ? and user_account = ? and is_active = true", el["vendor_id"], el["user_account"])
-	  	services.each do |service|
-	    service.account.update_attributes(amount: el["amount"].to_f, status: -1)
-	    vendor_title = service.vendor.title
-	    logger.info service.inspect
+	  		services.each do |service|
+	    		service.account.update_attributes(amount: el["amount"].to_f, status: -1)
+	    		vendor_title = service.vendor.title
+	    		logger.info service.inspect
+			end
+		end
 		#BalanceSetterWorker.perform_async(current_user, params)
 		render json: {status: "success"}
 	end
