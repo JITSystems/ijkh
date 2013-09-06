@@ -17,9 +17,14 @@ class RecipeManager < ObjectManager
                     currency:   currency
                     }
 
-    commission = calculate_commission(amount)
-    recipe_params.merge!(service_tax: commission[:service_tax], po_tax: commission[:po_tax], total: commission[:total])
-    recipe = Recipe.create!(recipe_params)
+    if service.vendor_id
+      commission = calculate_commission(amount, VendorManager.get(service.vendor_id).commission)
+    else
+      commission = calculate_commission(amount)
+    end
+
+      recipe_params.merge!(service_tax: commission[:service_tax], po_tax: commission[:po_tax], total: commission[:total])
+      recipe = Recipe.create!(recipe_params)
     return recipe
   end
 
@@ -29,8 +34,8 @@ class RecipeManager < ObjectManager
 
 protected
 
-  def calculate_commission(amount)
-  	@commission_type.calculate(amount)
+  def calculate_commission(amount, commission=0.0)
+  	@commission_type.calculate(amount, commission)
   end
     
 end

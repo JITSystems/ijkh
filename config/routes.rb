@@ -71,6 +71,7 @@ Ijkh::Application.routes.draw do
   put 'api/1.0/account/:account_id/switch_status' => 'account#switch_account_status' 
   put 'api/1.0/account/:account_id/holand_shturval' => 'account#hand_switch'
   delete 'api/1.0/account/:account_id' => 'account#destroy'
+  post 'api/1.0/account/autoset' => 'account#autoset'
 
 # Service Account
   get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'

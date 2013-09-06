@@ -19,14 +19,13 @@ class AccountManager < ObjectManager
 
 	def self.new_recurrent(service)
 		account = service.account
-		if account
 			field = service.tariff.fields.first
 			amount = field.value
 			updater = AmountUpdater.new(account)
 			updater.set_to(amount)
 			account.update_attribute(:status, -1)
 		end
-		account
+		return account
 	end
 
 	def self.hand_switch(user, account, amount)

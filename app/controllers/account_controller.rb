@@ -4,6 +4,11 @@ class AccountController < ApplicationController
 	def index
 	end
 
+	def autoset
+		BalanceSetterWorker.perform_async(current_user)
+		render json: {status: "success"}
+	end
+
 	def new_recurrent
 		@account = AccountManager.new_recurrent(ServiceManager.get(params[:service_id]))
 		render 'account/show'

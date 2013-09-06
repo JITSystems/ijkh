@@ -1,3 +1,4 @@
+# encoding: utf-8 
 class PredefinedDataController < ApplicationController
 	skip_before_filter :require_auth_token
 	def index
@@ -22,16 +23,6 @@ class PredefinedDataController < ApplicationController
  
 
 	def apns
-	  APNS.host = Settings.apns.host
-      APNS.pem  = Settings.apns.pem_file
-      APNS.port = Settings.apns.port.to_i
-	  device_token = current_user.ios_device_token
-
-	  if device_token
-      	APNS.send_notification(device_token, :alert => params[:text], :sound => 'default')
-      	render json: "success"
-      else
-      	render json: "failure"
-      end
+	  PushNotificationsWorker.perform_async("В связи с техническими работами временно недоступна оплата через мобильное приложение 'АйЖКХ'. Оплату услуг Вы можете осуществить на сайте сервиса izkh.ru. Приносим извинения за неудобства.")
 	end
 end
