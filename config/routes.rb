@@ -36,6 +36,7 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/place/:place_id/userservice' => 'service#create_user_service'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
   delete 'api/1.0/service/:service_id' => 'service#destroy'
+  get 'api/1.0/user_accounts/:vendor_id' => 'service#index_user_account'
 
 # Card
   get 'api/1.0/cards' => 'card#index'
