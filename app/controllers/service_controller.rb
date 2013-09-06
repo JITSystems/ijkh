@@ -26,4 +26,9 @@
 		render json: {status: "deleted"}
 	end
 
+	def index_user_account
+  		services = Service.where("vendor_id = ? and is_active = true", params[:vendor_id]).pluck(:user_account)
+  		render json: services
+  	end
+
 end
