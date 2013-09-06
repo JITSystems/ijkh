@@ -2,7 +2,7 @@
 class BalanceSetterWorker
   include Sidekiq::Worker
 
-  def perform(url, data)
+  def perform(user, data)
    #APNS.host = Settings.apns.host
    #APNS.pem  = Settings.apns.pem_file
    #APNS.port = Settings.apns.port.to_i
