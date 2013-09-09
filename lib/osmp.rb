@@ -5,15 +5,13 @@ class Osmp
 	http = Net::HTTP.new(uri.host, uri.port)
 	http.use_ssl = true
 	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-	store = OpenSSL::X509::Store.new
-	store.set_default_paths # Optional method that will auto-include the system CAs.
-	store.add_cert(OpenSSL::X509::Certificate.new(File.read("ijkh.pem")))
-	store.add_cert(OpenSSL::X509::Certificate.new(File.read("bgbilling.pem")))
-	http.cert_store = store
-
-	response = http.request(Net::HTTP::Get.new(uri.path))
-
+	pem = File.read("ijkh.pem")
+	key = File.read("ijkh.key")
+	
+	http.cert = OpenSSL::X509::Certificate.new(pem)
+	http.key = OpenSSL::PKey::RSA.new(key)
+	
+	response = http.request(Net::HTTP::Get.new(uri.request_uri))
   	response
 	end
 end
