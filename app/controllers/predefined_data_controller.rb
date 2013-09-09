@@ -26,4 +26,9 @@ class PredefinedDataController < ApplicationController
     PushNotificationsWorker.perform_async
     render json: {status: "success"}
 	end
+
+  def osmp
+    resp = Osmp.check
+    render text: resp
+  end
 end

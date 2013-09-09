@@ -117,6 +117,9 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/report_daily' => 'report_data#index_daily'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
 
+# OSMP
+  get 'osmp' => 'predefined_data#osmp'
+
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'
