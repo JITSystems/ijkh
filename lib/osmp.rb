@@ -4,7 +4,7 @@ class Osmp
 
 	http = Net::HTTP.new(uri.host, uri.port)
 	http.use_ssl = true
-	http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 	store = OpenSSL::X509::Store.new
 	store.set_default_paths # Optional method that will auto-include the system CAs.
