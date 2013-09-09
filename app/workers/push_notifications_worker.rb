@@ -9,7 +9,7 @@ class PushNotificationsWorker
     
     #users = User.all
     #users.each do |user|
-    text = "Оплата через приложение работает! Оченя харашо!".as_json
+    text = "Оплата через приложение восстановлена!"
     user = User.find(2)
         if user.ios_device_token
             APNS.send_notification(user.ios_device_token, :alert => text, :sound => 'default')
