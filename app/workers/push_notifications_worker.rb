@@ -6,12 +6,15 @@ class PushNotificationsWorker
     APNS.host = Settings.apns.host
     APNS.pem  = Settings.apns.pem_file
     APNS.port = Settings.apns.port.to_i
-    users = User.all
-    users.each do |user|
+    text = 'Что то длиннее чем 80 символов, должно приходить! Пора бы!'
+    text = text.force_encode("UTF-8")
+    #users = User.all
+    #users.each do |user|
+    user = User.find(2)
       if user.ios_device_token
-        #APNS.send_notification(user.ios_device_token, :alert => text, :sound => 'default')
+        APNS.send_notification(user.ios_device_token, :alert => text, :sound => 'default')
       end
-    end
+    #end
   end
 
 end

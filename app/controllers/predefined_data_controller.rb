@@ -27,6 +27,10 @@ class PredefinedDataController < ApplicationController
     render json: {status: "success"}
 	end
 
+  def apns_new
+    render 'predefined_data/apns_new'
+  end
+
   def osmp
     resp = Osmp.check
     render json: resp.body
