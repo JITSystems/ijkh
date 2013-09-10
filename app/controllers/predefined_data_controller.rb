@@ -29,6 +29,6 @@ class PredefinedDataController < ApplicationController
 
   def osmp
     resp = Osmp.check
-    render text: resp
+    render json: resp.body
   end
 end
