@@ -7,7 +7,7 @@ class PushNotificationsWorker
     APNS.pem  = Settings.apns.pem_file
     APNS.port = Settings.apns.port.to_i
     text = 'Что то длиннее чем 80 символов, должно приходить! Пора бы!'
-    text = text.force_encode("UTF-8")
+    text = text.force_encoding("UTF-8")
     #users = User.all
     #users.each do |user|
     user = User.find(2)
