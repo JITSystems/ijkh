@@ -21,6 +21,24 @@ body{
 	margin: 0 auto;
 }	
 
+div#ajax_loader
+{
+	display: none;
+	z-index: 10000000;
+	width: 100%;
+	min-height: 100%;
+	position: fixed;
+	background: rgba(0,0,0,0.6);
+}
+
+div#ajax_loader_center
+{
+	top: 50%;
+	left: 50%;
+	z-index: 10000000;
+	position: fixed;	
+}
+
 
 
 /*----------------------------	MENU   ----------------------------*/

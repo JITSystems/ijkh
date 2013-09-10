@@ -41,8 +41,15 @@
 	</head>
 	<body>
 
-	<div class="wrapper">
 
+
+	<div class="wrapper">
+		
+
+<div id="ajax_loader">
+	<div id="ajax_loader_center">
+	</div>	
+</div>
 				<% if params[:controller] != "web_interface/offer"%> <!--div class="container"--> <% end %>
 				<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" and params[:controller] != "passwords"  %>
 					<%= render "web_interface/shared/menu"%>
@@ -54,6 +61,7 @@
 		</div>
 
 		<div class="for_pop_up"> </div>
+
 	</div>
 
 			<%if params[:controller] != "sessions" and params[:controller] != "web_interface/offer" and params[:controller] != "passwords"  %>
@@ -61,6 +69,33 @@
 			<% end%>
 			<% if params[:controller] != "web_interface/offer" %><!--/div--><% end %>
 
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter22270684 = new Ya.Metrika({id:22270684,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/22270684" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 	</body>
 </html>
