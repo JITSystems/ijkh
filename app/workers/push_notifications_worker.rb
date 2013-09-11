@@ -12,7 +12,7 @@ class PushNotificationsWorker
     users.each do |user|
     #user = User.find(2)
       if user.ios_device_token
-        apn = APNS.send_notification(user.ios_device_token, {:alert => text, :sound => 'default'})
+    #    apn = APNS.send_notification(user.ios_device_token, {:alert => text, :sound => 'default'})
       end
     end
     logger.info text
