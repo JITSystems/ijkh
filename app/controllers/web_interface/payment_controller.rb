@@ -35,17 +35,19 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		vendor_id = Service.find(params[:service_id]).vendor_id
 
+		commission = VendorManager.get(vendor_id).commission
+
 		po_tax = 0
 		service_tax = 0
 		total = 0.0
 		amount = @account.amount
 
-		if vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44
+		unless commission 
 			po_tax = 0
 			service_tax = 0
 			total = service_tax + amount
 		else 
-			service_tax = round_up(0.03*amount).round(2)
+			service_tax = round_up((commission.to_f/100.00)*amount).round(2)
 			po_tax = 0
 			total = service_tax + amount
 		end
@@ -81,7 +83,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		# private_security_key = @vendor.psk
 		# merchant_id = @vendor.merchant_id
 		merchant_id = '39859'
-		private_security_key = 7ab9d14e-fb6b-4c78-88c2-002174a8cd88
+		private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 		security_key = Digest::MD5.hexdigest(security_key_string)
@@ -106,6 +108,14 @@ class WebInterface::PaymentController < WebInterfaceController
 
 	def get_recurrent_account
 		@account = Account.new_recurrent_account params
+
+		vendor_id = @account.service.vendor_id 
+
+		if vendor_id || vendor_id !=0
+			@commission = VendorManager.get(vendor_id).commission
+		else
+			@commission = 0 
+		end
 
 		@message = "Счёт успешно создан"
 
