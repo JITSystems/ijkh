@@ -8,10 +8,4 @@ class RecipeController < ApplicationController
 		@recipe = Recipe.show_last current_user, params[:service_id]
 		render 'recipe/show'
 	end
-
-	def update
-	end
-
-	def destroy
-	end
 end

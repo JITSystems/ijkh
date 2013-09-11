@@ -1,0 +1,2 @@
+class EmergencyDistrictManager < ObjectManager
+end
