@@ -75,11 +75,13 @@ class WebInterface::PaymentController < WebInterfaceController
 		po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
 
 		user_id = current_user.id
-		merchant_id = @vendor.merchant_id
 		order_id = @recipe.id
 		amount = FloatModifier.format(FloatModifier.modify(@recipe.total))
 		currency = "RUB"
-		private_security_key = @vendor.psk
+		# private_security_key = @vendor.psk
+		# merchant_id = @vendor.merchant_id
+		merchant_id = '39859'
+		private_security_key = 7ab9d14e-fb6b-4c78-88c2-002174a8cd88
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 		security_key = Digest::MD5.hexdigest(security_key_string)
