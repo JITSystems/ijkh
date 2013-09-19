@@ -68,13 +68,26 @@ class RegistrationsController < Devise::RegistrationsController
       		render json:  {error: {message: user_errors}}, status: 422
           return
         }
-        format.html {
-          redirect_to '/registration'
-          return
-        }
-        format.js {
+        
+        # format.html {
+        #   redirect_to '/registration'
+        #   return
+        # }
 
-        }
+          @message = ""
+          unless user.errors.first.first.to_s == "email"
+            @message = "Пароль должен содержать не менее 6 символов"  
+          else
+            @message = "Данный адрес эл. почты уже зарегистрирован."
+          end
+
+          # user.errors.each do |error|
+          # @message << user.errors.first.first.to_s
+          # end
+
+          format.js {
+            render 'web_interface/registration/error'
+          }
     	end
     end
 	end	
