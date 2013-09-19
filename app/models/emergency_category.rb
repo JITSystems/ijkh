@@ -1,4 +1,4 @@
-class EmergencyDistrict < ActiveRecord::Base
+class EmergencyCategory < ActiveRecord::Base
   attr_accessible :title
 
   has_many :emergency_services

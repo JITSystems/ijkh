@@ -1,0 +1,18 @@
+<%= form_for(current_user, as: 'user', :url => '/apns_test', remote: true,  :html => { :method => :get }) do |f| %>
+		
+		<div id="profile_edit_container" style="display:none">
+
+		<div class="profile_name_container">
+			<%= f.text_field(:first_name, class: 'profile_edit', placeholder: 'Введите Ваше имя') %>
+			</div>
+			<div class="profile_email_container">
+				<%= f.email_field(:email, class: 'profile_edit', placeholder: 'Введите Ваш адрес электронной почты') %>
+				<%= f.text_field(:phone_number, class: 'profile_edit', placeholder: 'Введите номер Вашего телефона') %>
+			</div>
+		</div>
+
+		<div class="profile_button_container">
+			<input id="profile_edit_button" type="button" class="profile_edit_button" value="Редактировать">
+		</div>
+
+	<% end %>

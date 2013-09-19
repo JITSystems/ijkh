@@ -23,16 +23,16 @@ class PredefinedDataController < ApplicationController
  
 
 	def apns
-    APNS.host = Settings.apns.host
-    APNS.pem  = Settings.apns.pem_file
-    APNS.port = Settings.apns.port.to_i
-    text = "В связи с техническими работами временно недоступна оплата через мобильное приложение 'АйЖКХ'. Оплату услуг Вы можете осуществить на сайте сервиса izkh.ru. Приносим извинения за неудобства."
-    #users = User.all
-    #users.each do |user|
-    user = User.find(2)
-    if user.ios_device_token
-      APNS.send_notification(user.ios_device_token, :alert => text, :sound => 'default')
-    end
+    PushNotificationsWorker.perform_async
     render json: {status: "success"}
 	end
+
+  def apns_new
+    render 'predefined_data/apns_new'
+  end
+
+  def osmp
+    resp = Osmp.check
+    render json: resp.body
+  end
 end

@@ -1,4 +1,4 @@
-collection @emergency_districts
+collection @emergency_categories
 
 attributes :id, :title
 

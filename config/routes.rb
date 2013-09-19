@@ -74,6 +74,9 @@ Ijkh::Application.routes.draw do
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
+# Presinct
+  get 'api/1.0/presinct/test' => 'presinct#test'
+
 # Service Account
   get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'
 
@@ -117,6 +120,9 @@ Ijkh::Application.routes.draw do
 # Report
   get 'api/1.0/report_daily' => 'report_data#index_daily'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
+
+# OSMP
+  get 'osmp' => 'predefined_data#osmp'
 
 # Web Interface
   scope '/' do

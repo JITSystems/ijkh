@@ -1,6 +1,6 @@
 class EmergencyDirectoryController < ApplicationController
 	def index
-		@emergency_districts = EmergencyDistrict.all
+		@emergency_categories = EmergencyCategoryManager.index
 
 		render 'emergency_directory/index'
 	end

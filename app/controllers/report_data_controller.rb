@@ -46,4 +46,8 @@ class ReportDataController < ApplicationController
 		end
 		render json: {payment_history: payload}
 	end
+
+	def index_by_date
+		
+	end
 end
