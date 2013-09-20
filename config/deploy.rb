@@ -41,6 +41,6 @@ namespace :deploy do
   end
 
 after 'deploy:setup', 'symlinks:setup'
-before 'deploy:update', 'symlinks:update'
+after 'deploy:update', 'symlinks:update'
 
 end
