@@ -18,6 +18,7 @@ class MeterReadingController < ApplicationController
 	end
 
 	def create
+		logger.info Rails.root
 		@meter_reading = MeterReadingManager.create(current_user, params)
 		render 'meter_reading/show'
 	end

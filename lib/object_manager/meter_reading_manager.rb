@@ -65,7 +65,7 @@ class MeterReadingManager < ObjectManager
 
   	path = File.join(directory, name)
   	File.open(path, "wb") { |f| f.write(snapshot.read) }
-  	directory = Rails.root.join('shares','public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+  	directory = Rails.root.join('shared','public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
   	path = File.join(directory, name)
   	path
   end
