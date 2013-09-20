@@ -21,7 +21,7 @@ set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
 set :branch, "staging"
 
-set :shared_assets, %w{public/images/}
+set :shared_assets, %w{public/images}
 
 namespace :symlinks do
 	desc "Setup application symlinks for shared assets"
