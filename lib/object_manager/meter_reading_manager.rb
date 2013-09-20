@@ -57,7 +57,7 @@ class MeterReadingManager < ObjectManager
     snapshot_name = snapshot_name.to_datetime
   	name = snapshot_name.to_s(:number)+'.png'
   	directory = Rails.root.join('shared','public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
-    logger.info directory
+    p directory
 
   	unless File.directory?(directory)
   	  FileUtils.mkdir_p(directory)
