@@ -11,6 +11,7 @@ class MeterReadingController < ApplicationController
 		meter_readings_array = []
 		@meter_readings.each do |mr|
 			service = ServiceManager.get(mr.service_id)
+			mr[:user_account] = service.user_account
 			meter_readings_array << mr if service.vendor_id == params[:meter_reading][:vendor_id].to_i
 		end
 		render json: {meter_reading: meter_readings_array}

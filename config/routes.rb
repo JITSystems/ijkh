@@ -73,6 +73,9 @@ Ijkh::Application.routes.draw do
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
+# Presinct
+  get 'api/1.0/presinct/test' => 'presinct#test'
+
 # Service Account
   get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'
 
