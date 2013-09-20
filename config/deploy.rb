@@ -40,7 +40,7 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
 
-before 'deploy:setup', 'symlinks:setup'
+after 'deploy:setup', 'symlinks:setup'
 before 'deploy:update', 'symlinks:update'
 
 end
