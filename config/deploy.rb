@@ -21,22 +21,26 @@ set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
 set :branch, "staging"
 
+set :shared_assets, %w{public/images/}
 
-after 'deploy:update_code', 'deploy:symlink_uploads'
-after 'deploy:update_code', 'deploy:symlink_images'
+namespace :symlinks do
+	desc "Setup application symlinks for shared folders"
+	task :setup, :roles => [:app, :web] do
+		shared_assets.each { |link| run "ln -nfs #{shared_path}/#{link} #{release_path}/#{link}" }
+	end
 
-namespace :deploy do
-  task :symlink_uploads do
-    run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
-  end
+	desc "Link assets for current deploy to the shared location"
+    task :update, :roles => [:app, :web] do
+      shared_assets.each { |link| run "ln -nfs #{shared_path}/#{link} #{release_path}/#{link}" }
+    end
+end
 
-  task :symlink_images do
-    run "ln -nfs #{shared_path}/images  #{release_path}/public/images"
-  end
-
-  
+namespace :deploy do  
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"
   end
+
+before 'deploy:setup', 'symlinks:setup'
+before 'deploy:update', 'symlinks:update'
 
 end
