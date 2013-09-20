@@ -56,8 +56,7 @@ class MeterReadingManager < ObjectManager
   def self.save_snapshot(user, snapshot, snapshot_name, service_id)
     snapshot_name = snapshot_name.to_datetime
   	name = snapshot_name.to_s(:number)+'.png'
-  	directory = Rails.root.join('shared','public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
-    p directory
+  	directory = File.join('~','apps','shared','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
 
   	unless File.directory?(directory)
   	  FileUtils.mkdir_p(directory)
@@ -65,7 +64,7 @@ class MeterReadingManager < ObjectManager
 
   	path = File.join(directory, name)
   	File.open(path, "wb") { |f| f.write(snapshot.read) }
-  	directory = Rails.root.join('shared','public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+  	directory = File.join('~','apps','shared','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
   	path = File.join(directory, name)
   	path
   end
