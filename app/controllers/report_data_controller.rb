@@ -48,6 +48,5 @@ class ReportDataController < ApplicationController
 	end
 
 	def index_by_date
-		
 	end
 end
