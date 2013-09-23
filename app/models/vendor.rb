@@ -9,4 +9,7 @@ class Vendor < ActiveRecord::Base
   has_many :services, select: 'id, title, vendor_id, is_active'
   has_many :tariffs, as: :owner, select: 'id, title, owner_id, owner_type, tariff_template_id'
 
+  has_many :served_cities
+  has_many :cities, through: :served_cities
+
 end

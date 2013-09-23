@@ -5,4 +5,7 @@ class NonUtilityVendor < ActiveRecord::Base
   has_many :non_utility_vendor_map_positions, select: 'id, non_utility_vendor_id, title, longitude, latitude'
 
   belongs_to :non_utility_service_type, select: 'id, title, description'
+
+  has_many :non_utility_served_cities
+  has_many :cities, through: :non_utility_served_cities
 end
