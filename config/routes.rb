@@ -77,6 +77,9 @@ Ijkh::Application.routes.draw do
 # Presinct
   get 'api/1.0/presinct/test' => 'presinct#test'
 
+# City
+  get 'api/1.0/cities' => 'city#index'
+
 # Service Account
   get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'
 
