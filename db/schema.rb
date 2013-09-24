@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802090731) do
+ActiveRecord::Schema.define(:version => 20130923112304) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,26 @@ ActiveRecord::Schema.define(:version => 20130802090731) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "emergency_categories", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "emergency_infos", :force => true do |t|
+    t.string  "title"
+    t.string  "description"
+    t.integer "emergency_service_id"
+    t.string  "phone"
+  end
+
+  create_table "emergency_services", :force => true do |t|
+    t.string  "title"
+    t.integer "emergency_category_id"
   end
 
   create_table "field_list_values", :force => true do |t|
@@ -114,6 +134,11 @@ ActiveRecord::Schema.define(:version => 20130802090731) do
     t.string   "snapshot_url"
     t.integer  "service_id"
     t.integer  "field_id"
+  end
+
+  create_table "non_utility_served_cities", :force => true do |t|
+    t.integer "non_utility_vendor_id"
+    t.integer "city_id"
   end
 
   create_table "non_utility_service_types", :force => true do |t|
@@ -237,6 +262,11 @@ ActiveRecord::Schema.define(:version => 20130802090731) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "served_cities", :force => true do |t|
+    t.integer "vendor_id"
+    t.integer "city_id"
+  end
+
   create_table "service_types", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
@@ -318,6 +348,8 @@ ActiveRecord::Schema.define(:version => 20130802090731) do
     t.integer  "merchant_id"
     t.boolean  "is_active"
     t.string   "psk"
+    t.float    "commission"
+    t.boolean  "is_integrated"
   end
 
 end
