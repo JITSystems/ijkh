@@ -1,13 +1,16 @@
 <div class="top_plate">
 	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 	<p class="text_plate_blue">Главная страница</p>
+	<%= link_to "", app_download_path, class: "app_download" %>
 </div>
-	<div class="horizontal_div" style="margin-top: 30px;width: 100%; float: none;">
+	<div class="horizontal_div" style="margin-top: 30px;width: 100%; float: none; display: none;">
 		<div class="box_blue" id="" style="min-height:45px;width:930px;">
 					<div class="data_box_top">
 			<p>Важная информация</p>
 		</div>
-<p style="text-align: left; padding: 20px;">Рады сообщить, что восстановлена возможность оплаты услуг с мобильных устройств. </p>
+<p style="text-align: left; padding: 20px;"> 
+<!-- place here important info -->
+ </p>
 	 	</div>
 	</div>
 
@@ -92,7 +95,7 @@
 
 </div>
 
-	<div class="box_right box blue" style="clear: both;">
+	<div class="box_right box blue" id="carousel_box" style="clear: both;">
 
 		<div class="data_box_top ">
 			<p>Партнеры</p>
@@ -112,6 +115,7 @@
 <li><div class="white_cub white_cub_3"> <a href="<%= redirect_path(url: "http://www.payonline.ru/", local_url: "/main") %>"> <img src="../images/logo_payonline.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_4"> <a href="<%= redirect_path(url: "http://www.delta.ru/", local_url: "/main") %>"> <img src="../images/logo_delta.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_6"> <a href="<%= redirect_path(url: "http://www.gibdd.ru/", local_url: "/main") %>"> <img src="../images/logo_mvd.png" /> </a> </div></li>
+<li><div class="white_cub white_cub_7"> <a href="<%= redirect_path(url: "http://xn----7sbb3armfhpk6czfe.xn--p1ai/", local_url: "/main") %>"> <img src="../images/TBO.jpg" /> </a> </div></li>
 	    </ul>
 	</div>
 				
@@ -124,13 +128,13 @@
 <script>
 	// Карусель на главной
 $( document ).ready(function() {
-    $(".white_cubs_carousel").jCarouselLite({
-        btnNext: ".next",
-        btnPrev: ".prev",
-        auto: 10000,
-        speed: 1000,
-        visible: 2
-    });
+    // $(".white_cubs_carousel").jCarouselLite({
+    //     btnNext: ".next",
+    //     btnPrev: ".prev",
+    //     auto: 10000,
+    //     speed: 1000,
+    //     visible: 2
+    // });
 
         $(".guide_carousel").jCarouselLite({
         btnNext: ".guide_next",

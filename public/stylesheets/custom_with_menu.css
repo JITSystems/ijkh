@@ -1371,6 +1371,11 @@ div#field_templates_box input[disabled]
 
 /*----------------------------	MAIN CONTENT  ----------------------------*/
 
+#carousel_box
+{
+	width: 100%;
+}
+
 .white_cubs_carousel
 {
 	/*width: 420px;
@@ -1401,7 +1406,7 @@ div#field_templates_box input[disabled]
 }
 .white_cubs{
 	position: relative;
-	width: 420px;
+	width: 840px;
 	height: 180px;
 	margin: 25px auto 25px;
 }
@@ -1441,6 +1446,11 @@ div#field_templates_box input[disabled]
 {
 	height: 97%;
 	padding: 2px 60px;
+}
+
+.white_cub_7 img
+{
+margin: 3px 3px;
 }
 
 
@@ -1675,10 +1685,10 @@ div#field_templates_box input[disabled]
 	position: absolute;
 	display: block;
 	width: 236px;
-	height: 73px;
+	height: 74px;
 	background-image: url(../images/appstore_button-1.png);
-	top:15px;
-	right: 16px;
+	top: 22px;
+	right: 26px;
 }
 /*----------------------------	END_FOOTER   ----------------------------*/
 
