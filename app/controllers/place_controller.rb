@@ -20,6 +20,7 @@ class PlaceController < ApplicationController
     @places.each do |place|
       city = City.where(title: place.city.capitalize).first
       place.update_attribute(:city_id, city.id)
-  end
+    end
     render json: @places
+  end
 end
