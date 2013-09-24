@@ -1,6 +1,6 @@
 class CityController < ApplicationController
 	def index
 		@cities = City.all
-		render json: @cities
+		render 'city/index'
 	end
 end
