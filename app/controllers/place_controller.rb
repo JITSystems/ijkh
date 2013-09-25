@@ -15,4 +15,14 @@ class PlaceController < ApplicationController
     render 'place/show'
   end
 
+  def city_id_match
+    @places = PlaceManager.index
+    @places.each do |place|
+      city = City.where(title: place[:city].capitalize).first
+      if city
+        place.update_attribute(:city_id, city.id)
+      end
+    end
+    render json: @places
+  end
 end

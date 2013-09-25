@@ -23,6 +23,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/places' => 'place#index'
   post 'api/1.0/place' => 'place#create'
   put 'api/1.0/place/:place_id' => 'place#update'
+  get 'api/1.0/place/city_id' => 'place#city_id_match'
 
 # Service Type
   get 'api/1.0/servicetypes' => 'service_type#index'

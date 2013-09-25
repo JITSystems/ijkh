@@ -7,4 +7,6 @@ class City < ActiveRecord::Base
 
   has_many :non_utility_served_cities
   has_many :non_utility_vendors, through: :non_utility_served_cities
+
+  has_many :places
 end
