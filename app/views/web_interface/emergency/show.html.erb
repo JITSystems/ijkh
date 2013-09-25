@@ -1,0 +1,64 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Справочник экстренных телефонов</p>
+</div>
+
+<div class="container_boxes">
+	<div class="horizontal_div" style="width: 100%; float: none;">
+		<div class="box_blue" id="" style="min-height:245px;width:100%">
+			<div class="non_utility_catalog">
+
+				<div class="non_utility_service">
+					<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
+						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+						<option value="0" listType="showAllCategories">Показать всё</option>
+						<% @emergency_category.each do |emergency_category| %>
+							<option value="<%= emergency_category.id %>" id="<%= emergency_category.id %>" listType="catalog">
+								<%= emergency_category.title %>
+							</option>
+						<% end %>
+					</select>
+				</div>
+
+
+<div class="nu_vendors">
+				<% @emergency_category.each do |emergency_category| %>
+					<div id="non_utility_service_type_<%= emergency_category.id %>"  class="catalog_category">
+
+						<p class="nu_service_type_title"><%= emergency_category.title %></p>
+							<% emergency_category.emergency_services.each do |emergency_service| %>
+
+									<p> 
+									<%= link_to emergency_service.title, "#", id: "non_utility_vendor_#{emergency_service.id}", remote: true, 
+									method: :get, onclick: "$('div#nu_vendor_#{emergency_service.id}').slideToggle('');" %> 
+	
+									<div id="nu_vendor_<%= emergency_service.id %>" class="nu_vendor_info">
+
+										<% emergency_service.emergency_infos.each do  |emergency_info| %>
+											<p><%= emergency_info.title %></p>
+											<p><%= emergency_info.description %></p>
+											<p><%= emergency_info.phone %></p>
+											<br>
+										<% end %>
+
+									</div>
+									</p>
+
+							<% end %>
+					</div>
+				<% end %>
+</div>
+
+			</div>
+	 	</div>
+	</div>
+</div>
+<script>
+(function($) {
+$(function() {
+
+  $('input, select').styler();
+
+})
+})(jQuery)
+</script>

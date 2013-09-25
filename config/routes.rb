@@ -156,6 +156,7 @@ Ijkh::Application.routes.draw do
       post 'quiz/:user_id' => 'web_interface/quiz#create'
       
       get "catalog" => "web_interface/catalog#show"
+      get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
       put 'delete_service/:service_id' => 'web_interface/service#delete'
 
