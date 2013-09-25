@@ -1,7 +1,8 @@
 class PlaceManager < ObjectManager
 
 	def self.create(params, user)
-		place = Place.create!(params.merge!(user_id: user.id, is_active: true))
+		city_id = CityManager.get_by_title(params[:city])
+		place = Place.create!(params.merge!(user_id: user.id, is_active: true, city_id: city_id))
 		place
 	end
 
