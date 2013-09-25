@@ -1,7 +1,7 @@
 class RecipeController < ApplicationController
 	def create
 		@recipe = RecipeManager.new
-		@recipe.create(ServiceManager.get(params[:service_id]), params[:amount])
+		@recipe = @recipe.create(ServiceManager.get(params[:service_id]), params[:amount])
 		render 'recipe/show'
 	end
 
