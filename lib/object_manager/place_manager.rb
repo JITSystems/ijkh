@@ -26,4 +26,16 @@ class PlaceManager < ObjectManager
 		# it with all related data
 	end
 
+	def self.update(params, place_id)
+		# Updates attributes for given place. Checks if 'city' attribute changes
+		# and updates 'city_id' if true
+		place = Place.find(place_id)
+		if params[:city]
+			city_id = CityManager.get_by_title(params[:city])
+			params.merge!(city_id: city_id)
+		end
+		place.update_attributes(params)
+		place
+	end
+
 end
