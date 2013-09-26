@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  precinct_id: 1
+  street: MyString
+  house: MyString
+
+two:
+  precinct_id: 1
+  street: MyString
+  house: MyString
