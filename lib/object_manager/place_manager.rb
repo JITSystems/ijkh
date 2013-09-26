@@ -30,7 +30,7 @@ class PlaceManager < ObjectManager
 		# Updates attributes for given place. Checks if 'city' attribute changes
 		# and updates 'city_id' if true
 		place = Place.find(place_id)
-		if params[:city]
+		if params and params[:city]
 			city_id = CityManager.get_by_title(params[:city])
 			params.merge!(city_id: city_id)
 		end
