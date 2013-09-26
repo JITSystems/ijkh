@@ -21,7 +21,7 @@ class PrecinctController < ApplicationController
 	end
 
 	def search_by_street
-		@streets = PrecinctTerritory.where("street like '?%'", params[:search_request])
+		@streets = PrecinctTerritory.where("street like '#{params[:search_request]}%'")
 		render json: @streets
 	end
 
