@@ -16,7 +16,7 @@ class PrecinctController < ApplicationController
 	end
 
 	def search_by_name
-		@precincts = Precinct.where("name like '?%' or surname like '?%' or middlename like '?%'", params[:search_request], params[:search_request], params[:search_request])
+		@precincts = Precinct.where("name like '#{params[:search_request]}%' or surname like '#{params[:search_request]}%' or middlename like '#{params[:search_request]}%'")
 		render json: @precincts
 	end
 
