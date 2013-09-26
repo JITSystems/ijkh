@@ -2,7 +2,9 @@
 </div>
 <div class="menu">
 	<div class="menu_container">
-		<div class="menu_logo_top"></div>
+		<div class="menu_logo_top">
+			<img style="position: absolute;top: 3px; visibility:hidden;" src= '<%= root_path %>images/logo-round.png', alt="логотип" id="logo">
+		</div>
 		<ul class="menulist">
 			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", main_path %></li>
 			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
