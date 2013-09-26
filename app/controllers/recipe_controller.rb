@@ -1,11 +1,12 @@
 class RecipeController < ApplicationController
 	def create
-		@recipe = Recipe.create_recipe current_user, params
+		@recipe = RecipeManager.new
+		@recipe = @recipe.create(ServiceManager.get(params[:service_id]), params[:amount])
 		render 'recipe/show'
 	end
 
 	def show_last
-		@recipe = Recipe.show_last current_user, params[:service_id]
+		@recipe = RecipeManager.show_last(current_user, params[:service_id])
 		render 'recipe/show'
 	end
 end

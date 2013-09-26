@@ -66,6 +66,7 @@ class MeterReadingManager < ObjectManager
   	File.open(path, "wb") { |f| f.write(snapshot.read) }
   	directory = File.join('/','home','ubuntu','apps','shared','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
   	path = File.join(directory, name)
-  	path
+  	path = "images/meter_reading_snapshots/#{user_id}/#{service_id}/#{name}"
+    path
   end
 end
