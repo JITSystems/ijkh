@@ -6,12 +6,7 @@ class PrecinctController < ApplicationController
 	end
 
 	def fetch_precinct
-		territory = PrecinctTerritory.where(street: params[:street], house: params[:house]).first
-		if territory
-			precinct = territory.precinct
-		else
-			precinct = nil
-		end
+		precinct = Precinct.find(params[:precinct_id])
 		render json: precinct
 	end
 
