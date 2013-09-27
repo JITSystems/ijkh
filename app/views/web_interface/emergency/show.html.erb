@@ -10,7 +10,7 @@
 
 				<div class="non_utility_service">
 					<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
-						<option value="0" data-skip="1" selected="selected">Выберите тип услуги ЖКХ</option>
+						<option value="0" data-skip="1" selected="selected">Выберите категорию</option>
 						<option value="0" listType="showAllCategories">Показать всё</option>
 						<% @emergency_category.each do |emergency_category| %>
 							<option value="<%= emergency_category.id %>" id="<%= emergency_category.id %>" listType="catalog">
