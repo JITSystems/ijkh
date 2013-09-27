@@ -80,8 +80,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
   get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
   get 'api/1.0/precinct/search_by_street' => 'precinct#search_by_street'
-  post 'api/1.0/precinct/create' => 'precinct#create_precinct'
-  post 'api/1.0/precinct_territory/create' => 'precinct#create_territory'
+  get 'api/1.0/precinct/create' => 'precinct#parse_precinct'
 
 # City
   get 'api/1.0/cities' => 'city#index'

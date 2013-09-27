@@ -22,13 +22,8 @@ class PrecinctController < ApplicationController
 		render json: @streets
 	end
 
-	def create_precinct
-		Precinct.create!(params[:precinct])
-		render json: {status: "success"}
-	end
-
-	def create_territory
-		PrecinctTerritory.create!(params[:precinct_territory])
+	def parse_precinct
+		Ovd.xml_parser
 		render json: {status: "success"}
 	end
 end
