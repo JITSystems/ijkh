@@ -135,7 +135,7 @@ a#no_object_found
 
 .dropdownMenu{
 	position: absolute;
-	width: 100%;
+	width: 125%;
 	top: 55px;
 	float: left;
 	z-index: 100;
