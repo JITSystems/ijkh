@@ -12,6 +12,7 @@ class Ovd
 			xml_doc = Nokogiri::XML(xmlfile)
 			# n for create db
 			n = Precinct.last ? Precinct.last.id : 0
+			s = PrecinctHouse.last ? PrecinctHouse.last.id : 0
 			# n for post
 			# n = 0
 			data = []
@@ -44,6 +45,12 @@ class Ovd
 						# )
 
 						(0..xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory").size-1).each do |j|
+
+							#Create streets
+							PrecinctStreet.create!(
+								street: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text
+							)
+
 							houses = xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory houses")[j].text
 							houses.gsub!('=', '-')
 							houses.gsub!('.', ',')
@@ -101,14 +108,15 @@ class Ovd
 									end
 							#Create territories of precinct 
 							(0..data.size-1).each do |d|
-								PrecinctTerritory.create!(
+								PrecinctHouse.create!(
 									precinct_id: n+1,
-									street: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text,
+									street_id: s+1,
 							    	house: data[d]
-								)	
+								)
 								#Post request to create precinct's territories on service
 								# PostRequest.precinct_territory(n+1, xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text, data[d])
 							end	
+							s += 1
 						end
 						n += 1
 				    end
