@@ -6,32 +6,24 @@ class PrecinctController < ApplicationController
 	end
 
 	def fetch_precinct
-		territory = PrecinctTerritory.where(street: params[:street], house: params[:house]).first
-		if territory
-			precinct = territory.precinct
-		else
-			precinct = nil
-		end
+		precinct = Precinct.find(params[:precinct_id])
 		render json: precinct
 	end
 
 	def search_by_name
-		@precincts = Precinct.where("name like '#{params[:search_request]}%' or surname like '#{params[:search_request]}%' or middlename like '#{params[:search_request]}%'")
+		search_request = params[:search_request].downcase!
+		@precincts = Precinct.where("lower(name) like '#{search_request}%' or lower(surname) like '#{search_request}%' or lower(middlename) like '#{search_request}%'")
 		render json: @precincts
 	end
 
 	def search_by_street
-		@streets = PrecinctTerritory.where("street like '#{params[:search_request]}%'")
+		search_request = params[:search_request].downcase!
+		@streets = PrecinctTerritory.where("lower(street) like '#{search_request}%'")
 		render json: @streets
 	end
 
-	def create_precinct
-		Precinct.create!(params[:precinct])
-		render json: {status: "success"}
-	end
-
-	def create_territory
-		PrecinctTerritory.create!(params[:precinct_territory])
+	def parse_precinct
+		Ovd.xml_parser
 		render json: {status: "success"}
 	end
 end
