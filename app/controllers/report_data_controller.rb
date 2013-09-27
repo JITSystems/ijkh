@@ -4,7 +4,7 @@ class ReportDataController < ApplicationController
 		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", Date.yesterday, Date.today)
 		payment_histories.each do |p_h|
 			recipe = Recipe.find(p_h.recipe_id)
-			amount = recipe.amount
+			amount = recipe.total
 				service = recipe.service
 			if service
 				place = service.place
@@ -29,7 +29,7 @@ class ReportDataController < ApplicationController
 			recipe = Recipe.find(p_h.recipe_id)
 			date = p_h.po_date_time
 			if recipe
-				amount = recipe.amount
+				amount = recipe.total
 				service = recipe.service
 				if service
 					place = service.place

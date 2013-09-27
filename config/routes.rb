@@ -76,7 +76,12 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/account/autoset' => 'account#autoset'
 
 # Presinct
-  get 'api/1.0/presinct/test' => 'presinct#test'
+  get 'api/1.0/precinct/test' => 'precinct#test'
+  get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
+  get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
+  get 'api/1.0/precinct/search_by_street' => 'precinct#search_by_street'
+  post 'api/1.0/precinct/create' => 'precinct#create_precinct'
+  post 'api/1.0/precinct_territory/create' => 'precinct#create_territory'
 
 # City
   get 'api/1.0/cities' => 'city#index'
