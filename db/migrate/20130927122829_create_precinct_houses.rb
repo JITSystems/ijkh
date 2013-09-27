@@ -4,8 +4,6 @@ class CreatePrecinctHouses < ActiveRecord::Migration
       t.integer :street_id
       t.integer :precinct_id
       t.string :house
-
-      t.timestamps
     end
   end
 end
