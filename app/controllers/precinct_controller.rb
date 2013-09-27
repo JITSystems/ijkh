@@ -16,12 +16,12 @@ class PrecinctController < ApplicationController
 	end
 
 	def search_by_name
-		@precincts = Precinct.where("name like '#{params[:search_request]}%' or surname like '#{params[:search_request]}%' or middlename like '#{params[:search_request]}%'")
+		@precincts = Precinct.where("lower(name) like '#{params[:search_request].downcase}%' or lower(surname) like '#{params[:search_request].downcase}%' or lower(middlename) like '#{params[:search_request].downcase}%'")
 		render json: @precincts
 	end
 
 	def search_by_street
-		@streets = PrecinctTerritory.where("street like '#{params[:search_request]}%'")
+		@streets = PrecinctTerritory.where("lower(street) like '#{params[:search_request].downcase}%'")
 		render json: @streets
 	end
 
