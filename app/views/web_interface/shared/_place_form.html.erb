@@ -10,7 +10,7 @@
 		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
 	</div>
 	<div class="accept_place">
-		<%= f.submit("Добавить место", onclick: 'placeValidation();', class: "accept_service_button accept_place_button", disabled: true) %>
+		<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
 		<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
 	</div>
 <% end %>
