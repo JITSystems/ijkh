@@ -101,7 +101,7 @@ class Ovd
 									end
 							#Create territories of precinct 
 							(0..data.size-1).each do |d|
-								Territory.create!(
+								PrecinctTerritory.create!(
 									precinct_id: n+1,
 									street: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text,
 							    	house: data[d]
