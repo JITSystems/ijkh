@@ -30,7 +30,7 @@ class RecipeManager < ObjectManager
 
   def self.show_last(user, service_id)
   	p_h = PaymentHistory.where("user_id = ? and service_id = ? and status = 1", user.id, service_id).order('created_at DESC').limit(1).first
-    RecipeManger.get(p_h.recipe_id)
+    self.get(p_h.recipe_id)
   end
 
 protected
