@@ -3,14 +3,44 @@
 		<p>Добавление места</p>
 	</div>
 	<div class="choise_place">
-		<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>:reg_place, disabled: true) %>
-		<%= f.text_field(:city, :placeholder=>"Введите город", :class=>:reg_place,  disabled: true) %>
-		<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>:reg_place,  disabled: true) %>
-		<%= f.text_field(:building, :placeholder=>"Введите номер дома", :class=>:reg_place,  disabled: true) %>
-		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place,  disabled: true) %>
+		<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>'reg_place place_validate place_clear', disabled: true) %>
+		<%= f.text_field(:city, :placeholder=>"Введите город", :class=>'reg_place place_validate place_clear',  disabled: true) %>
+		<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>'reg_place place_validate place_clear',  disabled: true) %>
+		<%= f.text_field(:building, :placeholder=>"Введите номер дома", :class=>'reg_place place_validate place_clear',  disabled: true) %>
+		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>'reg_place place_clear',  disabled: true) %>
 	</div>
 	<div class="accept_place">
-		<%= f.submit("Добавить место", class: "accept_service_button accept_place_button", disabled: true) %>
+		<%= f.submit("Добавить место",  onclick: 'place_validate(); return false;', class: "accept_service_button accept_place_button", disabled: true) %>
 		<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
 	</div>
 <% end %>
+
+<script>
+var place_validate = function()
+{
+	var i = 0;
+	$('.place_validate').each(
+		
+		function(){
+			if(this.value == '')
+			{
+				console.log(this.value);
+				$( this ).css('border','2px red solid' );
+				i += 1;
+			}
+			else
+			{
+				$( this ).css('border','1px solid #8da9bc' );
+			}
+		}
+			
+		
+		)
+	if (i==0) { 
+		$('.new_place').axajSubmit(); 
+			}
+	else { 
+		popUpRender('Пожалуйста, заполните выделенные поля.');
+		}
+}	
+</script>

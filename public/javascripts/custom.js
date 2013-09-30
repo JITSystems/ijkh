@@ -149,7 +149,7 @@ $(this).remove();
     })
 
 
-    $('#place_edit_button').click(function(){
+    placeEdit = function(){
         var ValueCheck = $('#place_edit_button').attr('value')
         if (ValueCheck == 'Редактировать'){
             $('#place_info_container').fadeOut('fast',function(){
@@ -167,7 +167,7 @@ $(this).remove();
     console.log("Place has been edited");
         }
         
-    })
+    }
 
 
      $('span#recipe_is_paid_span').click(function(){
