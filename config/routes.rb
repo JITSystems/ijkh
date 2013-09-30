@@ -94,6 +94,8 @@ Ijkh::Application.routes.draw do
 
 # Freelance Category
   get 'api/1.0/freelancecategory' => 'freelance_category#index'
+  post 'api/1.0/freelance_category/create' => 'freelance_category#create'
+  post 'api/1.0/freelancer/create' => 'freelancer#create'
 
 # Non Utility Service Type
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
