@@ -109,7 +109,7 @@ class Ovd
 							(0..data.size-1).each do |d|
 								PrecinctHouse.create!(
 									precinct_id: Precinct.where(surname: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum uum_surname")[i].text).first.id,
-									street_id: PrecinctStreet.where(street: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text).first.id,
+									precinct_street_id: PrecinctStreet.where(street: xml_doc.css("EFOType OVD opor_info opor")[k].children.css("uum_info uum")[i].children.css("territory_info uumterritory uum_streetname")[j].text).first.id,
 							    	house: data[d]
 								)
 								#Post request to create precinct's territories on service
