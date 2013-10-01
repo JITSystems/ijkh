@@ -6,20 +6,20 @@ class PrecinctController < ApplicationController
 	end
 
 	def fetch_precinct
-		precinct = PrecinctStreet.find(params[:street_id]).precinct_houses.where(house: params[:house]).first.precinct
-		render json: precinct
+		@precinct = PrecinctStreet.find(params[:street_id]).precinct_houses.where(house: params[:house]).first.precinct
+		render 'precinct/show'
 	end
 
 	def search_by_name
 		search_request = params[:search_request]
 		@precincts = Precinct.where("lower(name) like '#{search_request}%' or lower(surname) like '#{search_request}%' or lower(middlename) like '#{search_request}%'")
-		render json: @precincts
+		render 'precinct/index'
 	end
 
 	def search_by_street
 		search_request = params[:search_request]
 		@streets = PrecinctStreet.where("lower(street) like '#{search_request}%'")
-		render json: @streets
+		render json: {streets: @streets}
 	end
 
 	def parse_precinct
