@@ -1,0 +1,68 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Поиск задолженности. Энергосбыт.</p>
+</div>
+
+<div class="container_boxes">
+  <div class="horizontal_div" style="width: 100%; float: none;">
+    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+	
+		<%= text_field_tag (:search_by_user_account), '' , placeholder: 'Введите лицевой счёт'  %>
+		<%= button_tag ("Поиск"), id: "get_user_account_info" %>
+
+		<div id="insert_info_here">
+			
+		</div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+	
+	res = '';
+	
+	$('#get_user_account_info').click(function () {
+		
+		if ($('#search_by_user_account').val() == '')
+		{
+			$('#insert_info_here').html('Введите лицевой счёт');
+		}	
+		else
+		{
+			 getData = $('#search_by_user_account').val().toLowerCase()
+			$.ajax({
+				dataType: 'json',
+			    type: "POST",
+			    url: "/energosbyt",
+			    data: { user_account: getData } ,
+			    success:function(result){ 
+
+			    	var apartment
+
+			    	if (result.apartment == null)
+			    	{
+			    		apartment = '';
+			    	}
+			    	else
+			    	{
+			    		apartment = ' кв.' + result.apartment;
+			    	}
+			    	
+			    	$('#insert_info_here').html('');
+					$('#insert_info_here').append('<br> Лицевой счёт: ' + result.user_account);
+					$('#insert_info_here').append('<br> Адрес: г.' + result.city + ' ул.' +result.street + ' д.' + result.building + apartment);
+					$('#insert_info_here').append('<br> Сумма: ' + result.invoice_amount);
+					$('#insert_info_here').append('<br> Показания счётика: ' + result.meter_reading);
+			    	console.log(result); res = result; 
+			    }
+			    });
+
+		}});
+
+
+
+
+</script>
+

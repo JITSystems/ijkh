@@ -145,9 +145,6 @@ Ijkh::Application.routes.draw do
       get 'inner_offer' => 'web_interface/inner_offer#show'
       get 'profile' => 'web_interface/profile#show'
       get 'app_download' => 'web_interface/app_download#show'
-      get  'precinct' => 'web_interface/precinct#show'
-      post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
-      post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
       post 'get_place/:place_id' => 'web_interface/place#get_place'
       post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
@@ -160,6 +157,12 @@ Ijkh::Application.routes.draw do
       post 'profile_place' => 'web_interface/place#profile_create'
       post 'service' => 'web_interface/service#create'
       delete 'place' => 'web_interface/place#destroy'
+      get  'precinct' => 'web_interface/precinct#show'
+      post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
+      post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
+
+      get 'energosbyt' => 'web_interface/energosbyt#show'
+      post 'energosbyt' => 'web_interface/energosbyt#get_user_account_info'
 
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'
