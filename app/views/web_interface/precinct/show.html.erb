@@ -1,0 +1,64 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Справочник участковых</p>
+</div>
+
+<div class="container_boxes">
+  <div class="horizontal_div" style="width: 100%; float: none;">
+    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+	
+		<%= text_field_tag (:search_by_name), '' , placeholder: 'Введите имя'  %>
+		
+		<br>
+		
+		<%= text_field_tag (:search_by_street), '', placeholder: 'Введите улицу' %>
+		
+
+		<div id="insert_precincts_here">
+			
+		</div>
+
+		<div id="insert_streets_here">
+			
+		</div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+
+	$('#search_by_name').keyup(function () {
+		if ($( this ).val() == '')
+		{
+			$('#insert_precincts_here').html('');
+		}	
+		else
+		{
+			data = $( this ).val().toLowerCase()
+			$.ajax({
+			    type: "POST",
+			    url: "/precinct_by_name",
+			    data: { search_request: data }
+			    });
+		}
+	});
+
+
+	$('#search_by_street').keyup(function () {
+		if ($( this ).val() == '')
+		{
+			$('#insert_streets_here').html('');
+		}	
+		else
+		{
+			data = $( this ).val().toLowerCase()
+			$.ajax({
+			    type: "POST",
+			    url: "/precinct_by_street",
+			    data: { search_request: data }
+			    });
+		}
+	});
+
+</script>
