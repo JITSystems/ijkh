@@ -76,7 +76,7 @@ Ijkh::Application.routes.draw do
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
-# Presinct
+# Precinct
   get 'api/1.0/precinct/test' => 'precinct#test'
   get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
   get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
