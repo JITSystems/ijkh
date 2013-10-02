@@ -20,9 +20,6 @@
 
 
 <script>
-	
-	res = '';
-	
 	$('#get_user_account_info').click(function () {
 		
 		if ($('#search_by_user_account').val() == '')
@@ -31,7 +28,7 @@
 		}	
 		else
 		{
-			 getData = $('#search_by_user_account').val().toLowerCase()
+			getData = $('#search_by_user_account').val().toLowerCase()
 			$.ajax({
 				dataType: 'json',
 			    type: "POST",
@@ -39,7 +36,7 @@
 			    data: { user_account: getData } ,
 			    success:function(result){ 
 
-			    	var apartment
+			    	var apartment = '';
 
 			    	if (result.apartment == null)
 			    	{
@@ -55,14 +52,8 @@
 					$('#insert_info_here').append('<br> Адрес: г.' + result.city + ' ул.' +result.street + ' д.' + result.building + apartment);
 					$('#insert_info_here').append('<br> Сумма: ' + result.invoice_amount);
 					$('#insert_info_here').append('<br> Показания счётика: ' + result.meter_reading);
-			    	console.log(result); res = result; 
 			    }
-			    });
-
-		}});
-
-
-
-
+			});
+		}
+	});
 </script>
-
