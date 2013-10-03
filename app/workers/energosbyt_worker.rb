@@ -11,7 +11,7 @@ class EnergosbytWorker
 		http = Net::HTTP.new(uri.host, uri.port)
 		post = Net::HTTP::Post.new(uri.path)
 		post.body = data
-		logger.info response = http.request(post)
+		response = http.request(post)
 
 	end
 

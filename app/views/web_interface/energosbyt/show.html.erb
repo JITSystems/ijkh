@@ -5,55 +5,20 @@
 
 <div class="container_boxes">
   <div class="horizontal_div" style="width: 100%; float: none;">
-    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
-	
-		<%= text_field_tag (:search_by_user_account), '' , placeholder: 'Введите лицевой счёт'  %>
-		<%= button_tag ("Поиск"), id: "get_user_account_info" %>
+    <div class="box_blue" id="" style="min-height:245px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+		
+		<%= form_tag '',  id: 'energosbyt_form' %>
+		<%= text_field_tag (:search_by_user_account), '' , placeholder: 'Введите лицевой счёт', class: 'energosbyt_text_field'  %>
+		<%= button_tag ("Поиск"), id: "get_user_account_info", class: 'energosbyt_submit' %>
 
+
+		<br><br>
 		<div id="insert_info_here">
-			
+			<img src="/images/progressbar.gif" alt="" style="visibility:hidden;">
 		</div>
 
     </div>
   </div>
 </div>
 
-
-<script>
-	$('#get_user_account_info').click(function () {
-		
-		if ($('#search_by_user_account').val() == '')
-		{
-			$('#insert_info_here').html('Введите лицевой счёт');
-		}	
-		else
-		{
-			getData = $('#search_by_user_account').val().toLowerCase()
-			$.ajax({
-				dataType: 'json',
-			    type: "POST",
-			    url: "/energosbyt",
-			    data: { user_account: getData } ,
-			    success:function(result){ 
-
-			    	var apartment = '';
-
-			    	if (result.apartment == null)
-			    	{
-			    		apartment = '';
-			    	}
-			    	else
-			    	{
-			    		apartment = ' кв.' + result.apartment;
-			    	}
-			    	
-			    	$('#insert_info_here').html('');
-					$('#insert_info_here').append('<br> Лицевой счёт: ' + result.user_account);
-					$('#insert_info_here').append('<br> Адрес: г.' + result.city + ' ул.' +result.street + ' д.' + result.building + apartment);
-					$('#insert_info_here').append('<br> Сумма: ' + result.invoice_amount);
-					$('#insert_info_here').append('<br> Показания счётика: ' + result.meter_reading);
-			    }
-			});
-		}
-	});
-</script>
+<%= javascript_include_tag root_path+"javascripts/energosbyt.js" %>

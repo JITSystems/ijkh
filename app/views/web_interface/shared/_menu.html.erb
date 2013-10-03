@@ -7,8 +7,19 @@
 		</div>
 		<ul class="menulist">
 			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", main_path %></li>
-			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
+			
+			<li class="menulistLi menulistLiDrop">
+				<p>УСЛУГИ</p>
+				<ul class="dropdownMenu" style = "width: 245%;">
+					<li class="dropdownMenuLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
+					<li class="dropdownMenuLi"><%= link_to "УЗНАТЬ ЗАДОЛЖЕННОСТЬ", energosbyt_path %></li>
+				</ul>
+				
+				
+			</li>
+
 			<li class="menulistLi"><%= link_to "ПРОФИЛЬ", profile_path %></li>
+
 			<li class="menulistLi menulistLiDrop">
 				<!--%= link_to "Пользователям", "user" %-->
 				<p>ИНФОРМАЦИЯ</p>
@@ -23,6 +34,7 @@
 					<!--li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", profile_path %></li-->
 				</ul>
 			</li>
+
 			<li class="menulistLi"><%= link_to "О КОМПАНИИ", about_path %></li>
 			<li class="menulistLi"><%= link_to "ОБРАТНАЯ СВЯЗЬ", feedback_path %></li>
 			<% unless current_user %>

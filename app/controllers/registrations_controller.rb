@@ -81,6 +81,10 @@ class RegistrationsController < Devise::RegistrationsController
             @message = "Данный адрес эл. почты уже зарегистрирован."
           end
 
+          if user.email == ''
+            @message = "Адрес эл. почты не может быть пустым."            
+          end
+
           # user.errors.each do |error|
           # @message << user.errors.first.first.to_s
           # end

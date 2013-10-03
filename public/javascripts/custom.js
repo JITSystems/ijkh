@@ -116,10 +116,10 @@ $(document).ready(function($) {
 //  меню
 
     $('.menulistLiDrop').mouseenter(function(){
-        $('.menulistLiDrop').find('.dropdownMenu').slideDown('fast').show();
+        $( this ).find('.dropdownMenu').slideDown('fast').show();
         $('.menulistLiDrop').hover(function() {
         }, function(){ 
-        $('.menulistLiDrop').find(".dropdownMenu").slideUp('fast'); 
+        $( this ).find(".dropdownMenu").slideUp('fast'); 
         });
     })
 

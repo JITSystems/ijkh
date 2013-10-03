@@ -81,7 +81,7 @@ div#ajax_loader_center
 	position: relative;
 	float: left;
 	height: 53px;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 15px 0px 15px;
 	line-height: 3.2;
 	font-family: 'PT Sans Narrow', sans-serif;
 	font-size: 18px;
@@ -261,6 +261,11 @@ a#no_object_found
 
 
 /*----------------------------	FREE FOR ALL   ----------------------------*/
+
+#profile_container > #error_explanation
+{
+	padding: 10px 0px 10px 165px;
+}
 
 .profile_plate{
 	position: relative;
@@ -2742,13 +2747,59 @@ p#quiz_progress
 
 h1.analytic_title
 {
-position: relative;
-font-size: 20px;
-display: block;
-color: #00558d;
-font-weight: 600;
-margin: 10px auto;
-text-align: left;
+	position: relative;
+	font-size: 20px;
+	display: block;
+	color: #00558d;
+	font-weight: 600;
+	margin: 10px auto;
+	text-align: left;
 }
 
 /* --------------------------- ANALYTIC END ----------------- */
+
+/* ENERGOSBYT BEGIN */
+
+input.energosbyt_text_field
+{
+	position: relative;
+	display: block;
+	width: 228px;
+	height: 34px;
+	background-color: #e8eef2;
+	border: 1px solid #8da9bc;
+	text-indent: 15px;
+	color: #00558d;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+
+button.energosbyt_submit
+{
+	position: relative;
+	display: block;
+	width: 232px;
+	top: 10px;
+	height: 38px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+span.energosbyt_title
+{
+	font-weight: bold;
+}
+
+p.energosbyt_line
+{
+	font-size: 17px;
+	color: #00558d;
+}
+
+/* ENERGOSBYT BEGIN */
