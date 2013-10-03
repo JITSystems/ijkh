@@ -6,7 +6,7 @@
 	var totalInfoRender = function(data){
 		$('#insert_info_here').hide();
     	$('#insert_info_here').html(data);
-    	$('#insert_info_here').fadeIn();
+    	$('#insert_info_here').slideDown('fast');
 	}
 
 	$('#get_user_account_info').click(function () {
@@ -33,7 +33,7 @@
 
 			       	if (result == "")
 			    	{ 
-			    		total_info = '<p class = "energosbyt_line">Лицевой счёт не наден.</p>';
+			    		total_info = '<p class = "energosbyt_line">Лицевой счёт не найден.</p>';
 			    		totalInfoRender(total_info);
 			    	}
 			    	else

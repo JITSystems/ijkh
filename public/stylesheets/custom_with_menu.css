@@ -146,15 +146,19 @@ a#no_object_found
 .dropdownMenuLi{
 	border-bottom: 1px rgb(147, 190, 255) solid;
 	position: relative;
-	height: 35px;
+	/*height: 35px;*/
 	background-color: #d5e6f2;
 	margin-top: 1px;
 	font-size: 15px;
 	line-height: 2.3;
-	text-indent: 9px;
 	color: #00558d;
 	text-shadow: none;
 	cursor: pointer;
+}
+
+.dropdownMenuLi a
+{
+	padding-left: 9px;
 }
 
 .dropdownMenuLi a:hover{
@@ -2758,13 +2762,14 @@ h1.analytic_title
 
 /* --------------------------- ANALYTIC END ----------------- */
 
-/* ENERGOSBYT BEGIN */
+/* --------------------- ENERGOSBYT BEGIN ------------------- */
 
 input.energosbyt_text_field
 {
+	margin-top: 10px;
 	position: relative;
 	display: block;
-	width: 228px;
+	width: 381px;
 	height: 34px;
 	background-color: #e8eef2;
 	border: 1px solid #8da9bc;
@@ -2778,7 +2783,7 @@ button.energosbyt_submit
 {
 	position: relative;
 	display: block;
-	width: 232px;
+	width: 190px;
 	top: 10px;
 	height: 38px;
 	background-color: #0071bc;
@@ -2791,6 +2796,12 @@ button.energosbyt_submit
 	text-decoration: none;
 }
 
+p#energosbyt_info
+{
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+
 span.energosbyt_title
 {
 	font-weight: bold;
@@ -2800,6 +2811,7 @@ p.energosbyt_line
 {
 	font-size: 17px;
 	color: #00558d;
+	padding: 2px 0px;
 }
 
 /* ENERGOSBYT BEGIN */
