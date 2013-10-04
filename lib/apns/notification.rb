@@ -1,3 +1,4 @@
+#encoding: utf-8
 module APNS
   require 'openssl'
 
@@ -135,7 +136,7 @@ module APNS
       codes.each do |k, v|
         text = text.gsub!(k, v)
       end
-      text
+      puts text
     end    
   end
 end
