@@ -63,7 +63,7 @@ module APNS
       aps['aps']['content-available'] = 1 if self.content_available
 
       aps.merge!(self.other) if self.other
-      aps
+      aps.as_json
     end    
   end
 end
