@@ -136,7 +136,7 @@ module APNS
       codes.each do |k, v|
         aps = aps.gsub(k, v)
       end
-      puts text
+      aps
     end    
   end
 end
