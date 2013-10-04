@@ -2815,3 +2815,38 @@ p.energosbyt_line
 }
 
 /* ENERGOSBYT BEGIN */
+
+
+/* --------------------- PRECINCT BEGIN ------------------- */
+
+#insert_precincts_here p
+{
+	padding: 2px 0px;
+}
+
+span.precinct_line, p.precinct_info
+{
+	font-size: 15px;
+	cursor: pointer;
+	line-height: 17px;
+}
+
+span.precinct_line:hover
+{
+	border-bottom: 1px #666 solid;
+	padding-bottom: 1px;
+}
+
+p.precinct_info
+{
+	cursor: default;
+}
+
+p.precinct_info span
+{
+	font-weight: bold;
+}
+
+
+
+

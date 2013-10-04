@@ -161,6 +161,7 @@ Ijkh::Application.routes.draw do
       get  'precinct' => 'web_interface/precinct#show'
       post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
       post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
+      post 'precinct_by_id' => 'web_interface/precinct#search_by_id'
 
       get 'energosbyt' => 'web_interface/energosbyt#show'
       post 'energosbyt' => 'web_interface/energosbyt#get_user_account_info'

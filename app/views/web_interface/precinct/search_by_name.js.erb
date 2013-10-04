@@ -1,6 +1,7 @@
-var precincts = ''
+var precincts = '';
 <% @precincts.each do |p| %>
-precincts += '<%= p.surname %> <%= p.name %> <%= p.middlename %> <Br>'
+precincts += '<p><span class="precinct_line" p_id="<%= p.id %>"> <%= p.surname %> <%= p.name %> <%= p.middlename %></span> </p>';
 <% end %>
-$('#insert_precincts_here').html('<Br>');
+$('#insert_precincts_here').html('');
 $('#insert_precincts_here').append(precincts);
+setPrecinctsClick();

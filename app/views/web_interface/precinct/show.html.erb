@@ -7,28 +7,45 @@
   <div class="horizontal_div" style="width: 100%; float: none;">
     <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
 	
-		<%= text_field_tag (:search_by_name), '' , placeholder: 'Введите имя'  %>
+		<%= text_field_tag (:search_by_name), '' , placeholder: 'Начните вводить имя, фамилию или отчество',  class: 'energosbyt_text_field'   %>
 		
 		<br>
 		
-		<%= text_field_tag (:search_by_street), '', placeholder: 'Введите улицу' %>
+<!-- 		<%= text_field_tag (:search_by_street), '', placeholder: 'Введите улицу' %> -->
 		
 
 		<div id="insert_precincts_here">
-			
+				<img src="/images/progressbar.gif" alt="" style="visibility:hidden;">
 		</div>
-
+<!-- 
 		<div id="insert_streets_here">
 			
 		</div>
-
+ -->
     </div>
   </div>
 </div>
 
 <script>
 
+ 	var setPrecinctsClick = function()
+ 	{
+		$('.precinct_line').click(function(){
+			$('#insert_precincts_here').html('<img src="/images/progressbar.gif" alt="progressbar">');
+			p_id = $( this ).attr('p_id');
+			console.log('match!');
+			$.ajax({
+				    type: "POST",
+				    url: "/precinct_by_id",
+				    data: { search_request: p_id }
+				    });
+		});
+ 	}
+
 	$('#search_by_name').keyup(function () {
+
+		$('#insert_precincts_here').html('<img src="/images/progressbar.gif" alt="progressbar">');
+
 		if ($( this ).val() == '')
 		{
 			$('#insert_precincts_here').html('');
