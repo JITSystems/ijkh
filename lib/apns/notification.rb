@@ -64,6 +64,7 @@ module APNS
       aps['aps']['content-available'] = 1 if self.content_available
 
       aps.merge!(self.other) if self.other
+
       codes = {
         '\u0410'=>'А', 
         '\u0430'=>'а',
@@ -130,13 +131,13 @@ module APNS
         '\u042e'=> 'Ю',
         '\u044e'=> 'ю',
         '\u042f'=> 'Я',
-        '\u044' => 'я'
+        '\u044f' => 'я'
       }
       aps = aps.to_json
       codes.each do |k, v|
         aps = aps.gsub(k, v)
       end
       aps
-    end    
+    end
   end
 end
