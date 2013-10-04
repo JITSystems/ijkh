@@ -8,7 +8,7 @@ class PaymentController < ApplicationController
 	def pay
 		po_root_url = ""
 		service_id = params[:payment][:service_id]
-		amount = FloatModifier.format(params[:payment][:amount])
+		amount = params[:payment][:amount]
 		order_id = params[:payment][:recipe_id]
 		user_id = current_user.id
 		merchant_id = params[:payment][:merchant_id]
