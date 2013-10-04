@@ -132,9 +132,9 @@ module APNS
         '\u042f'=> 'Я',
         '\u044' => 'я'
       }
-      text = aps.to_json
+      aps = aps.to_json
       codes.each do |k, v|
-        text = text.gsub!(k, v)
+        aps = aps.gsub(k, v)
       end
       puts text
     end    
