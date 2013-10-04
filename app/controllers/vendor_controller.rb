@@ -16,4 +16,9 @@ class VendorController < ApplicationController
 		@vendors = VendorManager.index
 		render 'vendor/index'
 	end
+
+	def show_by_inn
+		@vendor = VendorManager.fetch_by_inn(params[:inn])
+		render 'vendor/show'
+	end
 end
