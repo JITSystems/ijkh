@@ -6,7 +6,7 @@ class PushNotificationsWorker
     APNS.host = Settings.apns.host
     APNS.pem  = Settings.apns.pem_file
     APNS.port = Settings.apns.port.to_i
-    text = 'Оплата временно недоступна. И недоступна. И недоступна опять.'
+    text = 'Оплата временно недоступна. И недоступна. И недоступна опять. недоступна, недоступна, недоступна, недоступна.'
     #text = text.encode("unicode")
     #users = User.all
     #users.each do |user|
