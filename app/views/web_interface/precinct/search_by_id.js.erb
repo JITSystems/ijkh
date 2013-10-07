@@ -1,8 +1,4 @@
-var precinct = '';
-
-precinct = '<p class="precinct_info" > <%= @precinct.surname %> <%= @precinct.name %> <%= @precinct.middlename %> </p>'
+$('#insert_precincts_here').html('<p class="precinct_info" > <%= @precinct.surname %> <%= @precinct.name %> <%= @precinct.middlename %> </p>'
 + '<p class="precinct_info"> <span> Адрес:</span> <%= @precinct.ovd_town %>, ул <%= @precinct.ovd_street %>, д <%= @precinct.ovd_house %> </p>'
 + '<p class="precinct_info"> <span> ОВД:</span> <%= @precinct.ovd %> </p>'
-+ '<p class="precinct_info"> <span> Телефон: </span> <% if @precinct.ovd_telnumber == '' %> не указан <% else %> <%= @precinct.ovd_telnumber %> <% end %> </p>';
-
-$('#insert_precincts_here').html(precinct);
++ '<p class="precinct_info"> <span> Телефон: </span> <% if @precinct.ovd_telnumber == '' %> не указан <% else %> <%= @precinct.ovd_telnumber %> <% end %> </p>');

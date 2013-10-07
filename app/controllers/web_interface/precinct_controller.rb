@@ -40,4 +40,9 @@ class WebInterface::PrecinctController < WebInterfaceController
 
 	end
 
+	def fetch_precinct
+		@precinct = PrecinctManager.fetch_precinct(params[:street_id], params[:house])
+		render json: @precinct
+	end
+
 end

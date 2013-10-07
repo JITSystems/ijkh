@@ -2771,7 +2771,7 @@ input.energosbyt_text_field
 	display: block;
 	width: 381px;
 	height: 34px;
-	background-color: #e8eef2;
+	background-color:  white;
 	border: 1px solid #8da9bc;
 	text-indent: 15px;
 	color: #00558d;
@@ -2818,6 +2818,11 @@ p.energosbyt_line
 
 
 /* --------------------- PRECINCT BEGIN ------------------- */
+
+input#search_by_street
+{
+	display: none;
+}
 
 #insert_precincts_here p
 {
