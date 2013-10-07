@@ -6,7 +6,14 @@ class PrecinctController < ApplicationController
 	end
 
 	def fetch_precinct
-		@precinct = PrecinctStreet.find(params[:street_id]).precinct_houses.where(house: params[:house]).first.precinct
+		@precinct = {}
+		@street = PrecinctStreet.where("lower(street) = ?", params[:street]).first
+		if @street
+			@house = PrecinctHouse.where("house = ? and precinct_street_id = ?", params[:house], @street.id).first
+			if @house
+				@precinct = Precinct.find(@house.precinct_id)
+			end
+		end
 		render 'precinct/show'
 	end
 
