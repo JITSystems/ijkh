@@ -31,7 +31,7 @@ class MeterReadingController < ApplicationController
 	def reset
 		# service_id, auth_token
 		MeterReadingManager.reset(params, current_user)
-		render {status: "success"}
+		render json: {status: "success"}
 	end
 
 	def create_init
