@@ -1,11 +1,10 @@
 var streets = '';
-<%  unless @streets == [] %>
+<% unless @streets == [] %>
 	<% @streets.each do |s| %>
 	streets += '<p class="precinct_line" s_id="<%= s.id %>"><%= s.street %></p>';
 	<% end %>
 <% else %>
 	streets = '<p> Совпадений не найдено. </p>';
-<%end%>
+<% end %>
 $('#insert_streets_here').html(streets);
-
 setStreetsClick();
