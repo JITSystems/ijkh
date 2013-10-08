@@ -2842,6 +2842,35 @@ div#search_by_street_container form
 	display: inline-block;
 }
 
+div#search_by_street_container form input[type=submit]
+{
+	display: inline-block;
+	position: relative;
+	margin: 0 auto;
+	top: -1px;
+	width: 150px;
+	height: 38px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+div#search_by_street_container form input[type=submit][disabled=disabled]
+{
+	background-color: #8da9bc;
+	text-shadow: 1px 1px 0px #FFF;
+	color: #6a7f8d;
+	cursor: default;
+}
+
+
+
+
 input#search_by_street
 {
 	display: inline-block;
