@@ -28,6 +28,7 @@
 					<%= form_tag '/fetch_precinct', method: :post, remote: true do %>
 						<%= hidden_field_tag (:street_id) %>
 						<%= text_field_tag (:house), '', placeholder: 'Дом №', class: 'energosbyt_number_field', disabled: true %>
+						<%= submit_tag 'Поиск', disabled: true %>
 					<% end %>
 			<br>
 			<br>
@@ -36,6 +37,10 @@
 		</div>
 			
  		<p><img id="ajax_progressbar" src="/images/progressbar.gif" alt="" style="visibility:hidden;">	</p>
+
+ 		<div id="detailed_info">
+ 			
+ 		</div>
 
 		
 
@@ -51,6 +56,8 @@ var searchBySelect = function(thisEl){
 	if (thisEl.checked == true)
 		{
 		$('input[type="text"]').val('');
+		$('div.insert_info_here').html('');
+		$('div.detailed_info').html('');
 		switch(thisEl.value){
 			case 'by_name':
 				$('div#search_by_street_container').hide();
@@ -93,6 +100,7 @@ var searchBySelect = function(thisEl){
 			$("input#search_by_street").val( $( this ).html() );
 			$("input#street_id").val( $( this ).attr('s_id') );
 			$("input#house").removeAttr('disabled');
+			$("input[type='submit']").removeAttr('disabled');
 			$("input#house").focus();
 			$('div.insert_info_here').html('');
 			
@@ -102,6 +110,7 @@ var searchBySelect = function(thisEl){
 	$('#search_by_name').keyup(function () {
 
 		$('#insert_precincts_here').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+		$('div#detailed_info').html('');
 
 		if ($( this ).val() == '')
 		{
@@ -122,6 +131,7 @@ var searchBySelect = function(thisEl){
 	$('#search_by_street').keyup(function () {
 
 		$('#insert_streets_here').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+		$('div#detailed_info').html('');
 
 		if ($( this ).val() == '')
 		{
@@ -150,4 +160,22 @@ var searchBySelect = function(thisEl){
     		event.stopPropagation();
 	});
 
+	$('form').submit(function() {  
+    	var valuesToSubmit = $(this).serialize();
+    	$('div#detailed_info').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+    $.ajax({
+    	type: "POST",
+        url: $(this).attr('action'), //sumbits it to the given url of the form
+        data: valuesToSubmit
+        //,dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        console.log('success!'); //act on result.
+    });
+	    return false; // prevents normal behaviour
+	});
+
 </script>
+
+
+
+
