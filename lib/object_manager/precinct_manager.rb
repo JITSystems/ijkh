@@ -3,7 +3,15 @@
 class PrecinctManager < ObjectManager
 
 	def self.fetch_precinct(street_id, house)
-		@precinct = PrecinctStreet.find(street_id).precinct_houses.where(house: house).first.precinct
+		@precinct = {}
+		@street = PrecinctStreet.find(street_id.to_i)
+		if @street
+			@house = PrecinctHouse.where("house = ? and precinct_street_id = ?", house, @street.id).first
+			if @house
+				@precinct = Precinct.find(@house.precinct_id)
+			end
+		end
+		# @precinct = PrecinctStreet.find(street_id).precinct_houses.where(house: house).first.precinct
 		@precinct
 	end
 
