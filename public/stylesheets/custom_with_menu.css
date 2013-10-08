@@ -2874,6 +2874,7 @@ div#search_by_street_container form input[type=submit][disabled=disabled]
 input#search_by_street
 {
 	display: inline-block;
+	width: 290px;
 }
 
 div.insert_info_here
