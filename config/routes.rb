@@ -64,6 +64,9 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   get 'api/1.0/meterreadings' => 'meter_reading#index_by_vendor'
   post 'api/1.0/meterreading' => 'meter_reading#create'
+  post 'api/1.0/meter_reading/create_init' => 'meter_reading#create_init'
+  delete 'api/1.0/meter_reading/reset' => 'meter_reading#reset'
+  delete 'api/1.0/meter_reading/delete_last' => 'meter_reading#delete_last'
 
 # Account
   get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
