@@ -1,6 +1,11 @@
-var streets = ''
-<% @streets.each do |s| %>
-streets += '<%= s.street %> <Br>'
-<% end %>
-$('#insert_streets_here').html('<Br>');
-$('#insert_streets_here').append(streets);
+var streets = '';
+<%  unless @streets == [] %>
+	<% @streets.each do |s| %>
+	streets += '<p class="precinct_line" s_id="<%= s.id %>"><%= s.street %></p>';
+	<% end %>
+<% else %>
+	streets = '<p> Совпадений не найдено. </p>';
+<%end%>
+$('#insert_streets_here').html(streets);
+
+setStreetsClick();
