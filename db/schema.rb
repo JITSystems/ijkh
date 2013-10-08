@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130924094946) do
+ActiveRecord::Schema.define(:version => 20130927133120) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -208,6 +208,30 @@ ActiveRecord::Schema.define(:version => 20130924094946) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "city_id"
+  end
+
+  create_table "precinct_houses", :force => true do |t|
+    t.integer "precinct_street_id"
+    t.integer "precinct_id"
+    t.string  "house"
+  end
+
+  create_table "precinct_streets", :force => true do |t|
+    t.string "street"
+  end
+
+  create_table "precincts", :force => true do |t|
+    t.string   "ovd"
+    t.string   "ovd_town"
+    t.string   "ovd_street"
+    t.string   "ovd_house"
+    t.string   "ovd_telnumber"
+    t.string   "surname"
+    t.string   "middlename"
+    t.string   "name"
+    t.string   "photo_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "quiz_answers", :force => true do |t|

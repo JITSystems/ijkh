@@ -70,9 +70,9 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	def create
 		@message = "Объект успешно создан."
-		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
-		#@place = PlaceManager.create(params[:place], current_user)
-		if @place.save		
+		# @place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
+		@place = PlaceManager.create(params[:place], current_user)
+		if @place		
 			respond_to do |format|
 				format.js {
 					render 'web_interface/place/create'

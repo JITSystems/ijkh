@@ -158,6 +158,13 @@ Ijkh::Application.routes.draw do
       post 'profile_place' => 'web_interface/place#profile_create'
       post 'service' => 'web_interface/service#create'
       delete 'place' => 'web_interface/place#destroy'
+      get  'precinct' => 'web_interface/precinct#show'
+      post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
+      post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
+      post 'precinct_by_id' => 'web_interface/precinct#search_by_id'
+
+      get 'energosbyt' => 'web_interface/energosbyt#show'
+      post 'energosbyt' => 'web_interface/energosbyt#get_user_account_info'
 
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'
