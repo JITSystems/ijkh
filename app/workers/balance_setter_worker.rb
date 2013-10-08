@@ -13,9 +13,9 @@ class BalanceSetterWorker
 	    service.account.update_attributes(amount: el["amount"].to_f, status: -1)
 	    vendor_title = service.vendor.title
 	    if service.user_id
-    	  #user = service.user
-    	  user = User.find(2)
-    	  #logger.info service.inspect
+    	  user = service.user
+    	  #user = User.find(2)
+    	  logger.info service.inspect
 		  if user.ios_device_status == :active
       	    APNS.send_notification(user.ios_device_token, :alert => "Создан счет для #{vendor_title} на сумму #{el["amount"]}", :sound => 'default')
     	  else
