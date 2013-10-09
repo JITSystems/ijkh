@@ -23,7 +23,7 @@ class RecipeManager < ObjectManager
       commission = calculate_commission(amount)
     end
 
-      recipe_params.merge!(service_tax: commission[:service_tax], po_tax: commission[:po_tax], total: commission[:total])
+      recipe_params.merge!(service_tax: commission[:service_tax], po_tax: commission[:po_tax], total: commission[:service_tax])
       recipe = Recipe.create!(recipe_params)
     return recipe
   end
