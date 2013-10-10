@@ -273,8 +273,8 @@ function sortFun(thisEl){
         $('#accept_service_submit').attr("disabled","disabled");
         $("#field_templates_box").html('');
         $('.dog_number').attr("disabled","disabled");
-        $('.dog_number').val("");
-
+        $('.dog_number').val("");   
+        $('#service_vendor_id-styler .jq-selectbox__select-text').html('<img src="/images/progressbar.gif" alt="progressbar">');
         $.ajax({
                     type: "POST",
                     url: "/get_vendors",

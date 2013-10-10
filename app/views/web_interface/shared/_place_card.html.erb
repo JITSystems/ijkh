@@ -15,7 +15,9 @@
 <div id="place_info_container">
 	<div class="object_name">
 		<p id="place_card_title" style="font-size: 20px;padding: 30px 35px;font-weight: bold;color: #47555e;">
-			<span id="place_title_in_card"><%= @place.title %></span> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); return false;">Добавить услугу</button>
+			<span id="place_title_in_card"><%= @place.title %></span> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); 
+			 $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+			 return false;">Добавить услугу</button>
 		</p>
 	</div>
 
