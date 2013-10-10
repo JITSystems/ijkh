@@ -282,12 +282,12 @@ function sortFun(thisEl){
         $('li.optgroup').show();
 
         $('li.optgroup').each(function(){ 
-            if (serviceTypeId == 1 || serviceTypeId == 3 ) { $( this ).hide(); }
-            if (serviceTypeId == 5 || serviceTypeId == 4 ) { 
-                if ($( this ).text() == "Тольятти") { 
+            // if (serviceTypeId == 1 || serviceTypeId == 3 ) { $( this ).hide(); }
+            // if (serviceTypeId == 5 || serviceTypeId == 4 ) { 
+            //     if ($( this ).text() == "Тольятти") { 
                     $( this).hide(); 
-                } 
-             }
+            //     } 
+            //  }
             });
 
 
