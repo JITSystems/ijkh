@@ -1,0 +1,2 @@
+$('select#service_vendor_id').html('');
+$('select#service_vendor_id').append($("<%= escape_javascript(render 'web_interface/profile/vendor_select', grouped_options: @grouped_options) %>").html());

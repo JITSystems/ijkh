@@ -26,10 +26,35 @@ class WebInterface::ProfileController < WebInterfaceController
     			c.vendors.where("is_active = true").each do |v|    				
     				vendors << [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]
     			end
-    			p vendors
     		@grouped_options[c.title] = vendors if vendors.first
     	end    	
     		@grouped_options[""] = [["Настроить свой тариф", "", options = {listType: 'userTariff', id: 0, serviceTypeId: 0} ]]
+
+	end
+
+	def get_vendors
+
+		@cities = CityManager.index
+    	@grouped_options = Hash.new
+		
+    	@cities.each do |c|
+    		vendors = []
+    			c.vendors.where("is_active = true and service_type_id = ?", params[:service_type_id]).each do |v|    				
+    				vendors << [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]
+    			end
+    		@grouped_options[c.title] = vendors if vendors.first
+    	end
+
+    	@grouped_options[""] = [["Настроить свой тариф", "", options = {listType: 'userTariff', id: 0, serviceTypeId: 0} ]]
+
+    	# render json: @grouped_options
+
+    	respond_to do |format|
+    		format.js {
+				render 'web_interface/profile/get_vendors'
+			}
+		end
+
 
 	end
 	# def show
