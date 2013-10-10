@@ -35,7 +35,11 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		vendor_id = Service.find(params[:service_id]).vendor_id
 
-		commission = VendorManager.get(vendor_id).commission
+		if vendor_id == 0
+			commission = 0
+		else
+			commission = VendorManager.get(vendor_id).commission
+		end
 
 		po_tax = 0
 		service_tax = 0
