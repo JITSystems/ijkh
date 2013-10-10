@@ -33,12 +33,12 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		@account = Account.where(service_id: params[:service_id]).first
 
-		vendor_id = Service.find(params[:service_id]).vendor_id
+		vendor_id = @account.service.vendor_id 
 
-		if vendor_id == 0
-			commission = 0
+		unless vendor_id == 0
+			@commission = VendorManager.get(vendor_id).commission
 		else
-			commission = VendorManager.get(vendor_id).commission
+			@commission = 0 
 		end
 
 		po_tax = 0
@@ -46,12 +46,12 @@ class WebInterface::PaymentController < WebInterfaceController
 		total = 0.0
 		amount = @account.amount
 
-		unless commission 
+		unless @commission 
 			po_tax = 0
 			service_tax = 0
 			total = service_tax + amount
 		else 
-			service_tax = round_up((commission.to_f/100.00)*amount).round(2)
+			service_tax = round_up((@commission.to_f/100.00)*amount).round(2)
 			po_tax = 0
 			total = service_tax + amount
 		end
@@ -115,11 +115,17 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		vendor_id = @account.service.vendor_id 
 
-		if vendor_id || vendor_id !=0
+		unless vendor_id == 0
 			@commission = VendorManager.get(vendor_id).commission
 		else
 			@commission = 0 
 		end
+			
+
+		unless @commission
+			@commission = 0
+		end
+
 
 		@message = "Счёт успешно создан"
 
