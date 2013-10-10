@@ -264,6 +264,7 @@ function sortFun(thisEl){
      switch (listType)
      {
         case 'serviceType':
+        $("[listtype=userTariff]").val('');
         $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
         $('#service_vendor_id').val('0').trigger('refresh');
         $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
@@ -273,10 +274,23 @@ function sortFun(thisEl){
         $("[servicetypeid="+serviceTypeId+"]").show();
         $("#field_templates_box").html('');
         $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
+        $("[listtype=userTariff]").val('0');
         $("div#user_account_box").slideUp();
         $('.dog_number').attr("disabled","disabled");
         $('.dog_number').val("");
         $('#accept_service_submit').attr("disabled","disabled");
+        $('li.optgroup').show();
+
+        $('li.optgroup').each(function(){ 
+            if (serviceTypeId == 1 || serviceTypeId == 3 ) { $( this ).hide(); }
+            if (serviceTypeId == 5 || serviceTypeId == 4 ) { 
+                if ($( this ).text() == "Тольятти") { 
+                    $( this).hide(); 
+                } 
+             }
+            });
+
+
         break
 
         case 'userTariff':

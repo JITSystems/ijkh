@@ -216,6 +216,11 @@ line-height: 34px;
 	padding: 5px 10px 6px;
 	color: #231F20;
 }
+
+.jq-selectbox li.optgroup:nth-child(2) {
+	padding: 0;
+}
+
 .jq-selectbox li.selected {
 	background: #A3ABB1;
 	color: #FFF;

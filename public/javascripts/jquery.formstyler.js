@@ -217,7 +217,7 @@
 									// если есть optgroup
 									if (option.eq(i).parent().is('optgroup')) {
 										if (option.eq(i).parent().attr('class') !== undefined) optgroupClass = ' ' + option.eq(i).parent().attr('class');
-										li = '<li class="' + liClass + optionClass + ' option' + optgroupClass + '">'+ option.eq(i).text() +'</li>';
+										li = '<li class="' + liClass + optionClass + ' option' + optgroupClass  +'"listType="' + listType + '" serviceTypeId="' + serviceTypeId + '" vendorId="' + vendorId + '" id="' + listId + '" onclick="sortFun(this);">'+ option.eq(i).text() +'</li>';
 										if (option.eq(i).is(':first-child')) {
 											li = '<li class="optgroup' + optgroupClass + '">' + option.eq(i).parent().attr('label') + '</li>' + li;
 										}
