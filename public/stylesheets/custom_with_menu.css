@@ -2720,11 +2720,6 @@ p.p4
 
 }
 
-
-li[listtype=""]{
-	display: none;
-}
-
 .quiz_box
 {
 	display: none;
@@ -2933,4 +2928,14 @@ p.precinct_info span
 
 
 
+/* SERVICE SELECT */
 
+li[listtype="vendor"]
+{
+	padding-left: 30px !important; 
+}
+
+
+li[listtype=""]{
+	display: none;
+}
