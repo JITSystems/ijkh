@@ -894,6 +894,7 @@ p.delete_service{
 
 
 .delete_service button.delete_service_button{
+	float: right;
 	background-color: rgb(196, 45, 45);
 	color: #FFF;
 	border: 0px;
