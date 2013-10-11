@@ -11,8 +11,7 @@ class Osmp
 	http.use_ssl = true
 	http.cert = OpenSSL::X509::Certificate.new(pem)
 	http.key = OpenSSL::PKey::RSA.new(key)
-	http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-
+	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 	request = Net::HTTP::Get.new(uri.request_uri)
 	
 	response = http.request(Net::HTTP::Get.new(uri.request_uri))

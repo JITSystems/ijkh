@@ -11,10 +11,27 @@ Ijkh::Application.routes.draw do
     put '/users/:id' => 'registrations#update', as: :update_user_registration 
   end
   
+  require 'sidekiq/web'
+  
+  authenticate :user, lambda { |u| u.id == 2 } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  
+
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
+
+# Admin
+  namespace :admin do
+    resources :users, only: [:index, :show]
+    resources :places, only: [:index, :show]
+    resources :services, only: [:index, :show]
+    resources :vendors
+    resources :tariff_templates
+    resources :field_templates
+  end
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'

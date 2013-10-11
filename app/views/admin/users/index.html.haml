@@ -1,0 +1,11 @@
+%table
+  %tr
+    %th id
+    %th sign_ins
+    %th email
+
+  - @users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.sign_in_count
+      %td= link_to user.email, admin_user_path(user)

@@ -1,0 +1,4 @@
+%h1= @vendor.title
+
+= simple_form_for @vendor, url: admin_vendor_path(@vendor) do |f|
+  = render 'form', :f => f

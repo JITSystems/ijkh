@@ -1,0 +1,11 @@
+= link_to 'new', new_admin_vendor_path
+
+%table
+  %tr
+    %th id
+    %th title
+
+  - @vendors.each do |vendor|
+    %tr
+      %td= vendor.id
+      %td= link_to vendor.title, admin_vendor_path(vendor.id)

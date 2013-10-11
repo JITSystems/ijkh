@@ -1,0 +1,10 @@
+%table
+  %tr
+    %th
+    %th id
+    %th title
+
+  - @places.each do |place|
+    %tr
+      %td= place.id
+      %td= place.title
