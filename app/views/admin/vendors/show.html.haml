@@ -1,0 +1,25 @@
+%p
+  %b
+  = link_to 'edit', edit_admin_vendor_path(@vendor)
+%p
+  %b id:
+  = @vendor.id
+%p
+  %b title:
+  = @vendor.title
+%p
+  %b merchant_id:
+  = @vendor.merchant_id
+%p
+  %b service_type:
+  = @vendor.service_type.title
+%p
+  %b psk:
+  = @vendor.psk
+%p
+  %b is_active:
+  = @vendor.is_active
+%p
+  %b inn:
+  = @vendor.inn
+  

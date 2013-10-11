@@ -23,6 +23,16 @@ Ijkh::Application.routes.draw do
   get 'apns_test' => 'predefined_data#apns'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
 
+# Admin
+  namespace :admin do
+    resources :users, only: [:index, :show]
+    resources :places, only: [:index, :show]
+    resources :services, only: [:index, :show]
+    resources :vendors
+    resources :tariff_templates
+    resources :field_templates
+  end
+
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
 
