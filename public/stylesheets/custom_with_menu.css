@@ -2478,6 +2478,10 @@ p#tax_total_error
 	margin: 30px 0px 54px;
 }
 
+#meter_reading_box > .delete_service_confirm > p
+{
+	margin: 70px 0px 54px;
+}
 
 #place_card_box input[type="submit"]
 {

@@ -49,9 +49,10 @@ class WebInterface::MeterReadingController < WebInterfaceController
 		end
 
 	end
-	
+
 
 	def reset
+		reset = MeterReadingManager.reset(params, current_user)
 
 	end
 
