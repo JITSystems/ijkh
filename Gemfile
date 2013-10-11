@@ -7,6 +7,7 @@ gem 'devise'
 gem 'rabl'
 gem 'oj'
 gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'settingslogic'
 gem 'symbolize'
 gem 'clockwork'
