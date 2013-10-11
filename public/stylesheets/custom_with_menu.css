@@ -862,7 +862,7 @@ p#account_service_title
 	display: none;
 	padding-bottom: 20px;
 	padding-top: 10px;
-
+	position: relative;
 }
 
 .service_info > p
@@ -889,11 +889,11 @@ p#account_service_title
 
 p.delete_service{
 	/*text-align: right;*/
-	padding: 10px 35px 10px 35px;
+	padding: 20px 35px 10px 35px;
 }
 
 
-.delete_service a{
+.delete_service button.delete_service_button{
 	background-color: rgb(196, 45, 45);
 	color: #FFF;
 	border: 0px;
@@ -971,7 +971,7 @@ button.delete_object_button{
 	margin: 5px 3px 0px 0px;
 }
 
-.delete_object_button_yes, .delete_object_button_no
+input.delete_object_button_yes, .delete_object_button_no, button.delete_object_button_yes, a.delete_service_button
 {
 float: left;
 position: relative;
@@ -988,6 +988,10 @@ cursor: pointer;
 left: 15px;
 top: -25px;
 background-color: rgb(196, 45, 45);
+}
+
+a.delete_service_button{
+line-height: 38px;
 }
 
 .delete_object_button_no
@@ -2416,7 +2420,7 @@ p#tax_total_error
 	display: inline;
 }
 
-#delete_place_confirm
+#delete_place_confirm, .delete_service_confirm
 {
 	display: none;
 	position: absolute;
@@ -2428,12 +2432,17 @@ p#tax_total_error
 	background-color: rgba(0,0,0,0.8);
 }
 
-#delete_place_confirm p
+#delete_place_confirm p, .delete_service_confirm p
 {
 	text-align: center;
 	margin: 65px 0px;
 	color: white;
 	font-size: 40px;
+}
+
+.delete_service_confirm p
+{
+	margin: 30px 0px 54px;
 }
 
 

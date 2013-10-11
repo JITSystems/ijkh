@@ -22,11 +22,10 @@
 			
 			<% if service.tariff.fields %>
 					<% service.tariff.fields.each do |field| %>
-					
+						<br>					
 						<p><span class="service_info_header"><%= field.title %>:</span> <%= field.value if field.value %> <%= field.field_units if field.field_units %> </p>
 						<% if field.meter_readings.order("created_at DESC").limit(1).first %>
 							<p><span class="service_info_header">Показания cчётчика:</span> <%= field.meter_readings.order("created_at DESC").limit(1).first.reading %></p>
-							<br>
 						<% end %>
 					<% end %>
 			<% end %>
@@ -36,8 +35,18 @@
 			<% end %>
 
 
-			<p class= "delete_service" ><%= link_to 'Удалить услугу', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class:"delete_object_button" %></p>
-		</div>
+			<p class= "delete_service">
+				<button class="delete_service_button" onclick="$('#delete_service_<%= service.id %>').fadeIn();">Удалить услугу</button>		
+			</p>
+
+			<div class="delete_service_confirm" id="delete_service_<%= service.id %>" >
+				<p>Удалить услугу?</p>
+
+				<%= link_to 'Да', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class:"delete_service_button" %>
+				
+				<button class="delete_object_button_no" onclick="$('#delete_service_<%= service.id %>').fadeOut();">Нет</button>		
+			</div>
+	</div>
 
 <% end %>
 
