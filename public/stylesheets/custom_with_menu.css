@@ -779,7 +779,7 @@ p#account_service_title
 	cursor: pointer;
 	display: block;
 	text-align: center;
-	line-height: 40px;
+	line-height: 36px;
 	/*left: 15px;*/
 }
 
@@ -2286,6 +2286,38 @@ a.object_selected, a.service_pay_selected
 .pay_ended p
 {
 	margin: 0px 0px 0px 0px;
+}
+
+div.remove_readings
+{
+	float: right;
+	position: relative;
+	margin: -50px 0px 0px 0px;
+	text-align: right;
+}
+
+div.remove_readings a
+{
+	position: relative;
+	width: 236px;
+	height: 40px;
+	background-color: #0071BC;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+	margin-bottom: 12px;
+	float: right;
+}
+
+div.remove_readings a#meter_readings_delete_last
+{
+	width: 270px;
 }
 
 input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabled"]{
