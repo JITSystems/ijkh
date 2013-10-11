@@ -861,15 +861,16 @@ p#account_service_title
 	box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);
 	display: none;
 	padding-bottom: 20px;
+	padding-top: 10px;
 
 }
 
 .service_info > p
 {
-	color: #47555e;
+	color: #47555E;
 	font-size: 15px;
-	line-height: 2.5;
-	padding: 0px 35px;
+	line-height: 1;
+	padding: 2px 35px;
 }
 
 .service_info_header
@@ -887,7 +888,8 @@ p#account_service_title
 /*.service_li:hover */
 
 p.delete_service{
-	text-align: right;
+	/*text-align: right;*/
+	padding: 10px 35px 10px 35px;
 }
 
 

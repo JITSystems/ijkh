@@ -17,6 +17,9 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	def get_place
 		@place = Place.find(params[:place_id])
+
+		@services = ServiceManager.index_by_place(@place)
+		
 		@vendors = Vendor.select("id, title, service_type_id").all
 		@service_types = ServiceType.select("id, title").all
 		@tariffs = Tariff.select("id, title").all

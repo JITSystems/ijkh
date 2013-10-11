@@ -11,15 +11,30 @@
 					<p><span class="service_info_header">Тип услуги:</span> <%= service_type.title %></p>
 				<% end %>
 			<% end %>
-			<% @vendors.each do |vendor| %>	
-				<% if vendor.id == service.vendor_id %>
-					<p><span class="service_info_header">Поставщик:</span> <%= vendor.title %></p>
-				<% end %>
+
+			<% if service.vendor %>
+					<p><span class="service_info_header">Поставщик:</span> <%= service.vendor.title %></p>
+			<% end %>
+
+			<% if service.tariff %>
+					<p><span class="service_info_header">Тариф:</span> <%= service.tariff.title %></p>
 			<% end %>
 			
+			<% if service.tariff.fields %>
+					<% service.tariff.fields.each do |field| %>
+					
+						<p><span class="service_info_header"><%= field.title %>:</span> <%= field.value if field.value %> <%= field.field_units if field.field_units %> </p>
+						<% if field.meter_readings.order("created_at DESC").limit(1).first %>
+							<p><span class="service_info_header">Показания cчётчика:</span> <%= field.meter_readings.order("created_at DESC").limit(1).first.reading %></p>
+							<br>
+						<% end %>
+					<% end %>
+			<% end %>
+
 			<%if service.user_account !='' %>
 			<p><span class="service_info_header">Лицевой счёт:</span> <%= service.user_account %> </p>
 			<% end %>
+
 
 			<p class= "delete_service" ><%= link_to 'Удалить услугу', "/delete_service/#{service.id}", remote: true, method: :put, id: "service_li_a_#{service.id}", class:"delete_object_button" %></p>
 		</div>
