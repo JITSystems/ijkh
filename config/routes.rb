@@ -11,6 +11,9 @@ Ijkh::Application.routes.draw do
     put '/users/:id' => 'registrations#update', as: :update_user_registration 
   end
   
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
