@@ -12,7 +12,11 @@ Ijkh::Application.routes.draw do
   end
   
   require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  
+  authenticate :user, lambda { |u| u.id == 2 } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  
 
   root :to => 'web_interface/main#index'
 
