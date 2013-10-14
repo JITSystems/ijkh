@@ -6,7 +6,7 @@ class Osmp
 	require "uri"
 	
 	pem = File.read("www_izkh_ru.pem")
-	key = File.read("ijkh.key")
+	key = File.read("www_izkh_ru.key")
 	http = Net::HTTP.new(uri.host, uri.port)
 	http.use_ssl = true
 	http.cert = OpenSSL::X509::Certificate.new(pem)
