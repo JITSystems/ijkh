@@ -12,6 +12,10 @@ class VendorManager < ObjectManager
 		Vendor.where(is_active: true)
 	end
 
+	def self.create(params)
+		Vendor.create!(params[:vendor])
+	end
+
 	def self.fetch_by_inn(inn)
 		Vendor.where("inn = ? and is_active = true", inn).first
 	end
