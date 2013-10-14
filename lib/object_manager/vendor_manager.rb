@@ -13,7 +13,11 @@ class VendorManager < ObjectManager
 	end
 
 	def self.create(params)
-		Vendor.create!(params[:vendor])
+	  vendor = Vendor.create!(params[:vendor])
+	  params[:cities].each do |city|
+	  	ServedCity.create!(vendor_id: vendor.id, city_id: city[:id])
+	  end
+	  vendor
 	end
 
 	def self.fetch_by_inn(inn)
