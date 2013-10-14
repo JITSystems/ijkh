@@ -5,7 +5,7 @@ class FieldTemplateController < ApplicationController
 	end
 
 	def create
-		@field_template = FieldTemplateManager.create(params)
+		@field_template = FieldTemplateManager.create(params[:field_template])
 		render json: @field_template
 	end
 end
