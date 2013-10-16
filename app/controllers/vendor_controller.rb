@@ -8,7 +8,7 @@ class VendorController < ApplicationController
 	end
 
 	def create
-		@vendor = VendorManager.create(params[:vendor])
+		@vendor = VendorManager.create(params)
 		render 'vendor/show'
 	end
 
