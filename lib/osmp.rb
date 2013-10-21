@@ -1,7 +1,6 @@
 class Osmp
 	def self.check
-	uri = URI.parse("https://193.33.144.3:65443/bgbilling/mpsexecuter/13/3?
-command=pay&txn_id=211119&account=2%23000002&txn_date=20111116112930&sum=10.45")
+	uri = URI.parse("https://193.33.144.3:65443/bgbilling/mpsexecuter/13/3?command=pay&txn_id=211119&account=2%23000002&txn_date=20111116112930&sum=10.45")
 
 	require "net/https"
 	require "uri"
