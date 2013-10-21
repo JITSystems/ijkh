@@ -2,7 +2,7 @@ class RecipeController < ApplicationController
 	def create
 		@recipe = RecipeManager.new
 		@recipe = @recipe.create(ServiceManager.get(params[:service_id]), params[:amount])
-		render json: @recipe
+		render json: {recipe: @recipe}
 	end
 
 	def show_last
