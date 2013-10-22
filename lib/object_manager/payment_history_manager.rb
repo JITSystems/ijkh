@@ -46,7 +46,7 @@ class PaymentHistoryManager < ObjectManager
 		user_id = recipe.service_id ? recipe.service.user.id : 0
 		amount = recipe.total
 
-		§payment_history_params = {
+		payment_history_params = {
 			amount: 				amount, 
 			currency: 				"RUB", 
 			user_id: 				user_id,
