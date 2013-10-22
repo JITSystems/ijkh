@@ -17,10 +17,13 @@ private
 			   title: 				tariff_template.title
 						}
 		
-		unless params[:vendor][:id].to_i != 0 || params[:vendor][:id]
+		puts "*************"
+		puts ( params["vendor"]["id"].to_i != 0 )
+
+		unless params["vendor"]["id"].to_i != 0
 			t_p.merge!(owner_type: "User", owner_id: user.id)
 		else
-			t_p.merge!(owner_type: "Vendor", owner_id: params[:vendor][:id])
+			t_p.merge!(owner_type: "Vendor", owner_id: params["vendor"]["id"])
 		end
 
 		t_p
