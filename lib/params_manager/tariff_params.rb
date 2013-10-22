@@ -17,8 +17,8 @@ private
 			   title: 				tariff_template.title
 						}
 		
-		puts "*************"
-		puts ( params["vendor"]["id"].to_i != 0 )
+		# puts "*************"
+		# puts ( params["vendor"]["id"].to_i != 0 )
 
 		unless params["vendor"]["id"].to_i != 0
 			t_p.merge!(owner_type: "User", owner_id: user.id)
