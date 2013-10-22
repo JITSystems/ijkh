@@ -40,7 +40,8 @@ class PaymentHistoryManager < ObjectManager
 		service.payment_histories
 	end
 
-	def self.create_fake(recipe)
+	def self.create_fake(recipe_hash)
+		recipe = RecipeManager.get(recipe_hash[:id])
 		service_id = recipe.service_id ? recipe.service_id : 0
 		user_id = recipe.service_id ? recipe.service.user.id : 0
 		amount = recipe.total
