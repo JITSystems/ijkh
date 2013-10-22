@@ -2,6 +2,7 @@ class RecipeController < ApplicationController
 	def create
 		@recipe = RecipeManager.new
 		@recipe = @recipe.create(ServiceManager.get(params[:service_id]), params[:amount])
+		logger.info @recipe.inspect
 		render 'recipe/show'
 	end
 
