@@ -40,7 +40,7 @@
 	<div id="save_amount_form" style="display:none;">
 		<%= form_tag("/save_account_as_paid", remote: true, method: :post) do %>
 
-			<%= hidden_field_tag "amount_total", name: "amount_total", value: 0.0 %>
+			<%= hidden_field_tag "amount_total", name: "amount_total", class: "amount_total_hand_switch", value: 0.0 %>
 			<%= hidden_field_tag "account_id", name: "account_id", value: "" %>
 			
 			<%= submit_tag("Сохранить счёт как оплаченный", :class=>:end_button, disabled: true, style: "width: 320px;") %>
@@ -80,6 +80,7 @@ var vendor_id = parseInt($('input#vendor_id').val());
 	{
 		$("#tax_total_error").hide();
 		$("#tax_total").show();
+		$(".amount_total_hand_switch").val(amount);
 	}
 	
 

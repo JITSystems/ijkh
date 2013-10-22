@@ -60,7 +60,7 @@
 	
 				  	<% m_a.place_analytic.each do |p_a| %>
 						<% p_a.service_analytic.each do |s_a| %>
-							{label: "<%= s_a.title %>", value: <%= s_a.amount %>},
+							{label: '<%= escape_javascript(s_a.title.gsub("\"","")) %>', value: <%= s_a.amount %>},
 						<% end %>
 					<% end %>
 				    
