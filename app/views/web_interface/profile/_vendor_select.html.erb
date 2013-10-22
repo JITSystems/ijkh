@@ -1,0 +1,3 @@
+	<%= fields_for 'service[vendor]' do |v|%>
+		<%= v.select :id, grouped_options_for_select(grouped_options), include_blank: "Выберите поставщика", style: "position: absolute; left: -9999px;"%>	
+	<% end %>	

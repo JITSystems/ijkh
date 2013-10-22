@@ -116,10 +116,10 @@ $(document).ready(function($) {
 //  меню
 
     $('.menulistLiDrop').mouseenter(function(){
-        $('.menulistLiDrop').find('.dropdownMenu').slideDown('fast').show();
+        $( this ).find('.dropdownMenu').slideDown('fast').show();
         $('.menulistLiDrop').hover(function() {
         }, function(){ 
-        $('.menulistLiDrop').find(".dropdownMenu").slideUp('fast'); 
+        $( this ).find(".dropdownMenu").slideUp('fast'); 
         });
     })
 
@@ -264,19 +264,58 @@ function sortFun(thisEl){
      switch (listType)
      {
         case 'serviceType':
-        $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
+        var serviceTypeId=thisEl.getAttribute("id");
+        $('#service_vendor_id').attr('disabled','disabled').trigger('refresh');
         $('#service_vendor_id').val('0').trigger('refresh');
         $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
         $('#service_tariff_id').val('0').trigger('refresh');
-        var serviceTypeId=thisEl.getAttribute("id");
-        $("[listtype=vendor]").hide();
-        $("[servicetypeid="+serviceTypeId+"]").show();
-        $("#field_templates_box").html('');
-        $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
         $("div#user_account_box").slideUp();
-        $('.dog_number').attr("disabled","disabled");
-        $('.dog_number').val("");
         $('#accept_service_submit').attr("disabled","disabled");
+        $("#field_templates_box").html('');
+        $('.dog_number').attr("disabled","disabled");
+        $('.dog_number').val("");   
+        $('#service_vendor_id-styler .jq-selectbox__select-text').html('<img src="/images/progressbar.gif" alt="progressbar">');
+        $.ajax({
+                    type: "POST",
+                    url: "/get_vendors",
+                    data: { service_type_id: serviceTypeId },
+                    success: function(result){ 
+                        $("[listtype=userTariff]").val('');
+                        $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
+                        $('#service_vendor_id').val('0').trigger('refresh');
+                        $("[servicetypeid="+serviceTypeId+"]").show();
+                        $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
+                        $("[listtype=userTariff]").val('0');
+                    }
+        });
+
+        // $("[listtype=userTariff]").val('');
+        // $('#service_vendor_id').removeAttr('disabled').trigger('refresh');
+        // $('#service_vendor_id').val('0').trigger('refresh');
+        // $('#service_tariff_id').attr('disabled','disabled').trigger('refresh');
+        // $('#service_tariff_id').val('0').trigger('refresh');
+        // $("[listtype=vendor]").hide();
+        // $("[servicetypeid="+serviceTypeId+"]").show();
+        // $("#field_templates_box").html('');
+        // $("[listtype=userTariff]").attr('servicetypeid',serviceTypeId);
+        // $("[listtype=userTariff]").val('0');
+        // $("div#user_account_box").slideUp();
+        // $('.dog_number').attr("disabled","disabled");
+        // $('.dog_number').val("");
+        // $('#accept_service_submit').attr("disabled","disabled");
+        // $('li.optgroup').hide();
+
+
+        // $('li.optgroup').each(function(){ 
+        //     if (serviceTypeId == 1 || serviceTypeId == 3 ) { $( this ).hide(); }
+        //     if (serviceTypeId == 5 || serviceTypeId == 4 ) { 
+        //         if ($( this ).text() == "Тольятти") { 
+        //             $( this).hide(); 
+        //         } 
+        //      }
+        //     });
+
+
         break
 
         case 'userTariff':

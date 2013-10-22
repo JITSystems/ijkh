@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130927133120) do
+ActiveRecord::Schema.define(:version => 20131002112841) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -381,6 +381,7 @@ ActiveRecord::Schema.define(:version => 20130927133120) do
     t.string   "psk"
     t.float    "commission"
     t.boolean  "is_integrated"
+    t.string   "inn"
   end
 
 end

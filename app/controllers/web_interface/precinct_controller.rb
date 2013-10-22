@@ -17,6 +17,17 @@ class WebInterface::PrecinctController < WebInterfaceController
 		end
 
 	end
+
+	def search_by_id 
+		@precinct = PrecinctManager.search_by_id(params[:search_request])
+		# render json: @precinct
+		respond_to do |format|
+			format.js {
+				render 'web_interface/precinct/search_by_id'
+			}
+		end
+		
+	end
 	
 	def search_by_street
 		@streets = PrecinctManager.search_by_street(params[:search_request])
@@ -27,6 +38,17 @@ class WebInterface::PrecinctController < WebInterfaceController
 			}
 		end
 
+	end
+
+	def fetch_precinct
+		@precinct = PrecinctManager.fetch_precinct(params[:street_id], params[:house])
+		# render json: @precinct
+		respond_to do |format|
+			format.js {
+				render 'web_interface/precinct/search_by_id'
+			}
+		end
+		
 	end
 
 end

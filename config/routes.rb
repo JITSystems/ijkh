@@ -11,10 +11,27 @@ Ijkh::Application.routes.draw do
     put '/users/:id' => 'registrations#update', as: :update_user_registration 
   end
   
+  require 'sidekiq/web'
+  
+  authenticate :user, lambda { |u| u.id == 2 } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  
+
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
+
+# Admin
+  namespace :admin do
+    resources :users, only: [:index, :show]
+    resources :places, only: [:index, :show]
+    resources :services, only: [:index, :show]
+    resources :vendors
+    resources :tariff_templates
+    resources :field_templates
+  end
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
@@ -57,12 +74,16 @@ Ijkh::Application.routes.draw do
 # Vendor
   get 'api/1.0/servicetype/:service_type_id/vendors' => 'vendor#index_with_tariffs'
   get 'api/1.0/vendors' => 'vendor#index'
+  get 'api/1.0/vendor/show_by_inn' => 'vendor#show_by_inn'
   post 'api/1.0/vendor' => 'vendor#create'
 
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   get 'api/1.0/meterreadings' => 'meter_reading#index_by_vendor'
   post 'api/1.0/meterreading' => 'meter_reading#create'
+  post 'api/1.0/meter_reading/create_init' => 'meter_reading#create_init'
+  delete 'api/1.0/meter_reading/reset' => 'meter_reading#reset'
+  delete 'api/1.0/meter_reading/delete_last' => 'meter_reading#delete_last'
 
 # Account
   get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
@@ -75,7 +96,7 @@ Ijkh::Application.routes.draw do
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
-# Presinct
+# Precinct
   get 'api/1.0/precinct/test' => 'precinct#test'
   get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
   get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
@@ -145,6 +166,7 @@ Ijkh::Application.routes.draw do
       get 'inner_offer' => 'web_interface/inner_offer#show'
       get 'profile' => 'web_interface/profile#show'
       get 'app_download' => 'web_interface/app_download#show'
+      post 'get_vendors' => 'web_interface/profile#get_vendors'
       post 'get_place/:place_id' => 'web_interface/place#get_place'
       post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
@@ -160,6 +182,8 @@ Ijkh::Application.routes.draw do
       get  'precinct' => 'web_interface/precinct#show'
       post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
       post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
+      post 'precinct_by_id' => 'web_interface/precinct#search_by_id'
+      post 'fetch_precinct' => 'web_interface/precinct#fetch_precinct'
 
       get 'energosbyt' => 'web_interface/energosbyt#show'
       post 'energosbyt' => 'web_interface/energosbyt#get_user_account_info'

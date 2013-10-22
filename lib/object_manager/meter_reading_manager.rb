@@ -47,6 +47,26 @@ class MeterReadingManager < ObjectManager
     MeterReading.where(field_id: field_id).order("created_at DESC").limit(1).first
   end
 
+  def self.reset(params, user)
+    MeterReading.delete_all('service_id = ? and user_id = ?', params[:service_id], user.id)
+  end
+
+  def self.delete_last(params, user)
+    MeterReading.delete(self.get_last(params[:field_id]).id)
+  end
+
+  def self.create_init(params, user)
+    meter_reading_params = {
+                            service_id:   params[:service_id],
+                            reading:      params[:reading],
+                            field_id:     params[:field_id],
+                            user_id:      user.id,
+                            is_init:      true
+                           }
+
+    MeterReading.create!(meter_reading_params)
+  end
+
   protected
 
   def self.calculate_amount(current_value, old_value, field_value)
