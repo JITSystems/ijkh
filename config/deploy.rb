@@ -3,14 +3,14 @@ ssh_options[:forward_agent] = true
 ssh_options[:verbose] = :debug
 set :ssh_options, {:user => "ubuntu"}
 set :ssh_options, {:auth_methods => "publickey"}
-set :ssh_options, {:keys => ["/home/ubuntu/aws_key/aws.pem"]}
+set :ssh_options, {:keys => ["aws.pem"]}
 
-set :application, "izkh.ru"
+set :application, "ec2-54-245-202-30.us-west-2.compute.amazonaws.com"
 role :app, application
 role :web, application
 role :db, application
 
-set :domain, "izkh.ru"
+set :domain, "ec2-54-245-202-30.us-west-2.compute.amazonaws.com"
 set :user, "ubuntu"
 set :deploy_to, "/home/ubuntu/apps/"
 set :deploy_via, :remote_cache
@@ -19,7 +19,7 @@ set :rails_env, "production"
 
 set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
-set :branch, "master"
+set :branch, "staging"
 
 namespace :symlinks do
 	desc "Link assets for current deploy to the shared location"
