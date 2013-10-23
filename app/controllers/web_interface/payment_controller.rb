@@ -139,6 +139,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	def save_account_as_paid
 		@message = "Счёт сохранён как оплаченный"
 
+		params[:amount] = params[:amount_total] if params[:amount_total]
+
 		@account = Account.hand_switch current_user, params		
 
 		respond_to do |format|
