@@ -70,7 +70,12 @@ class MeterReadingManager < ObjectManager
                             is_init:      true
                            }
 
-    MeterReading.create!(meter_reading_params)
+    meter_reading = MeterReading.create!(meter_reading_params)
+
+    if params[:snapshot]
+        snapshot_url = save_snapshot(user, params[:snapshot], meter_reading.created_at, params[:service_id])
+        meter_reading.update_attribute(:snapshot_url, snapshot_url)
+    end
   end
 
   protected
