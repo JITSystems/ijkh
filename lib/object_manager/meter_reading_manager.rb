@@ -48,7 +48,7 @@ class MeterReadingManager < ObjectManager
   end
 
   def self.reset(params, user)
-    MeterReading.delete_all('service_id = ? and user_id = ?', params[:service_id], user.id)
+    MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
   end
 
   def self.delete_last(params, user)
