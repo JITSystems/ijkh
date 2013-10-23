@@ -49,10 +49,15 @@ class MeterReadingManager < ObjectManager
 
   def self.reset(params, user)
     MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
+    AmountUpdater.new(account).nullify
+    AccountManager.update_status(account)
   end
 
   def self.delete_last(params, user)
+    account = ServiceManager.get(params[:service_id]).account
     MeterReading.delete(self.get_last(params[:field_id]).id)
+    AmountUpdater.new(account).nullify
+    AccountManager.update_status(account)
   end
 
   def self.create_init(params, user)
