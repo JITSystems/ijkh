@@ -12,6 +12,10 @@ class AccountManager < ObjectManager
 		account = Account.create!(account_params)
 	end
 
+	def self.fetch_by_service(service_id)
+		Account.where(service_id: service_id).first
+	end
+
 	def self.update_status(account)
 		status = account.amount <= 0.0 ? 1 : -1 
 		account.update_attribute(:status, status)
