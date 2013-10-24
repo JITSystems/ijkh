@@ -21,6 +21,6 @@ class VendorManager < ObjectManager
 	end
 
 	def self.fetch_by_inn(inn)
-		Vendor.where("inn = ? and is_active = true", inn).first
+		Vendor.where("inn = ? and is_active = true", inn)
 	end
 end
