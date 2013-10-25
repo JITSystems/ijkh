@@ -27,8 +27,9 @@ class PredefinedDataController < ApplicationController
     render json: {status: "success"}
 	end
 
-  def apns_new
-    render 'predefined_data/apns_new'
+  def new_vendors_notification
+    VendorPushNotificationsWorker.perform_async
+    render json: {status: "success"}
   end
 
   def osmp

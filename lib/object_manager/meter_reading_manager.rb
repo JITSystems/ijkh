@@ -48,14 +48,14 @@ class MeterReadingManager < ObjectManager
   end
 
   def self.reset(params, user)
-    account = AccountManager.fetch_by_service(params[:service_id])
+    account = AccountManager.get(ServiceManager.get(params[:service_id]).account_id)
     MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
     AmountUpdater.new(account).nullify
     AccountManager.update_status(account)
   end
 
   def self.delete_last(params, user)
-    account = AccountManager.fetch_by_service(params[:service_id])
+    account = AccountManager.get(ServiceManager.get(params[:service_id]))
     MeterReading.delete(self.get_last(params[:field_id]).id)
     AmountUpdater.new(account).nullify
     AccountManager.update_status(account)
@@ -70,13 +70,7 @@ class MeterReadingManager < ObjectManager
                             is_init:      true
                            }
 
-    meter_reading = MeterReading.create!(meter_reading_params)
-
-    if params[:snapshot]
-        snapshot_url = save_snapshot(user, params[:snapshot], meter_reading.created_at, params[:service_id])
-        meter_reading.update_attribute(:snapshot_url, snapshot_url)
-    end
-    meter_reading
+    MeterReading.create!(meter_reading_params)
   end
 
   protected

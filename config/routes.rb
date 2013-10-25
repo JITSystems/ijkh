@@ -21,6 +21,7 @@ Ijkh::Application.routes.draw do
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
+  get 'apns_vendor' => 'predefined_data#new_vendors_notification'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
 
 # Admin
