@@ -138,7 +138,7 @@ a#no_object_found
 	width: 170%;
 	top: 55px;
 	float: left;
-	z-index: 100;
+	z-index: 111;
 	left: 0px;
 	display: none;
 	box-shadow: black 0px 3px 15px -3px;
@@ -148,7 +148,7 @@ a#no_object_found
 	position: relative;
 	/*height: 35px;*/
 	background-color: #d5e6f2;
-	margin-top: 1px;
+	/*margin-top: 1px;*/
 	font-size: 15px;
 	line-height: 2.3;
 	color: #00558d;
