@@ -172,6 +172,8 @@ Ijkh::Application.routes.draw do
       post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
       post 'get_meter_reading/:tariff_id' => 'web_interface/payment#get_meter_reading'
+      put 'meter_readings_reset/:service_id' => 'web_interface/meter_reading#reset'
+      put 'meter_readings_delete_last/:service_id' => 'web_interface/meter_reading#delete_last'
       post 'get_recurrent_account/:service_id' => 'web_interface/payment#get_recurrent_account'
       get 'pay' => 'web_interface/payment#pay'
       post 'save_account_as_paid' => 'web_interface/payment#save_account_as_paid'
@@ -195,6 +197,8 @@ Ijkh::Application.routes.draw do
       get "catalog" => "web_interface/catalog#show"
       get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
+      get "freelancer_registration" => "web_interface/freelancer_registration#show"
+      post "freelancer_registration" => "web_interface/freelancer_registration#create"
       put 'delete_service/:service_id' => 'web_interface/service#delete'
 
       get "redirect" => 'web_interface/redirect_page#show'

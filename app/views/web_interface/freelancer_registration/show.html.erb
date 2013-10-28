@@ -1,0 +1,110 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Регистрация частной услуги</p>
+</div>
+
+<div class="container_boxes">
+	<div class="horizontal_div" style="width: 100%; float: none;">
+		<div class="box_blue" id="" style="min-height:245px;width:100%">
+			<div class="non_utility_catalog">
+				<%= form_for @freelancer, url: freelancer_registration_path do |f| %>
+
+					<p><%= f.label :freelance_category_id, "Категория:" %>				
+						<%= f.select(:freelance_category_id, options_for_select(@freelance_category), prompt: "Выберите категорию") %></p>
+
+					<p><%= f.label :title, "Название:" %>
+						<%= f.text_field :title, placeholder: "Введите название услуги" %></p>
+
+					<p><%= f.label :description, "Описание:" %>
+						<%= f.text_area :description, size: "30x7", placeholder: "Введите описание услуги" %></p>
+
+					<p><%= f.label :name, "Контактное лицо:" %>
+						<%= f.text_field :name, placeholder: "Введите имя" %></p>
+
+					<p><%= f.label :phone, "Телефон:" %>
+						<%= f.text_field :phone, placeholder: "Введите телефон" %></p>
+
+					<p><%= f.label :work_time, "Время работы:" %>
+						<%= f.text_field :work_time, placeholder: "Введите время работы" %></p>
+
+					<p><%= f.submit "Добавить" %></p>
+
+				<% end %>
+			</div>
+	 	</div>
+	</div>
+</div>
+
+<style>
+
+	form
+	{
+		text-align: left;
+		width: 380px;
+		padding: 10px 0;
+	}
+
+	form p:nth-child(2)
+	{
+		margin-bottom: 10px;
+	}
+
+	form > p > label
+	{
+		color: #6A7F8D;
+		font-size: 15px;
+	}
+
+	form > p > textarea, form > p > input[type="text"]
+	{
+		width: 100%;
+		max-width: 100%;
+		background-color: #FFF;
+		border: 1px solid #8DA9BC;
+		color: #00558D;
+		text-indent: 5px;
+		font-family: 'Open Sans', sans-serif;
+		font-size: 15px;
+		resize: none;
+		margin: 0px 0px 10px 0px;
+	}
+
+	form > p > input[type="text"]
+	{
+		display: inline-block;
+		height: 32px;
+	}
+
+	form > p > input[type="submit"]
+	{
+		width: 192px;
+		height: 44px;
+		background-color: #0071bc;
+		border: none;
+		color:#FFF;
+		font-size: 15px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	form > p > textarea
+	{
+		width: 97%;
+		padding: 5px;
+	}
+
+</style>
+
+
+<script>
+
+	(function($) {
+	$(function() {
+
+	  $('input, select').styler();
+
+	})
+	})(jQuery)
+
+</script>
+

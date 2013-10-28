@@ -14,7 +14,6 @@ class WebInterface::MeterReadingController < WebInterfaceController
 		# 	=> snapshot_url
 
 		@message = "Показания счёчика обновлены"
-
 		params[:meter_reading].each do |m_r| 
 
 			service = Field.find(m_r[:field_id]).tariff.service
@@ -39,12 +38,8 @@ class WebInterface::MeterReadingController < WebInterfaceController
 			end
 
 			@account = Account.where(service_id: service_id).first
-
-
 			@tariff = Tariff.where(service_id: service_id).first
-
 			@fields = @tariff.fields
-
 		end
 
 		respond_to do |format|
@@ -53,6 +48,17 @@ class WebInterface::MeterReadingController < WebInterfaceController
 			}
 		end
 
+	end
+
+
+	def reset
+		reset = MeterReadingManager.reset(params, current_user)
+
+	end
+
+
+	def delete_last
+		
 	end
 end
 

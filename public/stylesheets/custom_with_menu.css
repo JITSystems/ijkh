@@ -138,7 +138,7 @@ a#no_object_found
 	width: 170%;
 	top: 55px;
 	float: left;
-	z-index: 100;
+	z-index: 111;
 	left: 0px;
 	display: none;
 	box-shadow: black 0px 3px 15px -3px;
@@ -148,7 +148,7 @@ a#no_object_found
 	position: relative;
 	/*height: 35px;*/
 	background-color: #d5e6f2;
-	margin-top: 1px;
+	/*margin-top: 1px;*/
 	font-size: 15px;
 	line-height: 2.3;
 	color: #00558d;
@@ -779,7 +779,7 @@ p#account_service_title
 	cursor: pointer;
 	display: block;
 	text-align: center;
-	line-height: 40px;
+	line-height: 36px;
 	/*left: 15px;*/
 }
 
@@ -861,15 +861,16 @@ p#account_service_title
 	box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);
 	display: none;
 	padding-bottom: 20px;
-
+	padding-top: 10px;
+	position: relative;
 }
 
 .service_info > p
 {
-	color: #47555e;
+	color: #47555E;
 	font-size: 15px;
-	line-height: 2.5;
-	padding: 0px 35px;
+	line-height: 1;
+	padding: 2px 35px;
 }
 
 .service_info_header
@@ -887,11 +888,13 @@ p#account_service_title
 /*.service_li:hover */
 
 p.delete_service{
-	text-align: right;
+	/*text-align: right;*/
+	padding: 20px 35px 10px 35px;
 }
 
 
-.delete_service a{
+.delete_service button.delete_service_button{
+	float: right;
 	background-color: rgb(196, 45, 45);
 	color: #FFF;
 	border: 0px;
@@ -969,7 +972,7 @@ button.delete_object_button{
 	margin: 5px 3px 0px 0px;
 }
 
-.delete_object_button_yes, .delete_object_button_no
+input.delete_object_button_yes, .delete_object_button_no, button.delete_object_button_yes, a.delete_service_button
 {
 float: left;
 position: relative;
@@ -986,6 +989,10 @@ cursor: pointer;
 left: 15px;
 top: -25px;
 background-color: rgb(196, 45, 45);
+}
+
+a.delete_service_button{
+line-height: 38px;
 }
 
 .delete_object_button_no
@@ -2281,6 +2288,38 @@ a.object_selected, a.service_pay_selected
 	margin: 0px 0px 0px 0px;
 }
 
+div.remove_readings
+{
+	float: right;
+	position: relative;
+	margin: -50px 0px 0px 0px;
+	text-align: right;
+}
+
+div.remove_readings a
+{
+	position: relative;
+	width: 236px;
+	height: 40px;
+	background-color: #0071BC;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+	margin-bottom: 12px;
+	float: right;
+}
+
+div.remove_readings a#meter_readings_delete_last
+{
+	width: 270px;
+}
+
 input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabled"]{
 	position: relative;
 	display: block;
@@ -2414,7 +2453,7 @@ p#tax_total_error
 	display: inline;
 }
 
-#delete_place_confirm
+#delete_place_confirm, .delete_service_confirm
 {
 	display: none;
 	position: absolute;
@@ -2426,7 +2465,7 @@ p#tax_total_error
 	background-color: rgba(0,0,0,0.8);
 }
 
-#delete_place_confirm p
+#delete_place_confirm p, .delete_service_confirm p
 {
 	text-align: center;
 	margin: 65px 0px;
@@ -2434,6 +2473,15 @@ p#tax_total_error
 	font-size: 40px;
 }
 
+.delete_service_confirm p
+{
+	margin: 30px 0px 54px;
+}
+
+#meter_reading_box > .delete_service_confirm > p
+{
+	margin: 70px 0px 54px;
+}
 
 #place_card_box input[type="submit"]
 {
