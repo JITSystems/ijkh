@@ -16,7 +16,7 @@ class WebInterface::ProfileController < WebInterfaceController
     	@field_templates = FieldTemplateManager.index
     	@service = Service.new
     	@cities = CityManager.index
-        @services = ServiceManager.index_by_place(@place)
+        @services = ServiceManager.index_by_place(@place) if @place
 
     	@grouped_options = Hash.new
    
