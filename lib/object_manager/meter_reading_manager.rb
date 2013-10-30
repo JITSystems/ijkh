@@ -44,12 +44,16 @@ class MeterReadingManager < ObjectManager
 	end
 
   def self.get_last(field_id)
-    MeterReading.where(field_id: field_id).order("created_at DESC").limit(1).first
+    if ServiceManager.get(params[:service_id]).meter_readings
+      MeterReading.where(field_id: field_id).order("created_at DESC").limit(1).first
+    end
   end
 
   def self.reset(params, user)
     account = ServiceManager.get(params[:service_id]).account
-    MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
+    if ServiceManager.get(params[:service_id]).meter_readings
+      MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
+    end
     AmountUpdater.new(account).nullify
     AccountManager.update_status(account)
   end
