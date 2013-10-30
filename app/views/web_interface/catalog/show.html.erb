@@ -28,7 +28,7 @@
 						<p class="nu_service_type_title"><%= non_utility_service_type.title %></p>
 							<% non_utility_service_type.non_utility_vendors.each do |non_utility_vendor| %>
 									<p> <!-- non_utility_vendor_path(non_utility_vendor.id) -->
-									<%= link_to non_utility_vendor.title, "#", id: "non_utility_vendor_#{non_utility_vendor.id}", onclick: "$('div#nu_vendor_#{non_utility_vendor.id}').slideToggle('');" %> 
+									<%= link_to non_utility_vendor.title, "javascript:void(0);", id: "non_utility_vendor_#{non_utility_vendor.id}", onclick: "$('div#nu_vendor_#{non_utility_vendor.id}').slideToggle('');" %> 
 	
 									<div id="nu_vendor_<%= non_utility_vendor.id %>" class="nu_vendor_info">
 
