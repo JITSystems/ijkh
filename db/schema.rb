@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002112841) do
+ActiveRecord::Schema.define(:version => 20131029065032) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(:version => 20131002112841) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
-  end
-
-  create_table "category", :id => false, :force => true do |t|
-    t.integer "id",                                :null => false
-    t.integer "parent_category_id"
-    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -129,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20131002112841) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "name"
+    t.boolean  "published"
   end
 
   create_table "meter_readings", :force => true do |t|
