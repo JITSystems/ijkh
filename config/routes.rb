@@ -152,6 +152,7 @@ Ijkh::Application.routes.draw do
 # Report
   get 'api/1.0/report_daily' => 'report_data#index_daily'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
+  get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
 # OSMP
   get 'osmp' => 'predefined_data#osmp'
