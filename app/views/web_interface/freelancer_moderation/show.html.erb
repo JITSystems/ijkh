@@ -32,7 +32,7 @@
 								<% @freelancer.each do |freelancer| %>
 							
 										<p> <!-- freelancers_path(freelancer.id) -->
-											<span class="nu_subtitle"><%= link_to freelancer.title, "#", id: "freelancer_#{freelancer.id}", onclick: "$('div#nu_vendor_#{freelancer.id}').slideToggle('');", published: freelancer.published.to_s %> </span>
+											<span class="nu_subtitle"><%= link_to freelancer.title, "javascript:void(0);", id: "freelancer_#{freelancer.id}", onclick: "$('div#nu_vendor_#{freelancer.id}').slideToggle('');", published: freelancer.published.to_s %> </span>
 
 											<div id="nu_vendor_<%= freelancer.id %>" class="nu_vendor_info">
 
