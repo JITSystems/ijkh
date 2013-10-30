@@ -52,7 +52,7 @@ class ReportDataController < ApplicationController
 
 	def vendors_with_transactions
 		service_ids = PaymentHistory.where("status = 1 AND payment_type = '1' AND extract(month from created_at) = ?", params[:month]).pluck(:service_id)
-		vendor_ids = Vendor.find(Service.find(service_ids).select(:vendor_id)).select(:id)
+		vendor_ids = Vendor.select(:id).find(Service.select(:vendor_id).find(service_ids))
 		render json: vendors_ids
 	end
 end
