@@ -13,14 +13,18 @@ class WebInterface::FreelancerRegistrationController < WebInterfaceController
     	@freelancer = Freelancer.new
   end
 
+  
   def create
-  # 		@freelancer = Freelancer.new(params[:freelancer])
+  	
+    @freelancer = Freelancer.new(params[:freelancer].merge!(published: false))
 
-  # 		if @freelancer.save
-		# 	redirect_to action: :show, id: @freelancer.id
-		# else 
-		# 	render 'show'
-		# end
+  	if @freelancer.save
+			redirect_to action: :show, id: @freelancer.id
+		else 
+			render 'show'
+		end
+
   end
+
 
 end

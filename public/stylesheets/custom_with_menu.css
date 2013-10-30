@@ -1423,8 +1423,8 @@ div#field_templates_box input[disabled]
 .white_cubs{
 	position: relative;
 	width: 840px;
-	height: 180px;
-	margin: 25px auto 25px;
+	height: 95px;
+	margin: 20px auto 20px;
 }
 .white_cub{
 	position: relative;
@@ -1469,6 +1469,11 @@ div#field_templates_box input[disabled]
 margin: 3px 3px;
 }
 
+.white_cub_8 img
+{
+	width: 100%;
+	padding: 10% 0px;
+}
 
 .white_cub a 
 {

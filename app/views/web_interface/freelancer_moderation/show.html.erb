@@ -1,48 +1,49 @@
 <div class="top_plate">
 	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-	<p class="text_plate_blue">Справочник частных услуг</p>
+	<p class="text_plate_blue">Модерация частных услуг</p>
 </div>
-
 <div class="container_boxes">
 	<div class="horizontal_div" style="width: 100%; float: none;">
 		<div class="box_blue" id="" style="min-height:245px;width:100%">
 			<div class="non_utility_catalog">
 
-				<div class="non_utility_service">
+<!-- 				<div class="non_utility_service">
 					<select style="background-color: #ccc;color: grey;" id="service_service_type_id" name="service[service_type_id]">
 						<option value="0" data-skip="1" selected="selected">Выберите категорию</option>
 						<option value="0" listType="showAllCategories">Показать всё</option>
 							<% @freelance_category.each do |freelance_category| %>
-								<% if freelance_category.freelancers.where(published: true).first %>
 									<option value="<%= freelance_category.id %>" id="<%= freelance_category.id %>" listType="catalog">
 										<%= freelance_category.title %>
 									</option>
-								<% end %>
 							<% end %>
 					</select>
 				</div>
-
+ -->
+<% if current_user.email == 'john.loudless@gmail.com' %>
+ <p> 
+ 	<%= link_to "Опубликовать всё", "/publish_all_freelancers", method: :put, remote: true %>
+ </p>
+ <% end %>
+ <br>
 				<div class="nu_vendors">
-					<% @freelance_category.each do |freelance_category| %>
-						<div id="freelance_category_<%= freelance_category.id %>" class="catalog_category">
-							
-							<% if freelance_category.freelancers.where(published: true).first %>
-								<p class="nu_service_type_title"><%= freelance_category.title %></p>
-							<% end %>
+					
+						
 
-								<% freelance_category.freelancers.each do |freelancer| %>
-									<% if freelancer.published == true %>
+								<% @freelancer.each do |freelancer| %>
+							
 										<p> <!-- freelancers_path(freelancer.id) -->
-											<span class="nu_subtitle"><%= link_to freelancer.title, "#", id: "freelancer_#{freelancer.id}", onclick: "$('div#nu_vendor_#{freelancer.id}').slideToggle('');" %> </span>
+											<span class="nu_subtitle"><%= link_to freelancer.title, "#", id: "freelancer_#{freelancer.id}", onclick: "$('div#nu_vendor_#{freelancer.id}').slideToggle('');", published: freelancer.published.to_s %> </span>
 
 											<div id="nu_vendor_<%= freelancer.id %>" class="nu_vendor_info">
+
+												<p><span>Зарегистрировано: </span><%= freelancer.created_at.to_formatted_s(:short) %>, <%= freelancer.created_at.year %></p>
 
 												<% if freelancer.picture_url %>
 												<img src="<%= freelancer.picture_url %>" />
 												<% end %>		
 
 												<% if freelancer.description %>
-													<p class="nu_vendor_description"><%= freelancer.description %></p>
+													<p class="nu_vendor_description"><span>Описание: </span><%= freelancer.description %></p>
 												<% end %>		
 
 												<div class="clear"></div>								
@@ -53,20 +54,43 @@
 
 												<% if freelancer.work_time %>
 													<p><span>Время работы:</span> <%= freelancer.work_time %> </p>
-												<% end %>	
+												<% end %>
+
+												<%= link_to "Удалить частную услугу", freelancer_moderation_path(id: freelancer.id), method: :delete, remote: true, class: "delete_freelancer" %>	
 													
 											</div>
 										</p>
-									<% end %>
+							
 								<% end %>
-						</div>
-					<% end %>
+						
+					
 				</div>
 
 			</div>
 	 	</div>
 	</div>
 </div>
+
+<style>
+	.nu_vendors a.delete_freelancer
+	{
+		display: inline-block;
+		padding: 5px 50px;
+		background: #E66E6E;
+		margin: 10px 0px;
+	}
+
+	a[published="true"]
+	{
+		background-color: lightgreen;
+	}
+
+	a[published="false"]
+	{
+		background-color: pink;
+	}
+
+</style>
 
 <script>
 	(function($) {

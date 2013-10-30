@@ -197,6 +197,12 @@ Ijkh::Application.routes.draw do
       get "catalog" => "web_interface/catalog#show"
       get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
+      get "freelancer_moderation" => "web_interface/freelancer_moderation#show"
+      put "freelancer_moderation" => "web_interface/freelancer_moderation#update"
+      delete "freelancer_moderation" => "web_interface/freelancer_moderation#destroy"
+      put "publish_all_freelancers" => "web_interface/freelancer_moderation#publish_all_freelancers"
+
+
       get "freelancer_registration" => "web_interface/freelancer_registration#show"
       post "freelancer_registration" => "web_interface/freelancer_registration#create"
       put 'delete_service/:service_id' => 'web_interface/service#delete'
