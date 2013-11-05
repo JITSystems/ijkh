@@ -36,4 +36,10 @@ class PredefinedDataController < ApplicationController
     resp = Osmp.check
     render json: resp.body
   end
+
+  def users_and_vendors
+    @users = User.all.count
+    @vendors = Vendor.where(is_active: true).count
+    render json: {users: @users, vendors: @vendors}
+  end
 end
