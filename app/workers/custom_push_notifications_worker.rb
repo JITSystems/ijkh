@@ -9,7 +9,7 @@ class CustomPushNotificationsWorker
     #text = text.encode("unicode")
     #users = User.all
     #users.each do |user|
-    user = User.find(2)
+    user = User.find(6)
       if user.ios_device_token
         apn = APNS.send_notification(user.ios_device_token, {:alert => message, :sound => 'default'})
       end
