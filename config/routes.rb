@@ -157,7 +157,8 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
 # OSMP
-  get 'osmp' => 'predefined_data#osmp'
+  get 'osmp_check' => 'predefined_data#osmp_check'
+  get 'osmp_pay' => 'predefined_data#osmp_pay'
 
 # Web Interface
   scope '/' do

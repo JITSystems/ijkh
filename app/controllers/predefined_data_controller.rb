@@ -32,8 +32,13 @@ class PredefinedDataController < ApplicationController
     render json: {status: "success"}
   end
 
-  def osmp
+  def osmp_check
     resp = Osmp.check
+    render json: resp.body
+  end
+
+  def osmp_pay
+    resp = Osmp.pay
     render json: resp.body
   end
 
