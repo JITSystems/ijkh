@@ -14,9 +14,17 @@ class WebInterface::FreelancerModerationController < WebInterfaceController
   end
 
   def update
-  	# @message = "Услуга опубликована."
+    @published = params[:published]
   	@freelancer = Freelancer.find(params[:id])
-  	@freelancer.update_attribute(published: params[:published])
+  	@freelancer.update_attributes(published: @published)
+
+    case @published
+    when 'true'
+      @message = "Услуга опубликована."
+    when 'false'
+      @message = "Услуга снята с публикации."
+    end
+
   end
 
   def destroy
