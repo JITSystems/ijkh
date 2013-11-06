@@ -42,4 +42,9 @@ class PredefinedDataController < ApplicationController
     @vendors = Vendor.where(is_active: true).count
     render json: {users: @users, vendors: @vendors}
   end
+
+  def send_custom
+    CustomPushNotificationsWorker.perform_async(params[:mess])
+    render json: {status: "success"}
+  end
 end

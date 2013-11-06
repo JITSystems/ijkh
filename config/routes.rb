@@ -24,6 +24,7 @@ Ijkh::Application.routes.draw do
   get 'apns_vendor' => 'predefined_data#new_vendors_notification'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
   get 'get_statistics' => 'predefined_data#users_and_vendors'
+  get 'send_me_a_message' => 'predefined_data#send_custom'
 
 # Admin
   namespace :admin do
