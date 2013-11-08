@@ -36,33 +36,33 @@
 
 
 			    	if ($('#vendor_id').val() == 16) {
-			    		total_info = '<p class = "find_debt_line">Баланс по договору ' + user_account + ':</p>' + '<p class = "find_debt_line">' + result + ':</p>'
-			    		if (result == null) {total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';}
+			    		total_info = '<p class = "find_debt_line">Баланс по договору ' + user_account + ':</p>' + '<p class = "find_debt_line">' + result + '</p>'
+			    		if (typeof result == string) {total_info = '<p class = "find_debt_line">' + result + '</p>';}
 			    	}
 			    	else
 			    	{
-			    		if (result == "")
-			    	{ 
-			    		total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';
-			    	}
-			    	else
-			    	{
-				    	var apartment = '';
-				    	if (result.apartment == null) { apartment = ''; }
-				    	else { apartment = ', кв.' + result.apartment; }
+			    		if (typeof result == "string")
+						    	{ 
+						    		total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';
+						    	}
+						    	else
+						    	{
+							    	var apartment = '';
+							    	if (result.apartment == null) { apartment = ''; }
+							    	else { apartment = ', кв.' + result.apartment; }
 
-				    	var invoice_amount = '';
-				    	if (result.invoice_amount == null || result.invoice_amount == 0 ) { invoice_amount = ''; }
-				    	else { invoice_amount = '<p class = "find_debt_line"><span class = "find_debt_title"> Сумма задолженности: </span>' + result.invoice_amount + ' руб. </p>'; }
+							    	var invoice_amount = '';
+							    	if (result.invoice_amount == null || result.invoice_amount == 0 ) { invoice_amount = ''; }
+							    	else { invoice_amount = '<p class = "find_debt_line"><span class = "find_debt_title"> Сумма задолженности: </span>' + result.invoice_amount + ' руб. </p>'; }
 
-total_info = '<p class = "find_debt_line"><span class = "find_debt_title"> Лицевой счёт: </span>' + result.user_account + '</p>' +
-				 '<p class = "find_debt_line"><span class = "find_debt_title"> Адрес: </span>г.' + result.city + ', ул.' +result.street + ', д.' + result.building + apartment +'</p>' +
-				 '<p class = "find_debt_line"><span class = "find_debt_title"> Дата снятия показаний: </span>' + result.bypass + '</p>' +
-				 '<p class = "find_debt_line"><span class = "find_debt_title"> Показания на дату: </span>' + result.data + '</p>' +
-				 invoice_amount +
-				 '<p class = "find_debt_line"><span class = "find_debt_title"> Показания счётика: </span>' + result.meter_reading + '</p>' ;
+			total_info = '<p class = "find_debt_line"><span class = "find_debt_title"> Лицевой счёт: </span>' + result.user_account + '</p>' +
+							 '<p class = "find_debt_line"><span class = "find_debt_title"> Адрес: </span>г.' + result.city + ', ул.' +result.street + ', д.' + result.building + apartment +'</p>' +
+							 '<p class = "find_debt_line"><span class = "find_debt_title"> Дата снятия показаний: </span>' + result.bypass + '</p>' +
+							 '<p class = "find_debt_line"><span class = "find_debt_title"> Показания на дату: </span>' + result.data + '</p>' +
+							 invoice_amount +
+							 '<p class = "find_debt_line"><span class = "find_debt_title"> Показания счётика: </span>' + result.meter_reading + '</p>' ;
 
-			    	}
+						    	}
 
 			    	}
 
