@@ -192,8 +192,8 @@ Ijkh::Application.routes.draw do
       post 'precinct_by_id' => 'web_interface/precinct#search_by_id'
       post 'fetch_precinct' => 'web_interface/precinct#fetch_precinct'
 
-      get 'energosbyt' => 'web_interface/energosbyt#show'
-      post 'energosbyt' => 'web_interface/energosbyt#get_user_account_info'
+      get 'find_debt' => 'web_interface/find_debt#show'
+      post 'find_debt' => 'web_interface/find_debt#get_user_account_info'
 
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'

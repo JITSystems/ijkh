@@ -2811,9 +2811,9 @@ h1.analytic_title
 
 /* --------------------------- ANALYTIC END ----------------- */
 
-/* --------------------- ENERGOSBYT BEGIN ------------------- */
+/* --------------------- find_debt (energosbyt) BEGIN ------------------- */
 
-input.energosbyt_text_field, input.energosbyt_number_field
+input.find_debt_text_field, input.find_debt_number_field
 {
 	margin-top: 10px;
 	position: relative;
@@ -2828,20 +2828,20 @@ input.energosbyt_text_field, input.energosbyt_number_field
 	font-size: 15px;
 }
 
-input.energosbyt_number_field
+input.find_debt_number_field
 {
 	display: inline-block;
 	width: 81px;
 }
 
-input.energosbyt_number_field[disabled]
+input.find_debt_number_field[disabled]
 {
 	background-color: rgb(221, 218, 218);
 }
 
 
 
-button.energosbyt_submit
+button.find_debt_submit
 {
 	position: relative;
 	display: block;
@@ -2858,25 +2858,25 @@ button.energosbyt_submit
 	text-decoration: none;
 }
 
-p#energosbyt_info
+p#find_debt_info
 {
 	margin-bottom: 15px;
 	font-size: 15px;
 }
 
-span.energosbyt_title
+span.find_debt_title
 {
 	font-weight: bold;
 }
 
-p.energosbyt_line
+p.find_debt_line
 {
 	font-size: 17px;
 	color: #00558d;
 	padding: 2px 0px;
 }
 
-/* ENERGOSBYT BEGIN */
+/* find_debt BEGIN */
 
 
 /* --------------------- PRECINCT BEGIN ------------------- */
