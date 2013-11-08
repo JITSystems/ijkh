@@ -21,6 +21,8 @@ class PlaceController < ApplicationController
       city = City.where(title: place[:city].capitalize).first
       if city
         place.update_attribute(:city_id, city.id)
+      else
+        place.update_attribute(:city_id, 0)
       end
     end
     render json: @places
