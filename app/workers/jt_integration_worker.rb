@@ -12,7 +12,7 @@ class JtIntegrationWorker
 
 			amount = (amount.to_s)[1..-1] if amount.to_f < 0.0
 			
-			account = service.account if service.account_id
+			account = service.account
 			account.update_attributes!(amount: amount, status: -1) if amount && amount.to_f > 0.0
 		end
 	end
