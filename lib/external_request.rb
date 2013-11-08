@@ -18,7 +18,7 @@ class ExternalRequest
 			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		end
 		get = Net::HTTP::Get.new(@uri.request_uri)
-		response = http.request(get)
+		response = http.request(get).body
 	end
 
 	def post
@@ -32,6 +32,6 @@ class ExternalRequest
 
 		post = Net::HTTP::Post.new(@uri.path)
 		post.body = @data
-		response = http.request(post)
+		response = http.request(post).body
 	end
 end
