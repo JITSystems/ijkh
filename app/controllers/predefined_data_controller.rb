@@ -33,8 +33,8 @@ class PredefinedDataController < ApplicationController
   end
 
   def osmp_check
-    resp = Osmp.check
-    render json: resp.body
+    resp = Osmp.check(params[:user_account], DateTime.now.to_s(:number))
+    render json: resp
   end
 
   def osmp_pay
