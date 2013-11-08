@@ -30,6 +30,7 @@ class AccountController < ApplicationController
 			@services.each do |service|
 				JtIntegrationWorker.perform_async(current_user.id, service.user_account)
 			end
+		end
 		@place_accounts = Account.index_place_account current_user, "!= 1"
 		render 'place_account/index'
 	end
