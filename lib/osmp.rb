@@ -15,7 +15,12 @@ class Osmp
 	request = Net::HTTP::Get.new(uri.request_uri)
 	
 	response = http.request(Net::HTTP::Get.new(uri.request_uri))
-  	response
+  	response = Crack::XML.parse(response.body)
+  	if response["response"]["account_balance"]
+  		return response["response"]["account_balance"]
+  	else
+  		return nil	
+  	end
 	end
 
 	def self.pay(user_account, date, amount)
