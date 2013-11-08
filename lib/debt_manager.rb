@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DebtManager
 
 	def initialize(vendor_id, user_account, current_user_id, remote_ip)
@@ -26,23 +28,14 @@ protected
 		user_data = "user_account=#{@user_account}&user_id=#{@current_user_id}&remote_ip=#{@remote_ip}"
 		FindDebtWorker.perform_async('http://cabinet.izkh.ru/energosbyt', user_data)
 		# FindDebtWorker.perform_async('http://192.168.0.73:8080/energosbyt', user_data)
-		data = info.parsed_response
-		p data["user_account"]
-		p data["invoice_amount"]
-		p data["city"]
-		p data["street"]
-
-
-
-		info
+		# data = info.parsed_response
+		
+		info 
 	end
 
 	def osmp
 		info = Osmp.new(@user_account, DateTime.now.to_s(:number))
 		amount = info.check
-
-		p amount
-
 		amount
 	end
 

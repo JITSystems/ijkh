@@ -34,10 +34,16 @@
 			    data: { user_account: user_account, vendor_id: vendor_id } ,
 			    success: function(result){ 
 
-			       	if (result == "")
+
+			    	if ($('#vendor_id').val() == 16) {
+			    		total_info = '<p class = "find_debt_line">Баланс по договору ' + user_account + ':</p>' + '<p class = "find_debt_line">' + result + ':</p>'
+			    		if (result == null) {total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';}
+			    	}
+			    	else
+			    	{
+			    		if (result == "")
 			    	{ 
 			    		total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';
-			    		totalInfoRender(total_info);
 			    	}
 			    	else
 			    	{
@@ -56,8 +62,11 @@ total_info = '<p class = "find_debt_line"><span class = "find_debt_title"> Ли�
 				 invoice_amount +
 				 '<p class = "find_debt_line"><span class = "find_debt_title"> Показания счётика: </span>' + result.meter_reading + '</p>' ;
 
-				    	totalInfoRender(total_info);
 			    	}
+
+			    	}
+
+			    	totalInfoRender(total_info);
 			    }
 			});
 		}
