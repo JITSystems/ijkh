@@ -36,7 +36,7 @@
 
 
 			    	if ($('#vendor_id').val() == 16) {
-			    		total_info = '<p class = "find_debt_line">Баланс по договору ' + user_account + ':</p>' + '<p class = "find_debt_line">' + result + ':</p>'
+			    		total_info = '<p class = "find_debt_line">Баланс по договору ' + user_account + ':</p>' + '<p class = "find_debt_line">' + result + '</p>'
 			    		if (result == null) {total_info = '<p class = "find_debt_line">Лицевой счёт не найден.</p>';}
 			    	}
 			    	else
