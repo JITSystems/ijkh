@@ -30,7 +30,8 @@ protected
 	end
 
 	def osmp
-		info = Osmp.check
+		info = Osmp.check(@user_account, DateTime.now.to_s(:number))
+		p DateTime.now.to_s(:number)
 		p info
 	end
 
