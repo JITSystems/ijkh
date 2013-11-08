@@ -2,6 +2,9 @@
 
 class WebInterface::FreelancerModerationController < WebInterfaceController
 	# skip_before_filter :require_current_user
+
+  http_basic_authenticate_with name: "root", password: "password", :except => :show
+
   def show
  	if current_user.email == "john.loudless@gmail.com"
  		@freelance_category = FreelanceCategory.order('created_at')

@@ -4,4 +4,4 @@
 
 Тема: <%= @message.subject %>
 
-Сообщение: <%= @message.body %>
+Сообщение: <%= @message.body.html_safe %>
