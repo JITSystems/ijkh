@@ -11,12 +11,16 @@
 
 					<label for="" class="meter_reading_label"><p><%= field.title %></p>
 						<span>Предыдущие показания:</span>
-						<input disabled class="tariff_input_reading" value="<%= field.meter_readings.order("created_at DESC").limit(1).first.reading %> " > </input>
+
+						<% @reading = 'Показания отсутствуют' %>
+						<% @reading = field.meter_readings.order("created_at DESC").limit(1).first.reading if field.meter_readings.order("created_at DESC").limit(1).first %>
+
+						<input disabled class="tariff_input_reading" value="<%= @reading %> " > </input>
 						
 						<input hidden style="display:none" type="text" name="meter_reading[][field_id]" value="<%= field.id %>">
 
 
-						<input hidden style="display:none" name="meter_reading[][prev_reading]" value="<%= field.meter_readings.order("created_at DESC").limit(1).first.reading %> " > </input>
+						<input hidden style="display:none" name="meter_reading[][prev_reading]" value="<%= @reading %> " > </input>
 					
 						<span>Новые показания:</span><input type="text" id="meter_reading_reading" name="meter_reading[][reading]" class="tariff_input_reading">
 						<div class="clear"></div>				
@@ -30,4 +34,6 @@
 		<div class="pay_ended">
 				<%= m_r.submit "Сохранить показания", class: "tariff_button", style: "width: 200px;" %> 
 		</div>
+
 	<% end %>
+
