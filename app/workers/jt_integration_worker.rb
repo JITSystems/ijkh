@@ -5,13 +5,15 @@ class JtIntegrationWorker
 	def perform(user_id, services)
 		services.each do |service|
 			user_account = service.user_account
-			amount = Osmp.check(user_account, DateTime.now.to_s(:number))
+
+			osmp = Osmp.new(user_account, DateTime.now.to_s(:number))
+			amount = osmp.check
+
 			amount = (amount.to_s)[1..-1] if amount.to_f < 0.0
-			account = service.account
-			if amount && amount.to_f > 0.0
-				account.update_attributes!(amount: amount, status: -1)
-			end
+			
+			account = service.account if service.account_id
+			account.update_attributes!(amount: amount, status: -1) if amount && amount.to_f > 0.0
 		end
 	end
-
+	
 end

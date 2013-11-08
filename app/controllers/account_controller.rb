@@ -26,9 +26,7 @@ class AccountController < ApplicationController
 
 	def unpaid_index
 		services = Service.where("user_id = ? and vendor_id = 16 and is_active = true", current_user.id)
-		if services.first
-			JtIntegrationWorker.perform_async(current_user.id, services)
-		end
+		JtIntegrationWorker.perform_async(current_user.id, services) if services.first
 		@place_accounts = Account.index_place_account current_user, "!= 1"
 		render 'place_account/index'
 	end
