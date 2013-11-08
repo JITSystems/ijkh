@@ -25,7 +25,7 @@ class AccountController < ApplicationController
 	end
 
 	def unpaid_index
-		@services = Service.where("user_id = ? and vendor_id = 16 and is_active = true")
+		@services = Service.where("user_id = ? and vendor_id = 16 and is_active = true", current_user.id)
 		if @services.first
 			@services.each do |service|
 				JtIntegrationWorker.perform_async(current_user.id, service.user_account)
