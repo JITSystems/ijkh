@@ -27,6 +27,7 @@ protected
 		unless user_account.length >= 7
 			(7 - user_account.length).times { user_account.insert(0, '0') }
 		end
+		return user_account
 	end
 
 	def get_response(response)
