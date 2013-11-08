@@ -35,7 +35,7 @@ protected
 		if response["response"]["account_balance"]
 	  		return response["response"]["account_balance"]
 	  	else
-	  		return response["response"]["comment"]
+	  		return nil
 	  	end
 	end
 
