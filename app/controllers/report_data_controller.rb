@@ -1,7 +1,7 @@
 class ReportDataController < ApplicationController
 	def index_daily
 		payload = []
-		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", Date.yesterday-4, Date.today)
+		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", Date.yesterday, Date.today)
 		payment_histories.each do |p_h|
 			recipe = Recipe.find(p_h.recipe_id)
 			amount = recipe.total
