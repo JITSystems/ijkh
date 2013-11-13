@@ -37,3 +37,20 @@
 
 	<% end %>
 
+
+	<div class="remove_readings">
+			<a id="meter_readings_reset" onclick="$('#m_r_reset_confirm').fadeIn();">Обнулить показания</a>
+			<a id="meter_readings_delete_last" onclick="$('#m_r_delete_last_confirm').fadeIn();">Стереть последние показания</a>		
+	</div>
+
+	<div class="delete_service_confirm" id="m_r_reset_confirm">
+		<p>Обнулить показания?</p>
+		<%= link_to "Да", "/meter_readings_reset/#{@service_id}", remote: true, method: :put, class:"delete_service_button"  %>
+		<button class="delete_object_button_no" onclick="$('.delete_service_confirm').fadeOut();">Нет</button>		
+	</div>
+
+	<div class="delete_service_confirm" id="m_r_delete_last_confirm">
+		<p>Стереть последние показания?</p>
+		<%= link_to "Да", "/meter_readings_delete_last/#{@service_id}", remote: true, method: :put, class:"delete_service_button"  %>
+		<button class="delete_object_button_no" onclick="$('.delete_service_confirm').fadeOut();">Нет</button>		
+	</div>
