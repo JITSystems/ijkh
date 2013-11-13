@@ -11,9 +11,12 @@
 
 					<label for="" class="meter_reading_label"><p><%= field.title %></p>
 						<span>Предыдущие показания:</span>
+						
+						<% @field_temp = nil %>
+						<% @field_temp = field.meter_readings.order("created_at DESC").limit(1).first %>
 
 						<% @reading = 'Показания отсутствуют' %>
-						<% @reading = field.meter_readings.order("created_at DESC").limit(1).first.reading if field.meter_readings.order("created_at DESC").limit(1).first %>
+						<% @reading = @field_temp.reading if @field_temp %>
 
 						<input disabled class="tariff_input_reading" value="<%= @reading %> " > </input>
 						
@@ -37,7 +40,7 @@
 
 	<% end %>
 
-
+<!-- 
 	<div class="remove_readings">
 			<a id="meter_readings_reset" onclick="$('#m_r_reset_confirm').fadeIn();">Обнулить показания</a>
 			<a id="meter_readings_delete_last" onclick="$('#m_r_delete_last_confirm').fadeIn();">Стереть последние показания</a>		
@@ -54,3 +57,5 @@
 		<%= link_to "Да", "/meter_readings_delete_last/#{@service_id}", remote: true, method: :put, class:"delete_service_button"  %>
 		<button class="delete_object_button_no" onclick="$('.delete_service_confirm').fadeOut();">Нет</button>		
 	</div>
+
+	 -->
