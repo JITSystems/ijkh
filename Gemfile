@@ -16,6 +16,7 @@ gem 'faye'
 gem 'eventmachine'
 gem 'rvm-capistrano'
 gem 'exception_notification'
+gem 'roo'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
