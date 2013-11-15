@@ -33,7 +33,7 @@ class PrecinctController < ApplicationController
 	end
 
 	def parse_precinct
-		Ovd.xml_parser
+		Ovd.xls_parser
 		render json: {status: "success"}
 	end
 end
