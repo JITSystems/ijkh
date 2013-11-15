@@ -39,7 +39,7 @@ class Ovd
 				houses.flatten.each do |house|
 				PrecinctHouse.create!(
 					precinct_id: 		Precinct.where(surname: full_name[0], name: full_name[1]).first.id,
-					precinct_street_id: PrecinctStreet.where(street: address[0]).first.id,
+					precinct_street_id: PrecinctStreet.where(street: address[0].lstrip).first.id,
 			    	house: 				house.lstrip
 				)
 				end
