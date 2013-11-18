@@ -1,7 +1,7 @@
 class PaymentMailer < ActionMailer::Base
 
   default :from => "no-reply@izkh.ru"
-  default :to => "mamonov.nick@gmail.com"
+  default :to => "434713@gmail.com"
 
   def new_message(message)
     @message = message
