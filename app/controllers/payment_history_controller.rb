@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PaymentHistoryController < ApplicationController
 	skip_before_filter :require_auth_token
 	
