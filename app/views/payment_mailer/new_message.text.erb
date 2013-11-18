@@ -1,8 +1,8 @@
-Плательщик: <%= @message.name %>
-Эл. почта: <%= @message.email %>
+Плательщик: <%= @message.name.html_safe %>
+Эл. почта: <%= @message.email.html_safe %>
 
-Поставщик: <%= @message.vendor %>
+Поставщик: <%= @message.vendor.html_safe %>
 
-Сумма: <%= @message.amount %>
+Сумма: <%= @message.amount.html_safe %>
 
-Дата: <%= @message.date %>
+Дата: <%= @message.date.html_safe %>
