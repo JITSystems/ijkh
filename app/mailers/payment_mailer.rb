@@ -5,7 +5,7 @@ class PaymentMailer < ActionMailer::Base
 
   def new_message(message)
     @message = message
-    mail(:subject => "[izkh.ru] #{message.subject}")
+    mail(:subject => "izkh.ru #{message.subject}")
   end
 
 end

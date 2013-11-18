@@ -21,7 +21,7 @@ class PaymentHistoryController < ApplicationController
 		@vendor = Service.find(@recipe.service_id).vendor
 
 		@message = PaymentMessage.new(subject: "Новый платеж", name: @user.first_name, email: @user.email, vendor: @vendor.title, amount: params[:Amount], date: params[:DateTime])
-		PaymentMailer.new_message(@message)
+		PaymentMailer.new_message(@message).deliver
 		render json: {}
 	end
 
