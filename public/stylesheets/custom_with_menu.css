@@ -2813,7 +2813,7 @@ h1.analytic_title
 
 /* --------------------- find_debt (energosbyt) BEGIN ------------------- */
 
-input.find_debt_text_field, input.find_debt_number_field
+input.find_debt_text_field, input.find_debt_number_field, input.energosbyt_text_field, input.energosbyt_number_field
 {
 	margin-top: 10px;
 	position: relative;
@@ -2826,6 +2826,12 @@ input.find_debt_text_field, input.find_debt_number_field
 	color: #00558d;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
+}
+
+input.energosbyt_number_field
+{
+	width: 90px;
+	display: inline-block;
 }
 
 input.find_debt_number_field
