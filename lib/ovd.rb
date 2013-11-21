@@ -2,7 +2,7 @@
 #encoding: utf-8
 class Ovd
 	def self.xls_parser
-		s = Roo::Excel.new("precinct.xls")
+		s = Roo::Excel.new("ovd_data/precinct.xls")
 		(1..s.last_row).each do |i|
 			address_ovd = s.cell(i, 2).split(", ")
 			full_name 	= 	s.cell(i, 4).split(" ")
