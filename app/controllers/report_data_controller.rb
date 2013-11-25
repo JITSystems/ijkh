@@ -22,7 +22,7 @@ class ReportDataController < ApplicationController
 
 	def index_hourly
 		payload = []
-		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", DateTime.now - 3.hour, DateTime.now)
+		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", DateTime.now + 1.hour, DateTime.now + 4.hour)
 		payment_histories.each do |p_h|
 			recipe = Recipe.find(p_h.recipe_id)
 			amount = recipe.total
