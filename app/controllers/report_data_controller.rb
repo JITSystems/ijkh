@@ -20,6 +20,27 @@ class ReportDataController < ApplicationController
 		render json: {payload: payload}
 	end
 
+	def index_hourly
+		payload = []
+		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND po_date_time >= ? AND po_date_time < ?", DateTime.now - 3.hour, DateTime.now)
+		payment_histories.each do |p_h|
+			recipe = Recipe.find(p_h.recipe_id)
+			amount = recipe.total
+				service = recipe.service
+			if service
+				place = service.place
+				if service.vendor
+					vendor_id = service.vendor.id
+					date = p_h.po_date_time
+					address = "#{place.city}, #{place.street}, #{place.building}, #{place.apartment}"
+					user_account = service.user_account
+					payload << {user_account: user_account, address: address, amount: amount, date: date, vendor_id: vendor_id}
+				end
+			end
+		end
+		render json: {payload: payload}
+	end
+
 	def index_monthly_by_vendor
 		payload = []
 		month = params[:month]
