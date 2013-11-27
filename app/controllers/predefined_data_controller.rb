@@ -22,7 +22,7 @@ class PredefinedDataController < ApplicationController
   end
  
   def gt_check
-    er = ExternalRequest.new("https://80.252.16.62/check/phone/2767500", true)
+    @uri = URI.parse("https://80.252.16.62/check/phone/2767500")
     http = Net::HTTP.new(@uri.host, @uri.port)
     http.use_ssl = @ssl
     http.basic_auth 'izkh', 'FDncbv883mJ'
