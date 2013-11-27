@@ -22,8 +22,13 @@ class PredefinedDataController < ApplicationController
   end
  
   def gt_check
-    er = ExternalRequest.new("https://80.252.16.62@izkh:FDncbv883mJ/check/phone/2767500", true)
-    render json: er.get
+    er = ExternalRequest.new("https://80.252.16.62/check/phone/2767500", true)
+    http = Net::HTTP.new(@uri.host, @uri.port)
+    http.use_ssl = @ssl
+    http.basic_auth 'izkh', 'FDncbv883mJ'
+    get = Net::HTTP::Get.new(@uri.request_uri)
+    response = http.request(get).body
+    render json: response
   end 
 
 	def apns
