@@ -44,7 +44,7 @@
 		<%= submit_tag("Оплатить новой картой", :class=>:end_button, disabled: true, id: "pay_submit")  %>
 
 		<div class="cards_list" style="display:none; text-align: left;">
-			<% if @cards %>
+			<% unless @cards == [] %>
 				<% @cards.each do |card| %>
 					<p onclick="$('input.rebill_anchor').val('<%= card.rebill_anchor %>'); $('form#pay_form input').click();" ><%= card.card_title %></p>
 				<% end %>
