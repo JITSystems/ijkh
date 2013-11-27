@@ -17,6 +17,7 @@ class HttpRequestWorker
 				case response["transaction"]["result"].downcase
 				when "error"
 					case response["transaction"]["errorCode"]
+					when "1"
 						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.auth.error.one')}
 					when "2"
 						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.auth.error.two')}
