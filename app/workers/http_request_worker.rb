@@ -40,9 +40,9 @@ class HttpRequestWorker
 					when "1"
 						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.one')}
 					when "2"
-						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.two'}
+						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.two')}
 					when "3"
-						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.three'}
+						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.three')}
 					when "4"
 						if response["transaction"]["code"] == "6001"
 							publish_message = {result: "failure", message: "Операция временно недоступна"}
