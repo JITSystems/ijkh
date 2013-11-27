@@ -22,7 +22,9 @@ class PredefinedDataController < ApplicationController
   end
  
   def gt_check
-    @uri = URI.parse("http://80.252.16.62/check/phone/2767500")
+    require 'net/http'
+
+    @uri = URI.parse("https://80.252.16.62/check/phone/2767500")
     http = Net::HTTP.new(@uri.host, @uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
