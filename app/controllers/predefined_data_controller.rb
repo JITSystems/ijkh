@@ -25,8 +25,8 @@ class PredefinedDataController < ApplicationController
     @uri = URI.parse("https://80.252.16.62/check/phone/2767500")
     http = Net::HTTP.new(@uri.host, @uri.port)
     http.use_ssl = @ssl
-    http.basic_auth 'izkh', 'FDncbv883mJ'
     get = Net::HTTP::Get.new(@uri.request_uri)
+    get.basic_auth 'izkh', 'FDncbv883mJ'
     response = http.request(get).body
     render json: response
   end 
