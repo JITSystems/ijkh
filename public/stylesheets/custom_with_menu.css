@@ -2215,7 +2215,14 @@ margin: 3px 3px;
 {
 	background-color: #d5e6f2;
 	height: 193px;
+	overflow-y: scroll;
 }
+
+.service_pay_block > a
+{
+	width: 430px;
+}
+
 
 .tariff_input_reading
 {
