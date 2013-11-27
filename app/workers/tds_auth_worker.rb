@@ -6,17 +6,14 @@ class TdsAuthWorker
 		require 'net/http'
 
 		publish_message = {}
-		uri = URI.parse(url)
-		https = Net::HTTP.new(uri.host, uri.port)
-		https.use_ssl = true
-		post = Net::HTTP::Post.new(uri.path)
-		post.body = data
-		response = https.request(post)
-		response = Crack::XML.parse(response.body)
+
+		ext_req = ExternalRequest.new(url, true, data)
+		response = Crack::XML.parse(ext_req.post)
+		
 		if response["transaction"]["result"].downcase == "ok"
-			publish_message = {result: "success", message: "Платеж был успешно проведен. Данные поступили в обработку."}
+			publish_message = {result: "success", message: I18n.t('payonline.payment_success')}
 		else
-			publish_message = {result: "failure", message: "При проведении платежа произошла ошибка."}
+			publish_message = {result: "failure", message: I18n.t('payonline.secure.failure')}
 		end
 
 		client = Faye::Client.new('http://izkh.ru:9292/faye')

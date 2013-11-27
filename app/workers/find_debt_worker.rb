@@ -6,7 +6,6 @@ class FindDebtWorker
 
 		require 'net/http'
 
-		publish_message = {}
 		uri = URI.parse(url)
 		http = Net::HTTP.new(uri.host, uri.port)
 		post = Net::HTTP::Post.new(uri.path)
