@@ -24,7 +24,8 @@ class PredefinedDataController < ApplicationController
   def gt_check
     @uri = URI.parse("http://80.252.16.62/check/phone/2767500")
     http = Net::HTTP.new(@uri.host, @uri.port)
-    http.use_ssl = @ssl
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     get = Net::HTTP::Get.new(@uri.request_uri)
     get.basic_auth 'izkh', 'FDncbv883mJ'
     response = http.request(get).body
