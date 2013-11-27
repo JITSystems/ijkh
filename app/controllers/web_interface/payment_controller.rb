@@ -3,6 +3,7 @@
 class WebInterface::PaymentController < WebInterfaceController
 	def show
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
+		@cards = CardManager.get_by_user(current_user)
 		if @places != []
 			@place = @places.first
 			@services = @place.services.order("id DESC").where("is_active IS NULL OR is_active != false")
@@ -96,7 +97,8 @@ class WebInterface::PaymentController < WebInterfaceController
 		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
 		respond_to do |format|
 			format.js {
-				render js: "window.location.replace('#{url}');"
+				 render js: "window.location.replace('#{url}');"
+				 # render js: "console.log('#{url}');"
 			}
 		end
 	end

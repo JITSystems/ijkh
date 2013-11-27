@@ -172,16 +172,20 @@ $(this).remove();
 
      $('span#recipe_is_paid_span').click(function(){
 
+        $('div.cards_list').hide();
         
         if ($("input.recipe_check").attr("checked") != "checked")
         {
-            $("#pay_submit").hide(); 
+            $("div.end .end_button").hide(); 
             $("#save_amount_form").fadeIn(); 
+            $("#save_amount_form input.end_button").fadeIn(); 
         }
         else
         {
             $("#save_amount_form").hide();
-            $("#pay_submit").fadeIn(); 
+            $("div.end .end_button").fadeIn(); 
+            $("#save_amount_form input.end_button").hide(); 
+            
 
         }
         

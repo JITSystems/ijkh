@@ -5,6 +5,7 @@ html,body{
 
 body{
 	background-image: url(../images/background.jpg);
+	background-attachment: fixed;
 	font-family: "Open Sans", sans-serif !important; 
 }
 
@@ -768,7 +769,7 @@ p#account_service_title
 }
 .end_button, .tariff_button{
 	position: relative;
-	width: 260px;
+	width: 220px;
 	height: 40px;
 	background-color: #0071bc;
 	text-align: center;
@@ -2999,3 +3000,20 @@ li[listtype="vendor"]
 li[listtype=""]{
 	display: none;
 }
+
+
+/* Карты сохранённые в оплате услуг */
+div.cards_list {
+	padding: 5px;
+}
+
+div.cards_list > p {
+	padding: 5px 0px 5px 15px;
+}
+
+div.cards_list > p:hover {
+	color: black;
+	cursor: pointer;
+}
+
+

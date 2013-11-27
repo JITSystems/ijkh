@@ -1,4 +1,5 @@
 $("#meter_reading_box").hide();
+$('div.cards_list').hide();
 
 if ($("input.recipe_check").attr("checked") == "checked")
     {
@@ -35,22 +36,22 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 		$('.recipe_is_paid').hide();
 		$('.recipe_is_paid_freeze').show();
 		$('span#recipe_is_paid_span').click();
-		$('#pay_submit').removeAttr('disabled');
+		$('div.end .end_button').removeAttr('disabled');
 	<% else %>
 		$('.recipe_is_paid_freeze').hide();
-		$('#pay_submit').attr('disabled','disabled');
+		$('div.end .end_button').attr('disabled','disabled');
 	<% end %>
 	$('#tax_total').hide();
 <% else %>
 		$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
 		$('.recipe_is_paid_freeze').hide();
-		$('#pay_submit').removeAttr('disabled');
+		$('div.end .end_button').removeAttr('disabled');
 		$('span#tax_total_value').html('<%= @service_tax %>');
 		$('#tax_total').show();
 <% end %>
 
 <% if @vendor_id == 0 %>
-		$('#pay_submit').attr('disabled','disabled');
+		$('div.end .end_button').attr('disabled','disabled');
 		$('#tax_total').hide();
 <% end %>
 
