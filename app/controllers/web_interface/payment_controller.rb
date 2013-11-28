@@ -98,7 +98,6 @@ class WebInterface::PaymentController < WebInterfaceController
 		respond_to do |format|
 			format.js {
 				 render js: "window.location.replace('#{url}');"
-				 # render js: "console.log('#{url}');"
 			}
 		end
 	end
