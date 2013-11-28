@@ -11,8 +11,9 @@ class GlobalTelecom
 
 	def check
 		if @check_url
-  			er = ExternalRequest.new(@сheck_url, true)
-	  		get_response(er.get_basic_auth)
+			puts @check_url
+  			er = ExternalRequest.new(@check_url, true)
+	  		get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
 	  	else 
 	  		nil
 	  	end
@@ -22,7 +23,7 @@ class GlobalTelecom
 		if @check_url
 			puts @check_url
 			er = ExternalRequest.new(@check_url, true)
-  			response = get_response(er.get_basic_auth)
+  			response = get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
   		else
   			response = nil
   		end
@@ -31,7 +32,7 @@ class GlobalTelecom
   			@payment_url = form_payment_url(response["contract"]["id"], @recipe_id)
   			if @payment_url
   				er = ExternalRequest.new(@payment_url, true)
-  				get_response(er.get_basic_auth)
+  				get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
   			else
   				nil
   			end
@@ -65,7 +66,7 @@ protected
 				@type = nil
 			end
 		end
-		url
+		url.to_s
 	end
 
 	def form_payment_url(cid, tid)
