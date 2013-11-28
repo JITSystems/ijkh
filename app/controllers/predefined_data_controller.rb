@@ -22,7 +22,7 @@ class PredefinedDataController < ApplicationController
   end
  
   def gt_check
-    er = ExternalRequest("https://80.252.16.62/check/phone/2767500", true)
+    er = ExternalRequest.new("https://80.252.16.62/check/phone/2767500", true)
     render json: er.get_basic_auth('izkh', 'FDncbv883mJ')
   end 
 
