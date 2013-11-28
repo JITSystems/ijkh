@@ -29,7 +29,7 @@ class GlobalTelecom
   		end
 
   		if response
-  			@payment_url = form_payment_url(response["contract"]["id"], @recipe_id)
+  			@payment_url = form_payment_url(response[:id], @recipe_id)
   			if @payment_url
   				er = ExternalRequest.new(@payment_url, true)
   				get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
@@ -89,7 +89,7 @@ protected
 	def get_response(response)
 		response = Crack::XML.parse(response)
 		if response["data"]["contract"]
-			data = {balance: response["data"]["contract"]["balance"], title: response["data"]["contract"]["title"], comment: response["data"]["contract"]["comment"]}
+			data = {id: response["data"]["contract"]["id"], balance: response["data"]["contract"]["balance"], title: response["data"]["contract"]["title"], comment: response["data"]["contract"]["comment"]}
 	  		return data
 	  	elsif response["data"]["payments"]
 	  		return response["data"]["payments"]
