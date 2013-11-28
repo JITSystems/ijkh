@@ -20,9 +20,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	def get_payment_data
 
 		@tariff = Tariff.where(service_id: params[:service_id]).first
-
 		@service = Service.find(params[:service_id])
-
 		@service_id = params[:service_id]
 
 		if @tariff.has_readings
@@ -33,9 +31,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 
 		@fields = @tariff.fields
-
 		@account = Account.where(service_id: params[:service_id]).first
-
 		vendor_id = @account.service.vendor_id 
 
 		unless vendor_id == 0
@@ -61,6 +57,12 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		@service_tax = service_tax
 		@vendor_id = vendor_id
+
+
+		if (vendor_id == 121)
+			g_t_data = GlobalTelecom.new(@service.user_account)
+			@g_t_data = g_t_data.check
+		end
 
 		respond_to do |format|
 			format.js {
@@ -98,7 +100,6 @@ class WebInterface::PaymentController < WebInterfaceController
 		respond_to do |format|
 			format.js {
 				 render js: "window.location.replace('#{url}');"
-				 # render js: "console.log('#{url}');"
 			}
 		end
 	end
