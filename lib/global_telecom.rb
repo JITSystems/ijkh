@@ -88,6 +88,7 @@ protected
 
 	def get_response(response)
 		response = Crack::XML.parse(response)
+		puts response
 		if response["data"]["contract"]
 			data = {id: response["data"]["contract"]["id"], balance: response["data"]["contract"]["balance"], title: response["data"]["contract"]["title"], comment: response["data"]["contract"]["comment"]}
 	  		return data
