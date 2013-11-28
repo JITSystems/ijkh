@@ -26,6 +26,7 @@ class AccountController < ApplicationController
 
 	def unpaid_index
 		JtIntegrationWorker.perform_async(current_user.id)
+		GtIntegrationWorker.perform_async(current_user.id)
 		@place_accounts = Account.index_place_account current_user, "!= 1"
 		render 'place_account/index'
 	end

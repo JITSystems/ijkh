@@ -21,6 +21,10 @@ class PredefinedDataController < ApplicationController
     render json: {}
   end
  
+  def gt_check
+    er = ExternalRequest("https://80.252.16.62/check/phone/2767500", true)
+    render json: er.get_basic_auth('izkh', 'FDncbv883mJ')
+  end 
 
 	def apns
     PushNotificationsWorker.perform_async
