@@ -56,7 +56,7 @@ protected
 			url += "tv/#{@user_account}"
 			@type = :tv
 		else
-			if @user_account ~= /\d{7}/ 
+			if @user_account =~ /\d{7}/ 
 				url += "phone/#{@user_account}"
 				@type = :phone
 			else
