@@ -30,6 +30,7 @@ module PaymentHistoriesRepository
 			#elsif service && service.vendor_id.to_i = 16
 			#	JtPaymentWorker.perform_async(params[:user_id])
 			end
+		end
 
 		payment_history_params = {
 			po_date_time: 			params[:DateTime], 
