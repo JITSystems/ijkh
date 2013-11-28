@@ -20,6 +20,7 @@ class GlobalTelecom
 
 	def pay
 		if @check_url
+			puts @check_url
 			er = ExternalRequest.new(@check_url, true)
   			response = get_response(er.get_basic_auth)
   		else
@@ -56,7 +57,7 @@ protected
 			url += "tv/#{@user_account}"
 			@type = :tv
 		else
-			if @user_account =~ /\d{7}/ 
+			if @user_account.to_s =~ /\d{7}/ 
 				url += "phone/#{@user_account}"
 				@type = :phone
 			else
