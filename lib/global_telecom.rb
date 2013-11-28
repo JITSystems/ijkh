@@ -89,7 +89,8 @@ protected
 	def get_response(response)
 		response = Crack::XML.parse(response)
 		if response["data"]["contract"]
-	  		return response["data"]["contract"]["balance"]
+			data = {balance: response["data"]["contract"]["balance"], title: response["data"]["contract"]["title"], comment: response["contract"]["data"]["comment"]}
+	  		return data
 	  	elsif response["data"]["payments"]
 	  		return response["data"]["payments"]
 	  	else
