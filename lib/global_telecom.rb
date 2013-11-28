@@ -31,6 +31,7 @@ class GlobalTelecom
   		if response
   			@payment_url = form_payment_url(response[:id], @recipe_id)
   			if @payment_url
+  				puts "payment_url: #{@payment_url}"
   				er = ExternalRequest.new(@payment_url, true)
   				get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
   			else
