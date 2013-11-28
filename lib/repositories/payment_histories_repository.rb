@@ -44,7 +44,7 @@ module PaymentHistoriesRepository
 
 	def create_successful params
 		service_id = params[:service_id]
-
+		logger.info service_id
 		if service_id != 0
 			service = Service.find(service_id)
 			if service && service.vendor_id.to_i == 121
