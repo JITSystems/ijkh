@@ -21,6 +21,15 @@ class ExternalRequest
 		response = http.request(get).body
 	end
 
+	def get_basic_auth(login, password)
+    	http = Net::HTTP.new(@uri.host, @uri.port)
+    	http.use_ssl = @ssl
+    	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    	get = Net::HTTP::Get.new(@uri.request_uri)
+    	get.basic_auth(login, password)
+    	response = http.request(get).body
+	end
+
 	def post
 		http = Net::HTTP.new(@uri.host, @uri.port)
 		http.use_ssl = @ssl
