@@ -9,3 +9,7 @@ end
 child :non_utility_tariffs do
 	extends 'non_utility_tariff/index'
 end
+
+child :cities do
+	extends 'city/index'
+end

@@ -44,7 +44,37 @@ class MeterReadingManager < ObjectManager
 	end
 
   def self.get_last(field_id)
-    MeterReading.where(field_id: field_id).order("created_at DESC").limit(1).first
+      MeterReading.where(field_id: field_id).order("created_at DESC").limit(1).first
+  end
+
+  def self.reset(params, user)
+    account = ServiceManager.get(params[:service_id]).account
+    if ServiceManager.get(params[:service_id]).meter_readings
+      MeterReading.delete_all(['service_id = ? and user_id = ?', params[:service_id], user.id])
+    end
+    AmountUpdater.new(account).nullify
+    AccountManager.update_status(account)
+  end
+
+  def self.delete_last(params, user)
+    account = ServiceManager.get(params[:service_id]).account
+    if ServiceManager.get(params[:service_id]).meter_readings
+      MeterReading.delete(self.get_last(params[:field_id]).id)
+    end
+    AmountUpdater.new(account).nullify
+    AccountManager.update_status(account)
+  end
+
+  def self.create_init(params, user)
+    meter_reading_params = {
+                            service_id:   params[:service_id],
+                            reading:      params[:reading],
+                            field_id:     params[:field_id],
+                            user_id:      user.id,
+                            is_init:      true
+                           }
+
+    MeterReading.create!(meter_reading_params)
   end
 
   protected
@@ -56,7 +86,7 @@ class MeterReadingManager < ObjectManager
   def self.save_snapshot(user, snapshot, snapshot_name, service_id)
     snapshot_name = snapshot_name.to_datetime
   	name = snapshot_name.to_s(:number)+'.png'
-  	directory = File.join('public','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+  	directory = File.join('/','home','ubuntu','apps','shared','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
 
   	unless File.directory?(directory)
   	  FileUtils.mkdir_p(directory)
@@ -64,8 +94,9 @@ class MeterReadingManager < ObjectManager
 
   	path = File.join(directory, name)
   	File.open(path, "wb") { |f| f.write(snapshot.read) }
-  	directory = File.join('images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
+  	directory = File.join('/','home','ubuntu','apps','shared','images','meter_reading_snapshots', user.id.to_s, service_id.to_s)
   	path = File.join(directory, name)
-  	path
+  	path = "images/meter_reading_snapshots/#{user.id}/#{service_id}/#{name}"
+    path
   end
 end

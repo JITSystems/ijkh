@@ -1,5 +1,6 @@
 class AnalyticManager < ObjectManager
-	def self.create(recipe, amount)
+	def self.create(recipe_hash, amount)
+		recipe = RecipeManager.get(recipe_hash[:id])
 		user_id = recipe.service ? recipe.service.user.id : 0
 
 		if recipe

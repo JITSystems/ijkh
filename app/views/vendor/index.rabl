@@ -1,3 +1,7 @@
 collection @vendors
 
-attributes :id, :title
+attributes :id, :title, :inn
+
+child :cities do
+	extends 'city/index'
+end

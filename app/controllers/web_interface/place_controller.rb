@@ -17,6 +17,9 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	def get_place
 		@place = Place.find(params[:place_id])
+
+		@services = ServiceManager.index_by_place(@place)
+		
 		@vendors = Vendor.select("id, title, service_type_id").all
 		@service_types = ServiceType.select("id, title").all
 		@tariffs = Tariff.select("id, title").all
@@ -70,8 +73,9 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	def create
 		@message = "Объект успешно создан."
-		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
-		if @place.save		
+		# @place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
+		@place = PlaceManager.create(params[:place], current_user)
+		if @place		
 			respond_to do |format|
 				format.js {
 					render 'web_interface/place/create'

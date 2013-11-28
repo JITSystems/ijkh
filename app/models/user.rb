@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   has_many :cards
   has_many :accounts
   has_many :payment_histories
-  has_many :places, select: 'id, title, city, street, building, apartment, user_id'
+  has_many :places, select: 'id, title, city, street, building, apartment, user_id, city_id'
   has_many :services, select: 'id, title, user_id'
   has_many :meter_readings
   has_many :tariffs, as: :owner

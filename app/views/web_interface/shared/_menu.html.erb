@@ -2,11 +2,24 @@
 </div>
 <div class="menu">
 	<div class="menu_container">
-		<div class="menu_logo_top"></div>
+		<div class="menu_logo_top">
+			<img style="position: absolute;top: 3px; visibility:hidden;" src= '<%= root_path %>images/logo-round.png', alt="логотип" id="logo">
+		</div>
 		<ul class="menulist">
 			<li class="menulistLi"><%= link_to "ГЛАВНАЯ", main_path %></li>
-			<li class="menulistLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
+			
+			<li class="menulistLi menulistLiDrop">
+				<p>УСЛУГИ</p>
+				<ul class="dropdownMenu" style = "width: 210%;">
+					<li class="dropdownMenuLi"><%= link_to "ОПЛАТИТЬ УСЛУГИ", payment_path %></li>
+					<li class="dropdownMenuLi"><%= link_to 'УЗНАТЬ ЗАДОЛЖЕННОСТЬ', find_debt_path %></li>
+				</ul>
+				
+				
+			</li>
+
 			<li class="menulistLi"><%= link_to "ПРОФИЛЬ", profile_path %></li>
+
 			<li class="menulistLi menulistLiDrop">
 				<!--%= link_to "Пользователям", "user" %-->
 				<p>ИНФОРМАЦИЯ</p>
@@ -14,12 +27,14 @@
 					<li class="dropdownMenuLi"><%= link_to "АНАЛИТИКА", analytic_path %></li>
 					<li class="dropdownMenuLi"><%= link_to "ОФЕРТА", inner_offer_path %></li>
 					<li class="dropdownMenuLi"><%= link_to "ЧАСТЫЕ ВОПРОСЫ", faq_path %></li>
-					<li class="dropdownMenuLi"><%= link_to "ПОСТАВЩИКИ", catalog_path %></li>
-					<li class="dropdownMenuLi"><%= link_to "ЧАСТНЫЕ УСЛУГИ", freelancers_path %></li>
-
+					<li class="dropdownMenuLi"><%= link_to "СПРАВОЧНИК ПОСТАВЩИКОВ", catalog_path %></li>
+					<li class="dropdownMenuLi"><%= link_to "СПРАВОЧНИК ЧАСТНЫХ УСЛУГ", freelancers_path %></li>
+					<li class="dropdownMenuLi"><%= link_to "СПРАВОЧНИК ЭКСТРЕННЫХ СЛУЖБ", emergency_path %></li>
+					<li class="dropdownMenuLi"><%= link_to "СПРАВОЧНИК УЧАСТКОВЫХ", precinct_path %></li>
 					<!--li class="secondcolorLi dropdownMenuLi"><%= link_to "АНКЕТА", profile_path %></li-->
 				</ul>
 			</li>
+
 			<li class="menulistLi"><%= link_to "О КОМПАНИИ", about_path %></li>
 			<li class="menulistLi"><%= link_to "ОБРАТНАЯ СВЯЗЬ", feedback_path %></li>
 			<% unless current_user %>

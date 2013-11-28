@@ -1,13 +1,16 @@
 <div class="top_plate">
 	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
 	<p class="text_plate_blue">Главная страница</p>
+	<%= link_to "", app_download_path, class: "app_download" %>
 </div>
-	<div class="horizontal_div" style="margin-top: 30px;width: 100%; float: none;">
+	<div class="horizontal_div" style="margin-top: 30px;width: 100%; float: none; display: none;">
 		<div class="box_blue" id="" style="min-height:45px;width:930px;">
 					<div class="data_box_top">
 			<p>Важная информация</p>
 		</div>
-<p style="text-align: left; padding: 20px;">Рады сообщить, что восстановлена возможность оплаты услуг с мобильных устройств. </p>
+<p style="text-align: left; padding: 20px;"> 
+<!-- place here important info -->
+ </p>
 	 	</div>
 	</div>
 
@@ -42,7 +45,7 @@
 	<div class="data_box_top">
 		<button class="guide_prev"> &larr;  </button>
 		<button class="guide_next"> &rarr; </button>
-		<p class="guide_top">Информация</p>
+		<p class="guide_top">Как пользоваться сервисом</p>
 
 	</div> 
 
@@ -92,7 +95,7 @@
 
 </div>
 
-	<div class="box_right box blue" style="clear: both;">
+	<div class="box_right box blue" id="carousel_box" style="clear: both;">
 
 		<div class="data_box_top ">
 			<p>Партнеры</p>
@@ -104,14 +107,13 @@
 <li><div class="white_cub white_cub_1"> <a href="<%= redirect_path(url: "http://www.jtcom.ru/", local_url: "/main") %>"> <img src="../images/logo_jt.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_2"> <a href="<%= redirect_path(url: "http://www.bm.ru/", local_url: "/main") %>"> <img src="../images/logo_bm.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_5"> <a href="<%= redirect_path(url: "http://www.cyfral-group.ru", local_url: "/main") %>"> <img src="../images/logo_cyfral.gif" /> </a> </div></li>
+<li><div class="white_cub white_cub_8"> <a href="<%= redirect_path(url: "http://www.sbytenergo.ru/", local_url: "/main") %>"> <img src="../images/logo_se.gif" /> </a> </div></li>
 <li><div class="white_cub white_cub_6"> <a href="<%= redirect_path(url: "http://www.zaopts.com/", local_url: "/main") %>"> <img src="../images/logo_pts.jpg" /> </a> </div></li>
-	    </ul>
-	</div>
-	<div class="white_cubs_carousel">
-	    <ul>
 <li><div class="white_cub white_cub_3"> <a href="<%= redirect_path(url: "http://www.payonline.ru/", local_url: "/main") %>"> <img src="../images/logo_payonline.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_4"> <a href="<%= redirect_path(url: "http://www.delta.ru/", local_url: "/main") %>"> <img src="../images/logo_delta.png" /> </a> </div></li>
 <li><div class="white_cub white_cub_6"> <a href="<%= redirect_path(url: "http://www.gibdd.ru/", local_url: "/main") %>"> <img src="../images/logo_mvd.png" /> </a> </div></li>
+<li>
+<div class="white_cub white_cub_7"> <a href="<%= redirect_path(url: "http://xn----7sbb3armfhpk6czfe.xn--p1ai/", local_url: "/main") %>"> <img src="../images/TBO.jpg" /> </a> </div></li>
 	    </ul>
 	</div>
 				
@@ -127,9 +129,9 @@ $( document ).ready(function() {
     $(".white_cubs_carousel").jCarouselLite({
         btnNext: ".next",
         btnPrev: ".prev",
-        auto: 10000,
+        auto: 4000,
         speed: 1000,
-        visible: 2
+        visible: 4
     });
 
         $(".guide_carousel").jCarouselLite({

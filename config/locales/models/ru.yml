@@ -5,3 +5,6 @@ ru:
     attributes:
       name: "Отображаемое имя"
       phone_number: "Телефон"
+    errors:
+      messages:
+        record_invalid: "Please fill all fields"

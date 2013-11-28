@@ -5,6 +5,7 @@ html,body{
 
 body{
 	background-image: url(../images/background.jpg);
+	background-attachment: fixed;
 	font-family: "Open Sans", sans-serif !important; 
 }
 

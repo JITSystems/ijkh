@@ -1,21 +1,9 @@
-<%= form_for(@place, remote: true, url: web_interface_place_path(@place.id), :method => :put ) do |f| %>
-<div id="place_edit_container">
-		<div class="box_top_right ">
-			<p>Редактирование места</p>
-		</div>
-		<div class="choise_place">
-			<%= f.text_field(:title, :value => @place.title, :placeholder=>"Введите название объекта", :class=>:reg_place) %>
-			<%= f.text_field(:city, :value => @place.city, :placeholder=>"Введите город", :class=>:reg_place) %>
-			<%= f.text_field(:street, :value => @place.street, :placeholder=>"Введите улицу", :class=>:reg_place) %>
-			<%= f.text_field(:building, :value => @place.building, :placeholder=>"Введите номер дома", :class=>:reg_place) %>
-			<%= f.text_field(:apartment, :value => @place.apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place) %>
-		</div>
-</div>
-
 <div id="place_info_container">
 	<div class="object_name">
 		<p id="place_card_title" style="font-size: 20px;padding: 30px 35px;font-weight: bold;color: #47555e;">
-			<span id="place_title_in_card"><%= @place.title %></span> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); return false;">Добавить услугу</button>
+			<span id="place_title_in_card"><%= @place.title %></span> <button id="service_add_button" onclick="$('#service_box').fadeToggle(); 
+			 $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+			 return false;">Добавить услугу</button>
 		</p>
 	</div>
 
@@ -37,10 +25,24 @@
 	
 </div>
 
+<%= form_for(@place, remote: true, url: web_interface_place_path(@place.id), :method => :put ) do |f| %>
+<div id="place_edit_container">
+		<div class="box_top_right ">
+			<p>Редактирование места</p>
+		</div>
+		<div class="choise_place">
+			<%= f.text_field(:title, :value => @place.title, :placeholder=>"Введите название объекта", :class=>:reg_place) %>
+			<%= f.text_field(:city, :value => @place.city, :placeholder=>"Введите город", :class=>:reg_place) %>
+			<%= f.text_field(:street, :value => @place.street, :placeholder=>"Введите улицу", :class=>:reg_place) %>
+			<%= f.text_field(:building, :value => @place.building, :placeholder=>"Введите номер дома", :class=>:reg_place) %>
+			<%= f.text_field(:apartment, :value => @place.apartment, :placeholder=>"Введите номер квартиры", :class=>:reg_place) %>
+		</div>
+</div>
+
 <div class="edit_object" style="padding-top: 5px;bottom: 0px;position: relative;">
 		<div class="accept_place">
 			<input type="text" id="id" name="id" style="display:none" value="<%= @place.id %>">
-			<input id="place_edit_button" type="button" class="accept_service_button place_edit_button" value="Редактировать">
+			<input id="place_edit_button" type="button" onclick="placeEdit();" class="accept_service_button place_edit_button" value="Редактировать">
 		</div>
 </div>
 <% end %>

@@ -48,6 +48,17 @@ module PaymentHistoriesRepository
 		payment_history = PaymentHistory.new(payment_history_params)
 		payment_history.save
 
+		service_id = payment_history_params[:service_id]
+		logger.info service_id
+		if service_id != 0
+			service = Service.find(service_id)
+			if service && service.vendor_id.to_i == 121
+				GtPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i)
+			#elsif service && service.vendor_id.to_i = 16
+			#	JtPaymentWorker.perform_async(params[:user_id])
+			end
+		end
+
 		logger.info params[:RebillAnchor].inspect
 		
 		if params[:RebillAnchor]

@@ -3,6 +3,9 @@
 <% else %>
 	<div id="serviceFreeze" style="position: absolute; width: 100%; height: 0%; bottom: 0px; z-index: 10;"></div>
 <% end %>
+
+<img id="ajax_progressbar" src="/images/progressbar.gif" alt="" style="display:none;">	
+
 <div class="box_top_right ">
 	<p>Добавление услуг</p>
 </div>
@@ -14,12 +17,14 @@
 		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]} ),prompt: "Выберите тип услуги ЖКХ"%>
 		</div>
 
-
 		<div class="type_man_who_have_service">
+		
 			<span class="service_form_sign">Поставщик:</span>
+
 			<%= s_f.fields_for :vendor do |v|%>
-		<%= v.select :id, options_for_select([["Настроить свой тариф", 0, listType: "userTariff"]] + @vendors.map {|v| [v.title, v.id, {listType: 'vendor', id: v.id, serviceTypeId: v.service_type_id}]}), prompt: "Выберите поставщика"%>	
-		<% end %>	
+				<%= v.select :id, grouped_options_for_select(@grouped_options), :include_blank => "Выберите поставщика"%>	
+			<% end %>	
+
 		</div>
 
 <div class="choise_tarif">

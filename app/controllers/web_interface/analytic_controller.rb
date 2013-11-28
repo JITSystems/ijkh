@@ -4,7 +4,7 @@ class WebInterface::AnalyticController < WebInterfaceController
 	#require 'csv'
 	def show
 
-		@monthA = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Декабрь"]
+		@monthA = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
 
 		@payment_histories = PaymentHistory.all
 

@@ -18,6 +18,7 @@ class MeterReadingController < ApplicationController
 	end
 
 	def create
+		logger.info Rails.root
 		@meter_reading = MeterReadingManager.create(current_user, params)
 		render 'meter_reading/show'
 	end
@@ -27,5 +28,22 @@ class MeterReadingController < ApplicationController
 		render 'meter_reading/show_last'
 	end
 
+	def reset
+		# service_id, auth_token
+		MeterReadingManager.reset(params, current_user)
+		render json: {status: "success"}
+	end
 
+	def create_init
+		# reading, field_id, service_id, auth_token
+		@meter_reading = MeterReadingManager.create_init(params, current_user)
+		render 'meter_reading/show'
+	end
+
+	def delete_last
+		# service_id, field_id, auth_token
+		MeterReadingManager.delete_last(params, current_user)
+		@meter_reading = MeterReadingManager.get_last(params[:field_id])
+		render 'meter_reading/show_last'
+	end
 end

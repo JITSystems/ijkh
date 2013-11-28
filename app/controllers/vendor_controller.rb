@@ -8,12 +8,17 @@ class VendorController < ApplicationController
 	end
 
 	def create
-		@vendor = VendorManager.create(params[:vendor])
+		@vendor = VendorManager.create(params)
 		render 'vendor/show'
 	end
 
 	def index
 		@vendors = VendorManager.index
 		render 'vendor/index'
+	end
+
+	def show_by_inn
+		@vendors = VendorManager.fetch_by_inn(params[:inn])
+		render 'vendor/index_with_tariffs'
 	end
 end

@@ -165,6 +165,7 @@ module ServicesRepository
 				place_id: 			params[:place_id],
 				service_type_id: 	params[:service][:service_type_id],
 				user_id: 			user.id,
+				vendor_id: 			0,
 				is_active: 			true
 			}
 

@@ -1,0 +1,186 @@
+<div class="top_plate">
+	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
+	<p class="text_plate_blue">Справочник участковых</p>
+</div>
+
+<div class="container_boxes">
+  <div class="horizontal_div" style="width: 100%; float: none;">
+    <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
+		
+		<p>
+			<label for="by_name">  <input type="radio" name="search_by" id="by_name" value="by_name" onchange='searchBySelect(this)' checked> Поиск по имени </label>
+		</p>
+
+		<p>
+			<label for="by_street"><input type="radio" name="search_by" id="by_street" value="by_street" onchange='searchBySelect(this)'> Поиск по улице </label>
+		</p>
+
+		<div id="search_by_name_container">
+			<%= text_field_tag (:search_by_name), '' , placeholder: 'Начните вводить имя, фамилию или отчество',  class: 'energosbyt_text_field' %>
+			<br>
+			<div id="insert_precincts_here" class="insert_info_here" >
+			</div>
+		</div>
+		
+	
+		<div id="search_by_street_container">
+					<%= text_field_tag (:search_by_street), '', placeholder: 'Начните вводить название улицы',  class: 'energosbyt_text_field'  %> 
+					<%= form_tag '/fetch_precinct', method: :post, remote: true do %>
+						<%= hidden_field_tag (:street_id) %>
+						<%= text_field_tag (:house), '', placeholder: 'Дом №', class: 'energosbyt_number_field', disabled: true %>
+						<%= submit_tag 'Поиск', disabled: true %>
+					<% end %>
+			<br>
+			<br>
+			<div id="insert_streets_here" class="insert_info_here" >
+			</div>
+		</div>
+			
+ 		<p><img id="ajax_progressbar" src="/images/progressbar.gif" alt="" style="visibility:hidden;">	</p>
+
+ 		<div id="detailed_info">
+ 			
+ 		</div>
+
+		
+
+	<!-- 	<div class="jq-selectbox jqselect opened" style="display: inline-block; position: relative; z-index: 100; width: 250px;"><div class="jq-selectbox__select"><div class="jq-selectbox__select-text">-- Выберите --</div><div class="jq-selectbox__trigger"><div class="jq-selectbox__trigger-arrow"></div></div></div><div class="jq-selectbox__dropdown" style="position: absolute; overflow-y: auto; overflow-x: hidden; left: 0px; display: block; height: auto; bottom: auto; top: 33px;"><ul style="list-style: none"><li class="sel selected" style="display: block; white-space: normal;">-- Выберите --</li><li class="" style="display: block; white-space: normal;">Пункт 1</li><li class="" style="display: block; white-space: normal;">Пункт 2</li><li class="disabled" style="display: block; white-space: normal;">Пункт 3</li><li class="" style="display: block; white-space: normal;">Пункт 4</li><li class="" style="display: block; white-space: normal;">Пункт 5</li></ul></div></div>
+ -->
+    </div>
+  </div>
+</div>
+
+<script>       
+
+var searchBySelect = function(thisEl){
+	if (thisEl.checked == true)
+		{
+		$('input[type="text"]').val('');
+		$('div.insert_info_here').html('');
+		$('div#detailed_info').html('');
+		switch(thisEl.value){
+			case 'by_name':
+				$('div#search_by_street_container').hide();
+				$('div#search_by_name_container').fadeIn('fast');
+				$('div.insert_info_here').html('');
+				console.log('by_name');
+			break
+
+			case 'by_street':
+				$('div#search_by_name_container').hide();
+				$('div#search_by_street_container').fadeIn('fast');
+				$('div.insert_info_here').html('');
+				console.log('by_street');
+			break
+		}
+	}
+};
+
+</script>
+
+<script>
+
+ 	var setPrecinctsClick = function()
+ 	{
+		$('.precinct_line').click(function(){
+			$('#insert_precincts_here').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+			console.log('match!');
+			$.ajax({
+				    type: "POST",
+				    url: "/precinct_by_id",
+				    data: { search_request: $( this ).attr('p_id') }
+				    });
+		});
+ 	}
+
+ 	var setStreetsClick = function()
+ 	{
+		$('.precinct_line').click(function(){
+
+			$("input#search_by_street").val( $( this ).html() );
+			$("input#street_id").val( $( this ).attr('s_id') );
+			$("input#house").removeAttr('disabled');
+			$("input[type='submit']").removeAttr('disabled');
+			$("input#house").focus();
+			$('div.insert_info_here').html('');
+			
+		});
+ 	}
+
+	$('#search_by_name').keyup(function () {
+
+		$('#insert_precincts_here').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+		$('div#detailed_info').html('');
+		$("input#house").attr('disabled','disabled');
+		$("input[type='submit']").attr('disabled','disabled');
+
+		if ($( this ).val() == '')
+		{
+			$('#insert_precincts_here').html('');
+		}	
+		else
+		{
+			data = $( this ).val().toLowerCase()
+			$.ajax({
+			    type: "POST",
+			    url: "/precinct_by_name",
+			    data: { search_request: data }
+			    });
+		}
+	});
+
+
+	$('#search_by_street').keyup(function () {
+
+		$('#insert_streets_here').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+		$('div#detailed_info').html('');
+		$("input#house").val('');
+		$("input#house").attr('disabled','disabled');
+		$("input[type='submit']").attr('disabled','disabled');
+
+		if ($( this ).val() == '')
+		{
+			$('#insert_streets_here').html('');
+		}	
+		else
+		{
+			data = $( this ).val().toLowerCase()
+			$.ajax({
+			    type: "POST",
+			    url: "/precinct_by_street",
+			    data: { search_request: data }
+			    });
+		}
+	});
+
+	$('html').click(function() {
+			$('div.insert_info_here').html('');
+	});
+
+	$('div.insert_info_here').click(function(event){
+    		event.stopPropagation();
+	});
+
+	$('input[type="text"]').click(function(event){
+    		event.stopPropagation();
+	});
+
+	$('form').submit(function() {  
+    	var valuesToSubmit = $(this).serialize();
+    	$('div#detailed_info').html('<p><img src="/images/progressbar.gif" alt="progressbar"></p>');
+    $.ajax({
+    	type: "POST",
+        url: $(this).attr('action'), //sumbits it to the given url of the form
+        data: valuesToSubmit
+        //,dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        console.log('success!'); //act on result.
+    });
+	    return false; // prevents normal behaviour
+	});
+
+</script>
+
+
+
+

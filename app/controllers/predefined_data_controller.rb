@@ -21,18 +21,40 @@ class PredefinedDataController < ApplicationController
     render json: {}
   end
  
+  def gt_check
+    er = ExternalRequest.new("https://80.252.16.62/check/phone/2767500", true)
+    render json: er.get_basic_auth('izkh', 'FDncbv883mJ')
+  end 
 
 	def apns
     PushNotificationsWorker.perform_async
     render json: {status: "success"}
 	end
 
-  def apns_new
-    render 'predefined_data/apns_new'
+  def new_vendors_notification
+    VendorPushNotificationsWorker.perform_async
+    render json: {status: "success"}
   end
 
-  def osmp
-    resp = Osmp.check
+  def osmp_check
+    osmp = Osmp.new(params[:user_account], DateTime.now.to_s(:number))
+    resp = osmp.check
+    render json: resp
+  end
+
+  def osmp_pay
+    resp = Osmp.pay
     render json: resp.body
+  end
+
+  def users_and_vendors
+    @users = User.all.count
+    @vendors = Vendor.where(is_active: true).count
+    render json: {users: @users, vendors: @vendors}
+  end
+
+  def send_custom
+    CustomPushNotificationsWorker.perform_async(params[:mess])
+    render json: {status: "success"}
   end
 end

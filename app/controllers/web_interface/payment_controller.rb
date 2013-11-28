@@ -3,6 +3,7 @@
 class WebInterface::PaymentController < WebInterfaceController
 	def show
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
+		@cards = CardManager.get_by_user(current_user)
 		if @places != []
 			@place = @places.first
 			@services = @place.services.order("id DESC").where("is_active IS NULL OR is_active != false")
@@ -19,8 +20,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	def get_payment_data
 
 		@tariff = Tariff.where(service_id: params[:service_id]).first
-
 		@service = Service.find(params[:service_id])
+		@service_id = params[:service_id]
 
 		if @tariff.has_readings
 			@fields = @tariff.fields
@@ -30,30 +31,38 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 
 		@fields = @tariff.fields
-
 		@account = Account.where(service_id: params[:service_id]).first
+		vendor_id = @account.service.vendor_id 
 
-		vendor_id = Service.find(params[:service_id]).vendor_id
-
-		commission = VendorManager.get(vendor_id).commission
+		unless vendor_id == 0
+			@commission = VendorManager.get(vendor_id).commission
+		else
+			@commission = 0 
+		end
 
 		po_tax = 0
 		service_tax = 0
 		total = 0.0
 		amount = @account.amount
 
-		unless commission 
+		unless @commission 
 			po_tax = 0
 			service_tax = 0
 			total = service_tax + amount
 		else 
-			service_tax = round_up((commission.to_f/100.00)*amount).round(2)
+			service_tax = round_up((@commission.to_f/100.00)*amount).round(2)
 			po_tax = 0
 			total = service_tax + amount
 		end
 
 		@service_tax = service_tax
 		@vendor_id = vendor_id
+
+
+		if (vendor_id == 121)
+			g_t_data = GlobalTelecom.new(@service.user_account)
+			@g_t_data = g_t_data.check
+		end
 
 		respond_to do |format|
 			format.js {
@@ -90,7 +99,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
 		respond_to do |format|
 			format.js {
-				render js: "window.location.replace('#{url}');"
+				 render js: "window.location.replace('#{url}');"
 			}
 		end
 	end
@@ -111,11 +120,17 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		vendor_id = @account.service.vendor_id 
 
-		if vendor_id || vendor_id !=0
+		unless vendor_id == 0
 			@commission = VendorManager.get(vendor_id).commission
 		else
 			@commission = 0 
 		end
+			
+
+		unless @commission
+			@commission = 0
+		end
+
 
 		@message = "Счёт успешно создан"
 
@@ -128,6 +143,8 @@ class WebInterface::PaymentController < WebInterfaceController
 
 	def save_account_as_paid
 		@message = "Счёт сохранён как оплаченный"
+
+		params[:amount] = params[:amount_total] if params[:amount_total]
 
 		@account = Account.hand_switch current_user, params		
 

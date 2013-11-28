@@ -5,6 +5,7 @@ html,body{
 
 body{
 	background-image: url(../images/background.jpg);
+	background-attachment: fixed;
 	font-family: "Open Sans", sans-serif !important; 
 }
 
@@ -81,7 +82,7 @@ div#ajax_loader_center
 	position: relative;
 	float: left;
 	height: 53px;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 15px 0px 15px;
 	line-height: 3.2;
 	font-family: 'PT Sans Narrow', sans-serif;
 	font-size: 18px;
@@ -135,10 +136,10 @@ a#no_object_found
 
 .dropdownMenu{
 	position: absolute;
-	width: 100%;
+	width: 170%;
 	top: 55px;
 	float: left;
-	z-index: 100;
+	z-index: 111;
 	left: 0px;
 	display: none;
 	box-shadow: black 0px 3px 15px -3px;
@@ -146,15 +147,19 @@ a#no_object_found
 .dropdownMenuLi{
 	border-bottom: 1px rgb(147, 190, 255) solid;
 	position: relative;
-	height: 35px;
+	/*height: 35px;*/
 	background-color: #d5e6f2;
-	margin-top: 1px;
+	/*margin-top: 1px;*/
 	font-size: 15px;
 	line-height: 2.3;
-	text-indent: 9px;
 	color: #00558d;
 	text-shadow: none;
 	cursor: pointer;
+}
+
+.dropdownMenuLi a
+{
+	padding-left: 9px;
 }
 
 .dropdownMenuLi a:hover{
@@ -261,6 +266,11 @@ a#no_object_found
 
 
 /*----------------------------	FREE FOR ALL   ----------------------------*/
+
+#profile_container > #error_explanation
+{
+	padding: 10px 0px 10px 165px;
+}
 
 .profile_plate{
 	position: relative;
@@ -759,7 +769,7 @@ p#account_service_title
 }
 .end_button, .tariff_button{
 	position: relative;
-	width: 260px;
+	width: 220px;
 	height: 40px;
 	background-color: #0071bc;
 	text-align: center;
@@ -770,8 +780,9 @@ p#account_service_title
 	cursor: pointer;
 	display: block;
 	text-align: center;
-	line-height: 40px;
+	line-height: 36px;
 	/*left: 15px;*/
+	z-index: 10;
 }
 
 .end_button[disabled]
@@ -852,15 +863,16 @@ p#account_service_title
 	box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);
 	display: none;
 	padding-bottom: 20px;
-
+	padding-top: 10px;
+	position: relative;
 }
 
 .service_info > p
 {
-	color: #47555e;
+	color: #47555E;
 	font-size: 15px;
-	line-height: 2.5;
-	padding: 0px 35px;
+	line-height: 1;
+	padding: 2px 35px;
 }
 
 .service_info_header
@@ -878,11 +890,13 @@ p#account_service_title
 /*.service_li:hover */
 
 p.delete_service{
-	text-align: right;
+	/*text-align: right;*/
+	padding: 20px 35px 10px 35px;
 }
 
 
-.delete_service a{
+.delete_service button.delete_service_button{
+	float: right;
 	background-color: rgb(196, 45, 45);
 	color: #FFF;
 	border: 0px;
@@ -960,7 +974,7 @@ button.delete_object_button{
 	margin: 5px 3px 0px 0px;
 }
 
-.delete_object_button_yes, .delete_object_button_no
+input.delete_object_button_yes, .delete_object_button_no, button.delete_object_button_yes, a.delete_service_button
 {
 float: left;
 position: relative;
@@ -977,6 +991,10 @@ cursor: pointer;
 left: 15px;
 top: -25px;
 background-color: rgb(196, 45, 45);
+}
+
+a.delete_service_button{
+line-height: 38px;
 }
 
 .delete_object_button_no
@@ -1371,6 +1389,11 @@ div#field_templates_box input[disabled]
 
 /*----------------------------	MAIN CONTENT  ----------------------------*/
 
+#carousel_box
+{
+	width: 100%;
+}
+
 .white_cubs_carousel
 {
 	/*width: 420px;
@@ -1401,9 +1424,9 @@ div#field_templates_box input[disabled]
 }
 .white_cubs{
 	position: relative;
-	width: 420px;
-	height: 180px;
-	margin: 25px auto 25px;
+	width: 840px;
+	height: 95px;
+	margin: 20px auto 20px;
 }
 .white_cub{
 	position: relative;
@@ -1443,6 +1466,16 @@ div#field_templates_box input[disabled]
 	padding: 2px 60px;
 }
 
+.white_cub_7 img
+{
+margin: 3px 3px;
+}
+
+.white_cub_8 img
+{
+	width: 100%;
+	padding: 10% 0px;
+}
 
 .white_cub a 
 {
@@ -1675,10 +1708,10 @@ div#field_templates_box input[disabled]
 	position: absolute;
 	display: block;
 	width: 236px;
-	height: 73px;
+	height: 74px;
 	background-image: url(../images/appstore_button-1.png);
-	top:15px;
-	right: 16px;
+	top: 22px;
+	right: 26px;
 }
 /*----------------------------	END_FOOTER   ----------------------------*/
 
@@ -2182,7 +2215,14 @@ div#field_templates_box input[disabled]
 {
 	background-color: #d5e6f2;
 	height: 193px;
+	overflow-y: scroll;
 }
+
+.service_pay_block > a
+{
+	width: 430px;
+}
+
 
 .tariff_input_reading
 {
@@ -2260,6 +2300,38 @@ a.object_selected, a.service_pay_selected
 .pay_ended p
 {
 	margin: 0px 0px 0px 0px;
+}
+
+div.remove_readings
+{
+	float: right;
+	position: relative;
+	margin: -50px 0px 0px 0px;
+	text-align: right;
+}
+
+div.remove_readings a
+{
+	position: relative;
+	width: 236px;
+	height: 40px;
+	background-color: #0071BC;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	line-height: 40px;
+	margin-bottom: 12px;
+	float: right;
+}
+
+div.remove_readings a#meter_readings_delete_last
+{
+	width: 270px;
 }
 
 input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabled"]{
@@ -2395,7 +2467,7 @@ p#tax_total_error
 	display: inline;
 }
 
-#delete_place_confirm
+#delete_place_confirm, .delete_service_confirm
 {
 	display: none;
 	position: absolute;
@@ -2407,7 +2479,7 @@ p#tax_total_error
 	background-color: rgba(0,0,0,0.8);
 }
 
-#delete_place_confirm p
+#delete_place_confirm p, .delete_service_confirm p
 {
 	text-align: center;
 	margin: 65px 0px;
@@ -2415,6 +2487,15 @@ p#tax_total_error
 	font-size: 40px;
 }
 
+.delete_service_confirm p
+{
+	margin: 30px 0px 54px;
+}
+
+#meter_reading_box > .delete_service_confirm > p
+{
+	margin: 70px 0px 54px;
+}
 
 #place_card_box input[type="submit"]
 {
@@ -2701,11 +2782,6 @@ p.p4
 
 }
 
-
-li[listtype=""]{
-	display: none;
-}
-
 .quiz_box
 {
 	display: none;
@@ -2732,13 +2808,219 @@ p#quiz_progress
 
 h1.analytic_title
 {
-position: relative;
-font-size: 20px;
-display: block;
-color: #00558d;
-font-weight: 600;
-margin: 10px auto;
-text-align: left;
+	position: relative;
+	font-size: 20px;
+	display: block;
+	color: #00558d;
+	font-weight: 600;
+	margin: 10px auto;
+	text-align: left;
 }
 
 /* --------------------------- ANALYTIC END ----------------- */
+
+/* --------------------- find_debt (energosbyt) BEGIN ------------------- */
+
+input.find_debt_text_field, input.find_debt_number_field, input.energosbyt_text_field, input.energosbyt_number_field
+{
+	margin-top: 10px;
+	position: relative;
+	display: block;
+	width: 381px;
+	height: 34px;
+	background-color:  white;
+	border: 1px solid #8da9bc;
+	text-indent: 15px;
+	color: #00558d;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+
+input.energosbyt_number_field
+{
+	width: 90px;
+	display: inline-block;
+}
+
+input.find_debt_number_field
+{
+	display: inline-block;
+	width: 81px;
+}
+
+input.find_debt_number_field[disabled]
+{
+	background-color: rgb(221, 218, 218);
+}
+
+
+
+button.find_debt_submit
+{
+	position: relative;
+	display: block;
+	width: 190px;
+	top: 10px;
+	height: 38px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+p#find_debt_info
+{
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+
+span.find_debt_title
+{
+	font-weight: bold;
+}
+
+p.find_debt_line
+{
+	font-size: 17px;
+	color: #00558d;
+	padding: 2px 0px;
+}
+
+/* find_debt BEGIN */
+
+
+/* --------------------- PRECINCT BEGIN ------------------- */
+
+div#search_by_street_container
+{
+	display: none;
+}
+
+div#search_by_street_container form
+{
+	display: inline-block;
+}
+
+div#search_by_street_container form input[type=submit]
+{
+	display: inline-block;
+	position: relative;
+	margin: 0 auto;
+	top: -1px;
+	width: 150px;
+	height: 38px;
+	background-color: #0071bc;
+	text-align: center;
+	color: #FFF;
+	border: 0px;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+div#search_by_street_container form input[type=submit][disabled=disabled]
+{
+	background-color: #8da9bc;
+	text-shadow: 1px 1px 0px #FFF;
+	color: #6a7f8d;
+	cursor: default;
+}
+
+
+
+
+input#search_by_street
+{
+	display: inline-block;
+	width: 290px;
+}
+
+div.insert_info_here
+{
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 385px;
+	z-index: 10;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: -15px 0px 0px;
+	padding: 0;
+	/*border: 1px solid #C6CBD0;*/
+	border-radius: 4px;
+	background: #FFF;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+	font: 14px/18px Arial, Tahoma, sans-serif;
+	position: relative;
+}
+
+div.insert_info_here p
+{
+	padding: 5px 0px 5px 15px;
+}
+
+div.insert_info_here p.precinct_line:hover
+{
+	background-color: #00558d;
+	cursor: pointer;
+	color: white;
+}
+
+span.precinct_line, p.precinct_info
+{
+	font-size: 15px;
+	cursor: pointer;
+	line-height: 17px;
+}
+
+span.precinct_line:hover
+{
+	border-bottom: 1px #666 solid;
+	padding-bottom: 1px;
+}
+
+p.precinct_info
+{
+	cursor: default;
+}
+
+p.precinct_info span
+{
+	font-weight: bold;
+}
+
+
+
+/* SERVICE SELECT */
+
+li[listtype="vendor"]
+{
+	padding-left: 30px !important; 
+}
+
+
+li[listtype=""]{
+	display: none;
+}
+
+
+/* Карты сохранённые в оплате услуг */
+div.cards_list {
+	padding: 5px;
+}
+
+div.cards_list > p {
+	padding: 5px 0px 5px 15px;
+}
+
+div.cards_list > p:hover {
+	color: black;
+	cursor: pointer;
+}
+
+

@@ -11,10 +11,31 @@ Ijkh::Application.routes.draw do
     put '/users/:id' => 'registrations#update', as: :update_user_registration 
   end
   
+  require 'sidekiq/web'
+  
+  authenticate :user, lambda { |u| u.id == 2 } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+  
+
   root :to => 'web_interface/main#index'
 
   get 'apns_test' => 'predefined_data#apns'
+  get 'apns_vendor' => 'predefined_data#new_vendors_notification'
   post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
+  get 'get_statistics' => 'predefined_data#users_and_vendors'
+  get 'send_me_a_message' => 'predefined_data#send_custom'
+  get 'gt_check' => 'predefined_data#gt_check'
+
+# Admin
+  namespace :admin do
+    resources :users, only: [:index, :show]
+    resources :places, only: [:index, :show]
+    resources :services, only: [:index, :show]
+    resources :vendors
+    resources :tariff_templates
+    resources :field_templates
+  end
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
@@ -23,6 +44,7 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/places' => 'place#index'
   post 'api/1.0/place' => 'place#create'
   put 'api/1.0/place/:place_id' => 'place#update'
+  get 'api/1.0/place/city_id' => 'place#city_id_match'
 
 # Service Type
   get 'api/1.0/servicetypes' => 'service_type#index'
@@ -36,6 +58,7 @@ Ijkh::Application.routes.draw do
   post 'api/1.0/place/:place_id/userservice' => 'service#create_user_service'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
   delete 'api/1.0/service/:service_id' => 'service#destroy'
+  get 'api/1.0/user_accounts/:vendor_id' => 'service#index_user_account'
 
 # Card
   get 'api/1.0/cards' => 'card#index'
@@ -55,12 +78,16 @@ Ijkh::Application.routes.draw do
 # Vendor
   get 'api/1.0/servicetype/:service_type_id/vendors' => 'vendor#index_with_tariffs'
   get 'api/1.0/vendors' => 'vendor#index'
+  get 'api/1.0/vendor/show_by_inn' => 'vendor#show_by_inn'
   post 'api/1.0/vendor' => 'vendor#create'
 
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   get 'api/1.0/meterreadings' => 'meter_reading#index_by_vendor'
   post 'api/1.0/meterreading' => 'meter_reading#create'
+  post 'api/1.0/meter_reading/create_init' => 'meter_reading#create_init'
+  delete 'api/1.0/meter_reading/reset' => 'meter_reading#reset'
+  delete 'api/1.0/meter_reading/delete_last' => 'meter_reading#delete_last'
 
 # Account
   get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
@@ -73,8 +100,15 @@ Ijkh::Application.routes.draw do
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
-# Presinct
-  get 'api/1.0/presinct/test' => 'presinct#test'
+# Precinct
+  get 'api/1.0/precinct/test' => 'precinct#test'
+  get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
+  get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
+  get 'api/1.0/precinct/search_by_street' => 'precinct#search_by_street'
+  get 'api/1.0/precinct/create' => 'precinct#parse_precinct'
+
+# City
+  get 'api/1.0/cities' => 'city#index'
 
 # Service Account
   get 'api/1.0/service/:service_id/serviceaccount' => 'service_account#show'
@@ -85,6 +119,8 @@ Ijkh::Application.routes.draw do
 
 # Freelance Category
   get 'api/1.0/freelancecategory' => 'freelance_category#index'
+  post 'api/1.0/freelance_category/create' => 'freelance_category#create'
+  post 'api/1.0/freelancer/create' => 'freelancer#create'
 
 # Non Utility Service Type
   get 'api/1.0/nonutilityservicetype' => 'non_utility_service_type#index'
@@ -118,10 +154,13 @@ Ijkh::Application.routes.draw do
 
 # Report
   get 'api/1.0/report_daily' => 'report_data#index_daily'
+  get 'api/1.0/report_hourly' => 'report_data#index_hourly'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
+  get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
 # OSMP
-  get 'osmp' => 'predefined_data#osmp'
+  get 'osmp_check' => 'predefined_data#osmp_check'
+  get 'osmp_pay' => 'predefined_data#osmp_pay'
 
 # Web Interface
   scope '/' do
@@ -134,10 +173,13 @@ Ijkh::Application.routes.draw do
       get 'inner_offer' => 'web_interface/inner_offer#show'
       get 'profile' => 'web_interface/profile#show'
       get 'app_download' => 'web_interface/app_download#show'
+      post 'get_vendors' => 'web_interface/profile#get_vendors'
       post 'get_place/:place_id' => 'web_interface/place#get_place'
       post 'get_service/:place_id' => 'web_interface/service#get_service'
       post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
       post 'get_meter_reading/:tariff_id' => 'web_interface/payment#get_meter_reading'
+      put 'meter_readings_reset/:service_id' => 'web_interface/meter_reading#reset'
+      put 'meter_readings_delete_last/:service_id' => 'web_interface/meter_reading#delete_last'
       post 'get_recurrent_account/:service_id' => 'web_interface/payment#get_recurrent_account'
       get 'pay' => 'web_interface/payment#pay'
       post 'save_account_as_paid' => 'web_interface/payment#save_account_as_paid'
@@ -146,13 +188,30 @@ Ijkh::Application.routes.draw do
       post 'profile_place' => 'web_interface/place#profile_create'
       post 'service' => 'web_interface/service#create'
       delete 'place' => 'web_interface/place#destroy'
+      get  'precinct' => 'web_interface/precinct#show'
+      post 'precinct_by_name' => 'web_interface/precinct#search_by_name'
+      post 'precinct_by_street' => 'web_interface/precinct#search_by_street'
+      post 'precinct_by_id' => 'web_interface/precinct#search_by_id'
+      post 'fetch_precinct' => 'web_interface/precinct#fetch_precinct'
+
+      get 'find_debt' => 'web_interface/find_debt#show'
+      post 'find_debt' => 'web_interface/find_debt#get_user_account_info'
 
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'
       
       get "catalog" => "web_interface/catalog#show"
       get "emergency_catalog" => "web_interface/emergency_catalog#show"
+      get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
+      get "freelancer_moderation" => "web_interface/freelancer_moderation#show"
+      put "freelancer_moderation" => "web_interface/freelancer_moderation#update"
+      delete "freelancer_moderation" => "web_interface/freelancer_moderation#destroy"
+      put "publish_all_freelancers" => "web_interface/freelancer_moderation#publish_all_freelancers"
+
+
+      get "freelancer_registration" => "web_interface/freelancer_registration#show"
+      post "freelancer_registration" => "web_interface/freelancer_registration#create"
       put 'delete_service/:service_id' => 'web_interface/service#delete'
 
       get "redirect" => 'web_interface/redirect_page#show'
