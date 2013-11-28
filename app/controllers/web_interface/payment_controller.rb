@@ -58,6 +58,12 @@ class WebInterface::PaymentController < WebInterfaceController
 		@service_tax = service_tax
 		@vendor_id = vendor_id
 
+
+		if (vendor_id == 121)
+			g_t_data = GlobalTelecom.new(@service.user_account)
+			@g_t_data = g_t_data.check
+		end
+
 		respond_to do |format|
 			format.js {
 				render 'web_interface/payment/get_payment_data'
