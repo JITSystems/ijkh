@@ -23,15 +23,6 @@ module PaymentHistoriesRepository
 			service_id = 0
 		end
 
-		if service_id != 0
-			service = Service.find(service_id)
-			if service && service.vendor_id.to_i = 121
-				GtPaymentWorker.perform_async(params[:user_id], params[:OrderId].to_i)
-			#elsif service && service.vendor_id.to_i = 16
-			#	JtPaymentWorker.perform_async(params[:user_id])
-			end
-		end
-
 		payment_history_params = {
 			po_date_time: 			params[:DateTime], 
 			po_transaction_id: 		params[:TransactionID], 
@@ -52,6 +43,17 @@ module PaymentHistoriesRepository
 	end
 
 	def create_successful params
+		service_id = params[:service_id]
+
+		if service_id != 0
+			service = Service.find(service_id)
+			if service && service.vendor_id.to_i == 121
+				GtPaymentWorker.perform_async(params[:user_id], params[:recipe_id].to_i)
+			#elsif service && service.vendor_id.to_i = 16
+			#	JtPaymentWorker.perform_async(params[:user_id])
+			end
+		end
+
 		payment_history_params = pack_params params
 		payment_history_params.merge!(status: 1)
 		payment_history = PaymentHistory.new(payment_history_params)
