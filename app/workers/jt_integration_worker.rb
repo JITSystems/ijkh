@@ -3,7 +3,7 @@ class JtIntegrationWorker
 	include Sidekiq::Worker
 
 	def perform(user_id)
-		services = Service.where("user_id = ? and vendor_id = 16 and is_active = true", user_id)
+		services = Service.where('user_id = ? and vendor_id = 16 and is_active = true', user_id)
 		services.each do |service|
 			user_account = service.user_account
 
