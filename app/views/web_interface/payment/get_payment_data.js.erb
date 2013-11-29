@@ -59,6 +59,7 @@ $('div.gt_info').html('');
 console.log('<%= @g_t_data %>');
 <% if @g_t_data %>
 	var q_t_data = <%= @g_t_data.html_safe %>;
-	$('div.gt_info').append('<p> ФИО:' + q_t_data.title + '</p>');
-	$('div.gt_info').append('<p> Баланс:' + q_t_data.balance + '</p>');
+	$('div#gt_info').append('<p> ФИО: ' + q_t_data.comment + '</p>');
+	$('div#gt_info').append('<p> № договора: ' + q_t_data.title + '</p>');
+	$('div#gt_info').append('<p> Баланс: ' + q_t_data.balance + '</p>');
 <% end %>
