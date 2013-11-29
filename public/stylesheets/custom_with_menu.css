@@ -3030,4 +3030,19 @@ div.cards_list > p > span:hover {
 	cursor: pointer;
 }
 
+div#gt_info
+{
+	padding: 15px 0px 0px 30px;
+}
+
+div#gt_info > p
+{
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+div#gt_info > p > span
+{
+	font-weight: 600;
+}
 

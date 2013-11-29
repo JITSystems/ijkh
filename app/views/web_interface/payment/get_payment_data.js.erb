@@ -54,12 +54,17 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 		$('div.end .end_button').attr('disabled','disabled');
 		$('#tax_total').hide();
 <% end %>
-
 $('div#gt_info').html('');
-console.log('<%= @g_t_data %>');
-<% if @g_t_data %>
-	var q_t_data = <%= @g_t_data.html_safe %>;
-	$('div#gt_info').append('<p> ФИО: ' + q_t_data.comment + '</p>');
-	$('div#gt_info').append('<p> № договора: ' + q_t_data.title + '</p>');
-	$('div#gt_info').append('<p> Баланс: ' + q_t_data.balance + '</p>');
+
+<% if (@vendor_id == 121) %>
+	//console.log('<%= @g_t_data %>');
+	<% if @g_t_data %>
+		var q_t_data = <%= @g_t_data.html_safe %>;
+		$('div#gt_info').append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
+		$('div#gt_info').append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
+		$('div#gt_info').append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
+	<% else %>
+		$('div#gt_info').append('<p>Информации по лицевому счёту не найдено. Пожалуйста, проверьте правильность введённых данных.</p>');
+	<% end %>
 <% end %>
+
