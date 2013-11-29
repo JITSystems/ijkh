@@ -63,8 +63,9 @@ $('div#gt_info').html('');
 		$('div#gt_info').append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
 		$('div#gt_info').append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
 		$('div#gt_info').append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
-	<% else %>
-		$('div#gt_info').append('<p>Информации по лицевому счёту не найдено. Пожалуйста, проверьте правильность введённых данных.</p>');
 	<% end %>
+
+	if  ( q_t_data == null ).html('<p>Договор не найден. Пожалуйста, проверьте правильность введённого лицевого счёта.</p>');
+
 <% end %>
 
