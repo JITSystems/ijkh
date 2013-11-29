@@ -45,7 +45,8 @@ class HttpRequestWorker
 						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.rebill.error.three')}
 					when "4"
 						if response["transaction"]["code"] == "6001"
-							publish_message = {result: "failure", message: "Операция временно недоступна"}
+							md = "#{response['transaction']['id']};#{response['transaction']['threedSecure']['pd']}"
+							publish_message = {result: "3ds", ascurl: "#{response['transaction']['threedSecure']['acsurl']}", pareq: "#{response['transaction']['threedSecure']['pareq']}", md: md, termurl: "https://izkh.ru/api/1.0/payment/secure_callback"}
 						end
 					else
 						publish_message = {result: "failure", message: I18n.t('payonline.non_secure.unknown_error')}
