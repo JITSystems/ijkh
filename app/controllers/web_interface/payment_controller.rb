@@ -90,7 +90,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
 
 		if params[:rebill_anchor] != ''
-			po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
+			po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 			rebill_anchor = params[:rebill_anchor]
 			security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 			security_key = Digest::MD5.hexdigest(security_key_string)
