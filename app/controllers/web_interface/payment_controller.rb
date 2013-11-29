@@ -62,6 +62,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		if (vendor_id == 121)
 			g_t_data = GlobalTelecom.new(@service.user_account)
 			@g_t_data = g_t_data.check
+			@g_t_data = @g_t_data.to_json
 		end
 
 		respond_to do |format|
