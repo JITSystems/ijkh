@@ -46,7 +46,7 @@
 		<div class="cards_list" style="display:none; text-align: left;">
 			<% unless @cards == [] %>
 				<% @cards.each do |card| %>
-					<p onclick="$('input.rebill_anchor').val('<%= card.rebill_anchor %>'); $('form#pay_form input#pay_submit').click();" ><%= card.card_title %></p>
+					<p onclick="$('input#rebill_anchor').val('<%= card.rebill_anchor %>'); $('form#pay_form input#pay_submit').click();" ><%= card.card_title %></p>
 				<% end %>
 			<% else %>
 				<p>У Вас нет сохранённых карт.</p>	

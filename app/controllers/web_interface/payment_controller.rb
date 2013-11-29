@@ -82,24 +82,49 @@ class WebInterface::PaymentController < WebInterfaceController
 		}
 
 		@recipe = Recipe.create_recipe current_user, recipe_params
-
-		po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
-
+		merchant_id = '39859'
 		user_id = current_user.id
 		order_id = @recipe.id
 		amount = FloatModifier.format(FloatModifier.modify(@recipe.total))
 		currency = "RUB"
+		private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+
+		if params[:rebill_anchor] != ''
+			po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
+			rebill_anchor = params[:rebill_anchor]
+			security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+			security_key = Digest::MD5.hexdigest(security_key_string)
+			url = "#{po_root_url}?MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&ContentType=xml&user_id=#{user_id}"
+		else
+		# 	po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
+		# 	ip = params[:payment][:ip]
+		# 	card_number = params[:payment][:card_number]
+		# 	cardholder_name = params[:payment][:cardholder_name]
+		# 	email = params[:payment][:email]
+		# 	card_exp_date = params[:payment][:card_exp_date]
+		# 	card_cvv = params[:payment][:card_cvv]
+			
+		# 	security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+		# 	security_key = Digest::MD5.hexdigest(security_key_string)
+			
+		# 	payload = "MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&Ip=#{ip}&Email=#{email}&CardHolderName=#{cardholder_name}&CardNumber=#{card_number}&CardExpDate=#{card_exp_date}&CardCvv=#{card_cvv}&ContentType=xml&user_id=#{user_id}"
+		# end	
+
+		po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
+
 		# private_security_key = @vendor.psk
 		# merchant_id = @vendor.merchant_id
-		merchant_id = '39859'
-		private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+	
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 		security_key = Digest::MD5.hexdigest(security_key_string)
 		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
+		end
+
 		respond_to do |format|
 			format.js {
 				 render js: "window.location.replace('#{url}');"
+				 # render js: "console.log('#{params}');"
 			}
 		end
 	end

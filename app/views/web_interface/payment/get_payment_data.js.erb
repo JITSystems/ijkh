@@ -41,7 +41,7 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 		$('.recipe_is_paid_freeze').hide();
 		$('div.end .end_button').attr('disabled','disabled');
 	<% end %>
-	$('#tax_total').hide();
+		$('#tax_total').hide();
 <% else %>
 		$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
 		$('.recipe_is_paid_freeze').hide();
@@ -56,4 +56,6 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 <% end %>
 
 console.log('<%= @g_t_data %>');
-var q_t_data = <%= @g_t_data %>;
+<% if @g_t_data %>
+	var q_t_data = <%= @g_t_data %>;
+<% end %>

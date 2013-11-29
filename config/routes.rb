@@ -200,6 +200,7 @@ Ijkh::Application.routes.draw do
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'
       
+      get "one_click_info" => "web_interface/one_click_info#show"
       get "catalog" => "web_interface/catalog#show"
       get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
