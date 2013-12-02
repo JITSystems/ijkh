@@ -53,7 +53,7 @@ module PaymentHistoriesRepository
 		if service_id != 0
 			service = Service.find(service_id)
 			if service && service.vendor_id.to_i == 121
-				GtPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i)
+				GtPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i, payment_history_params[:amount])
 			#elsif service && service.vendor_id.to_i = 16
 			#	JtPaymentWorker.perform_async(params[:user_id])
 			end
