@@ -208,7 +208,7 @@ Ijkh::Application.routes.draw do
       put "freelancer_moderation" => "web_interface/freelancer_moderation#update"
       delete "freelancer_moderation" => "web_interface/freelancer_moderation#destroy"
       put "publish_all_freelancers" => "web_interface/freelancer_moderation#publish_all_freelancers"
-
+      delete "destroy_card" => "web_interface/payment#destroy_card"
 
       get "freelancer_registration" => "web_interface/freelancer_registration#show"
       post "freelancer_registration" => "web_interface/freelancer_registration#create"

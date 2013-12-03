@@ -182,5 +182,18 @@ class WebInterface::PaymentController < WebInterfaceController
 		
 	end
 
+
+	def destroy_card
+		@message = "Карта успешно удалена"
+
+		@card = CardManager.delete(params[:card_id])
+		@card_id = params[:card_id]
+		respond_to do |format|
+			format.js {
+				render 'web_interface/payment/destroy_card'
+			}
+		end
+	end
+
 end
 
