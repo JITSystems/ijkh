@@ -74,7 +74,12 @@ module ServicesRepository
 				user_id: 			user.id,
 				is_active: 			true
 			}
-
+		if params[:service][:vendor][:id].to_i == 20
+			if params[:service][:user_account].to_s == "8602" || params[:service][:user_account].to_s == "8888" || params[:service][:user_account].to_s =~ /79\d{2}/ || params[:service][:user_account].to_s =~ /9\d{3}/
+			else
+				service_params[:is_active] = false
+			end
+		end
 		service = Service.new(service_params)
 
 		if service.save
