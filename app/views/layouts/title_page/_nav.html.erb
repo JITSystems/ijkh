@@ -11,11 +11,11 @@
 			<li>
 				<a href="#">Компания</a>
 				<ul>
-					<li><%= link_to 'О компании', 'about_path' %></li>
-					<li><%= link_to 'Партнёрам', 'partners_path' %></li>
-					<li><%= link_to 'Инвесторам', 'investors_path' %></li>
-					<li><%= link_to 'Контакты', 'contacts_path' %></li>
-					<li><%= link_to 'Реквизиты', 'details_path' %></li>
+					<li><%= link_to 'О компании', title_about_path %></li>
+					<li><%= link_to 'Партнёрам', title_partners_path %></li>
+					<li><%= link_to 'Инвесторам', title_investors_path %></li>
+					<li><%= link_to 'Контакты', title_contacts_path %></li>
+					<li><%= link_to 'Реквизиты', title_details_path %></li>
 				</ul>
 			</li>
 			<li>
@@ -30,12 +30,12 @@
 			<li>
 				<a href="#">Услуги</a>
 				<ul>
-					<li><%= link_to 'Электронное ЖКХ', 'ijkh_path' %></li>
-					<li><%= link_to 'Размещение рекламы на сайте', 'ad_on_site_path' %></li>
+					<li><%= link_to 'Электронное ЖКХ', title_ijkh_path %></li>
+					<li><%= link_to 'Размещение рекламы на сайте', title_ad_on_site_path %></li>
 				</ul>
 			</li>
 			<li>
-				<a href="http://izkh.ru/login">Войти в сервис АйЖКХ</a>
+				<%= link_to 'Войти в сервис АйЖКХ', main_path %>
 			</li>
 		</ul>
 	</div>

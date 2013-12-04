@@ -295,6 +295,11 @@ h6{
 	margin-top: 10px;
 }
 
+.izkh_summary
+{
+	font-size: 20px;
+}
+
 div.best_freelancer
 {
 	position: relative;
@@ -447,6 +452,9 @@ div#services_links > a > img{
 		vertical-align: top;
 		width: 330px;
 		position: relative;
+		margin-bottom: 30px;
+		height: 285px;
+		overflow: hidden;
 	}
 
 /* Карусель инструкций */

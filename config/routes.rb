@@ -18,7 +18,8 @@ Ijkh::Application.routes.draw do
   end
   
 
-  root :to => 'web_interface/main#index'
+  # root :to => 'web_interface/main#index'
+  root :to => 'web_interface/title_page#show'
 
   get 'apns_test' => 'predefined_data#apns'
   get 'apns_vendor' => 'predefined_data#new_vendors_notification'
@@ -229,6 +230,19 @@ Ijkh::Application.routes.draw do
 
 
       get 'title_page' => 'web_interface/title_page#show'
+      match 'news_items' => 'web_interface/news_items#show', :as => 'news_items', :via => :get
+
+        # Пунки меню "Компания"
+      get 'title_about' => 'web_interface/company#about'
+      get 'title_partners' => 'web_interface/company#partners'
+      get 'title_investors' => 'web_interface/company#investors'
+      get 'title_contacts' => 'web_interface/company#contacts'
+      get 'title_details' => 'web_interface/company#details'
+
+      # Пунки меню "Услуги""
+      get 'title_ijkh' => 'web_interface/company#ijkh'
+      get 'title_ad_on_site' => 'web_interface/company#ad_on_site'
+
       
 
   end
@@ -239,6 +253,7 @@ Ijkh::Application.routes.draw do
     end
 
     resources :quiz_results
+    resources :news_items
   end
 
 

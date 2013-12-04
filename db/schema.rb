@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131029065032) do
+ActiveRecord::Schema.define(:version => 20131204200858) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -377,6 +377,15 @@ ActiveRecord::Schema.define(:version => 20131029065032) do
     t.float    "commission"
     t.boolean  "is_integrated"
     t.string   "inn"
+  end
+
+  create_table "web_interface_news_items", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "date"
+    t.boolean  "published"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

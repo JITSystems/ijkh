@@ -1,0 +1,9 @@
+<h1>Архив новостей</h1>
+<br>
+
+<% @news.each do |news_item| %>
+	<h3><%= news_item.title %></h3>
+	<p><%= news_item.body %></p>
+	<p><%= link_to 'Страница новости', :action => :show, :id => news_item.id %></p>
+	<br>
+<% end %>
