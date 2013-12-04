@@ -1,6 +1,7 @@
 # encoding: utf-8
 class PushNotificationsWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => false
 
   def perform
     APNS.host = Settings.apns.host
