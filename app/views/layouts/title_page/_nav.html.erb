@@ -1,0 +1,42 @@
+<div id="nav">
+	<div id="logo">
+		
+	</div>
+	<div id="menu">
+		<ul>
+			<li>
+				<%= link_to 'Главная', root_path %>
+			</li>
+
+			<li>
+				<a href="#">Компания</a>
+				<ul>
+					<li><%= link_to 'О компании', 'about_path' %></li>
+					<li><%= link_to 'Партнёрам', 'partners_path' %></li>
+					<li><%= link_to 'Инвесторам', 'investors_path' %></li>
+					<li><%= link_to 'Контакты', 'contacts_path' %></li>
+					<li><%= link_to 'Реквизиты', 'details_path' %></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Справочники</a>
+				<ul>
+					<li><%= link_to 'Поставщики', 'https://izkh.ru/catalog' %></li>
+					<li><%= link_to 'Частные услуги', "https://izkh.ru/freelancers" %></li>
+					<li><%= link_to 'Экстренные службы', "https://izkh.ru/emergency" %></li>
+					<li><%= link_to 'Мобильный участковый', 'https://izkh.ru/precinct' %></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Услуги</a>
+				<ul>
+					<li><%= link_to 'Электронное ЖКХ', 'ijkh_path' %></li>
+					<li><%= link_to 'Размещение рекламы на сайте', 'ad_on_site_path' %></li>
+				</ul>
+			</li>
+			<li>
+				<a href="http://izkh.ru/login">Войти в сервис АйЖКХ</a>
+			</li>
+		</ul>
+	</div>
+</div>

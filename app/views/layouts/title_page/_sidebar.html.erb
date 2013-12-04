@@ -1,0 +1,67 @@
+<div id="sidebar">
+			<div id="sidebar_header">
+				<p class="izkh_summary">Пользователей: </p>	
+				<p class="izkh_summary">Поставщиков услуг: </p>	
+			</div>
+
+			<img src="/assets/264x420.png" alt="" />
+
+				<div class="best_freelancers">
+					<h6>ЛУЧШИЕ ФРИЛАНСЕРЫ</h6>
+					<div class="best_freelancer">
+						<a href="<%= freelancers_path %>"><img src="/assets/freelancer_1.jpg" alt=""></a>
+	
+						<div id="testRater" class="stat">
+							<label for="rating">Кузнецов Александр.</label>
+							<div class="statVal">
+								<label for="rating">Рейтинг: </label>
+								<span class="ui-rater">
+									<span class="ui-rater-starsOff" style="width:90px;"><span class="ui-rater-starsOn" style="width:0px"></span></span>
+									<span class="ui-rater-rating">0</span>&#160;(<span class="ui-rater-rateCount">0</span>)
+								</span>
+					        </div>
+					    </div>
+					</div>
+
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+				</div>
+<!-- 
+				<div class="best_freelancers">
+					<h6>Лучшие фрилансеры</h6>
+					<div class="best_freelancer">TOP_FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+				</div>
+			 -->
+
+			<img src="/assets/264x420.png" alt="" />
+			<div style="
+			    margin-top: 10px;
+			    height: 248px;
+			    overflow: hidden;
+			    position: relative;
+			"><img src="/assets/264x420.png" alt="" style="
+			                                                  
+			    position: absolute;
+			    bottom: 0px;
+			"></div>
+		</div><!-- .right-sidebar -->
+
+<script>
+	    $(function() {
+    		$('#testRater').rater({ postHref: '' });
+    	});
+</script>

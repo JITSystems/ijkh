@@ -227,7 +227,7 @@ Ijkh::Application.routes.draw do
       match 'quiz_mailchimp' => 'web_interface/quiz_mailing#mailchimp', :as => 'quiz_mailchimp', :via => :post
 
 
-
+      get 'title_page' => 'web_interface/title_page#show'
       
 
   end
