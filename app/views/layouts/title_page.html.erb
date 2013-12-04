@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>АйЖКХ</title>
+   <!-- stylesheet_link_tag "title_page", :media => "all" -->
+   		<meta property="og:title" content="Сервис 'АйЖКХ'"/>
+	    <meta property="og:url" content="http://izkh.ru"/>
+	    <meta property="og:image" content="http://izkh.ru/images/logo-round.png"/>
+	    <meta property="og:description" content="Сервис для учета расходов и оплаты услуг в сфере ЖКХ."/>
+	    
+  <%= stylesheet_link_tag root_path+"stylesheets/title_page.css" %>
+  <%= javascript_include_tag root_path+"javascripts/jquery-1.8.3.min.js" %>
+  <%= javascript_include_tag root_path+"javascripts/jcarousellite-1.0.1.min.js" %>
+  <%= csrf_meta_tags %>
+  <script>
+  console.log('this_is_sparta');
+  </script>
+</head>
+<body>
+
+<div class="wrapper">
+
+	<%= render 'layouts/title_page/header' %>
+
+	<div class="middle">
+		<div class="container">
+
+			<%= render 'layouts/title_page/nav'%>	
+			<%= render 'layouts/title_page/sidebar'%>	
+
+			<div class="content">
+
+				<%= yield %>
+
+			</div><!-- .content-->
+		</div><!-- .container-->
+	</div><!-- .middle-->
+</div><!-- .wrapper -->
+
+<%= render 'layouts/title_page/footer' %>
+
+</body>
+</html>

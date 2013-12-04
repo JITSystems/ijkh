@@ -1,19 +1,21 @@
 # encoding: utf-8
 class GlobalTelecom
-	def initialize(user_account, recipe_id=nil, amount=nil)
+	def initialize(user_account, recipe_id=nil, amount=nil, login='izkh', password='FDncbv883mJ')
 		@type = nil
 		@user_account = user_account
 		@amount = amount
 		@check_url = form_check_url
 		@payment_url = nil
 		@recipe_id = recipe_id
+		@login = login
+		@password = password
 	end
 
 	def check
 		if @check_url
 			puts @check_url
   			er = ExternalRequest.new(@check_url, true)
-	  		get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
+	  		get_response(er.get_basic_auth(@login, @password))
 	  	else 
 	  		nil
 	  	end
@@ -23,7 +25,7 @@ class GlobalTelecom
 		if @check_url
 			puts @check_url
 			er = ExternalRequest.new(@check_url, true)
-  			response = get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
+  			response = get_response(er.get_basic_auth(@login, @password))
   		else
   			response = nil
   		end
@@ -33,7 +35,7 @@ class GlobalTelecom
   			if @payment_url
   				puts "payment_url: #{@payment_url}"
   				er = ExternalRequest.new(@payment_url, true)
-  				get_response(er.get_basic_auth('izkh', 'FDncbv883mJ'))
+  				get_response(er.get_basic_auth(@login, @password))
   			else
   				nil
   			end

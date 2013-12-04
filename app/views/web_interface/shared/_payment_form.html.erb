@@ -8,6 +8,10 @@
 		<div class="mc"></div>
 	</div>
 
+	<div id="gt_info">
+		
+	</div>
+
 <%= form_tag("/pay", remote: true, method: :get, id: "pay_form") do %>
 	<div class="amount_box">
 		<p>Cумма к оплате, руб:</p>
@@ -46,7 +50,10 @@
 		<div class="cards_list" style="display:none; text-align: left;">
 			<% unless @cards == [] %>
 				<% @cards.each do |card| %>
-					<p onclick="$('input.rebill_anchor').val('<%= card.rebill_anchor %>'); $('form#pay_form input#pay_submit').click();" ><%= card.card_title %></p>
+					<p class="card_<%= card.id %>"> 
+						<span onclick="$('input#rebill_anchor').val('<%= card.rebill_anchor %>'); $('form#pay_form input#pay_submit').click();" ><%= card.card_title %></span> 
+						<span class="remove_card" > <%= link_to 'Удалить', destroy_card_path(:card_id => card.id), :method => :delete, :remote => true, :confirm => 'Вы уверены?' %> </span> 
+					</p> 
 				<% end %>
 			<% else %>
 				<p>У Вас нет сохранённых карт.</p>	

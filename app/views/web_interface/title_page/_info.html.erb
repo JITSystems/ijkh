@@ -1,0 +1,31 @@
+<div id="info">
+<!-- 
+	<div id="counter">
+		<p>Пользователей: 500</p>
+		<p>Поставщиков: 100</p>
+	</div>
+	 -->
+	<div id="slider">
+			<ul>
+		        <!-- <li><img src="/assets/slider/slider_img_1.jpg" alt="" width="660" height="367" ></li> -->
+		        <li><img src="/assets/slider/slider_img_2.jpg" alt="" width="660" height="367" ></li>
+		        <li><img src="/assets/slider/slider_img_3.jpg" alt="" width="660" height="367" ></li>
+		        <li><img src="/assets/slider/slider_img_4.jpg" alt="" width="660" height="367" ></li>
+		        <li><a href="http://cabinet.izkh.ru"><img src="/assets/cabinet.png" alt="" width="660" height="367" ></a></li>
+			</ul>
+	</div>
+</div>
+
+<script>
+	
+$(function() {
+    $("div#slider").jCarouselLite({
+    	auto: 6000,
+        speed: 500,
+        visible: 1,
+        btnNext: ".next",
+        btnPrev: ".prev"
+    });
+});
+
+</script>

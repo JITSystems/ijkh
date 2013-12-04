@@ -1,6 +1,7 @@
 # encoding: utf-8
 class CustomPushNotificationsWorker
 	include Sidekiq::Worker
+
    def perform(message)
     APNS.host = Settings.apns.host
     APNS.pem  = Settings.apns.pem_file

@@ -20,23 +20,23 @@ class ReportDataManager
 	end
 
 	def self.index_by_vendor(vendor_id, month)
-		payment_histories = PaymentHistory.where("extract(month from created_at) = ?", month)
+		payment_histories = PaymentHistory.where("extract(month from created_at) = ?", month.to_i)
 			.includes(:service)
 			.map do |ph|
 				{
 					amount: ph.amount,
 					date: ph.po_date_time,
 					address: "#{ph.service.place.city}, #{ph.service.place.street}, #{ph.service.place.building}, #{ph.service.place.apartment}",
-					vendor_id: vendor_id,
+					vendor_id: vendor_id.to_i,
 					user_account: ph.service.user_account
-				} if ph.service && ph.service.vendor_id == vendor_id
+				} if ph.service && ph.service.vendor_id.to_i == vendor_id.to_i
 			end
 			.reject {|ph| !ph}
 		payment_histories
 	end
 
 	def self.vendors_with_transactions(month)
-		vendor_ids = PaymentHistory.where("status = 1 AND payment_type = '1' AND extract(month from po_date_time) = ? and service_id is not null", month)
+		vendor_ids = PaymentHistory.where("status = 1 AND payment_type = '1' AND extract(month from po_date_time) = ? and service_id is not null", month.to_i)
 			.includes(:service)
 			.map {|ph| ph.service.vendor_id if ph.service && ph.service.vendor}
 			.reject {|ph| !ph}

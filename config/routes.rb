@@ -200,6 +200,7 @@ Ijkh::Application.routes.draw do
       get 'quiz/:quiz_token' => 'web_interface/quiz#show'
       post 'quiz/:user_id' => 'web_interface/quiz#create'
       
+      get "one_click_info" => "web_interface/one_click_info#show"
       get "catalog" => "web_interface/catalog#show"
       get "emergency_catalog" => "web_interface/emergency_catalog#show"
       get "emergency" => "web_interface/emergency#show"
@@ -208,7 +209,7 @@ Ijkh::Application.routes.draw do
       put "freelancer_moderation" => "web_interface/freelancer_moderation#update"
       delete "freelancer_moderation" => "web_interface/freelancer_moderation#destroy"
       put "publish_all_freelancers" => "web_interface/freelancer_moderation#publish_all_freelancers"
-
+      delete "destroy_card" => "web_interface/payment#destroy_card"
 
       get "freelancer_registration" => "web_interface/freelancer_registration#show"
       post "freelancer_registration" => "web_interface/freelancer_registration#create"
@@ -227,7 +228,7 @@ Ijkh::Application.routes.draw do
       match 'quiz_mailchimp' => 'web_interface/quiz_mailing#mailchimp', :as => 'quiz_mailchimp', :via => :post
 
 
-
+      get 'title_page' => 'web_interface/title_page#show'
       
 
   end

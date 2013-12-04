@@ -347,6 +347,8 @@ function sortFun(thisEl){
         $('.dog_number').val("");
         $("div#user_account_box").slideDown();
         $('#accept_service_submit').attr("disabled","disabled");
+            console.log(vendorId);
+            
         break
 
         case 'tariff':

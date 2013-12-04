@@ -1,0 +1,27 @@
+<div id="news">
+	<div class="news_column">
+		<h2>Новости компании</h2>
+		<% @news_items.take(3).each do |news_item| %>
+			<div class="news_item">
+				<h3><%= news_item.title %></h3> 
+				<p><%= truncate news_item.body, :length => 200  %></p> 
+				<p><%= link_to 'Подробнее...', :action => :show, :controller => :news_items, :id => news_item.id %><p>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="news_column">
+		<h2>Новости ЖКХ</h2>
+		<% @news_items.take(3).each do |news_item| %>
+			<div class="news_item">
+				<h3><%= news_item.title %></h3> 
+				<p><%= truncate news_item.body, :length => 200  %></p> 
+				<p><%= link_to 'Подробнее...', :action => :show, :controller => :news_items, :id => news_item.id %><p>
+			</div>
+		<% end %>
+
+	</div>
+
+<%= link_to 'Архив новостей', news_items_path %>
+
+</div>

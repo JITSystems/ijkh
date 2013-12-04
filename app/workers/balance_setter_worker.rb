@@ -1,6 +1,7 @@
 # encoding: utf-8
 class BalanceSetterWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => false
 
   def perform(data)
    APNS.host = Settings.apns.host

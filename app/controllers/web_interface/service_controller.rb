@@ -30,8 +30,21 @@ class WebInterface::ServiceController < WebInterfaceController
 
 	def create
 		@message = "Услуга успешно создана."
-		@place_id = params[:service][:place_id]
 
+
+		if params[:service][:vendor][:id] == '20'
+			delta_user_account = params[:service][:user_account]
+			if (delta_user_account !~ /9\d{3}/ && delta_user_account !~ /79\d{2}/ && delta_user_account != '8602' && delta_user_account != '8888' || delta_user_account.length != 4)
+				@message = "Неверный формат лицевого счёта."
+				respond_to do |format|
+					format.js {
+						render 'web_interface/service/error'
+						}
+				end
+				return nil
+			end
+		end 
+		@place_id = params[:service][:place_id]
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
 		@place = @places.find(@place_id)
 		@service_types = ServiceTypeManager.index

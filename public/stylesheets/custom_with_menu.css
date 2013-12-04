@@ -3015,12 +3015,34 @@ div.cards_list {
 }
 
 div.cards_list > p {
-	padding: 5px 0px 5px 15px;
+	padding: 10px 0px 9px 20px;
+	margin-right: 170px;
+	margin-left: 5px;
+	border-bottom: 1px #707070 solid;
 }
 
-div.cards_list > p:hover {
+div.cards_list > p > span.remove_card {
+	margin-left: 15px;
+}
+
+div.cards_list > p > span:hover {
 	color: black;
 	cursor: pointer;
 }
 
+div#gt_info
+{
+	padding: 15px 0px 0px 30px;
+}
+
+div#gt_info > p
+{
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+div#gt_info > p > span
+{
+	font-weight: 600;
+}
 
