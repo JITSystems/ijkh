@@ -309,6 +309,8 @@ div.best_freelancer
 div.best_freelancer img
 {
 	width: 100%;
+	position: relative;
+	z-index: -3;
 }
 
 .best_freelancers
