@@ -21,7 +21,7 @@ class WebInterface::NewsItemsController < WebInterfaceController
     end
 
 
-    unless [16,12,62,120,2,6].include? current_user_id
+    unless [16,12,62,120,2,6,630].include? current_user_id
       redirect_to :action => :index
     end 
   end

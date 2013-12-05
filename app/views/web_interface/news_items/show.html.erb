@@ -5,7 +5,7 @@
 <p><%= link_to 'К архиву новостей', web_interface_news_items_path %></p>
 
 <% if current_user %>
-	<% if [16,12,62,120,2,6].include? current_user.id %>
+	<% if [16,12,62,120,2,6,630].include? current_user.id %>
 
 		<% if params[:create] %>
 			<p><%= link_to 'Создать еще одну', :action => :new %></p>
