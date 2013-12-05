@@ -225,6 +225,7 @@ div.news_column
 {
 	display: inline-block;
 	width: 325px;
+	vertical-align: top;
 }
 
 div.news_column:first-child
@@ -235,8 +236,9 @@ div.news_column:first-child
 div.news_column h2, div.news_item
 {
 	margin-bottom: 10px;
+	vertical-align: top;
+	display: inline-block;
 }
-
 
 
 div.news_column h3{
@@ -660,4 +662,28 @@ margin: 3px 3px;
   body{
     -webkit-text-size-adjust: none;
   }
+
+
+/* СТРАНИЦА ДОБАВЛЕНИЯ/РЕДАКТИРОВАНИЯ НОВОСТЕЙ*/
+.news_item_form input[type="text"]{
+	height: 25px;
+	font-size: 18px;
+	width: 600px;
+}
+
+.news_item_form input[type="submit"]{
+	font-size: 21px;
+	width: 200px;
+	height: 60px;
+	background: #EBECEB;
+}
+
+.news_item_form label{
+	font-size: 18px;
+}
+
+
+
+
+
 
