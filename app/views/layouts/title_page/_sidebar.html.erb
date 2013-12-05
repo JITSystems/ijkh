@@ -2,7 +2,7 @@
 			<div id="sidebar_header">
 				
 				<% if current_user %>
-					<% if [16,12,62,120,2,6].include? current_user.id %>
+					<% if [16,12,62,120,2,6,630].include? current_user.id %>
 						<h3><%= link_to 'Создать новость', new_web_interface_news_item_path %></h3>		
 					<% end %>
 				<% end %>
