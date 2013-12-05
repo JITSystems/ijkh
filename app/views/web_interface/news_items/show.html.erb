@@ -11,5 +11,5 @@
 	<% end %>
 
 	<p><%= link_to 'Редактировать', :action => :edit, :id => @news_item.id %></p>
-	<p><%= link_to 'далить', "/web_interface/news_items/#{@news_item.id}", method: :delete, confirm: 'Вы уверены?' %></p>
+	<p><%= link_to 'Удалить', "/web_interface/news_items/#{@news_item.id}", method: :delete, confirm: 'Вы уверены?' %></p>
 <% end %>
