@@ -1,15 +1,20 @@
-<%= form_for @news_item do |f| %>
+<%= form_for(@news_item, html: { :class => "news_item_form "} ) do |f| %>
   <p>
-    <%= f.label :title %><br>
+    <%= f.label :title, 'Заголовок' %><br>
     <%= f.text_field :title %>
   </p>
- 
+ <br>
+ <p>
+     <%= f.check_box :is_company, checked: true %>
+         <%= f.label :is_company, "Новость компании" %>
+  </p>
+<br>
   <p>
-    <%= f.label :body %><br>
+    <%= f.label :body, "Текст новости" %><br>
     <%= f.text_area :body %>
   </p>
- 
+ <br>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Подтвердить' %>
   </p>
 <% end %>

@@ -315,7 +315,7 @@ div.best_freelancer img
 {
 	width: 100%;
 	position: relative;
-	z-index: -3;
+	
 }
 
 .best_freelancers
@@ -462,6 +462,7 @@ div#services_links > a > img{
 	padding-bottom: 7px;
 	padding-top: 3px;
 	font-size: 15px;
+	z-index: 10;
 }
 
 #testRater label:first-child
