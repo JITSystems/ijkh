@@ -8,7 +8,12 @@ class GtIntegrationWorker
 			user_account = service.user_account
 
 			gt = GlobalTelecom.new(user_account)
-			amount = gt.check[:balance]
+			gt_check = gt.check
+			if gt_check[:balance]
+				amount = gt.check[:balance]
+			else
+				amount = 0.0
+			end
 
 			if amount.to_f < 0.0
 				amount = (amount.to_s)[1..-1] if amount.to_f < 0.0
