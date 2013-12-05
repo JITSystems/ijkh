@@ -14,9 +14,16 @@ class WebInterface::NewsItemsController < WebInterfaceController
   end
 
   def check_users
-      unless [16,12,62,120,2,6].include? current_user.id
-        redirect_to :action => :index
-      end 
+    unless current_user
+      current_user_id = 0
+    else
+      current_user_id = current_user.id
+    end
+
+
+    unless [16,12,62,120,2,6].include? current_user_id
+      redirect_to :action => :index
+    end 
   end
 
 
