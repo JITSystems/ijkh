@@ -6,9 +6,17 @@ class WebInterface::NewsItemsController < WebInterfaceController
 
   before_filter :get_statistics
 
+  before_filter :check_users, :except => :show, :except => :index
+
   def get_statistics
-    @users = User.all.count
+      @users = User.all.count
       @vendors = Vendor.where(is_active: true).count
+  end
+
+  def check_users
+      unless [16,12,62,120,2,6].include? current_user.id
+        redirect_to :action => :index
+      end 
   end
 
 
@@ -16,7 +24,7 @@ class WebInterface::NewsItemsController < WebInterfaceController
 
 
   def index
-    @news = WebInterface::NewsItem.all  
+    @news = WebInterface::NewsItem.order('created_at desc')
   end
 
   
@@ -57,6 +65,8 @@ class WebInterface::NewsItemsController < WebInterfaceController
     @news_item = WebInterface::NewsItem.find(params[:id])
 
     @news_item.destroy
+
+    redirect_to :action => :index
   end
 
 
