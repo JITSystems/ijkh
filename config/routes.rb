@@ -242,6 +242,7 @@ Ijkh::Application.routes.draw do
       # Пунки меню "Услуги""
       get 'title_ijkh' => 'web_interface/company#ijkh'
       get 'title_ad_on_site' => 'web_interface/company#ad_on_site'
+      get "title_freelancer/:freelancer_id" => "web_interface/company#freelancer"
 
       
 

@@ -33,4 +33,8 @@ class WebInterface::CompanyController < WebInterfaceController
 	def details
 	end
 
+	def freelancer
+		@freelancer = Freelancer.find(freelancer_id = params[:freelancer_id])
+	end
+
 end
