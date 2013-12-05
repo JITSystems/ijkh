@@ -4,12 +4,14 @@
 <p><%= link_to 'На главную', root_path %></p>
 <p><%= link_to 'К архиву новостей', web_interface_news_items_path %></p>
 
-<% if [16,12,62,120,2,6].include? current_user.id %>
+<%= if current_user %>
+	<% if [16,12,62,120,2,6].include? current_user.id %>
 
-	<% if params[:create] %>
-		<p><%= link_to 'Создать еще одну', :action => :new %></p>
+		<% if params[:create] %>
+			<p><%= link_to 'Создать еще одну', :action => :new %></p>
+		<% end %>
+
+		<p><%= link_to 'Редактировать', :action => :edit, :id => @news_item.id %></p>
+		<p><%= link_to 'Удалить', "/web_interface/news_items/#{@news_item.id}", method: :delete, confirm: 'Вы уверены?' %></p>
 	<% end %>
-
-	<p><%= link_to 'Редактировать', :action => :edit, :id => @news_item.id %></p>
-	<p><%= link_to 'Удалить', "/web_interface/news_items/#{@news_item.id}", method: :delete, confirm: 'Вы уверены?' %></p>
 <% end %>
