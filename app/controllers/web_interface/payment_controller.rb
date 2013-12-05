@@ -10,6 +10,10 @@ class WebInterface::PaymentController < WebInterfaceController
 			@service = @services.first
 			#@tariff = @service.tariff
 		end
+
+      	JtIntegrationWorker.perform_async(current_user.id)
+      	GtIntegrationWorker.perform_async(current_user.id)
+      	
 	end
 
 	def round_up amount

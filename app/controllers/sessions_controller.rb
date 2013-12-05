@@ -18,9 +18,6 @@ class SessionsController < Devise::SessionsController
     if resource.valid_password?(params[:user][:password])
       sign_in("user", resource)
 
-      JtIntegrationWorker.perform_async(current_user.id)
-      GtIntegrationWorker.perform_async(current_user.id)
-
       respond_to do |format|
 
         format.json {
