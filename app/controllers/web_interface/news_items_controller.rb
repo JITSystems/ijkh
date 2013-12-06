@@ -49,6 +49,8 @@ class WebInterface::NewsItemsController < WebInterfaceController
       WebInterface::NewsItem.delete_all
 
       is_company = true
+      body = ''
+      title = ''
 
       @worksheet.each do |w|
 
@@ -58,7 +60,14 @@ class WebInterface::NewsItemsController < WebInterfaceController
           is_company = false
         end
 
-        WebInterface::NewsItem.create!(title: w[3], body: w[4], is_company: is_company )
+        title = w[3]
+        body = w[4]
+
+        if w[2] != '' && w[2]
+          body += '<img src="' + w[2] + '" />'
+        end
+
+        WebInterface::NewsItem.create!(title: title, body: body, is_company: is_company )
       end
       
    end
