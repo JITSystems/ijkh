@@ -1,0 +1,8 @@
+<%= link_to 'Опубликовать все новости', public_all_news_path, remote: true %>
+
+<% @worksheet.each do |w| %>
+	<h3><%= w[3] %></h3>
+	<h3><%= w[1] %></h3>
+	<p><%= w[4] %></p>	
+<% end %>
+

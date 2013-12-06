@@ -26,6 +26,43 @@ class WebInterface::NewsItemsController < WebInterfaceController
     end 
   end
 
+  def insert_news
+      # load the gem
+      require 'csv'
+
+      @worksheet = []
+      CSV.foreach("public/files/111.csv") do |row|
+        @worksheet << row
+      end
+
+  end
+
+
+   def public_all_news
+      require 'csv'
+
+      @worksheet = []
+      CSV.foreach("public/files/111.csv") do |row|
+        @worksheet << row
+      end
+
+      WebInterface::NewsItem.delete_all
+
+      is_company = true
+
+      @worksheet.each do |w|
+
+        if w[1] == 'TRUE'
+          is_company = true
+        else
+          is_company = false
+        end
+
+        WebInterface::NewsItem.create!(title: w[3], body: w[4], is_company: is_company )
+      end
+      
+   end
+
 
   # http_basic_authenticate_with name: "root", password: "123qweasdzxc", :except => :show
 
