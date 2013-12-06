@@ -232,6 +232,9 @@ Ijkh::Application.routes.draw do
       get 'title_page' => 'web_interface/title_page#show'
       match 'news_items' => 'web_interface/news_items#show', :as => 'news_items', :via => :get
 
+      get 'insert_news' => 'web_interface/news_items#insert_news'
+      get 'public_all_news' => 'web_interface/news_items#public_all_news'
+
         # Пунки меню "Компания"
       get 'title_about' => 'web_interface/company#about'
       get 'title_partners' => 'web_interface/company#partners'
