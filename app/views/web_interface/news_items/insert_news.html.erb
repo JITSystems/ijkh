@@ -3,6 +3,6 @@
 <% @worksheet.each do |w| %>
 	<h3><%= w[3] %></h3>
 	<h3><%= w[1] %></h3>
-	<p><%= w[4] %></p>	
+	<p><%= w[4].html_safe %></p>	
 <% end %>
 
