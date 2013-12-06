@@ -15,7 +15,7 @@ class ReportDataController < ApplicationController
 		# params: none
 		# renders json:
 		# payload: [{user_account, amount, date, address, vendor_id}]
-		payload = ReportDataManager.new(DateTime.now + 1.hour, DateTime.now + 4.hour)
+		payload = ReportDataManager.new(DateTime.now - 1.hour, DateTime.now - 4.hour)
 		render json: {payload: payload.index}
 	end
 
