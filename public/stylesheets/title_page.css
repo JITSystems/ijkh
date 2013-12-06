@@ -683,7 +683,34 @@ margin: 3px 3px;
 }
 
 
+img.img-rounded{
+	-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+}
+
+.span2 {
+width: 140px;
+}
 
 
+[class*="span"] {
+float: left;
+min-height: 1px;
+margin-left: 20px;
+}
 
+.span4 {
+width: 300px;
+}
 
+.span7{
+margin-bottom: 20px;
+}
+
+address {
+display: block;
+margin-bottom: 20px;
+font-style: normal;
+line-height: 20px;
+}

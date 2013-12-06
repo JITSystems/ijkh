@@ -6,7 +6,7 @@ class WebInterface::NewsItemsController < WebInterfaceController
 
   before_filter :get_statistics
 
-  before_filter :check_users, :except => [:index, :show]
+  before_filter :check_users, :except => [:index, :show, :insert_news]
 
   def get_statistics
       @users = User.all.count
