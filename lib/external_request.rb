@@ -3,9 +3,7 @@ class ExternalRequest
 	require 'net/https'
 
 	def initialize(url, ssl=false, data=nil, cert_name=nil)
-		puts "url: #{url}"
 		@uri = URI.parse(url)
-		puts "uri: #{@uri}"
 		@ssl = ssl
 		@data = data if data
 		@cert_name = cert_name if cert_name
@@ -17,8 +15,8 @@ class ExternalRequest
 		if @cert_name
 			http.cert = OpenSSL::X509::Certificate.new(File.read("#{@cert_name}.pem"))
 			http.key = OpenSSL::PKey::RSA.new(File.read("#{@cert_name}.key"))
-			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		end
+			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		get = Net::HTTP::Get.new(@uri.request_uri)
 		response = http.request(get).body
 	end
@@ -38,9 +36,8 @@ class ExternalRequest
 		if @cert_name
 			http.cert = OpenSSL::X509::Certificate.new(File.read("#{@cert_name}.pem"))
 			http.key = OpenSSL::PKey::RSA.new("#{@cert_name}.key")
-			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		end
-
+			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 		post = Net::HTTP::Post.new(@uri.path)
 		post.body = @data
 		response = http.request(post).body
