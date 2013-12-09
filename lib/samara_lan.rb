@@ -37,15 +37,19 @@ protected
 	def get_response(response)
 		response = Crack::XML.parse(response)
 		if response["ok_pay_step1"]
-			if response["client_info"]
+			if response["ok_pay_step1"]["client_info"]
 				response["ok_pay_step1"]["client_info"]["agreement_id"]
 			else
-				"1 part fuuu"
+				nil
 			end
 		elsif response["ok_pay_step2"]
-			response
+			if response["ok_pay_step2"]["quest_result"] && response["ok_pay_step2"]["quest_result"].to_i < 0
+				nil
+			else
+				response
+			end
 		else
-			"2 part fu"
+			nil
 		end
 	end
 end
