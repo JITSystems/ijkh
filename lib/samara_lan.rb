@@ -21,12 +21,13 @@ class SamaraLan
 protected
 	
 	def check_url
-		url = "payments_remote_support.ok_pay_step1?agreement_number$i=#{@number}&cash_type$i=1"
+		url = "ok_pay_step1?agreement_number$i=#{@number}&cash_type$i=1"
 		"#{@root_url}#{url}"
 	end
 
 	def pay_url(id)
-		url = "payments_remote_support.ok_pay_step2?agreement_id$i=#{id}&value$n=#{@amount}&pay_date$c=#{Date.now}&pay_num$i=#{@order_id}"
+		url = "ok_pay_step2?agreement_id$i=#{id}&value$n=#{@amount}&pay_date$c=#{Date.now}&pay_num$i=#{@order_id}"
+		"#{@root_url}#{url}"
 	end
 
 	def get_response(response)
@@ -34,5 +35,4 @@ protected
 		puts response
 		response
 	end
-
 end
