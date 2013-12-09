@@ -20,7 +20,17 @@ class PredefinedDataController < ApplicationController
     current_user.register_ios_device(params[:device_token])
     render json: {}
   end
+
+  def sl_check
+    sl = SamaraLan.new("2")
+    render json: sl.check
+  end
  
+  def sl_pay
+    sl = SamaraLan.new("2", 20.0, 1)
+    render json: sl.pay
+  end
+
   def gt_check
     er = ExternalRequest.new("https://80.252.16.62/check/phone/2767500", true)
     render json: er.get_basic_auth('izkh', 'FDncbv883mJ')
