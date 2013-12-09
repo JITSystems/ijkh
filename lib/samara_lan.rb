@@ -21,7 +21,7 @@ class SamaraLan
 protected
 	
 	def check_url
-		url = "ok_pay_step1?agreement_number$i=#{@number}&cash_type$i=1"
+		url = "ok_pay_step1?agreement_number$i=#{@number}&agreement_type$i=42&cash_type$i=1"
 		"#{@root_url}#{url}"
 	end
 
