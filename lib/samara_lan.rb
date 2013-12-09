@@ -26,7 +26,7 @@ protected
 	end
 
 	def pay_url(id)
-		url = "ok_pay_step2?agreement_id$i=#{id}&value$n=#{@amount}&pay_date$c=#{Date.today}&pay_num$i=#{@order_id}"
+		url = "ok_pay_step2?agreement_id$i=#{id}&value$n=#{@amount}&pay_date$c=#{Time.now.strftime("%d.%m.%Y")}&pay_num$i=#{@order_id}"
 		"#{@root_url}#{url}"
 	end
 
