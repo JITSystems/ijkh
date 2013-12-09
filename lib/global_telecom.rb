@@ -13,7 +13,6 @@ class GlobalTelecom
 
 	def check
 		if @check_url
-			puts @check_url
   			er = ExternalRequest.new(@check_url, true)
 	  		get_response(er.get_basic_auth(@login, @password))
 	  	else 
@@ -23,7 +22,6 @@ class GlobalTelecom
 
 	def pay
 		if @check_url
-			puts @check_url
 			er = ExternalRequest.new(@check_url, true)
   			response = get_response(er.get_basic_auth(@login, @password))
   		else
@@ -33,7 +31,6 @@ class GlobalTelecom
   		if response
   			@payment_url = form_payment_url(response[:id], @recipe_id)
   			if @payment_url
-  				puts "payment_url: #{@payment_url}"
   				er = ExternalRequest.new(@payment_url, true)
   				get_response(er.get_basic_auth(@login, @password))
   			else
