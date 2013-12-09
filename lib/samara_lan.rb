@@ -2,8 +2,8 @@ class SamaraLan
 	def initialize(number, amount=nil, order_id=nil)
 		@root_url = "https://psys.samaralan.ru:8081/"
 		@number = number.to_s
-		@amount = amount
-		@order_id = order_id
+		@amount = amount.to_s
+		@order_id = order_id.to_s
 	end
 
 	def check
@@ -14,8 +14,12 @@ class SamaraLan
 	def pay
 		er_check = ExternalRequest.new(check_url, true)
 		id = get_response(er_check.get)
-		er_pay = ExternalRequest.new(pay_url(id), true)
-		get_response(er_pay.get)
+		if id
+			er_pay = ExternalRequest.new(pay_url(id.to_s), true)
+			response = get_response(er_pay.get)
+		else
+			nil
+		end
 	end
 
 protected
