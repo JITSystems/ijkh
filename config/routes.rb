@@ -27,6 +27,7 @@ Ijkh::Application.routes.draw do
   get 'get_statistics' => 'predefined_data#users_and_vendors'
   get 'send_me_a_message' => 'predefined_data#send_custom'
   get 'gt_check' => 'predefined_data#gt_check'
+  get 'sl_check' => 'predefined_data#sl_check'
 
 # Admin
   namespace :admin do
