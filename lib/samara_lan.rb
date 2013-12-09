@@ -1,7 +1,9 @@
 class SamaraLan
 	def initialize(number, amount=nil, order_id=nil)
 		@root_url = "https://psys.samaralan.ru:8081/"
-		@number = number
+		@number = number.to_s
+		@amount = amount
+		@order_id = order_id
 	end
 
 	def check
@@ -19,7 +21,7 @@ class SamaraLan
 protected
 	
 	def check_url
-		url = "payments_remote_support.ok_pay_step1?agreement_number$i=#{@number}&agreement_type$i=42&cash_type$i=1"
+		url = "payments_remote_support.ok_pay_step1?agreement_number$i=#{@number}&cash_type$i=1"
 		"#{@root_url}#{url}"
 	end
 
