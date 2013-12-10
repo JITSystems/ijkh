@@ -56,7 +56,7 @@ module PaymentHistoriesRepository
 				GtPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i, payment_history_params[:amount])
 			#elsif service && service.vendor_id.to_i == 16
 				#JtPaymentWorker.perform_async(params[:user_id])
-			elsif service && service_id.vendor_id.to_i == 135
+			elsif service && service.vendor_id.to_i == 135
 				SlPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i, payment_history_params[:amount]) 
 			end
 		end
