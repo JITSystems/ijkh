@@ -29,29 +29,30 @@ class RegistrationsController < Devise::RegistrationsController
 
 	def create
     @message = "Вы зарегистрировались!"
-    logger.info "Createeeeee!!!"
     	user = User.new(params[:user])
     	if user.save
 
-      respond_to do |format|
-        format.json {
-      		render json: {user: 
+        RegistrationNotificationWorker.perform_async(user.first_name, user.email, user.phone)
+
+        respond_to do |format|
+          format.json {
+      		  render json: {user: 
                       {auth_token: user.authentication_token, 
       								email: user.email, 
       								first_name: user.first_name, 
       								phone_number: user.phone_number}}, status: 201
-      		return
-        }
-        format.html {
-          sign_in("user", user)
-          redirect_to '/main'
-          return
-        }
-        format.js {
-          sign_in("user", user)
-          render 'web_interface/registration/create'
-        }
-      end
+      		  return
+          }
+          format.html {
+            sign_in("user", user)
+            redirect_to '/main'
+            return
+          }
+          format.js {
+            sign_in("user", user)
+            render 'web_interface/registration/create'
+          }
+        end
     	else
       		warden.custom_failure!
           respond_to do |format|

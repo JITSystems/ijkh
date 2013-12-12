@@ -8,6 +8,7 @@ class ServiceParams < ParamsManager
 private
 	
 	def self.service_params(params, user)
+		
 		s_p = {
 						  place_id: 		params[:place_id],
 						  service_type_id: 	params[:service_type_id],
