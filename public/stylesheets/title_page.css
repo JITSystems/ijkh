@@ -201,7 +201,7 @@ div#adv_block > div.adv_item{
 	margin: 10px 10px 5px 0px;
 } 
 
-div#adv_item{
+div#adv_block > div.adv_item{
 	width: 325px;
 	height: 170px;
 	display: inline-block;
