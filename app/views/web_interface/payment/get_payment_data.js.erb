@@ -1,3 +1,10 @@
+<% if @commission %>
+commission = <%= @commission/100 %>; 
+<% else %>
+commission = 0; 
+<% end %>
+
+
 $("#meter_reading_box").hide();
 $('div.cards_list').hide();
 

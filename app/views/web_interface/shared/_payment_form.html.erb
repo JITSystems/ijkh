@@ -82,7 +82,7 @@
 <script>
 
 var vendor_id = parseInt($('input#vendor_id').val());
-
+var commission = 0;
 
 	$('#amount_total').keyup(function () {
 	if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
@@ -94,7 +94,7 @@ var vendor_id = parseInt($('input#vendor_id').val());
 	else
 	{
 		var amount = parseFloat($(this).val());
-		var tax_total = Math.round((amount*0.03) * 100) / 100;
+		var tax_total = Math.round((amount*commission) * 100) / 100;
 		$('#tax_total_value').text(tax_total);
 	}
 
