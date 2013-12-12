@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
     	user = User.new(params[:user])
     	if user.save
 
-        RegistrationNotificationWorker.perform_async(user.first_name, user.email, user.phone)
+        RegistrationNotificationWorker.perform_async(user.first_name, user.email, user.phone_number)
 
         respond_to do |format|
           format.json {
