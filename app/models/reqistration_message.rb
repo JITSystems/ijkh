@@ -6,7 +6,7 @@ class RegistrationMessage
 
   attr_accessor :first_name, :email, :subject, :phone_number
 
-  validates :first_name, :email, :subject, :phone_number :presence => true
+  validates :first_name, :email, :subject, :phone_number, :presence => true
   #validates :email, :format => { :with => %r{.+@.+\..+} }, :allow_blank => true
   
   def initialize(attributes = {})
