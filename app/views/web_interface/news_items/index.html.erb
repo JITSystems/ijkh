@@ -2,7 +2,7 @@
 <br>
 
 <% @news.each do |news_item| %>
-	<h3><%= news_item.title %></h3>
+	<h3 class="news_item_title"><%= link_to news_item.title, :action => :show, :id => news_item.id %></h3>
 	<p><%= news_item.body.html_safe %></p>
 	<p><%= link_to 'Страница новости', :action => :show, :id => news_item.id %></p>
 	<br>

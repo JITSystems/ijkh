@@ -203,11 +203,11 @@ div#adv_block > div.adv_item{
 
 div#adv_block > div.adv_item{
 	width: 325px;
-	height: 170px;
+	height: 173px;
 	display: inline-block;
 	vertical-align: top;
 	margin: 10px 5px 5px 5px;
-	box-shadow: 0px 0px 9px -1px #000;
+	border: 1px #B8B8B8 solid;
 }
 
 div#info, div#info > div#slider {
@@ -270,19 +270,28 @@ div.news_item > p {
 	padding-bottom: 3px;
 }
 
-div.news_item > p > a {
+div.news_item > p > a, div#news > a {
 	text-decoration: none;
 	color: #354F75;
 }
 
-div.news_item > p > a:hover {
-	color: #243E64;
+div.news_item > p > a:hover, div#news > a:hover {
+	color: #000;
 }
 
 div.news_item  > h3{
 	margin: 0px 0px 5px 0px ;
-	color: #454545;
 	font-weight: 500;
+}
+
+div.news_item  > h3 > a, h3.news_item_title > a{
+	color: #454545;
+	text-decoration: none;
+	display: block;
+}
+
+div.news_item  > h3 > a:hover, h3.news_item_title > a:hover{
+	color: #777;
 }
 
 h6{
@@ -365,6 +374,8 @@ div.best_freelancers > h6:after{
 }
 div#sidebar > div#sidebar_header{
 	width: 100%;
+	margin-bottom: 5px;
+	color: #454545;
 }
 
 div#sidebar > div#sidebar_header > img{
@@ -508,12 +519,15 @@ div#services_links > a > img{
 		font-size: 25px;
 		color: #00558D;
 		top: inherit;
-		/*border: 0;*/
+		border: none;
 		padding: 0;
 		border-radius: 0;
 		line-height: 2px;
-		background: #CCC;
+		background: none;
+		cursor: pointer;
 	}
+
+	.data_box_top button { outline: none; }
 
 	.guide_prev
 	{
@@ -612,6 +626,7 @@ div#services_links > a > img{
 	width: 880px;
 	height: 95px;
 	margin: 20px auto;
+	margin-bottom: 60px;
 }
 .white_cub{
 	position: relative;
