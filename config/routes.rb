@@ -242,18 +242,21 @@ Ijkh::Application.routes.draw do
       get 'insert_news' => 'web_interface/news_items#insert_news'
       get 'public_all_news' => 'web_interface/news_items#public_all_news'
 
-        # Пунки меню "Компания"
+      # Пункты меню "Компания"
       get 'title_about' => 'web_interface/company#about'
       get 'title_partners' => 'web_interface/company#partners'
       get 'title_investors' => 'web_interface/company#investors'
       get 'title_contacts' => 'web_interface/company#contacts'
       get 'title_details' => 'web_interface/company#details'
 
-      # Пунки меню "Услуги""
+      # Пункты меню "Услуги""
       get 'title_ijkh' => 'web_interface/company#ijkh'
       get 'title_ad_on_site' => 'web_interface/company#ad_on_site'
       get "title_freelancer/:freelancer_id" => "web_interface/company#freelancer"
 
+      # Форма обратной связи "Не нашли своего постащика?"
+      match 'request_for_vendor' => 'web_interface/request_for_vendor#new', :as => 'request_for_vendor', :via => :get
+      match 'request_for_vendor' => 'web_interface/request_for_vendor#create', :as => 'request_for_vendor', :via => :post
       
 
   end

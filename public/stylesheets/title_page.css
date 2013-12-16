@@ -261,7 +261,7 @@ div#news > div.news_item{
 
 div#news{
 	font-size: 15px;
-	/*min-height: 646px;*/
+	min-height: 648px;
 }
 
 div.news_item > p {

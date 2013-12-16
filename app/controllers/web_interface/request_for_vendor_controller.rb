@@ -1,6 +1,6 @@
 # encoding: utf-8 
 
-class WebInterface::FeedbackController < WebInterfaceController
+class WebInterface::RequestForVendorController < WebInterfaceController
 
   def new
     @message = Message.new
@@ -10,7 +10,8 @@ class WebInterface::FeedbackController < WebInterfaceController
     @message = Message.new(params[:message])
     
     if @message.valid?
-      NotificationsMailer.new_message(@message).deliver
+     	# RequestForVendorMailer.new_message(@message).deliver
+     	RequestForVendorMailer.send_replacement_request(@message)
       redirect_to(main_path, :notice => "Ваше сообщение успешно отправлено.")
     else
       flash.now.alert = "Пожалуйста, заполните все поля."
