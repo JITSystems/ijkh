@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Лицевой счет</Data></Cell>
+        <Cell><Data ss:Type="String">Адрес</Data></Cell>
+        <Cell><Data ss:Type="String">Сумма</Data></Cell>
+        <Cell><Data ss:Type="String">Дата</Data></Cell>
+      </Row>
+    <% @report_data.each do |rd| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= rd[:user_account] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= rd[:address] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= rd[:amount] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= rd[:date] %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -16,6 +16,7 @@ class ReportDataManager
 						user_account: ph.service.user_account
 					} if ph.service
 				end
+				.reject {|ph| !ph}
 		payment_histories
 	end
 

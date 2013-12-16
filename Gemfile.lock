@@ -190,7 +190,7 @@ GEM
       thor
     ruby-hmac (0.4.0)
     ruby-ole (1.2.11.7)
-    rubyzip (1.1.0)
+    rubyzip (0.9.9)
     rvm-capistrano (1.4.1)
       capistrano (>= 2.0.0)
     safe_yaml (0.9.4)

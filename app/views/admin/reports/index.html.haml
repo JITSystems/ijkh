@@ -1,11 +1,11 @@
 %h1 Transactions report
 
-= simple_form_for @transaction, url: admin_transactions_report_path, method: :post do |f|
-  = f.input :from
-  = f.input :to
-  = f.submit
+= simple_form_for :transactions, url: admin_reports_transactions_path(format: "xls"), method: :post do |f|
+  = f.input :from, as: :string
+  = f.input :to, as: :string
+  = f.submit "Download xls"
 
 %h1 Users report
 
-= simple_form_for @users, url: admin_users_report_path, method: :post do |f|
-  = f.submit
+= simple_form_for :users, url: admin_reports_users_path, method: :post do |f|
+  = f.submit "Download xls"
