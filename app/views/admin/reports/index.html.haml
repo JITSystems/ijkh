@@ -1,0 +1,11 @@
+%h1 Transactions report
+
+= simple_form_for @transaction, url: admin_transactions_report_path, method: :post do |f|
+  = f.input :from
+  = f.input :to
+  = f.submit
+
+%h1 Users report
+
+= simple_form_for @users, url: admin_users_report_path, method: :post do |f|
+  = f.submit

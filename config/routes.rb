@@ -38,6 +38,11 @@ Ijkh::Application.routes.draw do
     resources :vendors
     resources :tariff_templates
     resources :field_templates
+    resources :reports, only: [:index]
+    namespace :reports do
+      resources :users, only: [:create]
+      resources :transactions, only: [:create]
+    end
   end
 
 # Analytic
