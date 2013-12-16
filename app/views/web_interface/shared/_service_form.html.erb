@@ -25,6 +25,10 @@
 				<%= v.select :id, grouped_options_for_select(@grouped_options), :include_blank => "Выберите поставщика"%>	
 			<% end %>	
 
+			 <p style="font-size: 13px;line-height: 2.5;">
+			 	Не нашли нужного поставщика? <a href="<%= request_for_vendor_path %>" title="Ссылка откроется в новом окне" target="_blank" style="color: blue;"> Напишите нам! </a>
+			 </p>
+
 		</div>
 
 <div class="choise_tarif">
