@@ -5,7 +5,7 @@ class RequestForVendorMailer < ActionMailer::Base
 
 
    def self.send_replacement_request(message)
-     @recipients = ["john.loudless@gmail.com", "nocool@inbox.ru"]
+     @recipients = ["feedback@izkh.ru", "karpenko@izkh.ru", "434713@gmail.com"]
      @recipients.each do |recipient|
        new_message(recipient, message).deliver
      end
