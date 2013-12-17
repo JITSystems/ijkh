@@ -1,5 +1,5 @@
 class SamaraLan
-	def initialize(number, amount=nil, order_id=nil)
+	def initialize(number, order_id=nil, amount=nil)
 		@root_url = "https://psys.samaralan.ru:8081/"
 		@number = number.to_s
 		@amount = amount.to_s
