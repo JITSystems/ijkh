@@ -1,0 +1,5 @@
+%h1 Uploader your image here
+
+= simple_form_for :uploads, url: admin_uploads_path, method: :post do |f|
+  = f.input :file, as: :file
+  = f.submit "Upload"

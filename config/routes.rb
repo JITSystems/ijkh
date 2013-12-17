@@ -39,6 +39,7 @@ Ijkh::Application.routes.draw do
     resources :tariff_templates
     resources :field_templates
     resources :reports, only: [:index]
+    resources :uploads, only: [:index, :create]
     namespace :reports do
       resources :users, only: [:create]
       resources :transactions, only: [:create]

@@ -17,6 +17,7 @@ gem 'eventmachine'
 gem 'rvm-capistrano'
 gem 'exception_notification'
 gem 'roo'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
