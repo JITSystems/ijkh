@@ -9,25 +9,31 @@
 <div class="box_top_right ">
 	<p>Добавление услуг</p>
 </div>
+
 <%= form_for Service.new, remote: true, url: "/service", method: :post do |s_f|%>
+
 	<%= s_f.hidden_field :place_id, value: @place_id %>
 	<div class="choise_service">
-		<div class="service">
+
+	<div class="service">
+
+
+	 <p style="padding-bottom: 20px;">
+	 	Не нашли нужного поставщика? <a href="<%= request_for_vendor_path %>" title="Ссылка откроется в новом окне" target="_blank" style="color: blue; text-decoration: underline;"> Напишите нам! </a>
+	 </p>
+
+
 		<span class="service_form_sign">Тип услуги:</span>
 		<%= s_f.select :service_type_id, options_for_select(@service_types.map {|s_t| [s_t.title, s_t.id, {listType: 'serviceType', id: s_t.id}]} ),prompt: "Выберите тип услуги ЖКХ"%>
 		</div>
 
 		<div class="type_man_who_have_service">
-		
 			<span class="service_form_sign">Поставщик:</span>
 
 			<%= s_f.fields_for :vendor do |v|%>
 				<%= v.select :id, grouped_options_for_select(@grouped_options), :include_blank => "Выберите поставщика"%>	
 			<% end %>	
 
-			 <p style="font-size: 13px;line-height: 2.5;">
-			 	Не нашли нужного поставщика? <a href="<%= request_for_vendor_path %>" title="Ссылка откроется в новом окне" target="_blank" style="color: blue;"> Напишите нам! </a>
-			 </p>
 
 		</div>
 
