@@ -86,11 +86,13 @@ class WebInterface::PaymentController < WebInterfaceController
 			amount: 		params[:amount_total]
 		}
 
-		@recipe = Recipe.create_recipe current_user, recipe_params
+		# @recipe = Recipe.create_recipe current_user, recipe_params
+		recipe_manager = RecipeManager.new
+		@recipe = recipe_manager.create(@account.service, params[:amount_total])
 		merchant_id = '39859'
 		user_id = current_user.id
-		order_id = @recipe.id
-		amount = FloatModifier.format(FloatModifier.modify(@recipe.total))
+		order_id = @recipe[:id]
+		amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
 		currency = "RUB"
 		private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
 
