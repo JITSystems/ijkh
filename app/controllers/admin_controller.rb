@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   before_filter :require_current_user
 
   def require_current_user
-	unless current_user && current_user.id == 2
+	unless current_user && current_user.id == 2 || current_user.id == 6
 		redirect_to "/login"
 	end
   end
