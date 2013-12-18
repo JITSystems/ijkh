@@ -258,6 +258,9 @@ Ijkh::Application.routes.draw do
       # Форма обратной связи "Не нашли своего постащика?"
       match 'request_for_vendor' => 'web_interface/request_for_vendor#new', :as => 'request_for_vendor', :via => :get
       match 'request_for_vendor' => 'web_interface/request_for_vendor#create', :as => 'request_for_vendor', :via => :post
+
+      # Страница "Тарифы и поставщики"
+      get 'vendors_and_tariffs' =>  "web_interface/vendors_and_tariffs#show"
       
 
   end
