@@ -38,6 +38,10 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    carrierwave (0.9.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
     celluloid (0.14.1)
       timers (>= 1.0.0)
     clamp (0.5.1)
@@ -251,6 +255,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  carrierwave
   clockwork
   coffee-rails (~> 3.2.1)
   crack
