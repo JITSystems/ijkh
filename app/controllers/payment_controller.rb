@@ -35,7 +35,7 @@ class PaymentController < ApplicationController
 		md = params["MD"]
 		pares = params["PaRes"]
 		
-		tds_payment = TdsPayment.new(pares, md)
+		tds_payment = TdsPayment.new(md, pares)
 		tds_payment.pay
 
 		render json: {}
