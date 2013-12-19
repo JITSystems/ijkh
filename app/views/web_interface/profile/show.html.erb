@@ -54,9 +54,17 @@
 		
 		<div class="pay_text">
 			<% if @places != [] %>
+			<ul class="profile_places">
 				<% @places.each do |place| %>
-					<%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %>
+					<!--%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %-->
+					<%= link_to "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}" do %>
+						<li>
+							<p class="place_title"><%=place.title%></p>
+							<p class="place_sub_title"><%= "#{place.city}, #{place.street}, #{place.building}, #{place.apartment}" %>
+						</li>
+					<% end %>
 				<% end %>
+			</ul>
 			<% end %>
 		</div>
 

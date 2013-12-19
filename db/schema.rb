@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20131205084610) do
     t.string   "rebill_anchor"
   end
 
+  create_table "category", :id => false, :force => true do |t|
+    t.integer "id",                                :null => false
+    t.integer "parent_category_id"
+    t.string  "name",               :limit => 100, :null => false
+  end
+
   create_table "cities", :force => true do |t|
     t.string "title"
   end

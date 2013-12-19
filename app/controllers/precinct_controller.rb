@@ -6,7 +6,7 @@ class PrecinctController < ApplicationController
 		@street = PrecinctStreet.find(params[:street_id].to_i)
 		logger.info @street.inspect
 		if @street
-			@house = PrecinctHouse.where("house = ? and precinct_street_id = ?", params[:house], @street.id).first
+			@house = PrecinctHouse.where("house = ? and precinct_street_id = ?", params[:house].mb_chars.downcase, @street.id).first
 			logger.info @house.inspect
 			if @house
 				@precinct = Precinct.find(@house.precinct_id)
