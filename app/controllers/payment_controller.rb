@@ -1,6 +1,6 @@
 # encoding: utf-8
 class PaymentController < ApplicationController
-
+		skip_before_filter :require_auth_token, only: :tds_callback
 	def subscribe
   		render json: {base_url: "http://izkh.ru:9292/faye", channel_title: "/server/#{params[:auth_token]}"}
 	end
