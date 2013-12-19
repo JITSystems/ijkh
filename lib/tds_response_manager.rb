@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TdsResponseManager
 
 	def self.publish_message(response)

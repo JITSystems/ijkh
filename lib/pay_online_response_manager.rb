@@ -1,3 +1,4 @@
+# encoding: utf-8
 class PayOnlineResponseManager
 	def self.publish_message(response)
 		if response["transaction"]
