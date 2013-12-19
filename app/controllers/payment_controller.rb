@@ -6,41 +6,38 @@ class PaymentController < ApplicationController
 	end
 
 	def pay
-		po_root_url = ""
 		service_id = params[:payment][:service_id]
 		amount = params[:payment][:amount]
 		order_id = params[:payment][:recipe_id]
 		user_id = current_user.id
 		merchant_id = params[:payment][:merchant_id]
+		auth_token = params[:auth_token]
 		
-		@vendor = Service.find(service_id).vendor
-		currency = "RUB"
-		private_security_key = @vendor.psk
-		
-		security_key_string = ""
-		payload = ""
-
 		if params[:payment][:rebill_anchor]
-			po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 			rebill_anchor = params[:payment][:rebill_anchor]
-			security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
-			security_key = Digest::MD5.hexdigest(security_key_string)
-			payload = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&ContentType=xml&user_id=#{user_id}"
+			rebill_payment = RebillPayment.new(service_id, amount, order_id, user_id, merchant_id, rebill_anchor, auth_token)
+			rebill_payment.pay
 		else
-			po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
 			ip = params[:payment][:ip]
 			card_number = params[:payment][:card_number]
 			cardholder_name = params[:payment][:cardholder_name]
 			email = params[:payment][:email]
 			card_exp_date = params[:payment][:card_exp_date]
-			card_cvv = params[:payment][:card_cvv]
-			
-			security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
-			security_key = Digest::MD5.hexdigest(security_key_string)
-			
-			payload = "MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&Ip=#{ip}&Email=#{email}&CardHolderName=#{cardholder_name}&CardNumber=#{card_number}&CardExpDate=#{card_exp_date}&CardCvv=#{card_cvv}&ContentType=xml&user_id=#{user_id}"
+			card_cvv = params[:payment][:card_cvv]	
+			auth_payment = AuthPayment.new(service_id, amount, order_id, user_id, merchant_id, ip, card_number, cardholder_name, email, card_exp_date, card_cvv, auth_token)
+			auth_payment.pay
 		end	
-		HttpRequestWorker.perform_async(po_root_url, payload, params[:auth_token])
+  		
   		render json: {}
+	end
+
+	def tds_callback
+		md = params["MD"]
+		pares = params["PaRes"]
+		
+		tds_payment = TdsPayment.new(pares, md)
+		tds_payment.pay
+
+		render json: {}
 	end
 end

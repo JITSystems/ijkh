@@ -6,7 +6,7 @@ class Ovd
 		(1..s.last_row).each do |i|
 			address_ovd = s.cell(i, 2).split(", ")
 			full_name 	= 	s.cell(i, 4).split(" ")
-			sector	 	= 	s.cell(i, 5).split("; ")
+			sector	 	= 	s.cell(i, 5).split(";")
 			
 			Precinct.create!(
 					ovd: 				s.cell(i, 1),
@@ -21,7 +21,7 @@ class Ovd
 			sector.each do |ad|
 				address = []
 				address = ad.split(",")
-				PrecinctStreet.create!(street: address[0].lstrip) unless PrecinctStreet.where(street: address[0]).first
+				PrecinctStreet.create!(street: address[0].lstrip) unless PrecinctStreet.where(street: address[0].lstrip).first
 				
 				(1..address.size).each do |i|
 					next if address[i] == nil || address[i] == " "
