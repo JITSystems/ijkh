@@ -7,37 +7,41 @@
   <div class="horizontal_div" style="width: 100%; float: none;">
     <div class="box_blue" id="" style="min-height:245px;width:880px;padding: 25px; background-color: #e8eef2; font-size: 0.9em;">
        
-      <table>
-            <tr>
-                  <td><p>Наименование получателя</p></td>
-                  <td><p>Регион</p></td>
-                  <td><p>Вид услуг</p></td>
-                  <td><p>Комиссия, (%)</p></td>
-            </tr>
-
-            <% @vendors.order(:commission).each do |vendor| %>
+      <table id="vendors_table">
+            <thead>
                   <tr>
-                  <td><p><%= vendor.title %></p></td>
-                  
-                  <td>
-                        <% if vendor.cities != [] %>
-                        <p><%= vendor.cities[0].title %></p>
-                        <% end %>
-                  </td>
-                  
-                  <td><p><%= vendor.service_type.title %></p></td>
-                    <td>
-                        <p>
-                              <% if vendor.commission == 0.0 %>
-                                    <%= vendor.commission.to_i %>
-                              <% else %>
-                                    <%= vendor.commission %>
-                              <% end %>
-                        </p>
-                    </td>
+                        <td><p>Наименование получателя</p></td>
+                        <td><p>Регион</p></td>
+                        <td><p>Вид услуг</p></td>
+                        <td><p>Комиссия, (%)</p></td>
                   </tr>
-            <% end %>  
-         
+            </thead>
+            <tbody>
+                  <% @vendors.order(:commission).each do |vendor| %>
+                        <tr>
+                              <td>
+                                    <p><%= vendor.title %></p>
+                              </td>
+                              
+                              
+                              <td>
+                                    <% if vendor.cities != [] %>
+                                    <p><%= vendor.cities[0].title %></p>
+                                    <% end %>
+                              </td>
+                              
+                              
+                              <td>
+                                    <p><%= vendor.service_type.title if vendor.service_type %></p>
+                              </td>
+
+                              
+                              <td>
+                                    <p><%= vendor.commission.to_s.split('.').last.to_i == 0 ? vendor.commission.to_i : vendor.commission %></p>
+                              </td>
+                        </tr>
+                  <% end %>  
+            </tbody>
        </table>
        
 
@@ -57,9 +61,30 @@
             border: 1px #686868 solid;
       }
 
-      table tr:first-child
+      table thead tr:first-child
       {
             font-weight: 600;
             background-color: #CCC;
       }
 </style>
+
+<script type="text/javascript" src="/javascripts/jquery.dataTables.min.js"></script>
+
+
+<script>
+     $('#vendors_table').dataTable( {
+        "bPaginate": false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false,
+        "aaSorting": [[ 3, "asc" ]]
+    } );
+</script>
+
+
+
+
+
+
+
