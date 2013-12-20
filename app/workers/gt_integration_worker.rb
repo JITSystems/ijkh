@@ -1,6 +1,7 @@
 # encoding: utf-8
 class GtIntegrationWorker
 	include Sidekiq::Worker
+	sidekiq_options :retry => false
 
 	def perform(user_id)
 		services = Service.where("user_id = ? and vendor_id = 121 and is_active = true", user_id)
