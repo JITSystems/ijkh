@@ -3064,3 +3064,13 @@ div#gt_info > p > span
 	font-weight: 600;
 }
 
+
+
+#vendors_table_filter {
+position: relative;
+display: block;
+color: #00558D;
+text-decoration: none;
+padding-bottom: 10px;
+font-size: 16px;
+}

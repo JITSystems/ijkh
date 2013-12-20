@@ -61,18 +61,21 @@ $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/sha
 		$('div.end .end_button').attr('disabled','disabled');
 		$('#tax_total').hide();
 <% end %>
-$('div#gt_info').html('');
+
+var $gt_info = $('div#gt_info');
+$gt_info.html('');
 
 <% if (@vendor_id == 121) %>
-	//console.log('<%= @g_t_data %>');
+	console.log('<%= @g_t_data %>');
+	
 	<% if @g_t_data %>
 		var q_t_data = <%= @g_t_data.html_safe %>;
-		$('div#gt_info').append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
-		$('div#gt_info').append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
-		$('div#gt_info').append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
+		$gt_info.append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
+		$gt_info.append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
+		$gt_info.append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
+	<% else %>
+		$gt_info.html('<p>Договор не найден. Пожалуйста, проверьте правильность введённого лицевого счёта.</p>');
 	<% end %>
-
-	if  ( q_t_data == null ){ $('div#gt_info').html('<p>Договор не найден. Пожалуйста, проверьте правильность введённого лицевого счёта.</p>'); }
 
 <% end %>
 
