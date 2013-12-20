@@ -873,7 +873,7 @@ p#account_service_title
 .service_info 
 {
 	background-color: #fff;
-	box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);
+	/*box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);*/
 	display: none;
 	padding-bottom: 20px;
 	padding-top: 10px;

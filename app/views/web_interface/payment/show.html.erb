@@ -3,7 +3,6 @@
 	<p class="text_plate_blue">Оплата счетов</p>
 </div>
 <div class="container_boxes">
-	
 	<div class="vertical_div vertical_div_left">
 		<div class="box_left box_blue">
 			<div class="data_box_top">
@@ -11,9 +10,17 @@
 			</div>
 			<div class="pay_text">
 			<% if @places != [] %>
+			<ul>
 				<% @places.each do |place| %>
-					<%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %>
+					<!--%= link_to place.title, "/get_service/#{place.id}", remote: true, method: :post, class: "object" %-->
+					<%= link_to "/get_service/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}" do %>
+						<li>
+							<p class="place_title"><%=place.title%></p>
+							<p class="place_sub_title"><%= "#{place.city}, #{place.street}, #{place.building}, #{place.apartment}" %>
+						</li>
+					<% end %>
 				<% end %>
+			</ul>
 			<% else %>
 				<p style="padding: 10px;">Не найдено ни одного объекта. Перейдите в <a id="no_object_found" href="<%= profile_path %>">профиль</a> для добавления объектов и услуг.</p>
 			<% end %>
