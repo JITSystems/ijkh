@@ -66,7 +66,8 @@ protected
 				@type = nil
 			end
 		end
-		url.to_s
+		puts url
+		url
 	end
 
 	def form_payment_url(cid, tid)
