@@ -716,6 +716,19 @@ p#account_service_title
 	float: left;
 	padding-right: 10px;
 }
+.pay_text li {
+	padding-top: 3px;
+}
+.pay_text a {
+	height: 45px;
+}
+
+.pay_text p.place_sub_title {
+	padding-top: 3px;
+	font-size: 12px;
+	color: #47555e;
+}
+
 .pay_text a:nth-child(odd) {
     background: #f0f0f0; /* Цвет фона */
    } 
@@ -860,7 +873,7 @@ p#account_service_title
 .service_info 
 {
 	background-color: #fff;
-	box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);
+	/*box-shadow: inset 0px 0px 10px -2px rgb(0, 0, 0);*/
 	display: none;
 	padding-bottom: 20px;
 	padding-top: 10px;
@@ -2257,8 +2270,8 @@ margin: 3px 3px;
 	width: 450px;
 	min-height: 100px;
 	/*border-bottom: 2px solid #8da9bc;*/
-	height:162px;
-	overflow-y: scroll;
+	/*height:162px;
+	overflow-y: scroll;*/
 	overflow-x: hidden;
 }
 

@@ -1,4 +1,4 @@
-$('a#<%= @place.id %>').html('<%= @place.title %>');
+$('a#<%= @place.id %>').html('<li><p class="place_title"><%=@place.title%></p><p class="place_sub_title"><%= "#{@place.city}, #{@place.street}, #{@place.building}, #{@place.apartment}" %></li>');
 $('#place_title_in_card').html('<%= @place.title %>');
 $('p.adress_blue').html('<%= @place.city %> <%= @place.street %> <%= @place.building %>, кв.<%= @place.apartment%>');
             $('#place_edit_container').fadeOut('fast',function(){
