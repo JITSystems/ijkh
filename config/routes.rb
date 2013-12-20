@@ -264,6 +264,12 @@ Ijkh::Application.routes.draw do
       
 
   end
+
+  namespace :freelance_interface do
+    resources :freelancers
+    resources :tags
+    resources :comments
+  end 
   
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do

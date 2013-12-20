@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205084610) do
+ActiveRecord::Schema.define(:version => 20131220105007) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(:version => 20131205084610) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
-  end
-
-  create_table "category", :id => false, :force => true do |t|
-    t.integer "id",                                :null => false
-    t.integer "parent_category_id"
-    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -117,6 +111,58 @@ ActiveRecord::Schema.define(:version => 20131205084610) do
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "freelance_interface_comments", :force => true do |t|
+    t.text     "body"
+    t.float    "raiting"
+    t.boolean  "published"
+    t.integer  "freelancer_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "freelance_interface_freelancer_tags", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "freelancer_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "freelance_interface_freelancers", :force => true do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "phone_number"
+    t.string   "picture_url"
+    t.text     "description"
+    t.float    "raiting"
+    t.boolean  "published"
+    t.date     "unpublish_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "freelance_interface_tags", :force => true do |t|
+    t.string   "title"
+    t.float    "weight"
+    t.boolean  "published"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "freelance_interface_top_four_lists", :force => true do |t|
+    t.integer  "freelancer_id"
+    t.integer  "tag_id"
+    t.date     "unpublish_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "freelance_interface_top_ten_lists", :force => true do |t|
+    t.integer  "freelancer_id"
+    t.date     "unpublish_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "freelancers", :force => true do |t|

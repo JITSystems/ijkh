@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  freelancer_id: 1
+  tag_id: 1
+  unpublish_at: 2013-12-20
+
+two:
+  freelancer_id: 1
+  tag_id: 1
+  unpublish_at: 2013-12-20
