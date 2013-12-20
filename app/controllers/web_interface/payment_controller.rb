@@ -12,7 +12,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		end
 
       	JtIntegrationWorker.perform_async(current_user.id)
-      	GtIntegrationWorker.perform_async(current_user.id)
+      	#GtIntegrationWorker.perform_async(current_user.id)
       	
 	end
 
