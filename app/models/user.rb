@@ -32,4 +32,5 @@ class User < ActiveRecord::Base
   has_many :meter_readings
   has_many :tariffs, as: :owner
   has_many :recipes
+  has_one :freelance_interface_freelancer
 end

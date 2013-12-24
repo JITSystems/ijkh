@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131220105007) do
+ActiveRecord::Schema.define(:version => 20131224102836) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.date     "unpublish_at"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
 
   create_table "freelance_interface_tags", :force => true do |t|
@@ -150,9 +151,24 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "freelance_interface_top_four_freelancers", :force => true do |t|
+    t.integer  "freelancer_id"
+    t.integer  "tag_id"
+    t.date     "unpublish_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "freelance_interface_top_four_lists", :force => true do |t|
     t.integer  "freelancer_id"
     t.integer  "tag_id"
+    t.date     "unpublish_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
+    t.integer  "freelancer_id"
     t.date     "unpublish_at"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
