@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131220105007) do
+ActiveRecord::Schema.define(:version => 20131224072709) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
+  end
+
+  create_table "category", :id => false, :force => true do |t|
+    t.integer "id",                                :null => false
+    t.integer "parent_category_id"
+    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -150,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "freelance_interface_top_four_lists", :force => true do |t|
+  create_table "freelance_interface_top_four_freelancers", :force => true do |t|
     t.integer  "freelancer_id"
     t.integer  "tag_id"
     t.date     "unpublish_at"
@@ -158,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "freelance_interface_top_ten_lists", :force => true do |t|
+  create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
     t.integer  "freelancer_id"
     t.date     "unpublish_at"
     t.datetime "created_at",    :null => false
@@ -250,6 +256,12 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.integer  "service_id"
   end
 
+  create_table "place_types", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "places", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -261,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20131220105007) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "city_id"
+    t.integer  "type_id"
   end
 
   create_table "precinct_houses", :force => true do |t|

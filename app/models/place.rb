@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
 	extend PlacesRepository
 
-  attr_accessible :apartment, :building, :city, :is_active, :street, :title, :user_id, :city_id
+  attr_accessible :apartment, :building, :city, :is_active, :street, :title, :user_id, :city_id, :type_id
 
   validates_presence_of :building, :city, :street, :title, :user_id
 

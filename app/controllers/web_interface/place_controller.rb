@@ -23,6 +23,7 @@ class WebInterface::PlaceController < WebInterfaceController
 		@vendors = Vendor.select("id, title, service_type_id").all
 		@service_types = ServiceType.select("id, title").all
 		@tariffs = Tariff.select("id, title").all
+		@place_types = PlaceTypeManager.index
 		respond_to do |format|
 			format.js {
 				render 'web_interface/place/place_card'

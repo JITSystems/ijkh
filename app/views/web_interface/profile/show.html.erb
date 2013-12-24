@@ -56,7 +56,6 @@
 			<% if @places != [] %>
 			<ul class="profile_places">
 				<% @places.each do |place| %>
-					<!--%= link_to place.title, "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}", onclick: "$('#slideUpBox').css('clear','none');" %-->
 					<%= link_to "/get_place/#{place.id}", remote: true, method: :post, class: "object", id: "#{place.id}" do %>
 						<li>
 							<p class="place_title"><%=place.title%></p>

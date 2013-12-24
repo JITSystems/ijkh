@@ -17,6 +17,7 @@ class WebInterface::ProfileController < WebInterfaceController
     	@service = Service.new
     	@cities = CityManager.index
         @services = ServiceManager.index_by_place(@place) if @place
+        @place_types = PlaceTypeManager.index
 
     	@grouped_options = Hash.new
    

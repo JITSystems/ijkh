@@ -1,0 +1,2 @@
+class PlaceTypeManager < ObjectManager
+end

@@ -23,57 +23,35 @@ class WebInterface::PaymentController < WebInterfaceController
 
 	def get_payment_data
 
+		@account = Account.where(service_id: params[:service_id]).first
 		@tariff = Tariff.where(service_id: params[:service_id]).first
 		@service = Service.find(params[:service_id])
 		@service_id = params[:service_id]
+		@vendor_id = @account.service.vendor_id
+		@fields = @tariff.fields
 
-		if @tariff.has_readings
-			@fields = @tariff.fields
-			#@last_meter_reading = MeterReading.where(field_id: params[:field_id]).order("created_at DESC").limit(1).first
-		else 
-			@fields = @tariff.fields
+		if @account.status.to_i == -1
+			@amount = @account.amount
+		else
+			@amount = @tariff.fields.first.value
 		end
 
-		@fields = @tariff.fields
-		@account = Account.where(service_id: params[:service_id]).first
-		vendor_id = @account.service.vendor_id 
-
-		unless vendor_id == 0
-			@commission = VendorManager.get(vendor_id).commission
+		unless @vendor_id == 0
+			@commission = VendorManager.get(@vendor_id).commission || 0
 		else
 			@commission = 0 
 		end
 
-		po_tax = 0
-		service_tax = 0
-		total = 0.0
-		amount = @account.amount
+		@service_tax = round_up((@commission.to_f/100.00)*@amount).round(2)
 
-		unless @commission 
-			po_tax = 0
-			service_tax = 0
-			total = service_tax + amount
-		else 
-			service_tax = round_up((@commission.to_f/100.00)*amount).round(2)
-			po_tax = 0
-			total = service_tax + amount
-		end
-
-		@service_tax = service_tax
-		@vendor_id = vendor_id
-
-
-		if (vendor_id == 121)
-			g_t_data = GlobalTelecom.new(@service.user_account)
-			@g_t_data = g_t_data.check
-			@g_t_data = @g_t_data.to_json
-		end
+		@g_t_data = GlobalTelecom.new(@service.user_account).check.to_json if @vendor_id == 121
 
 		respond_to do |format|
 			format.js {
 				render 'web_interface/payment/get_payment_data'
 			}
 		end
+
 	end
 
 	def pay
@@ -153,16 +131,10 @@ class WebInterface::PaymentController < WebInterfaceController
 		vendor_id = @account.service.vendor_id 
 
 		unless vendor_id == 0
-			@commission = VendorManager.get(vendor_id).commission
+			@commission = VendorManager.get(vendor_id).commission || 0
 		else
 			@commission = 0 
 		end
-			
-
-		unless @commission
-			@commission = 0
-		end
-
 
 		@message = "Счёт успешно создан"
 

@@ -7,3 +7,4 @@ $("input#place_id").attr('value', '<%= @place.id %>');
 
 $(".pay_text a").removeClass("object_selected");
 $("a[href='/get_place/<%= @place.id %>']").addClass("object_selected");
+$('input, select').styler();

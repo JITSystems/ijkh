@@ -14,7 +14,7 @@ if ($("input.recipe_check").attr("checked") == "checked")
     }
     else
     {
-    	// console.log("not checked");
+            // console.log("not checked");
     }
 
 $('#tariff_selected_box').hide();
@@ -39,43 +39,42 @@ $("#meter_reading_box").fadeIn(300);
 
 <% if @tariff.has_readings %>
 $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/meter_reading_form") %>');
-	<% if @account.amount != 0.0 %>
-		$('.recipe_is_paid').hide();
-		$('.recipe_is_paid_freeze').show();
-		$('span#recipe_is_paid_span').click();
-		$('div.end .end_button').removeAttr('disabled');
-	<% else %>
-		$('.recipe_is_paid_freeze').hide();
-		$('div.end .end_button').attr('disabled','disabled');
-	<% end %>
-		$('#tax_total').hide();
+        <% if @account.amount != 0.0 %>
+                $('.recipe_is_paid').hide();
+                $('.recipe_is_paid_freeze').show();
+                $('span#recipe_is_paid_span').click();
+                $('div.end .end_button').removeAttr('disabled');
+        <% else %>
+                $('.recipe_is_paid_freeze').hide();
+                $('div.end .end_button').attr('disabled','disabled');
+        <% end %>
+                $('#tax_total').hide();
 <% else %>
-		$("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
-		$('.recipe_is_paid_freeze').hide();
-		$('div.end .end_button').removeAttr('disabled');
-		$('span#tax_total_value').html('<%= @service_tax %>');
-		$('#tax_total').show();
+                $("div#meter_reading_box").html('<%= escape_javascript render("web_interface/shared/create_account_form") %>'); 
+                $('.recipe_is_paid_freeze').hide();
+                $('div.end .end_button').removeAttr('disabled');
+                $('span#tax_total_value').html('<%= @service_tax %>');
+                $('#tax_total').show();
 <% end %>
 
 <% if @vendor_id == 0 %>
-		$('div.end .end_button').attr('disabled','disabled');
-		$('#tax_total').hide();
+                $('div.end .end_button').attr('disabled','disabled');
+                $('#tax_total').hide();
 <% end %>
 
 var $gt_info = $('div#gt_info');
 $gt_info.html('');
 
 <% if (@vendor_id == 121) %>
-	console.log('<%= @g_t_data %>');
-	
-	<% if @g_t_data.to_s != 'null' %>
-		var q_t_data = <%= @g_t_data.html_safe %>;
-		$gt_info.append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
-		$gt_info.append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
-		$gt_info.append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
-	<% else %>
-		$gt_info.html('<p>Договор не найден. Пожалуйста, проверьте правильность введённого лицевого счёта.</p>');
-	<% end %>
+        console.log('<%= @g_t_data %>');
+        
+        <% if @g_t_data.to_s != 'null' %>
+                var q_t_data = <%= @g_t_data.html_safe %>;
+                $gt_info.append('<p> <span> ФИО: </span> ' + q_t_data.comment + '</p>');
+                $gt_info.append('<p> <span> № договора: </span> ' + q_t_data.title + '</p>');
+                $gt_info.append('<p> <span> Баланс: </span> ' + q_t_data.balance + '</p>');
+        <% else %>
+                $gt_info.html('<p>Договор не найден. Пожалуйста, проверьте правильность введённого лицевого счёта.</p>');
+        <% end %>
 
 <% end %>
-
