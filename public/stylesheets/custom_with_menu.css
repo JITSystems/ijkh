@@ -3092,6 +3092,14 @@ span.reg_place_select > div:first-child > div
 }
 
 
+span.reg_place_select > div:first-child > div:nth-child(2)
+{
+	
+padding: 0px;
+right: -7px;
+}
+
+
 
 span.reg_place_select > div:nth-child(2)
 {

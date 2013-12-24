@@ -34,16 +34,10 @@
 			<%if service.user_account !='' %>
 			<p><span class="service_info_header">Лицевой счёт:</span> <%= service.user_account %> </p>
 			<% end %>
-			<div>
-			<p class="pay_service">
-				<a class="pay_service_button">Перейти к оплате</a>
-			</p>
 			<p class= "delete_service">
 				<button class="delete_service_button" onclick="$('#delete_service_<%= service.id %>').fadeIn();">Удалить услугу</button>		
-				<!--div class="clear"></div-->
+				<div class="clear"></div>
 			</p>
-		</div>
-
 			<div class="delete_service_confirm" id="delete_service_<%= service.id %>" >
 				<p>Удалить услугу?</p>
 
