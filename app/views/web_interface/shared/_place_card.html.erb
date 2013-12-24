@@ -30,8 +30,9 @@
 		<div class="box_top_right ">
 			<p>Редактирование места</p>
 		</div>
-		<div class="choise_place">
+		<div class="choise_place" style="padding-left: 20px;">
 			<%= f.text_field(:title, :value => @place.title, :placeholder=>"Введите название объекта", :class=>:reg_place) %>
+			<%= select_tag("place[type_id]", options_for_select(@place_types.map {|pt| [pt.title, pt.id, {listType: "place_type"}]}, @place.type_id), :class=>'reg_place_select place_validate', prompt: "Выберите тип объекта") %>
 			<%= f.text_field(:city, :value => @place.city, :placeholder=>"Введите город", :class=>:reg_place) %>
 			<%= f.text_field(:street, :value => @place.street, :placeholder=>"Введите улицу", :class=>:reg_place) %>
 			<%= f.text_field(:building, :value => @place.building, :placeholder=>"Введите номер дома", :class=>:reg_place) %>

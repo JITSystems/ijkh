@@ -2,15 +2,16 @@
 	<div class="box_top_right ">
 		<p>Добавление места</p>
 	</div>
-	<div class="choise_place">
-		<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>'reg_place place_validate place_clear', disabled: true) %>
-		<%= f.text_field(:city, :placeholder=>"Введите город", :class=>'reg_place place_validate place_clear',  disabled: true) %>
-		<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>'reg_place place_validate place_clear',  disabled: true) %>
-		<%= f.text_field(:building, :placeholder=>"Введите номер дома", :class=>'reg_place place_validate place_clear',  disabled: true) %>
-		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>'reg_place place_clear',  disabled: true) %>
+	<div class="choise_place" style="padding-left: 20px;">
+		<%= f.text_field(:title, :placeholder=>"Введите название объекта", :class=>'reg_place place_validate place_clear') %>
+		<%= select_tag("place[type_id]", options_for_select(@place_types.map {|pt| [pt.title, pt.id, {listType: "place_type"}]}), :class=>'reg_place_select place_validate', prompt: "Выберите тип объекта" ) %>
+		<%= f.text_field(:city, :placeholder=>"Введите город", :class=>'reg_place place_validate place_clear') %>
+		<%= f.text_field(:street, :placeholder=>"Введите улицу", :class=>'reg_place place_validate place_clear') %>
+		<%= f.text_field(:building, :placeholder=>"Введите номер дома", :class=>'reg_place place_validate place_clear') %>
+		<%= f.text_field(:apartment, :placeholder=>"Введите номер квартиры", :class=>'reg_place place_clear') %>
 	</div>
 	<div class="accept_place">
-		<%= f.submit("Добавить место",  onclick: 'place_validate(); return false;', class: "accept_service_button accept_place_button", disabled: true) %>
+		<%= f.submit("Добавить место",  onclick: 'place_validate(); return false;', class: "accept_service_button accept_place_button") %>
 		<!-- 	<input type="button" class="accept_service_button" value="Добавить услугу"> -->
 	</div>
 <% end %>

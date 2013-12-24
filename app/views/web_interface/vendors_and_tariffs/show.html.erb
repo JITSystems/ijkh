@@ -16,7 +16,7 @@
                         <td><p>Комиссия, (%)</p></td>
                   </tr>
             </thead>
-            <tbody>
+             <tbody>
                   <% @vendors.order(:commission).each do |vendor| %>
                       <% unless vendor.merchant_id == 11111 %>
                         <tr>
