@@ -16,8 +16,9 @@
                         <td><p>Комиссия, (%)</p></td>
                   </tr>
             </thead>
-            <tbody>
+             <tbody>
                   <% @vendors.order(:commission).each do |vendor| %>
+                      <% unless vendor.merchant_id == 11111 %>
                         <tr>
                               <td>
                                     <p><%= vendor.title %></p>
@@ -40,6 +41,7 @@
                                     <p><%= vendor.commission.to_s.split('.').last.to_i == 0 ? vendor.commission.to_i : vendor.commission %></p>
                               </td>
                         </tr>
+                      <% end %>
                   <% end %>  
             </tbody>
        </table>
