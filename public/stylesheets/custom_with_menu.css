@@ -5,7 +5,7 @@ html,body{
 
 body{
         /*background-image: url(../images/background.jpg);*/
-        /*background-color: rgb(27,44,64);*/
+        background-color: rgb(40,57,77);
         /*background: -webkit-radial-gradient(circle 100px at 20px 50%, black 0%, black 20px, rgba(,0,0,0.3) 18px, rgba(0,0,0,0) 19px);*/
 		/*background-image: radial-gradient(50%, 50%, circle, rgb(27,44,64), rgb(255,255,255));*/
 		background-image: -webkit-radial-gradient(center center, circle closest-side, rgb(80,97,117) 0%, rgb(40,57,77) 180%);
