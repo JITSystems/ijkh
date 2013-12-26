@@ -1,0 +1,19 @@
+%div(id="footer")
+ = render('shared/layout/title_page/partners') if controller.controller_name == 'web_interface/title_page'
+ %div(id="social_links")
+  %a(href="https://vk.com/izkh_official" style="display: inline-block;height: 45px;width: 48px; background-position: 0px -54px;")
+  %a(href="https://www.facebook.com/pages/%D0%9E%D0%9E%D0%9E-%D0%90%D0%B9%D0%96%D0%9A%D0%A5/730802226933352" style="display: inline-block;height: 45px;width: 50px; background-position: 109px -54px;")
+  %a(href="https://twitter.com/izkh_official" style="display: inline-block;height: 45px;width: 49px; background-position: 49px -54px;")
+
+ %div(id="services_links")
+  %a(href="https://itunes.apple.com/ru/app/servis-ajzkh/id649860222?mt=8" class="service_link" title="Apple AppStore")
+   %img(src="/assets/footer_appstore.png" alt="")
+  %a(style="opacity: 0.4; cursor: default;" onclick="return: false;" href="#" class="service_link" title="Google Play")
+   %img(src="/assets/footer_googleplay.png" alt="")
+
+ %div(style="text-align: right;margin: 10px 0px;padding-bottom: 15px;font-size: 13px;color: grey;")
+  %p Оплата услуг осуществляется через сервис АйЖКХ.
+  %p Безопасность операций соответствует требованиям международного стандарта PCI DSS.
+  %p Услугу по переводу денежных средств оказывает ОАО АКБ "Банк Москвы", лицензия Банка России №2748.
+  %p ОАО "Банк Москвы", ОГРН 1027700159497, 107996, Москва, ул. Рождественка, д. 8/15, стр. 3
+  %p ООО "АйЖКХ", ОГРН 1126316010490, 443090, г. Самара, ул Советской Армии, д 180, стр 1, цокольный этаж.

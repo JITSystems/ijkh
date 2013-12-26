@@ -1,0 +1,39 @@
+%div(id="nav")
+ %div(id="logo")
+ %div(id="menu")
+  %ul
+   %li
+    = link_to('Главная', root_path)
+   %li
+    = link_to('Компания', '#')
+    %ul
+     %li
+      = link_to('О компании', title_about_path)
+     %li
+      = link_to('Партнерам', title_partners_path)
+     %li
+      = link_to('Инвесторам', title_investors_path)
+     %li
+      = link_to('Контакты', title_contacts_path)
+     %li
+      = link_to('Реквизиты', title_details_path)
+   %li
+    = link_to('Справочники', '#')
+    %ul
+     %li
+      = link_to('Поставщики', "https://izkh.ru/catalog")
+     %li
+      = link_to('Частные услуги', "https://izkh.ru/freelancers")
+     %li
+      = link_to('Экстренные службы', "https://izkh.ru/emergency")
+     %li
+      = link_to('Мобильный участковый', "https://izkh.ru/precinct")
+   %li
+    = link_to('Услуги', '#')
+    %ul
+     %li
+      = link_to('Электронное ЖКХ', title_ijkh_path)
+     %li
+      = link_to('Размещение рекламы на сайте', title_ad_on_site_path)
+   %li
+    = link_to('Перейти к сервису АйЖКХ', main_path)

@@ -1,0 +1,78 @@
+<div id="sidebar">
+			<div id="sidebar_header">
+				
+				<% if current_user %>
+					<% if [16,12,62,120,2,6,630].include? current_user.id %>
+						<h3><%= link_to 'Создать новость', new_web_interface_news_item_path %></h3>		
+					<% end %>
+				<% end %>
+
+				<p class="izkh_summary">Пользователей: <%= @users %> </p>	
+				<p class="izkh_summary">Поставщиков услуг: <%= @vendors %> </p>	
+			</div>
+
+			<a href="<%= title_ad_on_site_path %>"><img src="/assets/banners/264x420.png" alt="" /></a>
+
+				<div class="best_freelancers">
+					<h6>ЛУЧШИЕ ФРИЛАНСЕРЫ</h6>
+					<div class="best_freelancer">
+						<a href="/title_freelancer/225">
+							<img src="/assets/freelancer_225.jpg" alt="">
+						</a>
+	
+						<div id="testRater" class="stat">
+							<label for="rating">Кузнецов Александр. Ремонт техники.</label>
+							<div class="statVal">
+								<label for="rating"></label>
+								<span class="ui-rater">
+									<span class="ui-rater-starsOff" style="width:90px;cursor: pointer;z-index: -5;position: relative;"><span class="ui-rater-starsOn" style="width:0px"></span></span>
+									<span class="ui-rater-rating">0</span>&#160;(<span class="ui-rater-rateCount">0</span>)
+								</span>
+					        </div>
+					    </div>
+					</div>
+
+					<div class="freelancer">
+						<p>Андрей Пелявин. Сантехник.</p>
+						<a href="/title_freelancer/234"><img src="/assets/freelancer_234.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+					<div class="freelancer">
+						<a href="http://izkh.ru/freelancers"><img src="/assets/no_freelancer.jpg" alt=""></a>
+					</div>
+				</div>
+<!-- 
+				<div class="best_freelancers">
+					<h6>Лучшие фрилансеры</h6>
+					<div class="best_freelancer">TOP_FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+					<div class="freelancer">FL</div>
+				</div>
+			 -->
+
+			<a href="<%= title_ad_on_site_path %>"><img src="/assets/banners/264x420-2-1.png" alt="" /></a>
+			<div style="
+				margin-top: 13px;
+				height: 173px;
+				overflow: hidden;
+				position: relative;
+				border-top: 1px #B8B8B8 solid;
+			"><a href="<%= title_ad_on_site_path %>"><img src="/assets/banners/264x420-3.png" alt="" style="
+				                                                  
+				    position: absolute;
+				    bottom: 0px;
+				"></a></div>
+		</div><!-- .right-sidebar -->
+
+<script>
+	    $(function() {
+    		$('#testRater').rater({ postHref: '' });
+    	});
+</script>

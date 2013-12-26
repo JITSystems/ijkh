@@ -1,0 +1,22 @@
+!!! html
+%html
+ %head
+  %title АйЖКХ
+    
+  = stylesheet_link_tag "application", :media => "all"
+  = javascript_include_tag "application"
+
+  = render('shared/layout/meta_tags')
+  
+ %body
+  %div(class="wrapper")
+   = render('shared/layout/title_page/header')
+   %div(class="middle")
+    %div(class="container")
+     = render('shared/layout/title_page/nav')
+     = render('shared/layout/title_page/sidebar')
+     %div(class="content")
+      = yield
+
+  = render('shared/layout/title_page/footer')
+  = render('shared/layout/yandex_metrics')
