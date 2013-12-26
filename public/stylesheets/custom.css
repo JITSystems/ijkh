@@ -4,7 +4,10 @@ html,body{
 }
 
 body{
-	background-image: url(../images/background.jpg);
+	/*background-image: url(../images/background.jpg);*/
+	background-color: rgb(40,57,77);
+	background-image: -webkit-radial-gradient(center center, circle closest-side, rgb(80,97,117) 0%, rgb(40,57,77) 180%);
+	background-image: radial-gradient(center center, circle closest-side, rgb(80,97,117) 0%, rgb(40,57,77) 180%);
 	background-attachment: fixed;
 	font-family: "Open Sans", sans-serif !important; 
 }
