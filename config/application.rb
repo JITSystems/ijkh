@@ -17,6 +17,7 @@ module Ijkh
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/lib/object_manager/freelance_interface_manager)
     config.autoload_paths += %W(#{config.root}/lib/repositories)
     config.autoload_paths += %W(#{config.root}/lib/pay_online_payment)
     config.autoload_paths += %W(#{config.root}/lib/apns)

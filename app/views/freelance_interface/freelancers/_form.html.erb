@@ -1,0 +1,26 @@
+<%= form_for @freelancer do |f| %>
+	
+	<p>
+    	<%= f.label :picture_url, 'Загрузить фото' %><br>
+    	<%= f.file_field :picture_url %>
+  	</p>
+
+	<p>
+    	<%= f.label :name, 'Ваше имя' %><br>
+    	<%= f.text_field :name %>
+  	</p>
+ 
+	<p>
+	    <%= f.label :surmane, 'Ваша фамилия' %><br>
+	    <%= f.text_field :surname %>
+	</p>
+
+	<p>
+	    <%= f.label :phone_number, 'Телефон контакта' %><br>
+	    <%= f.text_field :phone_number %>
+	</p>
+ 
+  	<p>
+    	<%= f.submit 'Зарегистрировать объявление' %>
+  	</p>
+<% end %>

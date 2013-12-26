@@ -1,7 +1,9 @@
 class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
+	skip_before_filter :require_current_user
+
 	def show
-		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
+		@freelancer = FreelanceInterfaceFreelancerManager.find(params[:id])
 	end
 
 	
@@ -11,14 +13,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	
 	def create
-		@freelancer = FreelanceInterface::Freelancer.new(params[:freelancer])
-
-		if @freelancer.save
-			#redirect_to action: :show, id: @freelancer.id
-			redirect_to @freelancer
-		else 
-			render 'new'
-		end
+		@freelancer = FreelanceInterfaceFreelancerManager.create(params, current_user)
+		
 	end
 
 	
