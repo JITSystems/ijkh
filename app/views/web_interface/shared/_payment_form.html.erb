@@ -1,3 +1,22 @@
+<script>
+        function validateForm(){
+                var x=$('input.reg_input').val();
+                if (x==null || x=="" || parseFloat(x) < 100.0 || isNaN(x))
+                  {
+                        $("p#amount_total_error").show();
+                        $("#tax_total").hide();
+                        return false;
+                  }
+                else
+                {
+                        var $submit_button = $('form#pay_form > input[type="submit"]');
+                        $submit_button.setAttribute('onclick','');
+                        $submit_button.click();
+                }
+
+                }
+</script>
+
 <div class="box_right box_blue">
         <div class="box_top_right ">
                 <p>Оплата</p>
@@ -12,7 +31,7 @@
                 
         </div>
 
-<%= form_tag("/pay", remote: true, method: :get, id: "pay_form") do %>
+<%= form_tag("/pay", remote: true, method: :get, id: "pay_form" ) do %>
         <div class="amount_box">
                 <p>Cумма к оплате, руб:</p>
                 <input disabled="disabled" class="reg_input" id="amount_total" name="amount_total" type="text" value="">
@@ -22,6 +41,7 @@
 
         <p id="tax_total">Комиссия составит: <span id="tax_total_value">0.0</span> руб.</p>
         <p id="tax_total_error">Введите корректную сумму</p>
+        <p id="amount_total_error">Сумма должна быть не менее 100р.</p>
 
         <div class="recipe_is_paid" style="display:none;">
                 <label>
@@ -45,7 +65,7 @@
                                 onclick:"$('div.cards_list').slideToggle();return false;" )  %>
                 </div>
 
-                <%= submit_tag("Оплатить новой картой", :class=>:end_button, disabled: true, id: "pay_submit")  %>
+                <%= submit_tag("Оплатить новой картой", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>
 
                 <div class="cards_list" style="display:none; text-align: left;">
                         <% unless @cards == [] %>
@@ -84,7 +104,8 @@
 var vendor_id = parseInt($('input#vendor_id').val());
 var commission = 0;
 
-        $('#amount_total').keyup(function () {
+        $('#amount_total').keydown(function () {
+        $("p#amount_total_error").hide();
         if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
         {        
                 amount = parseFloat($(this).val());

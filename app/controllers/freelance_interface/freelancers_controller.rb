@@ -3,7 +3,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	skip_before_filter :require_current_user
 
 	def show
-		@freelancer = FreelanceInterfaceFreelancerManager.find(params[:id])
+		@freelancer = FreelanceInterface::Freelancer.new
 	end
 
 	
