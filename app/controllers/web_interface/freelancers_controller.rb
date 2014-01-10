@@ -4,4 +4,8 @@ class WebInterface::FreelancersController < WebInterfaceController
 		@freelance_category = FreelanceCategory.order('title asc')
     	@freelancer = Freelancer.order('title asc')
   end
+
+  def pay
+  		
+  end
 end

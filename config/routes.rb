@@ -214,6 +214,10 @@ Ijkh::Application.routes.draw do
       get "emergency_catalog" => "web_interface/emergency_catalog#show"
       get "emergency" => "web_interface/emergency#show"
       get "freelancers" => "web_interface/freelancers#show"
+
+      get "freelance_payment" => "web_interface/freelancers#pay"
+
+      
       get "freelancer_moderation" => "web_interface/freelancer_moderation#show"
       put "freelancer_moderation" => "web_interface/freelancer_moderation#update"
       delete "freelancer_moderation" => "web_interface/freelancer_moderation#destroy"
