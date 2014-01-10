@@ -19,6 +19,29 @@
 	    <%= f.label :phone_number, 'Телефон контакта' %><br>
 	    <%= f.text_field :phone_number %>
 	</p>
+
+	<p>
+		<%= f.label :unpublish_at, 'На сколько месяцев Вы хотите разместить объявление?' %>
+		<br>
+		<%= f.radio_button :unpublish_at, 1 %>
+		<%= f.label :unpublish_at, '1 месяц', value: 1 %>
+		<br>
+		<%= f.radio_button :unpublish_at, 6 %>
+		<%= f.label :unpublish_at, '6 месяцев', value: 6 %>
+		<br>
+		<%= f.radio_button :unpublish_at, 12 %>
+		<%= f.label :unpublish_at, '12 месяцев', value: 12 %>
+	</p>
+
+	<p>
+		Хотите быть на первом месте в категории или оказаться на главной странице сервиса?
+		<br>
+		<!-- 
+			СВОБОДНЫЕ МЕСТА ДОБАВИТЬ
+		 -->
+		<%= f.check_box :top_ten_freelancer %>
+		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>
+	</p>
  
   	<p>
     	<%= f.submit 'Зарегистрировать объявление' %>

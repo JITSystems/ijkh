@@ -158,7 +158,6 @@ ActiveRecord::Schema.define(:version => 20131224102836) do
   end
 
   create_table "freelance_interface_top_four_freelancers", :force => true do |t|
-<<<<<<< HEAD
     t.integer  "freelancer_id"
     t.integer  "tag_id"
     t.date     "unpublish_at"
@@ -166,27 +165,7 @@ ActiveRecord::Schema.define(:version => 20131224102836) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "freelance_interface_top_four_lists", :force => true do |t|
-=======
->>>>>>> 4ce08acf1ac8b68db2014df12835fec1bb86dc5b
-    t.integer  "freelancer_id"
-    t.integer  "tag_id"
-    t.date     "unpublish_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
-<<<<<<< HEAD
-    t.integer  "freelancer_id"
-    t.date     "unpublish_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "freelance_interface_top_ten_lists", :force => true do |t|
-=======
->>>>>>> 4ce08acf1ac8b68db2014df12835fec1bb86dc5b
+   create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
     t.integer  "freelancer_id"
     t.date     "unpublish_at"
     t.datetime "created_at",    :null => false

@@ -1,20 +1,31 @@
+#encoding: utf-8
+
 class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	skip_before_filter :require_current_user
 
 	def show
 		@freelancer = FreelanceInterface::Freelancer.new
+
 	end
 
 	
 	def new
 		@freelancer = FreelanceInterface::Freelancer.new
+		@tags = FreelanceInterface::Tag.all
+
+		
+		# FAKE DATA
+		# FreelanceInterface::Tag.delete_all
+		# ['Уборка','Ремонт','Телевизоров','Обучение','Седовник','Водопроводчик','Монтажник','Разнорабочий','Уборка','Ремонт','Няня','web design','Ремонт стиральных машин','Ubuntu','twitter','Маляр','wordpress','youtube','Электрик','web 2.0','motion design','work','телефонмастер','турникмен','игра на гитаре','катание на сноуборде'].each do |tag|
+		# 	FreelanceInterface::Tag.create!(title: tag, published: true)
+		# end
+
 	end
 
 	
 	def create
 		@freelancer = FreelanceInterfaceFreelancerManager.create(params, current_user)
-		
 	end
 
 	

@@ -4,5 +4,7 @@ class FreelanceInterface::Freelancer < ActiveRecord::Base
   has_many :comments
   has_many :tags, :through => :freelancer_tags
   has_many :freelancer_tags
+  has_one :top_ten_freelancer
+  has_one :top_four_freelancer
   belongs_to :user
 end

@@ -1,8 +1,18 @@
 <p>Заполните анкету и загрузите своё фото</p>
+<p>Для добавления тегов к своему объявлению, выберите тег в правой колонке и нажмите на него мышкой. С учётом добавленных тегов рассчитается стоимость объявления в месяц </p>
+<p>Добавляйте теги к Вашему объявлению для того, чтобы Вас проще было найти пользователям сервиса. Каждый тег стоит 10 рублей/месяц</p>
+
 <%= render 'form' %>
 
 <div style="_height: px;width: 47%;background-color: #FFF;border: 1px solid #FFF;text-align: left;">
-   <a href="#" style="font-size:19px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">Уборка </a>  
+
+	<% @tags.each do |tag| %>
+		
+		<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
+
+	<% end %>
+
+<!--    <a href="#" style="font-size:19px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">Уборка </a>  
    <a href="#" style="font-size:12px;text-decoration:none; border-bottom: 1px dotted; color: #87A800;">Ремонт </a>  
    <a href="#" style="font-size:16px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">Телевизоров </a>  
    <a href="#" style="font-size:21px;text-decoration:none; border-bottom: 1px dotted; color: #FF7600;">Обучение </a>  
@@ -27,5 +37,5 @@
    <a href="#" style="font-size:12px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">телефонмастер </a>  
    <a href="#" style="font-size:16px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">турникмен </a>  
    <a href="#" style="font-size:16px;text-decoration:none; border-bottom: 1px dotted; color: #DE2159;">игра на гитаре </a>  
-   <a href="#" style="font-size:12px;text-decoration:none; border-bottom: 1px dotted; color: #039FAF;">катание на сноуборде </a>  
+   <a href="#" style="font-size:12px;text-decoration:none; border-bottom: 1px dotted; color: #039FAF;">катание на сноуборде </a>   -->
 </div> 
