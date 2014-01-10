@@ -1,5 +1,14 @@
 <%= form_for @freelancer do |f| %>
+
+
 	
+	<%= f.select(
+		:tags, 
+		@tags_array,
+	    { :prompt => nil },
+	    { :multiple => true, :size => 5 }
+	) %>
+		
 	<p>
     	<%= f.label :picture_url, 'Загрузить фото' %><br>
     	<%= f.file_field :picture_url %>

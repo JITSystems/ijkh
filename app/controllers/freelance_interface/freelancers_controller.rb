@@ -12,7 +12,13 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	
 	def new
 		@freelancer = FreelanceInterface::Freelancer.new
-		@tags = FreelanceInterface::Tag.all
+		tags = FreelanceInterface::Tag.all
+
+		@tags_array = []
+
+		tags.each do |tag|
+			@tags_array << [tag.title, tag.id]
+		end 
 
 		
 		# FAKE DATA
@@ -25,7 +31,13 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	
 	def create
-		@freelancer = FreelanceInterfaceFreelancerManager.create(params, current_user)
+		@freelancer = FreelanceInterface::Freelancer.create(params[:freelance_interface_freelancer], current_user)
+
+		if @freelancer.save 
+			render 'show', id: @freelancer.id
+		else
+			render 'new'
+		end
 	end
 
 	
