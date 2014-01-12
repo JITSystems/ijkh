@@ -21,7 +21,7 @@ class ReportDataManager
 	end
 
 	def self.index_by_vendor(vendor_id, month)
-		payment_histories = PaymentHistory.where("extract(month from created_at) = ?", month.to_i)
+		payment_histories = PaymentHistory.where("status = 1 AND payment_type = '1' AND extract(month from created_at) = ?", month.to_i)
 			.includes(:service)
 			.map do |ph|
 				{
