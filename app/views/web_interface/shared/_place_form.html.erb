@@ -20,12 +20,13 @@
 var place_validate = function()
 {
 	var i = 0;
-	$('.place_validate').each(
+	$('#new_place .place_validate').each(
 		
 		function(){
 			if(this.value == '')
 			{
 				console.log(this.value);
+				console.log(this);
 				$( this ).css('border','2px red solid' );
 				i += 1;
 			}

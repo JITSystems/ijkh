@@ -1,8 +1,10 @@
-<div class="top_plate">
-	<p class="text_plate_gray">Сервис для учета расходов и оплаты услуг в сфере ЖКХ</p>
-	<p class="text_plate_blue">Профиль фрилансера/p>
-</div>
+<h1>Профиль фрилансера</h1>
 
 <div>
-      <%= @freelancer if @freelancer %>
+      <% if @freelancer %>
+		<p><%= @freelancer.name %></p>
+		<p><%= @freelancer.surname %></p>
+		<p><%= @freelancer.phone_number %></p>
+		<p><%= @freelancer.published %></p>
+      <% end %>
 </div>

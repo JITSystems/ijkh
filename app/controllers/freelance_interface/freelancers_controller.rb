@@ -4,7 +4,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	skip_before_filter :require_current_user
 
-	before_filter :check_existence, :only => :new
+	before_filter :check_existence, :only => [:new, :create]
 
 	def check_existence
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
