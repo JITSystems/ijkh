@@ -1,14 +1,5 @@
 <%= form_for @freelancer do |f| %>
 
-
-	
-	<%= f.select(
-		:tags, 
-		@tags_array,
-	    { :prompt => nil },
-	    { :multiple => true, :size => 5 }
-	) %>
-		
 	<p>
     	<%= f.label :picture_url, 'Загрузить фото' %><br>
     	<%= f.file_field :picture_url %>
@@ -27,6 +18,22 @@
 	<p>
 	    <%= f.label :phone_number, 'Телефон контакта' %><br>
 	    <%= f.text_field :phone_number %>
+	</p>
+
+	<p>
+		<%= f.label :tags, 'Категории' %><br>
+		<%= f.select(
+			:tags, 
+			@tags_array,
+		    { :prompt => nil },
+		    { :multiple => true, :size => 10 }
+		) %>
+	</p>
+
+	<p>
+		<%= label_tag 'custom_tag_field', 'Добавить свой тег (требует модерации)' %><br>
+		<%= text_field_tag 'custom_tag_field' %>
+		<%= button_tag 'Добавить', id: 'add_custom_tag', type: 'button' %><br>
 	</p>
 
 	<p>
