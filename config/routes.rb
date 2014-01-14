@@ -274,6 +274,8 @@ Ijkh::Application.routes.draw do
     resources :tags
     resources :comments
   end 
+
+  get 'freelance_interface_moderation' => 'freelance_interface/moderation#show'
   
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do

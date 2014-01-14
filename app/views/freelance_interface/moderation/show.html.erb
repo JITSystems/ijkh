@@ -1,1 +1,9 @@
 <h1>Модерация заявок фрилансеров</h1>
+<% @freelancers.each do |f| %>
+	<p>
+		<%= f.name %> 
+		<%= f.surname %>
+		
+	</p>
+	<hr>
+<% end %>
