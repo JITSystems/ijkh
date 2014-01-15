@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20131224102836) do
     t.datetime "updated_at",    :null => false
   end
 
-   create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
+  create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
     t.integer  "freelancer_id"
     t.date     "unpublish_at"
     t.datetime "created_at",    :null => false
