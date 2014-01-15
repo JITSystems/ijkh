@@ -1,6 +1,7 @@
 # encoding: utf-8
 class GtPaymentWorker
 	include Sidekiq::Worker
+	sidekiq_options :retry => false
 
 	def perform(service_id, recipe_id, amount)
 		service = Service.find(service_id)
