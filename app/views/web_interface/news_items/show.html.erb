@@ -1,4 +1,6 @@
 <h1><%= @news_item.title %></h1>
+<h2><%= @news_item.date || '' %></h2>
+<br>
 <p><%= @news_item.body.html_safe %></p>
 
 <p><%= link_to 'На главную', root_path %></p>

@@ -1,12 +1,49 @@
-<h1>Модерация заявок фрилансеров</h1>
-<% @freelancers.each do |f| %>
-	<p>
-		<%= f.name %> 
-		<%= f.surname %>
-		<%= f.phone_number %>
-		<%= f.unpublish_at %>
-		<%= f.created_at %>
-		<%= f.user_id %>
-	</p>
-	<hr>
+<h1>Модерация</h1>
+
+<h2>Модерация заявок фрилансеров</h2>
+<% if @freelancers == [] %>
+	<p>Нет новых заявок</p>
+<% else %>
+	<% @freelancers.each do |f| %>
+		<p>
+			<p>Фрилансер: <%= f.name %> <%= f.surname %></p>
+			<p>Телефон: <%= f.phone_number %></p>
+			<%= f.unpublish_at %>
+			<p>Опубликовано: <%= f.created_at %></p>
+			<%= f.user_id %>
+		</p>
+		<hr>
+	<% end %>
 <% end %>
+
+<br><br>
+
+<h2>Модерация отзывов к анкетам</h2>
+<% if @comments == [] %>
+	<p>Нет новых отзывов</p>
+<% else %>
+	<% @comments.each do |c| %>
+		<p>
+			<p>Сообщение: <%= с.body %></p>
+			<p>Опубликовано: <%= c.created_at %></p>
+		</p>
+		<hr>
+	<% end %>	
+<% end %>
+
+<br><br>
+
+<h2>Добавление тегов в облако</h2>
+
+<% if @tags == [] %>
+	<p>Нет новых тегов</p>
+<% else %>
+	<% @tags.each do |t| %>
+		<p>
+			<p> <%= t.title %></p>
+		</p>
+		<hr>
+	<% end %>
+<% end %>
+
+
