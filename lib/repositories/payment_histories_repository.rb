@@ -53,12 +53,12 @@ module PaymentHistoriesRepository
 			service = Service.find(service_id)
 			if service && service.vendor_id.to_i == 121
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
-				GtPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i, amount)
+				GtPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount)
 			#elsif service && service.vendor_id.to_i == 16
 				#JtPaymentWorker.perform_async(params[:user_id])
 			elsif service && service.vendor_id.to_i == 135
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
-				SlPaymentWorker.perform_async(payment_history_params[:user_id], payment_history_params[:recipe_id].to_i, amount) 
+				SlPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount) 
 			end
 		end
 		
