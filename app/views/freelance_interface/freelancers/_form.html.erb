@@ -1,6 +1,8 @@
 <%= form_for @freelancer do |f| %>
 
 	<p>
+		<img id="freelancer_picture" src="/assets/no_freelancer.jpg" alt="">
+		<br>
     	<%= f.label :picture_url, 'Загрузить фото' %><br>
     	<%= f.file_field :picture_url %>
   	</p>
@@ -53,7 +55,7 @@
 		Хотите быть на первом месте в категории или оказаться на главной странице сервиса?
 		<br>
 		<!-- 
-			СВОБОДНЫЕ МЕСТА ДОБАВИТЬ
+			ДОБАВИТЬ ЧИСЛО СВОБОДНЫХ МЕСТ
 		 -->
 		<%= f.check_box :top_ten_freelancer %>
 		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>

@@ -752,6 +752,9 @@ form#new_freelance_interface_freelancer
 	padding-left: 1px;
 }
 
+img#freelancer_picture {
+	width: 150px;
+}
 
-
+input:focus, select { outline: none; }
 
