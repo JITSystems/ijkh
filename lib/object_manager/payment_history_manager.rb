@@ -20,7 +20,7 @@ class PaymentHistoryManager < ObjectManager
 		recipe = RecipeManager.get(params[:OrderId])
 		account = recipe.service.account
 		updater = AmountUpdater.new(account)
-		updater.decrease(recipe.amount)
+		updater.decrease_by(recipe.amount)
 		AccountManager.update_status(account)
 
 		return payment_history

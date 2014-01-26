@@ -1,3 +1,0 @@
-class FieldListValueController < ApplicationController
-	
-end

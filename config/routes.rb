@@ -21,15 +21,6 @@ Ijkh::Application.routes.draw do
   # root :to => 'web_interface/main#index'
   root :to => 'web_interface/title_page#show'
 
-  get 'apns_test' => 'predefined_data#apns'
-  get 'apns_vendor' => 'predefined_data#new_vendors_notification'
-  post 'api/1.0/register_ios_device' => 'predefined_data#register_ios_device'
-  get 'get_statistics' => 'predefined_data#users_and_vendors'
-  get 'send_me_a_message' => 'predefined_data#send_custom'
-  get 'gt_check' => 'predefined_data#gt_check'
-  get 'sl_check' => 'predefined_data#sl_check'
-  get 'sl_pay' => 'predefined_data#sl_pay'
-
 # Admin
   namespace :admin do
     resources :users, only: [:index, :show]
@@ -55,19 +46,23 @@ Ijkh::Application.routes.draw do
   put 'api/1.0/place/:place_id' => 'place#update'
   get 'api/1.0/place/city_id' => 'place#city_id_match'
 
+# Support
+  get 'apns_vendor' => 'support#new_vendors_notification'
+  get 'get_statistics' => 'support#users_and_vendors'
+  post 'api/1.0/register_ios_device' => 'support#register_ios_device'
+
 # Service Type
   get 'api/1.0/servicetypes' => 'service_type#index'
-  get 'api/1.0/place/:place_id/exservicetypes' => 'service_type#index_non_existant'
   post 'api/1.0/servicetype' => 'service_type#create'
 
 # Service
   get 'api/1.0/place/:place_id/services' => 'service#index'
   get 'api/1.0/service/:service_id' => 'service#show'
+  get 'api/1.0/user_accounts/:vendor_id' => 'service#index_user_account'
   post 'api/1.0/place/:place_id/service' => 'service#create'
   post 'api/1.0/place/:place_id/userservice' => 'service#create_user_service'
   put 'api/1.0/userservice/:service_id' => 'service#update_user_service'
   delete 'api/1.0/service/:service_id' => 'service#destroy'
-  get 'api/1.0/user_accounts/:vendor_id' => 'service#index_user_account'
 
 # Card
   get 'api/1.0/cards' => 'card#index'
@@ -93,6 +88,7 @@ Ijkh::Application.routes.draw do
 # Meter Reading
   get 'api/1.0/tariff/:tariff_id/meterreadings' => 'meter_reading#index'
   get 'api/1.0/meterreadings' => 'meter_reading#index_by_vendor'
+  get 'api/1.0/meterreading/last' => 'meter_reading#show_last'
   post 'api/1.0/meterreading' => 'meter_reading#create'
   post 'api/1.0/meter_reading/create_init' => 'meter_reading#create_init'
   delete 'api/1.0/meter_reading/reset' => 'meter_reading#reset'
@@ -101,16 +97,13 @@ Ijkh::Application.routes.draw do
 # Account
   get 'api/1.0/unpaid_accounts' => 'account#unpaid_index'
   get 'api/1.0/paid_accounts' => 'account#paid_index'
-  get 'api/1.0/accounts' => 'account#index'
   get 'api/1.0/detailed_accounts' => 'account#detailed_account_index'
   put 'api/1.0/service/:service_id/recurrent_account' => 'account#new_recurrent'
-  put 'api/1.0/account/:account_id/switch_status' => 'account#switch_account_status' 
   put 'api/1.0/account/:account_id/holand_shturval' => 'account#hand_switch'
   delete 'api/1.0/account/:account_id' => 'account#destroy'
   post 'api/1.0/account/autoset' => 'account#autoset'
 
 # Precinct
-  get 'api/1.0/precinct/test' => 'precinct#test'
   get 'api/1.0/precinct/fetch' => 'precinct#fetch_precinct'
   get 'api/1.0/precinct/search_by_name' => 'precinct#search_by_name'
   get 'api/1.0/precinct/search_by_street' => 'precinct#search_by_street'
@@ -129,6 +122,8 @@ Ijkh::Application.routes.draw do
 # Freelance Category
   get 'api/1.0/freelancecategory' => 'freelance_category#index'
   post 'api/1.0/freelance_category/create' => 'freelance_category#create'
+
+# Freelancer
   post 'api/1.0/freelancer/create' => 'freelancer#create'
 
 # Non Utility Service Type
@@ -166,10 +161,6 @@ Ijkh::Application.routes.draw do
   get 'api/1.0/report_hourly' => 'report_data#index_hourly'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
-
-# OSMP
-  get 'osmp_check' => 'predefined_data#osmp_check'
-  get 'osmp_pay' => 'predefined_data#osmp_pay'
 
 # Web Interface
   scope '/' do

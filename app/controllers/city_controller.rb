@@ -1,10 +1,7 @@
 class CityController < ApplicationController
 	def index
-		@cities = City.all
+	# GET api/1.0/cities
+		@cities = City.index
 		render 'city/index'
-	end
-
-	def fill_served_cities
-		
 	end
 end

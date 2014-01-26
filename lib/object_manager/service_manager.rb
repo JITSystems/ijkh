@@ -9,7 +9,7 @@ class ServiceManager < ObjectManager
 		else
 			# Raise an exeption
 		end
-		service
+		return service
 	end
 
 	def self.index_by_place(place)
@@ -18,5 +18,19 @@ class ServiceManager < ObjectManager
 
 	def self.deactivate(service_id)
 		Service.find(service_id).update_attribute(:is_active, false)
+	end
+
+	def self.index_user_account(vendor_id)
+		Service.where("vendor_id = ? and is_active = true", vendor_id).pluck(:user_account)
+	end
+
+	def update_user_service(params)
+		fields_params = params[:service][:tariff][:fields]
+
+		fields_params.each do |field_params|
+			field = Field.find(field_params[:id])
+			field.update_attributes(value: FloatModifier.substitute_comma(field_params[:value]).to_f)
+		end
+		return Service.find(params[:service_id])
 	end
 end

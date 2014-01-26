@@ -47,4 +47,120 @@ class AccountManager < ObjectManager
 		# Creates analytics entry
 		AnalyticManager.create(recipe, amount)
 	end
+
+	def self.paid_index(user)
+		place_accounts = []
+
+		places = user.places.where(is_active: true)
+		
+		places.each do |p|
+			service_accounts = []
+			place_amount = 0
+
+			services = p.services.where(is_active: true)
+			
+			services.each do |s|
+				
+				if s.tariff.owner_type == "User"
+					is_user = true
+					merchant_id = nil
+					psk = nil
+				else
+					is_user = false
+					merchant_id = s.vendor.merchant_id
+					psk = s.vendor.psk
+				end
+
+				account = s.account if s.account.status == 1
+				if account
+					service_account =  {
+						title: s.title,
+						amount: FloatModifier.modify(account.amount).to_s,
+						tariff_title: s.tariff.title,
+						account_id: account.id,
+						status: 1,
+						is_user: is_user,
+						merchant_id: merchant_id,
+						psk: psk,
+						service_id: s.id,
+						has_readings: s.tariff.has_readings,
+						last_update_date: s.account.updated_at
+					}
+
+					service_accounts << service_account
+					place_amount += account.amount
+				end
+			end
+
+			place_account = {
+				place_account: {
+				title: p.title,
+				amount: FloatModifier.modify(place_amount).to_s,
+				place_id: p.id,
+				service_account: service_accounts
+				}
+			}
+			place_accounts << place_account if service_accounts != []
+		end
+
+		{place_accounts: place_accounts}
+	end
+
+	def self.unpaid_index(user)
+		place_accounts = []
+
+		places = user.places.where(is_active: true)
+		
+		places.each do |p|
+			service_accounts = []
+			place_amount = 0
+
+			services = p.services.where(is_active: true)
+			
+			services.each do |s|
+				
+				if s.tariff.owner_type == "User"
+					is_user = true
+					merchant_id = nil
+					psk = nil
+				else
+					is_user = false
+					merchant_id = s.vendor.merchant_id
+					psk = s.vendor.psk
+				end
+
+				account = s.account if s.account.status == -1
+				if account
+					service_account =  {
+						title: s.title,
+						amount: FloatModifier.modify(account.amount).to_s,
+						tariff_title: s.tariff.title,
+						account_id: account.id,
+						status: -1,
+						is_user: is_user,
+						merchant_id: merchant_id,
+						psk: psk,
+						service_id: s.id,
+						has_readings: s.tariff.has_readings,
+						last_update_date: s.account.updated_at
+					}
+
+					service_accounts << service_account
+					place_amount += account.amount
+				end
+			end
+
+			place_account = {
+				place_account: {
+				title: p.title,
+				amount: FloatModifier.modify(place_amount).to_s,
+				place_id: p.id,
+				service_account: service_accounts
+				}
+			}
+			place_accounts << place_account if service_accounts != []
+		end
+
+		{place_accounts: place_accounts}
+	end
 end

@@ -2,6 +2,7 @@ class ReportDataController < ApplicationController
 	# all actions are implemented in ReportDataManager class
 	# lib/report_data_manger.rb
 	def index_daily
+		# GET api/1.0/report_daily
 		# fetches all yesterday's transactions
 		# params: none
 		# renders json:
@@ -11,6 +12,7 @@ class ReportDataController < ApplicationController
 	end
 
 	def index_hourly
+		# GET api/1.0/report_hourly
 		# fetches all transactions for the last 3 hours
 		# params: none
 		# renders json:
@@ -20,6 +22,7 @@ class ReportDataController < ApplicationController
 	end
 
 	def index_monthly_by_vendor
+		# GET api/1.0/report_monthly
 		# fetches all transactions for given month and vendor_id
 		# params: month, vendor_id
 		# renders json:
@@ -29,6 +32,7 @@ class ReportDataController < ApplicationController
 	end
 
 	def vendors_with_transactions
+		# GET api/1.0/report_vendors
 		# fetches ids of vendors that have transactions for given month
 		# params: month
 		# renders json:
