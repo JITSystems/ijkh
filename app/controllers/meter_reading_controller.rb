@@ -8,7 +8,7 @@ class MeterReadingController < ApplicationController
 
 	def index_by_vendor
 		# GET api/1.0/meterreadings
-		meter_readings = MeterReadingManager.index_by_vendor(params[:meter_reading][:month], params[:meter_reading][:vendor_id])
+		meter_readings = MeterReadingManager.get_by_vendor(params[:meter_reading][:month], params[:meter_reading][:vendor_id])
 		render json: {meter_reading: meter_readings}
 	end
 
