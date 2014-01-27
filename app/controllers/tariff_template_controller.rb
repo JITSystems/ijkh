@@ -10,7 +10,7 @@ class TariffTemplateController < ApplicationController
 
 	def create
 		# POST api/1.0/tariff_template
-		@tariff_template = TariffTemplateManager.create(params[:tariff_template])
+		@tariff_template = TariffTemplateManager.create(params)
 		render json: @tariff_template
 	end
 end
