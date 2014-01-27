@@ -1,9 +1,15 @@
+ 
 <%= form_for(@news_item, html: { :class => "news_item_form "} ) do |f| %>
   <p>
     <%= f.label :title, 'Заголовок' %><br>
     <%= f.text_field :title %>
   </p>
  <br>
+<p>
+    <%= f.label :date, 'Дата' %><br>
+    <%= f.text_field :date, id: 'datepicker', value: Time.now.strftime("%d.%m.%Y") %>
+</p>
+<br>
  <p>
      <%= f.check_box :is_company %>
          <%= f.label :is_company, "Новость компании" %>
@@ -18,3 +24,14 @@
     <%= f.submit 'Подтвердить' %>
   </p>
 <% end %>
+
+<script src="http://yandex.st/jquery-ui/1.10.3/jquery-ui.min.js"></script>
+<script src="http://yandex.st/jquery-ui/1.10.3/i18n/jquery.ui.datepicker-ru.min.js"></script>
+<link rel="stylesheet" href="http://yandex.st/jquery-ui/1.10.3/themes/base/jquery-ui.min.css">
+
+  <script>
+    $(function() {
+      $( "#datepicker" ).datepicker( $.datepicker.regional[ "ru" ] );
+    });
+  </script>
+

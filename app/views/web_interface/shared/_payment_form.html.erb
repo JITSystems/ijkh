@@ -104,7 +104,7 @@
 var vendor_id = parseInt($('input#vendor_id').val());
 var commission = 0;
 
-        $('#amount_total').keydown(function () {
+        $('#amount_total').keyup(function () {
         $("p#amount_total_error").hide();
         if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
         {        

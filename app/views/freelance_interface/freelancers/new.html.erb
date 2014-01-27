@@ -1,13 +1,22 @@
 <p>Заполните анкету и загрузите своё фото</p>
 <p>Для добавления тегов к своему объявлению, выберите тег в правой колонке и нажмите на него мышкой. С учётом добавленных тегов рассчитается стоимость объявления в месяц </p>
 <p>Добавляйте теги к Вашему объявлению для того, чтобы Вас проще было найти пользователям сервиса. Каждый тег стоит 10 рублей/месяц</p>
-
-<%= render 'form' %>
+<br>
+<div id="new_freelancer_form">
+	<%= render 'form' %>
+</div>
 
 <div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
 
-<!-- 	<% @tags_array.each do |tag| %>
+	<% @tags_array.each do |tag| %>
 		<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag[0] %>  </a>
 	<% end %>
- -->
+
 </div> 
+
+<!-- 
+<div id="wrapper">
+	<input id="File1" type="file"/>
+</div>
+
+ -->

@@ -3,7 +3,6 @@ class CardManager < ObjectManager
 	# card_params hash:
 	# 	card_title
 	# 	user_id
-	# 	user_id
 		Card.create!(card_params) unless self.exist?(card_params[:card_title], card_params[:user_id])
 	end
 
