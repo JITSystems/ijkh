@@ -4,16 +4,20 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	skip_before_filter :require_current_user
 
-	before_filter :check_existence, :only => [:new, :create]
 
-	def check_existence
-		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
-		if @freelancer
-			render 'show', id: @freelancer.id
-		else
-			render 'new'
-		end
-	end
+	# перенаправление в профиль, если объявление уже зарегистрировано
+
+	# before_filter :check_existence, :only => [:new, :create]
+
+	# def check_existence
+	# 	@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
+	# 	if @freelancer
+	# 		render 'show', id: @freelancer.id
+	# 	else
+	# 		@freelancer = FreelanceInterface::Freelancer.new
+	# 		render 'new'
+	# 	end
+	# end
 
 
 	def show
@@ -31,7 +35,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			@tags_array << [tag.title, tag.id]
 		end 
 		
-		# FAKE DATA
+		# заполнение тестовыми тегами
 		# FreelanceInterface::Tag.delete_all
 		# ['Уборка','Ремонт','Телевизоров','Обучение','Седовник','Водопроводчик','Монтажник','Разнорабочий','Уборка','Ремонт','Няня','web design','Ремонт стиральных машин','Ubuntu','twitter','Маляр','wordpress','youtube','Электрик','web 2.0','motion design','work','телефонмастер','турникмен','игра на гитаре','катание на сноуборде'].each do |tag|
 		# 	FreelanceInterface::Tag.create!(title: tag, published: true)

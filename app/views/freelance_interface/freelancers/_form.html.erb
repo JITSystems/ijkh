@@ -1,24 +1,33 @@
 <%= form_for @freelancer do |f| %>
 
-	<p>
-    	<%= f.label :picture_url, 'Загрузить фото' %><br>
-    	<%= f.file_field :picture_url %>
-  	</p>
+<div id="freelancer_info">
+		<p class="freelancer_info_picture">
+			<img src="/assets/no_freelancer.jpg" alt="">
+			<br>
+			<!-- 
+			<%= f.label :picture_url, 'Загрузить фото' %><br>
+			 -->
+	    	
+	    	<%= f.file_field :picture_url %>
+	  	</p>
+	
+		<p class="freelancer_info_data" >
+	    	<%= f.label :name, 'Ваше имя' %><br>
+	    	<%= f.text_field :name %>
+	  	</p>
+	 
+		<p class="freelancer_info_data" >
+		    <%= f.label :surmane, 'Ваша фамилия' %><br>
+		    <%= f.text_field :surname %>
+		</p>
+	
+		<p class="freelancer_info_data" >
+		    <%= f.label :phone_number, 'Телефон контакта' %><br>
+		    <%= f.text_field :phone_number %>
+		</p>
 
-	<p>
-    	<%= f.label :name, 'Ваше имя' %><br>
-    	<%= f.text_field :name %>
-  	</p>
- 
-	<p>
-	    <%= f.label :surmane, 'Ваша фамилия' %><br>
-	    <%= f.text_field :surname %>
-	</p>
-
-	<p>
-	    <%= f.label :phone_number, 'Телефон контакта' %><br>
-	    <%= f.text_field :phone_number %>
-	</p>
+		<div class="clear"></div>
+</div>
 
 	<p>
 		<%= f.label :tags, 'Категории' %><br>
@@ -53,7 +62,7 @@
 		Хотите быть на первом месте в категории или оказаться на главной странице сервиса?
 		<br>
 		<!-- 
-			СВОБОДНЫЕ МЕСТА ДОБАВИТЬ
+			ДОБАВИТЬ ЧИСЛО СВОБОДНЫХ МЕСТ
 		 -->
 		<%= f.check_box :top_ten_freelancer %>
 		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>
