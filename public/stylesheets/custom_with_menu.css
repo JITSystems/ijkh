@@ -82,7 +82,7 @@ div#ajax_loader_center
         top:-41px;
         width: 128px;
         height: 132px;
-        background-image: url(../images/logo-round.png);
+        background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round.png);
         z-index: 10;
         background-position: 0px 3px;
         background-repeat: no-repeat;
@@ -1710,7 +1710,7 @@ margin: 3px 3px;
         position: absolute;
         width: 63px;
         height: 64px;
-        background: url(../images/logo-round_mini.png) no-repeat;
+        background: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round_mini.png) no-repeat;
         background-position: 0px 1px;
         left: 14px;
         z-index: 10;
@@ -1740,7 +1740,7 @@ margin: 3px 3px;
         display: block;
         width: 236px;
         height: 74px;
-        background-image: url(../images/appstore_button-1.png);
+        background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/appstore_button-1.png);
         top: 22px;
         right: 26px;
 }

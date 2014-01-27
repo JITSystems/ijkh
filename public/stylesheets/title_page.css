@@ -84,7 +84,7 @@ div#logo{
 	text-align: center;
 	height: 100px;
 	width: 100px;
-	background: url(/assets/logo.png);
+	background: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo.png);
 	/*border: 1px #CCC solid;*/
 	background-size: cover;
 }
