@@ -38,4 +38,17 @@ class PlaceManager < ObjectManager
 		place
 	end
 
+	def self.city_id_match
+		places = PlaceManager.index
+	    places.each do |place|
+	      city = City.where(title: place[:city].capitalize).first
+	      if city
+	        place.update_attribute(:city_id, city.id)
+	      else
+	        place.update_attribute(:city_id, 0)
+	      end
+	    end
+	    places
+	end
+
 end

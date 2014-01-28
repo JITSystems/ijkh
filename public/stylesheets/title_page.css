@@ -763,6 +763,10 @@ div#new_freelancer_form{
 	width: 100%;
 }
 
+div#new_freelancer_form p{
+	margin-bottom: 10px;
+}
+
 div#new_freelancer_form > form {
 	padding-left: 1px;
 }

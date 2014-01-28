@@ -9,18 +9,27 @@ class PaymentHistoryController < ApplicationController
 	end
 
 	def success
-		payment_history = PaymentHistory.create_payment_history params
-		analytic = Analytic.create_analytic params
+	# Creates successful payment history, analytic entry, updates account status/amount, 
+	# card if rebill_anchor, invokes payment workers
+		
+		payment_history = PaymentHistory.create_payment_history params # rewrite to manager
+		analytic = Analytic.create_analytic params	# rewrite to manager
+		# decrease account amount and update status here
+		# add card if rebill anchor
+		# invoke payment workers
+		
+		#@user = User.find(params[:user_id].to_i)
+		#@recipe = Recipe.find(params[:OrderId].to_i)
+		#@vendor = Service.find(@recipe.service_id).vendor
 
-		@user = User.find(params[:user_id].to_i)
-		@recipe = Recipe.find(params[:OrderId].to_i)
-		@vendor = Service.find(@recipe.service_id).vendor
-
-		PaymentNotificationWorker.perform_async(@user.first_name, @user.email, @vendor.title, params[:Amount], params[:DateTime])
+		#PaymentNotificationWorker.perform_async(@user.first_name, @user.email, @vendor.title, params[:Amount], params[:DateTime])
+		
 		render json: {}
 	end
 
 	def fail
+	# Creates failed payment history
+		
 		payment_history = PaymentHistory.create_payment_history params
 
 		render json: {}

@@ -2,10 +2,12 @@
 class PaymentController < ApplicationController
 		skip_before_filter :require_auth_token, only: :tds_callback
 	def subscribe
+		# POST api/1.0/payment/subscribe
   		render json: {base_url: "http://izkh.ru:9292/faye", channel_title: "/server/#{params[:auth_token]}"}
 	end
 
 	def pay
+		# POST api/1.0/payment
 		service_id = params[:payment][:service_id]
 		amount = params[:payment][:amount]
 		order_id = params[:payment][:recipe_id]
@@ -32,6 +34,7 @@ class PaymentController < ApplicationController
 	end
 
 	def tds_callback
+		# POST api/1.0/payment/secure_callback
 		md = params["MD"]
 		pares = params["PaRes"]
 		
