@@ -767,6 +767,13 @@ div#new_freelancer_form p{
 	margin-bottom: 10px;
 }
 
+div#new_freelancer_form p.freelancer_tag_info{
+	display: inline-block;
+	width: 40%;
+	margin-right: 20px;
+	vertical-align: top;
+}
+
 div#new_freelancer_form > form {
 	padding-left: 1px;
 }

@@ -35,7 +35,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			@tags_array << [tag.title, tag.id]
 		end 
 		
-		# заполнение тестовыми тегами
+		# # заполнение тестовыми тегами
 		# FreelanceInterface::Tag.delete_all
 		# ['Уборка','Ремонт','Телевизоров','Обучение','Седовник','Водопроводчик','Монтажник','Разнорабочий','Уборка','Ремонт','Няня','web design','Ремонт стиральных машин','Ubuntu','twitter','Маляр','wordpress','youtube','Электрик','web 2.0','motion design','work','телефонмастер','турникмен','игра на гитаре','катание на сноуборде'].each do |tag|
 		# 	FreelanceInterface::Tag.create!(title: tag, published: true)
