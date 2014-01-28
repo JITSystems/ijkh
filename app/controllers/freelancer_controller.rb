@@ -1,10 +1,6 @@
 class FreelancerController < ApplicationController
-	def index
-		@freelancers = FreelancerManager.index
-		render 'freelancer/index'
-	end
-
 	def create
+		# POST api/1.0/freelancer/create
 		@freelancer = FreelancerManager.create(params[:freelancer])
 		render json: {status: "success"}
 	end

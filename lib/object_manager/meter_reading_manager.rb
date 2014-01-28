@@ -39,6 +39,19 @@ class MeterReadingManager < ObjectManager
     return meter_reading
   end    
 
+  def self.get_by_vendor(month, vendor_id)
+    meter_readings = MeterReading.where("extract(month from created_at) = ?", month).select("snapshot_url, reading, created_at, service_id, field_id")
+    meter_readings_array = []
+    meter_readings.each do |mr|
+      service = ServiceManager.get(mr.service_id)
+      if service.vendor_id.to_i == vendor_id.to_i
+        mr[:field_title] = FieldManager.get(mr[:field_id]).title
+        mr[:user_account] = service.user_account
+        meter_readings_array << mr
+      end
+    end
+  end
+
 	def self.get_by_tariff(tariff)
 		tariff.meter_readings
 	end
