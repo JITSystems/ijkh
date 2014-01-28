@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/stylesheets/multiselect.css">
+
+
 <p>Заполните анкету и загрузите своё фото</p>
 <p>Для добавления тегов к своему объявлению, выберите тег в правой колонке и нажмите на него мышкой. С учётом добавленных тегов рассчитается стоимость объявления в месяц </p>
 <p>Добавляйте теги к Вашему объявлению для того, чтобы Вас проще было найти пользователям сервиса. Каждый тег стоит 10 рублей/месяц</p>
@@ -6,13 +9,62 @@
 	<%= render 'form' %>
 </div>
 
-<div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+<!-- http://jsfiddle.net/Kulgar/57F67/ -->
+
+<!-- <div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
 
 	<% @tags_array.each do |tag| %>
 		<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag[0] %>  </a>
 	<% end %>
 
-</div> 
+</div>  -->
+
+<script src="/javascripts/jquery.multiselect.js"></script>
+<script src="/javascripts/jquery.quicksearch.js"></script>
+
+<script>
+
+	var $tags_select = $('#freelance_interface_freelancer_tags');
+
+	$tags_select.multiSelect({
+	  selectableHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Поиск категории...' >",
+	  // selectionHeader: "<input type='text' class='search-input' autocomplete='off' placeholder='Поиск...' >",
+	  selectionHeader: "<div  class=\"search-input\"> Выбранные категории: </div>",
+	  afterInit: function(ms){
+	    var that = this,
+	        $selectableSearch = that.$selectableUl.prev(),
+	        $selectionSearch = that.$selectionUl.prev(),
+	        selectableSearchString = '#'+that.$container.attr('id')+' .ms-elem-selectable:not(.ms-selected)',
+	        selectionSearchString = '#'+that.$container.attr('id')+' .ms-elem-selection.ms-selected';
+
+	    that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+	    .on('keydown', function(e){
+	      if (e.which === 40){
+	        that.$selectableUl.focus();
+	        return false;
+	      }
+	    });
+
+	    that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+	    .on('keydown', function(e){
+	      if (e.which == 40){
+	        that.$selectionUl.focus();
+	        return false;
+	      }
+	    });
+	  },
+	  afterSelect: function(){
+	    this.qs1.cache();
+	    this.qs2.cache();
+	  },
+	  afterDeselect: function(){
+	    this.qs1.cache();
+	    this.qs2.cache();
+	  }
+	});
+
+
+</script>
 
 <!-- 
 <div id="wrapper">
@@ -20,3 +72,4 @@
 </div>
 
  -->
+
