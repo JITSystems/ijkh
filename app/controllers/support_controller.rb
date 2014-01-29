@@ -22,12 +22,12 @@ class SupportController < ApplicationController
   end
 
   def craft_s_check
-    @response = CraftS.initialize(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S")).check
+    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S")).check
     render text: @response
   end
 
   def craft_s_pay
-    @response = CraftS.initialize(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S"), 10000, DateTime.now.to_s(:number))
+    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S"), 10000, DateTime.now.to_s(:number))
     render text: @response
   end
 
