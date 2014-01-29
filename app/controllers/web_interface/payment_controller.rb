@@ -11,6 +11,7 @@ class WebInterface::PaymentController < WebInterfaceController
 			#@tariff = @service.tariff
 		end
 
+		CraftSIntegrationWorker.perform_async(current_user.id)
       	JtIntegrationWorker.perform_async(current_user.id)
       	GtIntegrationWorker.perform_async(current_user.id)
       	
