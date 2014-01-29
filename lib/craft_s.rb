@@ -9,7 +9,7 @@ class CraftS
 	def check
 		url = form_check_url
   		er = ExternalRequest.new(url, true, nil, "izkh")
-	  	get_response(er.get)
+	  	er.get
 	end
 
 	def pay
@@ -31,5 +31,4 @@ protected
 	def get_response(response)
 	end
 
-end
 end
