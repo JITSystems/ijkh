@@ -46,6 +46,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	
 	def create
+
+		uploader = FreelanceInterfaceUploader.new
+  		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
+
 		freelancer_params = {
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
