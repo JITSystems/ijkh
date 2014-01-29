@@ -2,16 +2,15 @@
 
 <div id="freelancer_profile_info"> 
       <% if @freelancer %>
-      	<p><%= @freelancer.id %></p>
-      	<p><%= @freelancer.picture_url %></p>
-		<p><%= @freelancer.name %></p>
-		<p><%= @freelancer.surname %></p>
-		<p><%= @freelancer.phone_number %></p>
+      	<%= image_tag(@freelancer.picture_url) if @freelancer.picture_url? %>
+      	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
+		<p>тел. <%= @freelancer.phone_number %></p>
 		<p><%= @freelancer.published %></p>
       <% end %>
 
       <% if @tags %>
-      	<div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+      <h3>Оказываемые услуги:</h3>
+      	<div style="_height: px; width: 90%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
 			<% @tags.each do |tag| %>
 				<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
 			<% end %>

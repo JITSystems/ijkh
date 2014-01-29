@@ -758,6 +758,8 @@ address {
 
 /* СТРУКТУРА ФРИЛАНСЕРОВ  */
 
+
+/* registraions */
 div#new_freelancer_form{
 	float: left;	
 	width: 100%;
@@ -812,3 +814,20 @@ button#add_custom_tag
 
 input:focus, select { outline: none; }
 
+
+/* profile */
+
+div#freelancer_profile_info img
+{
+	height: 150px;
+	max-width: 200px;
+	margin-right: 20px;
+	float: left;
+}
+
+
+/* moderation */
+div.fi_moderation_block div.fi_moderation_section
+{
+	border: 1px #888 solid;
+}

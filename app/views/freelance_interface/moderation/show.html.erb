@@ -1,49 +1,48 @@
 <h1>Модерация</h1>
 
 <h2>Модерация заявок фрилансеров</h2>
-<% if @freelancers == [] %>
-	<p>Нет новых заявок</p>
-<% else %>
-	<% @freelancers.each do |f| %>
-		<p>
-			<p>Фрилансер: <%= f.name %> <%= f.surname %></p>
-			<p>Телефон: <%= f.phone_number %></p>
-			<%= f.unpublish_at %>
-			<p>Опубликовано: <%= f.created_at %></p>
-			<%= f.user_id %>
-		</p>
-		<hr>
-	<% end %>
-<% end %>
-
+<div class="fi_moderation_block">
+		<% if @freelancers == [] %>
+			<p>Нет новых заявок</p>
+		<% else %>
+			<% @freelancers.each do |f| %>
+				<div class="fi_moderation_section">
+					<p>Фрилансер: <%= f.name %> <%= f.surname %></p>
+					<p>Телефон: <%= f.phone_number %></p>
+					<%= f.unpublish_at %>
+					<p>Опубликовано: <%= f.created_at %></p>
+					<%= f.user_id %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 <br><br>
 
 <h2>Модерация отзывов к анкетам</h2>
-<% if @comments == [] %>
-	<p>Нет новых отзывов</p>
-<% else %>
-	<% @comments.each do |c| %>
-		<p>
-			<p>Сообщение: <%= c.body %></p>
-			<p>Опубликовано: <%= c.created_at %></p>
-		</p>
-		<hr>
-	<% end %>	
-<% end %>
-
+<div class="fi_moderation_block">
+		<% if @comments == [] %>
+			<p>Нет новых отзывов</p>
+		<% else %>
+			<% @comments.each do |c| %>
+				<div class="fi_moderation_section">
+					<p>Сообщение: <%= c.body %></p>
+					<p>Опубликовано: <%= c.created_at %></p>
+				</div>
+			<% end %>	
+		<% end %>
+</div>
 <br><br>
 
 <h2>Добавление тегов в облако</h2>
 
-<% if @tags == [] %>
-	<p>Нет новых тегов</p>
-<% else %>
-	<% @tags.each do |t| %>
-		<p>
-			<p> <%= t.title %></p>
-		</p>
-		<hr>
-	<% end %>
-<% end %>
-
-
+<div class="fi_moderation_block">
+		<% if @tags == [] %>
+			<p>Нет новых тегов</p>
+		<% else %>
+			<% @tags.each do |t| %>
+				<div class="fi_moderation_section">
+					<p> <%= t.title %></p>
+				</div>
+			<% end %>
+		<% end %>
+	</div>

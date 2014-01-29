@@ -62,17 +62,18 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		}
 
 		@freelancer = FreelanceInterface::Freelancer.create(freelancer_params)
+		freelancer_id = @freelancer.id
 
 		if @freelancer.save 
 			params[:freelance_interface_freelancer][:tags].each do |t|
-				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: @freelancer.id})
+				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: freelancer_id})
 			end 
 			
 			@tags = @freelancer.tags
 			@comments = @freelancer.comments
 			@comment = @freelancer.comments.new
 
-			render 'show', id: @freelancer.id
+			render 'show', id: freelancer_id
 		else
 			render 'new'
 		end
