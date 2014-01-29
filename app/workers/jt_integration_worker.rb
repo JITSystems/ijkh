@@ -17,8 +17,8 @@ class JtIntegrationWorker
 			when 156
 				prefix = "3"
 			else
-				account_type = nil
-				raise "No account type"
+				prefix = nil
+				raise "No prefix"
 			end
 
 			osmp = Osmp.new(user_account, DateTime.now.to_s(:number), prefix)

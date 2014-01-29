@@ -20,15 +20,4 @@ class SupportController < ApplicationController
     @vendors = Vendor.where(is_active: true).count
     render json: {users: @users, vendors: @vendors}
   end
-
-  def craft_s_check
-    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S")).check
-    render json: @response
-  end
-
-  def craft_s_pay
-    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S"), 10000, DateTime.now.to_s(:number)).pay
-    render json: @response
-  end
-
 end
