@@ -33,7 +33,7 @@ protected
 	
 	def get_response(response)
 		response = Crack::XML.parse(response)
-		if resposne["response"]["status"].to_s == "0"
+		if response["response"]["status"].to_s == "0"
 			account_type = response["response"]["atype"] == "inet" ? "Интернет" : "Телефония"
 			{user_account: response["response"]["account"], 
 				account_type: account_type, 
