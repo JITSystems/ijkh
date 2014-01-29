@@ -27,7 +27,7 @@ protected
 	end
 
 	def form_pay_url
-		"#{@url}?ID=#{@order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=inet&SUM=#{@amount}"
+		"#{@url}?ID=#{@order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=inet&SUM=#{@amount.to_s}"
 	end
 	
 	def get_response(response)
