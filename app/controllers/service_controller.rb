@@ -7,7 +7,7 @@
 
 	def create
 		# POST api/1.0/place/:place_id/service
-		@service = ServiceManger.create(params, current_user)
+		@service = ServiceManager.create(params, current_user)
 		render 'service/show'
 	end
 
