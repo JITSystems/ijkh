@@ -4,6 +4,7 @@ class CraftS
 		@user_account = user_account
 		@date = date
 		@amount = amount
+		@order_id = order_id
 		@url = "https://billing.kraft-s.ru:47035/pays/izkh.php"
 	end
 
@@ -26,7 +27,7 @@ protected
 	end
 
 	def form_pay_url
-		"#{@url}?ID=#{order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=inet&SUM=#{@amount}"
+		"#{@url}?ID=#{@order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=inet&SUM=#{@amount}"
 	end
 	
 	def get_response(response)
