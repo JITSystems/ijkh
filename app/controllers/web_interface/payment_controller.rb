@@ -45,7 +45,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		@service_tax = round_up((@commission.to_f/100.00)*@amount).round(2)
 
 		@g_t_data = GlobalTelecom.new(@service.user_account).check.to_json if @vendor_id == 121
-
+		
 		respond_to do |format|
 			format.js {
 				render 'web_interface/payment/get_payment_data'
