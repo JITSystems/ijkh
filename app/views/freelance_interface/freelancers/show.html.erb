@@ -1,10 +1,42 @@
 <h1>Профиль фрилансера</h1>
 
-<div>
+<div id="freelancer_profile_info"> 
       <% if @freelancer %>
+      	<p><%= @freelancer.picture_url %></p>
 		<p><%= @freelancer.name %></p>
 		<p><%= @freelancer.surname %></p>
 		<p><%= @freelancer.phone_number %></p>
 		<p><%= @freelancer.published %></p>
       <% end %>
 </div>
+
+<br>
+
+<div id="comments">
+	<p>Отзывы</p>
+	
+
+	<% if @comments == [] %>
+		<p>Нет отзывов</p>
+	<% else %>
+		<% @comments.each do |c| %>
+			<p><%= c.body %></p>
+		<% end %>
+	<% end %>
+
+	<% unless current_user %>
+		<p>
+			<a href="/login">Войдите</a> в систему, чтобы оставить отзыв.
+		</p>
+	<% else %>
+		<p>
+
+			<%= form_for @comment, remote: true do |f| %>
+				<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
+				<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>
+				<%= f.submit "Подтвердить" %>
+			<% end %>
+		</p>
+	<% end %>
+</div>
+

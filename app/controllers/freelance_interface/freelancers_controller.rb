@@ -21,7 +21,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 
 	def show
-		@freelancer = FreelanceInterface::Freelancer.new
+		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
+		@comments = @freelancer.comments
+		@comment = @freelancer.comments.new
 	end
 
 	
