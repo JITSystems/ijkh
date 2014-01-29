@@ -22,7 +22,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def show
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
-		@comments = @freelancer.comments
+		@tags = @freelancer.tags
+		@comments = @freelancer.comments.where(published: true)
 		@comment = @freelancer.comments.new
 	end
 
@@ -63,6 +64,14 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@freelancer = FreelanceInterface::Freelancer.create(freelancer_params)
 
 		if @freelancer.save 
+			params[:freelance_interface_freelancer][:tags].each do |t|
+				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: @freelancer.id})
+			end 
+			
+			@tags = @freelancer.tags
+			@comments = @freelancer.comments
+			@comment = @freelancer.comments.new
+
 			render 'show', id: @freelancer.id
 		else
 			render 'new'

@@ -2,13 +2,23 @@
 
 <div id="freelancer_profile_info"> 
       <% if @freelancer %>
+      	<p><%= @freelancer.id %></p>
       	<p><%= @freelancer.picture_url %></p>
 		<p><%= @freelancer.name %></p>
 		<p><%= @freelancer.surname %></p>
 		<p><%= @freelancer.phone_number %></p>
 		<p><%= @freelancer.published %></p>
       <% end %>
+
+      <% if @tags %>
+      	<div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+			<% @tags.each do |tag| %>
+				<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
+			<% end %>
+		</div>
+      <% end %>
 </div>
+
 
 <br>
 
@@ -31,7 +41,7 @@
 	<% else %>
 		<p>
 
-			<%= form_for @comment, remote: true do |f| %>
+			<%= form_for @comment, remote: true, method: :post do |f| %>
 				<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
 				<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>
 				<%= f.submit "Подтвердить" %>
