@@ -54,8 +54,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
  			phone_number: params[:freelance_interface_freelancer][:phone_number],
- 			published: false,
+ 			picture_url: uploader.url
 			unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
+			published: false,
 			user_id: current_user.id
 		}
 

@@ -2,16 +2,17 @@
 
 class LiveBalanceManager
 
-	def initialize(vendor_id, user_account)
+	def initialize(vendor_id, user_account, tariff_template_id)
     	@vendor_id = vendor_id.to_i
     	@user_account = user_account
+    	@t_t_id = tariff_template_id
   	end
 	
 	def check_balance
 		case @vendor_id
 			when 121
 				info = global_telecom
-			when 900
+			when 165
 				info = craft_s
 			else 
 				info = nil
@@ -28,8 +29,18 @@ protected
 	end
 
 	def craft_s
+
+		case @t_t_id
+			when 158
+				account_type = 'voip'
+			when 153
+				account_type = 'inet'
+			else
+				account_type = nil
+		end
+
 		date = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
-		info = CraftS.new(@user_account, date)
+		info = CraftS.new(@user_account, date, account_type)
 		info
 	end
 
