@@ -22,7 +22,7 @@ class CraftS
 protected
 
 	def form_check_url
-		"#{@url}?ID=#{DateTime.now.to_s(:number)}&DATE=#{@date}&TYPE=4&ATYPE=inet&ACCOUNT=#{@user_account.to_s}"
+		"#{@url}?ID=#{DateTime.now.to_s(:number)}&DATE=#{@date}&TYPE=4&ATYPE=inet&ACCOUNT=#{@user_account.to_s}&SUM=0"
 	end
 
 	def form_pay_url
