@@ -46,10 +46,11 @@ class WebInterface::PaymentController < WebInterfaceController
 
 
 
-		@live_balance_data = LiveBalanceManaber.new(vendor_id, @service.user_account, current_user.id)
-		
+		l_b_manager = LiveBalanceManaber.new(vendor_id, @service.user_account)
 
+		@live_balance_data = l_b_manager.check_balance
 
+		# Старый способ проверки баланса по Глобал-Телекому
 		# @g_t_data = GlobalTelecom.new(@service.user_account).check.to_json if @vendor_id == 121
 
 		respond_to do |format|

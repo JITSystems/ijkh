@@ -2,10 +2,9 @@
 
 class LiveBalanceManager
 
-	def initialize(vendor_id, user_account, current_user_id)
+	def initialize(vendor_id, user_account)
     	@vendor_id = vendor_id.to_i
     	@user_account = user_account
-    	@current_user_id = current_user_id
   	end
 	
 	def check_balance
