@@ -30,13 +30,13 @@ protected
 
 	def craft_s
 
+		account_type = nil
+
 		case @t_t_id
 			when 158
 				account_type = 'voip'
 			when 153
 				account_type = 'inet'
-			else
-				account_type = nil
 		end
 
 		date = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
