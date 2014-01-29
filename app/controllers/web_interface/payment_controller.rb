@@ -44,7 +44,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		@service_tax = round_up((@commission.to_f/100.00)*@amount).round(2)
 
-		l_b_manager = LiveBalanceManaber.new(@vendor_id, @service.user_account)
+		l_b_manager = LiveBalanceManager.new(@vendor_id, @service.user_account)
 
 		@live_balance_data = l_b_manager.check_balance
 
