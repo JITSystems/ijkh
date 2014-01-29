@@ -27,7 +27,7 @@ class SupportController < ApplicationController
   end
 
   def craft_s_pay
-    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S"), 10000, DateTime.now.to_s(:number))
+    @response = CraftS.new(1, DateTime.now.strftime("%Y-%m-%d %H:%M:%S"), 10000, DateTime.now.to_s(:number)).pay
     render json: @response
   end
 
