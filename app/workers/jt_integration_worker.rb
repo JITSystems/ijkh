@@ -7,8 +7,21 @@ class JtIntegrationWorker
 		services = Service.where('user_id = ? and vendor_id = 16 and is_active = true', user_id)
 		services.each do |service|
 			user_account = service.user_account
+			tariff_template_id = service.tariff.tariff_template_id
 
-			osmp = Osmp.new(user_account, DateTime.now.to_s(:number))
+			case tariff_template_id.to_i
+			when 157
+				prefix = "1"
+			when 155
+				prefix = "2"
+			when 156
+				prefix = "3"
+			else
+				account_type = nil
+				raise "No account type"
+			end
+
+			osmp = Osmp.new(user_account, DateTime.now.to_s(:number), prefix)
 			amount = osmp.check
 
 			if amount.to_f < 0.0

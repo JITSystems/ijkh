@@ -25,11 +25,11 @@ class CraftS
 protected
 
 	def form_check_url
-		"#{@url}?ID=#{DateTime.now.to_s(:number)}&DATE=#{@date}&TYPE=4&ATYPE=#{account_type}&ACCOUNT=#{@user_account.to_s}&SUM=0"
+		"#{@url}?ID=#{DateTime.now.to_s(:number)}&DATE=#{@date}&TYPE=4&ATYPE=#{@account_type}&ACCOUNT=#{@user_account.to_s}&SUM=0"
 	end
 
 	def form_pay_url
-		"#{@url}?ID=#{@order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=#{account_type}&SUM=#{@amount.to_s}"
+		"#{@url}?ID=#{@order_id}&DATE=#{@date}&TYPE=1&ACCOUNT=#{@user_account.to_s}&ATYPE=#{@account_type}&SUM=#{@amount.to_s}"
 	end
 	
 	def get_response(response)
