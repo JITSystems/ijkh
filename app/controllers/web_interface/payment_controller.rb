@@ -44,8 +44,20 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		@service_tax = round_up((@commission.to_f/100.00)*@amount).round(2)
 
+<<<<<<< HEAD
 		@g_t_data = GlobalTelecom.new(@service.user_account).check.to_json if @vendor_id == 121
 		
+=======
+
+
+		l_b_manager = LiveBalanceManaber.new(vendor_id, @service.user_account)
+
+		@live_balance_data = l_b_manager.check_balance
+
+		# Старый способ проверки баланса по Глобал-Телекому
+		# @g_t_data = GlobalTelecom.new(@service.user_account).check.to_json if @vendor_id == 121
+
+>>>>>>> 7712909fff0f5619ff6e52ee0c912f903c8a7959
 		respond_to do |format|
 			format.js {
 				render 'web_interface/payment/get_payment_data'

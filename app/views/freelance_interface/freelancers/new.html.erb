@@ -2,8 +2,7 @@
 
 
 <p>Заполните анкету и загрузите своё фото</p>
-<p>Для добавления тегов к своему объявлению, выберите тег в правой колонке и нажмите на него мышкой. С учётом добавленных тегов рассчитается стоимость объявления в месяц </p>
-<p>Добавляйте теги к Вашему объявлению для того, чтобы Вас проще было найти пользователям сервиса. Каждый тег стоит 10 рублей/месяц</p>
+
 <br>
 <div id="new_freelancer_form">
 	<%= render 'form' %>
@@ -25,6 +24,7 @@
 
 <script>
 
+	// multi-select plugin
 	var $tags_select = $('#freelance_interface_freelancer_tags');
 
 	$tags_select.multiSelect({
@@ -63,6 +63,23 @@
 	    this.qs2.cache();
 	  }
 	});
+
+
+
+	// photo preview
+
+	var $preview = $("p.freelancer_info_picture img");
+    
+    $("#freelance_interface_freelancer_picture_url").change(function(event){
+       var input = $(event.currentTarget);
+       var file = input[0].files[0];
+       var reader = new FileReader();
+       reader.onload = function(e){
+           image_base64 = e.target.result;
+           $preview.attr("src", image_base64);
+       };
+       reader.readAsDataURL(file);
+    });
 
 
 </script>

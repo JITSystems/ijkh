@@ -767,6 +767,14 @@ div#new_freelancer_form p{
 	margin-bottom: 10px;
 }
 
+div#new_freelancer_form p.freelancer_tag_info{
+	display: inline-block;
+	width: 248px;
+	margin-right: 50px;
+	vertical-align: top;
+	font-size: 14px;
+}
+
 div#new_freelancer_form > form {
 	padding-left: 1px;
 }
@@ -787,6 +795,18 @@ div#new_freelancer_form p.freelancer_info_picture {
 
 div#new_freelancer_form p.freelancer_info_picture > img {
 	width: 150px;
+}
+
+div#new_freelancer_form p.freelancer_info_data input, input#custom_tag_field{
+	width: 248px;
+	margin-bottom: 0;
+}
+
+button#add_custom_tag
+{
+	border-radius: 0;
+	width: 100px;
+	height: 30px;
 }
 
 input:focus, select { outline: none; }

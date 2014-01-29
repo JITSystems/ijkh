@@ -34,7 +34,7 @@ class WebInterface::ServiceController < WebInterfaceController
 
 		unless params[:service][:vendor][:id] == '0'
 			user_account = params[:service][:user_account]
-			if (user_account == '' || user_account == nil)
+			if (user_account.strip == '' || user_account == nil )
 				@message = "Пожалуйста, введите лицевой счёт."
 				respond_to do |format|
 					format.js {
@@ -57,7 +57,7 @@ class WebInterface::ServiceController < WebInterfaceController
 				return nil
 			end
 		end 
-		
+
 		@place_id = params[:service][:place_id]
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
 		@place = @places.find(@place_id)
