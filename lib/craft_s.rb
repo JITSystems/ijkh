@@ -9,13 +9,13 @@ class CraftS
 
 	def check
 		url = form_check_url
-  		er = ExternalRequest.new(URI.encode(url), true, nil, "izkh")
+  		er = ExternalRequest.new(URI.escape(url), true, nil, "izkh")
 	  	er.get
 	end
 
 	def pay
 		url = form_pay_url
-		er = ExternalRequest.new(URI.encode(url), true, nil, "izkh")
+		er = ExternalRequest.new(URI.escape(url), true, nil, "izkh")
   		er.get
 	end
 
