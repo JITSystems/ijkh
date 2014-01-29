@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CraftS
 	require 'uri'
 	def initialize(user_account, date, amount=nil, order_id=nil)
@@ -11,7 +12,7 @@ class CraftS
 	def check
 		url = form_check_url
   		er = ExternalRequest.new(URI.escape(url), true, nil, "izkh")
-	  	er.get
+	  	get_response(er.get)
 	end
 
 	def pay
@@ -31,6 +32,17 @@ protected
 	end
 	
 	def get_response(response)
+		response = Crack::XML.parse(response)
+		if resposne["response"]["status"].to_s == "0"
+			account_type = response["response"]["atype"] == "inet" ? "Интернет" : "Телефония"
+			{user_account: response["response"]["account"], 
+				account_type: account_type, 
+				fio: response["response"]["fio"], 
+				debt: response["response"]["debt"], 
+				hot_debt: response["response"]["hot_debt"]}
+		else
+			nil
+		end
 	end
 
 end
