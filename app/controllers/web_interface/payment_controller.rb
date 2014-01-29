@@ -46,7 +46,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 
 
-		l_b_manager = LiveBalanceManaber.new(vendor_id, @service.user_account)
+		l_b_manager = LiveBalanceManaber.new(@vendor_id, @service.user_account)
 
 		@live_balance_data = l_b_manager.check_balance
 

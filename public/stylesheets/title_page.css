@@ -795,6 +795,7 @@ div#new_freelancer_form p.freelancer_info_picture {
 
 div#new_freelancer_form p.freelancer_info_picture > img {
 	width: 150px;
+	max-height: 250px;
 }
 
 div#new_freelancer_form p.freelancer_info_data input, input#custom_tag_field{
