@@ -51,6 +51,9 @@ Ijkh::Application.routes.draw do
   get 'get_statistics' => 'support#users_and_vendors'
   post 'api/1.0/register_ios_device' => 'support#register_ios_device'
 
+  get 'craft_check' => 'support#craft_s_check'
+  get 'craft_pay' => 'support#craft_s_pay'
+
 # Service Type
   get 'api/1.0/servicetypes' => 'service_type#index'
   post 'api/1.0/servicetype' => 'service_type#create'
