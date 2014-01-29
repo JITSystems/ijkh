@@ -40,8 +40,7 @@ protected
 		end
 
 		date = DateTime.now.strftime("%Y-%m-%d %H:%M:%S")
-		info = CraftS.new(@user_account, date, account_type)
-		info
+		CraftS.new(@user_account, date, account_type).check.to_json
 	end
 
 end
