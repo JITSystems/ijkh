@@ -1,4 +1,5 @@
 class CraftS
+	require 'uri'
 	def initialize(user_account, date, amount=nil, order_id=nil)
 		@user_account = user_account
 		@date = date
@@ -8,13 +9,13 @@ class CraftS
 
 	def check
 		url = form_check_url
-  		er = ExternalRequest.new(url, true, nil, "izkh")
+  		er = ExternalRequest.new(URI.encode(url), true, nil, "izkh")
 	  	er.get
 	end
 
 	def pay
 		url = form_pay_url
-		er = ExternalRequest.new(url, true, nil, "izkh")
+		er = ExternalRequest.new(URI.encode(url), true, nil, "izkh")
   		er.get
 	end
 
