@@ -59,6 +59,9 @@ module PaymentHistoriesRepository
 			elsif service && service.vendor_id.to_i == 135
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
 				SlPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount) 
+			elsif service && service.vendor_id.to_i == 165
+				amount = Recipe.find(payment_history_params[:recipe_id]).amount
+				CraftSPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount)
 			end
 		end
 		
