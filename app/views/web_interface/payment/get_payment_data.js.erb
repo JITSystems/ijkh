@@ -82,7 +82,7 @@ $gt_info.html('');
         console.log('<%= @live_balance_data %>');
         
         <% if @live_balance_data.to_s != 'null' %>
-                var live_balance_data = <%= @live_balance_data %>;
+                var live_balance_data = <%= @live_balance_data.html_safe %>;
                 $gt_info.append('<p> <span> ФИО: </span> ' + live_balance_data.fio + '</p>');
                 $gt_info.append('<p> <span> № договора: </span> ' + live_balance_data.user_account + '</p>');
                 $gt_info.append('<p> <span> Текущее состояние счёта: </span> ' + live_balance_data.debt + '</p>');
