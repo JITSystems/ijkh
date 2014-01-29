@@ -68,7 +68,7 @@ $gt_info.html('');
 <% if (@vendor_id == 121) %>
         console.log('<%= @live_balance_data %>');
         
-        <% if @g_t_data.to_s != 'null' %>
+        <% if @live_balance_data.to_s != 'null' %>
                 var live_balance_data = <%= @live_balance_data.html_safe %>;
                 $gt_info.append('<p> <span> ФИО: </span> ' + live_balance_data.comment + '</p>');
                 $gt_info.append('<p> <span> № договора: </span> ' + live_balance_data.title + '</p>');
