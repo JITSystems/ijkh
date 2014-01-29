@@ -1,6 +1,6 @@
 class CraftS
 	def initialize(user_account, date, amount=nil, order_id=nil)
-		@user_account = format_user_account(user_account)
+		@user_account = user_account
 		@date = date
 		@amount = amount
 		@url = "https://billing.kraft-s.ru:47035/pays/izkh.php"
