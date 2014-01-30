@@ -7,11 +7,17 @@
 		<% else %>
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="freelancer" object-id="<%= f.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
 					<p>Фрилансер: <%= f.name %> <%= f.surname %></p>
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
 					<p>Опубликовано: <%= f.created_at %></p>
 					<%= f.user_id %>
+
 				</div>
 			<% end %>
 		<% end %>
@@ -25,8 +31,14 @@
 		<% else %>
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="comment" object-id="<%= c.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
 					<p>Сообщение: <%= c.body %></p>
 					<p>Опубликовано: <%= c.created_at %></p>
+
 				</div>
 			<% end %>	
 		<% end %>
@@ -41,8 +53,36 @@
 		<% else %>
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="tag" object-id="<%= t.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
 					<p> <%= t.title %></p>
+
 				</div>
 			<% end %>
 		<% end %>
 	</div>
+
+
+<script>
+	$('input[type="checkbox"]').on('change', function() {
+		//console.log(this.checked);
+		_this = this;
+		$this = $(this);
+
+		  $.ajax({
+		      type: "POST",
+		      url: "/fi_moderation",
+		      data: { 
+		      	object_type: $this.attr('object-type'),
+		      	object_id: $this.attr('object-id'),
+		      	published: _this.checked
+
+		      },
+		      success: function(result){ console.log(result); },
+		      error: function(result){ console.log(result); }
+		    })
+	});
+</script>
