@@ -263,6 +263,7 @@ DEPENDENCIES
   eventmachine
   exception_notification
   faye
+  fog
   gelf
   gibbon
   haml
