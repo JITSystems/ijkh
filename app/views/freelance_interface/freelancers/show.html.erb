@@ -2,6 +2,11 @@
 
 <div id="freelancer_profile_info"> 
       <% if @freelancer %>
+
+      	<%= image_tag @freelancer.avatar_image.url(:web, :preview) %>
+		<%= image_tag @freelancer.avatar_image.url(:print, :full) %>
+		<%= image_tag @freelancer.avatar_image.url(:web, :thumb) %>
+
       	<p><%= @freelancer.id %></p>
       	<p><%= @freelancer.picture_url %></p>
 		<p><%= @freelancer.name %></p>
