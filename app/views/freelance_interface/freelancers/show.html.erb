@@ -3,9 +3,7 @@
 <div id="freelancer_profile_info"> 
       <% if @freelancer %>
 
-      	<%= image_tag @freelancer.avatar_image.url(:web, :preview) if @freelancer.avatar_image %>
-		<%= image_tag @freelancer.avatar_image.url(:print, :full) if @freelancer.avatar_image %>
-		<%= image_tag @freelancer.avatar_image.url(:web, :thumb) if @freelancer.avatar_image %>
+      	<%= image_tag @freelancer.picture_url.url if @freelancer.picture_url %>
 
       	<p><%= @freelancer.id %></p>
       	<p><%= @freelancer.picture_url %></p>

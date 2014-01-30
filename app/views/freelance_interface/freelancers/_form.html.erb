@@ -38,14 +38,14 @@
 		<!-- <%= f.label :tags, 'Категории' %><br> -->
 		<%= f.select(
 			:tags, 
-			@tags_array,
+			grouped_options_for_select(@tags_array),
 		    { :prompt => nil },
 		    { :multiple => true, :size => 10 }
 		) %>
 	</p>
 
 	<p>
-		<%= label_tag 'custom_tag_field', 'Добавить свой тег (требует модерации)' %><br>
+		<%= label_tag 'custom_tag_field', 'Добавить свою категорию (требует модерации)' %><br>
 		<%= text_field_tag 'custom_tag_field' %>
 		<%= button_tag 'Добавить', id: 'add_custom_tag', type: 'button' %><br>
 	</p>

@@ -65,6 +65,19 @@
 	});
 
 
+	// unbind custom field default event by pressing enter
+
+	$('#custom_tag_field').keypress(function(event) {
+	    if (event.keyCode == 13) {
+        	$tags_select.multiSelect('addOption', { value: this.value, text: this.value, index: 0, nested: 'Новые категории'  });
+			$tags_select.multiSelect('refresh');
+      		return false;
+      		
+      		// $fi_freelancer_tags = $('#freelance_interface_freelancer_tags');
+			// $fi_freelancer_tags.prepend('<option selected value="0">' + this.value  + '</option>');
+        }
+    });
+
 
 	// photo preview
 
