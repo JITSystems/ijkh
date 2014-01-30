@@ -37,6 +37,12 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		tags.each do |tag|
 			@tags_array << [tag.title, tag.id]
 		end 
+
+		@tags_array = {
+			'Существующие категории' => @tags_array,
+			'Новые категории' => []
+		} 
+
 		
 		# # заполнение тестовыми тегами
 		# FreelanceInterface::Tag.delete_all
