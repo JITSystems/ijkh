@@ -94,10 +94,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	def update
 	  @freelancer = FreelanceInterface::Freelancer.find(params[:id])
 	 
-	  if @freelancer.update_attributes(params[:post])
-	    redirect_to :action => :show, id: @freelancer.id
+	  if @freelancer.update_attributes(params[:freelancer])
+	    render json: @freelancer
 	  else
-	    render 'edit'
+	    render status: 500
 	  end
 	end
 

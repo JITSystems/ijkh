@@ -31,6 +31,6 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 	end
 
 	def update
-
+		render json: params.to_json
 	end 
 end

@@ -7,6 +7,6 @@ class FreelanceInterface::TagsController < FreelanceInterfaceController
 
 
 	def update
-		
+		render json: params.to_json
 	end 
 end

@@ -8,7 +8,7 @@
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
 						<label class="switch">
-      						<input type="checkbox" object-type="freelancers" object-id="<%= f.id %>" class="switch-input">
+      						<input type="checkbox" object-type="freelancer" object-id="<%= f.id %>" class="switch-input">
       						<span class="switch-label" data-on="On" data-off="Off"></span>
       						<span class="switch-handle"></span>
     					</label>
@@ -33,7 +33,7 @@
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
 						<label class="switch">
-      						<input type="checkbox" object-type="comments" object-id="<%= c.id %>" class="switch-input">
+      						<input type="checkbox" object-type="comment" object-id="<%= c.id %>" class="switch-input">
       						<span class="switch-label" data-on="On" data-off="Off"></span>
       						<span class="switch-handle"></span>
     					</label>
@@ -56,13 +56,12 @@
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
 						<label class="switch">
-      						<input type="checkbox" object-type="tags" object-id="<%= t.id %>" class="switch-input">
+      						<input type="checkbox" object-type="tag" object-id="<%= t.id %>" class="switch-input">
       						<span class="switch-label" data-on="On" data-off="Off"></span>
       						<span class="switch-handle"></span>
     					</label>
     					<button class="reject">Отказ</button>
 					<p> <%= t.title %></p>
-
 				</div>
 			<% end %>
 		<% end %>
@@ -73,16 +72,19 @@
 	
 	$('input[type="checkbox"]').on('change', function() {
 
-		_this = this;
-		$this = $(this);
+		var _this = this;
+		var $this = $(this);
+		var _data = {};
+		_data[$this.attr('object-type')] = {
+			id: $this.attr('object-id'),
+		     published: _this.checked 
+		}
+
 
 		  $.ajax({
 		      type: "PUT",
-		      url: "/freelance_interface/" + $this.attr('object-type') + "/" + $this.attr('object-id'),
-		      data: { 
-		      	id: $this.attr('object-id'),
-		      	published: _this.checked
-		      },
+		      url: "/freelance_interface/" + $this.attr('object-type') + "s/" + $this.attr('object-id'),
+		      data: _data,
 		      success: function(result){ console.log(result); },
 		      error: function(result){ console.log(result); alert('Всё плохо!'); }
 		  })
