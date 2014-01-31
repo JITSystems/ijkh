@@ -30,7 +30,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	
 	def new
 		@freelancer = FreelanceInterface::Freelancer.new
-		tags = FreelanceInterface::Tag.find(:all, order: 'title', published: true)
+		tags = FreelanceInterface::Tag.where(published: true).order('title desc')
 
 		@tags_array = []
 

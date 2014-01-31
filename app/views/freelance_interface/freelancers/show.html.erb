@@ -2,9 +2,18 @@
 
 <div id="freelancer_profile_info"> 
 	<div class="fi_profile_actions">
-		<button>Премиум-главная</button>
-		<button>Премиум-категория</button>
-		<button>ДОбавить категории</button>
+		<button>
+			<p>Премиум-главная</p>
+			<p>250р/месяц ## мест</p>
+		</button>
+		<button>
+			<p>Премиум-категория</p>
+			<p>50р/месяц</p>
+		</button>
+		<button>
+			<p>Добавить категории</p>
+			<p>10р/месяц - категория</p>
+		</button>
 	</div>
       <% if @freelancer %>
       	<% if @freelancer.picture_url? %>
@@ -20,9 +29,9 @@
 
       <% if @tags %>
       <h3>Оказываемые услуги:</h3>
-      	<div style="_height: px; width: 75%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+      	<div class="tag_cloud" >
 			<% @tags.each do |tag| %>
-				<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
+				<a href='<%= freelance_interface_tag_path(tag.id) %>' style="font-size:<%= 15 + Random.rand(5) %>px;"> <%= tag.title %>  </a>
 			<% end %>
 		</div>
       <% end %>

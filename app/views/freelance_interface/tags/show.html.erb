@@ -1,0 +1,8 @@
+<h1><%= @tag.title %></h1>
+<% if @freelancers == [] %>
+	<p>В данной категории нет фрилансеров</p>
+<% else%>
+	<% @freelancers.each do |f| %>
+		<p><%= f.name %> <%= f.surname %></p>
+	<% end %>
+<% end %>
