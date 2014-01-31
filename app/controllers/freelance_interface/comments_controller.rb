@@ -31,6 +31,13 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 	end
 
 	def update
-		render json: params.to_json
+		@comment = FreelanceInterface::Comment.find(params[:id])
+	 
+	  	if @comment.update_attributes(params[:comment])
+	    	render json: @comment
+	  	else
+		    render status: 500
+		end
+		# render json: params.to_json
 	end 
 end

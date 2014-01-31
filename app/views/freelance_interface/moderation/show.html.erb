@@ -65,7 +65,7 @@
 				</div>
 			<% end %>
 		<% end %>
-	</div>
+</div>
 
 
 <script>
@@ -74,20 +74,21 @@
 
 		var _this = this;
 		var $this = $(this);
+		
 		var _data = {};
+		
 		_data[$this.attr('object-type')] = {
 			id: $this.attr('object-id'),
 		     published: _this.checked 
 		}
 
-
-		  $.ajax({
-		      type: "PUT",
-		      url: "/freelance_interface/" + $this.attr('object-type') + "s/" + $this.attr('object-id'),
-		      data: _data,
-		      success: function(result){ console.log(result); },
-		      error: function(result){ console.log(result); alert('Всё плохо!'); }
-		  })
+		$.ajax({
+		    type: "PUT",
+		    url: "/freelance_interface/" + $this.attr('object-type') + "s/" + $this.attr('object-id'),
+		    data: _data,
+		    success: function(result){ console.log(result); },
+		    error: function(result){ console.log(result); alert('Что-то пошло не так.'); }
+		})
 	});
 
 </script>
