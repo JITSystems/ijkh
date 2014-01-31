@@ -1,49 +1,90 @@
 <h1>Модерация</h1>
 
 <h2>Модерация заявок фрилансеров</h2>
-<% if @freelancers == [] %>
-	<p>Нет новых заявок</p>
-<% else %>
-	<% @freelancers.each do |f| %>
-		<p>
-			<p>Фрилансер: <%= f.name %> <%= f.surname %></p>
-			<p>Телефон: <%= f.phone_number %></p>
-			<%= f.unpublish_at %>
-			<p>Опубликовано: <%= f.created_at %></p>
-			<%= f.user_id %>
-		</p>
-		<hr>
-	<% end %>
-<% end %>
+<div class="fi_moderation_block">
+		<% if @freelancers == [] %>
+			<p>Нет новых заявок</p>
+		<% else %>
+			<% @freelancers.each do |f| %>
+				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="freelancers" object-id="<%= f.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
+    					<button class="reject">Отказ</button>
+					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
+					<p>Телефон: <%= f.phone_number %></p>
+					<%= f.unpublish_at %>
+					<p>Опубликовано: <%= f.created_at %></p>
+					User id: <%= f.user_id %>; email: <%= User.find(f.user_id).email %> 
 
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 <br><br>
 
 <h2>Модерация отзывов к анкетам</h2>
-<% if @comments == [] %>
-	<p>Нет новых отзывов</p>
-<% else %>
-	<% @comments.each do |c| %>
-		<p>
-			<p>Сообщение: <%= c.body %></p>
-			<p>Опубликовано: <%= c.created_at %></p>
-		</p>
-		<hr>
-	<% end %>	
-<% end %>
+<div class="fi_moderation_block">
+		<% if @comments == [] %>
+			<p>Нет новых отзывов</p>
+		<% else %>
+			<% @comments.each do |c| %>
+				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="comments" object-id="<%= c.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
+    					<button class="reject">Отказ</button>
+					<p>Сообщение: <%= c.body %></p>
+					<p>Опубликовано: <%= c.created_at %></p>
 
+				</div>
+			<% end %>	
+		<% end %>
+</div>
 <br><br>
 
 <h2>Добавление тегов в облако</h2>
 
-<% if @tags == [] %>
-	<p>Нет новых тегов</p>
-<% else %>
-	<% @tags.each do |t| %>
-		<p>
-			<p> <%= t.title %></p>
-		</p>
-		<hr>
-	<% end %>
-<% end %>
+<div class="fi_moderation_block">
+		<% if @tags == [] %>
+			<p>Нет новых тегов</p>
+		<% else %>
+			<% @tags.each do |t| %>
+				<div class="fi_moderation_section">
+						<label class="switch">
+      						<input type="checkbox" object-type="tags" object-id="<%= t.id %>" class="switch-input">
+      						<span class="switch-label" data-on="On" data-off="Off"></span>
+      						<span class="switch-handle"></span>
+    					</label>
+    					<button class="reject">Отказ</button>
+					<p> <%= t.title %></p>
+
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 
 
+<script>
+	$('input[type="checkbox"]').on('change', function() {
+		//console.log(this.checked);
+		_this = this;
+		$this = $(this);
+
+		  $.ajax({
+		      type: "POST",
+		      url: "/fi_moderation/" + $this.attr('object-type'),
+		      data: { 
+		      	object_type: $this.attr('object-type'),
+		      	object_id: $this.attr('object-id'),
+		      	published: _this.checked
+		      },
+		      success: function(result){ console.log(result); },
+		      error: function(result){ console.log(result); alert('Всё плохо!'); }
+		    })
+	});
+</script>

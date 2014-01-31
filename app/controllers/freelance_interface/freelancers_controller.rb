@@ -22,7 +22,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def show
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
-		@tags = @freelancer.tags
+		@tags = @freelancer.tags.where(published: true)
 		@comments = @freelancer.comments.where(published: true)
 		@comment = @freelancer.comments.new
 	end
@@ -30,13 +30,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	
 	def new
 		@freelancer = FreelanceInterface::Freelancer.new
-		tags = FreelanceInterface::Tag.find(:all, order: 'title')
+		tags = FreelanceInterface::Tag.where(published: true).order('title desc')
 
 		@tags_array = []
 
 		tags.each do |tag|
 			@tags_array << [tag.title, tag.id]
 		end 
+
+		@tags_array = {
+			'Существующие категории' => @tags_array,
+			'Новые категории' => []
+		} 
+
 		
 		# # заполнение тестовыми тегами
 		# FreelanceInterface::Tag.delete_all
@@ -62,17 +68,18 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		}
 
 		@freelancer = FreelanceInterface::Freelancer.create(freelancer_params)
+		freelancer_id = @freelancer.id
 
 		if @freelancer.save 
 			params[:freelance_interface_freelancer][:tags].each do |t|
-				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: @freelancer.id})
+				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: freelancer_id})
 			end 
 			
 			@tags = @freelancer.tags
 			@comments = @freelancer.comments
 			@comment = @freelancer.comments.new
 
-			render 'show', id: @freelancer.id
+			render 'show', id: freelancer_id
 		else
 			render 'new'
 		end

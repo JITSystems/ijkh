@@ -1,27 +1,41 @@
 <h1>Профиль фрилансера</h1>
 
 <div id="freelancer_profile_info"> 
+	<div class="fi_profile_actions">
+		<button>
+			<p>Премиум-главная</p>
+			<p>250р/месяц ## мест</p>
+		</button>
+		<button>
+			<p>Премиум-категория</p>
+			<p>50р/месяц</p>
+		</button>
+		<button>
+			<p>Добавить категории</p>
+			<p>10р/месяц - категория</p>
+		</button>
+	</div>
       <% if @freelancer %>
-
-      	<%= image_tag @freelancer.avatar_image.url(:web, :preview) if @freelancer.avatar_image %>
-		<%= image_tag @freelancer.avatar_image.url(:print, :full) if @freelancer.avatar_image %>
-		<%= image_tag @freelancer.avatar_image.url(:web, :thumb) if @freelancer.avatar_image %>
-
-      	<p><%= @freelancer.id %></p>
-      	<p><%= @freelancer.picture_url %></p>
-		<p><%= @freelancer.name %></p>
-		<p><%= @freelancer.surname %></p>
-		<p><%= @freelancer.phone_number %></p>
+      	<% if @freelancer.picture_url? %>
+      		<%= image_tag(@freelancer.picture_url) %>
+      	<% else %>
+      		<img src="/assets/no_freelancer.jpg" alt="">
+      	<% end %>
+      	
+      	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
+		<p>тел. <%= @freelancer.phone_number %></p>
 		<p><%= @freelancer.published %></p>
       <% end %>
 
       <% if @tags %>
-      	<div style="_height: px; width: 47%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+      <h3>Оказываемые услуги:</h3>
+      	<div class="tag_cloud" >
 			<% @tags.each do |tag| %>
-				<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
+				<a href='<%= freelance_interface_tag_path(tag.id) %>' style="font-size:<%= 15 + Random.rand(5) %>px;"> <%= tag.title %>  </a>
 			<% end %>
 		</div>
       <% end %>
+      <div class="clear"></div>
 </div>
 
 

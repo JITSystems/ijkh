@@ -40,7 +40,7 @@ body{
 	margin: 0 auto;
 	width: 128px;
 	height: 190px;
-	background-image: url(../images/logo-round-top.png);
+	background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round-top.png);
 	background-repeat: no-repeat;
 	background-position: 0 100%;
 }
@@ -63,7 +63,7 @@ body{
 		margin: 0 auto;
 		width: 128px;
 		height: 35px;
-		background-image: url(../images/logo-round-bottom.png);
+		background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round-bottom.png);
 	}
 	.form_box div.blue_text p{
 		color: #00558d;
@@ -190,7 +190,7 @@ body{
 	margin: 0 auto;
 	width: 128px;
 	height: 190px;
-	background-image: url(../images/logo-round-top.png);
+	background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round-top.png);
 	background-position: 0 100%;
 	background-repeat: no-repeat;
 }
@@ -207,7 +207,7 @@ body{
 		margin: 0 auto;
 		width: 128px;
 		height: 32px;
-		background-image: url(../images/logo-round-bottom.png);
+		background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/logo-round-bottom.png);
 		background-position: 0 100%;
 }
 .oferta_form_texts{
