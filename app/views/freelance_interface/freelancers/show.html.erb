@@ -1,6 +1,11 @@
 <h1>Профиль фрилансера</h1>
 
 <div id="freelancer_profile_info"> 
+	<div class="fi_profile_actions">
+		<button>Премиум-главная</button>
+		<button>Премиум-категория</button>
+		<button>ДОбавить категории</button>
+	</div>
       <% if @freelancer %>
       	<% if @freelancer.picture_url? %>
       		<%= image_tag(@freelancer.picture_url) %>
@@ -15,7 +20,7 @@
 
       <% if @tags %>
       <h3>Оказываемые услуги:</h3>
-      	<div style="_height: px; width: 90%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
+      	<div style="_height: px; width: 75%;background-color: #FFF;border: 1px solid #FFF; text-align: left;">
 			<% @tags.each do |tag| %>
 				<a href="#" style="font-size:<%= 15 + Random.rand(5) %>px;text-decoration:none; margin-left: 10px; border-bottom: 1px dotted; color: #000;"> <%= tag.title %>  </a>
 			<% end %>

@@ -831,6 +831,19 @@ div#freelancer_profile_info img
 	float: left;
 }
 
+div.fi_profile_actions
+{
+	float: right;
+}
+
+div.fi_profile_actions > button
+{
+	float: right;
+	clear: both;
+	height: 50px;
+	width: 170px;
+}
+
 
 /* moderation */
 div.fi_moderation_block div.fi_moderation_section
