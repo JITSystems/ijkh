@@ -2,7 +2,12 @@
 
 <div id="freelancer_profile_info"> 
       <% if @freelancer %>
-      	<%= image_tag(@freelancer.picture_url) if @freelancer.picture_url? %>
+      	<% if @freelancer.picture_url? %>
+      		<%= image_tag(@freelancer.picture_url) %>
+      	<% else %>
+      		<img src="/assets/no_freelancer.jpg" alt="">
+      	<% end %>
+      	
       	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
 		<p>тел. <%= @freelancer.phone_number %></p>
 		<p><%= @freelancer.published %></p>
@@ -16,6 +21,7 @@
 			<% end %>
 		</div>
       <% end %>
+      <div class="clear"></div>
 </div>
 
 

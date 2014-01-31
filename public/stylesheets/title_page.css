@@ -817,6 +817,12 @@ input:focus, select { outline: none; }
 
 /* profile */
 
+div#freelancer_profile_info
+{
+	float: left;
+	width: 100%;
+}
+
 div#freelancer_profile_info img
 {
 	height: 150px;
@@ -833,7 +839,16 @@ div.fi_moderation_block div.fi_moderation_section
 	min-height: 50px;
 }
 
-/* switcher on-off*/
+/* moderation reject button */
+
+button.reject{
+	float: right;
+	width: 60px;
+	margin: 10px 0px;
+	height: 25px;
+}
+
+/* moderation switcher on-off*/
 
 .switch {
 	float: right;

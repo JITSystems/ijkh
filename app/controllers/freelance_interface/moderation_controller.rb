@@ -7,6 +7,18 @@ class FreelanceInterface::ModerationController < FreelanceInterfaceController
 	end
 
 	def update
+	
+	end
+	
+	def update_freelancers
 		render json: params.to_json		
+	end
+	
+	def update_comments
+		render json: params.to_json		
+	end
+	
+	def update_tags
+		render json: params.to_json	
 	end
 end
