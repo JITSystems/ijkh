@@ -70,21 +70,23 @@
 
 
 <script>
+	
 	$('input[type="checkbox"]').on('change', function() {
-		//console.log(this.checked);
+
 		_this = this;
 		$this = $(this);
 
 		  $.ajax({
-		      type: "POST",
-		      url: "/fi_moderation/" + $this.attr('object-type'),
+		      type: "PUT",
+		      url: "/freelance_interface/" + $this.attr('object-type') + "/" + $this.attr('object-id'),
 		      data: { 
-		      	object_type: $this.attr('object-type'),
-		      	object_id: $this.attr('object-id'),
+		      	id: $this.attr('object-id'),
 		      	published: _this.checked
 		      },
 		      success: function(result){ console.log(result); },
 		      error: function(result){ console.log(result); alert('Всё плохо!'); }
-		    })
+		  })
 	});
+
 </script>
+

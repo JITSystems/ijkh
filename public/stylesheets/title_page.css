@@ -860,6 +860,12 @@ div.fi_profile_actions
 	float: right;
 }
 
+div.fi_profile_actions > p:first-child
+{	
+	text-align: right;
+	padding: 0 10px 10px 0;
+}
+
 div.fi_profile_actions > button
 {
 	float: right;
@@ -873,6 +879,16 @@ div.fi_profile_actions > button
 	border-radius: 5px;
 	cursor: pointer;
 	display: block;
+}
+
+div.fi_profile_actions > button > p:last-child
+{
+	font-size: 12px;
+}
+
+div.fi_profile_actions > button:hover > p
+{
+	text-decoration: underline;
 }
 
 

@@ -268,10 +268,6 @@ Ijkh::Application.routes.draw do
 
   get 'fi_moderation' => 'freelance_interface/moderation#show'
   
-  post 'fi_moderation/freelancers' => 'freelance_interface/moderation#update_freelancers'
-  post 'fi_moderation/comments' => 'freelance_interface/moderation#update_comments'
-  post 'fi_moderation/tags' => 'freelance_interface/moderation#update_tags'
-  
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do
         put :deactivate, on: :member

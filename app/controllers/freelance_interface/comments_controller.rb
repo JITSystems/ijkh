@@ -6,7 +6,6 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 	end
 
 	def create
-
 		comment_params = {
 			published: false,
 			body: params[:freelance_interface_comment][:body],
@@ -30,4 +29,8 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 			return nil
 		end
 	end
+
+	def update
+
+	end 
 end

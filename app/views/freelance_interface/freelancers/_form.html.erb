@@ -44,7 +44,13 @@
 		) %>
 	</p>
 
-	<p>
+	<p>		
+		<%= select_tag(
+			'custom_tags', 
+		    {  },
+		    { multiple: true, hidden: true }
+		) %>
+
 		<%= label_tag 'custom_tag_field', 'Добавить свою категорию (требует модерации)' %><br>
 		<%= text_field_tag 'custom_tag_field' %>
 		<%= button_tag 'Добавить', id: 'add_custom_tag', type: 'button' %><br>

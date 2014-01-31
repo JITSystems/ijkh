@@ -1,7 +1,15 @@
 <h1>Профиль фрилансера</h1>
 
 <div id="freelancer_profile_info"> 
+
 	<div class="fi_profile_actions">
+		<p>
+			<% if @freelancer.published %>
+				Опубликовано
+			<% else %>
+				Ожидает рассмотрения
+			<% end %>
+		</p>
 		<button>
 			<p>Премиум-главная</p>
 			<p>250р/месяц ## мест</p>
@@ -24,7 +32,6 @@
       	
       	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
 		<p>тел. <%= @freelancer.phone_number %></p>
-		<p><%= @freelancer.published %></p>
       <% end %>
 
       <% if @tags %>
