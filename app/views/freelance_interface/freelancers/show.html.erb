@@ -66,7 +66,6 @@
 		</p>
 	<% else %>
 		<p>
-
 			<%= form_for @comment, remote: true, method: :post do |f| %>
 				<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
 				<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>

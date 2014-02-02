@@ -1,7 +1,7 @@
 <h1>Модерация</h1>
 
 <h2>Модерация заявок фрилансеров</h2>
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_freelancers">
 		<% if @freelancers == [] %>
 			<p>Нет новых заявок</p>
 		<% else %>
@@ -13,7 +13,7 @@
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
-					<p>Опубликовано: <%= f.created_at %></p>
+					<p>Зарегистрировано: <%= f.created_at %></p>
 					User id: <%= f.user_id %>; email: <%= User.find(f.user_id).email %> 
 
 				</div>
@@ -23,7 +23,7 @@
 <br><br>
 
 <h2>Модерация отзывов к анкетам</h2>
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_comments">
 		<% if @comments == [] %>
 			<p>Нет новых отзывов</p>
 		<% else %>
@@ -43,7 +43,7 @@
 
 <h2>Добавление тегов в облако</h2>
 
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_tags">
 		<% if @tags == [] %>
 			<p>Нет новых тегов</p>
 		<% else %>
@@ -52,7 +52,7 @@
 					
 					<%= render 'controls', object: t, object_type: 'tag' %>
 
-					<p> <%= t.title %></p>
+					<p><%= t.title %></p>
 				</div>
 			<% end %>
 		<% end %>
@@ -82,12 +82,15 @@
 		    	switch(result.published)
 		    	{
 		    		case true: 
+		    			alert('Опубликовано');
 		    			console.log('ON!');
 		    			break;
 		    		case false:
+		    			alert('Снято с публикации');
 		    			console.log('OFF!');
 		    			break;
 		    		default:
+		    			alert('Что-то пошло не так.')
 		    			console.log('Nice try.');
 		    			break;
 		    	}

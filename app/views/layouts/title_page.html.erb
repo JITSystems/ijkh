@@ -28,12 +28,21 @@
 		<div class="container">
 
 			<%= render 'layouts/title_page/nav'%>	
-			<%= render 'layouts/title_page/sidebar'%>	
 
-			<div class="content">
+      <% if params[:controller].slice(0..18) == 'freelance_interface' %>
+        <style>
+          div.content{
+            padding: 0 !important;
+          }
+        </style>
+      <% else %>
+			 <%= render 'layouts/title_page/sidebar'%>	
+      <% end %>
 
+			
+
+      <div class="content">
 				<%= yield %>
-
 			</div><!-- .content-->
 		</div><!-- .container-->
 	</div><!-- .middle-->

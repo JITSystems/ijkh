@@ -19,6 +19,12 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	# 	end
 	# end
 
+	def index
+		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
+		@freelancers = FreelanceInterface::Freelancer.all
+		@tags =  FreelanceInterface::Tag.all
+		@tag_sample = @tags.sample
+	end
 
 	def show
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
@@ -112,12 +118,6 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	    render status: 500
 	  end
 	end
-
-
-	def index
-		@freelancers = FreelanceInterface::Freelancer.all
-	end
-
 
 	def destroy
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])

@@ -899,6 +899,13 @@ div.fi_moderation_block div.fi_moderation_section
 	min-height: 50px;
 }
 
+div.fi_moderation_tags p
+{
+	font-size: 20px;
+	line-height: 50px;
+	text-indent: 20px;
+}
+
 /* moderation reject button */
 
 button.fi_reject{
@@ -1028,4 +1035,49 @@ button.fi_reject{
 .fi_switch-input:checked ~ .fi_switch-handle {
   left: 40px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* fi index page (top 10)*/
+
+a.fi_top_freelancer > img
+{
+	width: 90px;
+	margin-left: 2px;
+}
+
+p.fi_index_text
+{
+	width: 272px;
+	margin: 25px;
+}
+
+div.fi_index_tag_cloud
+{
+	float: right;
+	margin: 25px;
+	width: 500px;
+}
+
+p.fi_index_reg_button > button {
+	margin: 25px;
+	width: 250px;
+	padding: 0 10px;
+	height: 100px;
+	background: none;
+	border: 1px #888 solid;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+}
+
+p.fi_index_reg_button > button > p:last-child
+{
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+p.fi_index_reg_button > button:hover > p
+{
+	text-decoration: underline;
 }
