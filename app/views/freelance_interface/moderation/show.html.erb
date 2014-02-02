@@ -7,12 +7,9 @@
 		<% else %>
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="freelancer" object-id="<%= f.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
+
+					<%= render 'controls', object: f, object_type: 'freelancer' %>
+
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
@@ -32,12 +29,9 @@
 		<% else %>
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="comment" object-id="<%= c.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
+
+					<%= render 'controls', object: c, object_type: 'comment' %>
+
 					<p>Сообщение: <%= c.body %></p>
 					<p>Опубликовано: <%= c.created_at %></p>
 
@@ -55,12 +49,9 @@
 		<% else %>
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="tag" object-id="<%= t.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
+					
+					<%= render 'controls', object: t, object_type: 'tag' %>
+
 					<p> <%= t.title %></p>
 				</div>
 			<% end %>
