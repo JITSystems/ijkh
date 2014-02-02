@@ -67,13 +67,25 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			user_id: current_user.id
 		}
 
+		params_tags = params[:freelance_interface_freelancer][:tags]
+		params_custom_tags = params[:custom_tags]
+
 		@freelancer = FreelanceInterface::Freelancer.create(freelancer_params)
 		freelancer_id = @freelancer.id
 
 		if @freelancer.save 
-			params[:freelance_interface_freelancer][:tags].each do |t|
+			params_tags.each do |t|
 				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: freelancer_id})
 			end 
+
+			unless params_custom_tags == []
+				params_custom_tags.each do |t|
+					tag = FreelanceInterface::Tag.create({title: t, published: false})
+					if tag.save 
+						FreelanceInterface::FreelancerTag.create!({tag_id: tag.id, freelancer_id: freelancer_id})		
+					end 
+				end
+			end
 			
 			@tags = @freelancer.tags
 			@comments = @freelancer.comments
@@ -95,7 +107,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	  @freelancer = FreelanceInterface::Freelancer.find(params[:id])
 	 
 	  if @freelancer.update_attributes(params[:freelancer])
-	    render json: @freelancer
+	    render json: @freelancer.to_json
 	  else
 	    render status: 500
 	  end
@@ -109,10 +121,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def destroy
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
-
-		@freelancer.destroy
-
-		redirect_to action: :index
+		if @freelancer.destroy
+		    render json: nil
+		  else
+		    render status: 500
+		end
 	end
 	
 

@@ -10,7 +10,7 @@ class FreelanceInterface::TagsController < FreelanceInterfaceController
 		@tag = FreelanceInterface::Tag.find(params[:id])
 	 
 	  	if @tag.update_attributes(params[:tag])
-	    	render json: @tag
+	    	render json: @tag.to_json
 	  	else
 		    render status: 500
 		end

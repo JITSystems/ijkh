@@ -70,14 +70,28 @@
 		
 		_data[$this.attr('object-type')] = {
 			id: $this.attr('object-id'),
-		     published: _this.checked 
+		    published: _this.checked 
 		}
 
 		$.ajax({
 		    type: "PUT",
 		    url: "/freelance_interface/" + $this.attr('object-type') + "s/" + $this.attr('object-id'),
 		    data: _data,
-		    success: function(result){ console.log(result); },
+		    success: function(result){ 
+		    	// console.log(result); 
+		    	switch(result.published)
+		    	{
+		    		case true: 
+		    			console.log('ON!');
+		    			break;
+		    		case false:
+		    			console.log('OFF!');
+		    			break;
+		    		default:
+		    			console.log('Nice try.');
+		    			break;
+		    	}
+		    },
 		    error: function(result){ console.log(result); alert('Что-то пошло не так.'); }
 		})
 	});
