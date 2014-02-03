@@ -4,3 +4,5 @@
 		<span class="fi_switch-handle"></span>
 </label>
 <button class="fi_reject">Отказ</button>
+
+<%= button_to "Reject!", fi_moderation_reject_path(user_id: user_id), :method => "get", remote: true %>

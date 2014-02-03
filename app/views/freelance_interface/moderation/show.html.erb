@@ -8,7 +8,7 @@
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
 
-					<%= render 'controls', object: f, object_type: 'freelancer' %>
+					<%= render 'controls', object: f, object_type: 'freelancer', user_id: f.user_id %>
 
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
@@ -30,7 +30,7 @@
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
 
-					<%= render 'controls', object: c, object_type: 'comment' %>
+					<%= render 'controls', object: c, object_type: 'comment', user_id: c.user_id %>
 
 					<p>Сообщение: <%= c.body %></p>
 					<p>Опубликовано: <%= c.created_at %></p>
@@ -50,7 +50,7 @@
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
 					
-					<%= render 'controls', object: t, object_type: 'tag' %>
+					<%= render 'controls', object: t, object_type: 'tag', user_id: t.freelancers.first.user_id  %>
 
 					<p><%= t.title %></p>
 				</div>

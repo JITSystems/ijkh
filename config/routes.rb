@@ -267,7 +267,9 @@ Ijkh::Application.routes.draw do
   end 
 
   get 'fi_moderation' => 'freelance_interface/moderation#show'
+  get 'fi_moderation/reject' => 'freelance_interface/moderation#reject'
   get 'freelance_interface/premium' => 'freelance_interface/freelancers#premium'
+
   
   namespace :web_interface do
     resources :place, only: [:index, :create, :update] do

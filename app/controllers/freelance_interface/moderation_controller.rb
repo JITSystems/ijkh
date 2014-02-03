@@ -8,4 +8,12 @@ class FreelanceInterface::ModerationController < FreelanceInterfaceController
 		@comments = FreelanceInterface::Comment.where(published: false)
 	end
 
+	def reject
+		@user = User.where(id: params[:user_id]).first
+
+		FiModerationMailer.reject(@user).deliver
+
+		render js:  "alert('Отправлено!');"
+	end
+
 end

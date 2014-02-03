@@ -963,7 +963,7 @@ div.fi_moderation_tags p
 
 /* moderation reject button */
 
-button.fi_reject{
+button.fi_reject, form.button_to{
 	float: right;
 	width: 60px;
 	margin: 10px 0px;
