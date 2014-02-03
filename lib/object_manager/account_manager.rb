@@ -129,14 +129,14 @@ class AccountManager < ObjectManager
 					psk = s.vendor.psk
 				end
 
-				account = s.account if s.account.status == -1
+				account = s.account
 				if account
 					service_account =  {
 						title: s.title,
 						amount: FloatModifier.modify(account.amount).to_s,
 						tariff_title: s.tariff.title,
 						account_id: account.id,
-						status: -1,
+						status: account.status,
 						is_user: is_user,
 						merchant_id: merchant_id,
 						psk: psk,
