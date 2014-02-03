@@ -928,6 +928,11 @@ p.fi_index_reg_button > a > span
 	text-align: center;
 }
 
+p.fi_index_reg_button > a > span:only-child
+{
+	font-size: 16px;
+	line-height: 50px;
+}
 
 p.fi_index_reg_button > a > span:nth-child(2)
 {
@@ -1109,3 +1114,25 @@ div.fi_index_tag_cloud
 	width: 500px;
 }
 
+
+
+/* fi tag page */
+
+div.fi_tag_freelancer
+{
+	margin: 30px 0px 0px 2px;
+}
+
+div.fi_tag_freelancer img 
+{
+	float: left;
+	width: 90px;
+	margin-right: 10px;
+}
+
+div.fi_tag_tag_cloud
+{
+	float: right;
+	margin: 0px 30px 35px 0px;
+	width: 280px;
+}
