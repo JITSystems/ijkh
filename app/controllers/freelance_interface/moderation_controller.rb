@@ -9,11 +9,15 @@ class FreelanceInterface::ModerationController < FreelanceInterfaceController
 	end
 
 	def reject
-		@user = User.where(id: params[:user_id]).first
+		@user = User.where(id: params[:fi_reject_user_id]).first
+		@message = params[:fi_reject_message]
 
-		FiModerationMailer.reject(@user).deliver
+		logger.info params
 
-		render js:  "alert('Отправлено!');"
+
+		FiModerationMailer.reject(@user, @message).deliver
+
+		render js:  "alert('Отправлено!'); clearForm();"
 	end
 
 end

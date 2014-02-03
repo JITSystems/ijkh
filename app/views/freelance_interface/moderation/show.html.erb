@@ -8,7 +8,7 @@
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
 
-					<%= render 'controls', object: f, object_type: 'freelancer', user_id: f.user_id %>
+					<%= render 'controls', object: f, object_type: 'freelancer', user: User.find(f.user_id) %>
 
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
@@ -30,7 +30,7 @@
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
 
-					<%= render 'controls', object: c, object_type: 'comment', user_id: c.user_id %>
+					<%= render 'controls', object: c, object_type: 'comment', user: User.find(c.user_id) %>
 
 					<p>Сообщение: <%= c.body %></p>
 					<p>Опубликовано: <%= c.created_at %></p>
@@ -50,7 +50,7 @@
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
 					
-					<%= render 'controls', object: t, object_type: 'tag', user_id: t.freelancers.first.user_id  %>
+					<%= render 'controls', object: t, object_type: 'tag', user: User.find(t.freelancers.first.user_id ) %>
 
 					<p><%= t.title %></p>
 				</div>
@@ -58,8 +58,67 @@
 		<% end %>
 </div>
 
+<div id="fi_moderation_reject_from_layout">
+
+</div>
+
+	<div id="fi_moderation_reject_form">
+		<%= form_tag(fi_moderation_reject_path, method: "get", remote: true) do %>
+		  <%= hidden_field_tag(:fi_reject_user_id) %>
+				
+	    	<p><%= label_tag :fi_reject_name, 'Имя получателя' %></p>
+    		<p><%= text_field_tag :fi_reject_name %></p>
+			<p><%= label_tag :fi_reject_email, 'Почта получателя' %></p>
+			<p><%= text_field_tag :fi_reject_email %></p>
+				<br>
+
+		  <p><%= text_area_tag :fi_reject_message, '', placeholder: 'Введите причину отказа... ' %></p>
+		  <p><%= submit_tag :fi_reject_submit, value: "Подтвердить", id: 'fi_reject_submit' %></p>
+		<% end %>
+	</div>
+
 
 <script>
+	
+	$fi_reject_form = $('form');
+
+	$fi_reject_button = $('button.fi_reject');
+	$fi_reject_layout = $('#fi_moderation_reject_from_layout');
+	$fi_reject_form_div = $('#fi_moderation_reject_form');
+
+	$fi_reject_user_id = $('#fi_reject_user_id');
+	$fi_reject_name = $('#fi_reject_name');
+	$fi_reject_email = $('#fi_reject_email');
+
+	$fi_reject_message = $('#fi_reject_message');
+	$fi_reject_submit = $('#fi_reject_submit');
+
+
+	$fi_reject_layout.click(function(){
+		$fi_reject_layout.fadeOut('fast');
+		$fi_reject_form_div.fadeOut('fast');
+	});
+
+	$fi_reject_button.click(function(){
+
+		_this = $(this);
+
+		$fi_reject_layout.fadeIn('fast');
+		$fi_reject_form_div.fadeIn('fast');
+
+		$fi_reject_user_id.val( _this.attr('data-user-id') );
+		$fi_reject_name.val( _this.attr('data-user-name') );
+		$fi_reject_email.val( _this.attr('data-user-email') );
+	});
+
+
+	function clearForm(){
+		$fi_reject_layout.fadeOut('fast');
+		$fi_reject_form_div.fadeOut('fast');
+		$fi_reject_message.val('');
+
+	}
+	
 	
 	$('input[type="checkbox"]').on('change', function() {
 
@@ -100,4 +159,3 @@
 	});
 
 </script>
-

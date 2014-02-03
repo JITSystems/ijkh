@@ -3,6 +3,7 @@
 		<span class="fi_switch-label" data-on="On" data-off="Off"></span>
 		<span class="fi_switch-handle"></span>
 </label>
-<button class="fi_reject">Отказ</button>
+<button class="fi_reject" data-user-id="<%= user.id %>" data-user-name="<%= user.first_name %>" data-user-email="<%= user.email %>" >Отказ</button>
 
-<%= button_to "Reject!", fi_moderation_reject_path(user_id: user_id), :method => "get", remote: true %>
+ <!-- button_to "Reject!", fi_moderation_reject_path(user_id: user_id), :method => "get", remote: true  -->
+

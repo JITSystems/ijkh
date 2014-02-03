@@ -10,8 +10,9 @@ class FiModerationMailer < ActionMailer::Base
     mail(:subject => "izkh.ru #{message.subject}")
   end
 
-	def reject(user)
+	def reject(user, message)
 		@user = user
+		@message = message
  		mail :to => @user.email, :subject => "В регистрации объявления отказано."
  	end
 

@@ -9,7 +9,8 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 		comment_params = {
 			published: false,
 			body: params[:freelance_interface_comment][:body],
-			freelancer_id: params[:freelance_interface_comment][:freelancer_id]
+			freelancer_id: params[:freelance_interface_comment][:freelancer_id],
+			user_id: current_user.id
 		}
 
 		@comment = FreelanceInterface::Comment.create(comment_params)
