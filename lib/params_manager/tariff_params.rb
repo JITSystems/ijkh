@@ -20,11 +20,16 @@ private
 		# puts "*************"
 		# puts ( params["vendor"]["id"].to_i != 0 )
 
-		unless params["vendor"]["id"].to_i != 0
-			t_p.merge!(owner_type: "User", owner_id: user.id)
+		if params["vendor"]
+			if params["vendor"]["id"].to_s == "0"
+				t_p.merge!(owner_type: "User", owner_id: user.id)
+			else
+				t_p.merge!(owner_type: "Vendor", owner_id: params["vendor"]["id"])
+			end
 		else
-			t_p.merge!(owner_type: "Vendor", owner_id: params["vendor"]["id"])
+			t_p.merge!(owner_type: "User", owner_id: user.id)
 		end
+
 
 		t_p
 	end
