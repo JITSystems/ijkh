@@ -24,7 +24,7 @@ class ServiceManager < ObjectManager
 		Service.where("vendor_id = ? and is_active = true", vendor_id).pluck(:user_account)
 	end
 
-	def update_user_service(params)
+	def self.update_user_service(params)
 		fields_params = params[:service][:tariff][:fields]
 
 		fields_params.each do |field_params|
