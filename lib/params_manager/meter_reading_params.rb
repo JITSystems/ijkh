@@ -8,12 +8,12 @@ private
 
 	def self.meter_reading_params(params, service, field, user)
 		m_r_p = {
-				 reading:  params[:meter_reading][:reading],
+				 reading:  params[:meter_readings][:reading],
 				 service_id: service.id,
 				 field_id: field.id,
 				 user_id: user.id
 				}
-		m_r_p.merge!(snapshot_url: params[:meter_reading][:snapshot_url]) if params[:meter_reading][:snapshot_url]
+		m_r_p.merge!(snapshot_url: params[:meter_readings][:snapshot_url]) if params[:meter_readings][:snapshot_url]
 
 		m_r_p
 	end
