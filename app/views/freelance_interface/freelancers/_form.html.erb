@@ -13,7 +13,7 @@
 	
 		<p class="freelancer_info_data" >
 	    	<%= f.label :name, 'Ваше имя' %><br>
-	    	<%= f.text_field :name %>
+	    	<%= f.text_field :name, value: current_user.first_name %>
 	  	</p>
 	 
 		<p class="freelancer_info_data" >
@@ -23,7 +23,7 @@
 	
 		<p class="freelancer_info_data" >
 		    <%= f.label :phone_number, 'Телефон контакта' %><br>
-		    <%= f.text_field :phone_number %>
+		    <%= f.text_field :phone_number, value: current_user.phone_number  %>
 		</p>
 
 		<div class="clear"></div>

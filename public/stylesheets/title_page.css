@@ -52,7 +52,7 @@ div.clear{
 -----------------------------------------------------------------------------*/
 .middle {
 	width: 100%;
-	padding: 0 0 120px;
+	padding: 0 0 210px;
 	position: relative;
 }
 .middle:after {
@@ -431,8 +431,8 @@ div.freelancer > p{
 div#footer {
 	text-align: center;
 	width: 960px;
-	margin: -100px auto 0;
-	height: 100px;
+	margin: -190px auto 0;
+	height: 180px;
 	position: relative;
 }
 
@@ -770,11 +770,11 @@ div.tag_cloud {
 
 div.tag_cloud a
 {
-	text-decoration:none;
-	margin-left: 10px;
+	text-decoration: none;
 	border-bottom: 1px dotted;
 	color: #000;
-	padding: 0 5px;
+	margin: 0px 10px 0px 0px;
+	line-height: 25px;
 }
 
 div.tag_cloud a:hover
@@ -866,12 +866,12 @@ div.fi_profile_actions > p:first-child
 	padding: 0 10px 10px 0;
 }
 
-div.fi_profile_actions > button
+div.fi_profile_actions > a
 {
 	float: right;
 	clear: both;
-	height: 50px;
-	width: 170px;
+	height: 40px;
+	width: 200px;
 	margin-bottom: 10px;
 	margin-right: 5px;
 	background: none;
@@ -879,17 +879,67 @@ div.fi_profile_actions > button
 	border-radius: 5px;
 	cursor: pointer;
 	display: block;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
 }
 
-div.fi_profile_actions > button > p:last-child
+p.fi_profile_actions > a > span
+{
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+div.fi_profile_actions > a > span:last-child
 {
 	font-size: 12px;
 }
 
-div.fi_profile_actions > button:hover > p
+div.fi_profile_actions > a:hover > span
 {
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 }
+
+
+/* button on index */
+
+p.fi_index_reg_button > a {
+	margin: 25px;
+	width: 250px;
+	height: 60px;
+	background: none;
+	border: 1px #888 solid;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	text-decoration: none;
+	color: black;
+	vertical-align: middle;
+	padding: 20px 10px;
+	text-decoration: none;	
+}
+
+p.fi_index_reg_button > a > span
+{
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+
+p.fi_index_reg_button > a > span:nth-child(2)
+{
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+p.fi_index_reg_button > a:hover > span
+{
+	/*text-decoration: underline;*/
+}
+
 
 
 /* moderation */
@@ -1059,25 +1109,3 @@ div.fi_index_tag_cloud
 	width: 500px;
 }
 
-p.fi_index_reg_button > button {
-	margin: 25px;
-	width: 250px;
-	padding: 0 10px;
-	height: 100px;
-	background: none;
-	border: 1px #888 solid;
-	border-radius: 5px;
-	cursor: pointer;
-	display: block;
-}
-
-p.fi_index_reg_button > button > p:last-child
-{
-	margin-top: 10px;
-	font-size: 12px;
-}
-
-p.fi_index_reg_button > button:hover > p
-{
-	text-decoration: underline;
-}

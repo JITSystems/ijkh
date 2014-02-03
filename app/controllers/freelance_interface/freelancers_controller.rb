@@ -21,8 +21,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def index
 		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
+		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id)
+
 		@freelancers = FreelanceInterface::Freelancer.all
-		@tags =  FreelanceInterface::Tag.all
+		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')
 		@tag_sample = @tags.sample
 	end
 
@@ -99,6 +101,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 			render 'show', id: freelancer_id
 		else
+			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
+
+			@tags_array = []
+
+			tags.each do |tag|
+				@tags_array << [tag.title, tag.id]
+			end 
+
+			@tags_array = {
+				'Существующие категории' => @tags_array,
+				'Новые категории' => []
+			} 
+
 			render 'new'
 		end
 	end

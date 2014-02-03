@@ -15,12 +15,20 @@
 	Сервис АйЖКХ поможет Вам найти человека для <%= link_to @tag_sample.title, freelance_interface_tag_path(@tag_sample.id) %> - просто выберите нужную категорию.
 </p>
 
+
 <p class="fi_index_reg_button">
-	<button>
-		<p>Разместить предложение</p>
-		<p>Разместите своё объявление и получите больше клиентов</p>
-	</button>	
+	<% if @freelancer != [] %>
+		<a href="<%= freelance_interface_freelancer_path(@freelancer.first.id) %>">
+			<span>Перейти в профиль</span>
+		</a>	
+	<% else %>
+		<a href="#">
+			<span>Разместить предложение</span>
+			<span>Разместите своё объявление и получите больше клиентов</span>
+		</a>	
+	<% end %>
 </p>
+
 
 <% @freelancers.each do |f| %>
 <% end %>
