@@ -17,7 +17,7 @@ class FreelanceInterface::ModerationController < FreelanceInterfaceController
 
 		FiModerationMailer.reject(@user, @message).deliver
 
-		render js:  "alert('Отправлено!'); clearForm();"
+		render js:  "clearForm();"
 	end
 
 end

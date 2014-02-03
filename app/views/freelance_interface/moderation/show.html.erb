@@ -112,11 +112,17 @@
 	});
 
 
+	// $fi_reject_submit.click(function(){
+		
+	// });
+
+
 	function clearForm(){
+		alert('Отправлено!');
 		$fi_reject_layout.fadeOut('fast');
 		$fi_reject_form_div.fadeOut('fast');
 		$fi_reject_message.val('');
-
+		$fi_reject_submit.removeAttr('disabled');
 	}
 	
 	
