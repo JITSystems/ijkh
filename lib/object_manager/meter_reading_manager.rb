@@ -33,7 +33,7 @@ class MeterReadingManager < ObjectManager
       field = FieldManager.get(params[:meter_reading][:field_id])
       amount = calculate_amount(params[:meter_reading][:reading].to_f, params[:prev_reading].to_f, field.value)
       updater = AmountUpdater.new(account)
-      updater.set_to(amount)
+      updater.increase_by(amount)
       account.update_attribute(:status, -1) if account.amount > 0.0
     end
     return meter_reading
