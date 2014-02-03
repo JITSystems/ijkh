@@ -35,6 +35,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@comment = @freelancer.comments.new
 	end
 
+	def premium
+		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first
+	end
+
 	
 	def new
 		@freelancer = FreelanceInterface::Freelancer.new
