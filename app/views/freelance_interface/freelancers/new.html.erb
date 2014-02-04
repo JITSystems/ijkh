@@ -73,6 +73,7 @@
 
 
 	// COST by month
+	$fi_total_cost_wrap = $('p.fi_total_cost');
 	$fi_cost_by_month = $('p.fi_cost_by_month > span');
 	$fi_total_cost = $('p.fi_total_cost > span:first-child');
 	$number_of_months = $('p.fi_total_cost > span:last-child');
@@ -81,8 +82,10 @@
 
 	function changeCost(sum){
 		var cost = parseFloat($fi_cost_by_month.html());
+		var month = parseFloat($('input[type="radio"]:checked').val());
 	    cost += sum; 
 	    $fi_cost_by_month.html(cost);
+		changeTotalCost(month);
 	};
 
 	//TOTAL COST
@@ -94,31 +97,45 @@
 
 
 	function changeTotalCost(month){
-		var n = parseFloat(month);
-		var s = parseFloat($fi_cost_by_month.html());
+		if (month) 
+		{
+			var n = parseFloat(month);
+			var s = parseFloat($fi_cost_by_month.html());
+			var cost = s*n;
+			$fi_total_cost.html(cost);
 
-		var cost = s*n;
+			switch(n){
+				case 1:
+					n += ' месяц';
+					break;
+				case 6:
+					n += ' месяцев';
+					break;
+				case 12:
+					n += ' месяцев';
+					break;
+				default:
+					console.log('');
+					break;
 
-		$fi_total_cost.html(cost);
-
-		switch(n){
-			case 1:
-				n += ' месяц';
-				break;
-			case 6:
-				n += ' месяцев';
-				break;
-			case 12:
-				n += ' месяцев';
-				break;
-			default:
-				console.log('');
-				break;
-
+			};
+			$fi_total_cost_wrap.show();
+			$number_of_months.html(n)
+		} else {
+			$fi_total_cost_wrap.hide();
 		}
 
-		$number_of_months.html(n)
 	};
+
+
+	// change total cost if top ten checked
+	$('#freelance_interface_freelancer_top_ten_freelancer').on('change', function(){
+		if (this.checked == true) {
+			changeCost(250);
+		} else {
+			changeCost(-250);
+		};
+	});
 
 
 	// CUSTOM TAGS PART

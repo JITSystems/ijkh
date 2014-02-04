@@ -833,6 +833,27 @@ div#new_freelancer_form p.freelancer_info_data input, input#custom_tag_field{
 	margin-bottom: 0;
 }
 
+
+div#new_freelancer_form input[type="submit"]{
+	width: 400px;
+	height: 80px;
+	background: none;
+	border: 1px #888 solid;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	color: #000;
+	vertical-align: middle;
+	padding: 20px 10px;
+	text-decoration: none;
+	font-size: 16px;	
+}
+
+p.fi_total_cost
+{
+	display: none;
+}
+
 button#add_custom_tag
 {
 	border-radius: 0;
@@ -1020,7 +1041,6 @@ div#fi_moderation_reject_from_layout
 	z-index: 999;
 }
 
-
 div#fi_moderation_reject_form{
 	display: none;
 	padding: 15px;
@@ -1047,7 +1067,6 @@ div#fi_moderation_reject_form #fi_reject_message{
 
 	width: 498px;
 	height: 150px;
-
 }
 
 div.fi_moderation_block div.fi_moderation_section
