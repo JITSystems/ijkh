@@ -22,7 +22,8 @@ private
 			s_p.merge!(title: service_type.title + " (Пользовательский)")
 		else
 			vendor = VendorManager.get(params[:vendor][:id])
-			s_p.merge!(title: vendor.title)
+			tariff = TariffTemplateManager.get(params[:tariff][:id])
+			s_p.merge!(title: "#{vendor.title} - #{tariff.title}")
 		end
 		s_p.merge!(user_account: params[:user_account]) if params[:user_account]
 
