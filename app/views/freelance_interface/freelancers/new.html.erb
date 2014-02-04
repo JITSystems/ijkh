@@ -54,15 +54,28 @@
 	      }
 	    });
 	  },
-	  afterSelect: function(){
+  
+	  afterSelect: function(values){
 	    this.qs1.cache();
 	    this.qs2.cache();
+	   	var cost = $total_cost.html.parseFloat();
+	    cost += 10; 
+	    $total_cost.html(cost);
+	    // alert("Select value: "+values);
 	  },
 	  afterDeselect: function(){
 	    this.qs1.cache();
 	    this.qs2.cache();
+	    var cost = $total_cost.html.parseFloat();
+	    cost += 10; 
+	    $total_cost.html(cost);
+	    // alert("Deselect value: "+values);
 	  }
 	});
+
+
+	// TOTAL COST 
+	$total_cost = $('p.total_cost > span');
 
 
 	// CUSTOM TAGS PART

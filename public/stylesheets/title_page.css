@@ -817,6 +817,10 @@ div#new_freelancer_form p.freelancer_info_picture {
 	float: left;
 }
 
+div#new_freelancer_form p.total_cost
+{
+	font-size: 35px;
+}
 
 
 div#new_freelancer_form p.freelancer_info_picture > img {
@@ -1052,7 +1056,7 @@ div.fi_moderation_block div.fi_moderation_section
 	min-height: 50px;
 }
 
-div.fi_moderation_tags p
+div.fi_moderation_tags p, div.fi_moderation_block p:only-child
 {
 	font-size: 20px;
 	line-height: 50px;

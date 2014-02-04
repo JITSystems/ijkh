@@ -17,12 +17,13 @@
 
 
 <p class="fi_index_reg_button">
-	<% if @freelancer != [] %>
+
+	<% if @freelancer && @freelancer != [] %>
 		<a href="<%= freelance_interface_freelancer_path(@freelancer.first.id) %>">
 			<span>Перейти в профиль</span>
 		</a>	
 	<% else %>
-		<a href="#">
+		<a href="<%= new_freelance_interface_freelancer_path %>">
 			<span>Разместить предложение</span>
 			<span>Разместите своё объявление и получите больше клиентов</span>
 		</a>	

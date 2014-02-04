@@ -21,7 +21,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def index
 		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
-		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id)
+
+		@freelancer = nil
+		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id) if current_user 
+
 		@freelancers = FreelanceInterface::Freelancer.all
 		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')
 		@tag_sample = @tags.sample
