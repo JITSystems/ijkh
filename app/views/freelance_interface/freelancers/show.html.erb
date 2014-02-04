@@ -31,16 +31,16 @@
 	      		<img src="/assets/no_freelancer.jpg" alt="">
 	      	<% end %>
 	
-	      		<p class="fi_rating">
-					<input type="radio" name="f<%= @freelancer.id %>" value="0" checked /><span id="fi_raiting_hide"></span>
-						<% [ 1,2,3,4,5 ].each do |score| %>
-							<% if score ==  @freelancer.raiting.to_i %>
-								<%= radio_button_tag('f' + @freelancer.id.to_s, score, true, disabled: true ) %><span></span>
-							<% else %>
-				  					<%= radio_button_tag('f' + @freelancer.id.to_s, score, false, disabled: true ) %><span></span>
-							<% end %>
+      		<p class="fi_rating">
+				<input type="radio" name="f<%= @freelancer.id %>" value="0" checked /><span id="fi_raiting_hide"></span>
+					<% [ 1,2,3,4,5 ].each do |score| %>
+						<% if score ==  @freelancer.raiting.to_i %>
+							<%= radio_button_tag('f' + @freelancer.id.to_s, score, true, disabled: true ) %><span></span>
+						<% else %>
+			  					<%= radio_button_tag('f' + @freelancer.id.to_s, score, false, disabled: true ) %><span></span>
 						<% end %>
-				</p>
+					<% end %>
+			</p>
 	    </div>
       	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
 		<p>тел. <%= @freelancer.phone_number %></p>
