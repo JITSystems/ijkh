@@ -24,12 +24,24 @@
 		</a>
 	</div>
       <% if @freelancer %>
-      	<% if @freelancer.picture_url? %>
-      		<%= image_tag(@freelancer.picture_url) %>
-      	<% else %>
-      		<img src="/assets/no_freelancer.jpg" alt="">
-      	<% end %>
-      	
+		<div class="fi_profile_avatar">
+	      	<% if @freelancer.picture_url? %>
+	      		<%= image_tag(@freelancer.picture_url) %>
+	      	<% else %>
+	      		<img src="/assets/no_freelancer.jpg" alt="">
+	      	<% end %>
+	
+	      		<p class="fi_rating">
+					<input type="radio" name="f<%= @freelancer.id %>" value="0" checked /><span id="fi_raiting_hide"></span>
+						<% [ 1,2,3,4,5 ].each do |score| %>
+							<% if score ==  @freelancer.raiting.to_i %>
+								<%= radio_button_tag('f' + @freelancer.id.to_s, score, true, disabled: true ) %><span></span>
+							<% else %>
+				  					<%= radio_button_tag('f' + @freelancer.id.to_s, score, false, disabled: true ) %><span></span>
+							<% end %>
+						<% end %>
+				</p>
+	    </div>
       	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
 		<p>тел. <%= @freelancer.phone_number %></p>
       <% end %>
@@ -49,14 +61,30 @@
 <br>
 
 <div id="comments">
-	<p>Отзывы</p>
-	
-
+	<h3>Отзывы</h3>
 	<% if @comments == [] %>
 		<p>Нет отзывов</p>
 	<% else %>
 		<% @comments.each do |c| %>
-			<p><%= c.body %></p>
+			<br>
+				<div class="fi_comment_section">
+
+					<p><b>Пользователь:</b> <%= c.user.first_name %></p>
+	
+					<p class="fi_rating"><b>Оценка: </b>
+						<input type="radio" name="<%= c.id %>" value="0" checked /><span id="fi_raiting_hide"></span>
+						<% [ 1,2,3,4,5 ].each do |score| %>
+							<% if score == c.raiting.to_i %>
+			  					<%= radio_button_tag(c.id, score, true, disabled: true ) %><span></span>
+			  				<% else %>
+			  					<%= radio_button_tag(c.id, score, false, disabled: true ) %><span></span>
+			  				<% end %>
+						<% end %>
+					</p>
+	
+					<p><b>Комментарий:</b> <%= c.body %></p>
+	
+				</div>
 		<% end %>
 	<% end %>
 
@@ -65,9 +93,31 @@
 			<a href="/login">Войдите</a> в систему, чтобы оставить отзыв.
 		</p>
 	<% else %>
+		<br>
 		<p>
+			<p class="comment_form_errors"></p>
+
 			<%= form_for @comment, remote: true, method: :post do |f| %>
 				<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
+
+				<!-- исправить по возможности на то, что в комментах -->
+				<!-- 
+				    <% [ 1,2,3,4,5 ].each do |score| %>
+  						<%= f.radio_button 'raiting', score %><span></span>
+					<% end %>
+					http://jsfiddle.net/kRdPb/2/
+ 				-->
+		
+				<div class="fi_rating">
+					<label for="freelance_interface_comment[raiting]">Ваша оценка:</label>
+					<input type="radio" name="freelance_interface_comment[raiting]" value="0" checked /><span id="fi_raiting_hide"></span>
+				    <input type="radio" name="freelance_interface_comment[raiting]" value="1" /><span></span>
+				    <input type="radio" name="freelance_interface_comment[raiting]" value="2" /><span></span>
+				    <input type="radio" name="freelance_interface_comment[raiting]" value="3" /><span></span>
+				    <input type="radio" name="freelance_interface_comment[raiting]" value="4" /><span></span>
+				    <input type="radio" name="freelance_interface_comment[raiting]" value="5" /><span></span>
+				</div>
+
 				<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>
 				<%= f.submit "Подтвердить" %>
 			<% end %>

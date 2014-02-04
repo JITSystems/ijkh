@@ -10,6 +10,7 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 			published: false,
 			body: params[:freelance_interface_comment][:body],
 			freelancer_id: params[:freelance_interface_comment][:freelancer_id],
+			raiting: params[:freelance_interface_comment][:raiting],
 			user_id: current_user.id
 		}
 
@@ -23,7 +24,7 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 			end
 			return nil
 		else
-			@message = "nothing happend"
+			@message = "Пожалуйста, выставите оценку и напишите комментарий."
 			respond_to do |format|
 				format.js {render 'freelance_interface/comments/error'}
 			end
