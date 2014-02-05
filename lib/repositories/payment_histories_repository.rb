@@ -62,13 +62,10 @@ module PaymentHistoriesRepository
 			elsif service && service.vendor_id.to_i == 165
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
 				CraftSPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount)
-			end
 			elsif service && service.vendor_id.to_i == 144
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
 				user_id = service.user.id
 				freelancer = FreelanceInterface::Freelancer.where(user_id: user_id)
-				
-				# отправка объявления на модерацию
 			end
 		end
 		
