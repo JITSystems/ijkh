@@ -146,7 +146,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		    }
 
 		    service = ServiceManager.create(params, current_user)
-		    place.is_active = false
+		    # place.is_active = false
+		    
 		    
 			
 			@tags = @freelancer.tags
