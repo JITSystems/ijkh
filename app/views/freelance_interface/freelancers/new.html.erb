@@ -78,6 +78,8 @@
 	$fi_total_cost = $('p.fi_total_cost > span:first-child');
 	$number_of_months = $('p.fi_total_cost > span:last-child');
 
+	$amount_total = $('input#amount_total')
+
 	$radio_number_of_month = $('input[name="freelance_interface_freelancer[unpublish_at]"]');
 
 	function changeCost(sum){
@@ -120,10 +122,15 @@
 
 			};
 			$fi_total_cost_wrap.show();
-			$number_of_months.html(n)
+			$number_of_months.html(n);
+
+			$amount_total.val(cost);
+
 		} else {
 			$fi_total_cost_wrap.hide();
 		}
+
+
 
 	};
 

@@ -1,5 +1,5 @@
 class FreelanceInterface::Freelancer < ActiveRecord::Base
-  attr_accessible :description, :name, :phone_number, :picture_url, :published, :raiting, :surname, :unpublish_at, :user_id
+  attr_accessible :description, :name, :phone_number, :picture_url, :published, :raiting, :surname, :unpublish_at, :user_id, :service_id
 
   validates :name, :user_id, :phone_number, :presence => true
   validates :user_id, :uniqueness => true

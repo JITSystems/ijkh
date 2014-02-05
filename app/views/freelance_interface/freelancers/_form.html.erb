@@ -1,4 +1,4 @@
-<%= form_for @freelancer do |f| %>
+<%= form_for @freelancer, remote: true do |f| %>
 
 <div id="freelancer_info">
 		<p class="freelancer_info_picture">
@@ -83,6 +83,8 @@
 		<%= f.check_box :top_ten_freelancer %>
 		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>
 	</p>
+
+	<%= hidden_field_tag :amount_total %>
 
 	<p class='fi_total_cost'>
 		<span></span> рублей - <span>месяцев</span> 
