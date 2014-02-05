@@ -71,6 +71,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		uploader = FreelanceInterfaceUploader.new
   		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
 
+  		user_id = current_user.id
+
 		freelancer_params = {
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
@@ -78,7 +80,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
  			picture_url: uploader.url,
 			unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
 			published: false,
-			user_id: current_user.id
+			user_id: user_id
 		}
 
 		params_tags = params[:freelance_interface_freelancer][:tags]
@@ -100,10 +102,54 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 					end 
 				end
 			end
+
+			# place params
+   			# t.string   "title"
+		    # t.string   "city"
+		    # t.string   "street"
+		    # t.string   "building"
+		    # t.string   "apartment"
+		    # t.boolean  "is_active"
+		    # t.integer  "city_id"
+		    # t.integer  "type_id"
+
+			place_params = {
+				title: 'fi',
+				city: 'fi',
+				street: 'fi',
+				building: 'fi',
+				apartment: 'fi',
+				is_active: false,
+				city_id: 0,
+				type_id: 0
+			}
+			place = PlaceManager.create(place_params, current_user)
+			place.is_active = false
+
+
+			# service params
+		    # t.string   "title"
+		    # t.integer  "tariff_id"
+		    # t.integer  "place_id"
+		    # t.integer  "service_type_id"
+		    # t.integer  "vendor_id"
+		    # t.string   "user_account"
+		    # t.boolean  "is_active"
+
+		    service_params = {
+		    	title: 'fi',
+		    	tariff_id: 0,
+		    	place_id: place.id,
+		    	service_type_id: 0,
+		    	vendor_id: 144,
+		    	user_account: freelancer_id,
+		    }
+		    
 			
 			@tags = @freelancer.tags
 			@comments = @freelancer.comments
 			@comment = @freelancer.comments.new
+
 
 			render 'show', id: freelancer_id
 		else
