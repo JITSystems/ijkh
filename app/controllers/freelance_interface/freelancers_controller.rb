@@ -18,6 +18,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			render 'show', id: @freelancer.id
 		else
 			@freelancer = FreelanceInterface::Freelancer.new
+			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
+
+			@tags_array = []
+
+			tags.each do |tag|
+				@tags_array << [tag.title, tag.id]
+			end 
+
+			@tags_array = {
+				'Существующие категории' => @tags_array,
+				'Новые категории' => []
+			} 
+
 			render 'new'
 		end
 	end
@@ -46,19 +59,6 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	
 	def new
-		@freelancer = FreelanceInterface::Freelancer.new
-		tags = FreelanceInterface::Tag.where(published: true).order('title desc')
-
-		@tags_array = []
-
-		tags.each do |tag|
-			@tags_array << [tag.title, tag.id]
-		end 
-
-		@tags_array = {
-			'Существующие категории' => @tags_array,
-			'Новые категории' => []
-		} 
 
 		
 		# # заполнение тестовыми тегами
@@ -97,7 +97,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 				FreelanceInterface::FreelancerTag.create!({tag_id: t, freelancer_id: freelancer_id})
 			end 
 
-			unless params_custom_tags == []
+			if params_custom_tags && params_custom_tags != []
 				params_custom_tags.each do |t|
 					tag = FreelanceInterface::Tag.create({title: t, published: false})
 					if tag.save 
@@ -151,13 +151,14 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		    }
 
 		    service = ServiceManager.create(service_params, current_user)
-		    # place.is_active = false
+		    @freelancer.service_id = service.id
+		    
+		    place.is_active = false
 
 			
-			@tags = @freelancer.tags
-			
+			@tags = @freelancer.tags.where(published: true)
+			@comments = @freelancer.comments.where(published: true)
 			@comment = @freelancer.comments.new
-			@comments == []
 
 			render 'show', id: freelancer_id
 		else
@@ -198,7 +199,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
 		freelancer_tags = FreelanceInterface::FreelancerTag.where(freelancer_id: @freelancer.id)
 
-		@freelancer.tags.destroy
+		@freelancer.tags.where(published: false).each do |t|
+			t.destroy
+		end
+		
+
 		@freelancer.comments.destroy
 		freelancer_tags.each do |f_t|
 			f_t.destroy

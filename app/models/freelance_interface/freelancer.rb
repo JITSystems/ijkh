@@ -11,5 +11,7 @@ class FreelanceInterface::Freelancer < ActiveRecord::Base
   has_many :freelancer_tags
   has_one :top_ten_freelancer
   has_many :top_four_freelancer
+
+  belongs_to :service
   belongs_to :user
 end
