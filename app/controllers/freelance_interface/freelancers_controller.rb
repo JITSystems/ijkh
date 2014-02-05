@@ -103,16 +103,6 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 				end
 			end
 
-			# place params
-   			# t.string   "title"
-		    # t.string   "city"
-		    # t.string   "street"
-		    # t.string   "building"
-		    # t.string   "apartment"
-		    # t.boolean  "is_active"
-		    # t.integer  "city_id"
-		    # t.integer  "type_id"
-
 			place_params = {
 				title: 'fi',
 				city: 'fi',
@@ -123,27 +113,40 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 				city_id: 0,
 				type_id: 0
 			}
+
 			place = PlaceManager.create(place_params, current_user)
-			place.is_active = false
 
 
-			# service params
-		    # t.string   "title"
-		    # t.integer  "tariff_id"
-		    # t.integer  "place_id"
-		    # t.integer  "service_type_id"
-		    # t.integer  "vendor_id"
-		    # t.string   "user_account"
-		    # t.boolean  "is_active"
+			# service[place_id]:1207
+			# service[service_type_id]:20
+			# service[vendor][id]:144
+			# service[tariff][id]:176
+			# service[tariff][fields[][175]][id]:175
+			# service[user_account]:1000
+
+			 # "service"=>
+			 # {
+			 # "place_id"=>"168", 
+			 # "service_type_id"=>"6", 
+			 # "vendor"=>{"id"=>"19"}, 
+			 # "tariff"=>{"id"=>"14", 
+			 # "fields"=>[{"id"=>"16"}]}, 
+			 # "user_account"=>"123456"}
 
 		    service_params = {
-		    	title: 'fi',
-		    	tariff_id: 0,
-		    	place_id: place.id,
-		    	service_type_id: 0,
-		    	vendor_id: 144,
+
+		    	service: {
+		    		place_id: place.id,
+		    		service_type_id: 20,
+		    		vendor: { id: 144 },
+		    		tariff:  { id: 176 },
+		    		fields: [{id: 175 }]
+		    	},
 		    	user_account: freelancer_id,
 		    }
+
+		    service = ServiceManager.create(params, current_user)
+		    place.is_active = false
 		    
 			
 			@tags = @freelancer.tags
