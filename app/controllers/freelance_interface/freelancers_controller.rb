@@ -7,17 +7,20 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	# перенаправление в профиль, если объявление уже зарегистрировано
 
-	# before_filter :check_existence, :only => [:new, :create]
+	before_filter :check_existence, :only => :new
 
-	# def check_existence
-	# 	@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
-	# 	if @freelancer
-	# 		render 'show', id: @freelancer.id
-	# 	else
-	# 		@freelancer = FreelanceInterface::Freelancer.new
-	# 		render 'new'
-	# 	end
-	# end
+	def check_existence
+		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
+		if @freelancer
+			@tags = @freelancer.tags.where(published: true)
+			@comments = @freelancer.comments.where(published: true)
+			@comment = @freelancer.comments.new
+			render 'show', id: @freelancer.id
+		else
+			@freelancer = FreelanceInterface::Freelancer.new
+			render 'new'
+		end
+	end
 
 	def index
 		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
@@ -133,27 +136,28 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			 # "fields"=>[{"id"=>"16"}]}, 
 			 # "user_account"=>"123456"}
 
-		    service_params = {
-
+		     service_params = {
 		    	service: {
 		    		place_id: place.id,
 		    		service_type_id: 20,
 		    		vendor: { id: 144 },
-		    		tariff:  { id: 176 },
-		    		fields: [{id: 175 }]
-		    	},
-		    	user_account: freelancer_id,
+		    		tariff:  
+		    		{ 
+		    			id: 176,
+		    			fields: [{id: 175 }]
+		    		},	
+		    		user_account: freelancer_id.to_s
+		    	}
 		    }
 
-		    service = ServiceManager.create(params, current_user)
+		    service = ServiceManager.create(service_params, current_user)
 		    # place.is_active = false
-		    
-		    
+
 			
 			@tags = @freelancer.tags
-			@comments = @freelancer.comments
+			
 			@comment = @freelancer.comments.new
-
+			@comments == []
 
 			render 'show', id: freelancer_id
 		else
@@ -192,6 +196,14 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def destroy
 		@freelancer = FreelanceInterface::Freelancer.find(params[:id])
+		freelancer_tags = FreelanceInterface::FreelancerTag.where(freelancer_id: @freelancer.id)
+
+		@freelancer.tags.destroy
+		@freelancer.comments.destroy
+		freelancer_tags.each do |f_t|
+			f_t.destroy
+		end
+
 		if @freelancer.destroy
 		    render json: nil
 		  else
