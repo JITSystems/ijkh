@@ -13,7 +13,7 @@
 	
 		<p class="freelancer_info_data" >
 	    	<%= f.label :name, 'Ваше имя' %><br>
-	    	<%= f.text_field :name %>
+	    	<%= f.text_field :name, value: current_user.first_name %>
 	  	</p>
 	 
 		<p class="freelancer_info_data" >
@@ -23,7 +23,7 @@
 	
 		<p class="freelancer_info_data" >
 		    <%= f.label :phone_number, 'Телефон контакта' %><br>
-		    <%= f.text_field :phone_number %>
+		    <%= f.text_field :phone_number, value: current_user.phone_number  %>
 		</p>
 
 		<div class="clear"></div>
@@ -32,6 +32,11 @@
 <br>
 <p class="freelancer_tag_info">Для добавления тегов к своему объявлению, выберите тег в правой колонке и нажмите на него мышкой. С учётом добавленных тегов рассчитается стоимость объявления в месяц </p>
 <p class="freelancer_tag_info">Добавляйте теги к Вашему объявлению для того, чтобы Вас проще было найти пользователям сервиса. Каждый тег стоит 10 рублей/месяц</p>
+
+<p class="fi_cost_by_month"> 
+	<span>0</span> рублей/месяц
+</p>
+
 <br>
 
 	<p>
@@ -44,7 +49,13 @@
 		) %>
 	</p>
 
-	<p>
+	<p>		
+		<%= select_tag(
+			'custom_tags', 
+		    {  },
+		    { multiple: true, hidden: true }
+		) %>
+
 		<%= label_tag 'custom_tag_field', 'Добавить свою категорию (требует модерации)' %><br>
 		<%= text_field_tag 'custom_tag_field' %>
 		<%= button_tag 'Добавить', id: 'add_custom_tag', type: 'button' %><br>
@@ -71,6 +82,10 @@
 		 -->
 		<%= f.check_box :top_ten_freelancer %>
 		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>
+	</p>
+
+	<p class='fi_total_cost'>
+		<span></span> рублей - <span>месяцев</span> 
 	</p>
  
   	<p>

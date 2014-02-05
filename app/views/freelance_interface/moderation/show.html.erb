@@ -1,22 +1,19 @@
 <h1>Модерация</h1>
 
 <h2>Модерация заявок фрилансеров</h2>
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_freelancers">
 		<% if @freelancers == [] %>
 			<p>Нет новых заявок</p>
 		<% else %>
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="freelancers" object-id="<%= f.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
+
+					<%= render 'controls', object: f, object_type: 'freelancer', user: User.find(f.user_id) %>
+
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
-					<p>Опубликовано: <%= f.created_at %></p>
+					<p>Зарегистрировано: <%= f.created_at %></p>
 					User id: <%= f.user_id %>; email: <%= User.find(f.user_id).email %> 
 
 				</div>
@@ -26,18 +23,15 @@
 <br><br>
 
 <h2>Модерация отзывов к анкетам</h2>
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_comments">
 		<% if @comments == [] %>
 			<p>Нет новых отзывов</p>
 		<% else %>
 			<% @comments.each do |c| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="comments" object-id="<%= c.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
+
+					<%= render 'controls', object: c, object_type: 'comment', user: User.find(c.user_id) %>
+
 					<p>Сообщение: <%= c.body %></p>
 					<p>Опубликовано: <%= c.created_at %></p>
 
@@ -49,42 +43,125 @@
 
 <h2>Добавление тегов в облако</h2>
 
-<div class="fi_moderation_block">
+<div class="fi_moderation_block fi_moderation_tags">
 		<% if @tags == [] %>
 			<p>Нет новых тегов</p>
 		<% else %>
 			<% @tags.each do |t| %>
 				<div class="fi_moderation_section">
-						<label class="switch">
-      						<input type="checkbox" object-type="tags" object-id="<%= t.id %>" class="switch-input">
-      						<span class="switch-label" data-on="On" data-off="Off"></span>
-      						<span class="switch-handle"></span>
-    					</label>
-    					<button class="reject">Отказ</button>
-					<p> <%= t.title %></p>
+					
+					<%= render 'controls', object: t, object_type: 'tag', user: User.find(t.freelancers.first.user_id ) %>
 
+					<p><%= t.title %></p>
 				</div>
 			<% end %>
+		<% end %>
+</div>
+
+<div id="fi_moderation_reject_from_layout">
+
+</div>
+
+	<div id="fi_moderation_reject_form">
+		<%= form_tag(fi_moderation_reject_path, method: "get", remote: true) do %>
+		  <%= hidden_field_tag(:fi_reject_user_id) %>
+				
+	    	<p><%= label_tag :fi_reject_name, 'Имя получателя' %></p>
+    		<p><%= text_field_tag :fi_reject_name %></p>
+			<p><%= label_tag :fi_reject_email, 'Почта получателя' %></p>
+			<p><%= text_field_tag :fi_reject_email %></p>
+				<br>
+
+		  <p><%= text_area_tag :fi_reject_message, '', placeholder: 'Введите причину отказа... ' %></p>
+		  <p><%= submit_tag :fi_reject_submit, value: "Подтвердить", id: 'fi_reject_submit' %></p>
 		<% end %>
 	</div>
 
 
 <script>
-	$('input[type="checkbox"]').on('change', function() {
-		//console.log(this.checked);
-		_this = this;
-		$this = $(this);
+	
+	$fi_reject_form = $('form');
 
-		  $.ajax({
-		      type: "POST",
-		      url: "/fi_moderation/" + $this.attr('object-type'),
-		      data: { 
-		      	object_type: $this.attr('object-type'),
-		      	object_id: $this.attr('object-id'),
-		      	published: _this.checked
-		      },
-		      success: function(result){ console.log(result); },
-		      error: function(result){ console.log(result); alert('Всё плохо!'); }
-		    })
+	$fi_reject_button = $('button.fi_reject');
+	$fi_reject_layout = $('#fi_moderation_reject_from_layout');
+	$fi_reject_form_div = $('#fi_moderation_reject_form');
+
+	$fi_reject_user_id = $('#fi_reject_user_id');
+	$fi_reject_name = $('#fi_reject_name');
+	$fi_reject_email = $('#fi_reject_email');
+
+	$fi_reject_message = $('#fi_reject_message');
+	$fi_reject_submit = $('#fi_reject_submit');
+
+
+	$fi_reject_layout.click(function(){
+		$fi_reject_layout.fadeOut('fast');
+		$fi_reject_form_div.fadeOut('fast');
 	});
+
+	$fi_reject_button.click(function(){
+
+		_this = $(this);
+
+		$fi_reject_layout.fadeIn('fast');
+		$fi_reject_form_div.fadeIn('fast');
+
+		$fi_reject_user_id.val( _this.attr('data-user-id') );
+		$fi_reject_name.val( _this.attr('data-user-name') );
+		$fi_reject_email.val( _this.attr('data-user-email') );
+	});
+
+
+	// $fi_reject_submit.click(function(){
+		
+	// });
+
+
+	function clearForm(){
+		alert('Отправлено!');
+		$fi_reject_layout.fadeOut('fast');
+		$fi_reject_form_div.fadeOut('fast');
+		$fi_reject_message.val('');
+		$fi_reject_submit.removeAttr('disabled');
+	}
+	
+	
+	$('input[type="checkbox"]').on('change', function() {
+
+		var _this = this;
+		var $this = $(this);
+		
+		var _data = {};
+		
+		_data[$this.attr('object-type')] = {
+			id: $this.attr('object-id'),
+		    published: _this.checked 
+		}
+
+		$.ajax({
+		    type: "PUT",
+		    url: "/freelance_interface/" + $this.attr('object-type') + "s/" + $this.attr('object-id'),
+		    data: _data,
+		    success: function(result){ 
+		    	// console.log(result); 
+		    	switch(result.published)
+		    	{
+		    		case true: 
+		    			alert('Опубликовано');
+		    			console.log('ON!');
+		    			break;
+		    		case false:
+		    			alert('Снято с публикации');
+		    			console.log('OFF!');
+		    			break;
+		    		default:
+		    			alert('Что-то пошло не так.')
+		    			console.log('Nice try.');
+		    			break;
+		    	}
+		    },
+		    error: function(result){ console.log(result); alert('Что-то пошло не так.'); }
+		})
+	});
+
 </script>

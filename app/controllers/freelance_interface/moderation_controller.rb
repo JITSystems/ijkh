@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class FreelanceInterface::ModerationController < FreelanceInterfaceController
 
 	def show
@@ -6,19 +8,16 @@ class FreelanceInterface::ModerationController < FreelanceInterfaceController
 		@comments = FreelanceInterface::Comment.where(published: false)
 	end
 
-	def update
-	
+	def reject
+		@user = User.where(id: params[:fi_reject_user_id]).first
+		@message = params[:fi_reject_message]
+
+		logger.info params
+
+
+		FiModerationMailer.reject(@user, @message).deliver
+
+		render js:  "clearForm();"
 	end
-	
-	def update_freelancers
-		render json: params.to_json		
-	end
-	
-	def update_comments
-		render json: params.to_json		
-	end
-	
-	def update_tags
-		render json: params.to_json	
-	end
+
 end

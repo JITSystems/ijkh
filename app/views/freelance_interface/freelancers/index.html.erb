@@ -1,0 +1,35 @@
+<h1>Фрилансеры</h1>
+<div class="fi_top_freelancers">
+	<% 10.times do %>
+		<a class="fi_top_freelancer" href="#"><img src="/assets/no_freelancer.jpg" alt=""></a>
+	<% end %>
+</div>
+
+<div class="tag_cloud fi_index_tag_cloud" >
+	<% @tags.each do |tag| %>
+		<a href='<%= freelance_interface_tag_path(tag.id) %>' style="font-size:<%= 15 + Random.rand(5) %>px;"> <%= tag.title %>  </a>
+	<% end %>
+</div>
+
+<p class="fi_index_text"> 
+	Сервис АйЖКХ поможет Вам найти человека для <%= link_to @tag_sample.title, freelance_interface_tag_path(@tag_sample.id) %> - просто выберите нужную категорию.
+</p>
+
+
+<p class="fi_index_reg_button">
+
+	<% if @freelancer && @freelancer != [] %>
+		<a href="<%= freelance_interface_freelancer_path(@freelancer.first.id) %>">
+			<span>Перейти в профиль</span>
+		</a>	
+	<% else %>
+		<a href="<%= new_freelance_interface_freelancer_path %>">
+			<span>Разместить предложение</span>
+			<span>Разместите своё объявление и получите больше клиентов</span>
+		</a>	
+	<% end %>
+</p>
+
+
+<% @freelancers.each do |f| %>
+<% end %>

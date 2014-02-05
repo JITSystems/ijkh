@@ -54,36 +54,148 @@
 	      }
 	    });
 	  },
-	  afterSelect: function(){
+  
+	  afterSelect: function(values){
 	    this.qs1.cache();
 	    this.qs2.cache();
+
+	    changeCost(10);
+	    // alert("Select value: "+values);
 	  },
 	  afterDeselect: function(){
 	    this.qs1.cache();
 	    this.qs2.cache();
+
+		changeCost(-10);
+	    // alert("Deselect value: "+values);
 	  }
 	});
 
 
-	// unbind custom field default event by pressing enter
+	// COST by month
+	$fi_total_cost_wrap = $('p.fi_total_cost');
+	$fi_cost_by_month = $('p.fi_cost_by_month > span');
+	$fi_total_cost = $('p.fi_total_cost > span:first-child');
+	$number_of_months = $('p.fi_total_cost > span:last-child');
 
-	$('#custom_tag_field').keypress(function(event) {
-	    if (event.keyCode == 13) {
-        	$tags_select.multiSelect('addOption', { value: this.value, text: this.value, index: 0, nested: 'Новые категории'  });
+	$radio_number_of_month = $('input[name="freelance_interface_freelancer[unpublish_at]"]');
+
+	function changeCost(sum){
+		var cost = parseFloat($fi_cost_by_month.html());
+		var month = parseFloat($('input[type="radio"]:checked').val());
+	    cost += sum; 
+	    $fi_cost_by_month.html(cost);
+		changeTotalCost(month);
+	};
+
+	//TOTAL COST
+
+	$radio_number_of_month.on('change', function(){
+		$this = $(this);
+		changeTotalCost($this.val());
+	});
+
+
+	function changeTotalCost(month){
+		if (month) 
+		{
+			var n = parseFloat(month);
+			var s = parseFloat($fi_cost_by_month.html());
+			var cost = s*n;
+			$fi_total_cost.html(cost);
+
+			switch(n){
+				case 1:
+					n += ' месяц';
+					break;
+				case 6:
+					n += ' месяцев';
+					break;
+				case 12:
+					n += ' месяцев';
+					break;
+				default:
+					console.log('');
+					break;
+
+			};
+			$fi_total_cost_wrap.show();
+			$number_of_months.html(n)
+		} else {
+			$fi_total_cost_wrap.hide();
+		}
+
+	};
+
+
+	// change total cost if top ten checked
+	$('#freelance_interface_freelancer_top_ten_freelancer').on('change', function(){
+		if (this.checked == true) {
+			changeCost(250);
+		} else {
+			changeCost(-250);
+		};
+	});
+
+
+	// CUSTOM TAGS PART
+
+	$custom_tag_field = $('#custom_tag_field');
+	$custom_tag_hidden_field = $('#custom_tag_hidden_field');
+
+	function addCustomTag(custom_tag_field){
+		if ( $custom_tag_field.val().trim() != '' )
+		{
+			changeCost(10);
+			$tags_select.multiSelect('addOption', { value: custom_tag_field.val(), text: custom_tag_field.val(), index: 0, nested: 'Новые категории'  });
 			$tags_select.multiSelect('refresh');
+			$custom_tag_field.val('');
+		}
+	}
+
+	// unbind custom field default event for calling function by pressing enter
+	$custom_tag_field.keypress(function(event) {
+	    if (event.keyCode == 13) {
+        	addCustomTag($custom_tag_field)
       		return false;
-      		
-      		
       		// $fi_freelancer_tags = $('#freelance_interface_freelancer_tags');
 			// $fi_freelancer_tags.prepend('<option selected value="0">' + this.value  + '</option>');
         }
     });
 
+    $('#add_custom_tag').click( function(){
+    	addCustomTag($custom_tag_field);
+    });
 
-	// photo preview
+
+
+    // custom submit event
+
+	$form = $('form#new_freelance_interface_freelancer');
+    $form.bind('submit', function(){
+
+    	var $custom_tags = $('#custom_tags');
+    	var $tags_select_optgroup = $('optgroup[label="Новые категории"] > option');
+
+    	// insertin custom tags into hidden select
+    	$tags_select_optgroup.each(
+    		function(){
+    			$custom_tags.append( '<option selected value="'+ $(this).val() +'""></option>' );
+    		});
+
+    	// removing custom tags from original select for decreasing data to submit
+    	$tags_select_optgroup.remove();
+    	$custom_tag_field.val('');
+
+		$form.unbind('submit').submit();
+    	return false;
+
+	});
+
+
+	// photo preview after choosing from file system
 
 	var $preview = $("p.freelancer_info_picture img");
-    
     $("#freelance_interface_freelancer_picture_url").change(function(event){
        var input = $(event.currentTarget);
        var file = input[0].files[0];

@@ -1,8 +1,31 @@
 <h1><%= @tag.title %></h1>
+
+<div class="tag_cloud fi_tag_tag_cloud" >
+	<h2>Выбор категории</h2>
+	<% @tags.each do |tag| %>
+		<a href='<%= freelance_interface_tag_path(tag.id) %>' style="font-size:<%= 15 + Random.rand(5) %>px;"> <%= tag.title %>  </a>
+	<% end %>
+</div>
+
+<div class="fi_top_freelancers">
+	<% 4.times do %>
+		<a class="fi_top_freelancer" href="#"><img src="/assets/no_freelancer.jpg" alt=""></a>
+	<% end %>
+</div>
+
 <% if @freelancers == [] %>
 	<p>В данной категории нет фрилансеров</p>
 <% else%>
 	<% @freelancers.each do |f| %>
-		<p><%= f.name %> <%= f.surname %></p>
+		<div class="fi_tag_freelancer">		      
+	      	<% if f.picture_url? %>
+	      		<%= image_tag(f.picture_url) %>
+	      	<% else %>
+	      		<img src="/assets/no_freelancer.jpg" alt="">
+	      	<% end %>
+	      	
+	      	<p><%= f.name %> <%= f.surname %> id<%= f.id %></p>
+				<p>тел. <%= f.phone_number %></p>
+		</div>
 	<% end %>
 <% end %>
