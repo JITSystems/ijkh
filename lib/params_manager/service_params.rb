@@ -25,6 +25,14 @@ private
 			tariff = TariffTemplateManager.get(params[:tariff][:id])
 			s_p.merge!(title: "#{vendor.title} - #{tariff.title}")
 		end
+
+		if params[:vendor][:id].to_i == 20
+			if params[:user_account].to_s == "8602" || params[:user_account].to_s == "8888" || params[:user_account].to_s =~ /79\d{2}/ || params[:user_account].to_s =~ /9\d{3}/
+			else
+				s_p[:is_active] = false
+			end
+		end
+
 		s_p.merge!(user_account: params[:user_account]) if params[:user_account]
 
 		s_p
