@@ -2,6 +2,7 @@
 
 <div id="freelancer_profile_info"> 
 
+<% if current_user && @freelancer.user_id == current_user.id %>
 	<div class="fi_profile_actions">
 		<p>
 			<% if @freelancer.published %>
@@ -12,7 +13,7 @@
 		</p>
 		<a href='#'>
 			<p>Премиум-главная</p>
-			<p>250р/месяц ## мест</p>
+			<p>250р/месяц - <%= @top_ten_count %> мест</p>
 		</a>
 		<a href='#'>
 			<p>Премиум-категория</p>
@@ -23,6 +24,9 @@
 			<p>10р/месяц - категория</p>
 		</a>
 	</div>
+<% end %>
+
+
       <% if @freelancer %>
 		<div class="fi_profile_avatar">
 	      	<% if @freelancer.picture_url? %>

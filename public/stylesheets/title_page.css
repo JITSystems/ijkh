@@ -1226,7 +1226,7 @@ a.fi_top_freelancer {
 a.fi_top_freelancer > img
 {
 	width: 90px;
-	margin-left: 2px;
+	/*margin-left: 2px;*/
 }
 
 p.fi_index_text

@@ -54,6 +54,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@tags = @freelancer.tags.where(published: true)
 		@comments = @freelancer.comments.where(published: true)
 		@comment = @freelancer.comments.new
+
+		@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+		@top_ten_count = 10 - @top_ten_freelancers.size
 	end
 
 	def premium
