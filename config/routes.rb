@@ -272,7 +272,7 @@ Ijkh::Application.routes.draw do
   get 'fi_moderation/reject' => 'freelance_interface/moderation#reject'
   
   get 'freelance_interface/premium' => 'freelance_interface/freelancers#premium'
-  post 'fi_top_four' => 'freelance_interface/freelancers#top_four'
+  post 'pay_for_premium' => 'freelance_interface/freelancers#pay_for_premium'
 
   
   namespace :web_interface do

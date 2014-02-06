@@ -63,9 +63,35 @@ module PaymentHistoriesRepository
 				amount = Recipe.find(payment_history_params[:recipe_id]).amount
 				CraftSPaymentWorker.perform_async(service_id, payment_history_params[:recipe_id].to_i, amount)
 			elsif service && service.vendor_id.to_i == 144
-				amount = Recipe.find(payment_history_params[:recipe_id]).amount
+
+				recipe_id = payment_history_params[:recipe_id]
+
+				# amount = Recipe.find(recipe_id).amount
+
 				user_id = service.user.id
-				freelancer = FreelanceInterface::Freelancer.where(user_id: user_id)
+				freelancer = FreelanceInterface::Freelancer.where(recipe_id: recipe_id).first
+				top_ten = FreelanceInterface::TopTenFreelancer.where(recipe_id: recipe_id).first
+				top_four = FreelanceInterface::TopFourFreelancer.where(recipe_id: recipe_id).first
+
+				if freelancer
+					unpublish_at = Date.current() + freelancer.number_of_month.to_i.month
+					freelancer.update_attributes!(unpublish_at: unpublish_at)
+					if top_ten
+						unpublish_at = Date.current() + top_ten.number_of_month.to_i.month
+						top_ten.update_attributes!(unpublish_at: unpublish_at)
+					end
+				else 
+					if top_ten
+						unpublish_at = Date.current() + top_ten.number_of_month.to_i.month
+						top_ten.update_attributes!(unpublish_at: unpublish_at)
+					else
+						if top_four
+							unpublish_at = Date.current() + top_four.number_of_month.to_i.month
+							top_four.update_attributes!(unpublish_at: unpublish_at)							
+						end
+					end
+				end
+			
 			end
 		end
 		

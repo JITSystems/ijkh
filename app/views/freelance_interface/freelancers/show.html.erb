@@ -11,21 +11,23 @@
 				Ожидает рассмотрения
 			<% end %>
 		</p>
-		<% if @top_ten_count > 0 %>
-			<a href='#'>
-				<p>Премиум-главная</p>
-				<p>250р/месяц - <%= @top_ten_count %> мест</p>
-			</a>
+		<% unless @freelancer.top_ten_freelancer %>
+			<% if @top_ten_count > 0 %>
+				<a href='#'>
+					<p>Премиум-главная</p>
+					<p>250р/месяц - <%= @top_ten_count %> мест</p>
+				</a>
+			<% end %>
 		<% end %>
 
-		<a href='#'>
+		<a href='<%= freelance_interface_premium_path %>'>
 			<p>Премиум-категория</p>
 			<p>50р/месяц</p>
 		</a>
-		<a href='#'>
+<!-- 		<a href='#'>
 			<p>Добавить категории</p>
 			<p>10р/месяц - категория</p>
-		</a>
+		</a> -->
 	</div>
 <% end %>
 
@@ -98,35 +100,37 @@
 			<a href="/login">Войдите</a> в систему, чтобы оставить отзыв.
 		</p>
 	<% else %>
-		<br>
-		<p>
-			<p class="comment_form_errors"></p>
+		<% unless current_user.id == @freelancer.user_id %>
+			<br>
+			<p>
+				<p class="comment_form_errors"></p>
 
-			<%= form_for @comment, remote: true, method: :post do |f| %>
-				<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
+				<%= form_for @comment, remote: true, method: :post do |f| %>
+					<%= f.hidden_field :freelancer_id, value: @freelancer.id %>
 
-				<!-- исправить по возможности на то, что в комментах -->
-				<!-- 
-				    <% [ 1,2,3,4,5 ].each do |score| %>
-  						<%= f.radio_button 'raiting', score %><span></span>
-					<% end %>
-					http://jsfiddle.net/kRdPb/2/
- 				-->
-		
-				<div class="fi_rating">
-					<label for="freelance_interface_comment[raiting]">Ваша оценка:</label>
-					<input type="radio" name="freelance_interface_comment[raiting]" value="0" checked /><span id="fi_raiting_hide"></span>
-				    <input type="radio" name="freelance_interface_comment[raiting]" value="1" /><span></span>
-				    <input type="radio" name="freelance_interface_comment[raiting]" value="2" /><span></span>
-				    <input type="radio" name="freelance_interface_comment[raiting]" value="3" /><span></span>
-				    <input type="radio" name="freelance_interface_comment[raiting]" value="4" /><span></span>
-				    <input type="radio" name="freelance_interface_comment[raiting]" value="5" /><span></span>
-				</div>
+					<!-- исправить по возможности на то, что в комментах -->
+					<!-- 
+					    <% [ 1,2,3,4,5 ].each do |score| %>
+	  						<%= f.radio_button 'raiting', score %><span></span>
+						<% end %>
+						http://jsfiddle.net/kRdPb/2/
+	 				-->
+			
+					<div class="fi_rating">
+						<label for="freelance_interface_comment[raiting]">Ваша оценка:</label>
+						<input type="radio" name="freelance_interface_comment[raiting]" value="0" checked /><span id="fi_raiting_hide"></span>
+					    <input type="radio" name="freelance_interface_comment[raiting]" value="1" /><span></span>
+					    <input type="radio" name="freelance_interface_comment[raiting]" value="2" /><span></span>
+					    <input type="radio" name="freelance_interface_comment[raiting]" value="3" /><span></span>
+					    <input type="radio" name="freelance_interface_comment[raiting]" value="4" /><span></span>
+					    <input type="radio" name="freelance_interface_comment[raiting]" value="5" /><span></span>
+					</div>
 
-				<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>
-				<%= f.submit "Подтвердить" %>
-			<% end %>
-		</p>
+					<%= f.text_field :body, placeholder: "Введите Ваш отзыв" %>
+					<%= f.submit "Подтвердить" %>
+				<% end %>
+			</p>
+		<% end %>
 	<% end %>
 </div>
 

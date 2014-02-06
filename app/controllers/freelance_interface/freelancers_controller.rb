@@ -71,6 +71,33 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@premium = FreelanceInterface::TopFourFreelancer.new
 	end
 
+	def pay_for_premium
+
+		amount_total = params[:amount_total]
+		number_of_month = params[:number_of_month]
+		tags = params[:tag][:values]
+		freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first
+		service = freelancer.service
+		account_id = service.account[:id]
+
+		pay_data = pay(account_id, amount_total)
+
+		tags.each do |t|
+			tag_params = {
+				tag_id: t, 
+				freelancer_id: freelancer.id, 
+				recipe_id: pay_data[:recipe_id], 
+				number_of_month: number_of_month
+			}
+
+			FreelanceInterface::TopFourFreelancer.create!(tag_params)
+		end 
+
+		logger.info pay_data
+
+		render status: 200
+	end
+
 	
 	def new
 
@@ -88,18 +115,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		uploader = FreelanceInterfaceUploader.new
   		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
 
-  		logger.info uploader
+  		# logger.info uploader
 
   		user_id = current_user.id
 
 		freelancer_params = {
+			# unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
  			phone_number: params[:freelance_interface_freelancer][:phone_number],
  			picture_url: uploader,
-			unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
 			published: false,
-			user_id: user_id
+			user_id: user_id,
+			number_of_month: params[:freelance_interface_freelancer][:number_of_month]
 		}
 
 		params_tags = params[:freelance_interface_freelancer][:tags]
@@ -132,25 +160,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 				city_id: 0,
 				type_id: 0
 			}
-
 			place = PlaceManager.create(place_params, current_user)
 
-
-			# service[place_id]:1207
-			# service[service_type_id]:20
-			# service[vendor][id]:144
-			# service[tariff][id]:176
-			# service[tariff][fields[][175]][id]:175
-			# service[user_account]:1000
-
-			 # "service"=>
-			 # {
-			 # "place_id"=>"168", 
-			 # "service_type_id"=>"6", 
-			 # "vendor"=>{"id"=>"19"}, 
-			 # "tariff"=>{"id"=>"14", 
-			 # "fields"=>[{"id"=>"16"}]}, 
-			 # "user_account"=>"123456"}
 
 		     service_params = {
 		    	service: {
@@ -165,8 +176,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		    		user_account: freelancer_id.to_s
 		    	}
 		    }
-
 		    service = ServiceManager.create(service_params, current_user)
+
 
 		    @freelancer.update_attributes!(service_id: service.id)
 		    place.update_attributes!(is_active: false)
@@ -180,9 +191,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			account_id = service.account[:id]
 
 
-			url = pay(account_id, amount_total)
-			logger.info url
-			# redirect_to url
+			pay_data = pay(account_id, amount_total)
+
+			@freelancer.update_attributes!(recipe_id: pay_data[:recipe_id])
+			logger.info pay_data
+			# redirect_to pay_data[:url]
 
 			redirect_to freelance_interface_freelancer_path(freelancer_id)
 
@@ -243,8 +256,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		end
 	end
 
-protected
 
+protected
 
 	def pay(account_id, amount)
 		@account = Account.find(account_id)
@@ -273,20 +286,6 @@ protected
 			security_key = Digest::MD5.hexdigest(security_key_string)
 			url = "#{po_root_url}?MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&ContentType=xml&user_id=#{user_id}"
 		else
-		# 	po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
-		# 	ip = params[:payment][:ip]
-		# 	card_number = params[:payment][:card_number]
-		# 	cardholder_name = params[:payment][:cardholder_name]
-		# 	email = params[:payment][:email]
-		# 	card_exp_date = params[:payment][:card_exp_date]
-		# 	card_cvv = params[:payment][:card_cvv]
-			
-		# 	security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
-		# 	security_key = Digest::MD5.hexdigest(security_key_string)
-			
-		# 	payload = "MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&Ip=#{ip}&Email=#{email}&CardHolderName=#{cardholder_name}&CardNumber=#{card_number}&CardExpDate=#{card_exp_date}&CardCvv=#{card_cvv}&ContentType=xml&user_id=#{user_id}"
-		# end	
-
 		po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
 
 		# private_security_key = @vendor.psk
@@ -298,7 +297,8 @@ protected
 		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
 		end
 
-		url
+		result = { url: url, recipe_id: order_id }
+		result
 	end
 	
 

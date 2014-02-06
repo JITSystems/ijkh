@@ -1,7 +1,7 @@
 class FreelanceInterface::Freelancer < ActiveRecord::Base
-  attr_accessible :description, :name, :phone_number, :picture_url, :published, :raiting, :surname, :unpublish_at, :user_id, :service_id
+  attr_accessible :description, :name, :phone_number, :picture_url, :published, :raiting, :surname, :unpublish_at, :user_id, :service_id, :number_of_month, :recipe_id
 
-  validates :name, :user_id, :phone_number, :presence => true
+  validates :name, :user_id, :phone_number, :number_of_month, :presence => true
   validates :user_id, :uniqueness => true
 
   mount_uploader :picture_url, FreelanceInterfaceUploader
@@ -13,5 +13,7 @@ class FreelanceInterface::Freelancer < ActiveRecord::Base
   has_many :top_four_freelancer
 
   belongs_to :service
+  belongs_to :recipe
   belongs_to :user
+
 end

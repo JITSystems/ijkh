@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140206085300) do
+ActiveRecord::Schema.define(:version => 20140206112947) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20140206085300) do
     t.integer  "user_id"
     t.integer  "service_id"
     t.integer  "number_of_month"
+    t.integer  "recipe_id"
   end
 
   create_table "freelance_interface_tags", :force => true do |t|
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(:version => 20140206085300) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "number_of_month"
+    t.integer  "recipe_id"
   end
 
   create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
@@ -169,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20140206085300) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "number_of_month"
+    t.integer  "recipe_id"
   end
 
   create_table "freelancers", :force => true do |t|

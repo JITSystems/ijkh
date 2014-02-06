@@ -21,7 +21,7 @@
 
       <% if @tags %>
       	<div class="tag_cloud fi_premium" >
-                  <%= form_tag fi_top_four_path, remote: true, method: :post do %>
+                  <%= form_tag pay_for_premium_path, remote: true, method: :post do %>
 
                         <div class="fi_premium_tags">
                               <% @tags.each do |tag| %>
@@ -35,14 +35,14 @@
 
 
                         <p class="fi_premium_unpublish">
-                              <%= radio_button_tag :unpublish_at, 1 %>
-                              <%= label_tag 'unpublish_at_1', '1 месяц' %>
+                              <%= radio_button_tag :number_of_month, 1 %>
+                              <%= label_tag 'number_of_month_1', '1 месяц' %>
                               <br>
-                              <%= radio_button_tag :unpublish_at, 6 %>
-                              <%= label_tag 'unpublish_at_6', '6 месяцев' %>
+                              <%= radio_button_tag :number_of_month, 6 %>
+                              <%= label_tag 'number_of_month_6', '6 месяцев' %>
                               <br>
-                              <%= radio_button_tag :unpublish_at, 12 %>
-                              <%= label_tag 'unpublish_at_12', '12 месяцев' %>
+                              <%= radio_button_tag :number_of_month, 12 %>
+                              <%= label_tag 'number_of_month_12', '12 месяцев' %>
                         </p>
 
                               <%= hidden_field_tag :amount_total %>
