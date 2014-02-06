@@ -38,6 +38,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	def index
 		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
 
+		@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+		@top_ten_count = 10 - @top_ten_freelancers.size
+
 		@freelancer = nil
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id) if current_user 
 

@@ -1,6 +1,19 @@
 <h1>Частные услуги</h1>
 <div class="fi_top_freelancers">
-	<% 10.times do %>
+	<% if @top_ten_freelancers != [] %>
+		<% @top_ten_freelancers.each do |t_t_f| %>
+			<a class="fi_top_freelancer" href="<%= freelance_interface_freelancer_path(t_t_f.freelancer.id) %>">
+				<% if t_t_f.freelancer.picture_url? %>
+	      			<%= image_tag(t_t_f.freelancer.picture_url) %>
+	      		<% else %>
+	      			<img src="/assets/no_freelancer.jpg" alt="">
+	      		<% end %>
+				<p><%= t_t_f.freelancer.name %></p>
+			</a>
+			
+		<% end %>
+	<% end %>
+	<% @top_ten_count.times do %>
 		<a class="fi_top_freelancer" href="#">
 			<img src="/assets/no_freelancer.jpg" alt="">
 			<p>Свободно</p>
