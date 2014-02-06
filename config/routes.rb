@@ -270,7 +270,6 @@ Ijkh::Application.routes.draw do
 
   get 'fi_moderation' => 'freelance_interface/moderation#show'
   get 'fi_moderation/reject' => 'freelance_interface/moderation#reject'
-  
   get 'freelance_interface/premium' => 'freelance_interface/freelancers#premium'
   post 'pay_for_premium' => 'freelance_interface/freelancers#pay_for_premium'
 
