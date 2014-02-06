@@ -882,8 +882,8 @@ div#freelancer_profile_info
 
 div#freelancer_profile_info img
 {
-	height: 150px;
-	max-width: 200px;
+	height: 200px;
+	max-width: 250px;
 	margin-right: 20px;
 	margin-bottom: 10px;
 	float: left;
@@ -1215,6 +1215,13 @@ button.fi_reject, form.button_to{
 
 
 /* fi index page (top 10)*/
+
+a.fi_top_freelancer {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	color: #000;
+}
 
 a.fi_top_freelancer > img
 {

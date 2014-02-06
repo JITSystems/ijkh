@@ -74,13 +74,15 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		uploader = FreelanceInterfaceUploader.new
   		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
 
+  		logger.info uploader
+
   		user_id = current_user.id
 
 		freelancer_params = {
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
  			phone_number: params[:freelance_interface_freelancer][:phone_number],
- 			picture_url: uploader.url,
+ 			picture_url: uploader,
 			unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
 			published: false,
 			user_id: user_id
@@ -165,23 +167,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 
 			url = pay(account_id, amount_total)
-
-			logger.info "!!!!!!!!!!!!!!!!!!!!!"
 			logger.info url
+			# redirect_to url
 
-			# render json: {ok: '1'}
+			redirect_to freelance_interface_freelancer_path(freelancer_id)
 
-			# respond_to do |format|
-			# 	format.js {
-			# 		 # render js: "window.location.replace('#{url}');"
-
-			# 	 # render js: "console.log('#{params}');"
-			# 	}
-			# end
-
-			# render 'show', id: freelancer_id
-
-			redirect_to url
 		else
 			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
 

@@ -4,11 +4,36 @@ class FreelanceInterfaceUploader < CarrierWave::Uploader::Base
 
  include CarrierWave::MiniMagick
 
- storage :fog
- 
+   storage :file
+  # storage :fog
+
+
+  # !!!!!!!!!!!! 
+  # sudo apt-get install imagemagick 
+  # !!!!!!!!!!!! 
+  process :resize_to_fit => [400, 400]
+
+
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    # '/home/ubuntu/apps/shared/images'
+    '/vagrant/ijkh/public/fi'
   end
+
+  def filename 
+    if original_filename 
+      @name ||= Digest::MD5.hexdigest(File.dirname(current_path))
+      "#{@name}.#{file.extension}"
+    end
+  end
+
+        # for s3
+        # storage :fog
+        
+        #  def store_dir
+        #    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+        #  end
+
+
  
   # version :print do
   #   version :thumb    { process :resize_to_fit => [32, 32] }
