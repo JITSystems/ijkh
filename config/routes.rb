@@ -37,7 +37,11 @@ Ijkh::Application.routes.draw do
     end
   end
 
-  resources :users, only: [:index]
+namespace :api do
+  namespace :1.0 do
+    resources :users, only: [:index]
+  end
+end
 
 # Analytic
   get 'api/1.0/annualanalytic' => 'analytic#index'
