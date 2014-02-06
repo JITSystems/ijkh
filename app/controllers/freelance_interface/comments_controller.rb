@@ -16,7 +16,7 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 
 		@comment = FreelanceInterface::Comment.create(comment_params)
 
-		@message = "Комментарий отправлен на модерацию"
+		@message = "Отзыв отправлен на модерацию"
 
 		if @comment.save 
 			respond_to do |format|
@@ -24,7 +24,7 @@ class FreelanceInterface::CommentsController < FreelanceInterfaceController
 			end
 			return nil
 		else
-			@message = "Пожалуйста, выставите оценку и напишите комментарий."
+			@message = "Пожалуйста, выставите оценку и напишите отзыв."
 			respond_to do |format|
 				format.js {render 'freelance_interface/comments/error'}
 			end

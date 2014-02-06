@@ -937,6 +937,13 @@ div.fi_profile_actions > a:hover > span
 }
 
 
+div#fi_comments h3
+{
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+
 p.comment_form_errors
 {
 	color: red;

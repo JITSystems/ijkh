@@ -7,14 +7,36 @@
 	<% end %>
 </div>
 
-<div class="fi_top_freelancers">
+<!-- <div class="fi_top_freelancers">
 	<% 4.times do %>
 		<a class="fi_top_freelancer" href="#"><img src="/assets/no_freelancer.jpg" alt=""></a>
 	<% end %>
 </div>
+ -->
+	<% if @top_four_freelancers != [] %>
+		<% @top_four_freelancers.each do |t_t_f| %>
+			<a class="fi_top_freelancer" href="<%= freelance_interface_freelancer_path(t_t_f.freelancer.id) %>">
+				<% if t_t_f.freelancer.picture_url? %>
+	      			<%= image_tag(t_t_f.freelancer.picture_url) %>
+	      		<% else %>
+	      			<img src="/assets/no_freelancer.jpg" alt="">
+	      		<% end %>
+				<p><%= t_t_f.freelancer.name %></p>
+			</a>
+			
+		<% end %>
+	<% end %>
+	<% @top_four_count.times do %>
+		<a class="fi_top_freelancer" href="#">
+			<img src="/assets/no_freelancer.jpg" alt="">
+			<p>Свободно</p>
+		</a>
+	<% end %>
+
+
 
 <% if @freelancers == [] %>
-	<br>
+	<br><br><br>
 	<p>В данной категории нет зарегистрированных объявлений</p>
 <% else%>
 	<% @freelancers.each do |f| %>

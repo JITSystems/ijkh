@@ -4,6 +4,9 @@ class FreelanceInterface::TagsController < FreelanceInterfaceController
 		@tag = FreelanceInterface::Tag.find(params[:id])
 		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')
 		@freelancers = @tag.freelancers.where(published: true)
+
+		@top_four_freelancers = FreelanceInterface::TopFourFreelancer.where(tag_id: params[:id])
+		@top_four_count = 4 - @top_four_freelancers.size
 	end
 
 

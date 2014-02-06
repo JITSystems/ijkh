@@ -60,17 +60,14 @@
       <% end %>
       <div class="clear"></div>
 </div>
+<div class="clear"></div>
 
-
-<br>
-
-<div id="comments">
-	<h3>Отзывы</h3>
+<div id="fi_comments">
+	<h3>Отзывы:</h3>
 	<% if @comments == [] %>
 		<p>Нет отзывов</p>
 	<% else %>
 		<% @comments.each do |c| %>
-			<br>
 				<div class="fi_comment_section">
 
 					<p><b>Пользователь:</b> <%= c.user.first_name %></p>
@@ -93,6 +90,7 @@
 	<% end %>
 
 	<% unless current_user %>
+	<br>
 		<p>
 			<a href="/login">Войдите</a> в систему, чтобы оставить отзыв.
 		</p>
