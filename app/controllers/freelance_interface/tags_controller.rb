@@ -3,7 +3,7 @@ class FreelanceInterface::TagsController < FreelanceInterfaceController
 	def show
 		@tag = FreelanceInterface::Tag.find(params[:id])
 		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')
-		@freelancers = @tag.freelancers
+		@freelancers = @tag.freelancers.where(published: true)
 	end
 
 

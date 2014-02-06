@@ -7,15 +7,13 @@
 		<% else %>
 			<% @freelancers.each do |f| %>
 				<div class="fi_moderation_section">
-
 					<%= render 'controls', object: f, object_type: 'freelancer', user: User.find(f.user_id) %>
-
 					<p>Фрилансер: <%= f.name %> <%= f.surname %>. id: <%= f.id %></p>
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
-					<p>Зарегистрировано: <%= f.created_at %></p>
+					<p>Зарегистрирован: <%= f.created_at %></p>
 					User id: <%= f.user_id %>; email: <%= User.find(f.user_id).email %> 
-
+		<%= link_to 'DESTROY!', freelance_interface_freelancer_path(f.id), method: :delete, remote: true %>
 				</div>
 			<% end %>
 		<% end %>
@@ -33,7 +31,8 @@
 					<%= render 'controls', object: c, object_type: 'comment', user: User.find(c.user_id) %>
 
 					<p>Сообщение: <%= c.body %></p>
-					<p>Опубликовано: <%= c.created_at %></p>
+					<p>Оценка: <%= c.raiting %></p>
+					<p>Зарегистрирован: <%= c.created_at %></p>
 
 				</div>
 			<% end %>	
