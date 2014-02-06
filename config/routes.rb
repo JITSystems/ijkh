@@ -266,9 +266,13 @@ Ijkh::Application.routes.draw do
     resources :comments
   end 
 
+
+
   get 'fi_moderation' => 'freelance_interface/moderation#show'
   get 'fi_moderation/reject' => 'freelance_interface/moderation#reject'
+  
   get 'freelance_interface/premium' => 'freelance_interface/freelancers#premium'
+  post 'fi_top_four' => 'freelance_interface/freelancers#top_four'
 
   
   namespace :web_interface do

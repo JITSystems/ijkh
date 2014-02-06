@@ -14,14 +14,134 @@
 		<p>тел. <%= @freelancer.phone_number %></p>
       <% end %>
 
+
+<p class="freelancer_tag_info fi_premium">Выделите те категории в которых хотите показывать Ваш профиль в блоке "Премиум". Если нужной категории нет в списке, значит мест в блоке данной категории не осталось.</p>
+
+<p class="freelancer_tag_info fi_premium">На сколько месяцев Вы хотите разместить объявление?</p>
+
       <% if @tags %>
-      <h3>Оказываемые услуги:</h3>
-      	<div class="tag_cloud" >
-			<% @tags.each do |tag| %>
-				<a href='<%= freelance_interface_tag_path(tag.id) %>' style="font-size:<%= 15 + Random.rand(5) %>px;"> <%= tag.title %>  </a>
-			<% end %>
+      	<div class="tag_cloud fi_premium" >
+                  <%= form_tag fi_top_four_path, remote: true, method: :post do %>
+
+                        <div class="fi_premium_tags">
+                              <% @tags.each do |tag| %>
+                                    <p>
+                                          <%= check_box("tag", "values", {:multiple => true}, tag.id, nil) %>
+
+                                          <%= label_tag 'tag_values_' + tag.id.to_s, tag.title+' - 150 р/месяц' %>
+                                    </p>
+                              <% end %>
+                        </div>
+
+
+                        <p class="fi_premium_unpublish">
+                              <%= radio_button_tag :unpublish_at, 1 %>
+                              <%= label_tag 'unpublish_at_1', '1 месяц' %>
+                              <br>
+                              <%= radio_button_tag :unpublish_at, 6 %>
+                              <%= label_tag 'unpublish_at_6', '6 месяцев' %>
+                              <br>
+                              <%= radio_button_tag :unpublish_at, 12 %>
+                              <%= label_tag 'unpublish_at_12', '12 месяцев' %>
+                        </p>
+
+                              <%= hidden_field_tag :amount_total %>
+                              <br>
+
+                              <p class='fi_total_cost'>
+                                    <span class="fi_total_cost_rub"></span> рублей /
+                                    <span class="fi_total_cost_month">месяцев</span> /
+                                    <span class="fi_total_cost_tags"></span> категории
+                              </p>
+
+                        <%= submit_tag 'Оплатить' %>
+
+                  <% end %>
 		</div>
       <% end %>
       <div class="clear"></div>
 </div>
+
+<script>
+      
+      var amount_by_month = 0;
+      var number_of_tags = 0;
+
+      var $radio = $('.fi_premium_unpublish input');
+      var $checkbox = $('.fi_premium_tags input');
+
+      var $fi_total_cost_wrap = $('p.fi_total_cost');
+      var $fi_total_cost_rub = $('.fi_total_cost_rub');
+      var $fi_total_cost_month = $('.fi_total_cost_month');
+      var $fi_total_cost_tags = $('.fi_total_cost_tags');
+
+      var $amount_total = $('#amount_total');
+
+
+      function changeTotalCost(month){
+            if (month) 
+            {
+                  var n = parseFloat(month);
+                  var s = amount_by_month;
+
+                  var cost = s*n;
+                  $fi_total_cost_rub.html(cost);
+                  $amount_total.val(cost);
+
+                  switch(n){
+                        case 1:
+                              n += ' месяц';
+                              break;
+                        case 6:
+                              n += ' месяцев';
+                              break;
+                        case 12:
+                              n += ' месяцев';
+                              break;
+                        default:
+                              console.log('');
+                              break;
+
+                  };
+
+
+                  $fi_total_cost_wrap.show();
+
+                  $fi_total_cost_month.html(n);
+
+                  $fi_total_cost_tags.html(number_of_tags)
+
+            } else {
+                  $fi_total_cost_wrap.hide();
+            }
+      };
+
+
+      $checkbox.on('change', function() {
+            _this = this;
+
+            if (_this.checked)
+            {
+                  amount_by_month += 150;
+                  ++number_of_tags;
+            } else {
+                  amount_by_month -= 150;
+                  --number_of_tags;
+            }
+
+            var month = parseFloat($('input[type="radio"]:checked').val());
+
+            changeTotalCost(month);
+
+      });
+
+
+      $radio.on('change', function() {
+            _this = this;
+            changeTotalCost(_this.value);
+      });
+</script>
+
+
+
 

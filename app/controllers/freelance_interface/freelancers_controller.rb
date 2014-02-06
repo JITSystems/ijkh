@@ -10,6 +10,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	before_filter :check_existence, :only => :new
 
 	def check_existence
+		unless current_user
+			redirect_to login_path
+			return nil
+		end
+
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first || nil
 		if @freelancer
 			@tags = @freelancer.tags.where(published: true)
@@ -61,6 +66,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def premium
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first
+		@tags = @freelancer.tags
+
+		@premium = FreelanceInterface::TopFourFreelancer.new
 	end
 
 	
@@ -226,8 +234,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			f_t.destroy
 		end
 
+
+
 		if @freelancer.destroy
-		    render json: nil
+		    render status: 200
 		  else
 		    render status: 500
 		end

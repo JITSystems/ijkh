@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140205102637) do
+ActiveRecord::Schema.define(:version => 20140206085300) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -139,10 +139,11 @@ ActiveRecord::Schema.define(:version => 20140205102637) do
     t.float    "raiting"
     t.boolean  "published"
     t.date     "unpublish_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "user_id"
     t.integer  "service_id"
+    t.integer  "number_of_month"
   end
 
   create_table "freelance_interface_tags", :force => true do |t|
@@ -157,15 +158,17 @@ ActiveRecord::Schema.define(:version => 20140205102637) do
     t.integer  "freelancer_id"
     t.integer  "tag_id"
     t.date     "unpublish_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "number_of_month"
   end
 
   create_table "freelance_interface_top_ten_freelancers", :force => true do |t|
     t.integer  "freelancer_id"
     t.date     "unpublish_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "number_of_month"
   end
 
   create_table "freelancers", :force => true do |t|

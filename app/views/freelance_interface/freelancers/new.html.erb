@@ -73,14 +73,14 @@
 
 
 	// COST by month
-	$fi_total_cost_wrap = $('p.fi_total_cost');
-	$fi_cost_by_month = $('p.fi_cost_by_month > span');
-	$fi_total_cost = $('p.fi_total_cost > span:first-child');
-	$number_of_months = $('p.fi_total_cost > span:last-child');
+	var $fi_total_cost_wrap = $('p.fi_total_cost');
+	var $fi_cost_by_month = $('p.fi_cost_by_month > span');
+	var $fi_total_cost = $('p.fi_total_cost > span:first-child');
+	var $number_of_months = $('p.fi_total_cost > span:last-child');
 
-	$amount_total = $('input#amount_total')
+	var $amount_total = $('input#amount_total')
 
-	$radio_number_of_month = $('input[name="freelance_interface_freelancer[unpublish_at]"]');
+	var $radio_number_of_month = $('input[name="freelance_interface_freelancer[unpublish_at]"]');
 
 	function changeCost(sum){
 		var cost = parseFloat($fi_cost_by_month.html());

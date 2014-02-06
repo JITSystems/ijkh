@@ -852,6 +852,7 @@ div#new_freelancer_form input[type="submit"]{
 p.fi_total_cost
 {
 	display: none;
+	font-size: 35px;
 }
 
 button#add_custom_tag
@@ -1269,3 +1270,56 @@ div.fi_tag_tag_cloud
 	margin: 0px 30px 35px 0px;
 	width: 280px;
 }
+
+
+
+/* fi premium pay */
+
+p.freelancer_tag_info.fi_premium, .fi_premium_unpublish, .fi_premium_tags{
+	display: inline-block;
+	width: 248px;
+	margin-right: 50px;
+	vertical-align: bottom;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.fi_premium_unpublish, .fi_premium_tags{
+	vertical-align: top;
+}
+
+.fi_premium_tags p{
+	margin-bottom: 2px;
+}
+
+.tag_cloud.fi_premium
+{
+	width: auto;
+	text-align: left;
+	margin: 0;
+
+}
+
+.tag_cloud.fi_premium form
+{
+	margin-left: 242px;
+}
+
+.tag_cloud.fi_premium input[type="submit"]
+{
+	width: 300px;
+	height: 80px;
+	background: none;
+	border: 1px #888 solid;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	color: #000;
+	vertical-align: middle;
+	padding: 20px 10px;
+	text-decoration: none;
+	font-size: 16px;
+	margin-top: 20px;
+}
+
+
