@@ -273,7 +273,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			t.destroy
 		end
 		
-		# @freelancer.top_ten_freelancer.destroy
+		if @freelancer.top_ten_freelancer
+			@freelancer.top_ten_freelancer.destroy
+		end
 
 		 if @freelancer.top_four_freelancer
 			@freelancer.top_four_freelancer.each do |t_f|
