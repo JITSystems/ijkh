@@ -53,7 +53,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		# @freelancers = FreelanceInterface::Freelancer.all
 		@freelancers = FreelanceInterface::Freelancer.where(published: true).order('raiting asc')
 
-		@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+		@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.where("unpublish_at > ?", Date.today)
 		@top_ten_count = 10 - @top_ten_freelancers.size
 
 		@freelancer = nil
@@ -211,6 +211,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			pay_data = pay(account_id, amount_total)
 
 			@freelancer.update_attributes(recipe_id: pay_data[:recipe_id])
+
+			if params[:freelance_interface_freelancer][:top_ten_freelancer].to_i == 1
+
+				top_ten_params = {
+					freelancer_id: freelancer_id, 
+					recipe_id: pay_data[:recipe_id], 
+					number_of_month: params[:freelance_interface_freelancer][:number_of_month]
+				}
+
+				FreelanceInterface::TopTenFreelancer.create!(top_ten_params)
+				
+			end			
+
 			logger.info pay_data
 
 			

@@ -12,8 +12,10 @@
 					<p>Телефон: <%= f.phone_number %></p>
 					<%= f.unpublish_at %>
 					<p>Зарегистрирован: <%= f.created_at %></p>
+					<p>Оплачено до: <%= f.unpublish_at %></p>
 					User id: <%= f.user_id %>; email: <%= User.find(f.user_id).email %> 
-		<%= link_to 'DESTROY!', freelance_interface_freelancer_path(f.id), method: :delete, remote: true %>
+
+					<%= link_to 'DESTROY!', freelance_interface_freelancer_path(f.id), method: :delete, remote: true, data: { confirm: "Вы уверены?" }  %>
 				</div>
 			<% end %>
 		<% end %>
