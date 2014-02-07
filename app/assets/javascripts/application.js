@@ -38,3 +38,23 @@ var spinner = new Spinner(opts).spin(target);
        
 });
 
+function popUpRender(message)
+{
+    var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+    var scrollBottomValue = document.documentElement.scrollHeight - document.documentElement.clientHeight - scrolled;
+    //alert(scrollBottomValue);
+    if (scrollBottomValue >97){
+        scrollBottomValue=97;
+    }
+
+    scrollBottomValue = 115 - scrollBottomValue;
+    $('.for_pop_up').css('bottom',scrollBottomValue+'px');
+    $('.for_pop_up').prepend('<div onclick="this.remove();" class="pop_up_div">' + '<h3>Информация</h3><p>' +  message + '</p></div>'); 
+    $('.pop_up_div').fadeIn(1000);
+
+    setTimeout('$(".for_pop_up").html("")', 10000);
+    //var intervalID = setInterval(function() { $(".for_pop_up div:last-child").remove(); }, 3000);
+    //setInterval(function() { if ($(".for_pop_up").html()==' ') {clearInterval(intervalID);} }, 1000);
+    // $(".for_pop_up div:last-child").delay(2000).fadeOut(1000);
+}

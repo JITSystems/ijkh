@@ -20,9 +20,18 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			@tags = @freelancer.tags.where(published: true)
 			@comments = @freelancer.comments.where(published: true)
 			@comment = @freelancer.comments.new
+
+			@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+			@top_ten_count = 10 - @top_ten_freelancers.size
+
 			render 'show', id: @freelancer.id
 		else
 			@freelancer = FreelanceInterface::Freelancer.new
+		
+			@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+			@top_ten_count = 10 - @top_ten_freelancers.size
+		
+
 			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
 
 			@tags_array = []
@@ -41,7 +50,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	end
 
 	def index
-		# @freelancers = FreelanceInterface::Freelancer.where(published: true)
+		# @freelancers = FreelanceInterface::Freelancer.all
+		@freelancers = FreelanceInterface::Freelancer.where(published: true).order('raiting asc')
 
 		@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
 		@top_ten_count = 10 - @top_ten_freelancers.size
@@ -49,7 +59,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		@freelancer = nil
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id) if current_user 
 
-		@freelancers = FreelanceInterface::Freelancer.all
+		
 		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')
 		@tag_sample = @tags.sample
 	end
@@ -101,7 +111,6 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	
 	def new
 
-		
 		# # заполнение тестовыми тегами
 		# FreelanceInterface::Tag.delete_all
 		# ['Уборка','Ремонт','Телевизоров','Обучение','Седовник','Водопроводчик','Монтажник','Разнорабочий','Уборка','Ремонт','Няня','web design','Ремонт стиральных машин','Ubuntu','twitter','Маляр','wordpress','youtube','Электрик','web 2.0','motion design','work','телефонмастер','турникмен','игра на гитаре','катание на сноуборде'].each do |tag|
@@ -112,12 +121,18 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	
 	def create
 
+		params_tags = params[:freelance_interface_freelancer][:tags]
+		params_custom_tags = params[:custom_tags]	
+
+
 		uploader = FreelanceInterfaceUploader.new
   		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
 
   		# logger.info uploader
 
   		user_id = current_user.id
+
+
 
 		freelancer_params = {
 			# unpublish_at: Date.current() + params[:freelance_interface_freelancer][:unpublish_at].to_i.month,
@@ -130,8 +145,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			number_of_month: params[:freelance_interface_freelancer][:number_of_month]
 		}
 
-		params_tags = params[:freelance_interface_freelancer][:tags]
-		params_custom_tags = params[:custom_tags]
+
 
 		@freelancer = FreelanceInterface::Freelancer.create(freelancer_params)
 		freelancer_id = @freelancer.id
@@ -187,14 +201,19 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			@comments = @freelancer.comments.where(published: true)
 			@comment = @freelancer.comments.new
 
+			@top_ten_freelancers = FreelanceInterface::TopTenFreelancer.all
+			@top_ten_count = 10 - @top_ten_freelancers.size
+
 			amount_total = params[:amount_total]
 			account_id = service.account[:id]
 
 
 			pay_data = pay(account_id, amount_total)
 
-			@freelancer.update_attributes!(recipe_id: pay_data[:recipe_id])
+			@freelancer.update_attributes(recipe_id: pay_data[:recipe_id])
 			logger.info pay_data
+
+			
 			# redirect_to pay_data[:url]
 
 			redirect_to freelance_interface_freelancer_path(freelancer_id)
@@ -241,16 +260,26 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			t.destroy
 		end
 		
+		# @freelancer.top_ten_freelancer.destroy
 
-		@freelancer.comments.destroy
+		 if @freelancer.top_four_freelancer
+			@freelancer.top_four_freelancer.each do |t_f|
+				t_f.destroy
+			end	
+		end
+
+		if @freelancer.comments	
+			@freelancer.comments.each do |c|
+				c.destroy
+			end
+		end
+
 		freelancer_tags.each do |f_t|
 			f_t.destroy
 		end
 
-
-
 		if @freelancer.destroy
-		    render status: 200
+		    render js: "alert('OK')";
 		  else
 		    render status: 500
 		end

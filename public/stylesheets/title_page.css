@@ -43,9 +43,53 @@ div.clear{
 -----------------------------------------------------------------------------*/
 .header {
 	text-align: center;
-	height: 60px;
+	height: 90px;
 	margin-bottom: 10px;
 }
+
+/* POP UP RENDER */
+
+
+.for_pop_up
+{
+        position: fixed;
+        bottom: 115px;
+        left: 15px;
+        z-index: 999;
+}
+
+.pop_up_div {
+        border: 1px rgb(127, 175, 211) solid;
+        background: rgb(255, 255, 255);
+        /*box-shadow: 0px 0px 20px 3px rgb(255, 255, 255);*/
+        width: 232px;
+        height: 80px;
+        color: rgb(26, 40, 49);
+        cursor: pointer;
+        opacity: 1;
+        position: relative;
+        text-align: center;
+        display: none;
+        font-size: 0.9em;
+        margin: 10px 0px 0px 0px;
+}
+
+.pop_up_div h3{
+        position: relative;
+        display: block;
+        color: #00558d;
+        font-weight: 600;
+        border-bottom: 1px solid #8da9bc;
+        padding: 5px;
+        background: rgb(213, 230, 242);
+
+}
+
+.pop_up_div p {
+        top: 15px;
+        color: rgb(65, 61, 61);
+}
+
 
 
 /* Middle

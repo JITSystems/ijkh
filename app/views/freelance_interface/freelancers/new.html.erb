@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/stylesheets/multiselect.css">
 
 
-<p>Заполните анкету и загрузите своё фото</p>
+<p>Заполните анкету и загрузите своё фото. <a href="#"> Информация о размещении и использовании. </a> </p>
 
 <br>
 <div id="new_freelancer_form">
@@ -76,11 +76,11 @@
 	var $fi_total_cost_wrap = $('p.fi_total_cost');
 	var $fi_cost_by_month = $('p.fi_cost_by_month > span');
 	var $fi_total_cost = $('p.fi_total_cost > span:first-child');
-	var $number_of_months = $('p.fi_total_cost > span:last-child');
+	var $number_of_month = $('p.fi_total_cost > span:last-child');
 
 	var $amount_total = $('input#amount_total')
 
-	var $radio_number_of_month = $('input[name="freelance_interface_freelancer[number_of_months]"]');
+	var $radio_number_of_month = $('input[name="freelance_interface_freelancer[number_of_month]"]');
 
 	function changeCost(sum){
 		var cost = parseFloat($fi_cost_by_month.html());
@@ -122,7 +122,7 @@
 
 			};
 			$fi_total_cost_wrap.show();
-			$number_of_months.html(n);
+			$number_of_month.html(n);
 
 			$amount_total.val(cost);
 
@@ -180,6 +180,28 @@
 
 	$form = $('form#new_freelance_interface_freelancer');
     $form.bind('submit', function(){
+
+    	// validation begin
+
+    	if ($('.ms-selected').size() == 0)
+    	{
+    		message = "Пожалуйста, добавьте хотя бы одну категорию";
+    		popUpRender(message);
+    		return false;
+    	}
+
+    	if (parseFloat($('input[type="radio"]:checked').val()))
+    	{
+    		console.log('OK');
+    	} else {
+    		message = "Пожалуйста, выберите период размещени";
+    		popUpRender(message);
+    		return false;	
+    	}
+
+    	// validation end
+
+
 
     	var $custom_tags = $('#custom_tags');
     	var $tags_select_optgroup = $('optgroup[label="Новые категории"] > option');

@@ -62,26 +62,27 @@
 	</p>
 
 	<p>
-		<%= f.label :number_of_months, 'На сколько месяцев Вы хотите разместить объявление?' %>
+		<%= f.label :number_of_month, 'На сколько месяцев Вы хотите разместить объявление?' %>
 		<br>
-		<%= f.radio_button :number_of_months, 1 %>
-		<%= f.label :number_of_months, '1 месяц', value: 1 %>
+		<%= f.radio_button :number_of_month, 1 %>
+		<%= f.label :number_of_month, '1 месяц', value: 1 %>
 		<br>
-		<%= f.radio_button :number_of_months, 6 %>
-		<%= f.label :number_of_months, '6 месяцев', value: 6 %>
+		<%= f.radio_button :number_of_month, 6 %>
+		<%= f.label :number_of_month, '6 месяцев', value: 6 %>
 		<br>
-		<%= f.radio_button :number_of_months, 12 %>
-		<%= f.label :number_of_months, '12 месяцев', value: 12 %>
+		<%= f.radio_button :number_of_month, 12 %>
+		<%= f.label :number_of_month, '12 месяцев', value: 12 %>
 	</p>
 
 	<p>
-		Хотите быть на первом месте в категории или оказаться на главной странице сервиса?
+		Хотите оказаться на главной странице сервиса?
 		<br>
 		<!-- 
 			ДОБАВИТЬ ЧИСЛО СВОБОДНЫХ МЕСТ
 		 -->
+
 		<%= f.check_box :top_ten_freelancer %>
-		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - 10 мест' %>
+		<%= f.label :top_ten_freelancer, 'Главная +250 руб/в месяц - ' + @top_ten_count.to_s + ' мест' %>
 	</p>
 
 	<%= hidden_field_tag :amount_total %>

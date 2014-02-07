@@ -40,15 +40,18 @@
 	<p>В данной категории нет зарегистрированных объявлений</p>
 <% else%>
 	<% @freelancers.each do |f| %>
-		<div class="fi_tag_freelancer">		      
-	      	<% if f.picture_url? %>
-	      		<%= image_tag(f.picture_url) %>
-	      	<% else %>
-	      		<img src="/assets/no_freelancer.jpg" alt="">
-	      	<% end %>
-	      	
-	      	<p><%= f.name %> <%= f.surname %> id<%= f.id %></p>
+		<div class="fi_tag_freelancer">	
+			<a href="<%= freelance_interface_freelancer_path(f.id) %>" style="display: inline-block; width: 400px; text-decoration: none;">
+		      	<% if f.picture_url? %>
+		      		<%= image_tag(f.picture_url) %>
+		      	<% else %>
+		      		<img src="/assets/no_freelancer.jpg" alt="">
+		      	<% end %>
+		      	
+		      	<p><%= f.name %> <%= f.surname %> id<%= f.id %></p>
 				<p>тел. <%= f.phone_number %></p>
+			</a>
+			<br>
 		</div>
 	<% end %>
 <% end %>
