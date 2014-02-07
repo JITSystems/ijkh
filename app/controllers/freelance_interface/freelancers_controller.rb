@@ -227,9 +227,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			logger.info pay_data
 
 			
-			# redirect_to pay_data[:url]
+			redirect_to pay_data[:url]
 
-			redirect_to freelance_interface_freelancer_path(freelancer_id)
+			# redirect_to freelance_interface_freelancer_path(freelancer_id)
 
 		else
 			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
@@ -336,7 +336,7 @@ protected
 
 		security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
 		security_key = Digest::MD5.hexdigest(security_key_string)
-		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
+		url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru/freelance_interface/freelancers/new"
 		end
 
 		result = { url: url, recipe_id: order_id }
