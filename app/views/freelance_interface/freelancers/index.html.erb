@@ -4,7 +4,7 @@
 		<% @top_ten_freelancers.each do |t_t_f| %>
 			<a class="fi_top_freelancer" href="<%= freelance_interface_freelancer_path(t_t_f.freelancer.id) %>">
 				<% if t_t_f.freelancer.picture_url? %>
-	      			<%= image_tag(t_t_f.freelancer.picture_url) %>
+	      			<%= image_tag("http://izkh.ru/images/fi/#{t_t_f.freelancer.picture_url.to_s.split('/').last}") %>
 	      		<% else %>
 	      			<img src="/assets/no_freelancer.jpg" alt="">
 	      		<% end %>
