@@ -125,10 +125,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 		params_custom_tags = params[:custom_tags]	
 
 
-		uploader = FreelanceInterfaceUploader.new
-  		uploader.store!(params[:freelance_interface_freelancer][:picture_url])
+		# uploader = FreelanceInterfaceUploader.new
+  		# uploader.store!(params[:freelance_interface_freelancer][:picture_url])
 
-  		# logger.info uploader
+ 		
 
   		user_id = current_user.id
 
@@ -139,7 +139,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			name: params[:freelance_interface_freelancer][:name],
  			surname: params[:freelance_interface_freelancer][:surname],
  			phone_number: params[:freelance_interface_freelancer][:phone_number],
- 			picture_url: uploader,
+ 			# picture_url: uploader,
 			published: false,
 			user_id: user_id,
 			number_of_month: params[:freelance_interface_freelancer][:number_of_month]
@@ -163,6 +163,15 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 					end 
 				end
 			end
+
+		@freelancer.picture_url = params[:freelance_interface_freelancer][:picture_url]
+		@freelancer.picture_url = @freelancer.picture_url.identifier
+		@freelancer.save!
+		logger.info @freelancer
+		logger.info @freelancer.picture_url
+		
+
+  		 
 
 			place_params = {
 				title: 'fi',
@@ -227,9 +236,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			logger.info pay_data
 
 			
-			redirect_to pay_data[:url]
+			# redirect_to pay_data[:url]
 
-			# redirect_to freelance_interface_freelancer_path(freelancer_id)
+			redirect_to freelance_interface_freelancer_path(freelancer_id)
 
 		else
 			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
