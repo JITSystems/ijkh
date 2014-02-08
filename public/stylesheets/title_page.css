@@ -927,7 +927,7 @@ div#freelancer_profile_info
 
 div#freelancer_profile_info img
 {
-	height: 200px;
+	/*height: 200px;*/
 	max-width: 250px;
 	margin-right: 20px;
 	margin-bottom: 10px;
