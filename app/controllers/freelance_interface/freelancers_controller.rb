@@ -83,6 +83,16 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	def pay_for_premium
 
+		unless params[:tag]
+			render js: "popUpRender('Вы не выбрали ни одной категории.');"		
+			return nil	
+		end
+
+		unless params[:number_of_month]
+			render js: "popUpRender('Вы не выбрали число месяцев');"
+			return nil
+		end
+
 		amount_total = params[:amount_total]
 		number_of_month = params[:number_of_month]
 		tags = params[:tag][:values]
