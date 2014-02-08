@@ -35,7 +35,7 @@
       <% if @freelancer %>
 		<div class="fi_profile_avatar">
 	      	<% if @freelancer.picture_url? %>
-	      		<%= image_tag("http://izkh.ru/images/fi/#{@freelancer.picture_url.split('/').last}") %>
+	      		<%= image_tag("http://izkh.ru/images/fi/#{@freelancer.picture_url.to_s.split('/').last}") %>
 	      	<% else %>
 	      		<img src="/assets/no_freelancer.jpg" alt="">
 	      	<% end %>
