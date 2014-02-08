@@ -103,9 +103,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			FreelanceInterface::TopFourFreelancer.create!(tag_params)
 		end 
 
-		logger.info pay_data
+		redirect_to pay_data[:url]
 
-		render status: 200
+		# logger.info pay_data
+		# render json: pay_data[:url]
+		# render status: 200
 	end
 
 	
@@ -236,9 +238,9 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 			logger.info pay_data
 
 			
-			# redirect_to pay_data[:url]
+			redirect_to pay_data[:url]
 
-			redirect_to freelance_interface_freelancer_path(freelancer_id)
+			# redirect_to freelance_interface_freelancer_path(freelancer_id)
 
 		else
 			tags = FreelanceInterface::Tag.where(published: true).order('title desc')
