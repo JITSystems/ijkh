@@ -5,12 +5,12 @@
 
       <% if @freelancer %>
       	<% if @freelancer.picture_url? %>
-      		<%= image_tag(@freelancer.picture_url) %>
+      		<%= image_tag("http://izkh.ru/images/fi/#{@freelancer.picture_url.to_s.split('/').last}") %>
       	<% else %>
       		<img src="/assets/no_freelancer.jpg" alt="">
       	<% end %>
       	
-      	<p><%= @freelancer.name %> <%= @freelancer.surname %> id<%= @freelancer.id %></p>
+      	<p><%= @freelancer.name %> <%= @freelancer.surname %></p>
 		<p>тел. <%= @freelancer.phone_number %></p>
       <% end %>
 
