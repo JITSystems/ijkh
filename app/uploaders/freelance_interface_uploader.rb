@@ -15,8 +15,8 @@ class FreelanceInterfaceUploader < CarrierWave::Uploader::Base
 
 
   def store_dir
-    # '/home/ubuntu/apps/shared/images'
-    '/vagrant/ijkh/public/fi'
+    '/home/ubuntu/apps/shared/images/fi'
+    # '/vagrant/ijkh/public/fi'
   end
 
   def filename 
