@@ -1,6 +1,11 @@
 # encoding: utf-8
 class FreelanceInterface::CommentsController < FreelanceInterfaceController
 
+	# CRUD for comments
+	 #  namespace :freelance_interface do
+		  #   resources :comments
+	  # end 
+
 	def show
 		
 	end

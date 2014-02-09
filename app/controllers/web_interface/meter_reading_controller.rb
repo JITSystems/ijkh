@@ -4,6 +4,8 @@ class WebInterface::MeterReadingController < WebInterfaceController
 
 	def create
 
+      # post 'save_meter_readings' => 'web_interface/meter_reading#create'
+
 		# params :
 		# => service_id
 		# => place_id
@@ -53,6 +55,8 @@ class WebInterface::MeterReadingController < WebInterfaceController
 
 
 	def reset
+	  # put 'meter_readings_reset/:service_id' => 'web_interface/meter_reading#reset'
+
 		@message = 'Показания счётчиков сброшены'
 
 		@service_id = params[:service_id]
@@ -65,6 +69,8 @@ class WebInterface::MeterReadingController < WebInterfaceController
 
 
 	def delete_last
+		 # put 'meter_readings_delete_last/:service_id' => 'web_interface/meter_reading#delete_last'
+
 		@message = 'Последние показания удалены'
 
 		@service_id = params[:service_id]

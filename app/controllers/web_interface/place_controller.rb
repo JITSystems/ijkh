@@ -1,11 +1,23 @@
 # encoding: utf-8 
 
 class WebInterface::PlaceController < WebInterfaceController
+
+     
+  #  Update, deactivate for places
+  #  namespace :web_interface do
+  #   resources :place, only: [:index, :create, :update] do
+  #       put :deactivate, on: :member
+  #   end
+  # end
+      
+
 	def index
 
 	end
 
 	def destroy
+		# delete 'place' => 'web_interface/place#destroy'
+
 		@place = Place.find(params[:place_id])
 		@place_to_destroy = Place.deactivate @place
 		respond_to do |format|
@@ -16,6 +28,8 @@ class WebInterface::PlaceController < WebInterfaceController
 	end
 
 	def get_place
+		# post 'get_place/:place_id' => 'web_interface/place#get_place'
+
 		@place = Place.find(params[:place_id])
 
 		@services = ServiceManager.index_by_place(@place)
@@ -60,6 +74,8 @@ class WebInterface::PlaceController < WebInterfaceController
 	end 
 
 	def profile_create
+		# post 'profile_place' => 'web_interface/place#profile_create'
+
 		@message = "Объект успешно создан!"
 		@place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
 		
@@ -73,6 +89,8 @@ class WebInterface::PlaceController < WebInterfaceController
 	end
 
 	def create
+		# post 'place' => 'web_interface/place#create'
+
 		@message = "Объект успешно создан."
 		# @place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
 		@place = PlaceManager.create(params[:place], current_user)

@@ -2,6 +2,8 @@
 
 class WebInterface::ProfileController < WebInterfaceController
 	def show
+        # get 'profile' => 'web_interface/profile#show'
+      
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
 		@place = @places.first
 		@place_id = ""
@@ -35,6 +37,7 @@ class WebInterface::ProfileController < WebInterfaceController
 	end
 
 	def get_vendors
+        # post 'get_vendors' => 'web_interface/profile#get_vendors'
 
 		@cities = CityManager.index
     	@grouped_options = Hash.new

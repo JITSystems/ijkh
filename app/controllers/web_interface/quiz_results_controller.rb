@@ -4,7 +4,14 @@ class WebInterface::QuizResultsController < WebInterfaceController
 
 	skip_before_filter :require_current_user
 
+	
   def create
+
+  	# namespace :web_interface do
+   #  	resources :quiz_results
+  	# end
+
+
   	@counter = params[:web_interface_quiz_result][:quiz_question_id]
     @quiz = WebInterface::QuizResult.new(params[:web_interface_quiz_result])
     last_question_id = WebInterface::QuizSession.where("user_id = ?", params[:web_interface_quiz_result][:user_id]).first

@@ -3,6 +3,7 @@
 class WebInterface::FreelancerRegistrationController < WebInterfaceController
 	# skip_before_filter :require_current_user
   def show
+    # get "freelancer_registration" => "web_interface/freelancer_registration#show"
 
   		@freelance_category = []
 
@@ -15,6 +16,8 @@ class WebInterface::FreelancerRegistrationController < WebInterfaceController
 
   
   def create
+
+    # post "freelancer_registration" => "web_interface/freelancer_registration#create"
   	
     @freelancer = Freelancer.new(params[:freelancer].merge!(published: false))
 

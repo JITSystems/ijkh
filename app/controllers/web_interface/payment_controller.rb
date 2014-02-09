@@ -1,7 +1,11 @@
 # encoding: utf-8
 
 class WebInterface::PaymentController < WebInterfaceController
+
+
 	def show
+		# get 'payment' => 'web_interface/payment#show'
+
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
 		@cards = CardManager.get_by_user(current_user)
 		if @places != []
@@ -23,6 +27,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_payment_data
+		# post 'get_payment_data/:service_id' => 'web_interface/payment#get_payment_data'
 
 		@account = Account.where(service_id: params[:service_id]).first
 		@tariff = Tariff.where(service_id: params[:service_id]).first
@@ -61,6 +66,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def pay
+		# get 'pay' => 'web_interface/payment#pay'
+
 		@account = Account.find(params[:account_id])
 		@vendor = @account.service.vendor
 
@@ -121,6 +128,7 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_meter_reading
+		# post 'get_meter_reading/:tariff_id' => 'web_interface/payment#get_meter_reading'
 
 		@fields = Field.where(tariff_id: params[:tariff_id])
 
@@ -132,6 +140,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def get_recurrent_account
+		# post 'get_recurrent_account/:service_id' => 'web_interface/payment#get_recurrent_account'
+
 		@account = Account.new_recurrent_account params
 
 		vendor_id = @account.service.vendor_id 
@@ -152,6 +162,8 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def save_account_as_paid
+		# post 'save_account_as_paid' => 'web_interface/payment#save_account_as_paid'
+
 		@message = "Счёт сохранён как оплаченный"
 
 		params[:amount] = params[:amount_total] if params[:amount_total]
@@ -168,6 +180,8 @@ class WebInterface::PaymentController < WebInterfaceController
 
 
 	def destroy_card
+		# delete "destroy_card" => "web_interface/payment#destroy_card"
+		
 		@message = "Карта успешно удалена"
 
 		@card = CardManager.delete(params[:card_id])

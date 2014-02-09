@@ -5,6 +5,11 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	skip_before_filter :require_current_user
 
 
+		# CRUD for freelancers
+		# namespace :freelance_interface do
+		#     resources :freelancers
+		#  end 
+
 	# перенаправление в профиль, если объявление уже зарегистрировано
 
 	before_filter :check_existence, :only => :new
@@ -75,6 +80,8 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	end
 
 	def premium
+		# get 'freelance_interface/premium' => 'freelance_interface/freelancers#premium'
+
 		@freelancer = FreelanceInterface::Freelancer.where(user_id: current_user.id).first
 		@tags = @freelancer.tags
 
@@ -82,6 +89,7 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 	end
 
 	def pay_for_premium
+		# post 'pay_for_premium' => 'freelance_interface/freelancers#pay_for_premium'
 
 		unless params[:tag]
 			render js: "popUpRender('Вы не выбрали ни одной категории.');"		

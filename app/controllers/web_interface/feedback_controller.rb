@@ -3,10 +3,12 @@
 class WebInterface::FeedbackController < WebInterfaceController
 
   def new
+    # match 'feedback' => 'web_interface/feedback#new', :as => 'feedback', :via => :get
     @message = Message.new
   end
 
   def create
+    # match 'feedback' => 'web_interface/feedback#create', :as => 'feedback', :via => :post
     @message = Message.new(params[:message])
     
     if @message.valid?

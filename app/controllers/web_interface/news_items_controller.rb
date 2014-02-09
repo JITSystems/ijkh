@@ -8,6 +8,11 @@ class WebInterface::NewsItemsController < WebInterfaceController
 
   before_filter :check_users, :except => [:index, :show]
 
+
+
+
+      
+
   def get_statistics
       @users = User.all.count
       @vendors = Vendor.where(is_active: true).count
@@ -27,7 +32,8 @@ class WebInterface::NewsItemsController < WebInterfaceController
   end
 
   def insert_news
-      # load the gem
+      # get 'insert_news' => 'web_interface/news_items#insert_news'
+
       require 'csv'
 
       @worksheet = []
@@ -39,6 +45,9 @@ class WebInterface::NewsItemsController < WebInterfaceController
 
 
    def public_all_news
+
+    # get 'public_all_news' => 'web_interface/news_items#public_all_news'
+
       require 'csv'
 
       @worksheet = []
@@ -76,12 +85,20 @@ class WebInterface::NewsItemsController < WebInterfaceController
   # http_basic_authenticate_with name: "root", password: "123qweasdzxc", :except => :show
 
 
+
+  #  roots for CRUD
+  # namespace :web_interface do
+  #   resources :news_items
+  # end
+
+
   def index
     @news = WebInterface::NewsItem.order('created_at desc')
   end
 
   
   def show
+    # match 'news_items' => 'web_interface/news_items#show', :as => 'news_items', :via => :get
       @news_item = WebInterface::NewsItem.find(params[:id])
   end
 

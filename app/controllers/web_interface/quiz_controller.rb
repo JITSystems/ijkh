@@ -7,6 +7,8 @@ class WebInterface::QuizController < WebInterfaceController
 
 	def show
 
+	# get 'quiz/:quiz_token' => 'web_interface/quiz#show'
+
 		@quiz_session = WebInterface::QuizSession.select("user_id, last_question_id").where("quiz_token = ?", params[:quiz_token]).first
 
 		@user = User.select("first_name, email").where("id = ?", @quiz_session.user_id).first
@@ -40,6 +42,8 @@ class WebInterface::QuizController < WebInterfaceController
 	end
 
 	def create
+		# post 'quiz/:user_id' => 'web_interface/quiz#create'
+		
 	    @message = Message.new(params[:message])
 	    
 	    if @message.valid?

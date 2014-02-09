@@ -1,5 +1,11 @@
 class FreelanceInterface::TagsController < FreelanceInterfaceController
 
+	
+	# CRUD for tags
+  # namespace :freelance_interface do
+  #   resources :tags
+  # end 
+
 	def show
 		@tag = FreelanceInterface::Tag.find(params[:id])
 		@tags =  FreelanceInterface::Tag.where(published: true).order('title asc')

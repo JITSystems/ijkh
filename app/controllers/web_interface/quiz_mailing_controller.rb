@@ -1,7 +1,10 @@
 # encoding: utf-8 
 class WebInterface::QuizMailingController < WebInterfaceController
 	#skip_before_filter :require_current_user
+
 	def show
+		# match 'quiz_mailing' => 'web_interface/quiz_mailing#show', :as => 'quiz_mailing', :via => :get
+
 		@user = User.select("id, email, first_name").order("id ASC")
 
 		@message = Message.new
@@ -14,6 +17,8 @@ class WebInterface::QuizMailingController < WebInterfaceController
 
 
 	def mailchimp
+		# match 'quiz_mailchimp' => 'web_interface/quiz_mailing#mailchimp', :as => 'quiz_mailchimp', :via => :post
+		
 		gb = Gibbon::API.new
 		
 	  	@user = User.select("id, email, first_name").order("id ASC")
@@ -100,6 +105,8 @@ class WebInterface::QuizMailingController < WebInterfaceController
 	end
 
 	 def create
+
+	 	# match 'quiz_mailing' => 'web_interface/quiz_mailing#create', :as => 'quiz_mailing', :via => :post
 
 	  	@user = User.select("id, email, first_name").order("id ASC")
 

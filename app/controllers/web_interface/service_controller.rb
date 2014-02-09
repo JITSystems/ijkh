@@ -3,6 +3,8 @@
 class WebInterface::ServiceController < WebInterfaceController
 	
 	def get_service
+		# post 'get_service/:place_id' => 'web_interface/service#get_service'
+      
 		@place = Place.find(params[:place_id])
 		@services = @place.services.where("is_active IS NULL OR is_active != false")
 		respond_to do |format|
@@ -13,6 +15,8 @@ class WebInterface::ServiceController < WebInterfaceController
 	end
 
 	def delete
+      # put 'delete_service/:service_id' => 'web_interface/service#delete'
+
 		@message = "Услуга успешно удалена"
 
 		@service = Service.find(params[:service_id])
@@ -29,6 +33,8 @@ class WebInterface::ServiceController < WebInterfaceController
 
 
 	def create
+	# post 'service' => 'web_interface/service#create'
+	
 		@message = "Услуга успешно создана."
 
 

@@ -5,6 +5,8 @@ class WebInterface::TitlePageController < WebInterfaceController
 	layout 'title_page'
 
 	def show
+		# get 'title_page' => 'web_interface/title_page#show'
+		
 		@news_items_company = WebInterface::NewsItem.where('is_company is true').order('created_at desc')
 		@news_items_jkh = WebInterface::NewsItem.where('is_company is not true').order('created_at desc')
 		@users = User.all.count
