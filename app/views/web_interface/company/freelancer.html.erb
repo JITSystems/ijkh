@@ -1,7 +1,7 @@
 <% if @freelancer.picture_url %>
 	<p><%= @freelancer.picture_url %></p>
 <% else %>
-	<p><img src="/images/freelancer_<%= @freelancer.id %>.jpg" alt=""></p>
+	<p><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/freelancer_<%= @freelancer.id %>.jpg" alt=""></p>
 <% end %>
 
 <% if @freelancer.title %>
