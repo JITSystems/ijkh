@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ReportDataManager
 	def initialize(from, to)
 		@from = from
@@ -9,7 +10,7 @@ class ReportDataManager
 			.includes(:service)
 				.map do |ph| 
 					if ph.service
-						if ph.service.vendor_id == 16
+						if ph.service.vendor_id.to_i == 16
 							tariff_template_id = ph.service.tariff.tariff_template_id
 							case tariff_template_id.to_i
 							when 157
@@ -18,6 +19,16 @@ class ReportDataManager
 								user_account = "2##{ph.service.user_account}"
 							when 156
 								user_account = "3##{ph.service.user_account}"
+							else
+								user_account = "#{ph.service.user_account}"
+							end
+						elsif ph.service.vendor_id.to_i == 213
+							tariff_template_id = ph.service.tariff.tariff_template_id
+							case tariff_template_id.to_i
+							when 209
+								user_account = "Самара##{ph.service.user_account}"
+							when 210
+								user_account = "Новокуйбышевск##{ph.service.user_account}"
 							else
 								user_account = "#{ph.service.user_account}"
 							end
