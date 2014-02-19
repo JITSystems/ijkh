@@ -6,7 +6,7 @@ class AdminController < ApplicationController
 
   def require_current_user
 	if current_user
-		if current_user.id == 2 || current_user.id == 6
+		if current_user.id == 2 || current_user.id == 6 || current_user.id == 25
 		else
 			redirect_to "/login"
 		end
