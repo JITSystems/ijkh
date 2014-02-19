@@ -28,7 +28,7 @@
                                     <p>
                                           <%= check_box("tag", "values", {:multiple => true}, tag.id, nil) %>
 
-                                          <%= label_tag 'tag_values_' + tag.id.to_s, tag.title+' - 150 р/месяц' %>
+                                          <%= label_tag 'tag_values_' + tag.id.to_s, tag.title+' - 25 р/месяц' %>
                                     </p>
                               <% end %>
                         </div>
@@ -122,10 +122,10 @@
 
             if (_this.checked)
             {
-                  amount_by_month += 150;
+                  amount_by_month += 25;
                   ++number_of_tags;
             } else {
-                  amount_by_month -= 150;
+                  amount_by_month -= 25;
                   --number_of_tags;
             }
 

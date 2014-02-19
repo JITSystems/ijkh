@@ -1,0 +1,12 @@
+.metrics {
+	margin: auto;
+}
+
+.vendor-select, .vendor-button {
+	display: inline-block;
+	float: left;
+}
+
+.vendor-select {
+	width: 400px;
+}

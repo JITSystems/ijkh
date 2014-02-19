@@ -1,42 +1,48 @@
 %div.container
-  %div.vendors
-    = select_tag :vendor, options_for_select(@vendors.map {|v| [v.title, v.id]}), class: "form-control"
-    = button_tag "Ввести показания", type: 'button'
-
-  %div.metrics
-    = simple_form_for UtilityMetric.new do |f|
-      = f.input :water_hot
-      = f.input :water_cold
-      = f.input :energy_phase_one
-      = f.input :energy_phase_two
-      = f.input :gas
-      = f.hidden_field :user_id, value: current_user.id
-      = f.hidden_field :vendor_id, value: 2
-      = f.submit
-
-  %div.user-metrics
-    %table
-      %thead
-        %th Поставщик
-        %th Горячая вода
-        %th Холодная вода
-        %th Э/энергия, фаза 1
-        %th Э/энергия, фаза 2
-        %th Газоснабжение
-      %tbody
-        - @utility_metrics.each do |um|
-          %tr
-            %td 
-              = um.vendor.title
-            %td 
-              = um.water_hot
-            %td 
-              = um.water_cold
-            %td 
-              = um.energy_phase_one
-            %td 
-              = um.energy_phase_two
-            %td 
-              = um.gas
+  %div.row
+    %div.metrics
+      %div.vendor-select
+        = select_tag :vendor, options_for_select(@vendors.map {|v| [v.title, v.id]}), class: "form-control"
+      %div.vendor-button
+        = button_tag "Ввести показания", type: 'button', class: "btn btn-success"
+  %div.row
+    %div.metrics
+      = simple_form_for UtilityMetric.new, html: {class: "metrics-form"} do |f|
+        = f.input :water_hot, label: "Холодная вода", class: "form-control"
+        = f.input :water_cold, label: "Горячая вода", class: "form-control"
+        %hr
+        = f.input :energy_phase_one, label: "Э/энергия, фаза 1", class: "form-control"
+        = f.input :energy_phase_two, label: "Э/энергия, фаза 2", class: "form-control"
+        %hr
+        = f.input :gas, label: "Газоснабжение", class: "form-control"
+        %hr
+        = f.hidden_field :user_id, value: current_user.id
+        = f.hidden_field :vendor_id, value: 2
+        = f.submit
+  %div.row
+    %div.user-metrics
+      %table.table
+        %thead
+          %th Поставщик
+          %th Горячая вода
+          %th Холодная вода
+          %th Э/энергия, фаза 1
+          %th Э/энергия, фаза 2
+          %th Газоснабжение
+        %tbody
+          - @utility_metrics.each do |um|
+            %tr
+              %td 
+                = um.vendor.title
+              %td 
+                = um.water_hot
+              %td 
+                = um.water_cold
+              %td 
+                = um.energy_phase_one
+              %td 
+                = um.energy_phase_two
+              %td 
+                = um.gas
 
 
