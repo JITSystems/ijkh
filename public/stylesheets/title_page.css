@@ -397,12 +397,19 @@ div.best_freelancer img
     font-size: 0;
 }
 
-div.best_freelancers > h6{
-	font-size: 22px;
-	text-align: justify;
+div.best_freelancers > a {
+	text-decoration: none;
 }
 
-div.best_freelancers > h6:after{
+
+div.best_freelancers > a > h6{
+	
+	font-size: 20px;
+	text-align: center;
+}
+
+
+div.best_freelancers > a > h6:after{
     display: inline-block;
     width: 100%;
     content: '.';

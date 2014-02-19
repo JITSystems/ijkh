@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140206112947) do
+ActiveRecord::Schema.define(:version => 20140219074857) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(:version => 20140206112947) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
+  end
+
+  create_table "category", :id => false, :force => true do |t|
+    t.integer "id",                                :null => false
+    t.integer "parent_category_id"
+    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -260,7 +266,9 @@ ActiveRecord::Schema.define(:version => 20140206112947) do
   end
 
   create_table "place_types", :force => true do |t|
-    t.string "title"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "places", :force => true do |t|
@@ -422,6 +430,18 @@ ActiveRecord::Schema.define(:version => 20140206112947) do
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "utility_metrics", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vendor_id"
+    t.float    "water_hot"
+    t.float    "water_cold"
+    t.float    "energy_phase_one"
+    t.float    "energy_phase_two"
+    t.float    "gas"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "values", :force => true do |t|
     t.integer  "tariff_id"

@@ -1,0 +1,41 @@
+%div.vendors
+  = select_tag :vendor, options_for_select(@vendors.map {|v| [v.title, v.id]})
+  = button_tag "Ввести показания", type: 'button'
+
+%div.metrics
+  = simple_form_for UtilityMetric.new do |f|
+    = f.input :water_hot
+    = f.input :water_cold
+    = f.input :energy_phase_one
+    = f.input :energy_phase_two
+    = f.input :gas
+    = f.hidden_field :user_id, value: current_user.id
+    = f.hidden_field :vendor_id, value: 2
+    = f.submit
+
+%div.user-metrics
+  %table
+    %thead
+      %th Поставщик
+      %th Горячая вода
+      %th Холодная вода
+      %th Э/энергия, фаза 1
+      %th Э/энергия, фаза 2
+      %th Газоснабжение
+    %tbody
+      - @utility_metrics.each do |um|
+        %tr
+          %td 
+            = um.vendor.title
+          %td 
+            = um.water_hot
+          %td 
+            = um.water_cold
+          %td 
+            = um.energy_phase_one
+          %td 
+            = um.energy_phase_two
+          %td 
+            = um.gas
+
+

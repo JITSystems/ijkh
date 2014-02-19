@@ -37,6 +37,8 @@ Ijkh::Application.routes.draw do
     end
   end
 
+  resources :utility_metrics, only: [:index, :create]
+
 get 'api/1.0/users' => 'users#index'
 
 # Analytic

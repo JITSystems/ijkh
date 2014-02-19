@@ -33,4 +33,5 @@ class User < ActiveRecord::Base
   has_many :tariffs, as: :owner
   has_many :recipes
   has_one :freelance_interface_freelancer
+  has_many :utility_metrics
 end

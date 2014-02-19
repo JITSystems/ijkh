@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  vendor_id: 1
+  water_hot: 1.5
+  water_cold: 1.5
+  energy_phase_one: 1.5
+  energy_phase_two: 1.5
+  gas: 1.5
+
+two:
+  user_id: 1
+  vendor_id: 1
+  water_hot: 1.5
+  water_cold: 1.5
+  energy_phase_one: 1.5
+  energy_phase_two: 1.5
+  gas: 1.5
