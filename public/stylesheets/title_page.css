@@ -401,6 +401,9 @@ div.best_freelancers > a {
 	text-decoration: none;
 }
 
+div.best_freelancers > a > h6:hover {
+	color: grey;
+}
 
 div.best_freelancers > a > h6{
 	
@@ -1383,4 +1386,8 @@ p.freelancer_tag_info.fi_premium, .fi_premium_unpublish, .fi_premium_tags{
 
 .tariffs a {
 	text-decoration: none;
+}
+
+.tariffs a:hover {
+	color: cyan;
 }
