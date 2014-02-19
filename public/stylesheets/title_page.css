@@ -1373,4 +1373,14 @@ p.freelancer_tag_info.fi_premium, .fi_premium_unpublish, .fi_premium_tags{
 	margin-top: 20px;
 }
 
+.tariffs h6 {
+	text-align: center;
+}
 
+.tariffs p {
+	margin-top: 35px;
+}
+
+.tariffs a {
+	text-decoration: none;
+}
