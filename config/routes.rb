@@ -265,6 +265,7 @@ get 'api/1.0/users' => 'users#index'
   end
 
   namespace :freelance_interface do
+    get 'offer' => 'freelancers#offer'
     resources :freelancers
     resources :tags
     resources :comments

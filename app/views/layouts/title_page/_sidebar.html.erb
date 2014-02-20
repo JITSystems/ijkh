@@ -12,21 +12,6 @@
 			</div>
 
 			<!-- <a href="<%= title_ad_on_site_path %>"><img src="/assets/banners/264x420.png" alt="" /></a> -->
-			<script type="text/javascript" src="http://adv.biglion.ru/general/js/pp.js.php?utm_source=p"></script>
-			<script id="biglion_script" type="text/javascript">if(Biglion&&Biglion.getBanner){document.write(Biglion.getBanner("240x400","", "11067294"));}</script>
-				
-				<style>
-						script#biglion_script + a > img
-						{
-							margin: 0 10px;
-						}
-
-						div#sidebar_header
-						{
-							padding-left: 10px;
-						}
-				</style>
-
 				<div class="tariffs">
 					<h6>ТАРИФЫ</h6>
 					<p><a href="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/Tariffs.zip">Загрузить</a> актуальные тарифы на жилищно-коммунальные услуги по Самарской области.</p>
@@ -62,12 +47,30 @@
 						</a>
 					</div>
 					<div class="freelancer">
-						<a href="http://izkh.ru/freelancers"><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/no_freelancer.jpg" alt=""></a>
+						<p><%= "#{@freelancers.first.name} #{@freelancers.first.surname}" %> </br> <%= @freelancers.first.tags.first.title %></p>
+						<%= link_to image_tag("http://izkh.ru/images/fi/#{@freelancers.first.picture_url.to_s.split('/').last}"), freelance_interface_freelancer_path(@freelancers.first.id) %>
 					</div>
 					<div class="freelancer">
-						<a href="http://izkh.ru/freelancers"><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/no_freelancer.jpg" alt=""></a>
+						<p><%= "#{@freelancers.last.name} #{@freelancers.last.surname}" %> </br> <%= @freelancers.last.tags.first.title %></p>
+						<%= link_to image_tag("http://izkh.ru/images/fi/#{@freelancers.last.picture_url.to_s.split('/').last}"), freelance_interface_freelancer_path(@freelancers.last.id) %>
 					</div>
 				</div>
+
+				<script type="text/javascript" src="http://adv.biglion.ru/general/js/pp.js.php?utm_source=p"></script>
+			<script id="biglion_script" type="text/javascript">if(Biglion&&Biglion.getBanner){document.write(Biglion.getBanner("240x400","", "11067294"));}</script>
+				
+				<style>
+						script#biglion_script + a > img
+						{
+							margin: 0 10px;
+						}
+
+						div#sidebar_header
+						{
+							padding-left: 10px;
+						}
+				</style>
+
 <!-- 
 				<div class="best_freelancers">
 					<h6>Лучшие фрилансеры</h6>

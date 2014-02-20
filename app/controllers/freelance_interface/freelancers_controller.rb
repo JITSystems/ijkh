@@ -9,6 +9,10 @@ class FreelanceInterface::FreelancersController < FreelanceInterfaceController
 
 	before_filter :check_existence, :only => :new
 
+	def offer
+		render 'freelance_interface/freelancers/offer'
+	end
+
 	def check_existence
 		unless current_user
 			redirect_to login_path

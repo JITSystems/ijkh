@@ -406,9 +406,9 @@ div.best_freelancers > a > h6:hover {
 }
 
 div.best_freelancers > a > h6{
-	
 	font-size: 20px;
 	text-align: center;
+    text-decoration: underline;
 }
 
 

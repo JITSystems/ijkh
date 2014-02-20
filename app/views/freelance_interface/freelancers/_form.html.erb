@@ -90,8 +90,27 @@
 	<p class='fi_total_cost'>
 		<span></span> рублей - <span>месяцев</span> 
 	</p>
- 
+ 	
+ 	<p> 
+ 		<%= check_box_tag :offer_submit %>
+ 		Я согласен с условиями <a href="<%= freelance_interface_offer_path %>" target="_blank">оферты</a>
+ 	</p>
   	<p>
-    	<%= f.submit 'Зарегистрировать объявление' %>
+    	<%= f.submit 'Зарегистрировать объявление', id: "form-submit", disabled: "true" %>
   	</p>
 <% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#offer_submit').click(function(){
+			var $this = $(this);
+			var $submit = $('#form-submit');
+			if ($this.is(':checked')) {
+        		$submit.removeAttr('disabled', 'disabled');
+    		} else {
+        		$submit.attr('disabled', 'disabled');
+    		}
+
+		});
+	})
+</script>
