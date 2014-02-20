@@ -8,4 +8,8 @@ class WebInterfaceController < ApplicationController
 			redirect_to "/login"
 		end
 	end
+
+	def get_frelancers
+		@freelancers = FreelanceInterface::Freelancer.find([13, 14])
+	end
 end

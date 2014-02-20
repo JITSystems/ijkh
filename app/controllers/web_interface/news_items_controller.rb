@@ -5,6 +5,7 @@ class WebInterface::NewsItemsController < WebInterfaceController
 	skip_before_filter :require_current_user
 
   before_filter :get_statistics
+  before_filter :get_freelancers
 
   before_filter :check_users, :except => [:index, :show]
 
