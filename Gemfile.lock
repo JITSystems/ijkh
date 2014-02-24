@@ -131,6 +131,9 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mandrill-api (1.0.51)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     mime-types (1.21)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
@@ -272,6 +275,7 @@ DEPENDENCIES
   haml
   haml-rails
   jquery-rails
+  mandrill-api
   mini_magick
   oj
   open4

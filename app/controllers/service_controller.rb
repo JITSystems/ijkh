@@ -36,4 +36,9 @@
   		render json: @services
   	end
 
+	def index_user
+		# GET api/1.0/user_accounts/:vendor_id
+  		@services = ServiceManager.index_user(params[:vendor_id])
+  		render json: @services
+  	end
 end
