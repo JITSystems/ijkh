@@ -379,6 +379,9 @@ div.best_freelancer
 {
 	position: relative;
 	width: 99%;
+	height: 353px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 div.best_freelancer img
@@ -397,41 +400,6 @@ div.best_freelancer img
     font-size: 0;
 }
 
-div.best_freelancers > a {
-	text-decoration: none;
-}
-
-div.best_freelancers > a > h6:hover {
-	color: grey;
-}
-
-div.best_freelancers > a > h6{
-	font-size: 20px;
-	text-align: center;
-    text-decoration: underline;
-}
-
-
-div.best_freelancers > a > h6:after{
-    display: inline-block;
-    width: 100%;
-    content: '.';
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
-}
-
-.best_freelancers:after
-{
-    display: inline-block;
-    width: 100%;
-    content: '.';
-    font-size: 0;
-    height: 0;
-    line-height: 0;
-    visibility: hidden;
-}
 div#sidebar > div#sidebar_header{
 	width: 100%;
 	margin-bottom: 5px;
@@ -440,14 +408,6 @@ div#sidebar > div#sidebar_header{
 
 div#sidebar > div#sidebar_header > img{
 	width: 100%;
-}
-
-
-div.best_freelancer{
-	height: 266px;
-	width: 99%;
-	border: 1px #CCC solid;
-	margin: 10px 0px;
 }
 
 div.freelancer{
