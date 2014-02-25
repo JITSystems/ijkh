@@ -42,8 +42,8 @@
 	<% @freelancers.each do |f| %>
 		<div class="fi_tag_freelancer">	
 			<a href="<%= freelance_interface_freelancer_path(f.id) %>" style="display: inline-block; width: 400px; text-decoration: none;">
-		      	<% if f.freelancer.picture_url? %>
-	      			<%= image_tag("http://izkh.ru/images/fi/#{f.freelancer.picture_url.to_s.split('/').last}") %>
+		      	<% if f.picture_url? %>
+	      			<%= image_tag("http://izkh.ru/images/fi/#{f.picture_url.to_s.split('/').last}") %>
 	      		<% else %>
 	      			<img src="/assets/no_freelancer.jpg" alt="">
 	      		<% end %>

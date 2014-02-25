@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'mandrill'
 class UserNotifications
 	def self.registration(name, email)
