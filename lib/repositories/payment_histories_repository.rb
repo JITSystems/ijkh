@@ -124,7 +124,7 @@ module PaymentHistoriesRepository
 			Account.switch_status switch_status_params
 
 			user = User.find(params[:user_id].to_i)
-			NotificationsSuccessfulPaymentWorker.perform_async(account[:amount], service.title, service.user_account, user.first_name, user.email)
+			NotificationsSuccessfulPaymentWorker.perform_async(recipe.total, service.title, service.user_account, user.first_name, user.email)
 		else
 			switch_status_params = {
 				account_id: account[:account_id],
