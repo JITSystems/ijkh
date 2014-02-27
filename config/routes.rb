@@ -23,6 +23,7 @@ Ijkh::Application.routes.draw do
 
 # Admin
   namespace :admin do
+    resources :analytic_queries
     resources :users, only: [:index, :show]
     resources :places, only: [:index, :show]
     resources :services, only: [:index, :show]
@@ -37,7 +38,8 @@ Ijkh::Application.routes.draw do
     end
   end
 
-  resources :utility_metrics, only: [:index, :create]
+  resources :utility_metrics, only: [:index, :create], controller: 'web_interface/utility_metrics'
+  get 'utility_metrics/report' => 'web_interface/utility_metrics#report'
 
 get 'api/1.0/users' => 'users#index'
 

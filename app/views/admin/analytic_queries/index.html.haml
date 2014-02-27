@@ -1,0 +1,7 @@
+%div
+  - @queries.each do |q|
+    = link_to(q.title, edit_admin_analytic_query_path(q.id))
+    = q.query
+
+%div
+  = link_to('Создать', new_admin_analytic_query_path)

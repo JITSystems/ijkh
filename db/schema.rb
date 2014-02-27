@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140219074857) do
+ActiveRecord::Schema.define(:version => 20140226133128) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20140219074857) do
     t.string   "vendor_title"
     t.string   "tariff_title"
     t.float    "amount"
+  end
+
+  create_table "analytic_queries", :force => true do |t|
+    t.string "title"
+    t.text   "query"
   end
 
   create_table "analytics", :force => true do |t|
@@ -45,6 +50,12 @@ ActiveRecord::Schema.define(:version => 20140219074857) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
+  end
+
+  create_table "category", :id => false, :force => true do |t|
+    t.integer "id",                                :null => false
+    t.integer "parent_category_id"
+    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -260,7 +271,9 @@ ActiveRecord::Schema.define(:version => 20140219074857) do
   end
 
   create_table "place_types", :force => true do |t|
-    t.string "title"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "places", :force => true do |t|
