@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap.min
 $( document ).ready(function() {
 
 var opts = {

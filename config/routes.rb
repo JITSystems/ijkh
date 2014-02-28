@@ -24,6 +24,8 @@ Ijkh::Application.routes.draw do
 # Admin
   namespace :admin do
     resources :analytic_queries
+    get 'query_index' => 'analytic_queries#query_index', path: 'query_index'
+    post 'process_query' => 'analytic_queries#process_query', path: 'analytic_query_process_query'
     resources :users, only: [:index, :show]
     resources :places, only: [:index, :show]
     resources :services, only: [:index, :show]
@@ -39,6 +41,8 @@ Ijkh::Application.routes.draw do
   end
 
   resources :utility_metrics, only: [:index, :create], controller: 'web_interface/utility_metrics'
+  resources :utility_metric_settings, only: [:create, :update], controller: 'web_interface/utility_metric_settings'
+
   get 'utility_metrics/report' => 'web_interface/utility_metrics#report'
 
 get 'api/1.0/users' => 'users#index'

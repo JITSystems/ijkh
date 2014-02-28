@@ -1,5 +1,16 @@
 .metrics {
+	width: 600px;
 	margin: auto;
+	margin-top: 50px;
+}
+
+.metrics > h2 {
+	margin-bottom: 50px;
+}
+
+.metrics-jumbo {
+	height: 400px;
+	background-color: cyan;
 }
 
 .vendor-select, .vendor-button {
@@ -8,5 +19,5 @@
 }
 
 .vendor-select {
-	width: 400px;
+	width: 320px;
 }

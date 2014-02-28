@@ -4,7 +4,7 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   def index
     @vendors = Vendor.where(service_type_id: 4)
     @utility_metrics = current_user.utility_metrics
-    render 'utility_metrics/index'
+    render 'web_interface/utility_metrics/index'
   end
 
   def show
@@ -23,7 +23,7 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   end
 
   def report
-    @utility_metrics = UtilityMetric.where("vendor_id = ? and created_at > ? and created_at < ?", params[:vendor_id], params[:from], params[:to])
+    @utility_metrics = UtilityMetric.where("vendor_id = ? and created_at > ? and created_at <= ?", params[:vendor_id], params[:from], params[:to])
     render json: @utility_metrics
   end
 end

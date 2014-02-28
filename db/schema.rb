@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140226133128) do
+ActiveRecord::Schema.define(:version => 20140228082934) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -435,6 +435,18 @@ ActiveRecord::Schema.define(:version => 20140226133128) do
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "utility_metric_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "water_cold"
+    t.boolean  "water_hot"
+    t.boolean  "energy_phase_one"
+    t.boolean  "energy_phase_two"
+    t.string   "address"
+    t.integer  "vendor_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "utility_metrics", :force => true do |t|
     t.integer  "user_id"

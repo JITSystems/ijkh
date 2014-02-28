@@ -13,6 +13,7 @@ class Admin::AnalyticQueriesController < AdminController
 
 	def destroy
 		AnalyticQuery.find(params[:id]).destroy
+		redirect_to admin_query_index_path
 	end
 
 	def update
@@ -26,5 +27,18 @@ class Admin::AnalyticQueriesController < AdminController
 
 	def index
 		@queries = AnalyticQuery.all
+		render :index
+	end
+
+	def query_index
+		@queries = AnalyticQuery.all
+		render :query_index
+	end
+
+	def process_query
+		@queries = AnalyticQuery.all
+		@query = AnalyticQuery.find(params[:analytic_queries][:id])
+		@result = ActiveRecord::Base.connection.execute(@query.query) if @query.query[0..5].downcase == 'select'
+		render :index
 	end
 end

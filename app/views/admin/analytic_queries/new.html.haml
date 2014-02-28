@@ -1,5 +1,6 @@
-%div
+%div.col-lg-8
   = simple_form_for @query, url: admin_analytic_queries_path, method: :post do |f|
     = f.input :title
     = f.input :query
-    = f.submit
+    %div.col-lg-10.col-lg-offset-2.buttons-wrapper
+      = f.submit

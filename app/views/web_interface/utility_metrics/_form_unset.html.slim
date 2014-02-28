@@ -1,0 +1,27 @@
+= simple_form_for :utility_metrics, url: utility_metrics_path, html: {class: 'form-inline'} do |f|
+  .col-md-10
+    h2 Введите ваш адрес:
+    = f.input :s_address_city, label: "Город", input_html:{class: 'inline'}
+    = f.input :s_address_street, label: "Улица", input_html:{class: 'inline'}
+    = f.input :s_address_house, label: "Дом", input_html:{class: 'inline'}
+    = f.input :s_address_apt, label: "Квартира", input_html:{class: 'inline'}
+
+  .col-md-4
+    h2 Электричество
+    = f.input :s_energy_phase_one, label: "День", as: :boolean
+    = f.input :s_energy_phase_two, label: "Ночь", as: :boolean
+    = f.input :s_energy_phase_common, label: "Общий", as: :boolean
+
+    = f.input :energy_phase_one, label: "Показания - День"
+    = f.input :energy_phase_two, label: "Показания - Ночь"
+    = f.input :energy_phase_common, label: "Показания - Общий"
+  .col-md-4
+    h2 Водоснабжение
+    = f.input :s_water_cold, label: "День", as: :boolean
+    = f.input :s_water_hot, label: "Ночь", as: :boolean
+
+    = f.input :water_cold, label: "Показания - Холодная вода"
+    = f.input :water_hot, label: "Показания - Горячая вода"
+  .col-md-4
+    h2 Газоснабжение
+    = f.input :gas, label: "Показания - Газ"

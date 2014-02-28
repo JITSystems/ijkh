@@ -1,0 +1,6 @@
+<% if @settings %>
+  $('.metric-forms').html('<%= escape_javascript render("web_interface/utility_metrics/form_set")%>');
+<% else %>
+  $('.metric-forms').html('<%= escape_javascript render("web_interface/utility_metrics/form_unset")%>');
+<% end %>
+$('html, body').animate({scrollTop: $("#forms-anchor").offset().top}, 1000);
