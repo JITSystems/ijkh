@@ -1,14 +1,47 @@
 .col-md-10
   h2 Ваш адрес:
-  p= @settings
+  p= @settings.address
   
+= simple_form_for :utility_metrics, url: utility_metrics_path, html: {class: 'form-inline'} do |f|
+  .col-md-4
+    h2 Электричество
+    
+    - if @settings.energy_phase_one
+      h4 День
+      .metrics-section
+        .metrics-input-col
+          p Было
+          = f.input :energy_phase_one_before, label: false
+          p.before-date 12.04.2014
+        .metrics-input-col
+          p Стало
+          = f.input :energy_phase_one, label: false
 
+    - if @settings.energy_phase_two
+      h4 Ночь
+      .metrics-section
+        .metrics-input-col  
+          p Было
+          = f.input :energy_phase_two_before, label: false
+          p.before-date 12.04.2014
+        .metrics-input-col  
+          p Стало
+          = f.input :energy_phase_two, label: false
 
-.col-md-4
-  h2 Электричество
+    - if @settings.energy_phase_common
+      h4 Общий
 
-.col-md-4
-  h2 Водоснабжение
+      .metrics-section
+        .metrics-input-col  
+          p Было
+          = f.input :energy_phase_common_before, label: false
+          p.before-date 12.04.2014
+        .metrics-input-col  
+          p Стало
+          = f.input :energy_phase_common, label: false
 
-.col-md-4
-  h2 Газоснабжение
+  .col-md-4
+    h2 Водоснабжение
+
+  .col-md-4
+    h2 Газоснабжение

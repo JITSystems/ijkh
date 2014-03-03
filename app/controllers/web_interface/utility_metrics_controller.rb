@@ -27,11 +27,13 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
     render json: @utility_metrics
   end
 
-  def process
+  def process_metric
     if params[:utility_metrics]
       params[:utility_metrics].each do |metric|
-        UtilityMetric.find(metric[:id]).update_attribute(:processed, metric[:processed])
+        UtilityMetric.find(metric[:id]).update_attributes(processed: metric[:processed])
       end
     end
+    render json: {status: "success"}
   end
+
 end

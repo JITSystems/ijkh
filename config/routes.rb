@@ -44,7 +44,7 @@ Ijkh::Application.routes.draw do
   resources :utility_metric_settings, only: [:create, :update], controller: 'web_interface/utility_metric_settings'
 
   get 'utility_metrics/report' => 'web_interface/utility_metrics#report'
-  put 'utility_metrics/process' => 'web_interface/utility_metrics#process'
+  put 'utility_metrics/process' => 'web_interface/utility_metrics#process_metric'
 
 get 'api/1.0/users' => 'users#index'
 
