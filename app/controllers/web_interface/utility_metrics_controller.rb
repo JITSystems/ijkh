@@ -26,4 +26,12 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
     @utility_metrics = UtilityMetric.where("vendor_id = ? and created_at > ? and created_at <= ?", params[:vendor_id], params[:from], params[:to])
     render json: @utility_metrics
   end
+
+  def process
+    if params[:utility_metrics]
+      params[:utility_metrics].each do |metric|
+        UtilityMetric.find(metric[:id]).update_attribute(processed: metric[:processed])
+      end
+    end
+  end
 end

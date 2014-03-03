@@ -21,3 +21,23 @@
 .vendor-select {
 	width: 320px;
 }
+
+.metrics-input-col {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.metrics-input-col input {
+	width: 80%;
+}
+
+.before-date {
+	color: grey;
+	font-size: 12px;
+}
+
+input.boolean {
+	float: left;
+	margin-right: 5px;
+}

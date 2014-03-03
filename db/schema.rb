@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140228082934) do
+ActiveRecord::Schema.define(:version => 20140303064544) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -430,6 +430,7 @@ ActiveRecord::Schema.define(:version => 20140228082934) do
     t.string   "phone_number"
     t.string   "ios_device_token"
     t.string   "ios_device_status"
+    t.boolean  "admin"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
@@ -456,8 +457,10 @@ ActiveRecord::Schema.define(:version => 20140228082934) do
     t.float    "energy_phase_one"
     t.float    "energy_phase_two"
     t.float    "gas"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.boolean  "processed"
+    t.float    "energy_phase_common"
   end
 
   create_table "values", :force => true do |t|
