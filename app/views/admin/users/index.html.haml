@@ -1,11 +1,25 @@
-%table
-  %tr
-    %th id
-    %th sign_ins
-    %th email
+%div.header-group
+  = link_to('Создать', new_admin_user_path, :class => 'btn btn-success btn-sm pull-right') 
+  
+  %h2.pull-left Пользователи
+  %div
+    %p.pull-left 
+      Всего пользователей: 
+      =@users.count
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Эл. почта
+          %th Имя
+          %th Телефон
+          %th Дата создания
+          %th Админ
 
-  - @users.each do |user|
-    %tr
-      %td= user.id
-      %td= user.sign_in_count
-      %td= link_to user.email, admin_user_path(user)
+      %tbody
+        - @users.each do |u|
+          %tr
+            %td=link_to(u.email, edit_admin_user_path(u.id))
+            %td=u.first_name
+            %td=u.phone_number
+            %td=u.created_at.strftime("%d.%m.%Y")
+            %td=u.admin

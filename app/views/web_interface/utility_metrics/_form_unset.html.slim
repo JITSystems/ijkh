@@ -1,10 +1,11 @@
-= simple_form_for :utility_metrics, url: utility_metrics_path, html: {class: 'form-inline'} do |f|
+= simple_form_for :utility_metrics, url: utility_metrics_unset_path, html: {class: 'form-inline'} do |f|
   .col-md-10
     h2 Введите ваш адрес:
     = f.input :s_address_city, label: "Город", required: false
     = f.input :s_address_street, label: "Улица", required: false
     = f.input :s_address_house, label: "Дом", required: false
     = f.input :s_address_apt, label: "Квартира", required: false
+    = f.hidden_field :vendor_id, value: @vendor_id
 
   .col-md-4
     h2 Электричество
@@ -20,7 +21,7 @@
       .metrics-input-col
         p Было
         = f.input :energy_phase_one_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col
         p Стало
         = f.input :energy_phase_one, label: false
@@ -31,7 +32,7 @@
       .metrics-input-col  
         p Было
         = f.input :energy_phase_two_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
         = f.input :energy_phase_two, label: false
@@ -42,7 +43,7 @@
       .metrics-input-col  
         p Было
         = f.input :energy_phase_common_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
         = f.input :energy_phase_common, label: false
@@ -54,18 +55,24 @@
     = f.input :s_water_hot, label: false, as: :boolean
     = f.label :s_water_hot, label: "Горячая", required: false
 
+    h4 Холодная вода
+    
     .metrics-section
       .metrics-input-col  
         p Было
         = f.input :water_cold_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
         = f.input :water_cold, label: false
+
+    h4 Горячая вода
+
+    .metrics-section  
       .metrics-input-col  
         p Было
         = f.input :water_hot_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
         = f.input :water_hot, label: false
@@ -73,11 +80,12 @@
     
   .col-md-4
     h2 Газоснабжение
+    h4 Общий
     .metrics-section
       .metrics-input-col  
         p Было
         = f.input :gas_before, label: false
-        p.before-date 12.04.2014
+        p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
         = f.input :gas, label: false
