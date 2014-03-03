@@ -1,0 +1,11 @@
+div.header-group
+  h2.pull-left Данные для сайта
+  div
+    table.table.table-striped
+      thead
+        tr
+          th Кол-во домов
+
+      tbody
+        tr
+          td=link_to(@sdd.house_counter, edit_admin_site_dynamic_datum_path(@sdd.id))

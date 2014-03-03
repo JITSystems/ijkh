@@ -32,6 +32,7 @@ Ijkh::Application.routes.draw do
     resources :vendors
     resources :tariff_templates
     resources :field_templates
+    resources :site_dynamic_data, only: [:index, :edit, :update]
     resources :reports, only: [:index]
     resources :uploads, only: [:index, :create]
     namespace :reports do

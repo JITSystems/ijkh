@@ -59,3 +59,44 @@ function popUpRender(message)
     //setInterval(function() { if ($(".for_pop_up").html()==' ') {clearInterval(intervalID);} }, 1000);
     // $(".for_pop_up div:last-child").delay(2000).fadeOut(1000);
 }
+
+  $(document).on('click',"#utility_metrics_s_energy_phase_one",function () {  
+      if($('#utility_metrics_s_energy_phase_common').is(':checked')) {      
+         $('#utility_metrics_s_energy_phase_common').attr("checked", false);
+         $("#energy_phase_common").css('display', 'none');
+         $("#energy_phase_one").toggle();
+       }
+       else {
+        $("#energy_phase_one").toggle(); 
+       }
+    });
+  $(document).on('click',"#utility_metrics_s_energy_phase_two",function () {        
+        if($('#utility_metrics_s_energy_phase_common').is(':checked')) {      
+         $('#utility_metrics_s_energy_phase_common').attr("checked", false);
+         $("#energy_phase_common").css('display', 'none');
+         $("#energy_phase_two").toggle();
+       }
+       else {
+        $("#energy_phase_two").toggle(); 
+       }
+    });
+  $(document).on('click',"#utility_metrics_s_energy_phase_common",function () {        
+      if($('#utility_metrics_s_energy_phase_one').is(':checked') || $('#utility_metrics_s_energy_phase_two').is(':checked')) {
+        $('#utility_metrics_s_energy_phase_one').attr("checked", false);
+        $("#energy_phase_one").css('display','none');
+        $('#utility_metrics_s_energy_phase_two').attr("checked", false);
+        $("#energy_phase_two").css('display','none');
+        $("#energy_phase_common").toggle();
+      }
+      else {
+        $("#energy_phase_common").toggle(); 
+      }
+    });
+
+  $(document).on('click',"#utility_metrics_s_water_cold",function () {  
+        $("#water_cold").toggle();
+  });
+
+  $(document).on('click',"#utility_metrics_s_water_hot",function () {  
+        $("#water_hot").toggle();
+  });

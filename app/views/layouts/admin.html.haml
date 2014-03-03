@@ -10,7 +10,7 @@
         .navbar-header
           = link_to 'АйЖКХ - Админка', root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav
-          - [:users, :uploads, :reports, :vendors, :analytic_queries].each do |section|
+          - [:users, :uploads, :reports, :vendors, :analytic_queries, :site_dynamic_data].each do |section|
             %li{class:('active' if params[:controller] == section.to_s)}
               = link_to t("activerecord.models.#{section.to_s.singularize}"), send(['admin', section, 'path'].join('_'))
         %ul.nav.navbar-nav.navbar-right

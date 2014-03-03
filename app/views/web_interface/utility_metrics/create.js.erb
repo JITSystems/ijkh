@@ -2,5 +2,10 @@
   $('.metric-forms').html('<%= escape_javascript render("web_interface/utility_metrics/form_set")%>');
 <% else %>
   $('.metric-forms').html('<%= escape_javascript render("web_interface/utility_metrics/form_unset")%>');
+  $('#energy_phase_one').css('display', 'none');
+  $('#energy_phase_two').css('display', 'none');
+  $('#energy_phase_common').css('display', 'none');
+  $('#water_cold').css('display', 'none');
+  $('#water_hot').css('display', 'none');
 <% end %>
 $('html, body').animate({scrollTop: $("#forms-anchor").offset().top}, 1000);
