@@ -30,7 +30,7 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   def process
     if params[:utility_metrics]
       params[:utility_metrics].each do |metric|
-        UtilityMetric.find(metric[:id]).update_attribute(processed: metric[:processed])
+        UtilityMetric.find(metric[:id]).update_attribute(:processed, metric[:processed])
       end
     end
   end
