@@ -5,7 +5,7 @@ class CraftS
 		@user_account = user_account
 		@date = date
 		@account_type = account_type
-		@amount = amount
+		@amount = amount.to_i
 		@order_id = order_id
 		@url = "https://billing.kraft-s.ru:47035/pays/izkh.php"
 	end
