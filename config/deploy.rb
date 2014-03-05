@@ -20,6 +20,7 @@ set :rails_env, "production"
 set :scm, "git"
 set :repository, "git://github.com/JITSystems/ijkh.git"
 set :branch, "master"
+
 set :clockwork_roles, :app
 set :cw_pid_file, "#{current_path}/tmp/pids/clockwork.pid"
 

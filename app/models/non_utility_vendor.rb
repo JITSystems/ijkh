@@ -7,5 +7,6 @@ class NonUtilityVendor < ActiveRecord::Base
   belongs_to :non_utility_service_type, select: 'id, title, description'
 
   has_many :non_utility_served_cities
+  has_many :non_utility_vendors_contacts
   has_many :cities, through: :non_utility_served_cities
 end

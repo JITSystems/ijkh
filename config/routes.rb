@@ -1,4 +1,6 @@
 Ijkh::Application.routes.draw do
+  
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations", :passwords => "passwords"}
   as :user do
     get 'login' => 'sessions#new'
@@ -147,6 +149,9 @@ get 'api/1.0/users' => 'users#index'
 
 # Non Utility Tariff
   get 'api/1.0/nonutilityvendor/:non_utility_vendor_id/nonutilitytariff' => 'non_utility_tariff#index_by_vendor'
+
+# Non Utility Vendor's contacts
+  post 'api/1.0/non_utility_vendors_contact' => 'non_utility_vendors_contact#create'
 
 # Payment History
   get 'api/1.0/vendor/:vendor_title/paymenthistories' => 'payment_history#index_by_vendor'
