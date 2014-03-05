@@ -2669,6 +2669,16 @@ margin-left: 3px;
         color: rgb(65, 61, 61);
 }
 
+/*.nu_left {
+        display: block;
+        width: 400px;
+}
+
+.nu_right { 
+        display: block;
+        width: 200px;
+        float:left;
+}*/
 .catalog_category .nu_subtitle:nth-child(odd) {
     background-color: #d5e6f2;
    } 

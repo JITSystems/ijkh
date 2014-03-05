@@ -52,12 +52,6 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.string   "rebill_anchor"
   end
 
-  create_table "category", :id => false, :force => true do |t|
-    t.integer "id",                                :null => false
-    t.integer "parent_category_id"
-    t.string  "name",               :limit => 100, :null => false
-  end
-
   create_table "cities", :force => true do |t|
     t.string "title"
   end
@@ -251,11 +245,11 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
   end
 
   create_table "non_utility_vendors_contacts", :force => true do |t|
-    t.integer  "vendor_id"
+    t.integer  "non_utility_vendor_id"
     t.string   "title"
     t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "payment_histories", :force => true do |t|
@@ -279,9 +273,7 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
   end
 
   create_table "place_types", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "title"
   end
 
   create_table "places", :force => true do |t|
