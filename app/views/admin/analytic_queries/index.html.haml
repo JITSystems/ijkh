@@ -1,0 +1,22 @@
+%div.header-group
+  = link_to('Список запросов',  admin_query_index_path, :class => 'btn btn-primary btn-sm')
+  = link_to('Создать', new_admin_analytic_query_path, :class => 'btn btn-success btn-sm pull-right') 
+  = simple_form_for :analytic_queries, url: admin_process_query_path, method: :post do |f|
+    = f.input :id, collection: @queries.each {|q| [q.id, q.title]}, label: 'Запрос'
+    = f.submit "Выполнить" 
+
+  %h2.pull-left Аналитика
+- if @result
+  %div
+    %table.table.table-striped
+      %thead
+        %tr
+          - @result.first.each_key do |attr|
+            %th= "#{attr.to_s}"
+
+      %tbody
+        - @result.each do |o|
+          %tr
+            - @result.first.each_key do |k|
+              %td
+                = o[k]

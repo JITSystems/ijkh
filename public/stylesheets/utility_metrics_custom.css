@@ -1,5 +1,15 @@
 .metrics {
+	width: 600px;
 	margin: auto;
+	margin-top: 50px;
+}
+
+.metrics > h2 {
+	margin-bottom: 50px;
+}
+
+.metrics-jumbo {
+	height: 400px;
 }
 
 .vendor-select, .vendor-button {
@@ -8,5 +18,38 @@
 }
 
 .vendor-select {
-	width: 400px;
+	width: 320px;
+}
+
+.metrics-input-col {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.metrics-input-col input {
+	width: 80%;
+}
+
+.before-date {
+	color: grey;
+	font-size: 12px;
+}
+
+input.boolean {
+	float: left;
+	margin-right: 5px;
+}
+
+.footer {
+	min-height: 60px;
+}
+
+
+.metrics-head h2, .metrics-head img {
+	display: inline-block;
+}
+
+.metrics-head h2 {
+	width: 240px;
 }

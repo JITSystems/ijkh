@@ -1,11 +1,22 @@
 !!! html
 %html
   %head
-    %title Izkh
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
+    %title АйЖКХ - Админка
+    = stylesheet_link_tag "application", media: "all", debug: false
     = csrf_meta_tags
-
   %body
-    = render 'shared/admin_nav'
-    = yield
+    .navbar.navbar-default
+      .container
+        .navbar-header
+          = link_to 'АйЖКХ - Админка', root_path, class: 'navbar-brand'
+        %ul.nav.navbar-nav
+          - [:users, :uploads, :reports, :vendors, :analytic_queries, :site_dynamic_data].each do |section|
+            %li{class:('active' if params[:controller] == section.to_s)}
+              = link_to t("activerecord.models.#{section.to_s.singularize}"), send(['admin', section, 'path'].join('_'))
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Выход', destroy_user_session_path
+    .container
+      = yield
+  = javascript_include_tag 'application'
+  = yield(:javascripts)
+

@@ -1,0 +1,14 @@
+= link_to('Создать', new_admin_analytic_query_path)
+
+%div
+  %table.table.table-striped
+    %thead
+      %th Название
+      %th 
+
+    %tbody
+      - @queries.each do |o|
+        %tr
+          %td= link_to(o.title, edit_admin_analytic_query_path(o))
+          %td= link_to '&times;'.html_safe, admin_analytic_query_path(o), method: :delete, data: {confirm: "Действительно удалить?"}
+          

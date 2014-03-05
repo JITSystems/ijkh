@@ -1,0 +1,86 @@
+.col-md-10
+  h2 Ваш адрес:
+  p= @settings.address
+  
+= simple_form_for :utility_metrics, url: utility_metrics_set_path, html: {class: 'form-inline'} do |f|
+  = f.hidden_field :vendor_id, value: @vendor_id
+  = f.hidden_field :processed, value: false
+  .col-md-4
+    h2 Электричество
+    
+    - if @settings.energy_phase_one
+      h4 День
+      .metrics-section
+        .metrics-input-col
+          p Было
+          p= @last_metric.energy_phase_one
+          p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+        .metrics-input-col
+          p Стало
+          = f.input :energy_phase_one, label: false
+
+    - if @settings.energy_phase_two
+      h4 Ночь
+      .metrics-section
+        .metrics-input-col  
+          p Было
+          p= @last_metric.energy_phase_two
+          p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+        .metrics-input-col  
+          p Стало
+          = f.input :energy_phase_two, label: false
+
+    - if @settings.energy_phase_common
+      h4 Общий
+
+      .metrics-section
+        .metrics-input-col  
+          p Было
+          p= @last_metric.energy_phase_common
+          p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+        .metrics-input-col  
+          p Стало
+          = f.input :energy_phase_common, label: false
+
+  .col-md-4
+    h2 Водоснабжение
+
+    - if @settings.water_cold
+      h4 Холодная вода
+      
+      .metrics-section
+        .metrics-input-col  
+          p Было
+          p= @last_metric.water_cold
+          p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+        .metrics-input-col  
+          p Стало
+          = f.input :water_cold, label: false
+
+    - if @settings.water_hot
+      h4 Горячая вода
+      
+      .metrics-section  
+        .metrics-input-col  
+          p Было
+          p= @last_metric.water_hot
+          p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+        .metrics-input-col  
+          p Стало
+          = f.input :water_hot, label: false
+
+  .col-md-4
+    h2 Газоснабжение
+
+    h4 Холодная вода
+    .metrics-section
+      .metrics-input-col  
+        p Было
+        p= @last_metric.gas
+        p.before-date = @last_metric.created_at.strftime("%d.%m.%Y")
+      .metrics-input-col  
+        p Стало
+        = f.input :gas, label: false
+  .col-md-10
+      hr
+      = f.submit "Отправить показания", class: "btn btn-success"

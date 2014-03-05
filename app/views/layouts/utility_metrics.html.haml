@@ -2,10 +2,13 @@
 %html
   %head
     %title Izkh
-    = stylesheet_link_tag "/stylesheets/utility_metrics.css", :media => "all"
+    = stylesheet_link_tag "/stylesheets/bootstrap.css", :media => "all"
     = stylesheet_link_tag "/stylesheets/utility_metrics_custom.css", :media => "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
     = yield
+    = javascript_include_tag "application"
+
+    %div.footer
+      %div.container

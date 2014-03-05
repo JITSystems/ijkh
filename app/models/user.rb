@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable, :token_authenticatable, :recoverable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :phone_number, :ios_device_token, :ios_device_status
+  attr_accessible :email, :password, :remember_me, :authentication_token, :first_name, :phone_number, :ios_device_token, :ios_device_status, :admin
   # attr_accessible :title, :body
 
   symbolize :ios_device_status, in: [:active, :inactive], allow_nil: true

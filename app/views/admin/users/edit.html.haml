@@ -1,0 +1,10 @@
+%div.col-lg-8
+  = simple_form_for @user, url: admin_user_path(@user), method: :put do |f|
+    = f.input :email, label: "Эл. почта"
+    = f.input :first_name, label: "Имя"
+    = f.input :phone_number, label: "Телефон"
+    = f.input :admin, label: "Админ?"
+    
+    .col-lg-10.col-lg-offset-2.buttons-wrapper
+      = f.submit "Сохранить"
+      = link_to('Назад', admin_users_path)

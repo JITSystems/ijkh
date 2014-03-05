@@ -25,12 +25,16 @@ Ijkh::Application.routes.draw do
 
 # Admin
   namespace :admin do
-    resources :users, only: [:index, :show]
+    resources :analytic_queries
+    get 'query_index' => 'analytic_queries#query_index', path: 'query_index'
+    post 'process_query' => 'analytic_queries#process_query', path: 'analytic_query_process_query'
+    resources :users, only: [:index, :edit, :new, :create, :update]
     resources :places, only: [:index, :show]
     resources :services, only: [:index, :show]
     resources :vendors
     resources :tariff_templates
     resources :field_templates
+    resources :site_dynamic_data, only: [:index, :edit, :update]
     resources :reports, only: [:index]
     resources :uploads, only: [:index, :create]
     namespace :reports do
@@ -39,7 +43,13 @@ Ijkh::Application.routes.draw do
     end
   end
 
-  resources :utility_metrics, only: [:index, :create]
+  resources :utility_metrics, only: [:index], controller: 'web_interface/utility_metrics'
+  resources :utility_metric_settings, only: [:create, :update], controller: 'web_interface/utility_metric_settings'
+
+  get 'utility_metrics/report' => 'web_interface/utility_metrics#report'
+  post 'utility_metrics_unset' => 'web_interface/utility_metrics#create_unset', path: :utility_metrics_unset
+  post 'utility_metrics_set' => 'web_interface/utility_metrics#create_set', path: :utility_metrics_set
+  post 'utility_metrics/process' => 'web_interface/utility_metrics#process_metric'
 
 get 'api/1.0/users' => 'users#index'
 

@@ -1,0 +1,13 @@
+%div.jumbotron.metrics-jumbo
+  %div.container
+    %div.row
+      %div.metrics
+        %h2 АйЖКХ - Счетчики
+        = simple_form_for :utility_metric_settings, url: utility_metric_settings_path, method: :post, remote: true, :html => {:class => 'form-inline' }do |f|
+          %div.vendor-select
+            = f.input :vendor_id, collection: @vendors.map {|v| [v.title, v.id]}, label: false, prompt: "Выберите поставщика услуг", input_html: {class: 'form-control'}
+          %div.vendor-button
+            = f.submit "Ввести показания", class: "btn btn-success"
+%div.container
+  %div.row
+    %div.metric-forms#forms-anchor

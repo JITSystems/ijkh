@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.float    "amount"
   end
 
+  create_table "analytic_queries", :force => true do |t|
+    t.string "title"
+    t.text   "query"
+  end
+
   create_table "analytics", :force => true do |t|
     t.float    "amount"
     t.integer  "place_id"
@@ -45,6 +50,12 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.datetime "updated_at",    :null => false
     t.string   "card_title"
     t.string   "rebill_anchor"
+  end
+
+  create_table "category", :id => false, :force => true do |t|
+    t.integer "id",                                :null => false
+    t.integer "parent_category_id"
+    t.string  "name",               :limit => 100, :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -268,7 +279,9 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
   end
 
   create_table "place_types", :force => true do |t|
-    t.string "title"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "places", :force => true do |t|
@@ -386,6 +399,12 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.boolean  "is_active"
   end
 
+  create_table "site_dynamic_data", :force => true do |t|
+    t.string   "house_counter"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "tariff_templates", :force => true do |t|
     t.string   "title"
     t.integer  "service_type_id"
@@ -425,11 +444,25 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.string   "phone_number"
     t.string   "ios_device_token"
     t.string   "ios_device_status"
+    t.boolean  "admin"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "utility_metric_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "water_cold"
+    t.boolean  "water_hot"
+    t.boolean  "energy_phase_one"
+    t.boolean  "energy_phase_two"
+    t.string   "address"
+    t.integer  "vendor_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.boolean  "energy_phase_common"
+  end
 
   create_table "utility_metrics", :force => true do |t|
     t.integer  "user_id"
@@ -439,8 +472,10 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.float    "energy_phase_one"
     t.float    "energy_phase_two"
     t.float    "gas"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.boolean  "processed"
+    t.float    "energy_phase_common"
   end
 
   create_table "values", :force => true do |t|
