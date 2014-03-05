@@ -12,4 +12,10 @@ class NonUtilityVendorController < ApplicationController
 		NonUtilityVendorManager.create(params)
 		render json: {}
 	end
+
+	def show
+		@non_utility_vendors = []
+		NonUtilityVendor.all.each {|n| @non_utility_vendors << {id: n.id, title: n.title}}
+		render json: @non_utility_vendors
+	end
 end
