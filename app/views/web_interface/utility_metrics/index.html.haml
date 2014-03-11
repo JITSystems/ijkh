@@ -11,3 +11,36 @@
 %div.container
   %div.row
     %div.metric-forms#forms-anchor
+%hr
+.container
+  .row
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Поставщик
+          %th Э/э - День
+          %th Э/э - Ночь
+          %th Э/э - Общий
+          %th Вода - Холодная
+          %th Вода - Горячая
+          %th Газ
+          %th Дата
+          %th Принято
+          %th
+      %tbody
+        - @utility_metrics.each do |m|
+          %tr
+            %td= m.vendor.title
+            %td= m.energy_phase_one
+            %td= m.energy_phase_two
+            %td= m.energy_phase_common
+            %td= m.water_cold
+            %td= m.water_hot
+            %td= m.gas
+            %td= m.created_at.strftime('%d.%m.%Y')
+            %td
+              - if m.processed
+                Да
+              - else 
+                Нет
+            %td= link_to '&times;'.html_safe, utility_metric_path(m), method: :delete, data: {confirm: "Действительно удалить?"}

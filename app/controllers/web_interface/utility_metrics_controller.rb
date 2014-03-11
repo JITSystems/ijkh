@@ -3,7 +3,7 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   layout 'utility_metrics'
   def index
     @vendors = Vendor.where(service_type_id: 4)
-    @utility_metrics = current_user.utility_metrics
+    @utility_metrics = current_user.utility_metrics.order('created_at desc')
     render 'web_interface/utility_metrics/index'
   end
 
@@ -48,7 +48,7 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   end
 
   def create_set
-    @utility_metric = UtilityMetric.create!(params[:utility_metrics])
+    @utility_metric = UtilityMetric.create!(params[:utility_metrics].merge(user_id: current_user.id))
     redirect_to utility_metrics_path
   end
 
@@ -56,6 +56,8 @@ class WebInterface::UtilityMetricsController < WebInterfaceController
   end
 
   def destroy
+    UtilityMetric.find(params[:id]).destroy
+    redirect_to utility_metrics_path
   end
 
   def report

@@ -1,6 +1,7 @@
 .col-md-10
   h2 Ваш адрес:
   p= @settings.address
+  p= link_to 'Изменить', edit_utility_metric_setting_path(@settings.id)
   
 = simple_form_for :utility_metrics, url: utility_metrics_set_path, html: {class: 'form-inline'} do |f|
   = f.hidden_field :vendor_id, value: @vendor_id

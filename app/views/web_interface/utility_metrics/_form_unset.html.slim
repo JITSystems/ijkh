@@ -9,7 +9,6 @@
 
   .col-md-4
     .meters-head
-      image(src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/light-bulb-11-icon.png")
       h2 Электричество
     = f.input :s_energy_phase_one, label: false, as: :boolean, id: "s_energy_phase_one"
     = f.label :s_energy_phase_one, label: "День", required: false
@@ -22,35 +21,34 @@
       h4 День
       .metrics-input-col
         p Было
-        = f.input :energy_phase_one_before, label: false
+        = f.input :energy_phase_one_before, label: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col
         p Стало
-        = f.input :energy_phase_one, label: false
+        = f.input :energy_phase_one, label: false, required: false
 
     .metrics-section#energy_phase_two
       h4 Ночь
       .metrics-input-col  
         p Было
-        = f.input :energy_phase_two_before, label: false
+        = f.input :energy_phase_two_before, label: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
-        = f.input :energy_phase_two, label: false
+        = f.input :energy_phase_two, label: false, required: false
 
     .metrics-section#energy_phase_common
       h4 Общий
       .metrics-input-col  
         p Было
-        = f.input :energy_phase_common_before, label: false
+        = f.input :energy_phase_common_before, label: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
-        = f.input :energy_phase_common, label: false
+        = f.input :energy_phase_common, label: false, required: false
 
   .col-md-4
     .metrics-head
-      image(src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/water-512.png")
       h2 Водоснабжение
     = f.input :s_water_cold, label: false, as: :boolean
     = f.label :s_water_cold, label: "Холодная", required: false
@@ -61,36 +59,35 @@
       h4 Холодная вода
       .metrics-input-col  
         p Было
-        = f.input :water_cold_before, label: false
+        = f.input :water_cold_before, label: false, required: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
-        = f.input :water_cold, label: false
+        = f.input :water_cold, label: false, required: false
 
     .metrics-section#water_hot
       h4 Горячая вода
       .metrics-input-col  
         p Было
-        = f.input :water_hot_before, label: false
+        = f.input :water_hot_before, label: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
-        = f.input :water_hot, label: false
+        = f.input :water_hot, label: false, required: false
       
     
   .col-md-4
     .metrics-head
-      image(src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/gas-512.png")
       h2 Газоснабжение
     h4 Общий
     .metrics-section
       .metrics-input-col  
         p Было
-        = f.input :gas_before, label: false
+        = f.input :gas_before, label: false, required: false
         p.before-date = Date.today.strftime("%d.%m.%Y")
       .metrics-input-col  
         p Стало
-        = f.input :gas, label: false
+        = f.input :gas, label: false, required: false
   .col-md-10
     hr
     = f.submit "Отправить показания", class: "btn btn-success"

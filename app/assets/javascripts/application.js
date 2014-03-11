@@ -100,3 +100,14 @@ function popUpRender(message)
   $(document).on('click',"#utility_metrics_s_water_hot",function () {  
         $("#water_hot").toggle();
   });
+
+    $(document).on('click',".settings #utility_metric_setting_energy_phase_one",function () {       
+      $('.settings #utility_metric_setting_energy_phase_common').attr("checked", false);
+    });
+  $(document).on('click',".settings #utility_metric_setting_energy_phase_two",function () {        
+      $('.settings #utility_metric_setting_energy_phase_common').attr("checked", false);
+    });
+  $(document).on('click',".settings #utility_metric_setting_energy_phase_common",function () {        
+        $('.settings #utility_metric_setting_energy_phase_one').attr("checked", false);
+        $('.settings #utility_metric_setting_energy_phase_two').attr("checked", false);
+    });

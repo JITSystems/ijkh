@@ -43,8 +43,8 @@ Ijkh::Application.routes.draw do
     end
   end
 
-  resources :utility_metrics, only: [:index], controller: 'web_interface/utility_metrics'
-  resources :utility_metric_settings, only: [:create, :update], controller: 'web_interface/utility_metric_settings'
+  resources :utility_metrics, only: [:index, :destroy], controller: 'web_interface/utility_metrics'
+  resources :utility_metric_settings, only: [:create, :edit, :update], controller: 'web_interface/utility_metric_settings'
 
   get 'utility_metrics/report' => 'web_interface/utility_metrics#report'
   post 'utility_metrics_unset' => 'web_interface/utility_metrics#create_unset', path: :utility_metrics_unset

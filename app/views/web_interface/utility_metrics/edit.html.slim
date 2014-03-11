@@ -1,0 +1,26 @@
+= simple_form_for @utility_metric_setting, url: utility_metric_setting_path, method: :put, html: {class: 'form-inline'} do |f|
+  .col-md-10.settings
+    h2 Введите ваш адрес:
+    = f.input :address, label: "Адрес", required: false
+
+  .col-md-4.settings
+    .meters-head
+      h2 Электричество
+    = f.input :energy_phase_one, label: false, as: :boolean, id: "s_energy_phase_one"
+    = f.label :energy_phase_one, label: "День", required: false
+    = f.input :energy_phase_two, label: false, as: :boolean, id: "s_energy_phase_two"
+    = f.label :energy_phase_two, label: "Ночь", required: false
+    = f.input :energy_phase_common, label: false, as: :boolean, id: "s_energy_phase_common"
+    = f.label :energy_phase_common, label: "Общий", required: false
+  
+  .col-md-4.settings
+    .metrics-head
+      h2 Водоснабжение
+    = f.input :water_cold, label: false, as: :boolean
+    = f.label :water_cold, label: "Холодная", required: false
+    = f.input :water_hot, label: false, as: :boolean
+    = f.label :water_hot, label: "Горячая", required: false
+        
+  .col-md-10
+    hr
+    = f.submit "Сохранить изменения", class: "btn btn-success"
