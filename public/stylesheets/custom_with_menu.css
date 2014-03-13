@@ -742,6 +742,12 @@ p#account_service_title
         color: #47555e;
 }
 
+p.place_sub_title {
+        padding-top: 3px;
+        font-size: 12px;
+        color: #47555e;
+}
+
 .pay_text a:nth-child(odd) {
     background: #f0f0f0; /* Цвет фона */
    } 
