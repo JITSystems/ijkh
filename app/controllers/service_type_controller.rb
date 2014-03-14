@@ -10,4 +10,10 @@ class ServiceTypeController < ApplicationController
 	@service_type = ServiceTypeManager.create(params[:service_type])
 	render 'service_type/show'
   end
+
+  def terminal
+    # GET api/1.0/terminal/vendors
+    @service_types = ServiceTypeManager.index
+    render 'service_type/terminal'
+  end
 end

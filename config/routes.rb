@@ -71,6 +71,9 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/servicetypes' => 'service_type#index'
   post 'api/1.0/servicetype' => 'service_type#create'
 
+# Api for terminals
+  get 'api/1.0/terminal/vendors' => 'service_type#terminal'
+
 # Service
   get 'api/1.0/place/:place_id/services' => 'service#index'
   get 'api/1.0/service/:service_id' => 'service#show'
