@@ -343,11 +343,26 @@ a#no_object_found
         margin: 6px 0px 6px 0px;
 }
 .profile_button_container{
+        display: inline-block;
         position: relative;
+        width: 40%;
+        height: 45px;
+        float: left;
+}
+
+.profile_controls {
         width: 100%;
         height: 45px;
         background-color: #d5e6f2;
 }
+
+.profile_metrics_container a {
+        padding-top: 12px;
+        height: 27px;
+        background-color: green;
+        opacity: 0.7;
+}
+
 .profile_edit_button{
         position: relative;
         display: block;
@@ -363,6 +378,14 @@ a#no_object_found
         font-weight: 600;
         cursor: pointer;
         margin-bottom: 5px;
+}
+
+.profile_metrics_container {
+        display: inline-block;
+        position: relative;
+        width: 50%;
+        height: 45px;
+        float: left;
 }
 #place_card_box
 {
