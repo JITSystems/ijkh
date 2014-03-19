@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140304123530) do
+ActiveRecord::Schema.define(:version => 20140319092906) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -490,6 +490,7 @@ ActiveRecord::Schema.define(:version => 20140304123530) do
     t.float    "commission"
     t.boolean  "is_integrated"
     t.string   "inn"
+    t.string   "regexp"
   end
 
   create_table "web_interface_news_items", :force => true do |t|
