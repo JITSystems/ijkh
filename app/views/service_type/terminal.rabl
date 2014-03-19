@@ -3,7 +3,7 @@ collection @service_types
 attributes :id, :title
 
 child :vendors do
-	attributes :id, :title, :commission
+	attributes :id, :title, :commission, :regexp
 	child :tariff_templates do
 		attributes :id, :title
 		child :field_templates do
