@@ -21,6 +21,7 @@ class PrecinctController < ApplicationController
 
 	def parse_precinct
 		# GET api/1.0/precinct/create
+		Ovd.clean_up
 		Ovd.xls_parser
 		render json: {status: "success"}
 	end
