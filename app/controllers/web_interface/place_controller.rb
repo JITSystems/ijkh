@@ -35,6 +35,7 @@ class WebInterface::PlaceController < WebInterfaceController
 		@message = "Объект успешно удалён."
 		@place = Place.find(params[:id])
 		if @place.update_attribute('is_active', false)
+			@nsk = Place.where("user_id = ? and is_active = true and city_id = 6", current_user.id)
 			respond_to do |format|
 				format.js {render "web_interface/place/deactivate"}
 			end
@@ -48,6 +49,7 @@ class WebInterface::PlaceController < WebInterfaceController
 		@place = Place.find(params[:id])
 
 		if @place.update_attributes(params[:place])
+			@nsk = Place.where("user_id = ? and is_active = true and city_id = 6", current_user.id)
 			respond_to do |format|
 				format.js {render "web_interface/place/update"}
 			end
@@ -74,9 +76,9 @@ class WebInterface::PlaceController < WebInterfaceController
 
 	def create
 		@message = "Объект успешно создан."
-		# @place = Place.new(params[:place].merge!(user_id: current_user.id, is_active: true))
 		@place = PlaceManager.create(params[:place], current_user)
 		if @place		
+			@nsk = Place.where("user_id = ? and is_active = true and city_id = 6", current_user.id)
 			respond_to do |format|
 				format.js {
 					render 'web_interface/place/create'

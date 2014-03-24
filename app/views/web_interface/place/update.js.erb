@@ -6,4 +6,12 @@ $('p.adress_blue').html('<%= @place.city %> <%= @place.street %> <%= @place.buil
                 $('#place_edit_button').val('Редактировать');
                 $('#place_edit_button').prop('type','button');
             })
+
+if ("<%= @nsk.first %>") {
+        $('#cyfral_banner').html('<img style="padding-top: 30px;" src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-756897861289/izkh/assets/mirt-banner.jpg" />');
+    }
+else {
+	$('#cyfral_banner').html('');
+}
+
 popUpRender('<%= @message %>');
