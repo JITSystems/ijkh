@@ -182,6 +182,7 @@ get 'api/1.0/users' => 'users#index'
 
 # Report
   get 'api/1.0/report_daily' => 'report_data#index_daily'
+  get 'api/1.0/report_from_to' => 'report_data#index_from_to'
   get 'api/1.0/report_hourly' => 'report_data#index_hourly'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
