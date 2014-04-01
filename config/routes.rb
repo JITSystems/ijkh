@@ -73,6 +73,7 @@ get 'api/1.0/users' => 'users#index'
 
 # Api for terminals
   get 'api/1.0/terminal/vendors' => 'service_type#terminal'
+  post 'api/1.0/terminal/payment/success' => 'payment_history#terminal'
 
 # Service
   get 'api/1.0/place/:place_id/services' => 'service#index'

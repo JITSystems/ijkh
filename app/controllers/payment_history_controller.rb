@@ -34,4 +34,10 @@ class PaymentHistoryController < ApplicationController
 
 		render json: {}
 	end
+
+	def terminal 
+		payment_history = TerminalPayment.create!(params[:payment_data])
+
+		render json: {status: "success"}
+	end
 end
