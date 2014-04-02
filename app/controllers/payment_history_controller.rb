@@ -36,8 +36,10 @@ class PaymentHistoryController < ApplicationController
 	end
 
 	def terminal 
-		payment_history = TerminalPayment.create!(params[:payment_data])
-
-		render json: {status: "success"}
+		payment_history = TerminalPayment.new(params[:payment_data])
+		if payment_history.save
+			render json: {status: "success"}, status: 200
+		else
+			render json: {staus: "fail"}, status: 500
 	end
 end
