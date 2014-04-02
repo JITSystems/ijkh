@@ -41,5 +41,6 @@ class PaymentHistoryController < ApplicationController
 			render json: {status: "success"}, status: 200
 		else
 			render json: {staus: "fail"}, status: 500
+		end
 	end
 end
