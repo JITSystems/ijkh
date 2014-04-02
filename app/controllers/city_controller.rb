@@ -3,5 +3,6 @@ class CityController < ApplicationController
 	# GET api/1.0/cities
 		@cities = CityManager.index
 		render 'city/index'
+    end
 	end
 end
