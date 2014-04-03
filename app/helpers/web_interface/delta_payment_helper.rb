@@ -1,0 +1,2 @@
+module WebInterface::DeltaPaymentHelper
+end

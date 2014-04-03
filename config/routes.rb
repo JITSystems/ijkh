@@ -1,6 +1,8 @@
 Ijkh::Application.routes.draw do
   
 
+  get "delta_payment/pay"
+
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations", :passwords => "passwords"}
   as :user do
     get 'login' => 'sessions#new'
