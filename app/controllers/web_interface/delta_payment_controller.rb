@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class WebInterface::DeltaPaymentController < WebInterfaceController
   skip_before_filter :require_current_user
   def pay
