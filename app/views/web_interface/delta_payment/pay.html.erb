@@ -1,0 +1,27 @@
+<div class="box_center box_blue">
+        <div class="box_top_right ">
+                <p>Оплата</p>
+        </div>
+        <div class="visa_mc">
+                <p>Оплата банковской картой</p>
+                <div class="visa"></div>
+                <div class="mc"></div>
+        </div>
+
+        <div id="gt_info">
+                
+        </div>
+
+<%= form_tag(pay_online_url, remote: true, method: :post ) do %>
+        <div class="amount_box">
+                <p>Cумма к оплате, руб: <%= @amount %></p>
+                <%= hidden_field_tag "key", params[:key] %>
+        </div>
+        <div class="commission_box">
+                <p>Комиссия составит: <%= @commission %> руб.</p>
+        </div>
+        <div class="end">
+                <%= submit_tag("Оплатить", :class=>:end_button)  %>
+        </div>
+<% end %>
+</div>

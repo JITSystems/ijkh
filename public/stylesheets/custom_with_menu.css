@@ -442,7 +442,7 @@ a#no_object_found
 
 .box_left{float: left;}
 .box_right{float: right;}
-
+.box_center{margin: 50px auto;}
 .box{
         position: relative;
         width: 450px;
@@ -2446,7 +2446,10 @@ input[type="button"][disabled="disabled"], input[type="submit"][disabled="disabl
         width: auto;
         display: inline-block;
 }
-
+.commission_box p {
+        left: 34px;
+        margin-bottom: 40px;
+}
 .recipe_is_paid p, .recipe_is_paid_freeze p  {
         top: -2px;
         left: 18px;

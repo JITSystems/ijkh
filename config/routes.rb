@@ -1,7 +1,4 @@
 Ijkh::Application.routes.draw do
-  
-
-  get "delta_payment/pay"
 
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations", :passwords => "passwords"}
   as :user do
@@ -285,6 +282,9 @@ get 'api/1.0/users' => 'users#index'
       # Страница "Тарифы и поставщики"
       get 'vendors_and_tariffs' =>  "web_interface/vendors_and_tariffs#show"
       
+      # Delta
+      get 'delta_payment' => "web_interface/delta_payment#pay"
+      post 'pay_online' => "web_interface/delta_payment#pay_online"
 
   end
 
