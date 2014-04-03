@@ -1,4 +1,11 @@
 class Ovd
+
+	def self.clean_up
+		Precinct.delete_all
+		PrecinctStreet.delete_all
+		PrecinctHouse.delete_all
+	end
+
 	def self.xls_parser
 		s = Roo::Excel.new("ovd_data/precinct.xls")
 		(1..s.last_row).each do |i|

@@ -3,6 +3,7 @@
 class WebInterface::ProfileController < WebInterfaceController
 	def show
 		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
+        @nsk = Place.where("user_id = ? and is_active = true and city_id = 6", current_user.id)
 		@place = @places.first
 		@place_id = ""
 		if @place

@@ -8,6 +8,6 @@ class WebInterface::TitlePageController < WebInterfaceController
 		@news_items_company = WebInterface::NewsItem.where('is_company is true').order('created_at desc')
 		@news_items_jkh = WebInterface::NewsItem.where('is_company is not true').order('created_at desc')
 		@users = User.all.count
-    	@vendors = Vendor.where(is_active: true).count
+    	@vendors = Vendor.where(is_active: true).count + 1
 	end
 end

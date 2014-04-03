@@ -11,6 +11,16 @@ class ReportDataController < ApplicationController
 		render json: {payload: payload.index}
 	end
 
+	def index_from_to
+		# GET api/1.0/report_from_to
+		# fetches all transactions in [from..to] period
+		# params: from, to
+		# renders json:
+		# payload: [{user_account, amount, date, address, vendor_id}]
+		payload = ReportDataManager.new(params[:from], params[:to])
+		render json: {payload: payload.index}
+	end
+
 	def index_hourly
 		# GET api/1.0/report_hourly
 		# fetches all transactions for the last 3 hours
