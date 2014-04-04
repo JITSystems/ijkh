@@ -4,7 +4,11 @@ class WebInterface::DeltaPaymentController < WebInterfaceController
   skip_before_filter :require_current_user
   def pay
     response = HTTParty.get( "http://cabinet.izkh.ru/delta_payment?key=#{params[:key]}").parsed_response["payment"]
-    response.each { |r| @amount = r['installation_payment'] + r['service_payment'] }
+    response.each do |r| 
+      @installation_payment = r['installation_payment']
+      @service_payment = r['service_payment'] 
+      @amount = @installation_payment + @service_payment
+    end
     @commission =Vendor.find(20).commission * 100 / @amount
   end
 
