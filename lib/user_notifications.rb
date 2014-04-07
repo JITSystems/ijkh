@@ -59,11 +59,17 @@ class UserNotifications
   end
 
   def self.new_vendors(name, email)
-    vendors_title  = ""
-    Vendor.where("created_at > ?", 31.days.ago).each {|v| vendors_title += "<li>#{v.title}</li>" }
+    new_vendors_block  = ""
+    City.all.each do |city| 
+      if city.vendors.where("created_at > ?", 31.days.ago) != []
+        new_vendors_block += "<p>#{city.title}</p><ul>"
+        city.vendors.where("created_at > ?", 31.days.ago).each {|v| new_vendors_block += "<li>#{v.title}</li>" }
+        new_vendors_block += "</ul>"
+      end
+    end
     mandrill = Mandrill::API.new 'WT_DRSPlVKfp2sBM-TsZ_w'
-    message = {  
-      :subject=> "Новые поставщики услуг",  
+    message = {
+      :subject=> "Новые поставщики услуг",
       :from_name=> "Сервис АйЖКХ",  
       :to=>[{  
           :email=> email,  
@@ -72,10 +78,7 @@ class UserNotifications
       :html=>
         "<html><h1>Уважаемый пользователь #{name}!</h1>
           <p>
-            Обращаем Ваше внимание на то, что у нас появились новые поставщики услуг:
-            <ul>
-              #{vendors_title}
-            </ul>
+            Обращаем Ваше внимание на то, что у нас появились новые поставщики услуг: #{new_vendors_block}
             Посмотреть полный список поставщиков можно на нашем <a href='http://izkh.ru/catalog'>сайте айжкх.рф</a><br><br>
             Новые возможности нашего сервиса:<br>
             <a href='http://izkh.ru/precinct'>Мобильный участковый.</a> Найди телефон и фамилию своего участкового по адресу проживания.<br>
@@ -146,8 +149,14 @@ class UserNotifications
   end
 
   def self.no_payment(name, email)
-    vendors_title  = ""
-    Vendor.where("created_at > ?", 31.days.ago).each {|v| vendors_title += "<li>#{v.title}</li>" }
+    new_vendors_block  = "Рады сообщить, что добавились новые поставщики услуг: "
+    City.all.each do |city| 
+      if city.vendors.where("created_at > ?", 31.days.ago) != []
+        new_vendors_block += "<p>#{city.title}</p><ul>"
+        city.vendors.where("created_at > ?", 31.days.ago).each {|v| new_vendors_block += "<li>#{v.title}</li>" }
+        new_vendors_block += "</ul>"
+      end
+    end
     mandrill = Mandrill::API.new 'WT_DRSPlVKfp2sBM-TsZ_w'
     message = {  
       :subject=> "Сервис АйЖКХ",  
@@ -188,10 +197,7 @@ class UserNotifications
             <li>передавайте данные Ваших счетчиков в адрес своего ТСЖ или УК</li>
             <li>оплачивайте другие услуги: Интернет, ТВ, домофон, охранные услуги</li>
           </ul>
-          Рады сообщить, что добавились новые поставщики услуг:
-            <ul>
-              #{vendors_title}
-            </ul>
+          #{new_vendors_block}
           Посмотреть полный список поставщиков можно на нашем <a href='http://izkh.ru/catalog'>сайте айжкх.рф</a><br><br>
           Не нашли своего поставщика? <a href='http://izkh.ru/request_for_vendor'>Напишите нам</a><br><br>
           Присоединяйтесь к нам в соц.сетях<br><br>
