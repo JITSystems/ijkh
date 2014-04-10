@@ -21,12 +21,7 @@
         <div class="box_top_right ">
                 <p>Оплата</p>
         </div>
-        <div class="visa_mc">
-                <p>Оплата банковской картой</p>
-                <div class="visa"></div>
-                <div class="mc"></div>
-        </div>
-
+                
         <div id="gt_info">
                 
         </div>
@@ -54,18 +49,27 @@
                 <label>
                         <span id="recipe_is_paid_span_freeze"><p>Счёт оплачен </p></span>        
                 </label>
-        </div>        
-
+        </div>  
 
         <div class="end">
+            <div class="visa"></div>
+            <div class="mc"></div>
+            <div class="y_m"></div>
+            <div class="visa_mc">
+                <p><%= radio_button_tag(:pay_client, "bank-card", true) %>
+                <%= label_tag(:pay_client_label, "Банковская карта") %><br>
+                <%= radio_button_tag(:pay_client, "yandex-money") %>
+                <%= label_tag(:pay_client_label, "Яндекс.Деньги") %></p>
+            </div>
 
-                <div style="position:relative;">
+               <%= submit_tag("Оплатить", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>
+         <!--        <div style="position:relative;">
                         <%= button_tag("Выбрать карту", type: "button", 
                                 :class=>:end_button, disabled: true, style: "float: left;margin-right: 10px;", id: 'choose_card', 
                                 onclick:"$('div.cards_list').slideToggle();return false;" )  %>
-                </div>
+                </div> -->
 
-                <%= submit_tag("Оплатить новой картой", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>
+ 
 
                 <div class="cards_list" style="display:none; text-align: left;">
                         <% unless @cards == [] %>

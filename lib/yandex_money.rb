@@ -1,21 +1,27 @@
 class YandexMoney
 
   def initialize(request, requestDatetime, md5, orderNumber, customerNumber, orderSumAmount, invoiceId)
-    p '------------------------------------------------------------------------------------------------'
-    p @request = request
-    p @requestDatetime = requestDatetime
-    p "------------check_md5------------"
-    p @md5 = md5
-    p @orderNumber = orderNumber
-    p @customerNumber = customerNumber
-    p @orderSumAmount = orderSumAmount
+    @request = request
+    @requestDatetime = requestDatetime
+    @md5 = md5
+    @orderNumber = orderNumber
+    @customerNumber = customerNumber
+    @orderSumAmount = orderSumAmount
     # @orderSumCurrencyPaycash = orderSumCurrencyPaycash
-    p @invoiceId = invoiceId
+    @invoiceId = invoiceId
     @shopId = "15196"
     @code = 1000
   end
 
   def notify
+    p '------------------------------------------------------------------------------------------------'
+    p @orderNumber
+    p @customerNumber
+    p @orderSumAmount
+    p @invoiceId
+    p @md5
+    p "------------check_md5------------"
+
     if check_md5
       recipe = Recipe.find(@orderNumber)
       if @request == 'checkOrder' && recipe
