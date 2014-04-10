@@ -187,6 +187,16 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
+#Yandex money
+  # paymentAvisoURL
+  get 'api/1.0/payment_notify/test' => 'yandex_money#notify'
+  # checkURL
+  get 'api/1.0/payment_check/test' => 'yandex_money#notify'
+  # successURL
+  get 'api/1.0/payment_success/test' => 'web_interface/payment#show'
+  # failURL
+  get 'api/1.0/payment_fail/test' => 'web_interface/payment#show'
+  
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'

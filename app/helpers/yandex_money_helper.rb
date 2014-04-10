@@ -1,0 +1,2 @@
+module YandexMoneyHelper
+end
