@@ -3,7 +3,7 @@ class YandexMoneyController < ApplicationController
   
   def check
     @check = YandexMoney.new(params[:requestDatetime], params[:md5], params[:orderSumCurrencyPaycash], params[:orderSumBankPaycash], params[:orderNumber], params[:customerNumber], params[:orderSumAmount], params[:invoiceId]).check
-    render "yandex_money/check"
+    render xml: "yandex_money/check"
   end
 
   def notify
