@@ -187,7 +187,7 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
-#Yandex money
+# Yandex money
   # paymentAvisoURL
   post 'api/1.0/payment_notify/test' => 'yandex_money#notify'
   # checkURL
