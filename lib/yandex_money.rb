@@ -36,7 +36,7 @@ class YandexMoney
     else
       @code = 1
     end
-    { performedDatetime: Time.now, code: 0, invoiceId: @invoiceId, shopId: @shopId, orderSumAmount: @orderSumAmount }.to_xml  (:root => 'paymentAvisoResponse')
+   # { performedDatetime: Time.now, code: 0, invoiceId: @invoiceId, shopId: @shopId, orderSumAmount: @orderSumAmount }.to_xml  (:root => 'paymentAvisoResponse')
   end
 
   private
