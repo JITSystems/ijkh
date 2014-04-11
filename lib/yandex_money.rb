@@ -26,7 +26,7 @@ class YandexMoney
     else
       @code = 1
     end
-    { performedDatetime: Time.now, code: 0, invoiceId: @invoiceId, shopId: @shopId, orderSumAmount: @orderSumAmount }.to_xml(:root => 'checkOrderResponse')
+    { performedDatetime: Time.now, code: 0, invoiceId: @invoiceId, shopId: @shopId }.to_xml(:root => 'checkOrderResponse')
   end
 
   def notify
