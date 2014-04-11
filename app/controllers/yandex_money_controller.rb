@@ -11,7 +11,9 @@ class YandexMoneyController < ApplicationController
   end
 
   def notify
-    render :xml => YandexMoney.new(params[:requestDatetime], params[:md5], params[:orderSumCurrencyPaycash], params[:orderSumBankPaycash], params[:orderNumber], params[:customerNumber], params[:orderSumAmount], params[:invoiceId]).notify
+    @notify = YandexMoney.new(params[:requestDatetime], params[:md5], params[:orderSumCurrencyPaycash], params[:orderSumBankPaycash], params[:orderNumber], params[:customerNumber], params[:orderSumAmount], params[:invoiceId]).notify
+    logger.info @notify
+    render :template => "yandex_money/notify.xml.erb", :layout => false 
   end
 
 end
