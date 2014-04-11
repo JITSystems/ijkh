@@ -1,27 +1,21 @@
 class YandexMoney
 
-  def initialize(request, requestDatetime, md5, orderNumber, customerNumber, orderSumAmount, invoiceId)
+  def initialize(request, requestDatetime, md5, orderSumCurrencyPaycash, orderSumBankPaycash, orderNumber, customerNumber, orderSumAmount, invoiceId)
     @request = request
     @requestDatetime = requestDatetime
     @md5 = md5
     @orderNumber = orderNumber
     @customerNumber = customerNumber
     @orderSumAmount = orderSumAmount
-    # @orderSumCurrencyPaycash = orderSumCurrencyPaycash
+    @orderSumCurrencyPaycash = orderSumCurrencyPaycash
+    @orderSumBankPaycash = orderSumBankPaycash
     @invoiceId = invoiceId
-    @shopId = "15196"
+    @shopId = 15196
     @code = 1000
+    @shopPassword = "Sum0Zozilock8Qzhsoli"
   end
 
   def notify
-    p '------------------------------------------------------------------------------------------------'
-    p @orderNumber
-    p @customerNumber
-    p @orderSumAmount
-    p @invoiceId
-    p @md5
-    p "------------check_md5------------"
-
     if check_md5
       recipe = Recipe.find(@orderNumber)
       if @request == 'checkOrder' && recipe
@@ -41,7 +35,8 @@ class YandexMoney
   private
 
   def check_md5
-    @md5 == 'Sum0Zozilock8Qzhsoli'
+    require 'digest/md5'
+    @md5.downcase == Digest::MD5.hexdigest("#{@request};#{@orderSumAmount};#{@orderSumCurrencyPaycash};#{@orderSumBankPaycash};#{@shopId};#{@invoiceId};#{@customerNumber};#{@shopPassword}")
   end
 
   def payment_aviso_params
