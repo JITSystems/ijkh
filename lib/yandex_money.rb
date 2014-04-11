@@ -56,7 +56,7 @@ class YandexMoney
 
     payment_history_params = {
       po_date_time:       @requestDatetime, 
-      po_transaction_id:    @invoiceId, 
+      po_transaction_id:    '', 
       recipe_id:        @orderNumber.to_i, 
       amount:         @orderSumAmount, 
       currency:         "", 
