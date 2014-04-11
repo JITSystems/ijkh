@@ -10,13 +10,12 @@ class YandexMoney
     @orderSumBankPaycash = orderSumBankPaycash
     @invoiceId = invoiceId
     @shopId = 15196
-    @code = 1000
+    @code = 0
     @shopPassword = "Sum0Zozilock8Qzhsoli"
   end
 
   def check
-    @action = 'checkOrder'
-     if check_md5
+    if check_md5('checkOrder')
       recipe = Recipe.find(@orderNumber)
       if recipe && recipe.user_id == @customerNumber.to_i
         recipe.update_attributes!(total: @orderSumAmount) if @orderSumAmount != recipe.total
@@ -31,8 +30,7 @@ class YandexMoney
   end
 
   def notify
-    @action = 'paymentAviso'
-    if check_md5
+    if check_md5('paymentAviso')
       @code = 0
       payment_history_create_successful
     else
@@ -43,9 +41,9 @@ class YandexMoney
 
   private
 
-  def check_md5
+  def check_md5(action)
     require 'digest/md5'
-    @md5.downcase == Digest::MD5.hexdigest("#{@action};#{@orderSumAmount};#{@orderSumCurrencyPaycash};#{@orderSumBankPaycash};#{@shopId};#{@invoiceId};#{@customerNumber};#{@shopPassword}")
+    @md5.downcase == Digest::MD5.hexdigest("#{action};#{@orderSumAmount};#{@orderSumCurrencyPaycash};#{@orderSumBankPaycash};#{@shopId};#{@invoiceId};#{@customerNumber};#{@shopPassword}")
   end
 
   def payment_aviso_params
