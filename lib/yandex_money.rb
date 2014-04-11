@@ -27,7 +27,7 @@ class YandexMoney
       @code = 1
     end
     builder = Builder::XmlMarkup.new(:indent=>4)
-    builder.checkOrderResponse { |b| b.performedDatetime(Time.now); b.code(0); b.invoiceId(@invoiceId); b.shopId(@shopId) }
+    builder.checkOrderResponse("performedDatetime" => Time.now, "code" => 0, "invoiceId" => @invoiceId, "shopId" => @shopId)
   end
 
   def notify
