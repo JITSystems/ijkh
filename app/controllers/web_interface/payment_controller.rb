@@ -17,6 +17,22 @@ class WebInterface::PaymentController < WebInterfaceController
       	
 	end
 
+	def show_ya
+		@places = Place.where("user_id = ? and is_active = true", current_user.id).order("id DESC")
+		@cards = CardManager.get_by_user(current_user)
+		if @places != []
+			@place = @places.first
+			@services = @place.services.order("id DESC").where("is_active IS NULL OR is_active != false")
+			@service = @services.first
+			#@tariff = @service.tariff
+		end
+
+		CraftSIntegrationWorker.perform_async(current_user.id)
+      	JtIntegrationWorker.perform_async(current_user.id)
+      	GtIntegrationWorker.perform_async(current_user.id)
+      	
+	end
+
 	def round_up amount
 		amount = (amount*100).ceil/100.0
 		return amount
