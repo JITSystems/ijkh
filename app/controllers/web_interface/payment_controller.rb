@@ -77,29 +77,44 @@ class WebInterface::PaymentController < WebInterfaceController
 	end
 
 	def pay
-			@account = Account.find(params[:account_id])
-			@vendor = @account.service.vendor
-
-			recipe_params = {
-				account_id: 	params[:account_id],
-				service_id: 	@account.service.id,
-				amount: 		params[:amount_total]
-			}
-
-			# @recipe = Recipe.create_recipe current_user, recipe_params
-			recipe_manager = RecipeManager.new
-			@recipe = recipe_manager.create(@account.service, params[:amount_total])
-			merchant_id = '39859'
-			user_id = current_user.id
-			order_id = @recipe[:id]
-			amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
-			currency = "RUB"
-			private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+		@account = Account.find(params[:account_id])
+		user_id = current_user.id
+    currency = "RUB"
 
 		if params[:pay_client] == "yandex-money"
-			url = "https://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{amount}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
+			@service = @account.service
+
+    	recipe_params = {
+                    amount:     params[:amount_total],
+                    service_id: @service.id,
+                    account_id: @account.id,
+                    user_id:    user_id,
+                    currency:   currency,
+                    service_tax: params[:amount_total].to_i*6/100,
+                    po_tax: params[:amount_total].to_i*5/100,
+                    total: params[:amount_total].to_i*106/100
+                    }
+      recipe = Recipe.create!(recipe_params)
+			order_id = recipe.id
+
+			url = "https://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
 		else
 			if params[:rebill_anchor] != ''
+				@vendor = @account.service.vendor
+	
+				recipe_params = {
+					account_id: 	params[:account_id],
+					service_id: 	@account.service.id,
+					amount: 		params[:amount_total]
+				}
+	
+				# @recipe = Recipe.create_recipe current_user, recipe_params
+				recipe_manager = RecipeManager.new
+				@recipe = recipe_manager.create(@account.service, params[:amount_total])
+				merchant_id = '39859'
+				order_id = @recipe[:id]
+				amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
+				private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
 				po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 				rebill_anchor = params[:rebill_anchor]
 				security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
