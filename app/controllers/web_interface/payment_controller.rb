@@ -99,7 +99,6 @@ class WebInterface::PaymentController < WebInterfaceController
 
 			url = "https://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
 		else
-			if params[:rebill_anchor] != ''
 				@vendor = @account.service.vendor
 	
 				recipe_params = {
@@ -115,6 +114,9 @@ class WebInterface::PaymentController < WebInterfaceController
 				order_id = @recipe[:id]
 				amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
 				private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+				
+			if params[:rebill_anchor] != ''
+
 				po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 				rebill_anchor = params[:rebill_anchor]
 				security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
