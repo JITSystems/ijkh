@@ -26,7 +26,7 @@ class YandexMoney
     else
       @code = 1
     end
-    { performedDatetime: Time.now, code: @code, invoiceId: @invoiceId, shopId: @shopId }
+    { performedDatetime: Time.now.to_s, code: @code, invoiceId: @invoiceId, shopId: @shopId }
   end
 
   def notify
@@ -36,7 +36,7 @@ class YandexMoney
     else
       @code = 1
     end
-    { performedDatetime: Time.now, code: @code, invoiceId: @invoiceId, shopId: @shopId }
+    { performedDatetime: Time.now.to_s, code: @code, invoiceId: @invoiceId, shopId: @shopId }
   end
 
   private
