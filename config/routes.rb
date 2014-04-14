@@ -189,9 +189,9 @@ get 'api/1.0/users' => 'users#index'
 
 #Yandex money
   # paymentAvisoURL
-  get 'api/1.0/payment_notify' => 'yandex_money#notify'
+  post 'api/1.0/payment_notify' => 'yandex_money#notify'
   # checkURL
-  get 'api/1.0/payment_check' => 'yandex_money#check'
+  post 'api/1.0/payment_check' => 'yandex_money#check'
   # successURL
   get 'api/1.0/payment_success' => 'web_interface/payment#show'
   # failURL
