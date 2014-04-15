@@ -269,6 +269,7 @@ get 'api/1.0/users' => 'users#index'
 
 
       get 'title_page' => 'web_interface/title_page#show'
+      get 'terminals' => 'web_interface/title_page#terminals'
       match 'news_items' => 'web_interface/news_items#show', :as => 'news_items', :via => :get
 
       get 'insert_news' => 'web_interface/news_items#insert_news'
