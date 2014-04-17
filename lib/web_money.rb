@@ -11,9 +11,9 @@ class WebMoney
     text
   end
 
-  def self.payment_notification(merchant_id, payment_no, sys_payment_id, sys_payment_date, payment_amount, currency, paid_amount, paid_currency, payment_system, hash, order_id)
+  def self.payment_notification(merchant_id, order_id, sys_payment_id, sys_payment_date, payment_amount, currency, paid_amount, paid_currency, payment_system, hash)
     p @merchant_id = merchant_id.nil? ? '' : merchant_id
-    p @payment_no = payment_no.nil? ? '' : payment_no
+    p @order_id = payment_no.order_id? ? '' : order_id
     p @sys_payment_id = sys_payment_id.nil? ? '' : sys_payment_id
     p @sys_payment_date = sys_payment_date.nil? ? '' : sys_payment_date
     p @payment_amount = payment_amount.nil? ? '' : payment_amount
@@ -21,24 +21,17 @@ class WebMoney
     p @paid_amount = paid_amount.nil? ? '' : paid_amount
     p @paid_currency = paid_currency.nil? ? '' : paid_currency
     p @payment_system = payment_system.nil? ? '' : payment_system
-    p @hash = hash.nil? ? '' : hash
-    p @order_id = order_id.nil? ? '' : order_id
-
-    if true
-      check_md5
-      payment_history_create_successful
-      text = "YES"
-    else
-      text = "NO"
-    end
-    text
+    p @hash = hash
+    @check_md5 = check_md5
+    payment_history_create_successful
   end
 
   private
 
   def self.check_md5
     require 'digest/md5'
-    lmi_sim_mode = ''
+    require "base64"
+    lmi_sim_mode = 0
     secret = 's8zil2ofck8Qzh1soli'
     p Base64.encode64(Digest::MD5.hexdigest("#{@merchant_id};#{@payment_no};#{@sys_payment_id};#{@sys_payment_date};#{@payment_amount};#{@currency};#{@paid_amount};#{@paid_currency};#{@payment_system};#{lmi_sim_mode};#{secret}"))
   end
@@ -50,6 +43,7 @@ class WebMoney
     else
       service_id = 0
     end
+    status = 0# check_md5 ? 1 : 0
 
     payment_history_params = {
       po_date_time:       @sys_payment_date,
@@ -64,8 +58,8 @@ class WebMoney
       eci:          "",
       user_id:        recipe.user_id,
       payment_type:       "3",
-      service_id:       service_id, 
-      status:         1
+      service_id:       service_id,
+      status:         status
     }
 
     return payment_history_params
