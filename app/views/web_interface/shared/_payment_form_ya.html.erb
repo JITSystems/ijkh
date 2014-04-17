@@ -58,7 +58,9 @@
                 <p><%= radio_button_tag(:pay_client, "bank-card", true) %>
                 <%= label_tag(:pay_client_label, "Банковская карта") %><br>
                 <%= radio_button_tag(:pay_client, "yandex-money") %>
-                <%= label_tag(:pay_client_label, "Яндекс.Деньги") %></p>
+                <%= label_tag(:pay_client_label, "Яндекс.Деньги") %><br>
+                <%= radio_button_tag(:pay_client, "web-money") %>
+                <%= label_tag(:pay_client_label, "WebMoney") %></p>
             </div>
 
                <%= submit_tag("Оплатить", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>

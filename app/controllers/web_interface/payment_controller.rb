@@ -97,9 +97,25 @@ class WebInterface::PaymentController < WebInterfaceController
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
-			url = "https://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
+			url = "https://money.yandex.ru/eshop.xml?scid=7072&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
+		elsif params[:pay_client] == "web-money"
+			@service = @account.service
+
+    	recipe_params = {
+                    amount:     params[:amount_total],
+                    service_id: @service.id,
+                    account_id: @account.id,
+                    user_id:    user_id,
+                    currency:   currency,
+                    service_tax: '',
+                    po_tax: '',
+                    total: params[:amount_total]
+                    }
+      recipe = Recipe.create!(recipe_params)
+			order_id = recipe.id
+
+			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=Test+payment&LMI_CURRENCY=RUB&ORDER_ID=#{order_id}"
 		else
-			if params[:rebill_anchor] != ''
 				@vendor = @account.service.vendor
 	
 				recipe_params = {
@@ -115,6 +131,9 @@ class WebInterface::PaymentController < WebInterfaceController
 				order_id = @recipe[:id]
 				amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
 				private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+				
+			if params[:rebill_anchor] != ''
+
 				po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
 				rebill_anchor = params[:rebill_anchor]
 				security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"

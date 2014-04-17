@@ -10,4 +10,8 @@ class WebInterface::TitlePageController < WebInterfaceController
 		@users = User.all.count
     	@vendors = Vendor.where(is_active: true).count + 1
 	end
+
+  def terminals
+    render 'web_interface/title_page/terminals'
+  end
 end

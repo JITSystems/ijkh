@@ -187,15 +187,21 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
-#Yandex money
+#Yandex-money
   # paymentAvisoURL
-  get 'api/1.0/payment_notify' => 'yandex_money#notify'
+  post 'api/1.0/payment_notify' => 'yandex_money#notify'
   # checkURL
-  get 'api/1.0/payment_check' => 'yandex_money#check'
+  post 'api/1.0/payment_check' => 'yandex_money#check'
   # successURL
   get 'api/1.0/payment_success' => 'web_interface/payment#show'
-  # failURL
+  # failURL 
   get 'api/1.0/payment_fail' => 'web_interface/payment#show'
+#Web-money
+  #Payment notification
+  get 'api/1.0/payment_notification' => 'web_money#payment_notification'
+  #Invoice confirmation
+  get 'api/1.0/invoice_confirmation' => 'web_money#invoice_confirmation'
+
 
 # Web Interface
   scope '/' do
@@ -269,6 +275,7 @@ get 'api/1.0/users' => 'users#index'
 
 
       get 'title_page' => 'web_interface/title_page#show'
+      get 'terminals' => 'web_interface/title_page#terminals'
       match 'news_items' => 'web_interface/news_items#show', :as => 'news_items', :via => :get
 
       get 'insert_news' => 'web_interface/news_items#insert_news'

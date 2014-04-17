@@ -1,53 +1,50 @@
-class YandexMoney
+class WebMoney
 
-  def initialize(requestDatetime, md5, orderSumCurrencyPaycash, orderSumBankPaycash, orderNumber, customerNumber, orderSumAmount, invoiceId)
-    @requestDatetime = requestDatetime
-    @md5 = md5
-    @orderNumber = orderNumber
-    @customerNumber = customerNumber
-    @orderSumAmount = orderSumAmount
-    @orderSumCurrencyPaycash = orderSumCurrencyPaycash
-    @orderSumBankPaycash = orderSumBankPaycash
-    @invoiceId = invoiceId
-    @shopId = 15196
-    @code = 1000
-    @shopPassword = "Sum0Zozilock8Qzhsoli"
-  end
-
-  def check
-    if check_md5('checkOrder')
-      recipe = Recipe.find(@orderNumber)
-      if recipe && recipe.user_id == @customerNumber.to_i
-        recipe.update_attributes!(total: @orderSumAmount) if @orderSumAmount != recipe.total
-        @code = 0
-      else
-        @code = 100
-      end
+  def self.invoice_confirmation(merchant_id, payment_amount, order_id)
+    true_merchant_id = "6c2aa990-60e1-427f-9c45-75cffae4a745"
+    recipe = Recipe.find(order_id)
+    if recipe.total == payment_amount.to_i && merchant_id == true_merchant_id
+      text = "YES"
     else
-      @code = 1
+      text = "NO"
     end
-    { performedDatetime: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.000+04:00"), code: @code, invoiceId: @invoiceId, shopId: @shopId }
+    text
   end
 
-  def notify
-    if check_md5('paymentAviso')
-      @code = 0
+  def self.payment_notification(merchant_id, payment_no, sys_payment_id, sys_payment_date, payment_amount, currency, paid_amount, paid_currency, payment_system, hash, order_id)
+    p @merchant_id = merchant_id.nil? ? '' : merchant_id
+    p @payment_no = payment_no.nil? ? '' : payment_no
+    p @sys_payment_id = sys_payment_id.nil? ? '' : sys_payment_id
+    p @sys_payment_date = sys_payment_date.nil? ? '' : sys_payment_date
+    p @payment_amount = payment_amount.nil? ? '' : payment_amount
+    p @currency = currency.nil? ? '' : currency
+    p @paid_amount = paid_amount.nil? ? '' : paid_amount
+    p @paid_currency = paid_currency.nil? ? '' : paid_currency
+    p @payment_system = payment_system.nil? ? '' : payment_system
+    p @hash = hash.nil? ? '' : hash
+    p @order_id = order_id.nil? ? '' : order_id
+
+    if true
+      check_md5
       payment_history_create_successful
+      text = "YES"
     else
-      @code = 1
+      text = "NO"
     end
-    { performedDatetime: Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S.000+04:00"), code: @code, invoiceId: @invoiceId, shopId: @shopId }
+    text
   end
 
   private
 
-  def check_md5(action)
+  def self.check_md5
     require 'digest/md5'
-    @md5.downcase == Digest::MD5.hexdigest("#{action};#{@orderSumAmount};#{@orderSumCurrencyPaycash};#{@orderSumBankPaycash};#{@shopId};#{@invoiceId};#{@customerNumber};#{@shopPassword}")
+    lmi_sim_mode = ''
+    secret = 's8zil2ofck8Qzh1soli'
+    p Base64.encode64(Digest::MD5.hexdigest("#{@merchant_id};#{@payment_no};#{@sys_payment_id};#{@sys_payment_date};#{@payment_amount};#{@currency};#{@paid_amount};#{@paid_currency};#{@payment_system};#{lmi_sim_mode};#{secret}"))
   end
 
-  def payment_aviso_params
-    recipe = Recipe.find(@orderNumber)
+  def self.payment_params
+    recipe = Recipe.find(@order_id)
     if recipe
       service_id = recipe.service_id
     else
@@ -55,18 +52,18 @@ class YandexMoney
     end
 
     payment_history_params = {
-      po_date_time:       @requestDatetime, 
-      po_transaction_id:    @invoiceId, 
-      recipe_id:        @orderNumber.to_i, 
-      amount:         @orderSumAmount, 
-      currency:         "", 
+      po_date_time:       @sys_payment_date, 
+      po_transaction_id:    @sys_payment_id, 
+      recipe_id:        recipe.id, 
+      amount:         @payment_amount, 
+      currency:         @currency, 
       card_holder:      "", 
       card_number:      "", 
       country:        "", 
       city:           "", 
       eci:          "",
-      user_id:        @customerNumber.to_i,
-      payment_type:       "2",
+      user_id:        recipe.user_id,
+      payment_type:       "3",
       service_id:       service_id, 
       status:         1
     }
@@ -74,8 +71,8 @@ class YandexMoney
     return payment_history_params
   end
 
-  def payment_history_create_successful
-    payment_history_params = payment_aviso_params
+  def self.payment_history_create_successful
+    payment_history_params = payment_params
     payment_history = PaymentHistory.new(payment_history_params)
     payment_history.save
 
@@ -137,12 +134,12 @@ class YandexMoney
       switch_status_params = {
         account_id: account[:account_id],
         status: 1,
-        user_id: @customerNumber.to_i
+        user_id: recipe.user_id
       }
 
       Account.switch_status switch_status_params
 
-      user = User.find(@customerNumber.to_i)
+      user = User.find(recipe.user_id)
     #   NotificationsSuccessfulPaymentWorker.perform_async(recipe.total, service.title, service.user_account, user.first_name, user.email)
     else
       switch_status_params = {
