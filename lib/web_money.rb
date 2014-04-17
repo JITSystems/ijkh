@@ -52,11 +52,11 @@ class WebMoney
     end
 
     payment_history_params = {
-      po_date_time:       @sys_payment_date, 
-      po_transaction_id:    @sys_payment_id, 
-      recipe_id:        recipe.id, 
-      amount:         @payment_amount, 
-      currency:         @currency, 
+      po_date_time:       @sys_payment_date,
+      po_transaction_id:    @sys_payment_id,
+      recipe_id:        recipe.id,
+      amount:         @payment_amount,
+      currency:         @currency,
       card_holder:      "", 
       card_number:      "", 
       country:        "", 

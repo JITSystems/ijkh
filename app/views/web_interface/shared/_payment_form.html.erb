@@ -21,12 +21,7 @@
         <div class="box_top_right ">
                 <p>Оплата</p>
         </div>
-        <div class="visa_mc">
-                <p>Оплата банковской картой</p>
-                <div class="visa"></div>
-                <div class="mc"></div>
-        </div>
-
+                
         <div id="gt_info">
                 
         </div>
@@ -54,18 +49,26 @@
                 <label>
                         <span id="recipe_is_paid_span_freeze"><p>Счёт оплачен </p></span>        
                 </label>
-        </div>        
-
+        </div>  
 
         <div class="end">
+            <div class="visa"></div>
+            <div class="mc"></div>
+            <div class="visa_mc">
+                <p><%= radio_button_tag(:pay_client, "bank-card", true) %>
+                <%= label_tag(:pay_client_label, "Банковская карта") %><br>
+                <%= radio_button_tag(:pay_client, "yandex-money") %>
+                <%= label_tag(:pay_client_label, "Яндекс.Деньги") %></p>
+            </div>
 
-                <div style="position:relative;">
+               <%= submit_tag("Оплатить", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>
+         <!--        <div style="position:relative;">
                         <%= button_tag("Выбрать карту", type: "button", 
                                 :class=>:end_button, disabled: true, style: "float: left;margin-right: 10px;", id: 'choose_card', 
                                 onclick:"$('div.cards_list').slideToggle();return false;" )  %>
-                </div>
+                </div> -->
 
-                <%= submit_tag("Оплатить новой картой", :class=>:end_button, disabled: true, id: "pay_submit", onclick: "validateForm(); return false;")  %>
+ 
 
                 <div class="cards_list" style="display:none; text-align: left;">
                         <% unless @cards == [] %>
@@ -112,6 +115,12 @@ var commission = 0;
                 tax_total = 0.0
                 $('#tax_total_value').text(tax_total);
         }
+        else if (document.getElementById('pay_client_yandex-money').checked)
+        {
+                var amount = parseFloat($(this).val());
+                var tax_total = Math.round((amount*6)) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
         else
         {
                 var amount = parseFloat($(this).val());
@@ -133,6 +142,41 @@ var commission = 0;
         
 
         });
+
+        $('input:radio[name="pay_client"]').change(function () {
+        $("p#amount_total_error").hide();
+        if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
+        {        
+                amount = parseFloat($('#amount_total').val());
+                tax_total = 0.0
+                $('#tax_total_value').text(tax_total);
+        }
+        else if (document.getElementById('pay_client_yandex-money').checked)
+        {
+                var amount = parseFloat($('#amount_total').val());
+                var tax_total = Math.round((amount*6)) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+        else
+        {
+                var amount = parseFloat($('#amount_total').val());
+                var tax_total = Math.round((amount*commission) * 100) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+
+        if( isNaN(amount) )
+        {        
+                $("#tax_total").hide();
+                $("#tax_total_error").show();
+        }
+        else
+        {
+                $("#tax_total_error").hide();
+                $("#tax_total").show();
+                $('#save_amount_form #amount_total').val(amount);
+        }
         
+
+        });
 
 </script>
