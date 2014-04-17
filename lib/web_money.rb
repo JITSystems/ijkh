@@ -2,7 +2,7 @@ class WebMoney
 
   def self.invoice_confirmation(merchant_id, payment_amount, order_id)
     true_merchant_id = "6c2aa990-60e1-427f-9c45-75cffae4a745"
-    recipe = Recipe.find(payment_no)
+    recipe = Recipe.find(order_id)
     if recipe.total == payment_amount.to_i && merchant_id == true_merchant_id
       text = "YES"
     else
@@ -11,34 +11,33 @@ class WebMoney
     text
   end
 
-  def self.payment_notification(payment_no, sys_payment_id, sys_payment_date, payment_amount, currency)
+  def self.payment_notification(order_id, sys_payment_id, sys_payment_date, payment_amount, currency)
     @sys_payment_id = sys_payment_id
     @sys_payment_date = sys_payment_date
     @payment_amount = payment_amount
     @currency = currency
-    @payment_no = payment_no
+    @order_id = order_id
 
     payment_history_create_successful
   end
 
-  def self.failed_payment(payment_no, payment_amount, currency)
+  def self.failed_payment(order_id, payment_amount, currency)
     @payment_amount = payment_amount
     @currency = currency
-    @payment_no = payment_no
+    @order_id = order_id
 
-    payment_history_create_successful_failed
+    payment_history_create_failed
   end
 
   private
 
   def self.payment_params
-    recipe = Recipe.find(@payment_no)
+    recipe = Recipe.find(@order_id)
     if recipe
       service_id = recipe.service_id
     else
       service_id = 0
     end
-    status = 0# check_md5 ? 1 : 0
 
     payment_history_params = {
       po_date_time:       @sys_payment_date,
@@ -103,7 +102,6 @@ class WebMoney
             end
           end
         end
-      
       end
     end
 
@@ -135,7 +133,7 @@ class WebMoney
     end
   end
 
-  def self.payment_history_create_successful_failed
+  def self.payment_history_create_failed
     payment_history_params = payment_params
     payment_history_params.merge!(status: -1)
     payment_history = PaymentHistory.new(payment_history_params)
