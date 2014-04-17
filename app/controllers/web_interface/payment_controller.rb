@@ -114,7 +114,7 @@ class WebInterface::PaymentController < WebInterfaceController
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
-			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=Test+payment&LMI_CURRENCY=RUB&LMI_PAYMENT_NO=#{order_id}"
+			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=Test+payment&LMI_CURRENCY=RUB&ORDER_ID=#{order_id}"
 		else
 				@vendor = @account.service.vendor
 	
