@@ -7,8 +7,7 @@ skip_before_filter :require_auth_token
   def invoice_confirmation
     @log = WebMoney.invoice_confirmation(params[:LMI_MERCHANT_ID], params[:LMI_PAYMENT_AMOUNT], params[:ORDER_ID])
     logger.info @log
-    logger.info params[:LMI_MERCHANT_ID]
-    render :template => "web_money/invoice_confirmation.html.haml", :layout => false 
+    render text: "YES"
   end
 
   def payment_notification
