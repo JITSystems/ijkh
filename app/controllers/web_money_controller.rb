@@ -9,9 +9,13 @@ skip_before_filter :require_auth_token
   end
 
   def payment_notification
-    @log = WebMoney.payment_notification(params[:LMI_MERCHANT_ID], params[:LMI_PAYMENT_NO], params[:LMI_SYS_PAYMENT_ID], params[:LMI_SYS_PAYMENT_DATE], params[:LMI_PAYMENT_AMOUNT], params[:LMI_CURRENCY], params[:LMI_PAID_AMOUNT], params[:LMI_PAID_CURRENCY], params[:LMI_PAYMENT_SYSTEM], params[:LMI_HASH])
+    @log = WebMoney.payment_notification(params[:LMI_PAYMENT_NO], params[:LMI_SYS_PAYMENT_ID], params[:LMI_SYS_PAYMENT_DATE], params[:LMI_PAYMENT_AMOUNT], params[:LMI_CURRENCY])
     logger.info @log
-    logger.info @check_md5
     render text: "YES"
+  end
+
+  def failed_payment
+    WebMoney.failed_payment(params[:LMI_PAYMENT_NO], params[:LMI_PAYMENT_AMOUNT], params[:LMI_CURRENCY])
+    redirect_to root_path
   end
 end

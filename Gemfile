@@ -35,6 +35,7 @@ gem 'simple_form'
 
 gem 'jquery-rails'
 gem 'rubber'
+gem 'iconv'
 gem 'open4'
 gem 'gelf'
 gem 'pg'

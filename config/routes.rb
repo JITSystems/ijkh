@@ -198,10 +198,10 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/payment_fail' => 'web_interface/payment#show'
 #Web-money
   #Payment notification
-  post 'api/1.0/payment_notification' => 'web_money#payment_notification'
+  get 'api/1.0/payment_notification' => 'web_money#payment_notification'
   #Invoice confirmation
   post 'api/1.0/invoice_confirmation' => 'web_money#invoice_confirmation'
-
+  get 'api/1.0/failed_payment' => 'web_money#failed_payment'
 
 # Web Interface
   scope '/' do

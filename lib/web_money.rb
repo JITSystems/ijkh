@@ -2,7 +2,7 @@ class WebMoney
 
   def self.invoice_confirmation(merchant_id, payment_amount, order_id)
     true_merchant_id = "6c2aa990-60e1-427f-9c45-75cffae4a745"
-    recipe = Recipe.find(order_id)
+    recipe = Recipe.find(payment_no)
     if recipe.total == payment_amount.to_i && merchant_id == true_merchant_id
       text = "YES"
     else
@@ -11,33 +11,28 @@ class WebMoney
     text
   end
 
-  def self.payment_notification(merchant_id, order_id, sys_payment_id, sys_payment_date, payment_amount, currency, paid_amount, paid_currency, payment_system, hash)
-    p @merchant_id = merchant_id.nil? ? '' : merchant_id
-    p @order_id = payment_no.order_id? ? '' : order_id
-    p @sys_payment_id = sys_payment_id.nil? ? '' : sys_payment_id
-    p @sys_payment_date = sys_payment_date.nil? ? '' : sys_payment_date
-    p @payment_amount = payment_amount.nil? ? '' : payment_amount
-    p @currency = currency.nil? ? '' : currency
-    p @paid_amount = paid_amount.nil? ? '' : paid_amount
-    p @paid_currency = paid_currency.nil? ? '' : paid_currency
-    p @payment_system = payment_system.nil? ? '' : payment_system
-    p @hash = hash
-    @check_md5 = check_md5
+  def self.payment_notification(payment_no, sys_payment_id, sys_payment_date, payment_amount, currency)
+    @sys_payment_id = sys_payment_id
+    @sys_payment_date = sys_payment_date
+    @payment_amount = payment_amount
+    @currency = currency
+    @payment_no = payment_no
+
     payment_history_create_successful
+  end
+
+  def self.failed_payment(payment_no, payment_amount, currency)
+    @payment_amount = payment_amount
+    @currency = currency
+    @payment_no = payment_no
+
+    payment_history_create_successful_failed
   end
 
   private
 
-  def self.check_md5
-    require 'digest/md5'
-    require "base64"
-    lmi_sim_mode = 0
-    secret = 's8zil2ofck8Qzh1soli'
-    p Base64.encode64(Digest::MD5.hexdigest("#{@merchant_id};#{@payment_no};#{@sys_payment_id};#{@sys_payment_date};#{@payment_amount};#{@currency};#{@paid_amount};#{@paid_currency};#{@payment_system};#{lmi_sim_mode};#{secret}"))
-  end
-
   def self.payment_params
-    recipe = Recipe.find(@order_id)
+    recipe = Recipe.find(@payment_no)
     if recipe
       service_id = recipe.service_id
     else
@@ -51,15 +46,9 @@ class WebMoney
       recipe_id:        recipe.id,
       amount:         @payment_amount,
       currency:         @currency,
-      card_holder:      "", 
-      card_number:      "", 
-      country:        "", 
-      city:           "", 
-      eci:          "",
       user_id:        recipe.user_id,
       payment_type:       "3",
       service_id:       service_id,
-      status:         status
     }
 
     return payment_history_params
@@ -67,6 +56,7 @@ class WebMoney
 
   def self.payment_history_create_successful
     payment_history_params = payment_params
+    payment_history_params.merge!(status: 1)
     payment_history = PaymentHistory.new(payment_history_params)
     payment_history.save
 
@@ -145,4 +135,22 @@ class WebMoney
     end
   end
 
+  def self.payment_history_create_successful_failed
+    payment_history_params = payment_params
+    payment_history_params.merge!(status: -1)
+    payment_history = PaymentHistory.new(payment_history_params)
+    payment_history.save
+    
+    recipe = Recipe.find(payment_history_params[:recipe_id])
+    account_id = recipe.account.id
+
+    switch_status_params = {
+      account_id: account_id,
+      status: -1
+      }
+
+      Account.switch_status switch_status_params
+
+    return payment_history
+  end
 end
