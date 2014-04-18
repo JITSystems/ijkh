@@ -108,6 +108,7 @@
 
 var vendor_id = parseInt($('input#vendor_id').val());
 var commission = 0;
+var commission_yandex = 0;
 
         $('#amount_total').keyup(function () {
         $("p#amount_total_error").hide();
@@ -120,7 +121,13 @@ var commission = 0;
         else if (document.getElementById('pay_client_yandex-money').checked)
         {
                 var amount = parseFloat($(this).val());
-                var tax_total = Math.round((amount*6)) / 100;
+                var tax_total = Math.round((amount*commission_yandex) * 100) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+        else if (document.getElementById('pay_client_web-money').checked)
+        {
+                var amount = parseFloat($(this).val());
+                var tax_total = Math.round((amount*commission_webmoney) * 100) / 100;
                 $('#tax_total_value').text(tax_total);
         }
         else
@@ -156,7 +163,13 @@ var commission = 0;
         else if (document.getElementById('pay_client_yandex-money').checked)
         {
                 var amount = parseFloat($('#amount_total').val());
-                var tax_total = Math.round((amount*6)) / 100;
+                var tax_total = Math.round((amount*commission_yandex) * 100) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+        else if (document.getElementById('pay_client_web-money').checked)
+        {
+                var amount = parseFloat($('#amount_total').val());
+                var tax_total = Math.round((amount*commission_webmoney) * 100) / 100;
                 $('#tax_total_value').text(tax_total);
         }
         else

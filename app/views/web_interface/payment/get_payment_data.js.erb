@@ -4,6 +4,17 @@ commission = <%= @commission/100 %>;
 commission = 0; 
 <% end %>
 
+<% if @commission_yandex %>
+commission_yandex = <%= @commission_yandex/100 %>; 
+<% else %>
+commission_yandex = 0; 
+<% end %>
+
+<% if @commission_webmoney %>
+commission_webmoney = <%= @commission_webmoney/100 %>; 
+<% else %>
+commission_webmoney = 0; 
+<% end %>
 
 $("#meter_reading_box").hide();
 $('div.cards_list').hide();

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140412120830) do
+ActiveRecord::Schema.define(:version => 20140417124051) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -493,8 +493,8 @@ ActiveRecord::Schema.define(:version => 20140412120830) do
   create_table "vendors", :force => true do |t|
     t.string   "title"
     t.integer  "service_type_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "merchant_id"
     t.boolean  "is_active"
     t.string   "psk"
@@ -502,6 +502,8 @@ ActiveRecord::Schema.define(:version => 20140412120830) do
     t.boolean  "is_integrated"
     t.string   "inn"
     t.string   "regexp"
+    t.float    "commission_yandex"
+    t.float    "commission_webmoney"
   end
 
   create_table "web_interface_news_items", :force => true do |t|

@@ -52,12 +52,13 @@ class WebInterface::PaymentController < WebInterfaceController
 		else
 			@amount = @tariff.fields.first.value
 		end
-
 		unless @vendor_id == 0
+			@commission_yandex = Vendor.find(@service.vendor_id).commission_yandex || 0
+			@commission_webmoney = Vendor.find(@service.vendor_id).commission_webmoney || 0
 			@commission = VendorManager.get(@vendor_id).commission || 0
 		else
-			@commission = 0 
-		end
+			@commission = 0
+			end
 
 		@service_tax = round_up((@commission.to_f/100.00)*@amount).round(2)
 
@@ -80,36 +81,39 @@ class WebInterface::PaymentController < WebInterfaceController
 		@account = Account.find(params[:account_id])
 		user_id = current_user.id
     currency = "RUB"
+		amount = params[:amount_total]
 
 		if params[:pay_client] == "yandex-money"
 			@service = @account.service
+			commission = Vendor.find(@service.vendor_id).commission_yandex
 
     	recipe_params = {
-                    amount:     params[:amount_total],
+                    amount:     FloatModifier.format(amount),
                     service_id: @service.id,
                     account_id: @account.id,
                     user_id:    user_id,
                     currency:   currency,
-                    service_tax: params[:amount_total].to_i*6/100,
-                    po_tax: params[:amount_total].to_i*5/100,
-                    total: params[:amount_total].to_i*106/100
+                    service_tax: FloatModifier.format(amount.to_i*commission/100),
+                    po_tax: FloatModifier.format(amount.to_i*(commission-1)/100),
+                    total: FloatModifier.format(amount.to_i*(100+commission)/100)
                     }
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
 			url = "https://money.yandex.ru/eshop.xml?scid=7072&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
 		elsif params[:pay_client] == "web-money"
-			@service = @account.service
 
+			@service = @account.service
+			commission = Vendor.find(@service.vendor_id).commission_webmoney
     	recipe_params = {
-                    amount:     params[:amount_total],
+                    amount:     FloatModifier.format(amount),
                     service_id: @service.id,
                     account_id: @account.id,
                     user_id:    user_id,
                     currency:   currency,
-                    service_tax: '',
-                    po_tax: '',
-                    total: params[:amount_total]
+                    service_tax: FloatModifier.format(amount.to_i*commission/100),
+                    po_tax: FloatModifier.format(amount.to_i*(commission-1)/100),
+                    total: FloatModifier.format(amount.to_i*(100+commission)/100)
                     }
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
