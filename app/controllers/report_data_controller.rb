@@ -8,7 +8,7 @@ class ReportDataController < ApplicationController
 		# renders json:
 		# payload: [{user_account, amount, date, address, vendor_id}]
 		payload = ReportDataManager.new(Date.yesterday, Date.today)
-		render json: {payload: payload.index}
+		render json: {payload: payload.index.first, terminal: payload.index.last}
 	end
 
 	def index_from_to
@@ -18,7 +18,7 @@ class ReportDataController < ApplicationController
 		# renders json:
 		# payload: [{user_account, amount, date, address, vendor_id}]
 		payload = ReportDataManager.new(params[:from], params[:to])
-		render json: {payload: payload.index}
+		render json: {payload: payload.index.first, terminal: payload.index.last}
 	end
 
 	def index_hourly
@@ -28,7 +28,7 @@ class ReportDataController < ApplicationController
 		# renders json:
 		# payload: [{user_account, amount, date, address, vendor_id}]
 		payload = ReportDataManager.new(DateTime.now - 7.hour, DateTime.now - 4.hour)
-		render json: {payload: payload.index}
+		render json: {payload: payload.index.first, terminal: payload.index.last}
 	end
 
 	def index_monthly_by_vendor
@@ -38,7 +38,7 @@ class ReportDataController < ApplicationController
 		# renders json:
 		# payload: [{user_account, amount, date, address, vendor_id}]
 		payload = ReportDataManager.index_by_vendor(params[:vendor_id], params[:month])
-		render json: {payment_history: payload}
+		render json: {payment_history: payload.first, terminal: payload.last}
 	end
 
 	def vendors_with_transactions
