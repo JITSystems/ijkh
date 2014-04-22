@@ -85,7 +85,7 @@ class WebInterface::PaymentController < WebInterfaceController
 
 		if params[:pay_client] == "yandex-money"
 			@service = @account.service
-			commission = Vendor.find(@service.vendor_id).commission_yandex
+			commission = Vendor.find(@service.vendor_id).commission_yandex || 0
 
     	recipe_params = {
                     amount:     FloatModifier.format(amount),
@@ -104,7 +104,7 @@ class WebInterface::PaymentController < WebInterfaceController
 		elsif params[:pay_client] == "web-money"
 
 			@service = @account.service
-			commission = Vendor.find(@service.vendor_id).commission_webmoney
+			commission = Vendor.find(@service.vendor_id).commission_webmoney || 0
     	recipe_params = {
                     amount:     FloatModifier.format(amount),
                     service_id: @service.id,
@@ -118,7 +118,7 @@ class WebInterface::PaymentController < WebInterfaceController
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
-			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=Test+payment&LMI_CURRENCY=RUB&ORDER_ID=#{order_id}"
+			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=АйЖКХ&LMI_CURRENCY=RUB&ORDER_ID=#{order_id}"
 		else
 				@vendor = @account.service.vendor
 	
