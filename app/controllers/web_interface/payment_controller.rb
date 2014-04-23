@@ -93,9 +93,9 @@ class WebInterface::PaymentController < WebInterfaceController
                     account_id: @account.id,
                     user_id:    user_id,
                     currency:   currency,
-                    service_tax: FloatModifier.format(amount.to_i*commission/100),
-                    po_tax: FloatModifier.format(amount.to_i*(commission-1)/100),
-                    total: FloatModifier.format(amount.to_i*(100+commission)/100)
+                    service_tax: FloatModifier.format(amount.to_f*commission/100),
+                    po_tax: FloatModifier.format(amount.to_f*(commission-1)/100),
+                    total: FloatModifier.format(amount.to_f*(100+commission)/100)
                     }
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
@@ -111,9 +111,9 @@ class WebInterface::PaymentController < WebInterfaceController
                     account_id: @account.id,
                     user_id:    user_id,
                     currency:   currency,
-                    service_tax: FloatModifier.format(amount.to_i*commission/100),
-                    po_tax: FloatModifier.format(amount.to_i*(commission-1)/100),
-                    total: FloatModifier.format(amount.to_i*(100+commission)/100)
+                    service_tax: FloatModifier.format(amount*commission/100),
+                    po_tax: FloatModifier.format(amount*(commission-1)/100),
+                    total: FloatModifier.format(amount*(100+commission)/100)
                     }
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
