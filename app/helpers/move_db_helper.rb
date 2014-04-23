@@ -1,0 +1,2 @@
+module MoveDbHelper
+end

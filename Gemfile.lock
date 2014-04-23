@@ -275,6 +275,7 @@ DEPENDENCIES
   gibbon
   haml
   haml-rails
+  httparty
   iconv
   jquery-rails
   mandrill-api
