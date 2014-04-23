@@ -110,16 +110,16 @@ var commission_yandex = 0;
 
         $('#amount_total').keyup(function () {
         $("p#amount_total_error").hide();
-        if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
-        {        
-                amount = parseFloat($(this).val());
-                tax_total = 0.0
-                $('#tax_total_value').text(tax_total);
-        }
-        else if (document.getElementById('pay_client_yandex-money').checked)
+        if (document.getElementById('pay_client_yandex-money').checked)
         {
                 var amount = parseFloat($(this).val());
                 var tax_total = Math.round((amount*commission_yandex) * 100) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+        else if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
+        {        
+                amount = parseFloat($(this).val());
+                tax_total = 0.0
                 $('#tax_total_value').text(tax_total);
         }
         else
@@ -146,16 +146,16 @@ var commission_yandex = 0;
 
         $('input:radio[name="pay_client"]').change(function () {
         $("p#amount_total_error").hide();
-        if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
-        {        
-                amount = parseFloat($('#amount_total').val());
-                tax_total = 0.0
-                $('#tax_total_value').text(tax_total);
-        }
-        else if (document.getElementById('pay_client_yandex-money').checked)
+        if (document.getElementById('pay_client_yandex-money').checked)
         {
                 var amount = parseFloat($('#amount_total').val());
                 var tax_total = Math.round((amount*commission_yandex) * 100) / 100;
+                $('#tax_total_value').text(tax_total);
+        }
+        else if (vendor_id == 5 || vendor_id == 40 || vendor_id == 43 || vendor_id == 44) 
+        {        
+                amount = parseFloat($('#amount_total').val());
+                tax_total = 0.0
                 $('#tax_total_value').text(tax_total);
         }
         else
