@@ -21,7 +21,7 @@ class MoveTable
       data[lenth] = line_data
       lenth += 1
     end
-    response = HTTParty.post( "#{@url}/update_table?auth_token=#{LuNXcS4tAGMgj8xwr7LR}",
+    response = HTTParty.post( "#{@url}/update_table?auth_token=LuNXcS4tAGMgj8xwr7LR",
       :body => { data: data, metadata: { lenth: lenth }}.to_json,
       :headers => {'Content-Type' => 'application/json'})
   end
