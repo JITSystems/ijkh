@@ -203,6 +203,9 @@ get 'api/1.0/users' => 'users#index'
   post 'api/1.0/invoice_confirmation' => 'web_money#invoice_confirmation'
   get 'api/1.0/failed_payment' => 'web_money#failed_payment'
 
+# Move Db
+  post 'api/1.0/move' => 'move_table#move'
+
 # Web Interface
   scope '/' do
       get 'analytic' => 'web_interface/analytic#show'

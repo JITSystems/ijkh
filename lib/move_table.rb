@@ -1,27 +1,28 @@
 # encoding: utf-8
 class MoveTable
-  def vendors
-    
-  end
-  
-  def users
-    
-  end
-  
-  def places
-        def non_utility_vendor(title, phone, work_time, address, non_utility_service_type_id, geocode)
-      response = HTTParty.post( "http://izkh.ru/api/1.0/non_utility_vendor?auth_token=#{Auth.get}",
-              :body => { :non_utility_vendor => { title: title, phone: phone, work_time: work_time, address: address, non_utility_service_type_id: non_utility_service_type_id },
-                     :picture => { url: "http://static-maps.yandex.ru/1.x/?ll=#{geocode}&z=15&l=map&size=300,200&pt=#{geocode}" }}.to_json,
-              :headers => {'Content-Type' => 'application/json'})
-    end
+
+  def initialize(url, from_table)
+    @url = url
+    @from_table = from_table
   end
 
-  def services
-    
+  def auth_token 
+    response = HTTParty.post( "#{@url}/users/sign_in.json",
+      :body => { :user =>  { :email => "test@iz.ru", :password => "qwerty" }}.to_json,
+      :headers => { 'Content-Type' => 'application/json' })
+    response.parsed_response["user"]["auth_token"]
   end
-    
-  def service_types
-    
+
+  def move
+    line_data, data, lenth = {}, {}, 1
+    attrs = @from_table.constantize.column_names
+    @from_table.constantize.all.each do |line|
+      attrs.each {|a| line_data[a] = line.send(a)}
+      data[lenth] = line_data
+      lenth += 1
+    end
+    response = HTTParty.post( "#{@url}/update_table?auth_token=#{auth_token}",
+      :body => { data: data, metadata: { lenth: lenth }}.to_json,
+      :headers => {'Content-Type' => 'application/json'})
   end
 end
