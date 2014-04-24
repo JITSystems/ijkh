@@ -6,10 +6,10 @@ class MoveTable
   end
 
   def move
-    hash, data = [], {}
-    attrs = @from_table.constantize.column_names
+    attrs, hash = @from_table.constantize.column_names, []
     @from_table.constantize.where('id < 30').each do |line|
-      attrs.each {|a| data[a] = line.send(a)}
+      data = {}
+      attrs.each{|a| data[a] = line.send(a)}
       hash << data
     end
     hash
