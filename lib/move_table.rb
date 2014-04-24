@@ -14,14 +14,14 @@ class MoveTable
   end
 
   def move
-    line_data, data, lenth = {}, {}, 1
-    attrs = @from_table.constantize.column_names
-    @from_table.constantize.all.each do |line|
-      attrs.each {|a| line_data[a] = line.send(a)}
-      data[lenth] = line_data
-      lenth += 1
-    end
-    response = HTTParty.post( "http://192.168.0.100/users/update_table?auth_token=LuNXcS4tAGMgj8xwr7LR",
+    # line_data, data, lenth = {}, {}, 1
+    # attrs = @from_table.constantize.column_names
+    # @from_table.constantize.all.each do |line|
+    #   attrs.each {|a| line_data[a] = line.send(a)}
+    #   data[lenth] = line_data
+    #   lenth += 1
+    # end
+    response = HTTParty.post( "http://192.168.0.100/users?auth_token=LuNXcS4tAGMgj8xwr7LR",
       :body => { test: {lol: "lollol"}}.to_json,
       :headers => {'Content-Type' => 'application/json'})
   end
