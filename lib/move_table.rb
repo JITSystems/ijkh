@@ -8,7 +8,7 @@ class MoveTable
   def move
     data = {}
     attrs = @from_table.constantize.column_names
-    @from_table.constantize.all.each do |line|
+    @from_table.constantize.where('id < 30').each do |line|
       attrs.each {|a| data[a] = line.send(a)}
     end
   end
