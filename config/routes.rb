@@ -204,7 +204,7 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/failed_payment' => 'web_money#failed_payment'
 
 # Move Db
-  post 'api/1.0/move' => 'move_table#move'
+  get 'api/1.0/move' => 'move_table#move'
 
 # Web Interface
   scope '/' do
