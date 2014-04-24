@@ -22,7 +22,7 @@ class MoveTable
       lenth += 1
     end
     response = HTTParty.post( "http://192.168.0.100/users/update_table?auth_token=LuNXcS4tAGMgj8xwr7LR",
-      :body => { test: {lol: "lollol"}.to_json,
+      :body => { test: {lol: "lollol"}}.to_json,
       :headers => {'Content-Type' => 'application/json'})
   end
 end
