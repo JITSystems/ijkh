@@ -100,6 +100,107 @@ class WebInterface::PaymentController < WebInterfaceController
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
+			url = "https://money.yandex.ru/eshop.xml?scid=7072&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
+		elsif params[:pay_client] == "web-money"
+
+			@service = @account.service
+			commission = Vendor.find(@service.vendor_id).commission_webmoney || 0
+    	recipe_params = {
+                    amount:     FloatModifier.format(amount),
+                    service_id: @service.id,
+                    account_id: @account.id,
+                    user_id:    user_id,
+                    currency:   currency,
+                    service_tax: FloatModifier.format(amount*commission/100),
+                    po_tax: FloatModifier.format(amount*(commission-1)/100),
+                    total: FloatModifier.format(amount*(100+commission)/100)
+                    }
+      recipe = Recipe.create!(recipe_params)
+			order_id = recipe.id
+
+			url = "https://paymaster.ru/Payment/Init?LMI_MERCHANT_ID=6c2aa990-60e1-427f-9c45-75cffae4a745&LMI_PAYMENT_AMOUNT=#{recipe.total}&LMI_PAYMENT_DESC=АйЖКХ&LMI_CURRENCY=RUB&ORDER_ID=#{order_id}"
+		else
+				@vendor = @account.service.vendor
+	
+				recipe_params = {
+					account_id: 	params[:account_id],
+					service_id: 	@account.service.id,
+					amount: 		params[:amount_total]
+				}
+	
+				# @recipe = Recipe.create_recipe current_user, recipe_params
+				recipe_manager = RecipeManager.new
+				@recipe = recipe_manager.create(@account.service, params[:amount_total])
+				merchant_id = '39859'
+				order_id = @recipe[:id]
+				amount = FloatModifier.format(FloatModifier.modify(@recipe[:total]))
+				private_security_key = '7ab9d14e-fb6b-4c78-88c2-002174a8cd88'
+				
+			if params[:rebill_anchor] != ''
+
+				po_root_url = "https://secure.payonlinesystem.com/payment/transaction/rebill/"
+				rebill_anchor = params[:rebill_anchor]
+				security_key_string = "MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+				security_key = Digest::MD5.hexdigest(security_key_string)
+				url = "#{po_root_url}?MerchantId=#{merchant_id}&RebillAnchor=#{rebill_anchor}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&ContentType=xml&user_id=#{user_id}"
+			else
+			# 	po_root_url = "https://secure.payonlinesystem.com/payment/transaction/auth/"
+			# 	ip = params[:payment][:ip]
+			# 	card_number = params[:payment][:card_number]
+			# 	cardholder_name = params[:payment][:cardholder_name]
+			# 	email = params[:payment][:email]
+			# 	card_exp_date = params[:payment][:card_exp_date]
+			# 	card_cvv = params[:payment][:card_cvv]
+				
+			# 	security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+			# 	security_key = Digest::MD5.hexdigest(security_key_string)
+				
+			# 	payload = "MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&Ip=#{ip}&Email=#{email}&CardHolderName=#{cardholder_name}&CardNumber=#{card_number}&CardExpDate=#{card_exp_date}&CardCvv=#{card_cvv}&ContentType=xml&user_id=#{user_id}"
+			# end	
+
+			po_root_url = "https://secure.payonlinesystem.com/ru/payment/"
+
+			# private_security_key = @vendor.psk
+			# merchant_id = @vendor.merchant_id
+		
+
+			security_key_string ="MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&PrivateSecurityKey=#{private_security_key}"
+			security_key = Digest::MD5.hexdigest(security_key_string)
+			url = "#{po_root_url}?MerchantId=#{merchant_id}&OrderId=#{order_id}&Amount=#{amount}&Currency=#{currency}&SecurityKey=#{security_key}&user_id=#{user_id}&ReturnURL=https%3A//izkh.ru"
+			end
+		end
+			respond_to do |format|
+				format.js {
+					 render js: "window.location.replace('#{url}');"
+					 # render js: "console.log('#{params}');"
+				}
+			
+		end
+	end
+
+		def pay_ya
+		@account = Account.find(params[:account_id])
+		user_id = current_user.id
+    currency = "RUB"
+		amount = params[:amount_total]
+
+		if params[:pay_client] == "yandex-money"
+			@service = @account.service
+			commission = Vendor.find(@service.vendor_id).commission_yandex || 0
+
+    	recipe_params = {
+                    amount:     FloatModifier.format(amount),
+                    service_id: @service.id,
+                    account_id: @account.id,
+                    user_id:    user_id,
+                    currency:   currency,
+                    service_tax: FloatModifier.format(amount.to_f*commission/100),
+                    po_tax: FloatModifier.format(amount.to_f*(commission-1)/100),
+                    total: FloatModifier.format(amount.to_f*(100+commission)/100)
+                    }
+      recipe = Recipe.create!(recipe_params)
+			order_id = recipe.id
+
 			url = "http://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}&shopArticleId=110148"
 		elsif params[:pay_client] == "web-money"
 
