@@ -187,7 +187,7 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/report_monthly' => 'report_data#index_monthly_by_vendor'
   get 'api/1.0/report_vendors' => 'report_data#vendors_with_transactions'
 
-#Yandex-money
+# Yandex-money
   # paymentAvisoURL
   post 'api/1.0/payment_notify' => 'yandex_money#notify'
   # checkURL
@@ -196,7 +196,11 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/payment_success' => 'web_interface/payment#show'
   # failURL 
   get 'api/1.0/payment_fail' => 'web_interface/payment#show'
-#Web-money
+  # successURL Test
+  get 'api/1.0/payment_success/test' => 'web_interface/payment#show'
+  # failURL Test
+  get 'api/1.0/payment_fail/test' => 'web_interface/payment#show'
+# Web-money
   #Payment notification
   post 'api/1.0/payment_notification' => 'web_money#payment_notification'
   #Invoice confirmation

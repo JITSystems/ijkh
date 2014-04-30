@@ -100,7 +100,7 @@ class WebInterface::PaymentController < WebInterfaceController
       recipe = Recipe.create!(recipe_params)
 			order_id = recipe.id
 
-			url = "https://money.yandex.ru/eshop.xml?scid=7072&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}"
+			url = "http://demomoney.yandex.ru/eshop.xml?scid=51361&ShopID=15196&Sum=#{recipe.total}&CustomerNumber=#{user_id}&orderNumber=#{order_id}&shopArticleId=110148"
 		elsif params[:pay_client] == "web-money"
 
 			@service = @account.service
