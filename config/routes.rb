@@ -196,9 +196,10 @@ get 'api/1.0/users' => 'users#index'
   get 'api/1.0/payment_success' => 'web_interface/payment#show'
   # failURL 
   get 'api/1.0/payment_fail' => 'web_interface/payment#show'
-  # successURL Test
+  
+  post 'api/1.0/payment_notify/test' => 'yandex_money#notify'
+  post 'api/1.0/payment_check/test' => 'yandex_money#check'
   get 'api/1.0/payment_success/test' => 'web_interface/payment#show'
-  # failURL Test
   get 'api/1.0/payment_fail/test' => 'web_interface/payment#show'
 # Web-money
   #Payment notification

@@ -13,7 +13,7 @@ class ServiceTypeController < ApplicationController
 
   def terminal
     # GET api/1.0/terminal/vendors
-    p @service_types = ServiceTypeManager.index
+    @service_types = ServiceTypeManager.index
     render 'service_type/terminal'
   end
 end
